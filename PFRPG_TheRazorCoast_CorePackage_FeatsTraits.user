@@ -1,0 +1,1377 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[
+3/9/2014 - Tim Shadow
+-Made "Naval Gunnery" work with the new "Fire As She Bears" mechanics.
+
+June 12, 2013 - Jai Erwin
+- Consolidated Things to fit into the correct FGG Core Package file.
+
+3/31/2013 - Tim Shadow
+-Merged in class feats from the class.user file.
+
+3/18/2013 - Tim Shadow
+-Finished pre-req Blood Frenzy for "Reaver's Frenzy" now that the PrC is done.
+
+3/15/2013 - Tim Shadow
+-Moved over the "Piratical Nerve" feat. 
+--Fixed summary text.
+--Scripted the situational text for Will Saves.]]></info_history>
+    <info_todo><![CDATA[1) "Reaver's Frenzy" - Dalang of Dajobas class not done.  Add "Blood Frenzy" class ability to pre-req when done.]]></info_todo>
+    </fileinfo>
+  <thing id="fFGBloHunt" name="Blood Hunter" description="You can sense living foes by smelling the blood in their veins.\n\n{b}Prerequisite{/b}: Chosen of the Shark God.\n\n{b}Benefit{/b}: You gain a blood sense that allows you to detect living foes within 60 feet regardless of whether or not you can see them. If a living creature is bleeding from an open wound, you can detect them up to 120 feet away. You can pinpoint the square of invisible living opponents up to 30 feet away. If an opponent is bleeding from an open wound they do not gain the benefit of concealment regardless of whether they are invisible, displaced or otherwise obscured." compset="Feat" summary="You gain a blood sense that allows you to detect living foes within 60ft." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Chosen of the Shark God feat required."><![CDATA[#hasfeat[fFGChoShar] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGChoShar" name="Chosen of the Shark God" description="You hear the savage call of Dajobas, his hunger is yours now. You can only feed it with blood of your foes.\n\n{b}Prerequisite{/b}: Must worship Dajobas, base attack bonus +3.\n\n{b}Benefit{/b}: Whenever you kill a foe (not just drop them below 0 HP) in melee, you gain 5 temporary hit points. These hit points only last 1 minute. If you do not kill another living creature of at least one Hit Dice per level you possess every day, you suffer 1d2 points of Constitution damage." compset="Feat" summary="Whenever you kill a foe (not just drop them below 0 hp) in melee, you gain 5 temporary hit points." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Worship of Dajobas required."><![CDATA[#hasdeity[deiFGDajob] <> 0]]></exprreq>
+    <exprreq message="Base attack bonus +3 required."><![CDATA[child[Attack].field[tAtkBase].value >= 3]]></exprreq>
+    </thing>
+  <thing id="fFGPrePrey" name="Predator Not Prey" description="You are a hunter. You feed on lesser creatures. Nothing can feed on you.\n\n{b}Prerequisite{/b}: Chosen of the Shark God.\n\n{b}Benefit{/b}: You cannot be fed upon and do not suffer Constitution damage from attacks or spell effects. A creature with blood drain (such as a vampire) simply cannot feast on your blood. A wounding weapon does not inflict Constitution damage on you, and neither do poisons (though poisons affect other attributes as normal for your character)." compset="Feat" summary="You do not suffer Constitution damage from attacks or spell effects." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Chosen of the Shark God feat required."><![CDATA[#hasfeat[fFGChoShar] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGReaFren" name="Reaver&apos;s Frenzy" description="When you taste the blood of a foe, the fury of Dajobas pounds through your veins and grants the power to shred your enemies to pieces.\n\n{b}Prerequisite{/b}: Chosen of the Shark God, rage or blood frenzy class ability, or frenzy racial ability.\n\n{b}Benefit{/b}: When you activate rage, blood frenzy or frenzy you also gain an additional melee attack at your highest attack bonus for the first four rounds of the rage or frenzy. This ability does not stack with haste, a speed weapon or any like effect." compset="Feat" summary="When you rage/frenzy gain an additional melee attack at your highest BAB for four rounds." uniqueness="useronce">
+    <fieldval field="actName" value="Rage/Frenzy"/>
+    <fieldval field="trkMax" value="4"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If not enabled, no Frenzy activated or Barbarian Rage activated
+~ then get out now!
+doneif (field[abilActive].value + hero.tagcountstr["Activated.raFrenzy"] + hero.tagis[Hero.Raging] + hero.tagis[Activated.cDaDBloodF] = 0)
+
+~ Show tracker on the In-Play tab
+perform assign[User.Tracker]
+
+~ All Melee attacks get an extra attack
+foreach pick in hero from BaseWep where "wCategory.Melee & !thingid.wTouch"
+   perform eachpick.assign[Helper.ExtraHigh]
+nexteach]]></eval>
+    <exprreq message="Chosen of the Shark God feat required."><![CDATA[#hasfeat[fFGChoShar] <> 0]]></exprreq>
+    <prereq message="Rage, Blood Frenzy, or Frenzy ability required.">
+      <validate><![CDATA[~ Valid if we have Barbarian Rage ability
+validif (#hasability[cBbnRage] <> 0)
+~ Valid if we have Blood Frenzy ability
+validif (hero.tagis[RazorCoast.BloodFrenz] <> 0)
+
+var FGValidTxt as string
+var FGValidAbi as number
+~ Look for Frenzy racial special
+FGValidTxt = "Frenzy"
+Call FGValidAbi
+@valid = FGValidAbi]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fFGDagDefe" name="Dagger Defense" description="You may use your dagger to assist your rapier attacks.\n\n{b}Prerequisites{/b}: Dex 15, Two-Weapon Defense, Two-Weapon Fighting.\n\n{b}Benefit{/b}: When fighting with a slashing light weapon or a rapier in one hand and a dagger in the other, you may choose to fight defensively with your dagger while fighting normally with your primary weapon. The penalty for fighting defensively applies to all attacks with your dagger only, and you still gain the bonus to AC. You may not use Combat Expertise or total defense in this manner, although you may still apply Combat Expertise to all of your attacks, in which case the bonuses and penalties stack." compset="Feat" summary="Fight defensively with your dagger while fighting normally with your primary weapon." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ if not Fighting Defensively get out now
+doneif (hero.tagis[Condition.pstFtDefen] <> 1)
+var nValid as number
+
+foreach pick in hero from BaseWep where "(thingid.wDagger & Hero.OffHand)|(thingid.wRapier & Hero.MainHand)|(wClass.Light & wType.S & Hero.MainHand)"
+       nValid += 1
+nexteach
+If (nValid >= 2) Then
+   hero.findchild[BaseWep,"(thingid.wRapier & Hero.MainHand)|(wClass.Light & wType.S & Hero.MainHand)"].field[wAttBonus].value += #value2[pstFtDefen] * -1
+Endif]]></eval>
+    <exprreq message="Dexterity 15+ required."><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
+    <exprreq message="Two-Weapon Defense feat required."><![CDATA[#hasfeat[fTwoWepDef] <> 0]]></exprreq>
+    <exprreq message="Two-Weapon Fighting feat required."><![CDATA[#hasfeat[fTwoWep] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGDueLung" name="Duelist&apos;s Lunge" description="You can use your expert footwork to attack at great range.\n\n{b}Prerequisite{/b}: Base attack bonus +1.\n\n{b}Benefit{/b}: When wearing light armor or no armor, you may treat any one-handed piercing weapon as a reach weapon. Reach attacks made using this feat provoke attacks of opportunity from anyone who threatens you. After the attack, you may choose to make a free 5-foot step towards the enemy you attacked.\n\n{B}Historical Note:{/b} The exact origins of the lunge are debatable, but most 16th-century fencing manuals include a similar type of attack. Notably, Camillo Paladini advises against the long lunge, because it gives your opponent the opportunity to counter. By the 17th century, the lunge was widespread, although in 1610 Ridolfo Capo Ferro calls it &quot;the incredible increase of the long thrust.&quot;" compset="Feat" summary="When wearing light armor or no armor, you may treat any one-handed piercing weapon as a reach weapon." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Base attack bonus +1 required."><![CDATA[child[Attack].field[tAtkBase].value >= 1]]></exprreq>
+    </thing>
+  <thing id="fFGResDuel" name="Responsive Duelist" description="You can respond to your chosen opponent&apos;s attacks, answering them steel for steel.\n\n{b}Prerequisites{/b}: Dex 13, Dodge, Weapon Finesse, base attack bonus +5. \n\n{b}Benefit{/b}: When fighting with slashing light weapon or a rapier, any attack made by a single enemy you have designated provokes an attack of opportunity from you. This special attack of opportunity is called a counter-attack. You may not counter-attack your opponent&apos;s counter-attack. Any counter-attack uses one of your attacks of opportunity for the round." compset="Feat" summary="When fighting with slashing light weapon or a rapier, you can use an AoO as a counter-attack." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Dexterity 13+ required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <exprreq message="Base attack bonus +5 required."><![CDATA[child[Attack].field[tAtkBase].value >= 5]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Weapon Finesse feat required."><![CDATA[#hasfeat[fWepFin] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGDefSwor" name="Defensive Swordplay" description="You are adept at striking your opponent&apos;s weapons as they attack.\n\n{b}Prerequisites{b}: Dex 13, Dodge, Responsive Duelist.\n\n{b}Benefit{/b}: When you use a counter-attack to disarm or sunder, you do not provoke an attack of opportunity and you gain a +4 bonus on your combat maneuver." compset="Feat" summary="Counter-attack to disarm/sunder causes no AoO and you gain +4 bonus." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Responsive Duellist feat required."><![CDATA[#hasfeat[fFGResDuel] <> 0]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 13+ required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    </thing>
+  <thing id="fFGDefParr" name="Defensive Parry" description="You may use your weapon to defend yourself against an opponent.\n\n{b}Prerequisites{/b}: Dex 13, Dodge, Responsive Duelist, base attack bonus +8. \n\n{b}Benefit:{/b} You may use a counter-attack to parry a single melee attack made against you. Make an attack roll using all applicable modifiers. This roll receives a cumulative -4 penalty for each size category larger the attacker&apos;s weapon is than yours. If your attack roll is greater than your opponent&apos;s attack roll, the attack is negated. Essentially, your attack roll becomes your Armor Class if it is higher than your regular AC." compset="Feat" summary="Use an attack roll as your AC w/-4H per size category larger the attackers weapon is." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Responsive Duellist feat required."><![CDATA[#hasfeat[fFGResDuel] <> 0]]></exprreq>
+    <exprreq message="Base attack bonus +8 required."><![CDATA[child[Attack].field[tAtkBase].value >= 8]]></exprreq>
+    <exprreq message="Dexterity 13+ required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGStopthr" name="Stop-Thrust" description="You are able to avoid your opponent&apos;s attack while responding with a counter-attack of your own.\n\n{b}Prerequisites{/b}: Dex 13, Dodge, Responsive Duelist, Weapon Finesse.\n\n{b}Benefit{/b}: If you hit with a counter-attack, you gain a +4 dodge bonus to AC against the attack that provoked your counter-attack.\n\n{B}Historical Note:{/b} This action covers a variety of historical fencing actions including the thrust from the left, passata sotto, arrest, inquartata, and reassmblement. The names refer either to the counter-attack itself, or how the fencer moves their body out of the way of the initial attack." compset="Feat" summary="Your counter-attack gives +4 AC vs the attack that provoked your counter-attack." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Responsive Duelist feat required."><![CDATA[#hasfeat[fFGResDuel] <> 0]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 13+ required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <exprreq message="Weapon Finese feat required."><![CDATA[#hasfeat[fWepFin] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGRiposte" name="Riposte" description="You may attack after a successful parry.\n\n{b}Prerequisites{/b}: Dex 13, Defensive Parry, Dodge, Responsive Duelist, Weapon Finesse\n\n{b}Benefit{/b}: After a successful parry, you may immediately attack the enemy whose attack you just parried. This uses one of your attacks of opportunity for the round, but is not considered a counter-attack." compset="Feat" summary="After a successful parry, you may use an AoO against your attacker." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Responsive Duelist feat required."><![CDATA[#hasfeat[fFGResDuel] <> 0]]></exprreq>
+    <exprreq message="Defensive Parry feat requried."><![CDATA[#hasfeat[fFGDefParr] <> 0]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 13+ required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <exprreq message="Weapon Finese feat required."><![CDATA[#hasfeat[fWepFin] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGAttOppo" name="Attack with Opposition" description="You are skilled at controlling your opponent&apos;s weapons to avoid attacks of opportunity and counter-attacks. \n\n{b}Prerequisites{/b}: Dex 13, Dodge, Responsive Duelist, Weapon Finesse.\n\n{b}Benefit{/b}: When fighting with a slashing light weapon or a rapier, if an opponent makes any attack of opportunity or counter-attack against you, you gain a +4 dodge bonus to AC against that attack.\n\n{b}Historical Note:{/b} This action had many names historically, including jam and prix de fer (&quot;taking the iron&quot;)." compset="Feat" summary="With a slashing light weapon or a rapier you gain +4 dodge AC vs AoO&apos;s." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 13+ required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <exprreq message="Weapon Finese feat required."><![CDATA[#hasfeat[fWepFin] <> 0]]></exprreq>
+    <exprreq message="Responsive Duellist feat required."><![CDATA[#hasfeat[fFGResDuel] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGCloaDue" name="Cloaked Duellist" description="You use the very cloak on your back against an enemy, befuddling their attacks.\n\n{b}Prerequisites{/b}: Dex 15, Dodge, Defensive Parry, Responsive Duelist.\n\n{b}Benefit{/b}: When fighting with a cloak on and at least one hand empty, you may sweep your cloak into your free hand as a swift action to aid you in a fight. You may make bind combat maneuvers and defensive parries with your cloak. If you fight defensively, the cloak grants you a +1 shield bonus to AC. If you opt for total defense, your cloak grants you a +2 shield bonus to AC." compset="Feat" summary="You may make bind combat maneuvers and defensive parries with your cloak." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ Fighting Defensively
+If (hero.tagis[Condition.pstFtDefen] <> 0) Then
+   #applybonus[tACShield,hero.child[ArmorClass],1]
+Endif
+~ Total Defense
+If (hero.tagis[Condition.pstTotDef] <> 0) Then
+   #applybonus[tACShield,hero.child[ArmorClass],2]
+Endif]]></eval>
+    <exprreq message="Defensive Parry feat required."><![CDATA[#hasfeat[fFGDefParr] <> 0]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 15+ required."><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
+    <exprreq message="Responsive Duellist feat required."><![CDATA[#hasfeat[fFGResDuel] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGComeGr" name="Come to Grips" description="You are trained at tripping and grappling while fighting with a sword or rapier.\n\n{b}Prerequisites{/b}: Dex 13, Defensive Parry, Dodge, Responsive Duelist, Weapon Finesse.\n\n{b}Benefit{/b}: When fighting with a slashing light weapon or a rapier, after making a successful parry or bind combat maneuver, you may immediately make a trip attempt or initiate a grapple as a free action that does not provoke an attack of opportunity. \n\n{B}Historical Note:{/b} Wrestling was often used as a foundation for weapon training, and many sword instructors integrated swordplay with wrestling, especially in Germany and Italy." compset="Feat" summary="With a slashing light weapon or a rapier, after a successful parry/bind, make a free Trip attack." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Responsive Duellist feat required."><![CDATA[#hasfeat[fFGResDuel] <> 0]]></exprreq>
+    <exprreq message="Defensive Parry feat required."><![CDATA[#hasfeat[fFGDefParr] <> 0]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 13+ required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <exprreq message="Weapon Finese feat required."><![CDATA[#hasfeat[fWepFin] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGBehSlay" name="Behemoth Slayer" description="You are skilled in waging battle against opponents with incredibly thick hides and deliver your attacks with the precision and focused force to penetrate their tough skin.\n\n{b}Prerequisites{/b}: Improved Sunder, Power Attack.\n\n{b}Benefit{/b}: You may ignore up to 4 points of natural armor bonus of any creature larger than you when attacking with a piercing or slashing melee weapon or an unarmed strike. This benefit cannot reduce your target&apos;s natural armor bonus below 0." compset="Feat" summary="Reduce a creatures natural armor by 4 that is larger than you and using a P/S melee weapon or unarmed strike." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Power Attack feat required."><![CDATA[#hasfeat[fPowerAtt] <> 0]]></exprreq>
+    <exprreq message="Improved Sunder feat required."><![CDATA[#hasfeat[fImpSunder] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGBliStri" name="Blinding Strike" description="There is a saying among the Tulita: &quot;Fight a foe without attacking his eyes, and you&apos;ll be fighting all day.&quot; To this end, many practitioners of the Warrior&apos;s Way are capable of lashing out quickly to blind a foe with a punishing strike to their temple or eye.\n\n{b}Prerequisites{/b}: Improved Unarmed Strike, Stunning Fist, base attack bonus +9.\n\n{b}Benefit{/b}: When you employ a Stunning Fist attack against a foe and they fail their save they are blinded as well as stunned. The blindness persists for one round following the round they are stunned." compset="Feat" summary="Stunning Fist attacks blind foe and lasts for 2 rounds." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Base attack bonus +9 required."><![CDATA[child[Attack].field[tAtkBase].value >= 9]]></exprreq>
+    <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    <exprreq message="Stunning Fist feat required."><![CDATA[#hasfeat[fStunFist] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGDanRuin" name="Dance of Ruin" description="You lure your foes into attacking you, but step aside at the last moment and watch as their attack splinters or shatters an object nearby.\n\n{b}Prerequisites{/b}: Dodge, Dexterity 15.\n\n{b}Benefit{/b}: When you are standing adjacent to or on top of an object or piece of terrain, you may take a -4 to your AC for any one attack an opponent makes against you to lure their attack toward the nearby target. If they miss you, they must immediately make a Sunder combat maneuver check on the object or piece of terrain. If successful, shards from the Sundered object or terrain inflict 1d4 points of damage on the attacker (no save)." compset="Feat" summary="-4AC vs 1 attack where a miss can cause 1d4 damage." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 15+ required."><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
+    </thing>
+  <thing id="fFGDolJab" name="Dolphin&apos;s Jab" description="Like the noble dolphin that wards off the greatest shark with a jab to its nose or gills, you are trained in battling gigantic predators or grappling foes and escaping their crushing grasp or deadly maws by employing a quick unexpected strike to disrupt them.\n\n{b}Prerequisites{/b}: Improved Grapple, Improved Unarmed Strike, base attack bonus +5.\n\n{b}Benefit{/b}: When you are grappled and you attack your foe, if the attack succeeds your opponent must make a Reflex save (DC 10 + damage dealt) or immediately release you." compset="Feat" summary="If you damage a foe grappling you they must make a Ref (DC10+1/2 Dmg) or release you." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Base attack bonus +5 required."><![CDATA[child[Attack].field[tAtkBase].value >= 5]]></exprreq>
+    <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    <exprreq message="Improved Grapple feat required."><![CDATA[#hasfeat[fImpGrapp] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGEbbTide" name="Ebbing Tide" description="You are as elusive as the swell and flow of the waves, as ungraspable as water. Those seeking to hold you fast or strike you find that you flow like water around the force of their attacks.\n\n{b}Prerequisites{/b}: Dex 15, Escape Artist 3 ranks.\n\n{b}Benefit{/b}: You gain a +2 dodge bonus to your AC against foes using Power Attack against you. In addition, you gain +4 bonus on combat maneuver checks made to escape a grapple." compset="Feat" summary="+2 AC vs foes using Power Attack against you." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[#situational[hero.child[manGrapple],"+4 to escape a grapple.",field[name].text]]]></eval>
+    <exprreq message="Escape Artist 3+ ranks required."><![CDATA[#skillranks[skEscape] >= 3]]></exprreq>
+    <exprreq message="Dexterity 15+ required."><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
+    </thing>
+  <thing id="fFGFirDanc" name="Fire Dancer" description="You are trained in the fire twirling dances of the Flame Chiefs. You coat a spear or staff with palm oil and light it aflame, whirling these deadly weapons about you heedless to the searing fire.\n\n{b}Prerequisites{/b}: Perform (dance) 2 ranks, proficient with spear or quarterstaff.\n\n{b}Benefit{/b}: You may soak the ends of a spear or staff in palm oil and light them; the ends burn for 5 rounds, during which time attacks with the weapon inflict an additional 1d4 points of fire damage. This does not stack with the flaming or flaming burst weapon properties. Preparing a weapon in this way is a full-round action that provokes attacks of opportunity." compset="Feat" summary="Light weapon on fire for 5 rounds causing +1d4 fire damage." uniqueness="useronce">
+    <fieldval field="actName" value="Burning Weapon"/>
+    <fieldval field="trkMax" value="5"/>
+    <usesource source="CampRazorC"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="First" priority="200"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If not enabled get out now!
+doneif (field[abilActive].value <> 1)
+
+perform assign[ChooseSrc1.Hero]
+perform assign[fShowWhat.WeaponsMel]
+perform assign[User.Tracker]]]></eval>
+    <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If not enabled get out now!
+doneif (field[abilActive].value <> 1)
+~if nothing's been chosen, get out now
+doneif (field[usrChosen1].ischosen <> 1)
+
+#extradamage[field[usrChosen1].chosen,"+1d4 Fire",field[name].text]]]></eval>
+    <exprreq message="Proficiency with spear or quarterstaff required."><![CDATA[#hasfeat[fSimple] + hero.tagis[WepProf.wSpear] + hero.tagis[WepProf.wQtrstaff] <> 0]]></exprreq>
+    <exprreq message="Perform (dance) 2+ ranks required."><![CDATA[#skillranks[skPerfDanc] >= 2]]></exprreq>
+    </thing>
+  <thing id="fFGFisBasa" name="Fists of Basalt" description="Years of smashing your fists against volcanic rock and driving them into bowls of pebbles have turned them into terrible weapons capable of raining punishing blows upon an enemy.\n\n{b}Prerequisites{/b}: Improved Unarmed Strike\n\n{b}Benefit{/b}: As long as both your hands are free, you gain a +2 bonus on all damage rolls you make using your unarmed strikes." compset="Feat" summary="If both your hands are free, you gain a +2 damage with unarmed strikes." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="25000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ Get out if any weapon or shield equipped
+doneif (hero.tagis[Hero.EquipShld] + hero.tagis[Hero.EquipMain] + hero.tagis[Hero.EquipOff] <> 0)
+
+field[abValue].value += 2
+
+~ All unarmed strikes get +2 damage bonus. Yes we CAN have multiple unarmed strikes
+foreach pick in hero from BaseWep where "thingid.wUnarmed"
+   eachpick.field[wDamBonus].value += field[abValue].value
+nexteach]]></eval>
+    <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGLokGras" name="Lokana&apos;s Grasp" description="Lokana was one of the greatest kumus of the Warrior&apos;s Way, and he perfected the ability to hurl his opponents about by manipulating their joints painfully and disrupting their center of gravity. You excel at his techniques, which were handed down through the ages to your own teacher.\n\n{b}Prerequisites{/b}: Improved Grapple, Improved Unarmed Strike\n\n{b}Benefit{/b}: You gain a +4 bonus on combat maneuver checks made to throw an opponent. In addition, anyone you throw suffers your unarmed attack damage as well." compset="Feat" summary="Anyone you throw suffers your unarmed attack damage as well." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+
+#situational[hero.child[manGrapple],"+4 to throw an opponent",field[name].text]]]></eval>
+    <exprreq message="Improved Grapple feat required."><![CDATA[#hasfeat[fImpGrapp] <> 0]]></exprreq>
+    <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGMouBrea" name="Mountain Breaking Fists" description="Your fists become so hardened through training in the Warrior&apos;s Way that they may shatter stone to shards. \n\n{b}Prerequisites{/b}: Fists of Basalt, Improved Critical (unarmed strike), Improved Unarmed Strike, base attack bonus +13\n\n{b}Benefit{/b}: You score a critical threat on a natural 18 or higher with your unarmed attacks." compset="Feat" summary="You score a critical threat on a natural 18 or higher with your unarmed attacks." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ Find all Unarmed Attacks (yes we could really have multiple)
+foreach pick in hero from BaseWep where "thingid.wUnarmed"
+   ~ Remove the Improved Crit tags or we will go to 15-20
+   perform eachpick.delete[Broadcast.ImpCrit]
+   ~ replace all critical tags with 18 instead.
+   perform eachpick.tagreplace[wCritMin.?,wCritMin.18]
+nexteach]]></eval>
+    <exprreq message=" Improved Critical (unarmed strike) feat required."><![CDATA[hero.tagis[ImpCrit.wUnarmed] <> 0]]></exprreq>
+    <exprreq message="Base attack bonus +13 required."><![CDATA[child[Attack].field[tAtkBase].value >= 13]]></exprreq>
+    <exprreq message="Fists of Basalt feat required."><![CDATA[#hasfeat[fFGFisBasa] <> 0]]></exprreq>
+    <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGTraDanc" name="Trance Dancer" description="The call of the drums takes you far beyond this place and time. The fight is just a dream unfolding in slow motion around you and your mind and body cannot be overwhelmed.\n\n{b}Prerequisites{/b}: Still mind class feature or Iron Will, Wis 15, Perform (dance) 2 ranks\n\n{b}Benefit{/b}: As a full round action you may enter a trance dance. While in the trance you cannot be dazed, exhausted, fatigued, or stunned, and you are immune to all enchantment effects. You also gain a +4 morale bonus to your Wisdom. You may maintain a trance dance for as long as 5 + your Wisdom bonus rounds (adjusted for your new enhanced Wisdom). After your trance ends you become fatigued." compset="Feat" uniqueness="useronce">
+    <fieldval field="actName" value="Dance"/>
+    <fieldval field="actName2" value="Fatigued"/>
+    <usesource source="CampRazorC"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xImmDaze">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="xImmExhaus">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="xImmFatigu">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="xImmSoni">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="xFGTraDanc">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If not enabled get out now!
+doneif (field[abilActive].value <> 1)
+
+perform assign[User.Tracker]
+hero.child[aWIS].field[Bonus].value += 4]]></eval>
+    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If not enabled get out now!
+doneif (field[abilActive].value <> 1)
+
+~ trance dance for as long as 5 + your Wisdom bonus rounds
+field[trkMax].value += 5 + #attrmod[aWIS]]]></eval>
+    <eval phase="PostLevel" priority="10000" index="3"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If #2 not enabled get out now!
+doneif (field[abilAct2].value <> 1)
+
+~ Activate the Fatigued condition
+perform hero.assign[Condition.pcnFatigue]]]></eval>
+    <exprreq message="Perform (dance) 2+ ranks required."><![CDATA[#skillranks[skPerfDanc] >= 2]]></exprreq>
+    <exprreq message="Still Mind or Iron Will feat required."><![CDATA[#hasability[cMnkStill] + #hasfeat[fIronWill] <> 0]]></exprreq>
+    <exprreq message="Wisdom 15+ required."><![CDATA[#attrvalue[aWIS] >= 15]]></exprreq>
+    </thing>
+  <thing id="fFGOrcTail" name="Orca&apos;s Tail" description="With a great sweep of your body, you knock the legs out from under all the opponents who dare approach you.\n\n{b}Prerequisites{/b}: Improved Trip, Improved Unarmed Strike, base attack bonus +9\n\n{b}Benefit{/b}: When you make a trip combat maneuver against a foe, if you succeed you may attempt to trip another adjacent foe as well. You may trip as many adjacent foes as possible as long as you continue to successfully make combat maneuver checks." compset="Feat" summary="If you succeed on a trip you may attempt to trip another adjacent foe as well." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Base attack bonus +9 required."><![CDATA[child[Attack].field[tAtkBase].value >= 9]]></exprreq>
+    <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    <exprreq message="Improved Trip feat required."><![CDATA[#hasfeat[fImpTrip] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGTsuStri" name="Tsunami Strike" description="Your attacks batter opponents like the slap of a great wave. With a casual swat or snapping kick, you send enemies careening from your presence with disdain.\n\n{b}Prerequisites{/b}: Improved Bull Rush, Improved Unarmed Strike, Power Attack, base attack bonus +9.\n\n{b}Benefit{/b}: Any opponents hit by your unarmed strike are also hit with a free bull rush attack, substituting your attack roll for the combat maneuver check. This bull rush does not provoke an attack of opportunity. Opponents who cannot move back due to a wall or other surface are knocked prone after moving the maximum possible distance. You may choose to move with your target if you are able to take a 5-foot step or to spend an action to move this turn." compset="Feat" summary="Your unarmed strike attacks cause a free bull rush attack, substituting your attack roll for the CMB." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Power Attack feat tequired."><![CDATA[#hasfeat[fPowerAtt] <> 0]]></exprreq>
+    <exprreq message="Base attack bonus +9 required."><![CDATA[child[Attack].field[tAtkBase].value >= 9]]></exprreq>
+    <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    <exprreq message="Improved Bull Rush feat required."><![CDATA[#hasfeat[fImpBull] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGBleDajo" name="Blessed by Dajobas" description="The mouth of this creature is enormous and bristling with jagged teeth.\n\n{b}Prerequisite{/b}: Improved Natural Attack, must worship Dajobas.\n\n{b}Benefit{/b}: The creature&apos;s bite attack is increased by one size category and the critical threat range is doubled. \n\n{b}Special:{/b} This feat can stack with further Improved Natural Attacks and Improved Critical feats." compset="Feat" summary="Your bite attack is increased one size and the critical threat range is doubled." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ Find all bite attacks
+foreach pick in hero from BaseWep where "thingid.wBite"
+   ~ up the damage dice by one size
+   perform eachpick.assign[Helper.DamageUp]
+   ~ replace all critical tags with 19 instead. If we have improved 
+   ~ critical then it will correctly double the value to 17-20.
+   perform eachpick.tagreplace[wCritMin.?,wCritMin.19]
+nexteach]]></eval>
+    <exprreq message="Worship of Dajobas required."><![CDATA[#hasdeity[deiFGDajob] <> 0]]></exprreq>
+    <exprreq message="Improved Natural Attack feat required."><![CDATA[#hasfeat[fImpNatAtt] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGHelmsma" name="Helmsman" description="You are most at home at the helm of a ship. When controlling the ship you and the vessel become one, and your skill as a sailor allows you to save your vessel from certain destruction.\n\n{b}Prerequisite:{/b} Profession (sailor) 3 ranks, Seaworthy.\n\n{b}Benefit:{/b} When manning the helm of a ship you may substitute a Profession (sailor) check for any Reflex saves made by your vessel against attacks, spells, or other effects. In addition, your vessel gains a +2 dodge bonus to its AC.\n\n{B}Normal:{/b} When your vessel is targeted with an effect requiring a Reflex save, your ship makes a Reflex save and may not use a helmsman&#146;s Profession (sailor) skill." compset="Feat" summary="Substitute a Profession (sailor) check for any Ref saves made by your vessel and it gains a +2AC dodge bonus." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Seaworthy feat required."><![CDATA[#hasfeat[fFGSeawort] <> 0]]></exprreq>
+    <exprreq message="Profession (sailor) 3+ ranks required."><![CDATA[#skillranks[skProfSail] >= 3]]></exprreq>
+    </thing>
+  <thing id="fFGSeawort" name="Seaworthy" description="You have spent a great deal of your life on the high seas and a seafarer&#146;s life is second nature to you.\n\n{b}Benefit:{/b} You gain a +2 competence bonus to all Profession (sailor) checks. In addition you gain a +2 circumstance bonus to all Acrobatics checks made to balance while onboard a seafaring vessel of any kind, and a +2 circumstance bonus to all vision&#150;based Perception checks made at sea." compset="Feat" summary="You gain a +2 competence bonus to all Profession (sailor) checks, balance checks on searfaring vessels, and vision at sea." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="4000"><![CDATA[
+~ Set feat bonus
+field[abValue].value += 2
+
+~ Only attempt to apply the bonus to Profession Sailor if the skill
+~ is on the hero.
+If (hero.childlives[skProfSail] <> 0) Then
+   ~ +2 to all Profession (sailor) checks
+   #applybonus[BonComp,hero.child[skProfSail],field[abValue].value]
+Endif]]></eval>
+    <eval phase="Final" priority="25000" index="2"><![CDATA[
+~ Show situational bonus to perception
+#situational[hero.child[skPercep],signed(field[abValue].value) & " circumstance bonus to vision checks at sea.",field[name].text]
+
+~ Show situational bonus to Acrobatics
+#situational[hero.child[skAcrobat],signed(field[abValue].value) & " circumstance bonus to balance while onboard a seafaring vessel.",field[name].text]]]></eval>
+    </thing>
+  <thing id="fFGStepFei" name="Stepping Feint" description="You are skilled at using footwork in harmony with your attacks in order to trick an opponent as you close with them.\n\n{b}Prerequisite:{/b} Int 13, Combat Expertise, Improved Feint.\n\n{b}Benefit:{/b} You may feint as part of a move action spent to move up to your base speed, allowing you to close the distance to your opponent and feint at the same time. You may not use Stepping Feint on a move action in which you are drawing a weapon, as part of a charge, or as part of an attempt to Get the Drop (see the {i}Sinister Indulgence Brace of Pistols{/i} for more on this feat) on your foes.\n\n{b}Normal:{/b} Using Improved Feint allows you to feint as a move action." compset="Feat" summary="Feint as part of a move action spent to move up to your base speed." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Combat Expertise feat required."><![CDATA[#hasfeat[fComExpert] <> 0]]></exprreq>
+    <exprreq message="Improved Feint feat required."><![CDATA[#hasfeat[fImpFeint] <> 0]]></exprreq>
+    <exprreq message="Intelligence 13+ required."><![CDATA[#attrvalue[aINT] >= 13]]></exprreq>
+    </thing>
+  <thing id="fFGShaCast" name="Shapechange Casting" description="You have learned to harness magical energies irrespective of your current physical form.\n\n{b}Prerequisite:{/b} Must possess the alternate form (or similar) ability, caster level 1st\n\n{b}Benefit:{/b} You can complete the verbal and somatic components of spells while in an alternate form. You substitute various noises and gestures for the normal verbal and somatic components of a spell. Furthermore, you can use any material components or focuses you possess, even if such items are melded within your current form. This feat does not permit the use of magic items while you are in a form that could not ordinarily use them, and you do not gain the ability to speak while in an alternate form if that form cannot naturally speak." compset="Feat" summary="You can cast spells that require V,S,M components while in an alternate form." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Caster level 1st required."><![CDATA[herofield[tMastCraft].value >= 1]]></exprreq>
+    <prereq message="Alternate form (or similar) ability required.">
+      <validate><![CDATA[
+~ Were creature change shape
+validif (#hasability[xLyChange] <> 0)
+~ Unversial Change Shape
+validif (#hasability[raChangeSh] <> 0)
+
+var FGValidTxt as string
+var FGValidAbi as number
+
+~ Test to see if we have the "Change Shape" ability
+FGValidTxt = "Change Shape"
+Call FGValidAbi
+@valid = FGValidAbi
+
+~ Test to see if we have the "Alternate Form" ability
+FGValidTxt = "Alternate Form"
+Call FGValidAbi
+@valid = FGValidAbi]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fFGPiratNe" name="Piratical Nerve" description="You have faced down the fury of the sea, mere men and monsters cannot inspire fear in you.\n\n{b}Prerequisites:{/b} Profession (sailor) 3 ranks, Iron Will. In addition, you must have faced near certain death at the hands of the sea (either an aquatic monstrosity, a storm of epic proportions, or a similar calamity).\n\n{b}Benefit:{/b} You gain a +4 to Will saves against mind&#150;affecting fear effects. In addition, you cannot be coerced or shaken through the use of the Intimidate skill under any circumstances." compset="Feat" summary="+4 Will vs fear effects and you cannot be coerced or shaken from Intimidate skill." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[#situational[hero.child[svWill],"+4 vs mind-affecting fear effects.",field[name].text]]]></eval>
+    <exprreq message="Profession (sailor) 3+ ranks required."><![CDATA[#skillranks[skProfSail] >= 3]]></exprreq>
+    <exprreq message="Iron Will feat required."><![CDATA[#hasfeat[fIronWill] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGWepYhg" name="Yohungas Weapon Proficiencies" description="{b}Benefit{/b}: You are proficient with all simple weapons as well as the conch gauntlet, sharktooth club, ieku, and tewhatewha.\n\n{b}Normal{/b}: When using a weapon with which you are not proficient, you are at -4 to attack rolls." compset="Feat" summary="Proficient with all simple weapons as well as the conch gauntlet, sharktooth club, ieku, and tewhatewha." uniqueness="unique">
+    <fieldval field="shortname" value="Yohungas Weapons"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Helper" name="Helper" abbrev="Helper"/>
+    <tag group="Helper" tag="ProfGroup" name="ProfGroup" abbrev="ProfGroup"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="trFGPuguli" name="Pugilist" description="You grew up swinging and you still fall back to it. You gain a +1 trait bonus on damage rolls with unarmed strikes, brass knuckles, gauntlets, rope gauntlets, and other hand weapons as determined by the GM." compset="Trait" summary="+1 trait bonus to damage with hand weapons" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Combat"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[var wepList as string
+wepList ="thingid.wUnarmed | thingid.wBrKnuckle | thingid.wGauntlet | thingid.wGauntArm | thingid.wPFGauntRo | thingid.wFGGaunCon"
+
+foreach pick in hero from BaseWep where wepList
+  eachpick.field[wDamBonus].value += 1
+nexteach]]></eval>
+    </thing>
+  <thing id="trFGCohRag" name="Coherent Rage" description="Your determination allows you to hold onto a shred of your rational mind at all times. Select one of the following skills: Bluff, Escape Artist, Handle Animal, or Stealth. You may use this skill normally while raging." compset="Trait" summary="Can use selected skill while raging" uniqueness="useronce">
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; (thingid.skBluff | thingid.skEscape | thingid.skHandleAn | thingid.skStealth)"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Combat"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="trFGFashio" name="Fashionable" description="You are one of the &quot;betters&quot; within Port Shaw and aren&apos;t afraid of showing it. So long as you are wearing clothing and jewelry worth more than 80 gp, you gain a +1 trait bonus on Bluff, Diplomacy, and Sense Motive checks. One of these skills (your choice) becomes a class skill for you." compset="Trait" summary="Gain a +1 trait bonus on Bluff, Diplomacy, and Sense Motive checks while wearingmore than 80gp worh of colthing and jewelry." uniqueness="useronce">
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; (thingid.skBluff | thingid.skDiplo | thingid.skSenseMot)"/>
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Equipment"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[var cst as number
+cst = 0
+
+foreach pick in hero from BaseEquip where "gType.Clothing | thingid.gCutValue"
+  cst += eachpick.field[gCost].value
+nexteach
+
+if (cst >= 80) then
+  #applybonus[BonTrait, hero.child[skBluff], 1]
+  #applybonus[BonTrait, hero.child[skDiplo], 1]
+  #applybonus[BonTrait, hero.child[skSenseMot], 1]
+endif]]></eval>
+    <eval phase="PreLevel" priority="500">doneif (field[usrChosen1].ischosen = 0)
+
+perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="trFGFiddle" name="Fiddler" description="You have a natural talent with the devil&apos;s own instrument - the fiddle. You gain a +1 trait bonus on Perform (string) checks and this is a class skill for you." compset="Trait" summary="+1 trait bonus on Perform (string) checks and this is a class skill." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Equipment"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="500">perform hero.childfound[skPerfStr].assign[Helper.ClassSkill]
+
+#applybonus[BonTrait, hero.childfound[skPerfStr], 1]</eval>
+    </thing>
+  <thing id="trFGLuckyT" name="Lucky Tattoo" description="You were plagued by bad luck until you purchased a &quot;lucky tattoo&quot; from a mysterious traveling artist. On that day, your luck did indeed seem to improve for the better. Once per game session, when called upon to make a d20 roll, you may re-roll one die roll, before you know the results. You must take the second roll regardless of the result. The lucky tattoo isn&apos;t a magical tattoo and doesn&apos;t take up an item slot on the body." compset="Trait" summary="1/day reroll any d20 roll." uniqueness="useronce">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Magic"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="trFGTotTat" name="Totem Tattoo" description="You bear a tattoo depicting one of the totems of the Three (Whale, Turtle, Dolphin). You gain a +1 trait bonus on Will saving throws. The totem tattoo is not a magical tattoo and does not take up an item slot on the body." compset="Trait" summary="+1 trait bonus on Will saves." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Magic"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="1000">#applybonus[BonTrait,hero.child[svWill],1]</eval>
+    </thing>
+  <thing id="trFGSkCrew" name="Skilled Crewman (Razor Coast)" description="You have spent the majority of your life working on ships. Pick one of the following skills: Acrobatics, Climb, Knowledge (nature), Knowledge (geography), Swim, or Survival. You gain a +1 trait bonus to that skill and it is always a class skill for you." compset="Trait" summary="+1 trait bonus on selected skill." uniqueness="useronce">
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; (thingid.skAcrobat | thingid.skClimb | thingid.skKnowNat | thingid.skSwim | thingid.skSurvival | thingid.skKnowGeo)"/>
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="5000">doneif (field[usrChosen1].ischosen = 0)
+
+#applybonus[BonTrait,field[usrChosen1].chosen,1]
+perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="trFGSailor" name="Sailor (Razor Coast)" description="Born with an innate love of the sea, you gain a +1 trait bonus on Perception and Profession (sailor). In addition, one of these skills (your choice) is always a class skill for you." compset="Trait" summary="+1 trait bonus on Perception and Profession (sailor)" uniqueness="unique">
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; (thingid.skPercep | thingid.skProfSail)"/>
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="500">#applybonus[BonTrait, hero.child[skPercep],1]
+#applybonus[BonTrait, hero.childfound[skProfSail], 1]
+
+doneif (field[usrChosen1].ischosen = 0)
+
+perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="trFGRazTng" name="Razor Tongue" description="You words are like a steel rapier and cut as sharply. You gain a +1 trait bonus on Bluff checks and Bluff is a class skill for you" compset="Trait" summary="+1 trait bonus on Bluff checks and Bluff is a class skill." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Social"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="500">#applybonus[BonTrait,hero.child[skBluff],1]
+perform hero.child[skBluff].assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="trFGSeaDog" name="Sea Dog" description="Descended from a long line of pirates or just heartless and cruel - a seed of malevolence grows within you. You gain a +1 trait bonus on Intimidate and Profession (sailor) checks. In addition, one of these skills (your choice) is always a class skill." compset="Trait" summary="+1 trait bonus on Intimidate and Profession (sailor) checks; one is a class skill." uniqueness="useronce">
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; (thingid.skIntim | thingid.skProfSail)"/>
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Social"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="500">#applybonus[BonTrait,hero.child[skIntim],1]
+#applybonus[BonTrait,hero.childfound[skProfSail],1]
+
+doneif (field[usrChosen1].ischosen = 0)
+
+perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="trFGImpPre" name="Impressive Presence" description="Your grandiose posturing often makes it difficult for anyone to concentrate around you. Once per day as a full-round action, you may attempt to distract adjacent foes with a lengthy display of your martial prowess. All adjacent foes must succeed at a Will save (DC 10 + 1/2 your level + your Charisma modifier) or gain the shaken condition. This condition persists for 1 round." compset="Trait" summary="1/day can try to shaken foes with martial display." uniqueness="useronce">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="trCategory" tag="Social"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="fFGAbilFoc" name="Ability Focus, Spell-like" description="One of this creature&apos;s special attacks is particularly difficult to resist.\n\n{b}Prerequisite{/b}: Special attack.\n\n{b}Benefit{/b}: Choose one of the creature&apos;s special attacks. Add +2 to the DC for all saving throws against the special attack on which the creature focuses.\n\n{b}Special{/b}: A creature can gain this feat multiple times. Its effects do not stack. Each time the creature takes the feat, it applies to a different special attack.\n\n{b}Note:{/b} This version of Ability Focus works on spell-like abilities only." compset="Feat" summary="You gain a +2 bonus to the DC of a special attack.">
+    <comment>This version of Ability Focus works on spell-like abilities only where the CORE feat works on Racial Specials only.</comment>
+    <fieldval field="usrCandid1" value="component.BaseSpell &amp; Helper.SpellLike &amp; fieldval:sDC &lt;&gt; 0"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <evalrule phase="Final" priority="10000" message="Ability Focus taken twice for same ability." summary="Taken twice."><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      call fTargetFoc
+
+      ~if we haven't chosen anything yet, another rule will take care of that warning
+      validif (state.isfocus = 0)
+      doneif (state.isfocus = 0)
+
+      ~the script for this feat is handled in the eval rule because that way we can test that
+      ~we haven't applied it twice for the same ability while applying the bonus
+      focus.field[sDC].value += 2
+      perform focus.assign[Duplicate.AbilFocus]
+      validif (field[usrChosen1].chosen.tagcount[Duplicate.AbilFocus] < 2)]]></evalrule>
+    </thing>
+  <thing id="fFGWepDiD" name="Disciple of Dajobas Weapon Proficiencies" description="{b}Benefit{/b}: You are proficient with all simple weapons as well as the sharktooth club and a punch dagger fashioned out of a Large shark&apos;s tooth.\n\n{b}Normal{/b}: When using a weapon with which you are not proficient, you are at -4 to attack rolls." compset="Feat" summary="Proficient with all simple weapons, sharktooth club and a punch dagger fashioned out of a Large shark&apos;s tooth." uniqueness="unique">
+    <fieldval field="shortname" value="Disciple of Dajobas Weapons"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Helper" name="Helper" abbrev="Helper"/>
+    <tag group="Helper" tag="ProfGroup" name="ProfGroup" abbrev="ProfGroup"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="fFGLingPer" name="Lingering Performance" description="The effects of your bardic performance carry on, even after you have stopped performing.\n\n{b}Prerequisite{/b}: Bardic performance class feature.\n\n{b}Benefit{/b}: The bonuses and penalties from your bardic performance continue for 2 rounds after you cease performing. Any other requirement, such as range or specific conditions, must still be met for the effect to continue. If you begin a new bardic performance during this time, the effects of the previous performance immediately cease." compset="Feat" uniqueness="useronce">
+    <comment><![CDATA[This is an APG feat required for the "Voice of Three" bard archetype. I created it here in FG Core so that the APG would not become a required package for users.]]></comment>
+    <usesource source="APG"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="HasFeat" tag="fLingerPer"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+      
+#appenddesc[cBrdPerfor,"{b}Addition from Lingering Performance{/b}: The bonuses and penalties from your bardic performance continue for 2 rounds after you cease performing. Any other requirement, such as range or specific conditions, must still be met for the effect to continue. If you begin a new bardic performance during this time, the effects of the previous performance immediately cease."]]]></eval>
+    <exprreq message="Bardic Performance required."><![CDATA[hero.tagis[Hero.BardPerf] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGElemFoc" name="Elemental Focus" description="Your spells of a certain element are more difficult to resist.\n\n{b}Benefit{/b}: Choose one energy type (acid, cold, electricity, or fire). Add +1 to the Difficulty Class for all saving throws against spells that deal damage of the energy type you select.\n\n{b}Special{/b}: You can gain this feat multiple times. Its effects do not stack. Each time you take this feat, it applies to a new energy type." compset="Feat">
+    <comment><![CDATA[This is an APG feat required for the "Volcano Child" cleric archetype. I created it here in FG Core so that the APG would not become a required package for users.
+
+I also gave it the ability to have the focus tagert auto set during the bootstrap.]]></comment>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="HasFeat" tag="fElemFocus"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="fShowWhat" tag="EnergyBase"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~set our focus to the selected pick
+call fTargetFoc
+~ If we have yet to choose, do nothing
+doneif (state.isfocus = 0)
+
+~ Pull the elemental choice tag to ourselves
+perform focus.pulltags[ElemFocus.?]
+      
+~ We need to figure out which element we have chosen and then increase 
+~ the DC for spells that do that damage. Also apply the tag to the hero 
+~ that our Eval Rule will check for to ensure we don't pick the same 
+~ element twice.
+~ Instead of adding to the DC directly, we push our tags onto the spell
+~ and then a script in the BaseSpell component checks for it before 
+~ adding +1 to the DC. We do it this way so that spells that do 2 or more
+~ types of elemental damage don't get their DCs bumped multiple times if 
+~ we have Elemental Focus for more than 1 type.
+if (tagis[ElemFocus.Acid] <> 0) then
+   perform hero.assign[ElemFocus.Acid]
+   foreach pick in hero from BaseSpell where "SpellEff.DamAcid"
+      perform eachpick.pushtags[ElemFocus.?]
+   nexteach
+elseif (tagis[ElemFocus.Cold] <> 0) then
+   perform hero.assign[ElemFocus.Cold]
+   foreach pick in hero from BaseSpell where "SpellEff.DamCold"
+     perform eachpick.pushtags[ElemFocus.?]
+   nexteach
+elseif (tagis[ElemFocus.Fire] <> 0) then
+   perform hero.assign[ElemFocus.Fire]
+   foreach pick in hero from BaseSpell where "SpellEff.DamFire"
+      perform eachpick.pushtags[ElemFocus.?]
+   nexteach
+elseif (tagis[ElemFocus.Elec] <> 0) then
+   perform hero.assign[ElemFocus.Elec]
+   foreach pick in hero from BaseSpell where "SpellEff.DamElec"
+      perform eachpick.pushtags[ElemFocus.?]
+   nexteach
+endif]]></eval>
+    <evalrule phase="Validation" priority="10000" message="Elemental Focus chosen twice for the same Element!" summary="Elemental Focus chosen twice for the same Element!"><![CDATA[
+      ~ We start valid, if we have 2+ of the same tag we are invalid
+      @valid = 1
+      
+      if (hero.tagcount[ElemFocus.Acid] >= 2) then
+        @valid = 0
+      elseif (hero.tagcount[ElemFocus.Cold] >= 2) then
+        @valid = 0
+      elseif (hero.tagcount[ElemFocus.Elec] >= 2) then
+        @valid = 0
+      elseif (hero.tagcount[ElemFocus.Fire] >= 2) then
+        @valid = 0
+        endif]]></evalrule>
+    </thing>
+  <thing id="fFG2HandTh" name="Two-Handed Thrower" description="You hurl weapons with both hands and with great force, sometimes using a whirling technique to send your weapon flying through the air at tremendous speeds.\n\n{b}Prerequisite{/b}: Strength 15.\n\n{b}Benefit{/b}: Whenever you use two hands to throw a one-handed or two-handed weapon, you gain a bonus on damage rolls equal to 1-1/2 times your Strength bonus.\n\nUsing two hands to throw any weapon requires only a standard action for you. If you also have the Quick Draw feat, you can throw two-handed weapons at your full normal rate of attacks.\n\n{b}Normal{/b}: You add your Strength bonus on thrown weapon damage, regardless of available hands. Throwing a two-handed weapon is a full-round action." compset="Feat" summary="1.5 Str bonus when throwing 1-handed or 2-handed weapons." uniqueness="useronce">
+    <comment><![CDATA[This is an APG feat required for the "harpoonist" fightger archetype. I created it here in FG Core so that the APG would not become a required package for users.]]></comment>
+    <usesource source="CampRazorC"/>
+    <tag group="HasFeat" tag="fTwoHaThro"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Strength 15+ required."><![CDATA[#attrvalue[aSTR] >= 15]]></exprreq>
+    </thing>
+  <thing id="fFGEWnet" name="Exotic Weapon Proficiency (Net)" description="You understand how to use the exotic weapon net in combat, and can utilize any special tricks or qualities that exotic weapon might allow.\n\n{b}Prerequisite{/b}: Base attack bonus +1.\n\n{b}Benefit{/b}: You make attack rolls with the weapon normally.\n\n{b}Normal{/b}: A character who uses a weapon with which he is not proficient takes a &#150;4 penalty on attack rolls." compset="Feat" summary="You make attack rolls with the weapon normally." uniqueness="useronce">
+    <comment><![CDATA[This is a special version of the Exotic Weapon feat that is setup to go against a specific weapon. This is currently used for the "Deep Sea Tracker" archetype.]]></comment>
+    <usesource source="CampRazorC"/>
+    <tag group="Target" tag="wNet"/>
+    <tag group="HasFeat" tag="fExoticWep"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="fShowWhat" tag="WeaponsExo" name="Exotic Weapons" abbrev="Exotic Weapons"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="Helper"/>
+    <eval phase="First" priority="1000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+var v_tag as string
+~ Set parm with the exotic prof tag and set for the ONLY a net weapon
+v_tag = "Helper.ExoticProf|thingid.wNet"
+~ Reset live name so we don't get (Net)(Net) appeneded to feat name
+field[livename].text = "Exotic Weapon Proficiency"
+call ChosenProf]]></eval>
+    <evalrule phase="PostAttr" priority="10000" message="Ability requirement not met" summary="Ability requirement not met"><![CDATA[
+      ~ If we're disabled, do nothing, we're valid
+      validif (tagis[Helper.FtDisable] <> 0)
+
+      ~ If we haven't chosen anything, get out
+      @valid = 1
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Check the attribute requirements for taking an exotic weapon
+      ~ proficiency
+      var v_req as number
+      var v_current as number
+      var v_attr as string
+      v_req = field[usrChosen1].chosen.tagvalue[StrReq.?]
+      v_current = #attrvalue[aSTR]
+      v_attr = "Strength"
+      call fExoticAtt
+      v_req = field[usrChosen1].chosen.tagvalue[DexReq.?]
+      v_current = #attrvalue[aDEX]
+      v_attr = "Dexterity"
+      call fExoticAtt
+      v_req = field[usrChosen1].chosen.tagvalue[ConReq.?]
+      v_current = #attrvalue[aCON]
+      v_attr = "Constitution"
+      call fExoticAtt
+      v_req = field[usrChosen1].chosen.tagvalue[IntReq.?]
+      v_current = #attrvalue[aINT]
+      v_attr = "Intelligence"
+      call fExoticAtt
+      v_req = field[usrChosen1].chosen.tagvalue[WisReq.?]
+      v_current = #attrvalue[aWIS]
+      v_attr = "Wisdom"
+      call fExoticAtt
+      v_req = field[usrChosen1].chosen.tagvalue[ChaReq.?]
+      v_current = #attrvalue[aCHA]
+      v_attr = "Charisma"
+      call fExoticAtt]]>
+      <after name="Attribute Final"/>
+      </evalrule>
+    <exprreq message="Base attack bonus +1 required." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 1]]></exprreq>
+    </thing>
+  <thing id="fFGQuicCha" name="Quick Change" description="You may change forms in the blink of an eye, flesh flowing like quicksilver.\n\n{b}Prerequisites{/b}: Must possess the alternate form ability, or the ability to change shape (such as the doppelgangers shapechange ability, a polymorph spell, or a druid&#146;s wild shape class feature).\n\n{b}Benefit{/b}: You may change shape or form as a swift action as opposed to a standard action." compset="Feat" summary="Change shape or form as a swift action." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <prereq message="alternate form ability, or the ability to change shape (such as the doppelgangers Shapechange ability, a polymorph spell, or a druid&#146;s wild shape class feature) required.">
+      <validate><![CDATA[~ Valid if we have Druid Wild Shape ability
+validif (#hasability[cDrdWild] <> 0)
+~ Were creature change shape
+validif (#hasability[xLyChange] <> 0)
+~ Unversial Change Shape
+validif (#hasability[raChangeSh] <> 0)
+
+var FGHasSpell as number
+var p_Spell    as string
+p_Spell = "Polymorph"
+Call FGHasSpell
+~ Have the Polymorph like spell
+validif (FGHasSpell <> 0)
+
+var FGValidTxt as string
+var FGValidAbi as number
+~ Test to see if we have the "Change Shape" ability
+FGValidTxt = "Change Shape"
+Call FGValidAbi
+validif (FGValidAbi <> 0) 
+
+~ Test to see if we have the "Alternate Form" ability
+FGValidTxt = "Alternate Form"
+Call FGValidAbi
+validif (FGValidAbi <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fFGSewePir" name="Sewer Pirate" description="You spend a majority of your time in the sewers and have mastered the nuances of this dark, winding, and unpleasant smelling environment.\n\n{b}Benefit{/b}: When in a sewer, you gain a +4 circumstance bonus on Perception and Survival checks. In addition, whenever you make a Survival check to avoid getting lost, you may roll twice and take the better of the two results." compset="Feat" summary="On Survival checks to avoid getting lost, roll twice and take the best result." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+      ~ Add a situational bonus to our skills
+      #situational[hero.child[skPercep],"+4 Perception in sewers",field[name].text]
+      #situational[hero.child[skSurvival],"+4 Survival in sewers",field[name].text]]]></eval>
+    </thing>
+  <thing id="fFGWFnet" name="Weapon Focus (Net)" description="{b}Prerequisites{/b}: Proficiency with selected weapon, base attack bonus +1.\n\n{b}Benefit{/b}: You gain a +1 bonus on all attack rolls you make using the selected weapon." compset="Feat" summary="You gain a +1 bonus on all attack rolls you make using the selected weapon." uniqueness="useronce">
+    <comment><![CDATA[This is a special version of the Exotic Weapon feat that is setup to go against a specific weapon. This is currently used for the "Deep Sea Tracker" archetype.]]></comment>
+    <usesource source="CampRazorC"/>
+    <tag group="fShowWhat" tag="Weapons" name="All Weapons" abbrev="All Weapons"/>
+    <tag group="HasFeat" tag="fWepFoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AnimCompOK" name="AnimCompOK" abbrev="AnimCompOK"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="Target" tag="wNet"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="Helper" tag="Helper"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If we haven't chosen anything, get out now
+doneif (field[usrChosen1].ischosen + tagis[Target.?] = 0)
+
+~ Reset live name so we don't get (Net)(Net) appeneded to feat name
+field[livename].text = "Weapon Focus"
+
+~ If the hero has the correct tags, this effect should apply not 
+~ just to the chosen weapon, but to all weapons of the same weapon
+~ group.
+if (tagcount[Hero.MartVersa] + hero.tagcount[Hero.MartMaster] <> 0) then
+    perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+    foreach pick in hero from BaseWep
+       if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+          perform eachpick.assign[Broadcast.WepFocus]
+          perform eachpick.pulltags[WepFocus.?]
+          endif
+        nexteach
+        perform hero.pushtags[WepFocus.?]
+else
+  ~ Assign the appropriate tag to all weapons that meet the criteria 
+  var id as string
+  var name as string
+  call fTargetId
+  foreach pick in hero where "IsWeapon." & id
+    perform eachpick.assign[Broadcast.WepFocus]
+  nexteach
+
+  ~ Set our 'short name'
+  field[shortname].text = "Focus: " & name
+
+  ~ Forward the weapon focus tag for the weapon to the hero
+  perform hero.assignstr["WepFocus." & id]
+endif
+
+~ If the selected weapon is a natural weapon, then apply the Hero.NatWpFocus
+~ tag to the hero. We do this here so that the hero doesn't actually have
+~ to have such a weapon on their character in order to get the tag and 
+~ qualify for pre-reqs based on it. For example, a Druid/Monk may want 
+~ to take Weapon Focus (Claw) in order to take Feral Combat Training, but
+~ may not actually have claws most of the time (only when wild shaped).
+if (field[usrChosen1].chosen.tagis[wGroup.Natural] <> 0) then
+  perform hero.assign[Hero.NatWpFocus]
+endif
+
+~ Choosing Grapple gives us a bonus on those checks
+if (field[usrChosen1].chosen.tagis[thingid.wGrapple] <> 0) then
+  ~ Add a +1 bonus to the Grapple CMB
+  hero.child[manGrapple].field[manCMB].value += 1
+endif]]></eval>
+    <exprreq message="Base attack bonus +1 required." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 1]]></exprreq>
+    </thing>
+  <thing id="fFGWFtride" name="Weapon Focus (Trident)" description="{b}Prerequisites{/b}: Proficiency with selected weapon, base attack bonus +1.\n\n{b}Benefit{/b}: You gain a +1 bonus on all attack rolls you make using the selected weapon." compset="Feat" summary="You gain a +1 bonus on all attack rolls you make using the selected weapon." uniqueness="useronce">
+    <comment><![CDATA[This is a special version of the Exotic Weapon feat that is setup to go against a specific weapon. This is currently used for the "Deep Sea Tracker" archetype.]]></comment>
+    <usesource source="CampRazorC"/>
+    <tag group="fShowWhat" tag="Weapons" name="All Weapons" abbrev="All Weapons"/>
+    <tag group="HasFeat" tag="fWepFoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AnimCompOK" name="AnimCompOK" abbrev="AnimCompOK"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="Target" tag="wTrident"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="Helper" tag="Helper"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+~ If we haven't chosen anything, get out now
+doneif (field[usrChosen1].ischosen + tagis[Target.?] = 0)
+
+~ Reset live name so we don't get (Net)(Net) appeneded to feat name
+field[livename].text = "Weapon Focus"
+
+~ If the hero has the correct tags, this effect should apply not 
+~ just to the chosen weapon, but to all weapons of the same weapon
+~ group.
+if (tagcount[Hero.MartVersa] + hero.tagcount[Hero.MartMaster] <> 0) then
+    perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+    foreach pick in hero from BaseWep
+       if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+          perform eachpick.assign[Broadcast.WepFocus]
+          perform eachpick.pulltags[WepFocus.?]
+          endif
+        nexteach
+        perform hero.pushtags[WepFocus.?]
+else
+  ~ Assign the appropriate tag to all weapons that meet the criteria 
+  var id as string
+  var name as string
+  call fTargetId
+  foreach pick in hero where "IsWeapon." & id
+    perform eachpick.assign[Broadcast.WepFocus]
+  nexteach
+
+  ~ Set our 'short name'
+  field[shortname].text = "Focus: " & name
+
+  ~ Forward the weapon focus tag for the weapon to the hero
+  perform hero.assignstr["WepFocus." & id]
+endif
+
+~ If the selected weapon is a natural weapon, then apply the Hero.NatWpFocus
+~ tag to the hero. We do this here so that the hero doesn't actually have
+~ to have such a weapon on their character in order to get the tag and 
+~ qualify for pre-reqs based on it. For example, a Druid/Monk may want 
+~ to take Weapon Focus (Claw) in order to take Feral Combat Training, but
+~ may not actually have claws most of the time (only when wild shaped).
+if (field[usrChosen1].chosen.tagis[wGroup.Natural] <> 0) then
+  perform hero.assign[Hero.NatWpFocus]
+endif
+
+~ Choosing Grapple gives us a bonus on those checks
+if (field[usrChosen1].chosen.tagis[thingid.wGrapple] <> 0) then
+  ~ Add a +1 bonus to the Grapple CMB
+  hero.child[manGrapple].field[manCMB].value += 1
+endif]]></eval>
+    <exprreq message="Base attack bonus +1 required." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 1]]></exprreq>
+    </thing>
+  <thing id="fFGLifeSea" name="A Life at Sea" description="You have the experience of a veteran sailor.\n\n{b}Benefit:{/b} You receive a +2 bonus to any two of the follow skills: Craft (ships), Knowledge (nature), Perception, or Profession (sailor). If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill. \n\n{b}Special:{/b} You may take this feat a second time, the bonus applying to the two other skills." compset="Feat" summary="receive a +2 bonus to any two of the follow skills: Craft (ships), Knowledge (nature), Perception, or Profession (sailor)." maxlimit="2">
+    <fieldval field="usrCandid1" value="thingid.skCrafShip | thingid.skKnowNat | thingid.skPercep | thingid.skProfSail"/>
+    <fieldval field="usrCandid2" value="thingid.skCrafShip | thingid.skKnowNat | thingid.skPercep | thingid.skProfSail"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="ChooseSrc2" tag="Hero"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ If we have selected a skill in choice 1 then process here
+If (field[usrChosen1].ischosen <> 0) Then 
+   ~ Set tag that this skill was already chosen by this feat
+   perform field[usrChosen1].chosen.assign[HasFeat.fFGLifeSea]
+   ~ Give a +2 bonus to the selected skill
+   field[usrChosen1].chosen.field[Bonus].value += 2
+   ~ If we have 10+ ranks we need to give a total of +4 bonus
+   If (field[usrChosen1].chosen.field[skRanks].value >= 10) Then
+     ~ Give another +2 bonus to the selected skill
+     field[usrChosen1].chosen.field[Bonus].value += 2
+   Endif
+Endif
+
+~ If we have selected a skill in choice 2 then process here
+If (field[usrChosen2].ischosen <> 0) Then 
+   ~ Set tag that this skill was already chosen by this feat
+   perform field[usrChosen2].chosen.assign[HasFeat.fFGLifeSea]
+   ~ Give a +2 bonus to the selected skill
+   field[usrChosen2].chosen.field[Bonus].value += 2
+   ~ If we have 10+ ranks we need to give a total of +4 bonus
+   If (field[usrChosen2].chosen.field[skRanks].value >= 10) Then
+     ~ Give another +2 bonus to the selected skill
+     field[usrChosen2].chosen.field[Bonus].value += 2
+   Endif
+Endif]]></eval>
+    <evalrule phase="Validation" priority="1000" message="You can not select the same skill twice." summary="You can not select the same skill twice."><![CDATA[
+~ Default to being valid
+@valid = 1
+~ If we have selected a skill in choice 1 then process here
+If (field[usrChosen1].ischosen <> 0) Then 
+   ~ If HasFeat tag on choosen skill greater than one then we are invalid
+   If (field[usrChosen1].chosen.tagcount[HasFeat.fFGLifeSea] > 1) Then
+      @valid = 0
+   Endif
+Endif
+
+~ If we have selected a skill in choice 2 then process here
+If (field[usrChosen2].ischosen <> 0) Then 
+   ~ If HasFeat tag on choosen skill greater than one then we are invalid
+   If (field[usrChosen2].chosen.tagcount[HasFeat.fFGLifeSea] > 1) Then
+      @valid = 0
+   Endif
+Endif]]></evalrule>
+    </thing>
+  <thing id="fFGCatchNa" name="Catch them Napping" description="A sneaky maneuver puts your highway pistol against your enemy&apos;s exposed flesh, where a successful hit will cause substantial damage. \n\n{i}Prerequisite:{/i} Dex 13, 3 ranks in Stealth or Bluff, Base Attack Bonus +4, Exotic Weapon Proficiency: firearms\n\n{i}Benefit:{/b} To Catch Them Napping, you must be within melee range and unexpectedly place the muzzle of your highway pistol against an opponent&apos;s bare flesh. After you successfully Catch Them Napping, provided you take no other attack actions, you may fire on this opponent as an immediate action, scoring an automatic critical hit should your highway pistol&apos;s ranged attack succeed. An attempt to Catch Them Napping does not normally provoke an attack of opportunity from your opponent. \n\nThere are three ways to place the muzzle of your highway pistol against the flesh of your opponent unexpectedly, and thus Catch Them Napping: feinting, sneaking, or with a concealed weapon.\n\n{i}Feinting:{/i} During combat, if you stand within melee range of an opponent and successfully feint with a melee weapon in one hand while holding a highway pistol in the other hand, you Catch Them Napping. Provided you have taken no more than a 5 ft. step to remain within melee range of that opponent for the remainder of the round, your foe starts the next round in the Catch Them Napping condition.\n\nAlternately, you may feint with a melee weapon then draw your highway pistol as a free action using the Quick Draw feat. Due to the press of combat, apply a -4 to your ranged attack when you eventually decide to fire as part of this Catch Them Napping maneuver. \n\nHowever, if opponents are still denied their Dexterity bonus to AC when you fire, there is no ranged attack penalty for firing as part of this Catch Them Napping maneuver. \n\n{i}Sneaking:{/i} If you begin the round hiding from your opponent and, as a part of a full-round action, take only a 5 ft. step to enter melee range with your highway pistol, you catch them Napping. Alternately, if you use Stealth to move silently and undetected by your opponent more than 5 ft., and end your round within melee range, you Catch them Napping.\n\nHowever, if you fail your Stealth check you do not Catch them Napping and you provoke an attack of opportunity from your foe immediately upon failing the check.\n\n{i}Concealed Weapon:{/i} If you successfully conceal your highway pistol using the Sleight of Hand skill, and your opponent is flat-footed, you may make a Bluff check with a -8 circumstance penalty to draw your weapon unexpectedly and Catch them Napping. In exchange for a -1 to the attack roll, a highway pistol grants a +2 bonus on both your Sleight of Hand and Bluff checks when attempting to Catch them Napping with a concealed weapon. The Quick Draw feat adds an additional +2 to your Bluff check when attempting to Catch them Napping with a concealed weapon.\n\n{b}Special:{/b} If you Catch them Napping, but do not shoot your opponent on the same initiative round in which you Catch them Napping, when you choose to fire opponents with a higher Dexterity than you gain an attack of opportunity against you. In the case of tied Dexterity, no attack of opportunity occurs. Resolve attacks of opportunity first. \n\nIf you Catch Them Napping and the opponent is unarmed, you gain a +6 bonus to Intimidate checks against that opponent. You gain no benefits to Intimidate from using Catch Them Napping on creatures immune to critical hits.\n\nYou can only use the Catch Them Napping feat with a highway pistol." compset="Feat" summary="Mastery with highway pistols gives you special tricks." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Exotic Weapin Proficiency (Firearms) required."><![CDATA[#hasfeat[fExoticGun] <> 0]]></exprreq>
+    <exprreq message="Base Attack Bonus +4 or greater required."><![CDATA[child[Attack].field[tAtkBase].value >= 4]]></exprreq>
+    <exprreq message="Dex 13 required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <prereq message="3 ranks in Stealth or Bluff required.">
+      <validate><![CDATA[validif (#skillranks[skStealth] >= 3) 
+validif (#skillranks[skBluff] >= 3)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fFGHighway" name="Highwayman" description="{b}Benefit:{/b} Your utter dedication to concealed firearms grants mastery over highway pistols in combat and gives you special tricks for defending against foes also armed with them. \n\n{b}Prerequisite:{/b} Dex 15, Exotic Weapon Proficiency: firearms\n\n{b}Normal:{/b} The Highwayman feat enables two tactical maneuvers. \n\n{i}Deflect Shot:{/i} To use this maneuver, when within 5 feet of your foe employ an attack of opportunity or a readied action to knock your opponent&apos;s weapon aside, deflecting their gunfire into a second target of your choice. You make a CMB check against your opponent&apos;s ranged attack roll (rather than his CMD, as normal). If your CMB roll is higher than your opponent&apos;s, you deflect your opponent&apos;s shot into the desired target. \n\nUse your opponent&apos;s original ranged attack roll at -5 to determine if the deflected attack hits the new target. \n\nIf your opponent&apos;s opposed roll is higher, you fail to deflect the attack. In the case of a tie, the combatant with the higher total Reflex save modifier wins. If this is still a tie, make opposed Dexterity checks to resolve the tie.\n\n{i}Fearless in the Fray:{/i} To use this maneuver, when threatened by a foe&apos;s melee weapon give up your Dexterity bonus to armor class for one full round. As a full round action take careful aim and add +2 to your highway pistol attack roll and add your Dexterity bonus to your highway pistol damage roll.\n\n{b}Special:{/b} If you use the Deflect Shot maneuver to make an attack of opportunity against a foe who succeeded in a Caught Them Napping maneuver against you, then a successful Deflect Shot attack causes your opponent&apos;s gun to fire at the target of your choice whether your foe intended to shoot or not. \n\nYou can only use the Highwayman feat with a highway pistol." compset="Feat" summary="Mastery with highway pistols gives you special tricks for defending against them." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Exotic Weapon Proficiency (Firearms) required."><![CDATA[#hasfeat[fExoticGun] <> 0]]></exprreq>
+    <exprreq message="Dex 15 or higher required."><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
+    </thing>
+  <thing id="fFGFastDef" name="Fast Deflect" description="With an eye always on your opponent&apos;s muzzle, you react swiftly when it swings your way.\n\n{b}Prerequisite:{/b} Dex 13, Exotic Weapon Proficiency: highway pistol, a standoff\n\n{b}Benefit:{/b} +5 to all Deflect Shot attacks (see Highwayman for details) resulting from a successful attack of opportunity against a highway pistol in a standoff.\n\n{b}Special:{/b} You can only use the Fast Deflect feat with a highway pistol in a standoff." compset="Feat" summary="+5 to all Deflect Shot attacks." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Dex 13 required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
+    <exprreq message="Exotic Weapon Proficiency (Firearms) required"><![CDATA[#hasfeat[fExoticGun] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGImpCatN" name="Improved Catch them Napping" description="You are expert at placing your highway pistol against your enemies&apos; flesh before they can react.\n\n{b}Prerequisite:{/b} Dex 15, Catch Them Napping, Base Attack Bonus +8\n\n{b}Benefit:{/b} You receive a +2 bonus to feint and Stealth checks used to Catch Them Napping. The circumstance penalty to your Bluff checks for unexpectedly drawing a concealed weapon reduces to -6. You receive a +2 bonus on your ranged attack roll to shoot your foe after you Catch Them Napping.\n\n{b}Special:{/b} You can only use the Improved Catch Them Napping feat with a highway pistol." compset="Feat" summary="You receive a +2 bonus to feint and Stealth checks used to Catch Them Napping." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Base Attack Bonus +8 or greater required."><![CDATA[child[Attack].field[tAtkBase].value >= 8]]></exprreq>
+    <exprreq message="Dex 15 required."><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
+    <exprreq message="Catch them Napping required."><![CDATA[#hasfeat[fFGCatchNa] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGIronSto" name="Iron Stomach" description="You can stomach with ease those situations, food, and creatures that make others queasy.\n\n{b}Prerequisites:{/b} +2 base Fortitude save. \n\n{b}Benefit:{/b} You are never nauseated and are immune to any creatures&apos; abilities that rely on stench. In addition, you gain a +2 circumstance bonus to any Fortitude saves against ingested poisons or toxins." compset="Feat" summary="Immune to nauseated and to any creatures&apos; abilities that rely on stench." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ situational bonus
+#situational[hero.child[svFort],"+2 circumstance bonus vs. ingested poisons or toxins", field[name].text]]]></eval>
+    <exprreq message="Base Fort save +2 required."><![CDATA[hero.child[svFort].field[svBase].value >= 2]]></exprreq>
+    </thing>
+  <thing id="fFGMadTiki" name="Mad-Tiki" description="You can temporarily increase one of your tikiman&apos;s HD, however you risk losing control of your tikiman.\n\n{b}Prerequisite:{/b} the ability to control two tikimen\n\n{b}Benefit:{/b} When you gain an additional tikiman, you can imbue it with a bonus number of Hit Dice equal to your Charisma modifier for a duration of 10 minutes per caster level. However, this procedure is not without cost. Whenever your tikiman rolls a 1 on any d20 roll, the creation goes haywire and tries to hide in the shadows, stalk you and your companions, and tries to kill them all off. \n\n{b}Special:{/b} You can take this feat multiple times, each time applying the effect to a new tikiman.\n\n{b}Note:{/b} Wording/Rule changes applied to this feat based on feed back from Lou Agresta and Tim Hitchcock." compset="Feat">
+    <comment>Applied changes from designers.</comment>
+    <fieldval field="usrCandid1" value="thingid.minFGTikim"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="FGMana" name="Mana"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Minutes"/>
+    <eval phase="First" priority="10000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+~ set duration as 10 min per CL
+field[trkMax].value += hero.childfound[cFGYohunga].field[cCasterLev].value
+
+~ If we have not chosen then get out now
+doneif (field[usrChosen1].ischosen <> 1)
+
+~ Assign HasFeat tag to the Tikiman we selected from drop down
+perform field[usrChosen1].chosen.assign[HasFeat.fFGMadTiki]]]></eval>
+    <evalrule phase="Validation" priority="1000" message="You can not apply this feat to same tikiman more than once." summary="You can not apply this feat to same tikiman more than once."><![CDATA[
+~ Valid if we assigned this feat only once to a tikiman
+validif (field[usrChosen1].chosen.tagcount[HasFeat.fFGMadTiki] <= 1)]]></evalrule>
+    <exprreq message="Ability to control two tikimen required."><![CDATA[hero.tagcount[RazorCoast.TikimanAdd] >= 2]]></exprreq>
+    </thing>
+  <thing id="fFGManaEat" name="Mana-Eater" description="Feeding the flesh and blood of your enemies to your tikiman temporarily boosts its mana.\n\n{b}Prerequisite:{/b} Mana, any evil\n\n{b}Benefit:{/b} Feeding your tikiman the blood or flesh of an enemy temporarily boosts its abilities as if you had a single mana point in your mana pool, even if you have exhausted your mana pool. The temporary boost lasts for 1 hour per every 3 HD of the creature sacrificed." compset="Feat" summary="Feed your tikiman the blood/flesh to have it act as if you had a 1 mana point." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="FGMana"/>
+    <exprreq message="Evil alignment required."><![CDATA[hero.tagis[Alignment.Evil] <> 0]]></exprreq>
+    <exprreq message="Mana pool required."><![CDATA[#hasability[cYhgManaPo] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGPistolW" name="Pistol Whip" description="With a flip of your wrist you grab your pistol by the muzzle and make melee attacks.\n\n{b}Prerequisites:{/b} Quick Draw\n\n{b}Benefit:{/b} As a free action, you reverse a light or small pistol in your hand and attack with the butt as if it were a light mace or a special monk weapon.\n\n{b}Special:{/b} You can choose to deliver nonlethal damage with the butt of a highway pistol, but still incur the normal -4 penalty to do so." compset="Feat" summary="Attack with the butt of a pistol as if it were a light mace or monk weapon." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Quick Draw required."><![CDATA[#hasfeat[fQuickDraw] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGSkillSw" name="Skilled Swimmer" description="You have a certain grace in the water that most other swimmers lack without being raised in the water or spending most of their life there.\n\n{b}Prerequisite:{/b} 5 ranks in Swim\n\n{b}Benefit:{/b} You gain +4 to all swim checks against fatigue." compset="Feat" summary="+4 on swim checks vs. fatigue" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+~ situational text
+#situational[hero.child[skSwim],"+4 vs. fatigue", field[name].text]]]></eval>
+    <exprreq message="5+ ranks in Swim required."><![CDATA[#skillranks[skSwim] >= 5]]></exprreq>
+    </thing>
+  <thing id="fFGImpSkSw" name="Improved Skilled Swimmer" description="Others marvel at you style within the water, you move as the fish do, unimpeded by the water.\n\n{b}Prerequisite:{/b} 10 ranks in Swim, Skilled Swimmer\n\n{b}Benefit:{/b} You only go underwater if you fail a Swim check by 10 or greater." compset="Feat" summary="You only go underwater if you fail a Swim check by 10 or greater." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+~ If we're disabled get out now!
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ situational text
+#situational[hero.child[skSwim],"You only go underwater if you fail a Swim check by 10 or greater.",field[name].text]]]></eval>
+    <exprreq message="10 ranks in Swim required."><![CDATA[#skillranks[skSwim] >= 10]]></exprreq>
+    <exprreq message="Skilled Swimmer required."><![CDATA[#hasfeat[fFGSkillSw] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGWaveSli" name="Wave Sliding" description="Centuries before the coming of the foreigners Tulita&apos;s mastered the art of using wooden planks, small canoes- even their own bodies to riding the waves. \n\n{b}Prerequisites:{/b} 4 ranks in Survival, 4 ranks in Swim.\n\n{b}Benefit:{/b} Using the natural motion of the wind and sea, you can coast along with the movement of water. Wave sliding allows you to rapidly travel along with the direction of a wave or current, either with a canoe, wave board, or with your body.\n\nDetermine water movement in terms of its velocity (speed and direction). Water follows the general movement of the tides, going either towards or away from the coast, however you can also travel freely through magically created currents. On average, wave sliding allows you to travel through water at about 60 ft. per round. While varying water conditions can increase speeds up to 300 ft. per round, rough seas or stormy weather can make travel even more difficult. \n\n{b}Base Speed     Hour                Day                      Conditions           Difficulty{/b}\n30 ft.                  3 miles/hr.      24 miles/8 hrs.       Calm Water        Swim DC 10\n60 ft.                  6 miles/hr.      48 miles/8 hrs.       Rough Water      Swim DC 15\n90 ft.                  9 miles/hr.      72 miles/8 hrs.      Stormy Water     Swim DC 20\n120 ft.                12 miles/hr.   96 miles/8 hrs.       Stormy Water    Swim DC 25\n150 ft.                15 miles/hr.   120 miles/8 hrs.     Stormy Water    Swim DC 30\n\nWave sliders can move perpendicular to the wave&apos;s direction with a successful Swim check (difficulty per composure of the water), the wave slider takes a move action at the speed of the wave along the length of the wave.\n\nIf using a watercraft, you replace the Swim skill check with an Acrobatics Skill check." compset="Feat" summary="Wave sliding allows you to rapidly travel along with the direction of a wave or current." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="4 ranks in Surivival required."><![CDATA[#skillranks[skSurvival] >= 5]]></exprreq>
+    <exprreq message="4 ranks in Swim required."><![CDATA[#skillranks[skSwim] >= 4]]></exprreq>
+    </thing>
+  <thing id="fFGInsMTat" name="Inscribe Magical Tattoos" description=" You can enchant the tattoos that you craft.\n\n{b}Prerequisite:{/b} Craft (calligraphy, paintings, or tattoos) 5 ranks, caster level 5th.\n\n{b}Benefit:{/b} You can create magical tattoos, magic items inked directly onto the flesh of a willing or helpless creature. Both you and the recipient of the tattoo (if the recipient is not yourself) must be present during the entire tattooing process. Magic tattoos must be placed on a part of the body normally able to hold a magic item slot, but they do not count against or interfere with magic items worn on those slots. A single slot can only hold one magical tattoo (non-magical tattoos and tattoos acquired from the tattooed sorcerer archetype do not count against this limit). Tattoos may be inscribed on the following slots: belt, body, chest, feet, hands, head, neck, shoulder, ring (up to two), or wrist. They cannot be inscribed on armor, eye, headband, or shield slots.\n\nMagical tattoos are difficult to destroy short of killing their owners. Still, their effects can be temporarily suppressed by dispel magic or stronger spells such as break enchantment, erase spell, or mage&apos;s disjunction. The suppression lasts for the spell&apos;s duration or in the case of permanent spells, for a number of hours equal to the caster level. Physically removing a magical tattoo with a sharp instrument or defacing it with fire or acid can destroy it as well. Doing so is a full-round action that not only requires the target to be willing or helpless, but also provokes attacks of opportunity. At least 2 points of damage per caster level of the tattoo must be dealt to destroy a magical tattoo in this manner. The attacker must deliberately target the tattoo, therefore they are not destroyed as a result of spells like fireball that target an area or even spells that target individuals.\n\nMagical tattoos follow the rules for magic item creation as though they were wondrous items, except that they can use the Craft (calligraphy, painting, or tattoo) skill. New magical tattoos can be researched and designed using the guidelines for pricing new magic items." compset="Feat" summary="You can create magical tattoos, magic items inked directly onto the flesh." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="fCategory" tag="ItemCreate" name="Item Creation" abbrev="Item Creation"/>
+    <exprreq message="Caster level 5th required." iserror="no"><![CDATA[herofield[tMastCraft].value >= 5]]></exprreq>
+    <prereq message="Craft (calligraphy, paintings, or tattoos) 5 ranks required.">
+      <validate><![CDATA[
+validif (#skillranks[skCrafCall] >= 5)
+validif (#skillranks[skCrafPain] >= 5)
+validif (#skillranks[skCrafTatt] >= 5)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fFGFailedA" name="Failed Apprentice" description="You may select two cantrips from the 0th Sorcerer/wizard spell list. You can cast those cantrips at will. Your caster level always counts as level 1. If you ever use a cantrip to deal damage, always subtract one from the damage roll (minimum 1)." compset="Feat" uniqueness="useronce">
+    <fieldval field="usrCandid1" value="component.BaseSpell &amp; sLevel.0 &amp; (sClass.cHelpWiz | sClass.cHelpSor) &amp; !Spellbook.?"/>
+    <fieldval field="usrCandid2" value="component.BaseSpell &amp; sLevel.0 &amp; (sClass.cHelpWiz | sClass.cHelpSor) &amp; !Spellbook.?"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Usage" tag="AtWill"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    <eval phase="Final" priority="10001" index="2"><![CDATA[      ~ If we're disabled, do nothing
+          doneif (tagis[Helper.FtDisable] <> 0)
+          
+          ~if we haven't chosen anything yet, just get out now
+          doneif (field[usrChosen2].ischosen = 0)
+          
+          ~retrieve the spell info tag from the thing we've chosen
+          perform field[usrChosen2].chosen.pulltags[SpInfo.?]]]></eval>
+    <eval phase="Final" priority="10000"><![CDATA[      ~ If we're disabled, do nothing
+          doneif (tagis[Helper.FtDisable] <> 0)
+          
+          ~if we haven't chosen anything yet, just get out now
+          doneif (field[usrChosen1].ischosen = 0)
+          
+          ~retrieve the spell info tag from the thing we've chosen
+          perform field[usrChosen1].chosen.pulltags[SpInfo.?]]]></eval>
+    <exprreq message="Inteliigence 13 required."><![CDATA[#attrvalue[aINT] >= 13]]></exprreq>
+    <prereq message="Must have no levels in an arcane spellcasting class.">
+      <validate><![CDATA[var cnt as number
+    cnt = 0
+    
+    foreach pick in hero from Class where "CasterType.? & CasterSrc.Arcane"
+      cnt += 1
+      nexteach
+    
+    if (cnt = 0) then 
+     @valid = 1
+    endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fFGBellow" name="Bellow" description="Your instructions can be heard from farther away, allowing you to command crew on the other side of a ship.\n\n{b}Prerequisites{/b}: Cha 13, Profession (sailor) 1 rank, Mate.\n\n{b}Benefit{/b} As a Mate, you may command up to 40 crewmen.\n\n{b}Normal{/b}: Without this feat, a Mate may only command up to 20 crewmen." compset="Feat" summary="You can be heard far away, letting you command more crewman" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <exprreq message="Charisma 13 required."><![CDATA[#attrvalue[aCHA] >= 13]]></exprreq>
+    <exprreq message="Profession (sailor) 1 rank required."><![CDATA[#skillranks[skProfSail] >= 1]]></exprreq>
+    </thing>
+  <thing id="fFGEagleEy" name="Eagle Eyes" description="Your skill for spotting objects at sea is almost supernatural.\n\n{b}Prerequisites{/b} Legendary Watchman, Skill Focus (Perception), Perception 5 ranks.\n\n{b}Benefit{/b} When using the Perception skill at sea, the DC to spot an object increases by +1 for every 1,000 feet the object is from you.\n\n{b}Normal{/b}:  The DC increases by +1 for every 500 feet." compset="Feat" summary="Your skill for spotting objects at sea is almost supernatural." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <exprreq message="Perception 5 ranks required."><![CDATA[#skillranks[skPercep] >= 5]]></exprreq>
+    <exprreq message="Skill Focus (Perception) feat required."><![CDATA[child[skPercep].tagis[Helper.SkillFocus] <> 0]]></exprreq>
+    <exprreq message="Legendary Watchman feat required."><![CDATA[#hasfeat[fFGLegWatc] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGHarTask" name="Harsh Taskmaster" description="Your intensive training regimen has whipped your crew into a well-oiled team.\n\n{b}Prerequisites{/b} Cha 13, Profession (sailor) 1 rank, Mate.\n\n{b}Benefit{/b} Reduce the number of crew required for tasks other than firing cannon &#151; such as bailing water, extinguishing fires, grappling, or managing sails &#151; by one-quarter if you are their Mate." compset="Feat" summary="Your intensive training regimen has whipped your crew into a well-oiled team." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <exprreq message="Charisma 13 required."><![CDATA[#attrvalue[aCHA] >= 13]]></exprreq>
+    <exprreq message="Profession (sailor) 1+ ranks required."><![CDATA[#skillranks[skProfSail] >= 1]]></exprreq>
+    </thing>
+  <thing id="fFGNavGunn" name="Improved Naval Gunnery" description=" You make ranged attacks from the rolling deck of a ship as easily as others on dry land.\n\n{b}Prerequisites{/b} Profession (sailor) 5 ranks, Naval Gunnery.\n\n{b}Benefit{/b} When making a ranged attack aboard a ship, you do not suffer any penalties from the pitching of the deck.\n\n{b}Normal{/b}: You suffer a &#150;4 penalty normally, or a &#150;2 penalty with only the Naval Gunnery feat.\nSpecial: A Mate can pass this feat on to his crewmen if they are trained. See Chapter 3, Officer Roles for more details on the Mate." compset="Feat" summary=" You make ranged attacks from the rolling deck of a ship as easily as others on dry land." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <exprreq message="Profession (Sailor) 5+ ranks required"><![CDATA[#skillranks[skProfSail] >= 5]]></exprreq>
+    <exprreq message="Naval Gunnery feat required."><![CDATA[#hasfeat[fFGNavaGun] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGInsSpee" name="Inspirational Speech" description="Your stirring words before battle inspire your crew into feats of amazing bravery.\n\n{b}Prerequisites{/b}: Cha 15, Captain, inspire courage class ability.\n\n{b}Benefit{/b} Your inspire courage ability gained from class levels stacks with the same ability generated from a high Loyalty check.\n\n{b}Normal{/b}: Inspire courage does not stack." compset="Feat" summary="Your stirring words before battle inspire your crew into feats of amazing bravery." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <exprreq message="Charirsma 15+ required."><![CDATA[#attrvalue[aCHA] >= 15]]></exprreq>
+    <prereq message="Inspire Courage class ability required">
+      <validate><![CDATA[validif (#hasability[cBrdPInsC] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fFGLegCogn" name="Legendary Cognomen" description="You have developed a famous descriptive moniker that strikes fear into your enemies and elicits great pride from your crew.\n\n{b}Prerequisites{/b}: Cha 15, Captain.\n\n{b}Benefit{/b} You gain a +4 bonus to your Loyalty checks and a +2 bonus to Intimidate checks." compset="Feat" summary="You have developed a  moniker that strikes fear into your enemies and elicits great pride from your crew." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~If we're not shown, just get out now
+        doneif (tagis[Helper.FtDisable] <> 0)
+    
+    ~let's add the +2 bonus to Intimidate
+        #skillbonus[skIntim] += 2]]></eval>
+    <exprreq message="Charisma 15+ required."><![CDATA[#attrvalue[aCHA] >= 15]]></exprreq>
+    </thing>
+  <thing id="fFGLegWatc" name="Legendary Watchman" description="Your prowess at locating objects over great distances is well-known.\n\n{b}Prerequisites{/b}Skill Focus (Perception).\n\n{b}Benefit{/b}: When attempting to see objects more than one mile away, you gain a +5 bonus to your Perception checks." compset="Feat" summary="Your prowess at locating objects over great distances is well-known." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <exprreq message="Skill Focus (Perception) feat required."><![CDATA[child[skPercep].tagis[Helper.SkillFocus] <> 0]]></exprreq>
+    </thing>
+  <thing id="fFGNavaGun" name="Naval Gunnery" description="You understand the roll and pitch of a ship at sea and adjust your ranged attacks accordingly.\n\n{b}Prerequisites{/b}: Profession (sailor) 1 rank.\n\n{b}Benefit{/b}: The penalty you take when using a ranged weapon while on board a ship is halved: &#150;2 instead of &#150;4 if your ship is moving.\n\n{b}Special{/b}: A Mate can pass this feat on to his crewmen if they are trained. See Chapter 3, Officer Roles for more details on the Mate." compset="Feat" summary="The penalty for ranged attacks on board a ship is halved: &#150;2 instead of &#150;4 ." uniqueness="useronce">
+    <comment><![CDATA[abValue = Bonus to hit.
+
+Made to work with "Fire as She Bears" racial ability.]]></comment>
+    <fieldval field="abValue" value="2"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ Give a +2 bonus when firing from on board a moving ship.
+#value[raS2FaSB] += field[abValue].value]]></eval>
+    <exprreq message="Profession (Sailor) 1+ ranks required."><![CDATA[#skillranks[skProfSail] >= 1]]></exprreq>
+    </thing>
+  <thing id="fFGStoGunn" name="Storm-Tossed Gunnery" description="Even the worst hurricane cannot prevent you from smashing your enemies with deadly cannon fire.\n\n{b}Prerequisites{/b}: Profession (sailor) 3 ranks, Naval Gunnery.\n\n{b}Benefit{/b}: The penalty you take when using a ranged weapon during inclement weather is halved (See &#147;Wind Conditions&#148; in Chapter 1).\n\n{b}Special{/b}: A Mate can share this ability with his gun crew if they are trained. See Chapter 3, Officer Roles for more details on the Mate." compset="Feat" summary="Even the worst hurricane cannot prevent you from smashing your enemies with deadly cannon fire." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <exprreq message="Profession(sailor) 3+ ranks required."><![CDATA[#skillranks[skProfSail] >= 3]]></exprreq>
+    <exprreq message="Naval Gunnery feat required."><![CDATA[#hasfeat[fFGNavaGun] <> 0]]></exprreq>
+    </thing>
+  <thing id="raFGDajAqu" name="Aquaphobia" description="On rare occasions, frightful nightmares of a watery death torment a dajobasu from the onset of puberty. Dajobasu with this racial trait can use the supernatural dajobasu ability, drowning curse, once per day. Dajobasu with this racial trait avoid water at every opportunity. This ability replaces waterborne." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raFGDajWat"/>
+    <tag group="AllowRCust" tag="rFGDajobas"/>
+    <tag group="RaReplace" tag="raHoldBrea"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raFGDajDrw"></bootstrap>
+    </thing>
+  <thing id="raFGDajBul" name="Bully" description="Dajobasu with this racial trait receive a +2 racial bonus on Intimidate skill checks to demoralize enemies and on Bluff skill checks made to feint in combat. This racial trait replaces the swamp dweller ability." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raFGDajSwp"/>
+    <tag group="AllowRCust" tag="rFGDajobas"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final"><![CDATA[#situational[hero.child[skBluff],"+2 to feint in combat",field[name].text]
+    #situational[hero.child[skIntim],"+2 to demoralize enemies",field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGDajSah" name="Sahuagin Blooded" description="These dajobasu appear more piscine than reptilian and are said to have the icy blood of sahuagin coursing through their veins. They have a strong affinity for ocean waters, are amphibious, and have a base swim speed of 20 feet. This racial trait replaces swamp dweller." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raFGDajSwp"/>
+    <tag group="AllowRCust" tag="rFGDajobas"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raAmphib"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    </thing>
+  <thing id="raFGMehFBl" name="Fire in the Blood" description="Menehune with this trait gain fast healing 2 for one round anytime they take fire damage (whether or not this fire damage overcomes their fire resistance). Menehune can heal up to 2 hit points per level per day with this ability, after which it ceases to function until the next day. This racial trait replaces the bond to the land and energy resistance (fire) racial traits." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raFGMehBoL"/>
+    <tag group="AllowRCust" tag="rFGMenehun"/>
+    <tag group="RaReplace" tag="raFGMehFrR"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGMehInM" name="Innate Magic: Expeditious Retreat" description="Certain menehune have other innate magical gifts closer to a fey heritage. A menehune can choose one of the following spell-like abilities, which replaces the pyromaniac racial trait.\n\n{i}Expeditious Retreat Spell-Like Ability{/i} (Sp): A menehune can use {i}expeditious retreat{/i} once per day, using its character level as its caster level." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raGnFlare"/>
+    <tag group="RaReplace" tag="raGnPresti"/>
+    <tag group="RaReplace" tag="raGnProdFl"/>
+    <tag group="RaReplace" tag="raFGPyroma"/>
+    <tag group="RaReplace" tag="raGnDance"/>
+    <tag group="AllowRCust" tag="rFGMenehun"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="spExpeRet1">
+      <autotag group="Usage" tag="Day"/>
+      <autotag group="Helper" tag="SpellLike"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="raRFMehInv" name="Innate Magic: Invisibility" description="Certain menehune have other innate magical gifts closer to a fey heritage. A menehune can choose one of the following spell-like abilities, which replaces the pyromaniac racial trait.\n\n{i}Invisibility Spell-Like Ability{/i} (Sp): A menehune can use {i}invisibility{/i} once per day, using its character level as its caster level and affecting itself only." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raGnFlare"/>
+    <tag group="RaReplace" tag="raGnPresti"/>
+    <tag group="RaReplace" tag="raGnProdFl"/>
+    <tag group="RaReplace" tag="raFGPyroma"/>
+    <tag group="RaReplace" tag="raGnDance"/>
+    <tag group="AllowRCust" tag="rFGMenehun"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="spInvisib2">
+      <autotag group="Usage" tag="Day"/>
+      <autotag group="Helper" tag="SpellLike"/>
+      <assignval field="trkMax" value="1"/>
+      <assignval field="livename" value="Invisibility (self only)"/>
+      </bootstrap>
+    </thing>
+  <thing id="raFGMehGnM" name="Traditional Gnomish Magic" description="Menehune gain a +2 racial saving throw bonus against illusion spells and effects. Menehune add +1 to the DC of any saving throws against illusion spells that they cast. Menehune with Charisma scores of 11 or higher also gain the following spell-like abilities: 1/day - dancing lights, ghost sound, prestidigitation, and speak with animals. The caster level for these effects is equal to the menehune&apos;s level. The DC for these spells is equal to 10 + the spell&apos;s level + the menehune&apos;s Charisma modifier. This racial trait replaces the pyromaniac racial trait." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raFGPyroma"/>
+    <tag group="AllowRCust" tag="rFGMenehun"/>
+    <tag group="RaReplace" tag="raGnFlare"/>
+    <tag group="RaReplace" tag="raGnProdFl"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raGnIllus"></bootstrap>
+    <bootstrap thing="raGnGhost"></bootstrap>
+    <bootstrap thing="raGnSpeak"></bootstrap>
+    <eval phase="Render" priority="90000"><![CDATA[hero.child[raGnGhost].field[livename].text = "Ghost Sound (" & hero.child[raGnGhost].field[trkMax].value & hero.child[raGnGhost].tagnames[Usage.?] & ") (Sp)"
+    
+    hero.child[raGnSpeak].field[livename].text = "Speak with Animals (" & hero.child[raGnSpeak].field[trkMax].value & hero.child[raGnSpeak].tagnames[Usage.?] & ") (Sp)"]]></eval>
+    </thing>
+  <thing id="raFGMehExp" name="Explorer" description="Menehune often experience varying degrees of wanderlust, but some become obsessed with seeing as much of the world as possible. These menehune gain a +2 racial bonus on Climb checks and checks for one Knowledge skill of their choice. This racial trait replaces the energy resistance (fire) and craftsman racial traits." compset="AltRaceTrt" uniqueness="unique">
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; Helper.SkCatKnow"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaReplace" tag="raFGCraftm"/>
+    <tag group="AllowRCust" tag="rFGMenehun"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="RaReplace" tag="raFGMehFrR"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[      hero.child[skClimb].field[Bonus].value += 2
+    
+          if (field[usrChosen1].ischosen <> 0) then
+            field[usrChosen1].chosen.field[Bonus].value += 2
+            endif]]></eval>
+    </thing>
+  <thing id="raFGMehObs" name="Obsessive" description="Some menehune become devoted to perfecting a specific craft or profession and receive a +2 racial bonus on a Craft or Profession skill of their choice. This racial trait replaces the energy resistance (fire) and craftsman racial traits." compset="AltRaceTrt" uniqueness="unique">
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; (Helper.SkCatCraft | Helper.SkCatProf)"/>
+    <usesource source="CampRazorC"/>
+    <tag group="AllowRCust" tag="rFGMenehun"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="RaReplace" tag="raFGMehFrR"/>
+    <tag group="RaReplace" tag="raFGCraftm"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[if (field[usrChosen1].ischosen <> 0) then
+            field[usrChosen1].chosen.field[Bonus].value += 2
+            endif]]></eval>
+    </thing>
+  </document>

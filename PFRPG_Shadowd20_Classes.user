@@ -1,0 +1,2060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com
+
+This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
+    <info_history><![CDATA[
+5/4/2014
+-Added "Eldritch Dispelling" hex for warlocks.
+
+4/26/2014
+-Changed "Patron Magic" to now set the "Caster Level" of the spell like abilties.
+
+4/6/2014
+-Feral Druid forms will now disable magic rings and wonderous items when shape changed.
+
+11/30/2013
+-Changed "Aquatic Adaptation" to be an activated ability instead of just showing situational text.
+
+11/4/2013
+-Fixed Feral forms so that it will remove any equipped shields also.
+
+6/30/2013
+-Changed Iaijutsu Strike to better work on the iPad by having the extra damage display on weapons when its activated.
+-Changed Sneak Attack to be activate capable so the extra dice will be rolled on the iPad.
+
+1/25/2013
+-Added the missing text for the "Eldritch Chain" ability.
+
+1/20/2013
+-Fixed desc on rogue skill trick "Fast Move".
+
+9/30/2012
+-Fixed "Patron Magic" to give the spells at the correct level instead of all at once.
+
+8/23/2012
+-Removed replacement for "Flurry of Blows" so that the new HL feature of FoB displays instead.
+
+8/19/2012
+-Added back "Fast Movement" speed for the Spellless ranger archetype.
+-Moved the Fast Healing ability to level 1.
+
+8/9/2012
+-Gave "Holy Warrior" archetype access to Heavy Armor as all clerics now get proficincy with their gods weapon.
+
+8/5/2012
+-Split off from Shadowd20.user so we have just a classes and archetype .user file.]]></info_history>
+    </fileinfo>
+  <thing id="cBbnBldCrz" name="Blood Craze" description="Getting hit makes your blood boil in rage. Whenever you are hit with a confirmed critical hit while you are raging your total number of rounds of rage per day increases by 1. You can go over your maximum number of rounds of rage per day with this talent." compset="CustomSpec" summary="Whenever you are hit with a confirmed critical hit while you are raging your total number of rounds of rage per day increases by 1. You can go over your maximum number of rounds of rage per day with this talent." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpBbn" name="Barbarian" abbrev="Barbarian"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    </thing>
+  <thing id="cBbnGorSlm" name="Gorilla Slam" description="Once per rage a barbarian in a grapple that successfully pins their opponent may instead lift that opponent above their head, but only if the opponent does not exceed the barbarian&apos;s heavy load carrying capacity. The barbarian&apos;s can then as a free action make another CMB at an additional +5 bonus against the target lifted. If successful the barbarian can drive his opponent into the ground with the full weight of his brutal strength. The opponent suffers lethal bludgeoning damage equal to 1d6 (assuming the barbarian is Medium; 1d4 points of damage if Small) plus double the barbarians Strength modifier. In addition, the opponent is prone in a square of the barbarian&apos;s choice within his reach." compset="CustomSpec" summary="1/rage when you pin an opponent in a grapple you can slam them into the ground with a CMB +5 roll.  Doing 1d6+ double your Str modifier." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Usage" tag="Rage"/>
+    <tag group="SpecSource" tag="cHelpBbn" name="Barbarian" abbrev="Barbarian"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    </thing>
+  <thing id="cBbnMeGrug" name="Me Grug" description="You may only take this rage power if you have the Intimidating Prowess combat feat. Add your Charisma modifier to your Intimidate checks only if its a bonus.  You also gain a +1 bonus to your Intimidate checks per every 4 levels of barbarian attained (minimum 1)." compset="CustomSpec" summary="You are more intimidating than others." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="SpecSource" tag="cHelpBbn" name="Barbarian" abbrev="Barbarian"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    <eval phase="PostAttr" priority="10500">~ Calc the Intimdate Level Bonus
+      field[abValue].value += maximum(round(#levelcount[Barbarian] / 4 ,0 ,-1) ,1)
+      ~ Set the Intimidate Attribute Bonus to be either zero or plus
+      hero.child[skIntim].field[skAttrBon].value = maximum(hero.child[skIntim].field[skAttrBon].value, 0)
+      #skillbonus[skIntim] += field[abValue].value</eval>
+    <exprreq message="Must have the Intimidating Prowess feat."><![CDATA[#hasfeat[fIntProw]<> 0]]></exprreq>
+    </thing>
+  <thing id="cBbnPyGrip" name="Python Grip" description="During a grapple a barbarian&apos;s unarmed strike damage deals 1d6 points of damage (assuming the barbarian is Medium; 1d4 points of damage if Small) plus barbarian’s Strength modifier." compset="CustomSpec" summary="Your unarmed strike damage in grapples is increased." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="SpecSource" tag="cHelpBbn" name="Barbarian" abbrev="Barbarian"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    </thing>
+  <thing id="cRogBackSt" name="Backstab" description="A rogue can sneak attack a creature on her own if she manages to maneuver around a target and strike during her action. If a rogue moves to the opposite side of her target she treats the square she moved from as a ally for purposes of flanking. If she is considered to be flanking with the square she started from she can sneak attack the target, but does not gain the +2 to hit from flanking. In essence, she quickly moves around her opponent and slashes at him from behind, making it difficult for him to defend against her strike. This talent can only be used once per opponent." compset="CustomSpec" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SpecType" tag="SneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="abCategory" tag="RogTal"/>
+    </thing>
+  <thing id="cRogHampAt" name="Hampering Attack" description="You attack your opponent’s arms or legs, leaving him with an injury that makes it hard for him to defend himself. An opponent damaged by the rogue&apos;s sneak attack takes a penalty to his armor class equal to the rogue&apos;s sneak attack (e.g., 4d6 equals a -4 to AC) for 1 round." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SpecType" tag="SneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="abCategory" tag="RogTal"/>
+    </thing>
+  <thing id="cRogHamstr" name="Hamstring" description="You slice at your opponent’s legs, leaving him with an injury that makes it hard to move. An opponent damaged by the rogue&apos;s sneak attack takes a penalty to his movement with each point equal to a 5-foot penalty to speed (e.g., 4d6 equals a 20ft penalty to speed) for 1 round." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SpecType" tag="SneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="abCategory" tag="RogTal"/>
+    </thing>
+  <thing id="cRogHindAt" name="Hindering Attack" description="You slice at an opponent’s arms or legs, leaving him with an injury that makes it difficult for him to attack effectively. An opponent damaged by the rogue&apos;s sneak attack takes a penalty to his attack rolls equal to the rogue&apos;s sneak attack (e.g., 4d6 equals a -4 to hit) for 1 round." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SpecType" tag="SneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="abCategory" tag="RogTal"/>
+    </thing>
+  <thing id="cRogLucky" name="Lucky" description="A rogue with this talent gains an extra use of his luck feats. Luck feats are found in Complete Scoundrel page 72." compset="CustomSpec" uniqueness="unique">
+    <usesource source="SRD"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SpecType" tag="SneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="abCategory" tag="RogTal"/>
+    </thing>
+  <thing id="cRogQuickT" name="Quick Turn" description="With a DC15 Acrobatics check a rogue can make one 90 degree turn during a run." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SpecType" tag="SneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    </thing>
+  <thing id="cRogRazorF" name="Razor Fiend" description="You have specilized in the use of daggers (or dagger like weapons) and can draw them as a free action and suffer only a –1 penalty per range increment instead of a -2 penalty." compset="CustomSpec" summary="Draw a dagger as a free action and only -1 range increment penalty with daggers." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SpecType" tag="SneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="abCategory" tag="RogTal"/>
+    </thing>
+  <thing id="cRogExtTra" name="Extra Trait" description="A rogue may gain one character trait of your choice. This trait must be chosen from different lists, and cannot be chosen from lists from which you have already selected a character trait. You must meet any additional qualifications for the character traits you choose–this talent cannot enable you to select a dwarf character trait if you are an elf, for example." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="abCategory" tag="RogTal"/>
+    <eval phase="First" priority="1000">~ Add to traits allowed
+      hero.child[resTrait].field[resMax].value += 1</eval>
+    </thing>
+  <thing id="cS20WildEm" name="Wild Empathy" description="A character can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person. The character rolls 1d20 and adds her class level and her Charisma modifier to determine the wild empathy check result.\n\nThe typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly.\n\nTo use wild empathy, the druid and the animal must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute but, as with influencing people, it might take more or less time.\n\nA character can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check." compset="ClSpecial" summary="Improve the atttitude of an animal, as if using Diplomacy." replaces="cWildEmp">
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Helper" tag="ClExLose" name="ClExLose" abbrev="ClExLose"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Test hero tag for Wild Empathy - Wisdom tag and if found use Wis 
+      if (hero.tagis[Custom.WildEmpWis] <> 0) then
+          field[abValue].value += field[xAllLev].value + #attrmod[aWIS]
+      else
+          field[abValue].value += field[xAllLev].value + #attrmod[aCHA]
+      endif]]></eval>
+    <eval phase="Render" priority="1000" index="2"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      field[livename].text &= " " & signed(field[abValue].value)]]></eval>
+    </thing>
+  <thing id="cStelthAtt" name="Stealth Attack" description="If a ranger can catch an opponent when he is unable to defend himself effectively from his attack, he can strike a vital spot for extra damage. The ranger’s attack deals extra damage any time his target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the ranger flanks his target. This extra damage is 1d6 at 2nd level, and it increases by 1d6 every four ranger levels thereafter. Should the ranger score a critical hit with a stealth attack, this extra damage is not multiplied. Ranged attacks can count as stealth attacks only if the target is within 30 ft. Stealth attacks are possible only when the ranger wears light or no armor. A ranger may only use this ability while in a favored terrain or against a favored enemy." compset="ClSpecial">
+    <tag group="Helper" tag="UseOwnLev" name="UseOwnLev" abbrev="UseOwnLev"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[listname].text = "Stealth Attack +" & field[xIndex].value & "d6"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = "Stealth Attack +" & field[abValue].value & "d6"
+      field[abSumm].text = "+" & field[abValue].value & "d6 damage if you flank your target or your target is flat-footed. A ranger may only use this ability while in a favored terrain or against a favored enemy."]]></eval>
+    </thing>
+  <thing id="cRsLllv" name="Low-Light Vision" description="A ranger with this ability gains low-light vision. If he already has low-light vision, this ability has no additional effect." compset="CustomSpec">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecType" tag="Sense"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="Tertiary"/>
+    <tag group="SpecSource" tag="arRgrSpell"/>
+    <tag group="abCategory" tag="SLRTalent"/>
+    </thing>
+  <thing id="cRsLfavcri" name="Favored Enemy Critical" description="When scoring a critical threat on one of your favored enemies, gain +4 bonus to the roll made to confirm the critical." compset="CustomSpec">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="Tertiary"/>
+    <tag group="SpecSource" tag="arRgrSpell"/>
+    <tag group="abCategory" tag="SLRTalent"/>
+    </thing>
+  <thing id="cRsLtrapfi" name="Trap Finding" description="When in a favored terrain, a ranger with this ability can use the Perception skill to locate traps (see rogue)." compset="CustomSpec">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Sense"/>
+    <tag group="Helper" tag="Tertiary"/>
+    <tag group="SpecSource" tag="arRgrSpell"/>
+    <tag group="abCategory" tag="SLRTalent"/>
+    </thing>
+  <thing id="cRsLtrackl" name="Trackless Step" description="When desired, a ranger with this ability leaves no trail in natural surroundings and cannot be tracked. A ranger can also track others possessing the Trackless Step ability when in one of his Favored Terrains, but suffers a -10 to the check." compset="CustomSpec">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="Helper" tag="Tertiary"/>
+    <tag group="SpecSource" tag="arRgrSpell"/>
+    <tag group="abCategory" tag="SLRTalent"/>
+    </thing>
+  <thing id="cRsLimpNaH" name="Improved Nature’s Healing" description="A ranger with this ability uses his total ranger levels to calculate additional hit points healed, instead of the standard one hit point per three ranger levels." compset="CustomSpec">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="Tertiary"/>
+    <tag group="SpecSource" tag="arRgrSpell"/>
+    <tag group="abCategory" tag="SLRTalent"/>
+    </thing>
+  <thing id="cRsLimpTra" name="Improved Tracking" description="A ranger with this ability adds his ranger level to Survival skill checks made to follow or identify tracks. If he exceeds the DC by 10 or more, he can learn additional information about his prey (including number and type of creatures tracked etc.)" compset="CustomSpec">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="Tertiary"/>
+    <tag group="SpecSource" tag="arRgrSpell"/>
+    <tag group="abCategory" tag="SLRTalent"/>
+    <eval phase="PostLevel" priority="1050">hero.childfound[cRgrS2Trac].field[abValue].value = field[xTotalLev].value</eval>
+    </thing>
+  <thing id="cNatrHeali" name="Nature’s Healing" description="Beginning at 1st level, the ranger gains a +2 bonus to Heal skill checks. If he can beat the appropriate Heal DC check, the ranger heals an additional 1d6 hit points of damage plus 1 for every three ranger levels. Nature’s healing can only be used when a ranger is in one of his favored terrains. A ranger does not need a Healer’s Kit in order to use this ability." compset="ClSpecial">
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PreAttr" priority="5000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ +2 to Heal
+      #skillbonus[skHeal] += 2]]></eval>
+    <eval phase="Render" priority="1000" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      if (#hasability[cRsLimpNaH] <> 0) then
+         field[abValue].value = field[xTotalLev].value
+      else
+          field[abValue].value = round(field[xTotalLev].value/3,0,-1)
+      endif
+      field[livename].text = "Nature's Healing(1d6+" & field[abValue].value & ")"]]></eval>
+    </thing>
+  <thing id="cRsLfasMov" name="Fast Movement" description="When in a Favored Terrain, a ranger’s base speed increases by +10 ft. at 5th level. At 12th level, this bonus increases to +20 ft. These bonuses apply only when the ranger wears light or no armor." compset="ClSpecial">
+    <fieldval field="actName" value="In Favored Terrain"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="Final" priority="200" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we are not activated, just get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~ We passed, so add to our base speed.
+      hero.child[Speed].field[tSpeed].value += field[abValue].value]]></eval>
+    <eval phase="Final"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If we're disable, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      var speed as number
+      speed = 10 * field[xIndex].value
+      ~Set the list name
+      field[listname].text = field[thingname].text & " +" & speed & "ft"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ Set base movement bonus     
+      field[abValue].value += 10
+
+      ~ Set live and summary text
+      field[livename].text = field[thingname].text & " +" & field[abValue].value & "ft"
+      field[abSumm].text = "+" & field[abValue].value & " feet to speed, unless heavily loaded."
+
+      ~ If we fail the test for being speedy, get out
+      If (hero.tagis[Hero.HeavyArmor] + hero.tagis[Hero.MedArmor] <> 0) then
+         perform assign[Helper.SpcDisable]
+         done
+      Endif]]></eval>
+    </thing>
+  <thing id="cRsLraFeat" name="Ranger Feat" description="Instead of a talent, the ranger may choose a feat that he qualifies for from his chosen combat style or from the following list : Additional Favored Terrain*, Additional Favored Enemy*, Animal Affinity, Athletic, Dodge, Diehard, Favored Terrain Expert*, Nimble Moves, Run, Self-Sufficient, Stealthy, Toughness (an asterisk * indicates a new feat)." compset="CustomSpec" summary="You gain a bonus ranger feat." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Tertiary"/>
+    <tag group="fInclude" tag="fAnimAff"/>
+    <tag group="fInclude" tag="fAthletic"/>
+    <tag group="fInclude" tag="fDiehard"/>
+    <tag group="fInclude" tag="fDodge"/>
+    <tag group="fInclude" tag="fNimbMove"/>
+    <tag group="fInclude" tag="fRun"/>
+    <tag group="fInclude" tag="fSelfSuff"/>
+    <tag group="fInclude" tag="fStealthy"/>
+    <tag group="fInclude" tag="fToughness"/>
+    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="SpecSource" tag="arRgrSpell"/>
+    <tag group="fInclude" tag="fS2FavEne"/>
+    <tag group="fInclude" tag="fS2FavTerr"/>
+    <tag group="fInclude" tag="fS2TerrExp"/>
+    <tag group="abCategory" tag="SLRTalent"/>
+    <eval phase="PreLevel" priority="10000">~ Add to combat feats allowed
+      linkage[table].field[cBonFtMax].value +=1</eval>
+    </thing>
+  <thing id="cRsLtrack" name="Track" description="A ranger adds half his level (minimum 1) to Survival skill checks made to follow or identify tracks." compset="ClSpecial" summary="You add half your level (minimum 1) to all survival checks made to follow or identify tracks.">
+    <eval phase="UserFinal" priority="1000"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~our bonus is level /2, min 1
+      var bonus as number
+      ~if (hero.tagis[Ability.cRsLimpTra] <> 0) then
+      if (#hasability[cRsLimpTra] <> 0) then
+          bonus = field[xTotalLev].value          
+      else
+          bonus = field[xTotalLev].value / 2
+      endif
+
+      field[abValue].value += maximum(round(bonus,0,-1),1)
+      field[livename].text = field[name].text & signed(field[abValue].value)
+      field[abSumm].text = "+" & field[abValue].value & " to survival checks to track."
+
+      ~Add to our new  Shadow d20 SubSkill
+      #skillbonus[skS2SurvTr] += field[abValue].value]]></eval>
+    </thing>
+  <thing id="cPalS2DEvi" name="Detect Evil" description="At will, a paladin can use detect evil, as the spell. A paladin can, as a move action, concentrate on a single item or individual within 60 feet and determine if it is evil, learning the strength of its aura as if having studied it for 3 rounds. While focusing on one individual or object, the paladin does not detect evil in any other object or individual within range." compset="ClSpecial" summary="You can use Detect Evil at will (as the spell)." replaces="cPalDtEvil">
+    <tag group="Helper" tag="ClExLose" name="ClExLose" abbrev="ClExLose"/>
+    <tag group="Usage" tag="AtWill" name="At will" abbrev="At will"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    </thing>
+  <thing id="arClrHoWar" name="Holy Warrior" description="Some clerics think of themselves more as holy warriors than proselytizers or shepherds. For these clerics, the ability to fight trumps all other concerns. Holy Warriors are the crusaders of the faith doing things that no Paladin or warrior could." compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvHitDice" value="10"/>
+    <arrayval field="cvCastTot" index="0" column="1" value="1"/>
+    <arrayval field="cvCastTot" index="2" column="2" value="1"/>
+    <arrayval field="cvCastTot" index="4" column="3" value="1"/>
+    <arrayval field="cvCastTot" index="6" column="4" value="1"/>
+    <arrayval field="cvCastTot" index="8" column="5" value="1"/>
+    <arrayval field="cvCastTot" index="10" column="6" value="1"/>
+    <arrayval field="cvCastTot" index="12" column="7" value="1"/>
+    <arrayval field="cvCastTot" index="14" column="8" value="1"/>
+    <arrayval field="cvCastTot" index="16" column="9" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="cAttack" tag="Good"/>
+    <tag group="Helper" tag="RemovePrim"/>
+    <bootstrap thing="fArmHeavy"></bootstrap>
+    <bootstrap thing="cHWS2WarSk">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpClr"/>
+    <eval phase="First">~ Remove the notice about domain spells
+hero.child[cHelpClr].field[cSecSplReq].value = 0</eval>
+    </thing>
+  <thing id="cS2Sphere" name="Spherewalker" description="{b}Requirements{/b}: Must have visited two locations sacred to Desna, at least 200 miles apart.\n\nMust have at least two of the following skills at 2 ranks or more; Climb, Knowledge (geography), Knowledge (nature), Knowledge (religion), Perform, Ride, Survival, or Swim.\n\nMust have at least one of the following feats; Great Fortitude, Iron Will, or Lightning Reflexes.\n\nMust have at least one of the following feats; Acrobatic, Agile, Athletic, Endurance, Run, Self-Sufficient" compset="ClassLevel" maxlimit="5" replaces="cPFSphere">
+    <comment>Changed to be allowed for when Shadow d20 is active.</comment>
+    <usesource source="s20PFCamp"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="ClassType" tag="Prestige" name="Prestige Class" abbrev="Prestige Class"/>
+    <bootstrap thing="cHelpPFSph"></bootstrap>
+    <link linkage="helper" thing="cHelpPFSph"/>
+    <exprreq message="Must have at least one survivor feat."><![CDATA[#hasfeat[fGreatFort] + #hasfeat[fIronWill] + #hasfeat[fLightRef] >= 1]]></exprreq>
+    <exprreq message="Must have at least one explorer feat."><![CDATA[#hasfeat[fAcrobatic] + #hasfeat[fAthletic] + #hasfeat[fEndure] + #hasfeat[fRun] + #hasfeat[fSelfSuff] >= 1]]></exprreq>
+    <exprreq message="Worshippers of Desna only."><![CDATA[#hasdeity[deiDesna] <> 0]]></exprreq>
+    <exprreq message="Base Attack Bonus +5 required."><![CDATA[child[Attack].field[tAtkBase].value >= 5]]></exprreq>
+    <exprreq message="Must be proficent in the Starknife."><![CDATA[#hasfeat[fWepMart] + hero.tagis[WepProf.wStarknife] <> 0]]></exprreq>
+    <prereq message="Must have two skills from a list at 2 ranks or more." onlyonce="yes">
+      <validate><![CDATA[@valid = 0
+var total as number
+total = 0
+if (#skillranks[skClimb] >= 2) then
+   total +=1
+endif
+if (#skillranks[skKnowGeog] >= 2) then
+   total +=1
+endif
+if (#skillranks[skKnowNat] >= 2) then
+   total +=1
+endif
+if (#skillranks[skKnowRel] >= 2) then
+   total +=1
+endif
+if (herofield[tMaxPerf].value >=2) then
+   total +=1
+endif
+if (#skillranks[skRide] >= 2) then
+   total +=1
+endif
+if (#skillranks[skSurvival] >= 2) then
+   total +=1
+endif
+if (#skillranks[skSwim] >= 2) then
+   total +=1
+endif
+
+if (total >=2) then
+   @valid = 1
+endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="arRgrSpell" name="Spellless" description="{b}Kobold Quartly#11{/b}\n\nThe following variant class has no spell casting ability. To compensate for this, the class gains specialized ranger talents (similar to Rogue talents) and a stealth attack which can be used only in a favored terrain or against a favored enemy. A few additional class abilities are also included, most notably nature’s healing, which allows the ranger to use his Heal skill with better results when in a favored environment." compset="ClassVary" uniqueness="unique">
+    <comment>HIDDEN</comment>
+    <fieldval field="cvSpec3rdS" value="Ranger Talent"/>
+    <arrayval field="cvCustTTot" index="6" value="2"/>
+    <arrayval field="cvCustTTot" index="8" value="3"/>
+    <arrayval field="cvCustTTot" index="10" value="4"/>
+    <arrayval field="cvCustTTot" index="12" value="5"/>
+    <arrayval field="cvCustTTot" index="15" value="6"/>
+    <arrayval field="cvCustTTot" index="18" value="7"/>
+    <arrayval field="cvCustTTot" index="3" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="fDisable" tag="fArmMedium"/>
+    <tag group="Helper" tag="RemoveCast"/>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cRsLfasMov">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cRsLfasMov">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cNatrHeali">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpRgr"/>
+    </thing>
+  <thing id="cBbnWolvSt" name="Wolverine Stance" description="When an opponent has you in his grasp, you transform into a snarling, frothing, raging beast. You hack with your weapon at your foe’s arms or tentacles, your wild frenzy allowing you to fight even with a large, awkward weapon. When you are in the grasp of a larger foe, your frenzy ignites into an inferno as you desperately attempt to break free.\n\nWhile you are grappled, you can attack a foe grappling you with any one-handed weapon. You do not take the -2 penalty on attack rolls for fighting while grappled.\n\nIf your foe is of a larger size category than yours, your feral rage ignites and grants you a +4 bonus on damage rolls against that creature while it continues to grapple you." compset="CustomSpec" summary="While you are grappled, you can attack a foe grappling you with any onehanded weapon. You do not take the -2 penalty on attack rolls for fighting while grappled." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpBbn" name="Barbarian" abbrev="Barbarian"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    <eval phase="UserPreLv" priority="10001">~ If grappled condition not enabled, get out now
+doneif (hero.child[pcnGrapple].field[pIsOn].value + hero.isidentity[Condition] = 0)
+
+~ +2 Attack to Cancel out Grappled Condition
+hero.child[Attack].field[Penalty].value += 2</eval>
+    </thing>
+  <thing id="cS2CavRide" name="Ride Mount" description="A cavalier does not take an armor check penalty on Ride checks while riding his mount." compset="ClSpecial" replaces="cCavRide">
+    <comment><![CDATA[Currently fixed so that we don't remove the ACP for all skills but only for Ride.]]></comment>
+    <tag group="SpecType" tag="Skill" name="Skill Modifiers" abbrev="Skill Modifiers"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[
+      ~only run the rest for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+
+      #appenddesc[pstMounted,"{b}Addition from Cavalier{/b}: A cavalier does not take an armor check penalty on Ride checks while riding his mount."]]]></eval>
+    <eval phase="PostLevel" priority="4150"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~The armor check penalty is stored as a negative number, and here we want it positive
+      field[abValue].value -= herofield[tArmorChk].value
+
+      field[livename].text = "+" & field[abValue].value & " Ride while riding your bonded mount."
+      field[abSumm].text = "Cancel your armor check penalty of -" & field[abValue].value & " while riding your mount."
+
+      ~if we're mounted, and that mount is our animal companion
+      if (#hascondition[pstMounted] <> 0) then
+        if (hero.child[pstMounted].field[pMount].ischosen <> 0) then
+          if (hero.child[pstMounted].field[pMount].chosen.tagis[thingid.cAnimComp] <> 0) then
+            ~ Only remove ACP from the ride skill
+            hero.child[skRide].field[Penalty].value += field[abValue].value
+          endif
+        endif
+      endif]]></eval>
+    </thing>
+  <thing id="cRogKipUp" name="Kip Up" description="You may bound to your feet from a prone position as a swift action, rather than a move action. This movement does not provoke an attack of opportunity." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="abCategory" tag="RogTal"/>
+    </thing>
+  <thing id="cRogTumFal" name="Tumbling Fall" description="If you increase by 5 the Difficulty Class needed to lessen the damage from a fall, you reduce your fall by 10 more feet when determining damage. For example, the base Difficulty Class to break a fall by 10 feet is DC 15. If you wanted to reduce the distance you fell by 20 feet, you would need to make a DC20 Acrobatics check. You can use this to eliminate the damage you suffer from a fall entirely. In this case a roll of a natural one is always a failure.\n\nThere is no cap on how many times you can use this ability on a single check, but remember that a skill check is an all-or-nothing proposition. If you fail your check, you take the full damage for the fall, regardless of the total check result. So remember this is an all or nothing attempt, you don&apos;t roll then see how much damage you avoided. You decide before rolling how much damage you will try and avoid, then you must make that DC roll." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    </thing>
+  <thing id="arDrdFeral" name="Feral" description="Taking the feral archetype means you can focus on your actions in combat (rather than worrying about your animal companion) while still unleashing nature&apos;s fury upon your foes." compset="ClassVary" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cDrdWild"/>
+    <tag group="AbReplace" tag="cDrdWildAn"/>
+    <tag group="AbReplace" tag="cDrdWildEl"/>
+    <tag group="Helper" tag="RemovePrim"/>
+    <tag group="AbReplace" tag="cDrdWildPl"/>
+    <bootstrap thing="cDrdPreFor">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDrdFeral">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDrdS2SaCl">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cDrdAerFor">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cDrdFerFor">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cDrdForFor">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cDrdEleFor">
+      <autotag group="ClSpecWhen" tag="16"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpDrd"/>
+    </thing>
+  <thing id="cDrdFeral" name="Feral" description="You can shapeshift at will into powerful animal or nature-oriented forms. Each time you use this ability, you can choose the exact look that your shapeshifted form takes. Druids pick animals from the terrain and climate they&apos;re most familiar with. For example, a druid from a jungle might adopt the form of a black panther when in predator form, while one from the taiga might shapeshift into a white wolf. The two forms look different, but functionally they&apos;re identical. This is a supernatural ability.\n\nIt requires only a swift action to shapeshift. If you are capable of taking more than one form, you can shapeshift directly between two forms without returning to your normal form. There&apos;s no limit to the number of times per day you can change forms, nor to the amount of time you can spend in a shapeshifted form. You retain your normal Hit Dice, hit points, base attack bonus, base saving throw bonuses, and skill ranks regardless of your form. You also retain your normal ability scores, though each form grants a bonus to your Strength score. You keep all extraordinary, supernatural, and spell-like special attacks and qualities of your normal form, except for those requiring a body part your new form does not have.\n\nAll your held, carried, or worn gear melds into your new form. Items that provide constant bonuses and do not need to be activated continue to function while melded in this way (with the exception of armor, without the Wild property, and shield bonuses, which cease to function). You cannot speak in shapeshifted form, and your limbs lack the precision required to wield a weapon or perform tasks requiring fine manipulation. You can&apos;t cast spells or activate magic items while in shapeshifted form, unless you have the Natural Spell feat or other abilities that would allow you to cast spells while wild shaped.\n\nUnless otherwise noted in the descriptions below, you retain your size and space when you adopt a new form. You always retain your type and subtypes, regardless of the nature of the form assumed. You don&apos;t gain any special attacks or qualities while shapeshifted except as described below.\n\nWhen you shapeshift into a form other than your own, you gain natural weapons (and reach with those weapons) as described below. The damage dice given are specific to your form not the size of the form. If knocked unconscious or slain in shapeshifted form, you revert to your original form.\n\nThis ability replaces Wild Shape and the ability to select a domain or animal companion. For feat prerequisites this ability counts as Wild Shape including using the Wild armor property." compset="ClSpecial">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Make us the same as Wild Shape
+      perform hero.assign[Hero.WildShape]
+      perform hero.assign[HasAbility.cDrdWild]]]></eval>
+    <eval phase="First" priority="399" index="2"><![CDATA[
+      ~ If we don't have Shaping Focus feat get out now!
+      doneif (hero.childlives[fShapiFocu] <> 1)
+      ~ Calculate the number of extra feral levels to give    
+      field[abValue].value += hero.tagcount[Classes.?] - hero.tagcount[Classes.Druid]
+      ~ If no extra levels then get out now!
+      doneif (field[abValue].value <= 0)
+      ~ Don't let us add more than 4 levels
+      field[abValue2].value += minimum(field[abValue].value,4)
+
+      var iX as number
+      iX = 0
+      ~ Add any addtional Feral Levels
+      while (iX < field[abValue2].value)
+        iX += 1
+        perform hero.assign[Shadowd20.FeralLevel]
+      loop]]></eval>
+    </thing>
+  <thing id="cDrdPreFor" name="Predator Form" description="This form, traditionally that of a wolf, panther, or other predatory mammal, is the first one a feral druid learns. While in predator form, you become size medium with a 5ft reach and gain a bite attack that deals 1d6 points of damage. You gain a +4 enhancement bonus to Strength, and a +4 bonus to your natural armor. Your base land speed becomes 50 feet and you gain low-light vision. This form improves as you level gaining the following abilities:\n-At 2nd level, you gain a pair of claw attacks that do 1d4 damage and the scent special ability.\n-At 3rd level, you gain a climb speed of 30ft and the trip special ability with your bite attack.\n-At 4th level, you gain a swim speed of 30ft and Mobility as a bonus feat (even if you don&apos;t meet the prerequisites).\n-At 8th level, you gain the pounce special ability and Darkvision 60ft.\n-At 9th level, you gain the rake special ability with damage equal to your claws damage." compset="ClSpecial" summary="Predator form is traditionally that of a wolf, panther or other predatory creature.">
+    <usesource source="s20PFCamp"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Super"/>
+    <bootstrap thing="wBite">
+      <containerreq phase="First" priority="450">Shadowd20.Predator</containerreq>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Helper" tag="NatPrimary"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight">
+      <containerreq phase="First" priority="450">Shadowd20.Predator|Shadowd20.Ferocious</containerreq>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <containerreq phase="First" priority="450">Shadowd20.Predator2</containerreq>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Helper" tag="NatPrimary"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="xScent">
+      <containerreq phase="First" priority="500">Shadowd20.Predator2|Shadowd20.Ferocious</containerreq>
+      </bootstrap>
+    <bootstrap thing="raTrip">
+      <containerreq phase="First" priority="500">Shadowd20.Predator3|Shadowd20.Ferocious</containerreq>
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="fMobility">
+      <containerreq phase="First" priority="500">Shadowd20.Predator4|Shadowd20.Ferocious</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="xTigPoun">
+      <containerreq phase="First" priority="500">Shadowd20.Predator8|Shadowd20.Ferocious</containerreq>
+      </bootstrap>
+    <bootstrap thing="raDarkVis">
+      <containerreq phase="First" priority="500">Shadowd20.Predator8|Shadowd20.Ferocious</containerreq>
+      </bootstrap>
+    <bootstrap thing="wRake">
+      <containerreq phase="First" priority="450">Shadowd20.Predator9</containerreq>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="Helper" tag="NatPrimary"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      </bootstrap>
+    <eval phase="First" priority="400"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~if we're curently shifting, forward a tag to the hero.
+      perform hero.assign[Shadowd20.FeralForm]
+      ~ Set the Form Tag onto the hero
+      perform hero.assign[Shadowd20.Predator]
+      ~ Set our quadruped tag
+      perform hero.findchild[BaseRace].assign[Helper.Quadruped]
+
+      ~ Set the correct extra level tag
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 2) Then
+         perform hero.assign[Shadowd20.Predator2]
+      Endif
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 3) Then
+         perform hero.assign[Shadowd20.Predator3]
+      Endif
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 4) Then
+         perform hero.assign[Shadowd20.Predator4]
+      Endif
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 8) Then
+         perform hero.assign[Shadowd20.Predator8]
+      Endif
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 9) Then
+         perform hero.assign[Shadowd20.Predator9]
+      Endif
+
+      ~Disable the other Feral Forms
+      perform hero.child[cDrdAerFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdForFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdFerFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdEleFor].assign[Helper.ChgDisab1]]]></eval>
+    <eval phase="First" priority="1000" index="2"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)]]></eval>
+    <eval phase="PreLevel" priority="10010" index="3"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      #applybonus[BonEnhance,hero.child[aSTR],4]
+      hero.child[ArmorClass].field[tACNatural].value += 4
+      hero.child[Speed].field[tSpeed].value = 50
+      ~ Remove all equppied armor
+      Call RmvArmor
+      Call RmvShield
+
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 3) Then
+         #applybonus[abValue,hero.child[xClimb],30]
+      Endif
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 4) Then
+         #applybonus[abValue,hero.child[xSwim],30]
+      Endif
+      ~ Make our rake attack damage equal to our claw damage
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 9) Then
+        perform hero.findchild[BaseNatWep,"thingid.wClaw & Shadowd20.FeralWep"].setfocus
+        if (state.isfocus <> 0) Then
+          perform focus.pulltags[wMain.?]
+          perform focus.pulltags[Helper.Damage?]
+          perform state.clearfocus
+        endif
+        perform hero.findchild[BaseNatWep,"thingid.wRake & Shadowd20.FeralWep"].setfocus
+        if (state.isfocus <> 0) Then
+          perform focus.pushtags[wMain.?]
+          perform focus.pushtags[Helper.Damage?]
+          perform state.clearfocus
+        endif
+      Endif]]></eval>
+    </thing>
+  <thing id="cDrdAerFor" name="Aerial Form" description="At 5th level, you can shapeshift into a flying creature of size small with a 5ft reach. Traditionally resembling an eagle, vulture, or bat, the aerial form enables fast travel and the ability to soar out of harm&apos;s way. While in aerial form, you gain a pair of talon attacks that deals 1d6 points of damage. You gain a +2 enhancement bonus to Strength, Reflex saves, and a +2 bonus to your natural armor. You gain a fly speed of 60 feet (good maneuverability). This form improves as you level gaining the following abilities:{br}{br}-At 6th level, your fly speed increases to 80 feet (good maneuverability) and you gain a bite attack for 1d4 damage.{br}{br}-At 7th level, you gain Flyby Attack as a bonus feat whenever you are in aerial form." compset="ClSpecial">
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <bootstrap thing="wTalon">
+      <containerreq phase="First" priority="450">Shadowd20.Aerial</containerreq>
+      <autotag group="Value" tag="2"/>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <containerreq phase="First" priority="450">Shadowd20.Aerial6</containerreq>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      </bootstrap>
+    <bootstrap thing="fFlybyAt">
+      <containerreq phase="First" priority="500">Shadowd20.Aerial7</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <eval phase="First" priority="400"><![CDATA[
+      ~ if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~ Set the Form Tag onto the hero
+      perform hero.assign[Shadowd20.Aerial]
+      ~if we're curently shifting, forward a tag to the hero.
+      perform hero.assign[Shadowd20.FeralForm]
+
+      ~ Set Aerial Level tags including extra levels
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 6) Then
+         perform hero.assign[Shadowd20.Aerial6]
+      Endif
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 7) Then
+         perform hero.assign[Shadowd20.Aerial7]
+      Endif
+
+      ~Disable the other Feral Forms
+      perform hero.child[cDrdPreFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdForFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdFerFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdEleFor].assign[Helper.ChgDisab1]]]></eval>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      #applybonus[BonEnhance,hero.child[aSTR],2]
+      #applybonus[BonEnhance,hero.child[svRef],2]
+      hero.child[ArmorClass].field[tACNatural].value += 2
+
+      ~ Give correct fly speed based on level
+      if (hero.tagis[Shadowd20.Aerial6] <> 0) then
+        #applybonus[abValue,hero.child[xFly],80]
+      else
+        #applybonus[abValue,hero.child[xFly],60]
+      endif
+      perform hero.child[xFly].assign[Maneuver.Good]
+
+      ~ Remove all equppied armor
+      Call RmvArmor
+      Call RmvShield]]></eval>
+    </thing>
+  <thing id="cDrdFerFor" name="Ferocious Predator Form" description="At 8th level, you can shapeshift into a large and fierce predatory form, such as a tiger, brown bear, or dire wolf. While in ferocious predator form you gain all the abilities of your base predator form, in addition you gain a bite attack that deals 2d6 points of damage and two claw attacks that each deal 1d8 points of damage. Your size becomes large with a 5ft reach. You gain a +8 enhancement bonus to Strength, +4 enhancement bonus on Fortitude saves, +8 bonus to your natural armor, Darkvision 60ft, and the pounce special ability. Your base land speed changes to 40 feet. This form improves as you level gaining the following abilities:\n-At 9th level, you gain the rake special ability with damage equal to your claws.\n-At 10th level, you gain Improved Critical (bite) and Improved Critical (claw) as bonus feats." compset="ClSpecial">
+    <usesource source="s20PFCamp"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Super"/>
+    <bootstrap thing="fImpCrit">
+      <containerreq phase="First" priority="500">Shadowd20.Predator10</containerreq>
+      <autotag group="Target" tag="wBite"/>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fImpCrit">
+      <containerreq phase="First" priority="500">Shadowd20.Predator10</containerreq>
+      <autotag group="Target" tag="wClaw"/>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <containerreq phase="First" priority="450">Shadowd20.Ferocious</containerreq>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d8_6"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <containerreq phase="First" priority="450">Shadowd20.Ferocious</containerreq>
+      <autotag group="Value" tag="2"/>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      </bootstrap>
+    <eval phase="First"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~sizemod is the +/- change to apply to the hero's size.
+      var sizemod as number
+      sizemod += 1
+      ~ Increase Size by one category
+      call SizeChange
+      ~ Increase our Space
+      herofield[tSpace].value += 5]]></eval>
+    <eval phase="First" priority="400" index="2"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~ Set the Form Tag onto the hero
+      perform hero.assign[Shadowd20.Ferocious]
+      ~ If we're curently shifting, forward a tag to the hero.
+      perform hero.assign[Shadowd20.FeralForm]
+      perform hero.findchild[BaseRace].assign[Helper.Quadruped]
+
+      ~ Set Level tags
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 9) Then
+         perform hero.assign[Shadowd20.Predator9]
+      Endif
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 10) Then
+         perform hero.assign[Shadowd20.Predator10]
+      Endif
+
+      ~ Disable the other Feral Forms
+      perform hero.child[cDrdPreFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdAerFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdForFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdEleFor].assign[Helper.ChgDisab1]]]></eval>
+    <eval phase="PreLevel" priority="10000" index="3"><![CDATA[
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      #applybonus[BonEnhance,hero.child[aSTR],8]
+      #applybonus[BonEnhance,hero.child[svFort],4]
+      hero.child[ArmorClass].field[tACNatural].value += 8
+      hero.child[Speed].field[tSpeed].value = 40
+      #applybonus[abValue,hero.child[xClimb],30]
+      #applybonus[abValue,hero.child[xSwim],30]
+
+      ~ Remove all equppied armor
+      Call RmvArmor
+      Call RmvShield
+
+      ~ Make our rake attack damage equal to our claw damage
+      If (hero.tagcount[Classes.Druid] + hero.tagcount[Shadowd20.FeralLevel] >= 9) Then
+        perform hero.findchild[BaseNatWep,"thingid.wClaw & Shadowd20.FeralWep"].setfocus
+        if (state.isfocus <> 0) Then
+          perform focus.pulltags[wMain.?]
+          perform focus.pulltags[Helper.Damage?]
+          perform state.clearfocus
+        endif
+        perform hero.findchild[BaseNatWep,"thingid.wRake & Shadowd20.FeralWep"].setfocus
+        if (state.isfocus <> 0) Then
+          perform focus.pushtags[wMain.?]
+          perform focus.pushtags[Helper.Damage?]
+          perform state.clearfocus
+        endif
+      Endif]]></eval>
+    </thing>
+  <thing id="cDrdForFor" name="Forest Avenger Form" description="At 12th level, you can take the form of a massive plantlike creature, similar to a shambling mound or a treant. (Druids not native to forest terrains typically rename this form to fi t their environment.) While in forest avenger form, you gain a pair of primary slam attacks that deal 1d8 points of damage each. Your size increases by one category (to a maximum of Colossal) and you have the reach of a tall creature of your size (5 feet for Medium, 10 feet for Large). You gain a +12 enhancement bonus to Strength and a +4 enhancement bonus on Fortitude and Will saves, and your natural armor bonus improves by 12. Your base land speed becomes 20 feet.\n\nYou gain damage reduction 5/slashing while in forest avenger form.\n\nAt 14th level, you gain Improved Overrun as a bonus feat while in forest avenger form (even if you don&apos;t meet the normal prerequisites)." compset="ClSpecial">
+    <usesource source="s20PFCamp"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Super"/>
+    <bootstrap thing="fImpOver">
+      <containerreq phase="First" priority="500">hero#Shadowd20.ForAvOver</containerreq>
+      <autotag group="Target" tag="wBite"/>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <containerreq phase="First" priority="99"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      <autotag group="Value" tag="2"/>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Shadowd20" tag="FeralWep"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      #applybonus[BonEnhance,hero.child[aSTR],12]
+      #applybonus[BonEnhance,hero.child[svFort],4]
+      #applybonus[BonEnhance,hero.child[svWill],4]
+      hero.child[ArmorClass].field[tACNatural].value += 12
+      hero.child[Speed].field[tSpeed].value = 20
+      #applydr[xDamRdS,5]
+      ~ Remove all equppied armor
+      Call RmvArmor
+      Call RmvShield]]></eval>
+    <eval phase="First" priority="499" index="3"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~ If 14th or higher druid set the Improved Overrun Feat to active
+      If (hero.tagcount[Classes.Druid] >= 14) Then
+         perform hero.assign[Shadowd20.ForAvOver]
+      Endif]]></eval>
+    <eval phase="First" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~ Set the Form Tag onto the hero
+      perform hero.assign[Shadowd20.ForAvenger]
+      ~if we're curently shifting, forward a tag to the hero.
+      perform hero.assign[Shadowd20.FeralForm]
+      ~Disable the other Feral Forms
+      perform hero.child[cDrdPreFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdAerFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdFerFor].assign[Helper.ChgDisab1]
+      perform hero.child[cDrdEleFor].assign[Helper.ChgDisab1]
+
+      ~sizemod is the +/- change to apply to the hero's size.
+      var sizemod as number
+      sizemod += 1
+      ~ Increase Size by one category
+      call SizeChange
+      ~ Increase our Space
+      herofield[tSpace].value += 5
+
+      ~ If we are size large or bigger then add 5 to our reach
+      If (herofield[tSize].value >= 1) Then
+         herofield[tReach].value += 5
+      Endif]]></eval>
+    <eval phase="First" priority="1000" index="4"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      perform hero.findchild[BaseRace].assign[Helper.Quadruped]
+      Call RmvMagItms]]></eval>
+    </thing>
+  <thing id="cDrdEleFor" name="Elemental Fury Form" description="{B}Note:{/b} This ability NOT scripted yet.\n\nAt 16th level, you can shapeshift into a giant form of air, earth, fire, or water (your choice each time you shapeshift).\n\nWhile in elemental fury form, you gain a pair of primary slam attacks that deal 2d6 points of damage each. Your size increases by two categories (to a maximum of Colossal), and you have the reach of a tall creature of your size (10 feet for Large, 15 feet for Huge). You gain a +16 enhancement bonus to Strength and a +4 enhancement bonus on Fortitude, Refl ex, and Will saves, and your natural armor bonus improves by 16.\n\nYou do not gain any new modes of movement in elemental fury form, nor does your base land speed change.\n\nYou gain immunity to extra damage from critical hits while in elemental form. You also gain immunity to an energy type related to the element chosen (air = electricity, earth = acid,fi re = fire, water = cold). You don&apos;t need to breathe while in elemental fury form.\n\nAt 18th level, you gain Great Cleave as a bonus feat while in elemental fury form (even if you don&apos;t meet the normal prerequisites)." compset="ClSpecial">
+    <comment>{B}Note:{/b} This ability NOT scripted yet.</comment>
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cRogS2AsQu" name="Assume Quirk" description="You can perfectly imitate a small habit or idiosyncrasy of a person you impersonate in order to throw off suspicion. When impersonating a particular individual, you can eliminate the normal Perception bonus granted to a viewer familiar with that individual. The effect extends to all viewers. Using this trick requires no special action, but you can maintain the deception for only 1 hour per day." compset="CustomSpec" summary="Familiar viewers get no bonus to see through your disguise" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="3 ranks in Disguise required."><![CDATA[#skillranks[skDisguise] >= 3]]></exprreq>
+    </thing>
+  <thing id="cRogS2GrFa" name="Group Fake-Out" description="{I}You lean left, go right, and leave a whole group of enemies holding the bag.{/i}\n\nYou can use Bluff to feint in combat against more than one opponent. Make one Bluff check opposed by separate Sense Motive checks for each opponent. For each opponent after the first that you wish to affect, you take a cumulative -2 penalty on your Bluff check.\n\n{B}Example:{/b} Merisiel wants to feint against a group of three orcs, so she rolls a Bluff check with a -4 penalty." compset="CustomSpec" summary="Feint against multiple foes simultaneously" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="3 ranks in Bluff required."><![CDATA[#skillranks[skBluff] >= 3]]></exprreq>
+    </thing>
+  <thing id="cRogS2NeOu" name="Never Outnumbered" description="{I}You can demoralize multiple enemies.{/i}\n\nWhen you use Intimidate to demoralize an opponent, you can affect all enemies within 10 feet that can see you, rather than only a single enemy you threaten. Each enemy rolls a separate modified level check to oppose your Intimidate check, but the skill check otherwise works as normal." compset="CustomSpec" summary="Demoralize multiple foes in combat simultaneously" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="3 ranks in Intimidate required."><![CDATA[#skillranks[skIntim] >= 3]]></exprreq>
+    </thing>
+  <thing id="cRogS2SeIm" name="Second Impression" description="{I}You can convince someone of your false identity even after your disguise fails.{/i}\n\nIf an observer sees through your disguise with a successful Spot check, you can (as an immediate action) attempt a Bluff check to convince him that he&apos;s mistaken.Use the observer&apos;s Spot check result as the DC for your Bluff check; if you succeed, the observer ignores the evidence of his own senses in favor of what your disguise attempts to show.\n\nYou must be aware of the observer&apos;s discovery in order to use this trick; for example, you can&apos;t use it against someone viewing you secretly, nor can you use it against someone who sees through your disguise but keeps that information secret.When in doubt, the DM should allow a character to use this trick if she has any reason to fear that her cover has been blown.\n\nYou can use this trick only once per day, but its effect extends to all viewers within 30 feet of you.For example, you could attempt it against an entire patrol of guards confronting you just as effectively as against a single person.\n\nThis trick doesn&apos;t let you maintain a disguise that has been defeated by other means; for example, if your disguise self spell is penetrated by a true seeing spell, Second Impression won&apos;t help." compset="CustomSpec" summary="Make Bluff check to reestablish blown disguise" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="1 rank in Disguise required."><![CDATA[#skillranks[skDisguise] >= 1]]></exprreq>
+    <exprreq message="1 rank in Bluff required."><![CDATA[#skillranks[skBluff] >= 1]]></exprreq>
+    </thing>
+  <thing id="cRogS2SoRe" name="Social Recover" description="{I}You can talk your way out of a problem you talked yourself into.{/i}\n\nIf your Diplomacy check to influence an NPC&apos;s attitude fails, you can spend another full round talking to the NPC, then make a Bluff check with a - 10 penalty. Use the result of this check in place of the Diplomacy check result, except that it can&apos;t improve the NPC&apos;s attitude by more than one step. Once you use this skill trick (successfully or not), you cannot use it against the same target again for 24 hours." compset="CustomSpec" summary="Make Bluff check to replace a failed Diplomacy check" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="2 ranks in Diplomacy required."><![CDATA[#skillranks[skDiplo] >= 2]]></exprreq>
+    <exprreq message="3 ranks in Bluff required."><![CDATA[#skillranks[skBluff] >= 3]]></exprreq>
+    </thing>
+  <thing id="cRogS2TiMi" name="Timely Misdirection" description="{I}You can divert an opponent&apos;s attention to avoid its attacks.{/i}\n\nIf you succeed on a Bluff check to feint in combat, your opponent can&apos;t make any attacks of opportunity against you until the start of its next turn. This effect is in addition to the normal benefits of a successful feint." compset="CustomSpec" summary="Successful feint allows you to avoid attacks of opportunity" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="3 ranks in Bluff required."><![CDATA[#skillranks[skBluff] >= 3]]></exprreq>
+    </thing>
+  <thing id="cRogS2ClIm" name="Clever Improviser" description="When making a Disable Device or Open Lock check without using thieves&apos; tools, you ignore the normal - 2 penalty. You can use this trick any number of times per day until you fail a Disable Device or Open Lock check made without using thieves&apos; tools. After a failure, you can&apos;t use Clever Improviser again until after you have rested for 8 hours." compset="CustomSpec" summary="Ignore penalty for Disable Device and Open Lock checks made without tools." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="1 ranks in Disable Device required."><![CDATA[#skillranks[skDisable] >= 1]]></exprreq>
+    </thing>
+  <thing id="cRogS2CoSp" name="Conceal Spellcasting" description="You can cast a spell without revealing that you are doing so. Make a Sleight of Hand check as part of the action used to cast the spell, opposed by the Spot checks of onlookers. If you are successful, an observer can&apos;t tell that you&apos;re casting a spell. That observer cannot make an attack of opportunity against you for casting, nor can it attempt to counter your spell." compset="CustomSpec" summary="Conceal your spellcasting from onlookers." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="1 rank in Spellcraft required."><![CDATA[#skillranks[skSpellcr] >= 1]]></exprreq>
+    <exprreq message="1 rank in Sleight of Hand required."><![CDATA[#skillranks[skSleight] >= 1]]></exprreq>
+    </thing>
+  <thing id="cRogS2FaMo" name="Fast Move" description="With a DC15 Acrobatics check you reduce the number of slashes in a square by two, but only up to a maximum of 2 squares can be reduced in this method. Failure means that the character can move across the difficult terrain, but each squares cost of movement does not change.\n\n{B}Note:{/b} On the battle map each slash in a square adds 5ft of extra movement needed to cross a square." compset="CustomSpec" summary="Use Acrobatics to make difficult terrain easier to cross." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    </thing>
+  <thing id="cRogS2Kip1" name="Kip Up" description="With a DC 20 Tumble check, you may bound to your feet from a prone position as a swift action, rather than a move action. This still provokes an attack of opportunity. If you fail you stand as a move action instead." compset="CustomSpec" summary="Demoralize multiple foes in combat simultaneously" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    </thing>
+  <thing id="cRogS2Kip2" name="Kip Up, Defensive" description="With a DC 25 Tumble check, you may kip up as a swift action without provoking attacks of opportunity. If you fail by less than 5 you still stand as a swift action, but you provoke an attack of opportunity. If you fail by 5 or more you stand as a move action." compset="CustomSpec" summary="Demoralize multiple foes in combat simultaneously" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    </thing>
+  <thing id="cRogS2BaEa" name="Battle Ear" description="As a Immediate action, you can attempt a Perception check to gain a better sense of the situation on a battlefield. Anyone who gains the benefits of flanking against you must make a Stealth check opposed by your Perception check result. If this check fails, the attacker loses the benefits of the flank. They lose the +2 bonus to attacks, while foes with sneak attack do not gain that bonus damage. Note that creatures you are unaware of do not need to make this check, as you cannot account for them." compset="CustomSpec" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="1 rank in Perception required."><![CDATA[#skillranks[skPercep] >= 1]]></exprreq>
+    </thing>
+  <thing id="cRogS2FaDi" name="Fast Disable" description="{I}No time for finesse a quick twist here should do it.{/i}\n\nAs a full-round action, you can make a disable device check at a -5 penalty against a complex trap or device." compset="CustomSpec" summary="Ignore penalty for Disable Device and Open Lock checks made without tools" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="12 ranks in Disable Device required."><![CDATA[#skillranks[skDisable] >= 12]]></exprreq>
+    </thing>
+  <thing id="cRogS2JuSt" name="Jumping Strike" description="If you make a Acrobatics check to leap at least half the distance you charge, you gain a +2 bonus to damage in addition to the standard +2 bonus to attacks when charging." compset="CustomSpec" summary="If you make a Acrobatics check to leap at least half the distance you charge, you gain a +2 bonus to damage in addition to the standard +2 bonus to attacks when charging." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="1 rank in Acrobatics required."><![CDATA[#skillranks[skAcrobat] >= 1]]></exprreq>
+    </thing>
+  <thing id="cRogS2WhCl" name="Whip Climber" description="{I}You can use a whip as a grappling hook.{/i}\n\nYou can use a whip as a makeshift grappling hook, lashing it around a protrusion or other firm, weight bearing object in order to climb a wall or swing across a chasm. You make Climb checks using the whip as if it were a normal rope. Using this skill trick requires a range attack roll as normal for securing a grappling hook but takes only a move action." compset="CustomSpec" summary="Ignore penalty for Disable Device and Open Lock checks made without tools" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="Proficiency with the whip required."><![CDATA[hero.tagis[WepProf.wWhip] <> 0]]></exprreq>
+    </thing>
+  <thing id="cRogS2AMtr" name="Assist Magical Trap" description="A spellcaster can attempt to help a Rogue disable magical traps and only magical traps, by using both Detect Magic and Spellcraft. By doing this the spellcaster will be at Ground Zero just like the Rogue and anything that happens to the rogue happens to the spellcaster. The spellcaster must use Detect Magic and make a Spellcraft vs DC20 + Trap Spell Level. If successful the rogue can add a +2 Luck Bonus to the rogue&apos;s Disable Trap attempt. The spellcaster does not need any ranks in the Disable Device Skill to use this ability." compset="CustomSpec" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="1 rank in Spellcraft required."><![CDATA[#skillranks[skSpellcr] >= 1]]></exprreq>
+    </thing>
+  <thing id="arWitWarlo" name="Warlock" description="Born of a supernatural bloodline, a warlock seeks to master the perilous magic that suffuses his soul. Unlike sorcerers or wizards, who approach arcane magic through the medium of spells, a warlock invokes powerful magic through a mysterious patron. By harnessing this innate magical gift through fearsome determination and force of will, a warlock can perform feats of supernatural effects, beguile the weak-minded, or scour his foes with blasts of eldritch power." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="65"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="RemoveCast"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="wS2EldBlas"></bootstrap>
+    <bootstrap thing="cWitS2PaMa">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2DeMa">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2DeIt">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2EnRe">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="fArmLight"></bootstrap>
+    <bootstrap thing="cWitS2DR">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2DR">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2DR">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2DR">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2DR">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2DR">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2FieR">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2FieR">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2FieR">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2FieR">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2FieR">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpWit"/>
+    <eval phase="PostLevel" priority="20000">linkage[varies].field[cConcCheck].value += #levelcount[Witch]</eval>
+    </thing>
+  <thing id="cWitS2ElBl" name="Eldritch Blast" description="The first ability a warlock learns is {i}eldritch blast.{/i} A warlock attacks his foes with eldritch power, using baleful magical energy to deal damage and sometimes impart other debilitating effects.\n\nAn {i}eldritch blast{/i} is a ray with a range of 60 feet. It is a ranged touch attack that affects a single target, allowing no saving throw. An {i}eldritch blast{/i} deals 1d6 points of damage + additional damage equal to the warlocks’s Intelligence modifier at 1st level and increases in power as the warlock rises in level. An {i}eldritch blast{/i} is the equivalent of a spell whose level is equal to one-half the warlock&apos;s class level (round down), with a minimum spell level of 1st and a maximum of 9th when a warlock reaches 18th level or higher.\n\nAn {i}eldritch blast{/i} is subject to spell resistance, although the Spell Penetration feat and other effects that improve caster level checks to overcome spell resistance also apply to {i}eldritch blast.{/i} An {i}eldritch blast{/i} deals half damage to objects. Metamagic feats cannot improve a warlock&apos;s {i}eldritch blast{/i} (because it is a spell-like ability, not a spell). However, the feat Ability Focus ({i}eldritch blast{/i}) increases the DC for all saving throws (if any) associated with a warlock&apos;s {i}eldritch blast{/i} by 2.\n\nThis ability replaces Spell casting." compset="ClSpecial">
+    <comment>abValue2 - Set the die size of the Blast damage</comment>
+    <fieldval field="abValue2" value="6"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpecType" tag="Attack"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " (" & field[xIndex].value  & "d" & field[abValue2].value & ")"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " (" & field[abValue].value  & "d" & field[abValue2].value & ")"
+
+      ~ Only run this once for the first copy
+      If (tagis[Helper.FirstCopy] <> 0) Then
+         ~ As the Blast is affected by SR we need to show the CL vs SR
+         ~ correctly. As we have no CL we need to add in our level.
+         #skillbonus[skS2ClSr] += field[xTotalLev].value
+      Endif]]></eval>
+    </thing>
+  <thing id="arNinTraFi" name="Trap Finding" description="Trap finding Ninjas are about getting into places they should not be and living to tell the tell.  They practice so often with traps and locks that little time is left for learning the use of poisons." compset="ClassVary" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cAsnPoison"/>
+    <bootstrap thing="cRogTrapfn">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpNin"/>
+    </thing>
+  <thing id="cWitS2PaMa" name="Patron Magic" description="The bonus spells from the witch&apos;s Patron are changed to be 1/day spell-like abilities.  You receive access to them at the same levels a witch would normally add them to her familiar.  They calculate there abilities using the warlocks level as the caster level and the DC is calculated like a Hex (10+1/2 Warlock level + Int)." compset="ClSpecial">
+    <usesource source="s20PFCamp"/>
+    <tag group="StandardDC" tag="aINT"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ This makes the Patron ability print on the character sheet
+      foreach pick in hero from BaseCustSp where "SpecSource.cHelpWit"
+         perform eachpick.delete[Helper.SpecUp]
+      nexteach]]></eval>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      var search as string
+      search = "sClass.cHelpWit & !sLevel.0 &"
+
+      ~ Set the correct search values so we only unlock the spells at the right levels
+      If (field[xTotalLev].value >=18) Then
+         search &= " (BonusSplAt.18 |BonusSplAt.16 |BonusSplAt.14 |BonusSplAt.12 |BonusSplAt.10 |BonusSplAt.8 |BonusSplAt.6 |BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=16) Then
+         search &= " (BonusSplAt.16 |BonusSplAt.14 |BonusSplAt.12 |BonusSplAt.10 |BonusSplAt.8 |BonusSplAt.6 |BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=14) Then
+         search &= " (BonusSplAt.14 |BonusSplAt.12 |BonusSplAt.10 |BonusSplAt.8 |BonusSplAt.6 |BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=12) Then
+         search &= " (BonusSplAt.12 |BonusSplAt.10 |BonusSplAt.8 |BonusSplAt.6 |BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=10) Then
+         search &= " (BonusSplAt.10 |BonusSplAt.8 |BonusSplAt.6 |BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=8) Then
+         search &= " (BonusSplAt.8 |BonusSplAt.6 |BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=6) Then
+         search &= " (BonusSplAt.6 |BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=4) Then
+         search &= " (BonusSplAt.4 |BonusSplAt.2)"
+      ElseIf (field[xTotalLev].value >=2) Then
+         search &= " (BonusSplAt.2)"
+      Endif
+
+      ~ Only try and turn spells into spell-like if we are level 2 or higher
+      If (field[xTotalLev].value >= 2) Then
+         ~ Try and make the spells show as spell-like abilities
+         foreach pick in hero from BaseSpell where search
+            perform eachpick.assign[Helper.SpellLike]
+            perform eachpick.assign[SpecType.SpellLike]
+            perform eachpick.assign[Usage.Day]
+            eachpick.field[sDC].value = field[abDC].value
+            eachpick.field[sCL].value = field[xAllLev].value
+            eachpick.field[trkMax].value += 1
+         nexteach
+      Endif]]></eval>
+    </thing>
+  <thing id="cWitS2DeMa" name="Detect Magic" description="Beginning at 2nd level, a warlock can use {I}detect magic{/b} as the spell at will. His caster level equals his class level." compset="ClSpecial">
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spDeteMag0"/>
+    </thing>
+  <thing id="cWitS2DeIt" name="Deceive Item" description="At 3rd level and higher, a warlock has the ability to more easily commandeer magic items made for the use of other characters. When making a Use Magic Device check, a warlock can take 10 even if distracted or threatened." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Skill"/>
+    </thing>
+  <thing id="cWitS2EnRe" name="Energy Resistance" description="At 9th level and higher, a warlock has resistance 5 against any two of the following energy types: acid, cold, electricity, fire, and sonic. Once the types are chosen, this energy resistance cannot be changed. At 20th level, a warlock gains resistance 10 against the two selected types of energy." compset="ClSpecial">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="fShowWhat" tag="Energy"/>
+    <tag group="fShowWhat2" tag="Energy"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Set the amount of resistance
+      field[abValue].value += 5
+      If (#totallevelcount[] >= 20) Then
+         field[abValue].value += 5
+      Endif
+      ~ Pull the blood Energy Tags
+      perform field[usrChosen1].chosen.pulltags[BloodEner.?]
+      perform field[usrChosen2].chosen.pulltags[BloodEner.?]
+      ~ Set the correct resistances based on the Blood Energy Tags
+      If (tagis[BloodEner.Acid] <> 0) Then
+         #applyresist[xDamRsAcid,field[abValue].value]
+      Endif
+      If (tagis[BloodEner.Cold] <> 0) Then
+         #applyresist[xDamRsCold,field[abValue].value]
+      Endif
+      If (tagis[BloodEner.Elec] <> 0) Then
+         #applyresist[xDamRsElec,field[abValue].value]
+      Endif
+      If (tagis[BloodEner.Fire] <> 0) Then
+         #applyresist[xDamRsFire,field[abValue].value]
+      Endif
+      If (tagis[BloodEner.Sonic] <> 0) Then
+         #applyresist[xDamRsSoni,field[abValue].value]
+      Endif]]></eval>
+    </thing>
+  <thing id="cWarS2BaUt" name="Baleful Utterance" description="You speak a single syllable of the Dark Speech, affecting an object or area as if by a {I}shatter{/i} spell. If a creature is holding or wearing the target of the spell and the target is destroyed, the creature must make a Fortitude save or be dazed for 1 round and deafened for 1 minute by your terrible word. This is a sonic effect." compset="CustomSpec" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpInfo" tag="spShatter2"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aINT"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    </thing>
+  <thing id="cWarS2DaLu" name="Dark One’s Own Luck" description="You are favored by the dark powers if you have this hex. You gain a luck bonus equal to your Charisma bonus (if any) on Fortitude saves, Reflex saves, or Will saves (your choice each time you use this ability) for a period of 24 hours. You can’t apply this ability to two different save types at the same time. This bonus can never exceed your class level." compset="CustomSpec" uniqueness="useronce">
+    <fieldval field="usrCandid1" value="thingid.svFort|thingid.svWill|thingid.svRef"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    <eval phase="PostAttr" priority="10000">~ If nothing chosen get out now
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Find what is lower the level or the ability modifier
+      field[abValue].value += minimum(linkage[table].field[cTotalLev].value,hero.child[aCHA].field[aModBonus].value)
+      ~ give that bonus to the chosen saving throw
+      field[usrChosen1].chosen.field[Bonus].value += field[abValue].value</eval>
+    </thing>
+  <thing id="cWarS2ElSp" name="Eldritch Spear" description="This blast shape hex extends your eldritch blast attacks to great distances. Eldritch spear increases the range of an eldritch blast attack to 250 feet with no range increment." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    <eval phase="PreLevel" priority="10000">~ Change range from 60ft to 250ft.
+      perform hero.child[wS2EldBlas].tagreplace[wRangeInc.60,wRangeInc.250]</eval>
+    </thing>
+  <thing id="cWarS2ElCh" name="Eldritch Chain" description="This blast shape hex allows you to improve your eldritch blast by turning it into an arc of energy that &quot;jumps&quot; from the first target to others. An eldritch chain can jump to one or more secondary targets within 30 feet of the first target, allowing you to make additional ranged touch attacks and deal damage to the secondary targets if you hit.\n\nYou can &quot;jump&quot; the chain to one secondary target per five caster levels, so you can strike two additional targets at 10th level, three additional targets at 15th level, and four additional targets at 20th level. Each new target must be within 30 feet of the previous one, and you can’t target the same creature more than once with the eldritch chain. If you miss any target in the chain, the eldritch chain attack ends there.  A warlock must be at least 6th level to take this hex.\n\nEach target struck after the first takes half the damage dealt to the first target. This reduction in damage to secondary targets applies to any effect that increases the damage of your {i}eldritch blast{/i} (such as {i}vitriolic blast{/i}). You must make a separate spell penetration check for each target, if applicable." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    <exprreq message="Level 6 warlock required."><![CDATA[#levelcount[Witch] >= 6]]></exprreq>
+    </thing>
+  <thing id="cWarS2ElCo" name="Eldritch Cone" description="This blast shape hex allows you to invoke your eldritch blast as a 30-foot cone. The eldritch cone deals the normal eldritch blast damage to all targets within the area. This is not a ray attack, so it requires no ranged touch attack. Any creature in the area of the cone can attempt a Reflex save for half damage. A warlock must be at least 11th level to take this hex." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aINT"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    <exprreq message="Level 11 warlock required."><![CDATA[#levelcount[Witch] >= 11]]></exprreq>
+    </thing>
+  <thing id="cWarS2ElDo" name="Eldritch Doom" description="This blast shape hex allows you to invoke your eldritch blast as the dreaded eldritch doom. This causes bolts of mystical power to lash out and savage nearby targets. An eldritch doom deals eldritch blast damage to any number of targets designated by you and within 20 feet. This is not a ray attack, so it requires no ranged touch attack. Each target can attempt a Reflex save for half damage. A warlock must be at least 16th level to take this hex." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aINT"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    <exprreq message="Level 16 warlock required."><![CDATA[#levelcount[Witch] >= 16]]></exprreq>
+    </thing>
+  <thing id="cWarS2HiBl" name="Hideous Blow" description="As a standard action, you can make a single melee attack. If you hit, the target is affected as if struck by your eldritch blast (including any eldritch essence applied to the blast). This damage is in addition to any weapon damage that you deal with your attack, although you need not deal damage with this attack to trigger the eldritch blast effect." compset="CustomSpec" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    </thing>
+  <thing id="cHWS2WarSk" name="Warrior Skills" description="A Holy Warrior gains d10 hit points, Heavy Armor Proficiency and the full base attack bonus of a fighter.  This ability replaces Domains." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    </thing>
+  <thing id="cWitS2DR" name="Damage Reduction" description="Fortified by the supernatural power flowing in his body, a warlock becomes resistant to physical attacks at 5th level and above, gaining damage reduction 1/cold iron. At 8th level and every three levels thereafter, a warlock’s damage reduction improves." compset="ClSpecial">
+    <tag group="SpecType" tag="DR"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " (" & field[xIndex].value  & "/cold iron)"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " (" & field[abValue].value  & "/cold iron)"
+
+      #applydr[xDamRdIron,field[abValue].value]]]></eval>
+    </thing>
+  <thing id="cWitS2FieR" name="Fiendish Resilience" description="Beginning at 11th level, a warlock knows the trick of fiendish resilience. Once per day, as a swift action, he can enter a state that lasts for 2 minutes. While in this state, the warlock gains fast healing 1. At 13th level and every two levels their after, a warlock’s fiendish resilience improves by 1." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="SpecType" tag="FastHeal"/>
+    <tag group="Usage" tag="Day"/>
+    <bootstrap thing="xFastHeal"></bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " (fast healing " & field[xIndex].value  & ")"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " (fast healing " & field[abValue].value  & ")"
+
+      ~only run the rest for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ set the Fast Healing value
+      #value[xFastHeal] += field[abValue].value]]></eval>
+    </thing>
+  <thing id="arRgrShift" name="Shifter Ranger" description="Many shifters become rangers, both from their love of the ranger&apos;s solitude and single-minded purpose, and from their inherent connection to the natural world. Racial archetype levels allow the shifter ranger to enjoy an even stronger bond with the wilderness, enhancing his own shifting abilities and even sharing them with his animal companion." compset="ClassVary" uniqueness="unique">
+    <usesource source="srcShifter"/>
+    <tag group="AbReplace" tag="cAnimShare"/>
+    <tag group="ClVaryName" tag="Replace"/>
+    <bootstrap thing="cRgrShaShi">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cRgrShftEm">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpRgr"/>
+    <exprreq message="Only Shifters can take this archetype."><![CDATA[#hasrace[rShifters] <> 0]]></exprreq>
+    </thing>
+  <thing id="cRgrShftEm" name="Shifter Empathy" description="Beginning at 1st level, a shifter ranger can improve the attitude of an animal. This ability functions identically to the ranger class feature of the same name, except that the shifter ranger&apos;s innate understanding of the natural world allows him to add his Wisdom modifier (instead of his Charisma modifier) to his wild empathy checks." compset="ClSpecial" summary="A shifter ranger adds his Wisdom modifier (instead of his Charisma modifier) to his wild empathy checks.">
+    <tag group="Custom" tag="WildEmpWis" name="Wild Empathy - Wisdom"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PreLevel" priority="5000">~ Push our Wild Empathy tag to the hero
+      perform hero.pushtags[Custom.WildEmp?]</eval>
+    </thing>
+  <thing id="cRgrShaShi" name="Share Shifting" description="A shifter ranger can share the benefits he gains while shifting with his animal companion. The companion must be adjacent to the ranger when he begins shifting (though any distance between them has no subsequent effect). All shared benefits end when the rangers shifting ends (or if he loses consciousness).  The animal companion gains all the benefits of shifting (including any shifter feats or class features in effect for the shifter ranger), though it does not gain any new natural weapons.  If it already has a natural weapon that the shifter ranger gains while shifting, it gains a +1 bonus on damage rolls for every four of the ranger&apos;s class levels. This replaces the standard rangers ability to share spells with his animal companion." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cRogS2LegS" name="Leg Sweep" description="A rogue that selects this talent gains Improved Trip as a bonus feat." compset="CustomSpec" summary="You gain the Improved Trip feat as a bonus feat." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog" name="Rogue" abbrev="Rogue"/>
+    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="abCategory" tag="RogTal"/>
+    <bootstrap thing="fImpTrip">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    </thing>
+  <thing id="arS2SwoSai" name="Sword Saint" description="Sword saints hail from lands where samurai are prevalent, and are often ronin who wander the world seeking new challenges to perfect their intricate style of swordplay called {i}iaijutsu{/i}. The following benefits apply only when a sword saint is using a sword and carrying nothing in his other hand. The sword saint is an archetype of the samurai alternate class ({i}Ultimate Combat{/i} 18)." compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvAnimStar" value="-1"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="AbReplace" tag="cAnimLink" name="Animal Companion Link"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cSamMntArc" name="Mounted Archery"/>
+    <tag group="AbReplace" tag="cCavBanner" name="Banner"/>
+    <tag group="AbReplace" tag="cCavGrBann" name="Greater Banner"/>
+    <tag group="AbReplace" tag="cCavRide" name="Mounted"/>
+    <bootstrap thing="cAnimClass"></bootstrap>
+    <bootstrap thing="cSamS2TeIa">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2RoIa">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2BrSl">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cSamS2IaSt">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpSam"/>
+    </thing>
+  <thing id="cSamS2IaSt" name="Iaijutsu Strike" description="A sword saint can perform a lightning-quick iaijutsu strike against the target of his challenge to inflict devastating wounds while drawing his sword. After the sword saint has challenged a foe but before he has attacked the target of his challenge, he may choose to use his iaijutsu strike as a full-round action, making an attack roll with his weapon as normal. In order to use this ability, the sword saint&apos;s weapon must be sheathed at the start of his turn though drawing it counts as a Free action. If he successfully hits his opponent with an iaijutsu strike, his attack deals an additional +1d6 points of damage. This bonus damage increases by an additional +1d6 at 3rd level and every two levels thereafter to a maximum of +10d6 damage at 19th level. Any extra damage as a result of a successful iaijutsu strike is not multiplied by a critical hit.\n\nAfter making an iaijutsu strike, a sword saint takes a -4 penalty to his AC until his next turn and his weapon is now drawn and he may continue to fight normally. Regardless of whether he hits his opponent with the iaijutsu strike, a sword saint cannot use this ability on the same foe more than once per day.\n\nAt 10th level, a sword saint learns to focus faster and is able to make an iaijutsu strike as a standard action, and the penalty to his AC is reduced to –2.\n\nThis ability replaces a samurai&apos;s mount.\n\n{b}Shadow d20{/b} Drawing of a weapon during a Iaijutsu Strike has been changed to be a free action.  The activation scripts have been coded to only work with swords." compset="ClSpecial">
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      field[listname].text = field[name].text & " " & signed(field[xIndex].value) & "d6"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Set Number of Dice
+      field[abValue].value += field[xCount].value
+      ~ Set AC Penalty
+      field[abValue2].value += -4
+
+      ~ If level 10 reduce penalty by 2
+      If (field[xAllLev].value >= 10) Then
+        field[abValue2].value += 2
+      Endif
+
+      ~ Set live name
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value) & "d6"
+
+      ~If we are NOT active get out now
+      doneif (field[abilActive].value <> 1)
+      ~ Set penalty to AC
+      hero.child[ArmorClass].field[Penalty].value += field[abValue2].value
+
+      var sStrike as string
+      sStrike = "+" & field[abValue].value & "d6"
+
+      ~ Loop through all Swords
+      foreach pick in hero from BaseWep where "wFtrGroup.BladeHeavy | wFtrGroup.BladeLight"
+         #extradamage[eachpick,sStrike,field[name].text]
+      nexteach]]></eval>
+    </thing>
+  <thing id="cSamS2BrSl" name="Brutal Slash" description="At 4th level, a sword saint&apos;s iaijutsu strike becomes even more deadly. If a sword saint threatens a critical hit with his iaijutsu strike, he adds a bonus equal to 1/2 his class level to the attack roll to confirm a critical hit. This ability replaces mounted archery." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+      var bonus as number
+      bonus = round(field[xTotalLev].value/2,0,-1)
+
+      field[listname].text = "Brutal Slash +" & bonus
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ our bonus half our character level
+      field[abValue].value += round(field[xTotalLev].value/2,0,-1)
+      field[livename].text = field[thingname].text & " +" & field[abValue].value]]></eval>
+    </thing>
+  <thing id="cSamS2TeIa" name="Terrifying Iaijutsu" description="At 5th level, a sword saint&apos;s iaijutsu strike devastates the morale of foes that witness it. When a sword saint successfully hits with an iaijutsu strike, all foes within 30 feet must succeed at a Will save (DC 10 + 1/2 the sword saint&apos;s class level + the sword saint&apos;s Cha modifier) or become shaken for 1d4+1 rounds. This ability replaces banner." compset="ClSpecial">
+    <tag group="StandardDC" tag="aCHA"/>
+    </thing>
+  <thing id="cSamS2RoIa" name="Roaring Iaijutsu" description="At 14th level, a sword saint&apos;s iaijutsu strike deafens foes upon impact. When a sword saint successfully hits with an iaijutsu strike, all foes within 30 feet must succeed at a Fortitude save (DC 10 + 1/2 the sword saint&apos;s class level + the sword saint&apos;s Str modifier) or be deafened for 1d4 minutes. This ability replaces greater banner." compset="ClSpecial">
+    <tag group="StandardDC" tag="aSTR"/>
+    </thing>
+  <thing id="cS2SamOrdB" name="Order of the Black Daimyo" description="While samurai who follow the order of the warrior typically adhere to the principles of bravery and duty in order to live a life that emphasizes honor, there exist others who are motivated by more selfish goals. These evil samurai follow the order of the Black Daimyo, and may be vicious warlords or warriors in the service to some ruthless lord. They usually worship General Susumu, the patron god of sadistic samurai, and they uphold the virtues of violence and pride above all other things.\n\nSamurai of the order of the Black Daimyo function exactly like samurai of the order of the warrior - they simply pursue war and glory instead of honor and heroism." compset="CustomSpec" uniqueness="unique">
+    <usesource source="srcDragEmp"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="SpecSource" tag="cHelpCav"/>
+    <tag group="SpecSource" tag="cHelpSam"/>
+    <tag group="ClassSkill" tag="skKnowHist"/>
+    <tag group="ClassSkill" tag="skKnowNobl"/>
+    <tag group="abCategory" tag="CavOrder"/>
+    <bootstrap thing="cSamHnrAll">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cSamHnrAll">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cSamHnrAll">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <bootstrap thing="cSamWofS">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cSamStrTru">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cSamHnrAll">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cSamWarSki">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSamHnrAll">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <eval phase="PostLevel" priority="11500">~ Post-Levels 11,500
+field[abValue].value += 1 + round(linkage[table].field[cTotalLev].value/4,0,-1)
+
+#appenddesc[cCavChalle,&quot;{b}Addition from Order of the Warrior{/b}: Whenever an Order of the Black Daimyo declares a challenge, he receives damage reduction &quot; &amp; field[abValue].value &amp; &quot;/— against attacks made by the target of his challenge.&quot;]
+
+hero.child[cCavChalle].field[livename].text = &quot;Warrior&apos;s &quot; &amp; hero.child[cCavChalle].field[livename].text
+
+hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[abValue].value &amp; &quot;/- against attacks from challenge target.&quot;</eval>
+    </thing>
+  <thing id="arS2WitWhi" name="White Haired Witch" description="A white-haired witch concentrates her mysterious powers on improving her prowess in melee, using feats of agility and her prehensile hair to deal extreme damage. Rogue talents and advanced rogue talents marked with an asterisk (*) can be found in the {i}Pathfinder RPG Advanced Player&apos;s Guide{/i}. The white-haired witch is an archetype of the witch class.\n\n{B}Replaces:{/b} Hexes, Major Hexes, and Grand Hexes." compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSpecSing" value="Rogue Trick"/>
+    <fieldval field="cvSpecName" value="Rogue Tricks"/>
+    <arrayval field="cvCustTot" index="0" value="-1"/>
+    <arrayval field="cvCustTot" index="1" value="-2"/>
+    <arrayval field="cvCustTot" index="3" value="-3"/>
+    <arrayval field="cvCustTot" index="5" value="-4"/>
+    <arrayval field="cvCustTot" index="7" value="-5"/>
+    <arrayval field="cvCustTot" index="8" value="-5"/>
+    <arrayval field="cvCustTot" index="9" value="-5"/>
+    <arrayval field="cvCustTot" index="10" value="-5"/>
+    <arrayval field="cvCustTot" index="11" value="-5"/>
+    <arrayval field="cvCustTot" index="12" value="-5"/>
+    <arrayval field="cvCustTot" index="13" value="-5"/>
+    <arrayval field="cvCustTot" index="14" value="-5"/>
+    <arrayval field="cvCustTot" index="15" value="-5"/>
+    <arrayval field="cvCustTot" index="16" value="-5"/>
+    <arrayval field="cvCustTot" index="17" value="-5"/>
+    <arrayval field="cvCustTot" index="18" value="-5"/>
+    <arrayval field="cvCustTot" index="19" value="-5"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="cAttack" tag="Medium"/>
+    <tag group="ClVaryName" tag="Replace"/>
+    <bootstrap thing="cWitS2Cons">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="ClassVary" tag="arS2WitWhi"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2Trip">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2Pull">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2Stra">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2WhHa">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpWit"/>
+    <eval phase="First" priority="10000" index="3">perform hero.assign[ClassVary.arWhiHaiWi]</eval>
+    <eval phase="Final" priority="99999999" index="2"><![CDATA[
+      ~ Final Phase 99999999
+      linkage[varies].field[cCstSpExpr].text = "(SpecSource.cHelpRog) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & (thingid.cRogAnoDay |thingid.cRogAssaLe |thingid.cRogComTri |thingid.cRogDefRol |thingid.cRogFiness |thingid.cRogImpEva |thingid.cRogMajMag |thingid.cRogMinMag |thingid.cRogOpport |thingid.cRogPosAtk |thingid.cRogRedire |thingid.cRogResili |thingid.cRogSlipMi |thingid.cRogSurpri |thingid.cRogReexam |thingid.cRogWeTrai)"]]></eval>
+    </thing>
+  <thing id="cWitS2WhHa" name="White Hair" description="At 1st level, a white-haired witch gains the ability to use her hair as a weapon. This functions as a primary natural attack with a reach of 5 feet. The hair deals 1d4 points of damage (1d3 for a Small witch) plus the witch&apos;s Intelligence modifier. In addition, whenever the hair strikes a foe, the witch can attempt to grapple that foe with her hair as a free action without provoking an attack of opportunity, using her Intelligence modifier in place of her Strength modifier when making the combat maneuver check. When a white-haired witch grapples a foe in this way, she does not gain the grappled condition.\n\nAt 4th level and every four levels thereafter, a white-haired witch&apos;s hair adds 5 feet to its reach, to a maximum of 30 feet at 20th level.\n\nThe hair cannot be sundered or attacked as a separate creature. In addition, a white-haired witch further improves her ability to control her hair as she progresses in level, gaining the following abilities." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Calculate Reach
+      field[abValue].value = (round(root.linkage[varies].field[cTotalLev].value/4, 0, -1) * 5) + 5
+
+      ~ Change live name to include the reach
+      foreach pick in hero from BaseWep where "ClassVary.arS2WitWhi"
+         eachpick.field[livename].text = "Hair " & field[abValue].value & "ft reach"
+      nexteach]]></eval>
+    </thing>
+  <thing id="cWitS2Cons" name="Constrict" description="At 2nd level, when the white-haired witch&apos;s hair successfully grapples an opponent, it can begin constricting her victim as a free action, dealing damage equal to that of its attack." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="cWitS2Trip" name="Trip" description="At 4th level, a white-haired witch who successfully strikes a foe with her hair can attempt a combat maneuver check to trip the creature as a free action." compset="ClSpecial">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cWitS2Pull" name="Pull" description="At 6th level, a white-haired witch who successfully strikes a foe with her hair can attempt a combat maneuver check to pull the creature 5 feet closer to her as a free action." compset="ClSpecial">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cWitS2Stra" name="Strangle" description="At 8th level, when the white-haired witch&apos;s hair is grappling with an opponent, that creature is considered strangled, and cannot speak or cast spells with verbal components." compset="ClSpecial">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="arS2RagYok" name="Yokai hunter" description="Yokai hunters possess a supernatural tether to the spirit worlds that shroud mortal existence. They use their powers to peer into the realm of the dead, and are adept at hunting those who dwell in the realm between the Material Plane and the Great Beyond, the supernatural beings Tians refer to as {i}yokai{/i}. The yokai hunter is an archetype of the ranger class." compset="ClassVary" uniqueness="unique">
+    <usesource source="srcDragEmp"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cWoodStrid" name="Woodland Stride"/>
+    <tag group="AbReplace" tag="cRgrCamo" name="Camouflage"/>
+    <bootstrap thing="cRagS2FaYo">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2YoSe">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2ReYo">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpRgr"/>
+    <eval phase="Final" priority="99999999" index="2"><![CDATA[
+      ~ Reset the Custom List of allowed FE
+      linkage[varies].field[cFav1Expr].text = "!Helper.Secondary & (thingid.feAberr|thingid.feDragon|thingid.feFey|thingid.feMagicBst|thingid.feOutNat|thingid.feUndeadIn)"]]></eval>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ Don't increase FE bonus.
+      hero.child[resEnemUpg].field[resMax].value -= hero.child[resEnemUpg].field[resMax].value]]></eval>
+    </thing>
+  <thing id="cRagS2FaYo" name="Favored Yokai" description="A yokai hunter possesses a supernatural ability to sense beings connected to the spirit world, such as kami, oni, and ghosts, and is formidable at fighting them. At 1st level, a yokai hunter gains a +2 bonus on weapon attacks and damage rolls against one of the following creature types (and subtypes, if applicable), which are considered yokai for the purposes of this archetype: aberration, dragon, fey, magical beast, outsider (native), and undead (incorporeal). (A GM may choose to alter this list for the purposes of her campaign.) At 5th level and every five levels thereafter, a yokai hunter may select another favored yokai from this list, gaining a +2 bonus on weapon attacks and damage rolls against that yokai.\n\nIn addition, whenever a yokai hunter sees a favored yokai that is disguised or has not made its otherworldly essence known, he gains an automatic check to identify the creature as such. To make this check, a yokai hunter rolls 1d20 and adds his yokai hunter level and Charisma modifier (DC 10 + 1/2 the yokai&apos;s Hit Dice + the yokai&apos;s Cha modifier). A successful check means that the yokai hunter recognizes the creature&apos;s ties to the spiritual world. Regardless of whether the check is successful, a yokai hunter gains the bonus on weapon attacks and damage rolls against favored yokai.\n\nThis ability replaces favored enemy. Ranger abilities that rely on a favored enemy instead rely on this ability." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostAttr" priority="20000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Set the bonus to detect Yokai
+      field[abValue].value += #attrbonus[aCHA] + field[xTotalLev].value
+      field[livename].text = field[thingname].text & " (+" & field[abValue].value & ")"]]></eval>
+    </thing>
+  <thing id="cRagS2YoSe" name="Yokai Sense" description="At 7th level, a yokai hunter can sense yokai he has identified with his favored yokai ability as though he had blindsense out to a range of 60 feet. This ability replaces woodland stride." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cRagS2ReYo" name="Resist Yokai" description="At 12th level, a yokai hunter can attempt to shrug off the magical energies of a yokai. He gains a +4 insight bonus on saving throws to resist the spells, spell-like abilities, and supernatural abilities of favored yokai. In addition, once per day as a standard action, a yokai hunter can shed an effect placed on him by a yokai as {i}break enchantment{/i}, using his yokai hunter level as his caster level. This ability replaces camouflage." compset="ClSpecial">
+    <fieldval field="shortname" value="+4 insight vs Spells, Sp, Su of yokai"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Defense"/>
+    </thing>
+  <thing id="yBbnSupers" name="Superstition" description="The barbarian gains a +2 morale bonus on saving throws made to resist spells, supernatural abilities, and spell-like abilities. This bonus increases by +1 for every 4 levels the barbarian has attained. While raging, the barbarian cannot be a willing target of any spell and must make saving throws to resist all spells, even those cast by allies." compset="CustomSpec" summary="+2 save vs. magic while raging." replaces="cBbnSupers" uniqueness="unique">
+    <comment><![CDATA[Added "activated Logic", Added in new features from Pathfinder v7.0.]]></comment>
+    <tag group="SpecSource" tag="cHelpBbn" name="Barbarian" abbrev="Barbarian"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    <eval phase="PostLevel" priority="10000" index="3"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ If in a rage then get out now
+      doneif (hero.child[cBbnRage].field[abilActive].value <> 0)
+
+       ~we can't enter be on unless we are raging
+       perform assign[Helper.ChgDisab1]]]></eval>
+    <eval phase="PreAttr" priority="10000" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~ Adjust our total bonus
+      var bonus as number
+      bonus = field[xTotalLev].value / 4
+      bonus = round(bonus, 0, -1) + 2
+      field[abValue].value += bonus
+
+      ~ If not activated, just get out now
+      doneif (field[abilActive].value <> 1)
+      ~ If disabled then just get out now
+      doneif (tagis[Helper.ChgDisab1] <> 0)
+
+      ~ Add Luck Morale to our saving throws
+      #applybonus[BonMorale,hero.child[svAll],field[abValue].value]]]></eval>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Set live and summary fields
+      field[livename].text = "Superstition +" & field[abValue].value
+      field[abSumm].text = "+" & field[abValue].value & " save vs. magic while raging."
+
+      #situational[hero.child[svAll],"+" & field[abValue].value & " save vs. magic while raging.",field[name].text]]]></eval>
+    </thing>
+  <thing id="cRogS2Focu" name="Skill Focus" description="Pick one skill. You gain a +3 bonus on all checks involving the chosen skill. You can pick this same skill trick mutliple times. You may also pick the same skill and the bonuses will stack." compset="CustomSpec" summary="You gain a +3 bonus on all checks involving a chosen skill.">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="fShowWhat" tag="Skills"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <eval phase="PreLevel" priority="4000"><![CDATA[
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen <> 1)
+      ~ Give a bonus of +3
+      field[usrChosen1].chosen.field[Bonus].value += 3]]></eval>
+    </thing>
+  <thing id="cRogS2ClVi" name="Clarity of Vision" description="As a swift action, you can attempt a DC 20 Perception check. If successful, you focus your vision so clearly that you can pinpoint the location of invisible creatures within 30 feet. This clarity lasts until the end of your turn." compset="CustomSpec" summary="Swift action DC 20 Perception check pinpoint invisible creatures in 30ft." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="6 ranks in Perception required."><![CDATA[#skillranks[skPercep] >= 6]]></exprreq>
+    </thing>
+  <thing id="cRogS2CoSt" name="Collector of Stories" description="When you attempt a trained Knowledge check to identify a creature or to learn its special powers or vulnerabilities, you gain a +5 competence bonus on the check. You can use this ability one time per encounter." compset="CustomSpec" summary="+5 competence bonus on Knowledge checks to identify a creature." uniqueness="useronce">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="Usage" tag="S2Encount"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    </thing>
+  <thing id="cRogS2EaEs" name="Easy Escape" description="If your opponent is larger than Medium, you gain a circumstance bonus on your Escape Artist check to escape a grapple or pin. The size of the bonus depends on your opponent&apos;s size: Large +4, Huge +8, Gargantuan +12, Colossal +16." compset="CustomSpec" summary="Against larger opponents gain a circumstance bonus to escape a grapple or pin." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="5 ranks in Escape Artist required."><![CDATA[#skillranks[skEscape] >= 5]]></exprreq>
+    </thing>
+  <thing id="cRogS2EsAt" name="Escape Attack" description="When you escape a grapple and beat the targets CMD by 5 or more, you can make a single melee attack with a light weapon as a swift action against the opponent that was grappling you. The opponent is considered flat-footed against this attack.Y ou must have the weapon in hand at the beginning of your turn in order to use this trick." compset="CustomSpec" summary="Escape a grapple by CMD over 5 use swift action to attack target." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="6 ranks in Escape Artist required."><![CDATA[#skillranks[skEscape] >= 7]]></exprreq>
+    </thing>
+  <thing id="cS2SneakAt" name="Sneak Attack" description="If a character can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.\n\nThe character&apos;s attack deals extra damage anytime her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the character flanks her target. Should the character score a critical hit with a sneak attack, this extra damage is not multiplied. Ranged attacks can count as sneak attacks only if the target is within 30 feet.\n\nWith a weapon that deals nonlethal damage (like a sap, whip, or an unarmed strike), a character can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual –4 penalty.\n\nThe character must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A character cannot sneak attack while striking a creature with concealment.\n\n{b}Shadow d20:{/b} Precision based damage (ie Sneak Attack) bypasses all Damage Reduction a monster has except DR/Epic (unless the character is Mythic). So in example if a level 1 rogue attacks a skeleton with DR 5/Bludgeoning with a dagger that does 1d4+1d6 SA. The 1d4 would be reduced by the DR but the 1d6 sneak attack would do full damage." compset="ClSpecial" summary="+1d6 to your Sneak Attack damage." replaces="cSneakAtt">
+    <tag group="Helper" tag="UseOwnLev" name="UseOwnLev" abbrev="UseOwnLev"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="SneakDmg" tag="1d6_5"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="aaSneakAtt"></bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      var listSA  as string
+      var liveSA  as string
+      var sSearch as string
+
+      listSA = "+"
+      listSA &= tagnames[SneakDmg.?,"/+"]
+      listSA = replace(listSA,"1d",field[xIndex].value & "d",0)
+
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " " & listSA
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      liveSA = "+"
+      liveSA &= tagnames[SneakDmg.?,"/+"]
+      liveSA = replace(liveSA,"1d",field[abValue].value & "d",0)
+
+      field[livename].text = field[thingname].text & " " & liveSA
+      field[abSumm].text = liveSA & " damage if you flank your target or your target is flat-footed."
+
+      ~ If we are NOT active get out now
+      doneif (field[abilActive].value <> 1)
+
+      sSearch = "!" & tagids[SneakWep.?,"& !"]
+      ~ Change SneakWep to thinig which is actually on a weapon
+      sSearch = replace(sSearch,"SneakWep","thingid",0)
+      ~ Check to see if any specific weapons are being excluded
+      If (tagcount[SneakWep.?] <> 0) Then
+        ~ Loop through all weapons except some
+        foreach pick in hero from BaseWep where sSearch
+           #extradamage[eachpick,liveSA,field[name].text]
+        nexteach
+      Else
+        ~ Loop through all weapons
+        foreach pick in hero from BaseWep
+           #extradamage[eachpick,liveSA,field[name].text]
+        nexteach
+      Endif]]></eval>
+    </thing>
+  <thing id="cRogS2KnSS" name="Sneak Stab" description="A knife master focuses her ability to deal sneak attack damage with daggers and similar weapons to such a degree that she can deal more sneak attack damage with those weapons at the expense of sneak attacks with other weapons. When she makes a sneak attack with a dagger, kerambit ({i}Ultimate Combat{/i} 130), kukri, punching daggers, starknife, or swordbreaker dagger ({i}Advanced Player&apos;s Guide{/i} 178), she uses d8s to roll sneak attack damage instead of d6s. For sneak attacks with all other weapons, she uses d4s instead of d6s. This ability is identical in all other ways to sneak attack, and supplements that ability." compset="ClSpecial" summary="Increase sneak attack dice to d8s with daggers and similar weapons." replaces="cRogKnSneS">
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="HasAbility" tag="cSneakAtt" name="Sneak Attack" abbrev="Sneak Attack"/>
+    <tag group="SneakWep" tag="wDagger"/>
+    <tag group="SneakWep" tag="wKerambit"/>
+    <tag group="SneakWep" tag="wKukri"/>
+    <tag group="SneakWep" tag="wDaggerPun"/>
+    <tag group="SneakWep" tag="wStarknife"/>
+    <tag group="SneakWep" tag="wSwBrDagg"/>
+    <tag group="SneakDmg" tag="1d8_6"/>
+    <eval phase="PostLevel" priority="10050" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += #value[cSneakAtt]
+      var sneak   as string
+      var sSearch as string
+      sneak = "+"
+      sneak &= tagnames[SneakDmg.?,"/+"]
+      sneak = replace(sneak,"1d",field[abValue].value & "d",0)
+
+      ~ If we are NOT active get out now
+      doneif (hero.tagis[Activated.cSneakAtt]  <> 1)
+
+      sSearch = tagids[SneakWep.?,"|"]
+      ~ Change SneakWep to thinig which is actually on a weapon
+      sSearch = replace(sSearch,"SneakWep","thingid",0)
+      ~ Loop through all weapons except some
+      foreach pick in hero from BaseWep where sSearch
+        #extradamage[eachpick,sneak,field[name].text]
+      nexteach]]></eval>
+    <eval phase="PostLevel" priority="9500"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      foreach pick in hero where "thingid.cSneakAtt"
+        perform eachpick.delete[SneakDmg.?]
+        perform eachpick.assign[SneakDmg.1d4_4]
+        perform eachpick.pushtags[SneakWep.?]
+      nexteach
+
+      #appenddesc[cSneakAtt,"{b}Addition from Sneak Stab{/b}: When a sneak attack is made with a dagger, kerambit ({i}Ultimate Combat{/i} 130), kukri, punching daggers, starknife, or swordbreaker dagger ({i}Advanced Player's Guide{/i} 178), use d8s to roll sneak attack damage instead of d6s. For sneak attacks with all other weapons, uses d4s instead of d6s."]]]></eval>
+    </thing>
+  <thing id="cBbnS2WFSl" name="Wolf Fang Strike, Lesser" description="While raging, the barbarian is treated as if she has the Two-Weapon Fighting feat. For purposes of prerequisites you are always treated as if you had the Two-Weapon Fighting feat." compset="CustomSpec" summary="While raging you gain the Two-Weapon Fighting feat." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpBbn"/>
+    <tag group="abCategory" tag="S2WolfFaSt"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    <bootstrap thing="fTwoWep">
+      <containerreq phase="First" priority="501">Hero.Raging</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <eval phase="Final" priority="10000">~ Set the HasFeat tag on the hero so we look like we have this feat
+      ~ for validation scripts.
+      perform hero.assign[HasFeat.fTwoWep]</eval>
+    <exprreq message="You may only select one set of Totem powers."><![CDATA[hero.tagunique[abCategory.BbnTot?] <= 1]]></exprreq>
+    </thing>
+  <thing id="cBbnS2WFS" name="Wolf Fang Strike" description="While raging, the barbarian is an expert with fighting with two weapons and no longer takes any penalties on their additional attacks gained with the Improved Two-Weapon Fighting or Greater Two-Weapon Fighting feats." compset="CustomSpec" summary="While raging you no longer take penalties from addtional off-hand attacks." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpBbn"/>
+    <tag group="abCategory" tag="S2WolfFaSt"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not raging get out now
+      doneif (hero.tagis[Hero.Raging] <> 1)
+
+      ~remove the attack penalties
+      perform hero.assign[Shadowd20.TwoWep]]]></eval>
+    <exprreq message="Lesser Wolf Fang Strike required."><![CDATA[#hasability[cBbnS2WFSl] <> 0]]></exprreq>
+    <exprreq message="You may only select one set of Totem powers."><![CDATA[hero.tagunique[abCategory.BbnTot?] <= 1]]></exprreq>
+    <prereq message="Barbarian level 6+ required.">
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+
+        classcheck = "Barbarian"
+
+        call LevPreReqs
+
+        validif (levels >= 6)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="cBbnS2WFSg" name="Wolf Fang Strike, Greater" description="While raging, the barbarian can make a single attack with both weapons as a standard action or on an AoO. This attack takes a -2 penalty and if the attack hits, both weapons hit. Apply precision-based damage (such as sneak attack) and critical hit damage only once for this attack. Damage bonuses from high Strength apply to each weapon as normal, as do other damage bonuses, such as a ranger&apos;s favored enemy bonus. Damage reduction and resistances apply separately to each weapon." compset="CustomSpec" summary="As a standard action attack with both weapons at -2 penalty." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpBbn"/>
+    <tag group="abCategory" tag="S2WolfFaSt"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    <exprreq message="You may only select one set of Totem powers."><![CDATA[hero.tagunique[abCategory.BbnTot?] <= 1]]></exprreq>
+    <exprreq message="Wolf Fang Strike required."><![CDATA[#hasability[cBbnS2WFS] <> 0]]></exprreq>
+    <prereq message="Barbarian level 10+ required.">
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+
+        classcheck = "Barbarian"
+
+        call LevPreReqs
+
+        validif (levels >= 10)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="cBbnS2OTWF" name="Oversized Two-Weapon Fighting" description="While raging and wielding a one-handed weapon in your off hand, you take penalties for fighting with two weapons as if you were wielding a light weapon in your off hand." compset="CustomSpec" summary="1 handed weapons in off-hand treated as light weapon." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpBbn"/>
+    <tag group="abCategory" tag="BbnRagePow"/>
+    <eval phase="PreLevel" priority="4500"><![CDATA[
+      ~ If not raging get out now
+      doneif (hero.tagis[Hero.Raging] <> 1)
+
+      ~ Find all one-handed weapons used in the off-hand and allow them
+      ~ to be treated as a light weapon.
+      foreach pick in hero from BaseWep where "wClass.OneHanded"
+         If (eachpick.field[wIs2nd].value <> 0) Then
+           perform eachpick.assign[Helper.TwoWpLight]
+         Endif
+      nexteach]]></eval>
+    <exprreq message="Two-Weapon Fighting feat required."><![CDATA[#hasfeat[fTwoWep] <> 0]]></exprreq>
+    </thing>
+  <thing id="cWarS2ViBl" name="Vitriolic Blast" description="This eldritch essence invocation allows you to change your eldritch blast into a vitriolic blast. A vitriolic blast deals acid damage, and it is formed from conjured acid, making it different from other eldritch essences because it ignores spell resistance. Creatures struck by a vitriolic blast take less damage than normal causing only only 1d4 damage instead of the normal 1d6. For example, a 5th-level warlock deals 3d4 points of acid damage using Vitriolic Blast instead of 3d6." compset="CustomSpec" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      ~ Lower the die size of the Eldritch Blast weapon
+      #value2[abS2EldBla] += -2]]></eval>
+    <exprreq message="Level 6 warlock required."><![CDATA[#levelcount[Witch] >= 6]]></exprreq>
+    </thing>
+  <thing id="cDrdS2AqAd" name="Aquatic Adaptation" description="At 2nd level, an aquatic druid gains an insight bonus on Initiative checks and Knowledge (geography), Perception, Stealth, Survival, and Swim checks equal to 1/2 her druid level in aquatic terrain, and she cannot be tracked such environments. This ability replaces woodland stride." compset="ClSpecial" replaces="cDrdAqAdap">
+    <comment>This class ability was redone so that it can be activated and have its bonuses calc into all the skills.  This no longer shows as situational text.</comment>
+    <fieldval field="actName" value="aquatic terrain"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ClExLose"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Calc bonus at 1/2 druid level
+      field[abValue].value += round(field[xAllLev].value/2,0,-1)
+      ~ Set the live name with the bonus
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+
+      ~ If not activated get out now
+      doneif (field[abilActive].value <> 1)
+
+      #applybonus[BonInsight,hero.childfound[Initiative],field[abValue].value]
+      #applybonus[BonInsight,hero.childfound[skKnowGeog],field[abValue].value]
+      #applybonus[BonInsight,hero.childfound[skPercep],field[abValue].value]
+      #applybonus[BonInsight,hero.childfound[skStealth],field[abValue].value]
+      #applybonus[BonInsight,hero.childfound[skSurvival],field[abValue].value]
+      #applybonus[BonInsight,hero.childfound[skSwim],field[abValue].value]]]></eval>
+    </thing>
+  <thing id="cWarS2ElDi" name="Eldritch Dispelling" description="This hex allows you to use {i}Dispel Magic{/i} as the spell. Whether or not the effect is dispelled on the creature, object, or magic you cannot target the same creature, object, or magic again for 1 day. A warlock must be at least 5th level to take this hex." compset="CustomSpec" summary="Use {i}Dispel Magic{/i} 1/day on creature, object, or magic." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="arWitWarlo"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="SpInfo" tag="spDispMag3"/>
+    <tag group="abCategory" tag="S2Warlock"/>
+    <exprreq message="Level 5 warlock required."><![CDATA[#levelcount[Witch] >= 5]]></exprreq>
+    </thing>
+  <thing id="cRogS2AcBa" name="Acrobatic Backstab" description="If you succeed on a Acrobtics check to move through an enemy&apos;s space, you can treat that enemy as flat-footed against the next melee attack you make against it on your current turn. Your enemy must be standing on the ground or floor in order for you to use this trick." compset="CustomSpec" summary="If you move through an enemy&apos;s space you treat them as flat-footed." uniqueness="useronce">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <tag group="Usage" tag="S2Encount"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="abCategory" tag="S2RogSkTr"/>
+    <exprreq message="Acrobtics 9+ ranks required."><![CDATA[#skillranks[skAcrobat] >= 9]]></exprreq>
+    </thing>
+  <thing id="cDrdS2SaCl" name="Savage Claws" description="At 4th level your natural weapons gain an enhancement bonus on attack rolls and damage rolls equal to 1/4 your druid level and they are treated as magic weapons for the purpose of overcoming damage reduction.\n-At 8th level, your natural attacks are also treated as cold iron and silver for the purpose of overcoming damage reduction.\n-At 12th level, your natural attacks are also treated as aligned (matching your alignment) for the purpose of overcoming damage reduction.\n-At 16th level, your natural attacks are treated as adamantine weapons for the purpose of overcoming damage reduction.\n-At 20th level, your natural attacks are treated as epic for the purpose of overcoming damage reduction." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If no Feral Forms then get out now!
+      doneif (tagis[Shadowd20.FeralForm] <> 0)
+
+      ~ Calculate current effective level  
+      field[abValue].value += field[xTotalLev].value + hero.tagcount[Shadowd20.FeralLevel]
+
+      ~ Calculate a bonus of 1/4 druid level
+      field[abValue2].value += round(field[abValue].value/4,0,-1)
+
+      ~ Natural attacks from the Feral Form only
+      foreach pick in hero from BaseWep where "wGroup.Natural & Shadowd20.FeralWep"
+         eachpick.field[Bonus].value += field[abValue2].value
+      nexteach]]></eval>
+    </thing>
+  <hidden id="arRgrSpell"/>
+  </document>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_BasicPack_ShadowChemosh - Helper Things"/>
+  <fileinfo>
+    <info_author><![CDATA[
+      Author:  Tim Shadow
+      Email: shadowchemosh@yahoo.com
+      File Name changed from PFRPG_Adjustments_Selectors.user => COM_BasicPack_ShadowChemosh - Helper Things.user
+      ]]></info_author>
+    <info_history><![CDATA[
+      November 25, 2014 - Tim Shadow
+      -Created New.
+
+      ]]></info_history>
+    </fileinfo>
+  <thing id="selS2Valu1" name="Value 1" description="Field abValue 1" compset="SelectHelp">
+    <usesource source="s20PFCamp"/>
+    <tag group="Selection" tag="S2abValue"/>
+    <tag group="Value" tag="1"/>
+    </thing>
+  <thing id="selS2Valu2" name="Value 2" description="Field abValue 2" compset="SelectHelp">
+    <usesource source="s20PFCamp"/>
+    <tag group="Selection" tag="S2abValue"/>
+    <tag group="Value" tag="2"/>
+    </thing>
+  <thing id="selS2Valu3" name="Value 3" description="Field abValue 3" compset="SelectHelp">
+    <usesource source="s20PFCamp"/>
+    <tag group="Selection" tag="S2abValue"/>
+    <tag group="Value" tag="3"/>
+    </thing>
+  <thing id="selS2Valu4" name="Value 4" description="Field abValue 4" compset="SelectHelp">
+    <usesource source="s20PFCamp"/>
+    <tag group="Selection" tag="S2abValue"/>
+    <tag group="Value" tag="4"/>
+    </thing>
+  <thing id="selS2Valu5" name="Value 5" description="Field abValue 5" compset="SelectHelp">
+    <usesource source="s20PFCamp"/>
+    <tag group="Selection" tag="S2abValue"/>
+    <tag group="Value" tag="5"/>
+    </thing>
+    
+
+  <thing id="isEqpS2Les" name="Slotless Equipment Slot" compset="ItemSlot"></thing>
+
+  <thing id="mecSCAdjus" name="Adjustment Mechanic" compset="Mechanics">
+    <usesource source="s20PFCamp"/>
+    <tag group="wRangeInc" tag="5"/>
+    </thing>
+
+  <thing id="zSCAlchemi" name="Alchemical" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Alchemical"/>
+    </thing>
+  <thing id="zSCCircums" name="Circumstance" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Circumstan"/>
+    </thing>
+  <thing id="zSCCompete" name="Competence" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Competence"/>
+    </thing>
+  <thing id="zSCEnhance" name="Enhancement" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Enhancemen"/>
+    </thing>
+  <thing id="zSCInsight" name="Insight" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Insight"/>
+    </thing>
+  <thing id="zSCLuck" name="Luck" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Luck"/>
+    </thing>
+  <thing id="zSCMorale" name="Morale" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Morale"/>
+    </thing>
+  <thing id="zSCProfane" name="Profane" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Profane"/>
+    </thing>
+  <thing id="zSCSacred" name="Sacred" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Sacred"/>
+    </thing>
+  <thing id="zSCTrait" name="Trait" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Trait"/>
+    </thing>
+  <thing id="zSCResist" name="Resistance" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Resist"/>
+    </thing>
+  <thing id="zSCBonus" name="Untyped Bonus" compset="SelectHelp">
+    <tag group="AdjustBon" tag="Selector"/>
+    <tag group="AdjustBon" tag="Bonus"/>
+    </thing>
+  <thing id="zSCArmor" name="Armor" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Selector"/>
+    <tag group="AdjustAC" tag="Armor"/>
+    </thing>
+  <thing id="zSCShield" name="Shield" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Selector"/>
+    <tag group="AdjustAC" tag="Shield"/>
+    </thing>
+  <thing id="zSCDexMod" name="Dex Mod" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Selector"/>
+    <tag group="AdjustAC" tag="DexMod"/>
+    </thing>
+  <thing id="zSCSize" name="Size" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Size"/>
+    </thing>
+  <thing id="zSCNatArmo" name="Natural Armor" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Selector"/>
+    <tag group="AdjustAC" tag="NatArmor"/>
+    </thing>
+  <thing id="zSCDeflect" name="Deflection" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Selector"/>
+    <tag group="AdjustAC" tag="Deflection"/>
+    </thing>
+  <thing id="zSCDodge" name="Dodge" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Selector"/>
+    <tag group="AdjustAC" tag="Dodge"/>
+    </thing>
+  <thing id="zSCMisc" name="Misc" compset="SelectHelp">
+    <tag group="AdjustAC" tag="Selector"/>
+    <tag group="AdjustAC" tag="Misc"/>
+    </thing>
+
+
+
+  </document>

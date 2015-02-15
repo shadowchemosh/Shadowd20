@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow</info_author>
+    <info_history><![CDATA[April 27, 2013 - Tim Shadow
+-Fix to the "KnownSpell" procedure to actually find ALL classes. This will prevent incorrect notice of the spells not aviable.
+
+November 14, 2012 - Tim Shadow
+-Created New to the new Mythic Magic enhancements.]]></info_history>
+    </fileinfo>
+  <thing id="cfgMyMagic" name="Mythic Magic" description="Some spells can be enhanced by those with mythic power. By adding even the merest fraction of their power to the spells as they cast them, mythic casters make these spells vastly more potent. A spellcaster doesn&apos;t need to learn these spells as he would others, but must unlock the secret of using mythic power with these spells either through a feat (like Mythic Spells) or through a feature of his mythic path.\n\nThe following spells have an enhanced effect if the caster expends one use of mythic power at the time of casting. This does not increase the level of the spell or its casting time. In addition, some spells have an even greater effect that can be accessed only by casters of a high enough mythic tier who expend an additional amount of mythic power. These spells have a &amp;quot;Greater&amp;quot; entry that includes an additional cost in uses of mythic power (on top of the one use spent to use the mythic version of the spell in the first place).\n\nIn addition to the listed effects, a few overall rules that apply to all spells cast with mythic power.\n\n{b}Potent{/b}: The DC to save against any spell enhanced with mythic power in this way increases by 2. In addition, the caster receives a +2 bonus on any caster level check made to overcome spell resistance.\n\n{b}Resilient{/b}: A spell cast with mythic power can&apos;t be counterspelled unless the opposing spellcaster also expends one use of mythic power. In such a case, the normal rules for counterspelling apply. In addition, any check made to dispel a spell enhanced by mythic power is made at a -4 penalty." compset="Configure" uniqueness="unique">
+    <fieldval field="cfgObject1" value="Mythic Spells"/>
+    </thing>
+  <thing id="mmAnimDead" name="Mythic Magic, Animate Dead" description="This spell animates a number of Hit Dice of undead equal to twice the sum of your caster level and your mythic tier. This does not increase the maximum total number of Hit Dice worth of undead that you can control. By expending one additional use of mythic power, you can {i}animate dead{/i} without the need for material components.{br}{br}{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This causes any skeletons or zombies you create to gain either the agile or savage mythic template for a number of days equal to your mythic tier after being animated." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spAnimDea3|spAnimDea4|spAnimDea5"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmBarkskin" name="Mythic Magic, Barkskin" description="This spell grants DR/magic equal to the double the enhancement bonus it provides to the target&apos;s natural armor bonus to AC.\n\n{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This causes the spell to grant DR/epic rather than DR/magic." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spBarkski2"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmBless" name="Mythic Magic, Bless" description="This spell&apos;s +1 morale bonus applies on attack rolls, weapon damage rolls, and all saving throws. In addition, each target of this spell can roll any one d20 roll twice and take the better result once during the duration of this spell. The target must decide to use this ability before the first roll is made." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spBless1|spBless2"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmCallLigh" name="Mythic Magic, Call Lightning" description="This spell calls bolts of lightning that deal 3d10 points of electricity damage (5d10 outdoors in stormy weather). Half of this damage is electricity and half is sonic. Any creature damaged by this spell is dazzled and deafened for 1 minute, but this duration is reduced to 1 round if the creature succeeded at its saving throw." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spCallLig3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmChillMet" name="Mythic Magic, Chill Metal" description="This spell deals 1d8 points of cold damage on rounds 2 and 6 and 2d8 points of cold damage per round on rounds 3 through 5. Each round a creature takes cold damage from this spell, that creature also takes 1 point of Dexterity damage (Fortitude save negates). This save DC is increased by 1 for each round the target continues to wield or carry chilled metal." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spChilMet2|spChilMet3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmCircDeat" name="Mythic Magic, Circle of Death" description="This spell slays 1d6 HD worth of living creatures per caster level, and it can affect creatures whose Hit Dice do not exceed 9 + your mythic tier.{br}{br}{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two uses of your mythic power when casting this spell. This causes creatures that succeed on their Fortitude saves to take 1d6 points of damage per mythic tier." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spCircDea6|spCircDea7"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmCloudkil" name="Mythic Magic, Cloudkill" description="This spell creates a cloud of toxic vapors that you can move 10 feet in any direction you choose as a move action; if not directed, it moves 10 feet directly away from its point of origin. The level or hit dice of creatures that can be instantly slain by the {i}cloudkill{/i} (with no save or with a save to reduce the effect) is increased by an amount equal to your mythic tier; for example, if you are a 5th-tier mythic character, your {i}cloudkill{/i} slays creatures up to 8 hit dice with no saving throw and up to 11 hit dice on a failed save. Creatures that succeed at their saving throws or are above your hit die limit take 1d8 points of Constitution damage each round while in the cloud.\n\n{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This causes your spell to ignore poison immunity for living creatures." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spCloudki5"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmColorSpr" name="Mythic Magic, Color Spray" description="The range of this spell increases to 30 feet. In addition, creatures with 5 or more Hit Dice that fail their saving throw are blinded for 1 round and then stunned for 1 round. Creatures that make their saving throw against this spell are dazzled for 1 minute.{br}{br}{b}Greater{/b}: If you are at least a 3rd-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This increases the Hit Die limits that determine the effects of the {i}color spray{/i} by an amount equal to your mythic tier." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spColoSpr1"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmContagio" name="Mythic Magic, Contagion" description="The disease you create with this spell is a particularly virulent strain. If the target of this spell fails its save, it becomes infected with the disease and contagious, passing on the disease through touch. Any creature that touches, or is touched by, an infected target must make a Fortitude save or contract the disease. The DC of the Fortitude save is reduced by 4 for all creatures other than the initial target of this spell. You are immune to the spread of this disease.{br}{br}{b}Greater{/b}: If you are at least a 7th-tier mythic character, you can expend five additional uses of mythic power when casting this spell. If you do, the spell targets every living creature within a 1-mile radius, in addition to the augmented effect above. You may also choose one creature per caster level that gains immunity to the contagion." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spContagi3|spContagi4"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmContWeat" name="Mythic Magic, Control Weather" description="The spell&apos;s casting time is reduced to a standard action and the change in the weather occurs in a number of rounds equal to 10 - your mythic tier (minimum 1 round). In addition, the duration of the spell is doubled.{br}{br}{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. In addition to the changes noted above, this allows you to create weather of any type regardless of the season. In addition, you can change the type of weather created as a standard action, and the weather changes in 1 round." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spContWea7"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmCureCrit" name="Mythic Magic, Cure Critical Wounds" description="This spell heals 8d8 points of damage + 2 points per caster level (maximum +40). In addition, the spell cures up to 4 points of ability damage if the target is a living creature. The target chooses what types of ability damage are cured." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spCureCri4|spCureCri5"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmCureLigh" name="Mythic Magic, Cure Light Wounds" description="This spell heals 2d8 points of damage + 2 points per caster level (maximum +10). In addition, the spell cures up to 1 point of ability damage if the target is a living creature. The target chooses what types of ability damage are cured." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spCureLig1|spCureLig2"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmCureSeri" name="Mythic Magic, Cure Serious Wounds" description="This spell heals 6d8 points of damage + 2 points per caster level (maximum +30). In addition, the spell cures up to 3 points of ability damage if the target is a living creature. The target chooses what types of ability damage are cured." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spCureSer3|spCureSer4"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmDetScryi" name="Mythic Magic, Detect Scrying" description="This spell automatically gives you a visual image of the scryer and an accurate sense of his direction and distance from you if he is using a non-mythic means of scrying. Your ability to detect a scryer is blocked by {i}mind blank,{/i} but you automatically succeed at caster level checks to overcome {i}nondetection{/i} or similar effects that block divination.{br}{br}If you gain this information about a scryer, you can expend one or more uses of your mythic power as an immediate action to cast a mind-affecting spell against him. The range of this effect is unlimited and you do not need line of sight or line of effect, but it affects only the scryer even if it would normally affect multiple creatures or an area. You must expend one use of mythic power per level of the spell you wish to cast against the scryer.{br}{br}{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of your mythic power when casting this spell. In addition to the abilities granted above, your ability to detect a scryer is not blocked by {i}mind blank{/i} or any other protection. Also, if you have prepared, can spontaneously cast, or can use as a spell-like ability a teleportation effect with a range long enough to reach the scryer&apos;s location, you can use that ability to transport yourself there. Alternatively, you can expend two additional uses of your mythic power to transfer that teleportation ability to the scryer and compel him to transport himself immediately to your location. Either form of teleportation has no chance of error, and penetrates any effect that would otherwise block teleportation unless that effect was created by a mythic creature." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spDeteScr3|spDeteScr4"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmDimeDoor" name="Mythic Magic, Dimension Door" description="The duration of this spell changes to 1 round per 2 caster levels, creating a temporary, one-way portal. In addition, when casting the spell you can designate a number of creatures equal to your caster level. These creatures can see the portal and use it to arrive at the destination you select. When you cast the spell, you immediately arrive at the destination, but you cannot take any other creatures with you. Another designated creature must move through of its own accord and after arriving can&apos;t take any other actions until its next turn." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spDimeDoo3|spDimeDoo4"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmDispMagi" name="Mythic Magic, Dispel Magic" description="When used as a targeted dispel, this spell can end two spells affecting the target instead of just one. In addition, if the targeted dispel is successful in dispelling at least one spell, you heal 1d4 points of damage for every level of dispelled spell. This healing applies only to the highest-level spell dispelled if two are dispelled. When using this spell to counterspell, you can roll your dispel check twice and take the higher result." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spDispMag3|spDispMag4"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmDivineFa" name="Mythic Magic, Divine Favor" description="When you cast this spell, the luck bonus also applies on saving throws and skill checks. Alternatively, you can cast this spell on another willing creature, changing the range to touch and target to one living creature." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spDiviFav1"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmDream" name="Mythic Magic, Dream" description="This spell allows you to gain information from the dreamer you contact by asking questions as if using {i}speak with dead{/i} to speak with a corpse. If the dreamer&apos;s alignment differs from yours, it can resist this probing with a Will save (as per {i}speak with dead{/i}). Answers to such questions are still generally brief and cryptic." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spDream4|spDream5|spDream6"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmEntangle" name="Mythic Magic, Entangle" description="The spell functions in areas without any vegetation, causing plants to spring up out of the ground. These plants can reach creatures that are up to 10 feet in the air. In addition, the grasping plants sprout thorns that deal 1d6 points of damage each round." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spEntangl1|spEntangl2"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmEntrShie" name="Mythic Magic, Entropic Shield" description="Whenever this spell deflects a ranged attack, there is a 50% chance that the attack is redirected back at the attacker rather than simply being deflected harmlessly. The attack uses the same roll to hit that was made against you." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spEntrShi1"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmFireball" name="Mythic Magic, Fireball" description="This spell deals 1d10 points of fire damage per level, up to a maximum of 10d10. The spell also causes any creature that fails its Reflex saving throw to catch on fire, taking 2d6 points of fire damage each round until the fire is extinguished. The creature can extinguish the fire by spending a full-round action and succeeding at a Reflex saving throw (using the spell&apos;s original DC). Falling prone and rolling on the ground grants a +2 circumstance bonus on the save. Leaping into a lake or magically extinguishing the flames automatically smothers the fire.\n\n{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. In addition to the effects listed above, the maximum damage increases to 20d10, the area increases to a 40-foot radius spread, and any fire damage dealt by the spell ignores fire resistance and fire immunity." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spFirebal3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmGlobInvu" name="Mythic Magic, Globe of Invulnerability" description="The level of spells excluded by this spell is increased by 1 for every 2 mythic tiers you possess (minimum 1). Spells enhanced by mythic power are excluded only if they are 4th level or lower." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spGlobInv6"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmGlypWard" name="Mythic Magic, Glyph of Warding" description="The DC to detect or disable the glyph created by this spell is increased by your mythic tier. If used to create a blast glyph, this spell deals 1d6 points of damage per caster level (maximum 20d6). If used to create a spell glyph, the level of spell you can store is increased by one-half your mythic tier (minimum 1)." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spGlypWar3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmHeatMeta" name="Mythic Magic, Heat Metal" description="This spell deals 1d8 points of fire damage on rounds 2 and 6 and 2d8 points of fire damage per round on rounds 3 through 5. Each round a creature takes fire damage from this spell, it risks catching on fire (Reflex negates). The save DC increases by 1 for each round after the first the target continues to wield or carry hot metal." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spHeatMet2|spHeatMet3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmHolyAura" name="Mythic Magic, Holy Aura" description="When you cast this spell, any outsiders with the evil subtype within the initial burst of this spell take 1d6 points of damage per 2 caster levels. This damage is divine and not subject to any resistances or immunities, although spell resistance applies as normal. In addition, such creatures cannot make melee attacks against the targets of this spell unless they first succeed at Will saving throws, as per the spell {i}sanctuary{/i}. This additional protection ends under the same conditions of that spell." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spHolyAur8"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmInfCritW" name="Mythic Magic, Inflict Critical Wounds" description="This spell deals 8d8 points of damage + 2 points per caster level (maximum +40). In addition, the spell causes living creatures to become sickened for 1 round per caster level (maximum 20 rounds). If the Will save to halve the damage is successful, the sickened condition is negated." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spInflCri4|spInflCri5"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmInfLighW" name="Mythic Magic, Inflict Light Wounds" description="This spell deals 2d8 points of damage + 2 points per caster level (maximum +10). In addition, the spell causes living creatures to become sickened for 1 round per caster level (maximum 5 rounds). If the Will save to halve the damage is successful, the sickened condition is negated." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spInflLig1"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmInfModeW" name="Mythic Magic, Inflict Moderate Wounds" description="This spell deals 4d8 points of damage + 2 points per caster level (maximum +20). In addition, the spell causes living creatures to become sickened for 1 round per caster level (maximum 10 rounds). If the Will save to halve the damage is successful, the sickened condition is negated." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spInflMod2|spInflMod3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmInfSeriW" name="Mythic Magic, Inflict Serious Wounds" description="This spell deals 6d8 points of damage + 2 points per caster level (maximum +30). In addition, the spell causes living creatures to become sickened for 1 round per caster level (maximum 15 rounds). If the Will save to halve the damage is successful, the sickened condition is negated." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spInflSer3|spInflSer4"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmInvisibi" name="Mythic Magic, Invisibility" description="The effects of this spell can&apos;t be detected with {i}detect magic{/i} or other spells that detect magic auras. In addition, the invisibility can&apos;t be penetrated or dispelled by spells of 2nd level or lower, such as {i}see invisibility{/i} or {i}glitterdust,{/i} though {i}true seeing{/i} and {i}dust of appearance{/i} can reveal your presence.{br}{br}{b}Greater{/b}: If you are at least a 3rd-tier mythic character, you can expend two additional uses of mythic power when casting this spell. In addition to the above effects, you are also undetectable by blindsense, blindsight, scent, and tremorsense." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spInvisib2|spInvisib3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmMageArmo" name="Mythic Magic, Mage Armor" description="This spell grants a +6 armor bonus to AC. In addition, there is a 50% chance that any critical hit or sneak attack made against the target is negated, and is instead treated as a normal hit. This chance does not stack with the {i}fortification{/i} armor property or other similar abilities that negate critical hits or sneak attacks." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spMageArm1"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmMagicMis" name="Mythic Magic, Magic Missile" description="The damage dealt by each missile increases to 2d4+1. In addition, the missiles are not defeated by {i}shield{/i} or similar items and effects that specifically cancel {i}magic missile{/i}.{br}{br}{b}Greater{/b}: If you are at least a 4th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. In addition to the effects listed above, the spell creates twice the normal number of missiles, has its range increased to sight, and automatically bypasses any spell resistance or immunities the targets possess." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spMagiMis1"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmMagiVest" name="Mythic Magic, Magic Vestment" description="In addition to the enhancement bonus, you may add any one armor or shield special ability to the armor or shield with a total bonus no greater than +1 or a base price modifier no greater than 4,000 gp.{br}{br}{b}Greater{/b}: If you are at least a 3rd-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This allows you to add any number of special abilities whose total bonus is no greater than +2 or whose base price modifiers combined are no greater than 15,000 gp." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spMagiVes3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmMaze" name="Mythic Magic, Maze" description="A spectral minotaur hunts the creature trapped inside the maze. Every round the creature fails to escape from the {i}maze{/i} it takes 2d8 + your mythic tier points of slashing damage from this phantom foe." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spMaze6|spMaze8"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmMetSwarm" name="Mythic Magic, Meteor Swarm" description="The meteors created by this spell deal bludgeoning damage in a line extending from the caster to the target destination where it explodes. Creatures in the line of any one of these spheres take 2d10 points of bludgeoning damage and are knocked prone (a successful Fortitude save negates being knocked prone). When the meteors explode, they deal 6d10 points of fire damage to each creature in the area. Those that fail their saving throws against this damage are also knocked prone and deafened for 1d4 rounds.{br}{br}{b}Greater{/b}: If you are at least a 10th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This causes each meteor to deal 4d10 points of fire damage in addition to bludgeoning damage to each creature in its path. In addition, when the meteors explode they deal 10d10 points of fire damage. This damage ignores fire resistance and immunity to fire." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spMeteSwa9"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmMovEarth" name="Mythic Magic, Move Earth" description="This spell can be used much more quickly, with each full round of casting allowing you to reshape a 25-foot square area up to 10 feet deep. All creatures on or under the ground within that area are knocked prone and moved to the closest square outside the area being shaped. A successful Reflex save prevents the creature from being knocked prone, but it is still moved." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spMoveEar6"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmNightmar" name="Mythic Magic, Nightmare" description="This spell deals 4d6 points of damage and leaves the target shaken for 24 hours on a failed save, in addition to the spell&apos;s other effects.{br}{br}{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend one or more additional uses of your mythic power when casting this spell. This enables you to deliver a mind-affecting spell through the {i}nightmare{/i} by expending a number of uses of mythic power equal to the level of that spell. You may have this effect occur either immediately or upon the target&apos;s awakening. This spell affects only the target, even if it normally affects multiple creatures or an area." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spNightma4|spNightma5|spNightma6|spNightma7"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmPhanKill" name="Mythic Magic, Phantasmal Killer" description="If the target fails its Will save but succeeds at its Fortitude save, the {i}phantasmal killer{/i} persist in the target&apos;s mind, causing the target to become fascinated until your next turn, when the {i}phantasmal killer{/i} strikes again and the target must succeed at a second Fortitude save or die of fright (taking 3d6 points of damage if the Fortitude save succeeds).{br}{br}{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of mythic power when casting this spell to enable it to affect living creatures that are immune to fear, illusions, or mind-affecting effects." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spPhanKil4|spPhanKil5|spPhanKil6"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmPrisSphe" name="Mythic Magic, Prismatic Sphere" description="When the spell is cast, any creature within 30 feet of the sphere is affected as {i}prismatic spray{/i} (though the save DCs are as a 9th-level spell) and is automatically pushed into the nearest empty square adjacent to the outside of the affected area. This movement does not provoke attacks of opportunity and can&apos;t force a creature into a solid object." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spPrisSph9"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmScorcRay" name="Mythic Magic, Scorching Ray" description="The damage dealt by this spell increases to 6d6 fire. In addition, against the rays fire immunity is treated as resistance 20 and all other fire resistances are ignored." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spScorRay2"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmSleep" name="Mythic Magic, Sleep" description="The spell affects up to 8 Hit Dice of creatures, but the caster can choose they order in which creatures are affected by the spell. Any effect that would cause a creature to be awakened instead allows it to make a new saving throw to end the effect.{br}{br}{b}Greater{/b}: If you are at least an 8th-tier mythic character, you can expend three additional uses of mythic power when casting this spell to target all living creatures with 8 Hit Dice or fewer in a 1-mile radius around you. Creatures that fail their saving throws fall asleep for a number of days equal to your mythic tier. Any effect that would cause a creature to awaken instead allows it to make a new saving throw to end the effect." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spSleep1"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmSpikSton" name="Mythic Magic, Spike Stones" description="This spell creates an area of spikes that deal 2d8 points of piercing damage plus 1 point of bleed damage for each 5 feet of movement through the spiked area. The Perception DC to notice the {i}spike stones{/i} increases by your mythic tier." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spSpikSto4|spSpikSto5"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmSpirtWea" name="Mythic Magic, Spirtual Weapon" description="The weapon created by this spell also has one of the following special weapon properties, chosen by you: {i}flaming, frost, keen, merciful, shock{/i}, or {i}thundering{/i}. In addition, you can redirect the weapon as a swift action, but not during its attacks." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spSpirWea2|spSpirWea3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmSuggesti" name="Mythic Magic, Suggestion" description="The spell affects all enemy creatures in a 10-foot burst instead of just a single target. In addition, the spell works on any creature regardless of its language." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "sPfSugges4|spSuggest2|spSuggest3"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmSunbeam" name="Mythic Magic, Sunbeam" description="You conjure one beam per two caster levels (although still no more than one per round). Any creature caught in the beam is blinded and takes 4d8 points of damage (doubled against creatures harmed by sunlight). A successful Reflex save halves the damage and negates the blindness. Against undead creatures, or creatures particularly sensitive to sunlight light, the beam deals 1d8 points of damage per level (maximum 20d8). Creatures who succeed at saves against the beam are dazzled.{br}{br}{b}Greater{/b}: If you are at least a 9th-tier mythic character, you may expend three additional uses of mythic power when casting this spell. If you do, in addition to the above effects the first beam you create has a duration of 1 round per 2 caster levels. This beam deals maximum damage and any creature that comes into contact after it is created takes damage with no save allowed." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spSunbeam7"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmTimeStop" name="Mythic Magic, Time Stop" description="For every two mythic tiers you possess, you can designate up to one other creature within close range (25 ft. + 5 feet per 2 levels), allowing it to act on its turn while the spell is in effect. Its actions are subject to all the restrictions listed in the spell description except that all targets can affect each other as normal.{br}{br}{b}Greater{/b}: If you are at least a 10th-tier mythic character, you can expend three additional uses of mythic power when casting this spell. In addition to the effects listed above, the spell has a duration of 1 hour per caster level, but can be ended at any time by you as a standard action. Creatures affected by this spell gain no benefit from rest or sleep while the spell is active." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spTimeSto9"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmUnholyAu" name="Mythic Magic, Unholy Aura" description="When you cast this spell, any outsiders with the good subtype within the initial burst of this spell take 1d6 points of damage per 2 caster levels. This damage is unholy and not subject to any resistances or immunities, although spell resistance applies as normal. In addition, such creatures cannot make melee attacks against the targets of this spell unless they first succeed at Will saving throws, as per the spell {i}sanctuary{/i}. This additional protection ends under the same conditions of that spell." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spUnhoAur8"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmWallSton" name="Mythic Magic, Wall of Stone" description="This spell creates a wall one inch thick per two caster levels, and the hardness of the wall increases to 12.{br}{br}{b}Greater{/b}: If you are at least a 7th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This makes the wall impassable to ethereal travel and spells such as {i}passwall{/i} or {i}phase door{/i}, as well as immune to {i}disintegrate, shatter, sympathetic vibration,{/i} and non-mythic magical effects that specifically affect stone (including {i}earthquake, soften earth and stone,{/i} and {i}transmute rock to mud{/i})." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spWallSto4|spWallSto5|spWallSto6"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mmWallThor" name="Mythic Magic, Wall of Thorns" description="This spell deals damage equal to 30 - the target&apos;s AC, ignoring Dexterity and dodge bonuses. In addition, any creature adjacent to the {i}wall of thorns{/i} gains the grappled condition, taking 2d6 bludgeoning and piercing damage each round it begins its turn grappled by the wall. Attempts to escape the grapple treat the wall&apos;s CMD as 10 + your caster level + your mythic tier.{br}{br}{b}Greater{/b}: If you are at least a 6th-tier mythic character, you can expend two additional uses of mythic power when casting this spell. This causes the {i}wall of thorns{/i} to grapple all creatures except you within 10 feet, and any creature grappled by the wall takes 2d6 bleed damage. A creature that does not escape from the wall&apos;s grapple on its first turn after being grappled becomes pinned at the end of its turn." compset="RaceCustom" uniqueness="unique">
+    <usesource source="srcMythicP"/>
+    <tag group="AllowRCust" tag="cfgMyMagic"/>
+    <tag group="MythicPT" tag="Magic" name="Mythic Magic"/>
+    <prereq message="This spell must be on your list of spells known or in your spellbook.">
+      <validate><![CDATA[var SpellID as String
+var KnownSpell as number
+SpellID = "spWallTho5"
+Call KnownSpell
+@valid = KnownSpell]]></validate>
+      </prereq>
+    </thing>
+  </document>

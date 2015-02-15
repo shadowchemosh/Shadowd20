@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[
+6/30/2013
+-Moved out the Runes racial special to its own DM copy.
+    
+10/1/2011
+-Added missing "Runewell Amulet" from chapter 6.
+
+7/31/2011
+-Added Boltzapper "+4 Frost Burst Sizing Spear"
+-Added Icing Death "+5 Frost Falchion"
+
+7/17/2011
+-Fixed Mark of Wrath.  Was missing the bonus on damage.
+
+6/5/2011
+-Added "Chella, Sword of Greed" minor artifact.
+
+5/21/2011
+-Added "Shiedron Ring"
+
+4/9/2011
+-Added "Berserker" weapon power
+-Added "Blurring" armor power
+-Added "Blurring Greater[Synergy]" armor power
+-Added "Vest of Resistance, +3" wondrous
+-Added "Cloak of Comfort +4 & +5" wondrous
+
+3/12/2011
+-Added "Mark of Wrath" From sins of the savior.
+
+2/26/2011
+-Added "Boots, Winged{SotS-H7}" with scripts and trackers.
+
+2/18/2011
+-Added "Conviction(3.5)" for RotRL campaign.
+-Fixed "Blink(3.5)" to correctly reduce speed by 3/4th.
+
+2/12/2011
+-Added "Sin of the Saviors" adjustment.
+-Fixed "Improved Dragon Wings" to give fly speed.
+
+2/6/2011
+-Added 3.5 version of Blink for RotRL only.
+-Added 3.5 version of Heroes' Feast for RotRL only.
+
+2/1/2011
+-Changed Gurta(Shadowd20).user file into PFRPG_RotRL.user file.
+
+Version 1.0 - Tim Shadow
+-Created new 7/10/2010
+-Copied out of Houserules file and made into its own .user file.
+-Fixed "Totem Spirit - Shundar-Quah (Spire Clan)" as the feat script was going to Ref not Fort.
+-Enhanced "Totem Spirit - Shadde-Quah (Axe Clan)" to give a +1 round to rage if found and scripted it to actually work.
+
+Author: Tim Shadow
+contact: ShadowChemosh on Hero Lab forms or shadowchemosh@yahoo.com]]></info_history>
+    </fileinfo>
+  <thing id="raKBDJai" name="Draconic Rite of Passage: Ray of Enfeeblement" description="1/day: Use {i}ray of enfeeblemend{/i}  as a spell-like ability, using his character level as his caster level.\n\n{i}The Draconic Rite of Passage awakens the sorcerous power within the blood of kobolds.{/i}\n{b}Prerequisites:{/b} Only kobolds can undergo the Draconic Rite of Passage. A kobold requires no one else to perform the rite; it is a solitary activity. \n{b}Benefit:{/b} Upon completing this rite, a kobold chooses any 1st-level sorcerer spell. He can now use that spell once per day as a spell-like ability, using his character level as his caster level.\nEach day, a kobold must complete the Searching for the Dragon meditation (see above) in order to recharge this spell-like ability for the day. No kobold can benefit from this rite more than once.\n{b}Time:{/b} A kobold who undergoes this rite must first endure nine days of fasting. Immediately thereafter, the kobold must succeed on a DC 10 Concentration check to enter a deep trance that lasts for 24 hours. If the check fails, the rite must begin anew. \n{b}Cost:{/b} This rite requires sacrifi cing a gem of at least 100gp in value. The kobold also permantly loses 1 hit pointupon completion of the rite." compset="RaceSpec" summary="1/day: Use {i}ray of enfeeblemend{/i}  as a spell-like ability, using his character level as his caster level.">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Tracker"/>
+    </thing>
+  <thing id="iJai001" name="Worm Hide Shirt of Easy Travel +3" description="When wearing armor that has this property, you can carry up to a medium load as if it were a light load (ignoring the maximum Dexterity bonus, check penalty, and reduced speed normally incurred by a medium load). These reductions apply only to penalties for the load you carry, not to any reduction in speed caused by the armor itself.\n\nIn addition, you can walk for up to 10 hours in a day before having to make Constitution checks to avoid taking nonlethal damage (PH 164)." compset="MagicArmor">
+    <fieldval field="gSizeCost" value="10650"/>
+    <fieldval field="BonEnhance" value="3"/>
+    <fieldval field="gWeight" value="25"/>
+    <usesource source="PathRise"/>
+    <tag group="ArmorCheck" tag="2"/>
+    <tag group="ArmorArcFl" tag="20"/>
+    <tag group="ArmorAC" tag="4"/>
+    <tag group="ArmorMaxDx" tag="4"/>
+    <bootstrap thing="xDamRdIron"></bootstrap>
+    <eval phase="PostLevel" priority="10000">If (field[gIsEquip].value = 1) then
+  #applyresist[xDamRdIron, 2]
+endif</eval>
+    <eval phase="PostAttr" priority="1500" index="2">~Post-Attributes/1500
+If (field[gIsEquip].value = 1) then
+  ~herofield[tEncumLgt].value *= 1.5
+   herofield[tEncumLgt].value = herofield[tEncumMed].value
+endif</eval>
+    <child entity="mSpecMagic">
+      <bootstrap thing="mPFHideShi"></bootstrap>
+      </child>
+    </thing>
+  <thing id="fJai001" name="Dragonwrought: Etheral" description="{i}You were born a dragonwrought kobold, proof of your race&#146;s innate connection to dragons.{/i}\n{b}Prerequisites:{/b} Kobold, 1st level only.\n\n{b}Benefit:{/b} You are a dragon wrought kobold. Your type is dragon rather than humanoid, and you lose the dragonblood subtype. You retain all your other subtypes and your kobold racial traits. Your scales become tinted with a color that matches that of your draconic heritage. As a dragon, you are immune to magic sleep and paralysis effects. You have darkvision out to 60 feet and low-light vision. You gain a +2 racial bonus on the skill(Escape Artist) indicated for your draconic heritage on the table on page 103. \n\n{b}Special:{/b} Unlike most feats, this feat must be taken at 1st level, during character creation. Having this feat allows you to take the Dragon Wings feat at 3rd level." compset="Feat" summary="You are a dragon wrought kobold. Your type is dragon rather than humanoid, and you lose the dragonblood subtype. As a dragon, you are immune to magic sleep and paralysis effects. You have darkvision out to 60 feet and low-light vision. You gain a +2 racial bonus on the skill(Escape Artist) indicated for your draconic heritage on the table on page 103." uniqueness="unique">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <eval phase="First">~Pre-Attributes 5,000
+#skillbonus[skEscape] += 2</eval>
+    </thing>
+  <thing id="fJai002" name="Dragon Wings" description="{i}Your draconic ancestry manifests as a pair of wings that aid your jumps and allow you to glide.{/i}\n\n{b}Prerequisites:{/b} Dragonblood subtype, 1st level only.\n{b}Benefit:{/b} You have wings that aid your jumps, granting a +10 racial bonus on Jump checks.\n\nIn addition, you can use your wings to glide, negating damage from a fall from any height and allowing 20 feet of forward travel for every 5 feet of descent. You glide at a speed of 30 feet with average maneuverability. Even if your maneuverability improves, you can&#146;t hover while gliding. You can&#146;t glide while carrying a medium or heavy load.\n\nIf you become unconscious or helpless while in midair, your wings naturally unfurl, and powerful ligaments stiffen them. You descend in a tight corkscrew and take only 1d6 points of falling damage, no matter what the actual distance of the fall.\n\n{b}Special:{/b} Unlike most feats, this feat must be taken at 1st level, during character creation. A kobold with the Dragonwrought feat can take this feat at 3rd level." compset="Feat" summary="You have wings that aid your jumps, granting a +10 racial bonus on Jump checks.  In addition, you can use your wings to glide, negating damage from a fall from any height and allowing 20 feet of forward travel for every 5 feet of descent." uniqueness="unique">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="ioHndHMB15" name="Pearl Gloves of Dexterity +2{HM-B15}" description="{i}These thin leather gloves are studded with pearls, but still remain very flexible for delicate manipulation.{/I}\n\nThese gloves add to the wearer&#146;s Dexterity score in the form of an enhancement bonus of +2.  Both gloves must be worn for the magic to be effective.\n\n{b}Taint Protection:{/b} Pearls are said to help one see themselves and help improve self-worth.  As an emblem of modesty, chastity and purity, the pearl symbolizes love, success, and happiness.  These gloves contain 5 points of purity that are reset each day at dawn.  Purity points counteract the affects of taint or sin." compset="Wondrous" summary="These gloves contain 5 points of purity that are reset each day at dawn.  Purity points counteract the affects of taint or sin." uniqueness="unique">
+    <fieldval field="gCost" value="4300"/>
+    <fieldval field="trkMax" value="5"/>
+    <usesource source="PathRise"/>
+    <tag group="Hero" tag="EqpHand"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[~Pre-Levels 5,000
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[aDEX], 2]
+      endif]]></eval>
+    </thing>
+  <thing id="ioNckBOE7" name="Amulet of Natural Armor +1 &amp; Mighty Fists +2{BO-E7}" description="{b}Natural Armor:{/b} The wearer of this amber dragon gem on a silver chain, toughens the wearer&#146;s body and flesh, giving him an enhancement bonus to his natural armor bonus of +1 .\n{b}Mighty Fists:{/b} This amulet grants an enhancement bonus of +1 to +5 on attack and damage rolls with unarmed attacks and natural weapons. \n{b}1/Day:{/b} Your skin can be hardened to the point that it can actually deflect blows.  As an immediate action you can gain DR 5/- for 1 round." compset="Wondrous" summary="Your skin can be hardened to the point that it can actually deflect blows.  As an immediate action you can gain DR 5/- for 1 round." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <fieldval field="gCost" value="27000"/>
+    <usesource source="PathRise"/>
+    <tag group="Hero" tag="EqpNeck"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~Pre-levels 10,000
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[mNatural], 1]
+        #enhancementbonus[hero.child[wUnarmed], 2]
+
+   foreach pick in hero from BaseWep where "wGroup.Natural" 
+      eachpick.field[wAttBonus].value += 2
+      eachpick.field[wDamBonus].value += 2
+   nexteach
+
+      endif]]></eval>
+    </thing>
+  <thing id="ioClkCom3" name="Cloak of Comfort +3" description="{i}This cloak allows you to remain comfortable in any mundane environment, and to share that comfort with nearby allies.{/i}\n{b}Description:{/b} A cloak of comfort appears old and slightly worn. It is normally of dark brown hue, though some in shades of black, blue, and gray exist. The cloak always feels comfortable to touch, regardless of the ambient temperature.\n{b}Activation:{/b} A cloak of comfort is active as long as it is worn; it requires no special actions to activate. \n{b}Effect:{/b} You are protected by a constant endure elements effect, as are any allies within 30 feet of you. You also gain a +3 resistance bonus on saving throws." compset="Wondrous">
+    <fieldval field="gWeight" value="2"/>
+    <fieldval field="gCost" value="11000"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpBack"/>
+    <tag group="gType" tag="Wonder"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[~Pre-Levels 5,000
+      if (field[gIsEquip].value <> 0) then
+        hero.child[svFort].field[svResist].value = maximum(hero.child[svFort].field[svResist].value, 3)
+        hero.child[svRef].field[svResist].value = maximum(hero.child[svRef].field[svResist].value, 3)
+        hero.child[svWill].field[svResist].value = maximum(hero.child[svWill].field[svResist].value, 3)
+        endif]]></eval>
+    </thing>
+  <thing id="fS2QuickSp" name="Quicken Spell-Like Ability" description="This creature can use one of its spell-like abilities with next to no effort.\n\n{b}Prerequisite{/b}: Spell-like ability at CL 10th or higher.\n\n{b}Benefit{/b}: Choose one of the creature&apos;s spell-like abilities, subject to the restrictions described in this feat. The creature can use the chosen spell-like ability as a quickened spell-like ability three times per day (or less, if the ability is normally usable only once or twice per day).\n\nUsing a quickened spell-like ability is a swift action that does not provoke an attack of opportunity. The creature can perform another action&#151;including the use of another spell-like ability (but not another swift action)&#151;in the same round that it uses a quickened spelllike ability. The creature may use only one quickened spell-like ability per round.\n\nThe creature can only select a spell-like ability duplicating a spell with a level less than or equal to 1/2 its caster level (round down) -4. For a summary, see the table on page 316.\n\nA spell-like ability that duplicates a spell with a casting time greater than 1 full round cannot be quickened.\n\n{b}Normal{/b}: The use of a spell-like ability normally requires a standard action (at the very least) and provokes an attack of opportunity.\n\n{b}Special{/b}: This feat can be taken multiple times. Each time it is taken, the creature can apply it to a different one of its spell-like abilities." compset="Feat" summary="Spell-like ability is cast as a swift action up to 3/day." replaces="fQuickSpel">
+    <fieldval field="trkMax" value="3"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
+    <tag group="fShowWhat" tag="SpellLike" name="Spell-Like Ability" abbrev="Spell-Like Ability"/>
+    <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
+    <eval phase="Final" priority="999"><![CDATA[
+      ~if our chosen ability has less than 3 uses per day, we have as many uses
+      if (field[usrChosen1].ischosen <> 0) then
+        ~unlimited use spell-like abilities might have 0 charges, so we'll test for that
+        if (field[usrChosen1].chosen.field[trkMax].value > 0) then
+          field[trkMax].value = field[usrChosen1].chosen.field[trkMax].value
+          if (field[trkMax].value > 3) then
+             field[trkMax].value = 3
+          endif  
+        endif
+        endif]]></eval>
+    <evalrule phase="Final" priority="10000" message="Quicken Spell-Like Ability taken twice for same ability." summary="Taken twice."><![CDATA[
+      ~the script for this feat is handled in the eval rule because that way we can test that
+      ~we haven't applied it twice for the same ability while applying the bonus
+      if (field[usrChosen1].ischosen <> 0) then
+        perform field[usrChosen1].chosen.assign[Duplicate.QuiSplLike]
+        validif (field[usrChosen1].chosen.tagcount[Duplicate.QuiSplLike] < 2)
+
+      ~if we haven't chosen anything yet, another rule will take care of that warning
+      else
+        @valid = 1
+        endif]]></evalrule>
+    </thing>
+  <thing id="fJai003" name="Improved Dragon Wings" description="{i}Your draconic wings now grant you flight.{/i}\n\n{b}Prerequisites:{/b} Dragonblood subtype, Dragon Wings, 6 HD.\n\n{b}Benefit:{/b} You can fly at a speed of 30 feet (average maneuverability). You can&#146;t fly while carrying a medium or heavy load or while fatigued or exhausted.\n\nYou can safely fly for a number of consecutive rounds equal to your Constitution modifier (minimum 1 round). You can exert yourself to fly for up to twice as long, but then you&#146;re fatigued at the end of the flight. You are likewise fatigued after spending a total of more than 10 minutes per day flying. Because you can glide before, after, and between rounds of actual flight, you can remain aloft for extended periods, even if you can only use flight for 1 round at a time without becoming fatigued.\n\nWhen you reach 12 HD, you have enough stamina and prowess to fly for longer periods. You can fly at a speed of 30 feet (average maneuverability), and flying requires no more exertion than walking or running.\n\nYou can make a dive attack. A dive attack works like a charge, but you must fly a minimum of 30 feet and descend at least 10 feet. You can make a dive attack only when wielding a piercing weapon; if the attack hits, it deals double damage. You can use the run action while flying, provided you fly in a straight line." compset="Feat" summary="Your draconic wings now grant you flight." uniqueness="unique">
+    <usesource source="PathRise"/>
+    <bootstrap thing="xFly">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    </thing>
+  <thing id="fJai004" name="Improved Natural Attack (adjust)" description="{i}This feat is to adjust the die for Rend after taking Improved Natural Attack on the claw.{/i}\n\nAttacks made by one of this creature&apos;s natural attacks leave vicious wounds.\n\n{b}Prerequisite{/b}: Natural weapon, base attack bonus +4.\n\n{b}Benefit{/b}: Choose one of the creature&#146;s natural attack forms. The damage for this natural weapon increases by one step, as if the creature&#146;s size had increased by one category: 1d2, 1d3, 1d4, 1d6, 1d8, 2d6, 3d6, 4d6, 6d6, 8d6, 12d6. \n\nA weapon or attack that deals 1d10 points of damage increases as follows: 1d10, 2d8, 3d8, 4d8, 6d8, 8d8, 12d8." compset="Feat" summary="The damage of a natural attack increases by one step.">
+    <usesource source="PathRise"/>
+    <tag group="fShowWhat" tag="WeaponsNat" name="Natural Weapons" abbrev="Natural Weapons"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      call fTargetFoc
+      doneif (state.isfocus = 0)
+
+      ~ Upgrade damage of this weapon
+      perform focus.assign[Helper.DamageUp]
+
+      ~ Assign the weapon a tag saying that it has this feat
+      perform focus.assign[HasFeat.fImpNatAtt]]]></eval>
+    <exprreq message="Base attack bonus +4 required." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 4]]></exprreq>
+    <prereq message="Natural Weapon required." iserror="no">
+      <validate>perform findchild[BaseNatWep].setfocus
+        @valid = state.isfocus</validate>
+      </prereq>
+    </thing>
+  <thing id="spDragPull" name="Dragon Pull" description="Pulls all hostile targets within 100ft of the dragon to be adjacent to the dragon." compset="Spell">
+    <fieldval field="sRange" value="100ft"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="PathRise"/>
+    <tag group="sClass" tag="rAdulBlack"/>
+    <tag group="sClass" tag="rAnciBlack"/>
+    <tag group="sClass" tag="rYounBlack"/>
+    <tag group="sClass" tag="rAdulBlue"/>
+    <tag group="sClass" tag="rAnciBlue"/>
+    <tag group="sClass" tag="rYounBlue"/>
+    <tag group="sClass" tag="rAdulBrass"/>
+    <tag group="sClass" tag="rAnciBrass"/>
+    <tag group="sClass" tag="rYounBrass"/>
+    <tag group="sClass" tag="rAdulBronz"/>
+    <tag group="sClass" tag="rAnciBronz"/>
+    <tag group="sClass" tag="rYounBronz"/>
+    <tag group="sClass" tag="rAdulCoppe"/>
+    <tag group="sClass" tag="rAnciCoppe"/>
+    <tag group="sClass" tag="rYounCoppe"/>
+    <tag group="sClass" tag="rFaerDrago"/>
+    <tag group="sClass" tag="rAdulGold"/>
+    <tag group="sClass" tag="rAnciGold"/>
+    <tag group="sClass" tag="rYounGold"/>
+    <tag group="sClass" tag="rAdulGreen"/>
+    <tag group="sClass" tag="rAnciGreen"/>
+    <tag group="sClass" tag="rYounGreen"/>
+    <tag group="sClass" tag="rAdulRed"/>
+    <tag group="sClass" tag="rAnciRed"/>
+    <tag group="sClass" tag="rYounRed"/>
+    <tag group="sClass" tag="rAdulSilve"/>
+    <tag group="sClass" tag="rAnciSilve"/>
+    <tag group="sClass" tag="rYounSilve"/>
+    <tag group="sClass" tag="rAdulWhite"/>
+    <tag group="sClass" tag="rAnciWhite"/>
+    <tag group="sClass" tag="rYounWhite"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sRange" tag="100"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sCastTime" tag="Swift"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Teleport"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="sResist" tag="Special"/>
+    <tag group="sClass" tag="cdDragon"/>
+    </thing>
+  <thing id="ioRingFaH5" name="Ring of Fast Healing 5{SotS-Freezmaw}" description="A creature wearing this ring gains the fast healing special quality.  The wearer regains hit points at an exceptional rate, 5 hit points per round. Except where noted here, fast healing is just like natural healing. Fast healing does not restore hit points lost from starvation, thirst, or suffocation, nor does it allow a creature to regrow lost body parts. Unless otherwise stated, it does not allow lost body parts to be reattached. Fast healing continues to function (even at negative hit points) until a creature dies, at which point the effects of fast healing end immediately.\n\n{B}Special:{/b} This item takes 24hrs to attune itself to your character.  If you take it off it again takes 24hrs to attune itself before it will start to work." compset="Ring">
+    <fieldval field="gCost" value="44000"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <bootstrap thing="xFastHeal"></bootstrap>
+    <eval phase="First" priority="10000"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        ~ Give us Fast Healing 5
+         #applyvalue[xFastHeal, 5]
+      endif]]></eval>
+    </thing>
+  <thing id="irFireGr30" name="Ring of Greater Fire Resistance{SotS-Freezmaw}" description="{I}This black iron ring continually protects the wearer from fire energy damage. Each time the wearer would normally take such damage, subtract the ring&#146;s resistance value from the damage dealt.{/I}\n{B}Fire Resistance:{/b} A minor ring of energy resistance grants 30 points of resistance.\n{B}Scorching Ray(CL11):{/b} 1/day &#150; As a standard action you can cast Scorching Ray as spell with a range of 50ft.  The three rays each do 4d6 fire damage. This is a spell-like ability." compset="Ring">
+    <fieldval field="gCost" value="44000"/>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PathRise"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <bootstrap thing="spScorRay2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      </bootstrap>
+    <bootstrap thing="xDamRsFire"></bootstrap>
+    <eval phase="First" priority="10000"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        #applyresist[xDamRsFire, 30]
+        endif]]></eval>
+    </thing>
+  <thing id="trApCountB" name="Country Born" description="A childhood of farm work, apprenticeship, or similar toil has granted you reserves of endurance. Once per day, when an effect would normally leave you fatigued or exhausted, you may ignore the fatigue or exhaustion effect. This ability activates the first time you are affected by fatigue or exhaustion in a day - you cannot &quot;save&quot; it to apply it to a specific effect." compset="Trait" summary="1/day when an effect would normally leave you fatigued or exhausted, you may ignore the fatigue or exhaustion effect. This ability activates the first time you are affected by fatigue or exhaustion in a day - you cannot &quot;save&quot; it to apply it to a specific effect." uniqueness="useronce">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="trCategory" tag="Background"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="trApLoneWo" name="Lone Wolf" description="Although you may have grown up in the city, you led a lonely childhood and were forced to fend for yourself. Whenever you are dying, your chance of stabilizing is 50%." compset="Trait" summary="Whenever you are dying, your chance of stabilizing is 50%." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="trCategory" tag="Background"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="_RotRL" name="Version History" compset="Simple">
+    <usesource source="PathRise"/>
+    </thing>
+  <thing id="trApBiGaHu" name="Big Game Hunter" description="{I}You are experienced in fighting the gigantic creatures that stalk Varisia&#146;s landscape.{/i}\n\n{b}Benefit{/b}: You gain a +1 bonus on attack rolls and a +2 bonus on weapon damage rolls against Large or larger creatures." compset="Trait" uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="trApCityKo" name="City Born - Korvosa" description="You grew up in Korvosa, one of Varisia&#146;s three city-states. You are educated and well-informed on the news and needs of your home and hold tight to the knowledge that your city-state is unquestionably greater than the others.\n\n{b}Benefit{/b}: The frantic bustle of the city has honed your reactions&#151; you gain a +1 bonus on Reflex saves. If you&#146;re from Korvosa, you gain a +2 bonus on Intimidate checks." compset="Trait" summary="+1 bonus on Reflex saves and a +2 bonus on Intimidate checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+1 Ref
+#applybonus[BonTrait,hero.childfound[svRef],1]
+~+2 Intimidate
+#applybonus[BonTrait,hero.childfound[skIntim],2]</eval>
+    </thing>
+  <thing id="trApCityMa" name="City Born - Magnimar" description="You grew up in Magnimar, one of Varisia&#146;s three city-states. You are educated and well-informed on the news and needs of your home and hold tight to the knowledge that your city-state is unquestionably greater than the others.\n\n{b}Benefit{/b}: The frantic bustle of the city has honed your reactions&#151; you gain a +1 bonus on Reflex saves. If you&#146;re from Magnimar, you gain a +2 bonus on Diplomacy checks." compset="Trait" summary="+1 on Reflex saves and +2 bonus on Diplomacy checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+1 Ref
+#applybonus[BonTrait,hero.childfound[svRef],1]
+~+2 DiploArmorArcFly
+#applybonus[BonTrait,hero.childfound[skDiplo],2]</eval>
+    </thing>
+  <thing id="trApCityRi" name="City Born - Riddleport" description="You grew up in Magnimar, Korvosa, or Riddleport, one of Varisia&#146;s three city-states. You are educated and well-informed on the news and needs of your home and hold tight to the knowledge that your city-state is unquestionably greater than the others.\n\n{b}Benefit{/b}: The frantic bustle of the city has honed your reactions&#151;you gain a +1 bonus on Reflex saves.  If you&#146;re from Riddleport, you gain a +2 bonus on Bluff checks." compset="Trait" summary="+1 Ref, +2 Bluff">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+1 Ref
+#applybonus[BonTrait,hero.childfound[svRef],1]
+~+2 Bluff
+#applybonus[BonTrait,hero.childfound[skBluff],2]</eval>
+    </thing>
+  <thing id="trApToteMO" name="Totem Spirit - Lyrune-Quah (Moon Clan)" description="You are closely and mystically tied to your tribe&#146;s sacred totem.\n\nLyrune-Quah (Moon Clan): You gain a +1 bonus on Will saves and a +2 bonus on Listen checks." compset="Trait" summary="You gain a +1 bonus on Will saves and a +2 bonus on Listen checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+1 Will
+#applybonus[BonTrait,hero.childfound[svWill],1]
+~+2 Listen
+#applybonus[BonTrait,hero.childfound[skPercep],2]</eval>
+    </thing>
+  <thing id="trApToteAX" name="Totem Spirit - Shadde-Quah (Axe Clan)" description="You are closely and mystically tied to your tribe&#146;s sacred totem.\n\nShadde-Quah (Axe Clan): If you have the rage ability you can use it one additional round per day. You also gain a +2 bonus on Intimidate checks." compset="Trait" summary="If you have the rage ability, it lasts for one additional round. You also gain a +2 bonus on Intimidate checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+2 Intimidate
+#applybonus[BonTrait,hero.childfound[skIntim],2]
+#trkmax[cBbnRage] += 1</eval>
+    </thing>
+  <thing id="trApToteHA" name="Totem Spirit - Shriikirri-Quah (Hawk Clan)" description="You are closely and mystically tied to your tribe&#146;s sacred totem.\n\nShriikirri-Quah (Hawk Clan): You gain a +2 bonus on Initiative checks and a +2 bonus on Ride checks." compset="Trait" summary="You gain a +2 bonus on Initiative checks and a +2 bonus on Ride checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+2 Initiative
+#applybonus[BonTrait,hero.childfound[Initiative],2]
+~+2 Ride
+#applybonus[BonTrait,hero.childfound[skRide],2]</eval>
+    </thing>
+  <thing id="trApToteSP" name="Totem Spirit - Shundar-Quah (Spire Clan)" description="You are closely and mystically tied to your tribe&#146;s sacred totem.\n\nShundar-Quah (Spire Clan): You gain a +1 bonus on Fortitude saves and a +2 bonus on Spot checks." compset="Trait" summary="You gain a +1 bonus on Fortitude saves and a +2 bonus on Spot checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+1 Fort
+#applybonus[BonTrait,hero.childfound[svFort],1]
+~+2 Spot
+#applybonus[BonTrait,hero.childfound[skPercep],2]</eval>
+    </thing>
+  <thing id="trApToteSU" name="Totem Spirit - Sklar-Quah (Sun Clan)" description="You are closely and mystically tied to your tribe&#146;s sacred totem.\n\nSklar-Quah (Sun Clan): You gain a +1 bonus on Reflex saves and a +2 bonus on Acrobatic checks." compset="Trait" summary="You gain a +1 bonus on Reflex saves and a +2 bonus on Acrobatic checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+1 Ref
+#applybonus[BonTrait,hero.childfound[svRef],1]
+~+2 Tumble
+#applybonus[BonTrait,hero.childfound[skAcrobat],2]</eval>
+    </thing>
+  <thing id="trApToteSK" name="Totem Spirit - Skoan-Quah (Skull Clan)" description="You are closely and mystically tied to your tribe&#146;s sacred totem.\n\nSkoan-Quah (Skull Clan): You gain a +2 bonus on weapon damage against undead and a +2 bonus on Heal checks." compset="Trait" summary="You gain a +2 bonus on weapon damage against undead and a +2 bonus on Heal checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000">~+2 Heal
+#applybonus[BonTrait,hero.childfound[skHeal],2]</eval>
+    </thing>
+  <thing id="trApToteWI" name="Totem Spirit - Tamiir-Quah (Wind Clan)" description="You are closely and mystically tied to your tribe&#146;s sacred totem.\n\nTamiir-Quah (Wind Clan): Your base land speed increases by 5 feet.  You also gain a +2 bonus on Acrobatic checks." compset="Trait" summary="Your base land speed increases by 5 feet.  You also gain a +2 bonus on Acrobatic checks." uniqueness="useronce">
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[~+5' Speed
+#applybonus[BonTrait,hero.childfound[Speed],5]
+~+2 Jump
+#applybonus[BonTrait,hero.childfound[skAcrobat],2]]]></eval>
+    </thing>
+  <thing id="trApVarTat" name="Varisian Tattoo" description="You bear intricate tattoos which inspire and empower your natural magical ability. These tattoos mark you as a worker of the ancient\ntraditions of Varisian magic.\n\n{b}Benefit{/b}: Select a school of magic other than divination in which you have Spell Focus&#151;you cast spells from this school at +1 caster level. Additionally, you can cast a single cantrip as a spell-like ability a number of times per day equal to your Constitution modifier (minimum 1/day, caster level equals Hit Dice, save DC is Charisma- based). The spell-like ability gained is as follows:\nAbjuration: Resistance.\nConjuration: Acid splash.\nEnchantment: Daze.\nEvocation: Dancing lights.\nIllusion: Ghost sound.\nNecromancy: Touch of fatigue.\nTransmutation: Mage hand." compset="Trait">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="trCategory" tag="Campaign"/>
+    <tag group="trCategory" tag="PathRise"/>
+    <tag group="fShowWhat" tag="FocSchools"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <eval phase="UserPostAt">var con as number
+
+con = maximum(hero.child[aCON].field[aModBonus].value, 1)
+field[trkMax].value = con</eval>
+    <prereq message="Spell Focus required." iserror="no">
+      <validate><![CDATA[
+        foreach pick in hero from SplSchool
+          if (eachpick.tagis[Broadcast.SpellFocus] <> 0) then
+            @valid = 1
+            done
+            endif
+          nexteach]]></validate>
+      </prereq>
+    </thing>
+  <thing id="pBlink35" name="Blink(3.5)" description="You &#147;blink&#148; back and forth between the Material Plane and the Ethereal Plane. You look as though you&#146;re winking in and out of reality very quickly and at random.\n\nBlinking has several effects, as follows.\n\nPhysical attacks against you have a 50% miss chance, and the Blind-Fight feat doesn&#146;t help opponents, since you&#146;re ethereal and not merely invisible. If the attack is capable of striking ethereal creatures, the miss chance is only 20% (for concealment).\n\nIf the attacker can see invisible creatures, the miss chance is also only 20%. (For an attacker who can both see and strike ethereal creatures, there is no miss chance.) Likewise, your own attacks have a 20% miss chance, since you sometimes go ethereal just as you are about to strike.\n\nAny individually targeted spell has a 50% chance to fail against you while you&#146;re blinking unless your attacker can target invisible, ethereal creatures. Your own spells have a 20% chance to activate just as you go ethereal, in which case they typically do not affect the Material Plane.\n\nWhile blinking, you take only half damage from area attacks (but full damage from those that extend onto the Ethereal Plane). You strike as an invisible creature (with a +2 bonus on attack rolls), denying your target any Dexterity bonus to AC.\n\nYou take only half damage from falling, since you fall only while you are material.\n\nWhile blinking, you can step through (but not see through) solid objects. For each 5 feet of solid material you walk through, there is a 50% chance that you become material. If this occurs, you are shunted off to the nearest open space and take 1d6 points of damage per 5 feet so traveled. You can move at only three-quarters speed (because movement on the Ethereal Plane is at half speed, and you spend about half your time there and half your time material.)\n\nSince you spend about half your time on the Ethereal Plane, you can see and even attack ethereal creatures. You interact with ethereal creatures roughly the same way you interact with material ones.\n\nAn ethereal creature is invisible, incorporeal, and capable of moving in any direction, even up or down. As an incorporeal creature, you can move through solid objects, including living creatures.\n\nAn ethereal creature can see and hear the Material Plane, but everything looks gray and insubstantial. Sight and hearing on the Material Plane are limited to 60 feet.\n\nForce effects and abjurations affect you normally. Their effects extend onto the Ethereal Plane from the Material Plane, but not vice versa. An ethereal creature can&#146;t attack material creatures, and spells you cast while ethereal affect only other ethereal things. Certain material creatures or objects have attacks or effects that work on the Ethereal Plane. Treat other ethereal creatures and objects as material." compset="InPlay">
+    <fieldval field="pMinimum" value="2"/>
+    <fieldval field="pMaximum" value="2"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Give a MORALE bonus to hit to all weapons
+hero.child[Attack].field[Bonus].value += field[pAdjust].value]]></eval>
+    <eval phase="PostAttr" priority="20000" index="2"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+field[abValue].value += (hero.child[Speed].field[tSpeedMod].value - (round(hero.child[Speed].field[tSpeed].value*.75,-1,0)))
+
+If (field[abValue].value > 0) Then
+   field[abValue].value *= -1
+Endif
+
+hero.child[Speed].field[Penalty].value += field[abValue].value]]></eval>
+    </thing>
+  <thing id="pHeroFea35" name="Heroes&#146; Feast(3.5)" description="You bring forth a great feast, including a magnificent table, chairs, service, and food and drink. The feast takes 1 hour to consume, and the beneficial effects do not set in until this hour is over. Every creature partaking of the feast is cured of all diseases, sickness, and nausea; becomes immune to poison for 12 hours; and gains 1d8 temporary hit points +1 point per two caster levels (maximum +10) after imbibing the nectar-like beverage that is part of the feast. The ambrosial food that is consumed grants each creature that partakes a +1 morale bonus on attack rolls and Will saves and immunity to fear effects for 12 hours.\n\nIf the feast is interrupted for any reason, the spell is ruined and all effects of the spell are negated.\n\n{B}Note:{/b} Use the counter to set the number of temporary hit points and as you take damage lower the counter to show losing the temporary hit points first." compset="InPlay">
+    <fieldval field="pMinimum" value="0"/>
+    <fieldval field="pMaximum" value="18"/>
+    <fieldval field="pDuration" value="12 hours"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <bootstrap thing="xImmFear">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="xImmPois">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Give a Bonus to hit to all weapons
+#applybonus[BonMorale,hero.child[Attack],1]
+
+~Give bonus to will save
+#applybonus[BonMorale, hero.child[svWill],1]]]></eval>
+    <eval phase="Final" priority="10000" index="2"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Give Bonus HP
+herofield[tCurrentHP].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="rS2kobold" name="Kobold(RotRL)" description="Kobolds are creatures of the dark, found most commonly in enormous underground warrens or the dark corners of the forest where the sun is unable to reach. Due to their physical similarities, kobolds loudly proclaim themselves the scions of dragonkind, destined to rule the earth beneath the wings of their great god-cousins, but most dragons have little use for the obnoxious pests.\n\nWhile they may speak loudly of divine right and manifest destiny, kobolds are keenly aware of their own weakness. Cowards and schemers, they never fight fair if they can help it, instead setting up ambushes and double-crosses, holing up in their warrens behind countless crude but ingenious traps, or rolling over the enemy in vast, yipping hordes.\n\nKobold coloration varies even among siblings from the same egg clutch, ranging through the colors of the chromatic dragons, with red being the most common but white, green, blue, and black kobolds not unheard of." compset="Race">
+    <fieldval field="rSTR" value="-4"/>
+    <fieldval field="rDEX" value="2"/>
+    <fieldval field="rCON" value="-2"/>
+    <fieldval field="rAC" value="1"/>
+    <fieldval field="rCR" value="0.33333333333333"/>
+    <usesource source="PathRise"/>
+    <tag group="Language" tag="lUndercomm" name="Undercommon" abbrev="Undercommon"/>
+    <tag group="RaceSize" tag="Small11" name="Small" abbrev="Small"/>
+    <tag group="RaceType" tag="Normal"/>
+    <tag group="ClassSkill" tag="skCrafTrap" name="Craft: Traps" abbrev="Craft: Traps"/>
+    <tag group="ClassSkill" tag="skStealth" name="Stealth" abbrev="Stealth"/>
+    <tag group="Hero" tag="NoDefComm" name="NoDefComm" abbrev="NoDefComm"/>
+    <tag group="Language" tag="lCommonND" name="Common" abbrev="Common"/>
+    <tag group="Language" tag="lDwarven" name="Dwarven" abbrev="Dwarven"/>
+    <tag group="Language" tag="lGnome" name="Gnome" abbrev="Gnome"/>
+    <bootstrap thing="raLightSen"></bootstrap>
+    <bootstrap thing="lDraconic"></bootstrap>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <bootstrap thing="raKBDJai"></bootstrap>
+    <eval phase="PreLevel">~ +2 to Craft (Trapmaking), Profession (Miner), and Search
+      #skillbonus[skCrafTrap] += 2
+      #skillbonus[skProfMine] += 2
+      #skillbonus[skPercep] += 2</eval>
+    </thing>
+  <thing id="pS2Sin" name="Sin of the Saviors" compset="InPlay">
+    <usesource source="PathRise"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+hero.child[Attack].field[Penalty].value += field[pAdjust].value
+hero.child[Damage].field[tDamBonus].value += field[pAdjust].value
+hero.child[svFort].field[Penalty].value += field[pAdjust].value
+hero.child[svRef].field[Penalty].value += field[pAdjust].value
+hero.child[svWill].field[Penalty].value += field[pAdjust].value
+hero.child[AllSkills].field[Penalty].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pConvict35" name="Conviction(3.5)" description="This spell bolsters the mental, physical, and spiritual strength of the creature touched. The spell grants the subject a +2 morale bonus on saving throws, with an additional +1 to the bonus for every six caster levels you have (maximum +5 morale bonus at 18th level)." compset="InPlay">
+    <fieldval field="pMinimum" value="2"/>
+    <fieldval field="pMaximum" value="5"/>
+    <fieldval field="pDuration" value="10 minutes/level"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~Give Morale Bonus to saves
+#applybonus[BonMorale, hero.child[svFort],field[pAdjust].value]
+#applybonus[BonMorale, hero.child[svRef],field[pAdjust].value]
+#applybonus[BonMorale, hero.child[svWill],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="ioWiSotSH7" name="Boots, Winged{SotS-H7}" description="These boots appear to be ordinary footgear. On command, they sprout wings at the heel and let the wearer fly, without having to maintain concentration, as if affected by a fly spell (including a +4 bonus on Fly skill checks). He can fly three per times day for up to 5 minutes per flight.\n\n{b}Fly:{/b} As as swift action wear of cloak of wings can fly at a speed of 60 feet (or 40 feet if it wears medium or heavy armor, or if it carries a medium or heavy load). It can ascend at half speed and descend at double speed, and its maneuverability is good." compset="Wondrous">
+    <fieldval field="gCost" value="16000"/>
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="iCL" value="8"/>
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="actName" value="Fly"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="Hero" tag="EqpFoot"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <bootstrap thing="xFly">
+      <autotag group="Helper" tag="NotNatural"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~if we're not active, just get out now
+doneif (field[gIsEquip].value = 0)
+
+~+4 bonus
+#skillbonus[skFly] += 4]]></eval>
+    <eval phase="Final" priority="10000" index="2"><![CDATA[~if we're not active, just get out now
+doneif (field[abilActive].value = 0)
+
+~if our walking speed is encumbered by armor, apply a fly speed of 40
+if (hero.tagis[Hero.ArmorSpeed] - hero.tagis[Hero.Sturdy] > 0) then
+  perform hero.child[xFly].assign[Value.40]
+else
+  perform hero.child[xFly].assign[Value.60]
+  endif]]></eval>
+    </thing>
+  <thing id="ioMarkWrat" name="Mark of Wrath" description="The mark of wrath provides a +1 insight bonus to AC and on attack and damage rolls. Once per day as a swift action, you can call upon the mark to protect you with a fire shield (CL 15th). If you are slain in combat, the mark of wrath transfers to the brow of your defeater. It can only be transferred again on that character&#146;s death at the hands of another, but can be removed with a successful break enchantment against CL 20th. Once removed in this manner, it vanishes forever.\n\n{B}Fire Shield(appears in the {I}Spells{/i} tab):{/b} Any creature striking you with its body or a handheld weapon deals normal damage, but at the same time the attacker takes 1d6+15. This damage is either cold damage (if the shield protects against fire-based attacks) or fire damage (if the shield protects against cold-based attacks). If the attacker has spell resistance, it applies to this effect. Creatures wielding weapons with exceptional reach are not subject to this damage if they attack you." compset="Wondrous">
+    <fieldval field="iCL" value="15"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="gType" tag="Wonder"/>
+    <bootstrap thing="spFireShi4">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="5000">#applybonus[BonInsight,hero.child[ArmorClass],1]
+#applybonus[BonInsight,hero.child[Attack],1]
+~REMINDER: This should be a insight bonus
+hero.child[Damage].field[tDamBonus].value += 1</eval>
+    </thing>
+  <thing id="ipRLBlurri" name="Blurring" description="When you activate this armor, your appearance becomes distorted and hazy, as if you were affected by a blur spell.\n\nThe blurring property functions three times per day, and the effect lasts for 5 rounds." compset="ItemPower">
+    <fieldval field="iPrice" value="1"/>
+    <usesource source="PathRise"/>
+    <tag group="PowerType" tag="Armor"/>
+    </thing>
+  <thing id="ipRLGrBlur" name="Blurring, Greater[Synergy]" description="As blurring armor, except that the effect&#146;s duration is 10 minutes, and you can activate the blurring property any number of times per day.\n\n{B}Note:{/b} You must have Blurring before you can add Greater Blurring." compset="ItemPower">
+    <fieldval field="iPrice" value="2"/>
+    <usesource source="PathRise"/>
+    <tag group="PowerType" tag="Armor"/>
+    </thing>
+  <thing id="ipRLBerser" name="Berserker" description="In your hands, a berserker weapon deals an extra 1d8 points of damage on any successful attack while you are raging." compset="ItemPower">
+    <fieldval field="iPrice" value="1"/>
+    <usesource source="PathRise"/>
+    <tag group="PowerType" tag="Weapon"/>
+    <exprreq message="Requires a Two-handed weapon."><![CDATA[tagis[wClass.TwoHanded] <> 0]]></exprreq>
+    </thing>
+  <thing id="ioRLVestR3" name="Vest of Resistance, +3" description="These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).{br}{br}Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator&apos;s caster level must be at least three times the cloak&apos;s bonus; Price 9,000 gp; Weight 1 lb." compset="Wondrous">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="9000"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Hero" tag="EqpBody"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        hero.child[svFort].field[svResist].value = maximum(hero.child[svFort].field[svResist].value, 3)
+        hero.child[svRef].field[svResist].value = maximum(hero.child[svRef].field[svResist].value, 3)
+        hero.child[svWill].field[svResist].value = maximum(hero.child[svWill].field[svResist].value, 3)
+        endif]]></eval>
+    </thing>
+  <thing id="ioClkCom4" name="Cloak of Comfort +4" description="{i}This cloak allows you to remain comfortable in any mundane environment, and to share that comfort with nearby allies.{/i}\n{b}Description:{/b} A cloak of comfort appears old and slightly worn. It is normally of dark brown hue, though some in shades of black, blue, and gray exist. The cloak always feels comfortable to touch, regardless of the ambient temperature.\n{b}Activation:{/b} A cloak of comfort is active as long as it is worn; it requires no special actions to activate. \n{b}Effect:{/b} You are protected by a constant endure elements effect, as are any allies within 30 feet of you. You also gain a +3 resistance bonus on saving throws." compset="Wondrous">
+    <fieldval field="gWeight" value="2"/>
+    <fieldval field="gCost" value="18000"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpBack"/>
+    <tag group="gType" tag="Wonder"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[~Pre-Levels 5,000
+      if (field[gIsEquip].value <> 0) then
+        hero.child[svFort].field[svResist].value = maximum(hero.child[svFort].field[svResist].value, 4)
+        hero.child[svRef].field[svResist].value = maximum(hero.child[svRef].field[svResist].value, 4)
+        hero.child[svWill].field[svResist].value = maximum(hero.child[svWill].field[svResist].value, 4)
+        endif]]></eval>
+    </thing>
+  <thing id="ioClkCom5" name="Cloak of Comfort +5" description="{i}This cloak allows you to remain comfortable in any mundane environment, and to share that comfort with nearby allies.{/i}\n{b}Description:{/b} A cloak of comfort appears old and slightly worn. It is normally of dark brown hue, though some in shades of black, blue, and gray exist. The cloak always feels comfortable to touch, regardless of the ambient temperature.\n{b}Activation:{/b} A cloak of comfort is active as long as it is worn; it requires no special actions to activate. \n{b}Effect:{/b} You are protected by a constant endure elements effect, as are any allies within 30 feet of you. You also gain a +3 resistance bonus on saving throws." compset="Wondrous">
+    <fieldval field="gWeight" value="2"/>
+    <fieldval field="gCost" value="27000"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpBack"/>
+    <tag group="gType" tag="Wonder"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[~Pre-Levels 5,000
+      if (field[gIsEquip].value <> 0) then
+        hero.child[svFort].field[svResist].value = maximum(hero.child[svFort].field[svResist].value, 5)
+        hero.child[svRef].field[svResist].value = maximum(hero.child[svRef].field[svResist].value, 5)
+        hero.child[svWill].field[svResist].value = maximum(hero.child[svWill].field[svResist].value, 5)
+        endif]]></eval>
+    </thing>
+  <thing id="irS2Sihedr" name="Sihedron Ring" description="This otherwise plain gold ring is adorned with seven black sapphires arranged in the shape of a tiny Sihedron rune. These rings were given to agents and allies of the runelords as badges of office and tokens of appreciation for their work&#151;sometimes, they were given as bribes to those a runelord was attempting to win to his cause.  A Sihedron ring grants a +3 profane bonus to AC, a +3 profane bonus on all saving throws, and protects you with endure elements. At will, as a standard action, you can use the Sihedron ring to change the appearance of your clothing or armor into any other kind of clothing or armor. The actual clothing and armor worn retain all their properties (including weight) when glamered&#151;only true seeing or similar magic reveals the true nature of your adornments." compset="Ring" replaces="irPFSihedr">
+    <fieldval field="gCost" value="45000"/>
+    <usesource source="PathRise" parent="PathSRD" name="Rise of the Runelords"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="gType" tag="Ring" name="Ring" abbrev="Ring"/>
+    <eval phase="PreLevel"><![CDATA[if (field[gIsEquip].value <> 0) then
+    #applybonus[BonProfane,hero.child[ArmorClass],3]
+    #applybonus[BonProfane,hero.child[svFort],3]
+    #applybonus[BonProfane,hero.child[svRef],3]
+    #applybonus[BonProfane,hero.child[svWill],3]
+endif]]></eval>
+    </thing>
+  <thing id="iS2Chellan" name="Chellan, Sword of Greed" description="Of the Seven Blades of Conviction wielded by the runelords&apos; champions, weapons known as the {i}Alara&apos;hai{/i} to the Thassilonians, the sword of greed was the most extravagant, for it was made of magically hardened gold, tempered to the strength of adamantine yet retaining its luster. Although made of gold, {i}Chellan{/i} functions as an adamantine weapon for purposes of overcoming damage reduction and bypassing hardness. {i}Chellan{/i} is a {i}+5 keen scimitar{/i}, and its dense weight allows it to damage foes as if it were one size category larger than its actual size. It can be properly wielded only by characters with a Strength of 18 or higher - all other characters must either wield it as a two-handed weapon or take a -2 penalty on attack rolls with the weapon.\n\nWhenever {i}Chellan{/i} strikes a foe, the target must make a DC 20 Fortitude save or be {i}slowed{/i} as the spell (CL 16th). If the sword instead scores a critical hit, the target must make a DC 25 Fortitude save or be turned into a crystalline statue, as if by {i}flesh to stone{/i}. Characters turned to crystal by Chellan appear to be made of ruby, diamond, or some other valuable gem, but are in fact merely colored quartz of little value to the looter." compset="MagicWep" uniqueness="unique">
+    <fieldval field="BonEnhance" value="5"/>
+    <fieldval field="shortname" value="Chellan"/>
+    <fieldval field="iCL" value="16"/>
+    <fieldval field="gWeight" value="25"/>
+    <usesource source="PathRise"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="StrReq" tag="18"/>
+    <tag group="wMain" tag="2d6_104"/>
+    <tag group="wCritMin" tag="15"/>
+    <bootstrap thing="raChellan"></bootstrap>
+    <eval phase="PostAttr" priority="5000"><![CDATA[~If not equiped don't do anything
+doneif (field[gIsEquip].value + field[wIs2nd].value = 0)
+
+~Check to see if we have less than 18 Str
+If (hero.child[aSTR].field[aModBonus].value < 18) Then
+   ~ Less than 18Str then need to be in 2hands or penalty
+   If (field[wIs2nd].value <> 1) Then
+      field[wAttBonus].value += -2
+   Endif
+Endif]]></eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wScimitar"></bootstrap>
+      </child>
+    </thing>
+  <thing id="raChellan" name="On Hit" description="Whenever {i}Chellan{/i} strikes a foe, the target must make a DC 20 Fortitude save or be {i}slowed{/i} as the spell (CL 16th). If the sword instead scores a critical hit, the target must make a DC 25 Fortitude save or be turned into a crystalline statue, as if by {i}flesh to stone{/i}. Characters turned to crystal by Chellan appear to be made of ruby, diamond, or some other valuable gem, but are in fact merely colored quartz of little value to the looter." compset="RaceSpec">
+    <fieldval field="abDC" value="20"/>
+    <usesource source="PathRise"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="SpInfo" tag="spSlow3"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="ioNckBOE8" name="Amulet of Natural Armor +3 &amp; Mighty Fists +3{BO-E7}" description="{b}Natural Armor:{/b} The wearer of this amber dragon gem on a silver chain, toughens the wearer&#146;s body and flesh, giving him an enhancement bonus to his natural armor bonus of +2 .\n{b}Mighty Fists:{/b} This amulet grants an enhancement bonus of +3 on attack and damage rolls with unarmed attacks and natural weapons. \n{b}1/Day:{/b} Your skin can be hardened to the point that it can actually deflect blows.  As an immediate action you can gain DR 5/- for 1 round." compset="Wondrous" summary="Your skin can be hardened to the point that it can actually deflect blows.  As an immediate action you can gain DR 5/- for 1 round." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <fieldval field="gCost" value="27000"/>
+    <usesource source="PathRise"/>
+    <tag group="Hero" tag="EqpNeck"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~Pre-levels 10,000
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[mNatural], 2]
+        #enhancementbonus[hero.child[wUnarmed], 3]
+
+   foreach pick in hero from BaseWep where "wGroup.Natural" 
+      eachpick.field[wAttBonus].value += 3
+      eachpick.field[wDamBonus].value += 3
+   nexteach
+
+      endif]]></eval>
+    </thing>
+  <thing id="iS2FrBuSp4" name="Boltzapper" description="This +4 frost burst returning spear does an additional 1d10 damage on a critical hit.  Unlike a normal returning weapon this weapon returns to the thrower at the end of their turn regardless of where they are standing.\n\n{b}Sizing{/b} This weapon changes to the size of the weilder. This is scripted already and works." compset="MagicWep" uniqueness="unique">
+    <fieldval field="BonEnhance" value="4"/>
+    <fieldval field="gCost" value="55000"/>
+    <fieldval field="gSizeCost" value="10"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <eval phase="First" priority="5000">~Sizing
+field[gSizeMod].value = herofield[tSize].value</eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wSpear"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iS2IceFlac" name="Icing Death" description="This +5 frost falchion is a minor artifact.  It causes 2d12 forst damage per hit and has a slight blue glow to the weapon that lights up 5ft around the weilder.\n\n{b}Sizing{/b} This weapon changes to the size of the weilder. This is scripted already and works." compset="MagicWep" uniqueness="unique">
+    <fieldval field="BonEnhance" value="5"/>
+    <usesource source="PathRise"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <eval phase="Final" priority="5000"><![CDATA[field[livename].text = field[thingname].text & " +2d12 Frost"]]></eval>
+    <eval phase="First" priority="5000" index="2">~Sizing
+field[gSizeMod].value = herofield[tSize].value</eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wFalchion"></bootstrap>
+      </child>
+    </thing>
+  <thing id="ioS2SihTom" name="Sihedron Tome" description="A useful lesser artifact said to have been crafted by a dragon in the service of Emperor Xin, the {i}Sihedron tome{/i} holds infinite pages for wizards to inscribe spells upon. In addition to potentially holding libraries worth of arcane knowledge, any wizard who prepares spells from the Sihedron Tome may prepare bonus spells as if his Intelligence were 6 points higher. This is not an actual bonus to Intelligence and grants the user no additional benefit. Currently, the book is filled with arcane formulas for every spell Karzoug has memorized, plus 2d12 others (mostly from the school of transmutation and none from the schools of enchantment or illusion)." compset="Wondrous">
+    <fieldval field="iCL" value="16"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="PathRise"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    </thing>
+  <thing id="ioS2RuneAm" name="Runewell Amulet" description="This amulet of gold and red crystal grants the wearer a +5 enhancement bonus to his natural armor bonus. In addition, the wearer becomes attuned to both the {i}runewell of greed{/i} and the {i}soul lens{/i} that controls it.{br}{br}While within the confines of the {i}runewell,{/i} the wearer does not age and has no need for food or water. In addition, he can move about the interior of the {i}runewell{/i} at a fly speed of 60 feet with perfect maneuverability. The wearer of the necklace is sustained by the souls absorbed by the {i}runewell{/i} and, as a result, gains fast healing 10." compset="Wondrous">
+    <fieldval field="iCL" value="20"/>
+    <usesource source="PathRise"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Hero" tag="EqpNeck" name="Neck" abbrev="Neck"/>
+    <bootstrap thing="xFastHeal"></bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~If not equipped get out now
+doneif (field[gIsEquip].value <> 1)
+
+~ Give +5 Natural Armor
+#enhancementbonus[hero.child[mNatural], 5]
+~ Give us Fast Healing 10
+#applyvalue[xFastHeal, 10]
+~ Give us Fly speed 60
+#applyvalue[xFly, 60]
+~ Give perfect manueverability
+perform hero.child[xFly].assign[Maneuver.Perfect]]]></eval>
+    </thing>
+  </document>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+shadowchemosh@yahoo.com
+Created: December 30, 2011</info_author>
+    <info_history><![CDATA[
+August 30, 2012
+-Moved out Classes, Races, and Feats to the Shadowd20 specific files.
+    
+June 14, 2012
+-Added the missing spell-like abilities to the "Samsarans" race.
+
+January 29, 2012
+-Began adding crunch from the Dragon Empire's Primer.
+-Added Feats: Blinding Flash, Diorienting Blow, Ehanced Ki Throw, Feinting Flurry, Fox Shape, Hold the Blade, Improved Feinting Flurry, Quivering Palm Adept, Quivering Palm Versatility, Sleeper Hold, Stunning Fist Adept, Swift Kitsune Shapechanger, Vulpine Pounce.
+-Added Archetypes: SwordSaint, White Haired Witch (raised BAB to Medium), Yokai Hunter.
+-Added: Order of the Black Daimyo
+-Added: Deities - Daikitsu, Fumeiyoshi, General Susumu, Hei Feng, Kofusachi, Lady Nanbyo, Lao Shu Po, Nalinivati.
+    
+December 30, 2011
+-Created New Dragon Empires Gazetter .user file to hold the new "Shadow d20 Dragon Empire Races".
+-Added Kitsune Race, racial abilities, and subtype.
+-Added Nagaji Race, racial abilities, and language.
+-Added Samsarans Race, racial abilities, subtype and language.
+-Added Tengu Race, racial abilities, subtype and language.
+-Added Wayangs Race, racial abilities, subtype and language.]]></info_history>
+    </fileinfo>
+  <thing id="deiS2Daiki" name="Daikitsu" description="The Lady of Foxes, is the goddess of rice, agriculture, and kitsune. Thought to appear as a beautiful kitsune woman with snow-white fur and nine tails, Daikitsu is prayed to by artisans, farmers, and families, and is revered for her blessings of handmade crafts, harvests, and the hearthstone." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="agriculture, craftsmanship, kitsune, rice"/>
+    <fieldval field="deiEpithet" value="Lady of Foxes"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdArtifice"/>
+    <tag group="AllowDom" tag="cdCommun"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="WepProf" tag="wFlail"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="DeityCat" tag="S2TiaXia"/>
+    <tag group="AllowDom" tag="cdConstruc"/>
+    <tag group="AllowDom" tag="cdDecay"/>
+    <tag group="AllowDom" tag="cdFamily"/>
+    <tag group="AllowDom" tag="cdFeather"/>
+    <tag group="AllowDom" tag="cdFur"/>
+    <tag group="AllowDom" tag="cdGrowth"/>
+    <tag group="AllowDom" tag="cdHome"/>
+    <tag group="AllowDom" tag="cdSeasons"/>
+    <tag group="AllowDom" tag="cdSun"/>
+    <tag group="AllowDom" tag="cdToil"/>
+    </thing>
+  <thing id="deiS2Fumei" name="Fumeiyoshi" description="The Lord of Envy, is the god of graves, envy, and dishonor, and is the patron of oni and undead. He was banished to undeath by Shizuru after killing his brother Tsukiyo, and grieving Tians sometimes make offerings to him in hopes of placating the Lord of Envy, lest he cause their loved ones to rise once more as undead horrors." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="dishonor, envy, graves, undead"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdRepose"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wNaginata"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="S2TiaXia"/>
+    <tag group="AllowDom" tag="cdAncestor"/>
+    <tag group="AllowDom" tag="cdBlood"/>
+    <tag group="AllowDom" tag="cdCatastro"/>
+    <tag group="AllowDom" tag="cdDaemon"/>
+    <tag group="AllowDom" tag="cdDemonE"/>
+    <tag group="AllowDom" tag="cdDevilE"/>
+    <tag group="AllowDom" tag="cdMurder"/>
+    <tag group="AllowDom" tag="cdRage"/>
+    <tag group="AllowDom" tag="cdSouls"/>
+    <tag group="AllowDom" tag="cdTactics"/>
+    <tag group="AllowDom" tag="cdTorture"/>
+    <tag group="AllowDom" tag="cdUndead"/>
+    </thing>
+  <thing id="deiS2GenSu" name="General Susumu" description="Is the patron god of samurai who dedicate their lives to pursuing war and glory rather than honor and heroism, and his influence can be felt most on the battlefield, where he sometimes leads his massive army of ghostly warriors just to feel the rush of battle once more." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="archery, horses, personal glory, war"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="AlignTemp" tag="LawEvil"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdGlory"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdNobility"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wLongbow"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="S2TiaXia"/>
+    <tag group="AllowDom" tag="cdArchonL"/>
+    <tag group="AllowDom" tag="cdDaemon"/>
+    <tag group="AllowDom" tag="cdDemonE"/>
+    <tag group="AllowDom" tag="cdDevilE"/>
+    <tag group="AllowDom" tag="cdDevilL"/>
+    <tag group="AllowDom" tag="cdHeroism"/>
+    <tag group="AllowDom" tag="cdHonor"/>
+    <tag group="AllowDom" tag="cdInevitab"/>
+    <tag group="AllowDom" tag="cdLeadersh"/>
+    <tag group="AllowDom" tag="cdMartyr"/>
+    <tag group="AllowDom" tag="cdSlavery"/>
+    <tag group="AllowDom" tag="cdBlood"/>
+    <tag group="AllowDom" tag="cdTactics"/>
+    </thing>
+  <thing id="deiS2HeiFe" name="Hei Feng" description="Duke of Thunder, is the god of the sea, storms, wind, and tengus. He is worshiped by sailors praying for safe voyage as well as by farmers hoping for rain, but he is an unpredictable and chaotic god, and his gentle breeze can just as quickly turn into a violent tempest." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="sea, storms, thunder, wind"/>
+    <fieldval field="deiEpithet" value="Duke of Thunder"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="AlignTemp" tag="ChaotNeut"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdAir"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="WepProf" tag="wBroaNine"/>
+    <tag group="DeityCat" tag="S2TiaXia"/>
+    <tag group="AllowDom" tag="cdAzataC"/>
+    <tag group="AllowDom" tag="cdCatastro"/>
+    <tag group="AllowDom" tag="cdCloud"/>
+    <tag group="AllowDom" tag="cdDemonC"/>
+    <tag group="AllowDom" tag="cdFlotsam"/>
+    <tag group="AllowDom" tag="cdIce"/>
+    <tag group="AllowDom" tag="cdOceans"/>
+    <tag group="AllowDom" tag="cdProtean"/>
+    <tag group="AllowDom" tag="cdRage"/>
+    <tag group="AllowDom" tag="cdSeasons"/>
+    <tag group="AllowDom" tag="cdStorms"/>
+    <tag group="AllowDom" tag="cdTorture"/>
+    <tag group="AllowDom" tag="cdWind"/>
+    </thing>
+  <thing id="deiS2Kofus" name="Kofusachi" description="Kofusachi is known as the Laughing God, and is revered as the god of happiness, prosperity, and discovery. Worshiped by wanderers and good-hearted libertines, Kofusachi is depicted as a plump, smiling bald man." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="The Laughing God"/>
+    <fieldval field="deiPortfol" value="abundance, discovery, happiness, prosperity"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    <tag group="WepProf" tag="wBoStaff"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="S2TiaXia" name="Deities of Tian Xia"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdCharm"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdAgathion"/>
+    <tag group="AllowDom" tag="cdArchonG"/>
+    <tag group="AllowDom" tag="cdAzataC"/>
+    <tag group="AllowDom" tag="cdAzataG"/>
+    <tag group="AllowDom" tag="cdCurse"/>
+    <tag group="AllowDom" tag="cdDemonC"/>
+    <tag group="AllowDom" tag="cdExplorat"/>
+    <tag group="AllowDom" tag="cdFate"/>
+    <tag group="AllowDom" tag="cdLove"/>
+    <tag group="AllowDom" tag="cdLust"/>
+    <tag group="AllowDom" tag="cdProtean"/>
+    <tag group="AllowDom" tag="cdTrade"/>
+    </thing>
+  <thing id="deiS2LaNan" name="Lady Nanbyo" description="Lady Nanbyo, the Widow of Suffering, has taken many husbands, but all have met terrible and tragic ends, as is befitting of the Tian-Sing goddess of earthquakes, plagues, and suffering. She delights in catastrophes, and inflicts chaos and trauma wherever she goes." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="The Widow of Suffering"/>
+    <fieldval field="deiPortfol" value="earthquakes, fire, plague, suffering"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="AlignTemp" tag="ChaotEvil"/>
+    <tag group="WepProf" tag="wWarhammer"/>
+    <tag group="DeityCat" tag="S2TiaXia"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdArson"/>
+    <tag group="AllowDom" tag="cdAsh"/>
+    <tag group="AllowDom" tag="cdAzataC"/>
+    <tag group="AllowDom" tag="cdCatastro"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdDaemon"/>
+    <tag group="AllowDom" tag="cdDecay"/>
+    <tag group="AllowDom" tag="cdDemonC"/>
+    <tag group="AllowDom" tag="cdDemonE"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdDevilE"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdFire"/>
+    <tag group="AllowDom" tag="cdGrowth"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="AllowDom" tag="cdProtean"/>
+    <tag group="AllowDom" tag="cdRage"/>
+    <tag group="AllowDom" tag="cdSmoke"/>
+    <tag group="AllowDom" tag="cdTorture"/>
+    </thing>
+  <thing id="deiS2LaShP" name="Lao Shu Po" description="Lao Shu Po, appearing as an immense, six-legged rat, is often worshiped by thieves, wayangs, and any others who seek to hide their doings in the dark of night. Many who seek to gain power through theft find their way to Old Rat Woman&apos;s cults." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="Old Rat Woman"/>
+    <fieldval field="deiPortfol" value="night, rats, thieves"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="DeityCat" tag="S2TiaXia"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="WepProf" tag="wDagger"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdCurse"/>
+    <tag group="AllowDom" tag="cdDaemon"/>
+    <tag group="AllowDom" tag="cdDarkness"/>
+    <tag group="AllowDom" tag="cdDeceptio"/>
+    <tag group="AllowDom" tag="cdDemonE"/>
+    <tag group="AllowDom" tag="cdDevilE"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdFate"/>
+    <tag group="AllowDom" tag="cdFeather"/>
+    <tag group="AllowDom" tag="cdFur"/>
+    <tag group="AllowDom" tag="cdLoss"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="AllowDom" tag="cdMoon"/>
+    <tag group="AllowDom" tag="cdNight"/>
+    <tag group="AllowDom" tag="cdThievery"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    </thing>
+  <thing id="deiS2Nalin" name="Nalinivati" description="Nalinivati was Nagajor&apos;s first queen, and gave birth to the nagas in ages past before ascending to godhood via her own sorcerous powers. The Serpent&apos;s Kiss is thought by some to be romantically involved with Daikitsu; she is worshiped by sorcerers, nagas, passionate lovers, and those who adore snakes, and is often invoked in fertility rituals." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="fertility, nagaji, snakes, sorcery"/>
+    <usesource source="srcDragEmp"/>
+    <tag group="WepProf" tag="wPFUrumi"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="S2TiaXia"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="AllowDom" tag="cdArcane"/>
+    <tag group="AllowDom" tag="cdCharm"/>
+    <tag group="AllowDom" tag="cdDivine"/>
+    <tag group="AllowDom" tag="cdDragon"/>
+    <tag group="AllowDom" tag="cdLanguage"/>
+    <tag group="AllowDom" tag="cdLeadersh"/>
+    <tag group="AllowDom" tag="cdLove"/>
+    <tag group="AllowDom" tag="cdLust"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdMartyr"/>
+    <tag group="AllowDom" tag="cdNobility"/>
+    <tag group="AllowDom" tag="cdRune"/>
+    <tag group="AllowDom" tag="cdSaurian"/>
+    <tag group="AllowDom" tag="cdScalykin"/>
+    <tag group="AllowDom" tag="cdWards"/>
+    </thing>
+  </document>

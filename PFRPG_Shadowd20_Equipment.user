@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com
+
+This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
+    <info_history><![CDATA[
+3/11/2014
+-Fixed Claw Blades gear item.
+    
+9/21/2013
+-Added in new "Claw Blades" gear item.
+    
+Feb 17, 2013
+-Created new]]></info_history>
+    </fileinfo>
+  <thing id="gQuRelBack" name="Backpack, Quick Release" description="Quick release backpacks where made to be quickly dropped during emergencies. Dropping this type of backpack is a swift action instead of the normal move-action. Placing this type of backpack on your back again is a Full-Round Action that provokes Attacks of Opportunities." compset="Gear">
+    <fieldval field="gWeight" value="5"/>
+    <fieldval field="gCost" value="350"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="GearSize" name="GearSize" abbrev="GearSize"/>
+    <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring Gear"/>
+    <tag group="thing" tag="holder" name="Holder" abbrev="???"/>
+    </thing>
+  <thing id="gS2SAP" name=" SAP" description="This is a {i}Standard Adventuring Pack{/i} that adds the standard list of equipment required for Shadow Pathfinder games.\n\nIt will add the following to your character:\n-Backpack(empty)\n-Bedroll\n-Flint and steel\n-Oil Flask x2\n-Piton x4\n-Potion of Cure Light Wounds\n-Trail Rations x4\n-Torches x2\n-Soap\n-Waterskin\n-Whetstone" compset="Gear">
+    <fieldval field="gCost" value="25"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="gType" tag="AdventKits"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <autoadd thing="fOil">
+      <assignval field="stackQty" value="2"/>
+      </autoadd>
+    <autoadd thing="fPiton">
+      <assignval field="stackQty" value="4"/>
+      </autoadd>
+    <autoadd thing="fRations">
+      <assignval field="stackQty" value="4"/>
+      </autoadd>
+    <autoadd thing="fSoap"></autoadd>
+    <autoadd thing="fWaterskin"></autoadd>
+    <autoadd thing="fWhetstone"></autoadd>
+    <autoadd thing="fBackpack"></autoadd>
+    <autoadd thing="fTorch">
+      <assignval field="stackQty" value="2"/>
+      </autoadd>
+    <autoadd thing="ipCureLW" portal="iTable"></autoadd>
+    <autoadd thing="fBedroll"></autoadd>
+    <autoadd thing="fFlintStl"></autoadd>
+    </thing>
+  <thing id="gS2PotBrac" name="Potion Bracer" description="A potion bracer is a leather band reinforced with strips of steel, with slots for three potion vials. Worn on the forearm, it allows instant hand-free access to these three potions. Drinking a potion from the bracer is a standard action, but it does not provoke an AoO or require a warrior to put down his weapons.\n\nThe downside is that unlike a concealed potion, the bracer is very obvious to observers and it can be directly attacked. A character can make a sunder attack against the bracer (AC14 + wearer&apos;s Dex modifier). The bracer has hardness 8 and 5 hit points. However, any attack that deals 5 or more hit points of damage shatters one of the potion vials(chosen randomly) even if the bracer itself is untouched." compset="Gear" summary="Leather band with slots for three potion vials. Can be attacked (AC14 + wearer&apos;s Dex modifier) with hardness 8 and 5HP.">
+    <fieldval field="gWeight" value="1.5"/>
+    <fieldval field="gCost" value="50"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="AdventGear"/>
+    <tag group="Hero" tag="EqpWrist"/>
+    <tag group="thing" tag="holder"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="gS2ShinSho" name="Shinobi Shozoku" description="This is a close-fitting bodysuit of dark fabric, favored by ninja and assassins. It is of masterwork quality and grants a +2 circumstance bonus on Stealth checks while worn." compset="Gear">
+    <fieldval field="gWeight" value="2"/>
+    <fieldval field="gCost" value="50"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpBody"/>
+    <tag group="Helper" tag="GearSize"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="gType" tag="Clothing"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not equipped then get out now
+      doneif (field[gIsEquip].value <> 1)
+
+      ~ +2 circumstance bonus on Stealth
+      #applybonus[ModCirc,hero.child[skStealth],2]]]></eval>
+    </thing>
+  <thing id="ioS2DarSof" name="Daredevil Softpaws" description="This pair of magical softpaw boots (see above) allows the catfolk wearing them to gain extra maneuverability while moving through hazardous areas. As a free action, the wearer can click her heels together to grant herself a +5 competence bonus on Acrobatics checks made to move through threatened squares or to move through an enemy’s space without provoking attacks of opportunity for up to 10 rounds per day. The rounds need not be consecutive. Furthermore, anytime the wearer of the boots successfully moves though the space of an enemy without provoking an attack of opportunity, she gains a +2 bonus on attack rolls against that enemy until the end of her turn." compset="Wondrous">
+    <fieldval field="iCL" value="3"/>
+    <fieldval field="gCost" value="1400"/>
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="trkMax" value="10"/>
+    <fieldval field="actName" value="Tumble"/>
+    <fieldval field="actName2" value="+2 Attack"/>
+    <usesource source="srcCatFolk"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Hero" tag="EqpFoot"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Usage" tag="DayRound"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="iSchool" tag="Enchant"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
+
+      #applybonus[BonComp,hero.child[skS2AcroTu],5]
+
+      ~ If not active get out now
+      doneif (field[abilAct2].value <> 1)
+      hero.child[Attack].field[tAtkMelee].value += 2]]></eval>
+    <exprreq message="Mwangi Catfolk race required."><![CDATA[#hasrace[rS2CatFolk] <> 0]]></exprreq>
+    </thing>
+  <thing id="ioS2Custom" name="- Custom Magic Item -" description="Add this to have a customizable magic item where you can set the name, weight and value yourself." compset="Wondrous">
+    <usesource source="s20PFCamp"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="Custom" name="Custom Magic Item" abbrev="Custom Magic Item"/>
+    <tag group="Helper" tag="EquipMag"/>
+    </thing>
+  </document>

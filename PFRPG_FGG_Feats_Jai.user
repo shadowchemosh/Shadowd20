@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <thing id="fUmImpSumm" name="Improved Summoning" description="The creature can use its {i}summon{/i} ability with a greater chance of success. \n\n{b}Prerequisite:{/b} Spell-like ability to {i}summon{/i} other creatures (such as those used by demons and devils). \n\n{b}Benefit:{/b} The chance of success for a creature&apos;s {i}summon{/i} spell-like ability is doubled to a maximum of a 95% chance of success.\n\n{b}{i}Note:{/b} The Pre-Requisite is not coded" compset="Feat" summary="The creature can use its {i}summon{/i} ability with a greater chance of success." uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    <tag group="fCategory" tag="General"/>
+    </thing>
+  <thing id="fUmIncrSum" name="Increase Summoning" description="The creature can use its {i}summon{/i} ability extra times per day. \n\n{b}Prerequisite:{/b} Spell-like ability to {i}summon{/i} other creatures (such as those used by demons and devils). \n\n{b}Benefit:{/b} The creature can use its {i}summon{/i} ability one extra time per day. \n\n{b}Special:{/b} This feat can be taken multiple times. Each time it is taken, the creature can use its {i}summon{/i} ability an extra time per day.\n\n{b}{i}Note:{/b} This is not coded" compset="Feat" summary="The creature can use its {i}summon{/i} ability extra times per day.">
+    <usesource source="FGGGenera"/>
+    <tag group="fCategory" tag="General"/>
+    </thing>
+  </document>

@@ -1,0 +1,2462 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author/>
+    <info_history>June 12, 2013 - Jai Erwin
+- Consolidated Things to fit into the correct FGG Core Package file.</info_history>
+    </fileinfo>
+  <thing id="xFGTraDanc" name="Immunity to Echantments" description="You are immune to all enchantment effects." compset="Ability">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xxFGSkMod" name="Racial Modifiers" compset="RaceSpec">
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+      var sSearch as string
+      var sNames  as string
+      var iX      as number
+      var nCount  as number
+      var Text    as string
+
+      ~ total abValue and Value.? tags
+      call TotalValue
+      ~ get all the target tags
+      sSearch = tagids[Target.?,"|"]
+      ~ change to thingid tags instead
+      sSearch = replace(sSearch,"Target.","thingid.",0)
+      ~ count the number of targets so we can correctly format the text
+      nCount = tagcount[Target.?]
+
+      ~ Go through all skills based on the target tags
+      foreach pick in hero from BaseSkill where sSearch
+         iX += 1
+         ~ give the racial bonus value
+         eachpick.field[Bonus].value += field[abValue].value
+         ~ if only one skill set name here
+         if (nCount = 1) then
+            sNames = eachpick.field[name].text
+         ~..if more than one name then correct set commas and "and" wording here
+         else
+            if (iX = 1) then
+               sNames = eachpick.field[name].text
+            elseif (iX = nCount) then
+               sNames &= " and " & eachpick.field[name].text
+            elseif (iX > 1) then
+               sNames &= ", " & eachpick.field[name].text
+            endif
+         endif
+      nexteach
+      ~ Change live name to the full value so we display correctly on a printed stat block
+      field[livename].text = signed(field[abValue].value) & " racial bonus on " & sNames & "."]]></eval>
+    </thing>
+  <thing id="xFGVulnEvo" name="Vulnerability to Evocation" description="You are vulnerable (+50% damage) to evocation magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGVulnNec" name="Vulnerability to Necromancy" description="You are vulnerable (+50% damage) to necromantic magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGVulnAbj" name="Vulnerability to Abjuration" description="You are vulnerable (+50% damage) to abjuration magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGVulnEnc" name="Vulnerability to Enchantment" description="You are vulnerable (+50% damage) to enchantment magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGVulnTrn" name="Vulnerability to Transmutation" description="You are vulnerable (+50% damage) to transmutation magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGVulnCon" name="Vulnerability to Conjuration" description="You are vulnerable (+50% damage) to conjuration magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGVulnIll" name="Vulnerability to Illusion" description="You are vulnerable (+50% damage) to illusion magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGVulnDiv" name="Vulnerability to Divination" description="You are vulnerable (+50% damage) to divination magic." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness" name="Weakness" abbrev="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="xFGAmorpho" name="Amorphous" description="The creature&#146;s body is malleable and shapeless. It is immune to precision damage (like sneak attacks) and critical hits." compset="Ability">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xImmCrit"></bootstrap>
+    <bootstrap thing="xImmPrec"></bootstrap>
+    </thing>
+  <thing id="xxFGHeat" name="Heat" description="The creature generates so much heat that its mere touch deals additional fire damage. The creature&#146;s metallic melee weapons also conduct this heat." compset="RaceSpec">
+    <comment>This version of heat allows user to select the amount of fire damage.  Defaults to 1d6.
+
+Type number of dice damage in the abValue field
+Type type of dice in the abValue2 field</comment>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="10000"><![CDATA[var noDice as number
+var typDice as number
+var damStr as string
+
+noDice = field[abValue].value
+typDice = field[abValue2].value
+
+~ defaults to 1d6
+if (noDice = 0) then 
+   noDice = 1
+endif
+if (typDice = 0) then
+   typDice = 6
+endif
+
+damStr = noDice &"d"& typDice
+
+
+~find all our melee weapons that are unarmed attacks, natural attacks, or
+      ~metal weapons - each gets fire damage
+      foreach pick in hero from BaseWep where "wCategory.Melee & (wCategory.Unarmed | component.BaseNatWep | EquipType.Metal)"
+        #extradamage[eachpick," + " & damStr & " fire",field[name].text]
+        nexteach
+
+field[livename].text = "Heat (" & damStr & ")"]]></eval>
+    </thing>
+  <thing id="xxFGCold" name="Cold" description="The creature generates intense cold that its mere touch deals additional cold damage. The creature&#146;s metallic melee weapons also conduct this cold." compset="RaceSpec">
+    <comment>This version of cold allows user to select the amount of cold damage.  Defualts to 1d6.
+
+Type number of dice damage in the abValue field
+Type type of dice in the abValue2 field</comment>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="10000"><![CDATA[var noDice as number
+var typDice as number
+var damStr as string
+
+noDice = field[abValue].value
+typDice = field[abValue2].value
+
+~ defaults to 1d6
+if (noDice = 0) then 
+   noDice = 1
+endif
+if (typDice = 0) then
+   typDice = 6
+endif
+
+damStr = noDice &"d"& typDice
+
+
+~find all our melee weapons that are unarmed attacks, natural attacks, or
+      ~metal weapons - each gets fire damage
+      foreach pick in hero from BaseWep where "wCategory.Melee & (wCategory.Unarmed | component.BaseNatWep | EquipType.Metal)"
+        #extradamage[eachpick," + " & damStr & " cold",field[name].text]
+        nexteach
+
+field[livename].text = "Cold (" & damStr & ")"]]></eval>
+    </thing>
+  <thing id="xxFGDisFil" name="Disease, Filth Fever" description="Filth Fever - {b}Type{/b} disease, injury; {b}Save{/b} Fortitude DC 12; {b}Onset{/b} 1d3 days; {b}Frequency{/b} 1/day; {b}Effect{/b} 1d3 Dex damage and 1d3 Con damage; {b}Cure{/b} 2 consecutive saves" compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="10000"><![CDATA[      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~if we have a selected weapon, then add " plus grab" to the selected weapon
+      call fTargetFoc
+      if (state.isfocus <> 0) then
+        #extradamage[focus," plus disease",field[name].text]
+        endif]]></eval>
+    <eval phase="First" priority="10000" index="2"><![CDATA[
+      ~if we're an ability on a custom monster, we'll need to allow the user to
+      ~select the particular attack we're tied to
+      if (hero.tagis[RaceType.CustomMon] <> 0) then
+        perform assign[fShowWhat.WeaponsNat]
+        endif]]></eval>
+    </thing>
+  <thing id="xFGUndeImm" name="Undead Immunities" description="Undead are immune to  all mind-affecting effects (charms, compulsions, morale effects, patterns, and phantasms),\nbleed, death effects, disease, paralysis, poison, sleep effects, and stunning.\n\nThey are not subject to nonlethal damage, ability drain, or energy drain. Immune to damage to its physical ability scores (Constitution, Dexterity, and Strength), as well as to exhaustion and fatigue effects. As well as any effect that requires a Fortitude save (unless the effect also works on objects or is harmless).\n\nFinally they are not at risk of death from massive damage, but is immediately destroyed when reduced to 0 hit points." compset="Ability" uniqueness="useronce">
+    <comment><![CDATA[This is for templates that change a base creature's type to Undead (augmented). Currently the Undead type doesn't convey the undead immunities in these cases]]></comment>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xImmDeath"></bootstrap>
+    <bootstrap thing="xImmEnerDr"></bootstrap>
+    <bootstrap thing="xImmExhaus"></bootstrap>
+    <bootstrap thing="xImmMind"></bootstrap>
+    <bootstrap thing="raImmNonLe"></bootstrap>
+    <bootstrap thing="xImmParaly"></bootstrap>
+    <bootstrap thing="xImmAbDmP"></bootstrap>
+    <bootstrap thing="xImmPois"></bootstrap>
+    <bootstrap thing="xImmPrec"></bootstrap>
+    <bootstrap thing="xImmSleep"></bootstrap>
+    <bootstrap thing="xImmStun"></bootstrap>
+    <bootstrap thing="xImmAbilDr"></bootstrap>
+    <bootstrap thing="xImmDis"></bootstrap>
+    <bootstrap thing="xImmBleed"></bootstrap>
+    <bootstrap thing="xImmFatigu"></bootstrap>
+    <bootstrap thing="xImmCrit"></bootstrap>
+    </thing>
+  <thing id="raxAIAirBo" name="Air Born" description="When in flight, an air-infused creature gains a +1 morale bonus on attack and damage rolls with ranged attacks." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="First" priority="10000"><![CDATA[foreach pick in hero from BaseWep where "wCategory.Range?"
+      eachpick.field[BonMorale].value = maximum(eachpick.field[BonMorale].value,1)
+    nexteach]]></eval>
+    </thing>
+  <thing id="raxAIBrWep" name="Breath Weapon" description="Once every 1d4 rounds, an air-infused creature can breathe a 60-foot-long cone of wind that mimics a terrible windstorm. Every creature within this area that is not flying must succeed on a Balance or Strength check (DC 10 + 1/2 air-infused creature&#146;s character level + air-infused creature&#146;s Cha modifier) or fall prone. A flying creature that fails is instead blown away from the air-infused creature, moving a distance equal to 5 feet per point by which it failed the check. If the creature encounters a large object (such as a wall) during this movement, it takes 1d6 points of damage per 5 feet the object prevented it from moving." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxAIGasFm" name="Gaseous Form" description="The air-infused creature can use gaseous form, as the spell (caster level equals air-infused creature&#146;s character level), on itself once per day." compset="RaceSpec">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spGaseFor3"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxEIElemB" name="Elemental Body" description="Element-infused creatures&#146; bodies gain some of the qualities of elementals. Each time an element-infused creature is exposed to a poison, paralysis, sleep, or stunning effect, it has a 25% chance to avoid it. In addition, there is a 25% chance that a sneak attack or critical hit deals no extra damage." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxDrLCmdL" name="Command Lacedons and Ghouls" description="A dread lacedon can automatically command all normal lacedons and ghouls within 30 feet as a free action. Normal lacedons and ghouls never attack a dread lacedon unless compelled." compset="RaceSpec">
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxDrLCdWt" name="Command Water" description="A dread lacedon can use {i}control water{/i} as the spell (caster level equals dread lacedon&#146;s character level) three times per day. It must be in the area of water to be affected in order to initiate the effect, though it need not remain there afterward. Dread lacedons often use this ability to trap ships or flood land." compset="RaceSpec">
+    <fieldval field="trkMax" value="3"/>
+    <tag group="SpInfo" tag="spContWat6" name="Control Water" abbrev="Control Water"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxDrLNauF" name="Nauseating Flesh" description="A creature that damages a dread lacedon with a bite attack, or swallows one whole, or otherwise eats its flesh must succeed on a DC 20 Fortitude save or be nauseated for 1 day. Success drops the duration of the nausea to 1d4 rounds. Nausea can be negated by a remove disease or purify food and drink effect." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxDWSUnCh" name="Unnatural Chill" description="The area around a dread wraith sovereign is noticeably colder than the ambient temperature. Each creature within 30 feet of a dread wraith sovereign takes 2d6 points of cold damage and must succeed on a Fortitude save (DC 10 + 1/2 dread wraith sovereign&#146;s total hit dice + dread wraith sovereign&#146;s Cha modifier) or be paralyzed. The damage and the saving throw are repeated each round that the creature remains within range. A creature that takes cold damage or is paralyzed from the unnatural chill is automatically shaken for 1 minute. Incorporeal creatures are immune to this effect. The shaken condition is a mind-affecting fear effect." compset="RaceSpec">
+    <fieldval field="shortname" value="unnatural chill"/>
+    <tag group="SpecType" tag="Aura"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final"><![CDATA[field[livename].text = "Unnatural Chill (30 ft., 2d6 cold)"
+    
+    field[shortname].text = "unnatural chill (30 ft., 2d6 cold)"
+    
+    
+    ~ DC
+    field[abDC].value = 10 + round(hero.tagcount[Hero.HitDice]/2,0,-1) + hero.child[aCHA].field[aModBonus].value]]></eval>
+    </thing>
+  <thing id="raxDWSDayV" name="Daylight Vulnerability" description="A dread wraith sovereign is not powerless in natural daylight and does not flee from it like a normal wraith does, but it does take a -4 penalty on all attack rolls, checks, and saves when in natural sunlight (but not within the radius of a daylight spell)." compset="RaceSpec">
+    <tag group="SpecType" tag="Weakness"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxDWSCmdW" name="Command Wraiths" description="A dread wraith sovereign can automatically command all normal wraiths and dread wraiths within 30 feet as a free action. Normal wraiths and dread wraiths never attack a dread wraith sovereign unless compelled." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxDWSConD" name="Constiution Drain" description="A dread wraith sovereign&#146;s incorporeal touch attack deals 1d8 points of Constitution drain unless the creature struck succeeds on a Fortitude save (DC 10 + 1/2 dread wraith sovereign&#146;s character level + dread wraith sovereign&#146;s Cha modifier)." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final"><![CDATA[foreach pick in hero from BaseNatWep
+      eachpick.field[wDamExtra].text &= " plus 1d8 Con drain"
+    nexteach
+    
+    ~ DC
+    field[abDC].value = 10 + round(hero.tagcount[Hero.HitDice]/2,0,-1) + hero.child[aCHA].field[aModBonus].value]]></eval>
+    </thing>
+  <thing id="raxDWSCrSp" name="Create Spawn" description="Any creature slain by a dread wraith sovereign&#146;s Constitution drain or incorporeal touch attack rises as a dread wraith in 1d4 rounds. A dread wraith created in this manner is under the command of its creator and remains so until either it or the creator is destroyed. When a dread wraith sovereign is killed, one of its dread wraith spawn that had 10 or more character levels in life becomes a dread wraith sovereign (created by applying the template to the original base creature as it was in life)." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGGRIceM" name="Ice Mastery" description="An icy creature gains a +1 morale bonus on attack and damage rolls if its foe is touching ice. In addition, the icy creature never slips or slides on natural or supernatural ice unless it wishes, and it can always climb ice and icy surfaces as though affected by a spider climb spell." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGGRIcTc" name="Icy Touch" description="An icy creature is chilling to the touch. Any creature that makes a successful touch attack against it takes 1d6 points of cold damage. Each of the icy creature&#146;s natural melee attacks (including successful grapple checks made during its turn) and attacks with metallic melee weapons deals +1d6 points of cold damage. Any creature damaged by the icy creature&#146;s icy touch must succeed on a Fortitude save or be paralyzed for 1d4 rounds. The save is Constitution-based." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGGRCldA" name="Cold Aura" description="An icy creature emits an aura of cold that can wound nearby creatures. Any creature within 10 feet of it takes 2d6 points of cold damage per round that it remains within range. A successful Fortitude save halves the damage for that round. An icy creature can suppress or resume the use of this ability as a free action. The save is Constitution-based." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Aura"/>
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGGRExuI" name="Exude Ice" description="At will as a full-round action, an icy creature can exude a circle of slippery ice in a 20-foot-diameter spread centered on its body. This ice remains in the aff ected area, melting away as normal for the ambient temperature. Creatures walking on the ice must spend 2 squares of movement to enter any square covered by it. The DC for any Acrobatics check made in the area increases by +5." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGPrisBo" name="Prismatic Body" description="A prismatic&#146;s body glows with a light equivalent to that of a candle, illuminating a 5-foot radius around itself. Each round, this light takes on a different hue, determined at random. While so lit, a prismatic creature cannot benefit from concealment due to darkness or shadowy conditions. Once per round, the prismatic may suppress its light or choose its color as a free action with a successful DC 15 Concentration check. The light resumes its random color changes on the prismatic creature&#146;s next turn unless it succeeds on another DC 15 Concentration check.\n\nReinstating the suppressed light is a free action. In addition, the hue of the prismatic creature&#146;s light grants it an immunity as given in the following table. At the end of each round, roll on the chart below to determine the color of the prismatic creature&#146;s light. While its light is suppressed, it does not benefit from any immunity granted by the prismatic body special quality. \n\nRed - Fire\nOrange - Acid\nYellow - Electricity\nGreen - Poison\nBlue - Mind-affecting effects\nIndigo - Cold\nViolet - Sonic" compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGPrisIm" name="Prismatic Immunities" description="Prismatics are immune to the adverse effects of the following spells: {i}color spray, dancing lights, daylight, flare, hypnotic pattern, prismatic sphere, prismatic spray, prismatic wall, rainbow pattern, scintillating pattern{/i}, and {i}searing light{/i}. In addition, they are immune to all blinding, dazzling, or dazing effects caused by exposure to light. If the base creature suffers negative effects in bright light, the prismatic loses that vulnerability." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="rauGRRIfP" name="Informed Projection" description=" If the telepath has successfully used {i}detect thoughts{/i} against a creature within 24 hours, it gains a +2 dodge bonus against that creature&#146;s attacks and a +2 insight bonus on saves against that creature&#146;s spells and special attacks." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raGRRvCnHl" name="Cannibalistic Healing" description="So long as the ravenous creature has fed upon the flesh of its own kind within the last 24 hours, it has fast healing 10. Feeding on a creature of its own kind that was killed within the last hour heals all ability damage and ability drain the ravenous creature has taken." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="FastHeal"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final"><![CDATA[field[livename].text = "Cannibalistic Healing " & field[abValue].value
+    field[shortname].text = "Cannibalistic Healing " & field[abValue].value]]></eval>
+    </thing>
+  <thing id="raGRRvFvPr" name="Favored Prey" description="A ravenous creature gains a +2 bonus on damage rolls against creatures of its own type and a +2 bonus on Bluff, Perception, Sense Motive, and Survival checks when using these skills against creatures of this type. Against a creature of its own race, each of the bonuses increases to +4." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreAttr" priority="1000" index="2"><![CDATA[~ get type
+    
+    var typeStr as string
+    
+    typeStr = lowercase(hero.tagnames[Type.?,"+"] & "s")
+    
+    #situational[hero.child[skBluff],"+2 vs. " & typeStr,field[name].text]
+    #situational[hero.child[skPercep],"+2 vs. " & typeStr,field[name].text]
+    #situational[hero.child[skSenseMot],"+2 vs. " & typeStr,field[name].text]
+    #situational[hero.child[skSurvival],"+2 vs. " & typeStr,field[name].text]]]></eval>
+    <eval phase="First" priority="500"><![CDATA[~ get race name
+    
+    var raceStr as string
+    
+    raceStr = lowercase(hero.findchild[BaseRace].field[name].text & "s")
+    
+    #situational[hero.child[skBluff],"+4 vs. " & raceStr,field[name].text]
+    #situational[hero.child[skPercep],"+4 vs. " & raceStr,field[name].text]
+    #situational[hero.child[skSenseMot],"+4 vs. " & raceStr,field[name].text]
+    #situational[hero.child[skSurvival],"+4 vs. " & raceStr,field[name].text]]]></eval>
+    </thing>
+  <thing id="raGRRvHgSA" name="Hungry Special Attacks" description="Any creature of the same kind as the ravenous creature takes a -2 penalty on saving throws against the ravenous creature&#146;s spells and special attacks." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raGRRvRvBd" name="Ravenous Body" description="A ravenous creature can eat other food, but only the flesh of its own type satiates its hunger. It must feed upon the flesh of a creature of its own type at least once every three days or it suffers the effects of starvation. When the ravenous creature&#146;s nonlethal damage due to starvation equals its Constitution score, it dies." compset="RaceSpec">
+    <tag group="SpecType" tag="Weakness"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raGRRvSpri" name="Sprint" description="Once per hour, a ravenous creature can move at ten times its normal speed when it makes a charge." compset="RaceSpec">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Hour"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raGRRvAgel" name="Ageless" description="A ravenous creature does not age." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxTCCldSi" name="Cloud Sight" description="A thunder child can see through clouds, gases, fogs, mists, and smoke as though they didn&#146;t inhibit vision. Creatures and objects do not gain concealment from a thunder child due to such conditions. A thunder child may use this ability while gaseous." compset="RaceSpec">
+    <tag group="SpecType" tag="Sense"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxTCEleAu" name="Electric Aura" description="A thunder child emits an aura of electricity that can wound nearby creatures. Any creature within 10 feet of a thunder child must succeed on a Reflex save (DC 10 + 1/2 thunder child&#146;s character level + thunder child&#146;s Con modifier) each round that it remains within range or take 1d6 points of electricity damage. A thunder child can suppress or resume the use of this ability as a free action." compset="RaceSpec">
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="SpecType" tag="Aura"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final"><![CDATA[field[livename].text = "Electric Aura (10 ft.)"]]></eval>
+    </thing>
+  <thing id="xFGImmGas" name="Immunity to Gas, Fog or Cloud based attacks" description="Immune to gas, fod or cloud based attacks." compset="Ability">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxTCBrtWe" name="Breath Weapon" description="Once every 1d4 rounds, a thunder child can breathe a 5-foot-wide line of lightning 100 feet long plus 10 feet per 2 character levels it possesses. If the thunder child wishes, it may breathe a line half as long but 10 feet wide. Every creature in the area must make a Reflex save (DC 10 + 1/2 thunder child&#146;s character level + thunder child&#146;s Con modifier) or take 1d6 points of electricity damage per 2 character levels the thunder child possesses (minimum 1d6). Success halves the damage." compset="RaceSpec">
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="2000"><![CDATA[var dam as number
+    dam = hero.tagcount[Hero.HitDice]
+    dam = round(dam/2,0,-1)
+    dam = maximum(dam,1)
+    
+    field[livename].text = "Breath Weapon (" & dam & "d6)"]]></eval>
+    </thing>
+  <thing id="raxTCElecG" name="Electric Grapple" description="Any creature grappling a thunder child takes 2d6 points of electricity damage each round that the grapple is maintained." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxTCAirBr" name="Air Breather" description="A thunder child can breathe air even if the base creature breathed only water" compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raxTCLgtJu" name="Lightning Jump" description="When a thunder child breathes lightning, it may teleport with no chance of error to any location within the area of the lightning attack as a free action. It must make this jump immediately after using its breath weapon." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raDWWeakCa" name="Weakness to Captain&apos;s Mast" description="The sky kraken respects the power of Aizan. It senses that the artifact&apos;s supernatural power comes from her, and will not challenge the owner. The user of the mast can attack the sky kraken with impunity, but the creature will not retaliate against that individual." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="SpecType" tag="Weakness"/>
+    </thing>
+  <thing id="raFGBlkLee" name="Black Leech" description="An implated black leech grants a +2 enhancement bonus to Constitution score and the Toughness feat. However, the implated are unable to resist any spell cast upon him by the Engineer." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="raFGDnkShB" name="Siphoning Bite" description="A dunkleosteus can open its giant mouth in a fraction of a second, creating a vortex that draws a target in. When underwater, a dunkleosteus gains an additional 5 feet of reach with its bite attack and a +2 bonus on combat maneuver checks when grappling." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="SpecType" tag="Attack"/>
+    <eval phase="PostAttr">hero.child[manGrapple].field[manCMB].value += 2</eval>
+    </thing>
+  <thing id="raFGJBAcid" name="Acid Spit" description="Installed within each jade bat is a strange shard of green glass that is actually a wand of acid splash containing 20+3d10 charges. Using the magic of this wand, the jade bat can spit a gob of acid up to 30 feet as a ranged touch attack (+7 ranged touch) dealing 2d4 points of damage. Each attack drains one charge from the wand." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="raFGJBIllR" name="Illusory Recording" description="As a swift action, a jade bat can record both sights and sounds as three dimensional illusions, archiving everything that occurs within a 30-foot radius of the bat onto a small alien gemstone worth 120 gp embedded in its body. The jade bat can record up to 1 hour of illusions. Starting and stopping playback of these recordings is a swift action. Removing a gemstone eye or installing a gemstone eye into a clockwork spy requires a DC 25 Disable Device check as a full-round action-failure does not damage the gemstone but does erase any recorded images and sounds on the gemstone. (Engineer need not make this check since it created the bats.) Once a jade bat begins recording, it cannot cease recording. Likewise, it cannot record sound and images onto a gemstone that already contains a recording." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="raFGBLCurs" name="Curse of the Black Spot" description="Any individual reduced to 0 or fewer hit points by the leech swarm has a black leech burrow into their flesh. From then on, they are under the control of the Engineer and obey its commands. This effect may only be removed by either digging out the leech or by casting the spell {i}remove curse{/i} (DC 18). Manually digging out the leech is a brutal and painful process that requires a successful DC 20 Heal check and inflicts 1d4 points of Constitution damage." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="rcFGAOVivB" name="Vivisection Blade" description="Replace slam attack with blade." compset="RaceCustom">
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AllowRCust" tag="rAnimObjec"/>
+    <tag group="CustomCost" tag="1"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="raFGVivVcW"></bootstrap>
+    <eval phase="PreLevel" priority="9000"><![CDATA[foreach pick in hero from BaseNatWep where "!wCategory.Range?"
+      perform eachpick.tagreplace[wType.B,wType.S]
+      eachpick.field[livename].text = "Vivisection Blade"
+      eachpick.field[wDamExtra].text = " plus vicious wound"
+      perform eachpick.tagreplace[wMain.?,wMain.1d8_6]
+      nexteach]]></eval>
+    </thing>
+  <thing id="raFGVivVcW" name="Vicious Wound" description="The damage the Vivisectionist deals with its blades inflicts persistent wounds that deal 2 points of bleed damage. Bleeding resulting from these vicious wounds is particularly difficult to stanch. A successful DC 17 Heal check stops the bleeding, and any attempt to heal a creature suffering from a vicious wound must succeed on a DC 16 caster level check or the spell does not function. Success indicates the healing works normally and stops all bleed effects on the victim." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="raFGHawBRa" name="Blind Rage" description="Stripped of reason and rational thought, hawanis can fly into an animalistic fury. A hawani can enter a blind rage as a free action. While in blind rage, a hawani gains a +6 morale bonus to Strength. In addition, it takes a -3 penalty to Armor Class. There is no limit to the number of rounds a hawani may spend in blind rage, however, a hawani takes 1d3 points of nonlethal damage every round it remains in a blind rage. Blind rage usually ends when a hawani falls unconscious from nonlethal damage, though it may voluntarily end it if there are no opponents left to fight." compset="RaceSpec">
+    <fieldval field="actName" value="Blind Rage"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreAttr" priority="1000">doneif (field[abilActive].value = 0)
+    
+    #applybonus[BonMorale,hero.child[aSTR],6]
+    #applypenalty[Penalty,hero.child[ArmorClass],-3]</eval>
+    </thing>
+  <thing id="raFGHaDkDr" name="Hawanapoki&apos;s Dark Dream" description="A hawani&apos;s bite saps consciousness from any victim it strikes. The first time a hawani hits a foe with its bite attack, the victim takes 1d4 points of Wisdom damage and falls into a deep sleep as if affected by {i}deep slumber{/i} unless he succeeds on a DC 13 Will save. A creature that successfully saves is not subject to the same hawani&apos;s dark dream for 24 hours. This is a mind-affecting effect. The save DC is Charisma-based." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGHawThr" name="Thrall" description="Hawanis gain immunity to all mind-affecting effects but are under the complete domination of their qlippoth master, as if under the influence of {i}dominate monster{/i} spell. In addition, hawanis can communicate telepathically with any qlippoth within a 100-foot range. A hawani can be freed of its servitude with a {i}break enchantment{/i}, {i}miracle{/i}, or {i}wish{/i} spell. If successful, the hawani immediately flies into blind rage and attacks the nearest living creature until it is incapacitated or falls unconscious. Once freed, the hawani is immune to any qlippoth&apos;s mind-affecting effects for the next 24 hours." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xImmMind"></bootstrap>
+    </thing>
+  <thing id="raFGAmorph" name="Amorphous" description="The creature&#146;s body is malleable and shapeless. It is immune to precision damage (like sneak attacks) and critical hits." compset="RaceSpec">
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xImmPrec"></bootstrap>
+    <bootstrap thing="xImmCrit"></bootstrap>
+    </thing>
+  <thing id="raFGNausPr" name="Nauseating Presence" description="Anyone within 30 ft. of you must succeed at a Fortitude save or become nauseated. Anyone who makes their save is immune to the nauseating presence for 24 hours.  The save DC is Constitution based." compset="RaceSpec" summary="Anyone within 30 ft. of you must succeed at a Fortitude save or become nauseated.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Aura"/>
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGSumRoa" name="Summon Roachlord Swarm" description="You may summon 1d4 swarms of cockroaches as a standard action at will.  You can only control up to four swarms at any given time. You are immune to the swarm damage and nauseating effect of any swarm under your control." compset="RaceSpec" summary="You may summon 1d4 swarms of cockroaches and control up to 4 swarms.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="Usage" tag="AtWill"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGShaEmp" name="Shark Empathy" description="In any form, fel lycanthrope dire shark can communicate and empathize with normal or dire sharks. This gives then a +4 racial bonus on checks when influencing the animal&apos;s attitude and allows the communication of simple concepts and (if the animal is friendly) commands, such as &quot;friend,&quot; &quot;foe,&quot; &quot;flee,&quot; and &quot;attack.&quot;" compset="RaceSpec" summary=" +4 racial bonus on checks when influencing a shark&apos;s attitude.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+    ~ Influence sharks
+    #situational[hero.child[skHandleAn],"+4 bonus vs sharks.",field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGMalFre" name="Frenzy" description="A Maldraht maht is constantly in a state similar to a barbarian&apos;s rage. The creature cannot cast spells, use spell-like abilities, or use Intelligence-based skills. In addition, the creature forsakes ranged weapons, instead seeking to sink its claws and teeth into flesh. It will attack on sight any creature not under the affects of maht." compset="RaceSpec" summary="You are constantly in a state similar to a barbarian&apos;s rage which limits your actions.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGImDisA" name="Disease Aura" description="Living creatures of less than 5 HD in a 30 - foot radius of the imandwa must succeed on a Fortitude save or become nauseated. Creatures with 5 HD or more must succeed at a Fortitude save or be sickened for a number of rounds equal to the imandwa&apos;s Hit Dice. A creature that successfully saves cannot be affected again by the same imandwa&apos;s aura for 24 hours. A creature that rolls a natural 1 against this aura (the d20 shows a &quot;1&quot;) catches grindblight." compset="RaceSpec" summary="Living creatures within 30ft you make Fort save or become nauseated or sickened.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Aura"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGImFesD" name="Festering Damage" description="Any creature damaged by an imandwa (even by a spell cast by the imandwa) must succeed on a Fortitude save or catch grindblight. There is no onset period for this form of the disease, and the save DC is based on the imandwa&apos;s special attack save DC, rather than the normal DC for the disease." compset="RaceSpec" summary="All your attacks including spells can cause grindblight disease.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[~ Display extra damage on all weapons
+    foreach pick in hero from BaseWep
+       #extradamage[eachpick," plus festering damage",field[name].text]
+    nexteach]]></eval>
+    </thing>
+  <thing id="raFGImBloS" name="Blood Scent" description="In addition to normal scent, an imandwa can determine if two creatures are related to each other by scent. An imandwa gains a +8 bonus to track by scent when tracking a creature that has a relative the imandwa is closely familiar with. The imandwa can smell out the general location of relatives of a creature it is familiar with at a range of up to 100 miles, though once within a 5 - mile radius it must get within normal scent range to pinpoint such a creature&apos;s location." compset="RaceSpec" summary="You can determine if two creatures are related to each other by scent.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Sense"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[#situational[hero.child[skSurvival],"+8 bonus to scent track a blood relative.",field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGImShaF" name="Shadow Form" description="As a swift action an imandwa can become a piece of living shadow. It gains full concealment (50% miss chance) and becomes incorporeal. An imandwa&apos;s aura of disease is 50% likely to affect those within its area each round, even when incorporeal." compset="RaceSpec" summary="As a swift action you become incorproeal and gain full concealment.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGImUnhA" name="Unheard Alarm" description="If an imandwa&apos;s place of birth or death is threatened, or another imandwa senses an impending threat to them, the imandwa instinctively knows it. Most imandwa rush back to defend the places where they can regenerate." compset="RaceSpec" summary="You instinctively know when your place of birth or death is threatened.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGImCalH" name="Call Home" description="If a creature holds a handful of earth from the place an imandwa was born or the place it died, it can command the imandwa to come forth, even into bright sunlight. The imandwa must be within range to hear such a command, unless it is given through magic means (such as a {i}sending{/i} spell). The imandwa must heed the call for one hour from hearing it (moving toward the creature to the best of its ability, or staying within 60 feet of the creature once the imandwa arrives), and is then free to act normally. An imandwa need only obey the first such call it hears each day." compset="RaceSpec" summary="A creature holding a handful of earth from your brith place can command you.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGImRetH" name="Return Home" description="If reduced to 0 hit points in combat, an imandwa assumes {i}shadow form{/i} and attempts to escape. It must reach the place of its birth or the place of its death and rest there (in solid form) within 2 hours or be utterly destroyed. (It can normally travel up to 9 miles in 2 hours.) Additional damage dealt to an imandwa forced into shadow form has no effect, but if killed while at rest it is utterly destroyed. \n\nOnce at rest, the imandwa is helpless until sundown. (If forced into shadow form at night, once at rest it remains helpless throughout the night and all the next day, only regaining its power when the sun goes down again.) At sundown, the imandwa gains 5 hp and is no longer helpless." compset="RaceSpec" summary="If reduced to 0 hit points in combat, you assume {i}shadow form{/i} and attempt to escape.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGBruThr" name="Brutal Throw" description="Survival in the jungle requires brutal tactics. A cyclops can, as a full round action, throw his longspear even though it is not normally a valid ranged weapon. This special ranged attack has a range increment of 50 ft." compset="RaceSpec" summary="As a full round action throw a longspear with a range increment of 50 ft.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGImpSig" name="Impaired Sight" description="Due to its single eye, a cyclops has difficulty judging depth and suffers a -12 penalty on vision based Perception checks." compset="RaceSpec" summary="You have -12 penalty on vision based Perception checks.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[#situational[hero.child[skPercep],"-12 on vision based checks",field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGCyJuHu" name="Jungle Hunter" description="A cyclops is adroit at hunting in the jungles. It gains a +4 bonus on Stealth checks made in a jungle environment (in addition to its standard racial bonus). In addition, a cyclops makes use of the deadly poison dart frogs native to their area, coating the obsidian blades of their longspears in the deadly toxin. A cyclops never risks poisoning itself when applying this specific poison.\n\n{B}Dart Frog Venom{/b}\n{b}Type{/b} poison, injury or ingested; {b}Save{/b} Fortitude DC 19 \n{b}Frequency{/b} 1/round for 6 rounds \n{b}Effect{/b} 1d3 Con damage; {b}Cure{/b} 2 saves" compset="RaceSpec" summary="You use deadly poison dart frogs on your longspears.{BR}{b}Type{/b} poison, injury or ingested; {b}Save{/b} Fortitude DC 19{BR}{b}Frequency{/b} 1/round for 6 rounds{BR}{b}Effect{/b} 1d3 Con damage; {b}Cure{/b} 2 saves">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+    #situational[hero.child[skStealth],"+4 in jungle environments",field[name].text]
+    
+    ~ All manufactored weapon attacks
+    foreach pick in hero from BaseWep where "!wFtrGroup.Natural"
+       #extradamage[eachpick," plus poison",field[name].text]
+    nexteach]]></eval>
+    </thing>
+  <thing id="raFGKarDeT" name="Death Throes" description="When slain, a karikanti thrashes about in a frenzy dealing 2d6 points of damage to any creature within five feet. A Reflex save halves this damage. The save DC is Constitution-based." compset="RaceSpec" summary="At death do 2d6 damage to all creatures within 5ft. A Reflex save halves the damage.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGKarDrC" name="Drowning Curse" description="Once per day a karikanti may target any foe within 30 ft. with their drowning curse as a free action. The target must succeed on a Will save or take -10 to any Swim checks thereafter. A {i}remove curse{/i} or like enchantment cures this effect. The save DC is Charisma - based," compset="RaceSpec" summary="Curse a foe within 30ft to take -10 penalty on swim if they fail a Will save.">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGKarMaE" name="Man Eater" description="A karikanti can spend 1 minute devouring a medium sized humanoid foe to regain 5 hit points, or gain 5 temporary hit points if they are already at full hit points. Temporary hit points gained in this manner persist for 1 hour. A karikanti cannot gain more than 30 temporary hit points using this ability." compset="RaceSpec" summary="Eat a medium humanoid to gain 5 HP or 5 Tempoary HP if at full hit points.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGKarMaH" name="Marsh Hunter" description="A karikanti moves through marshy terrain with ease, ignoring difficult terrain in marshy environments." compset="RaceSpec" summary="Ignor difficult terrain in marshy environments.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGKarSmL" name="Smell Lies" description="The karikanti cannot be deceived; they smell lies like foulness on the water, and all Bluff checks against them automatically fail. This ability has no effect on other uses of the Bluff skill, such as feinting in combat." compset="RaceSpec" summary="All Bluff checks involving lies automatically fail against you.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGIchFle" name="Ichthyic Flesh" description="Ichthyic flesh requires moisture to remain supple. If a creature with ichthyic flesh does not spend at least 10 minutes per day immersed in water, its skin grows dry and cracks, dealing 1d4 points of Dexterity damage for each day it goes without immersion and cannot be healed naturally without exposure to the necessary water requirement." compset="RaceSpec" summary="You must spend at least 10 minutes per day immersed in water or take 1d4 Dex dmg.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGRouSki" name="Rough Skin" description="A sharkin deals an additional +1 damage with his unarmed strikes." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGAquAff" name="Aquatic Affinity" description="Sharkin gain a +2 racial bonus to Handle Animal and wild empathy checks when interacting with aquatic creatures." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGPoiAch" name="Poison, Achimayen" compset="RaceSpec">
+    <comment><![CDATA[Modified version of poisons to allow for changing of number of dice damage and more freedom is how the poison is displayed.
+    
+    abValue: die type of damage
+    abValue2: number of saves
+    abValue3: number of dice of damage
+    abDuration: number of rounds
+    abText: extra damage specified by text
+    
+    when bootstrapping the livename field is used to specify the weapon and type of poison in the format: WEAPON-TYPE
+    
+    additionally if the poison has additional text the creature needs to specify it via the poison's field[descript].text field before Final Phase/20000
+    
+    Delete the tag Custom.Break (before Final/20000) in the poison if you do not want a line break between the poison stats and any extra text.]]></comment>
+    <fieldval field="abValue2" value="1"/>
+    <tag group="Custom" tag="Poison" name="Poison" abbrev="Poison"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="StandardDC" tag="aCON" name="Constitution" abbrev="Constitution"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Custom" tag="Break" name="Line Break" abbrev="Line Break"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000" index="2"><![CDATA[      ~ If we're disabled, do nothing
+          doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~if we have a selected weapon, then add " plus/and poison" to the selected weapon
+          call fTargetFoc
+          doneif (state.isfocus = 0) 
+    
+       var len as number
+       var str as string
+       str = focus.field[wDamExtra].text
+       len = length(str)
+    
+      if (len = 0) then
+         #extradamage[focus," plus poison",field[name].text]
+      else
+         #extradamage[focus," and poison",field[name].text]
+      endif]]></eval>
+    <eval phase="Final" priority="20000"><![CDATA[~ default abValue3 to 1
+    if (field[abValue3].value < 1) then
+       field[abValue3].value = 1
+    endif
+    
+    ~ livename is used to store point attack and poison 
+    ~  type (injury etc) in the form "Weapon-Type"
+    
+    
+    
+    if (compare(field[livename].text, field[name].text) = 0) then
+        field[abSumm].text = field[livename].text & "; "
+    else
+        field[abSumm].text = "Poison; "
+    endif
+    
+    
+    if (field[abValue].value > 1) then
+       field[abSumm].text &= "{i}frequency{/i} 1 round; {i}effect{/i} " & field[abValue3].value & "d" & field[abValue].value & " Dex, Int, and Wis" & field[abText].text
+    
+    elseif (field[abValue].value = 1) then
+       field[abSumm].text &=  "{i}frequency{/i} 1 round; {i}effect{/i} 1 Dex, Int, and Wis" & field[abText].text 
+    endif
+    
+    if (field[abValue2].value = 1) then
+            field[abSumm].text &= "; {i}cure{/i} 1 save."
+          elseif (field[abValue2].value > 1) then
+            field[abSumm].text &= "; {i}cure{/i} " & field[abValue2].value & " consecutive saves."
+            endif
+    
+    ~ set livename to just poison
+    
+    field[livename].text = "Poison"
+    perform state.thing[raFGPoiAch].amendthing[name,field[livename].text]
+    
+    if (empty(field[descript].text) = 0) then
+       var descCurr as string
+       descCurr = field[descript].text
+       perform state.thing[raFGPoiAch].amendthing[description,field[abSumm].text]
+       if (tagcount[Custom.Break] = 0) then
+          perform state.thing[raFGPoiAch].amendthing[description,state.thing[raFGPoiAch].field[descript].text & " " & descCurr]
+       else
+       #appenddesc[raFGPoiAch,descCurr]
+      endif
+    else
+      perform state.thing[raFGPoiAch].amendthing[description,field[abSumm].text]
+    endif]]></eval>
+    </thing>
+  <thing id="raFGAchMCr" name="Maddening Cry" description="An achimayen can unleash a terrible, piercing cry that is a mockery of the wailing of a true child. Creatures within 60 feet (other than other achimayen and undead) that can hear the cry must succeed on a DC 18 Fortitude save or be permanently deafened, and a DC 18 Will save or be confused for 1 round. A creature that succeeds on its save cannot be affected by the same achimayen&apos;s maddening cry for 24 hours. The save DC is Charisma-based." compset="RaceSpec">
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFJLatc" name="Latch" description="With its oversized, detachable jaws, a fah-jee can lock itself onto a foe and grapple the victim. The fah-jee receives a +4 bonus on checks to grapple an opponent and a +4 bonus to its Combat Maneuver Defense when the victim attempts to break the grapple. In addition, when fah-jee assist in a grapple, they provide a +4 bonus (instead of the normal +2) to the fah-jee who first initiated the grapple. Finally, fah-jee grapple as though they were one size category larger than they actually are." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostAttr" priority="10000">hero.child[manGrapple].field[manCMB].value += 4
+    hero.child[manGrapple].field[manCMD].value += 4</eval>
+    </thing>
+  <thing id="raFGFJSvBt" name="Savage Bite" description="A fah-jee&apos;s jaws are powerful and deadly, and as such, the creature&apos;s bite damage is increased as if it were one size larger. In addition, the fah-jee can latch onto its victim as a swift action on a successful bite attack." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFJCrSp" name="Create Spawn" description="When a fah-jee huna kills a living humanoid of Medium size or smaller with its bite attack (or when using its latch ability), it may prepare the body to be transformed into a fah-jee. A fah-jee huna must begin the process within 1d4 days of killing its victim. While some suspect other forms exist, a fah-jee huna can create either a fah-jee, a fah-jee huna, or a fah-jee totem warrior. A fah-jee huna can create up to 4 Hit Dice of fah-jee undead each day; each Hit Dice worth of a creature created takes one hour of butchering, boiling, and reassembling the pieces to suit the desired form. Any creation must be finished within a week&apos;s time or the huna&apos;s effort collapses in a pile of putrescence. Once finished, the newly created fah-jee can act of its own accord, yet created fah-jee show great reverence to their creator and often form tribes around the fah-jee huna." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFjBthB" name="Bathed in Blood" description="A regularly fed fah-jee totem warrior stores blood and other mortal juices within its massive body. Every 1d4 rounds, as a standard action, a fah-jee totem warrior can erupt in a fountain of blood, bathing all creatures within 15 feet in slippery red ichor. Any creatures in this area must succeed on a DC 17 Reflex save or fall prone. This spray of gore remains slick afterwards, requiring affected creatures to attempt a DC 15 Acrobatics check every round to move normally within the area. Affected creatures can spend a full-round action to clean themselves off, drawing an attack of opportunity but permitting them to move normally within the area thereafter. Fah-jee totem warriors are unaffected by their own ability, but other fah-jee remain vulnerable to the slick, gruesome mess. The save DC is Dexterity-based" compset="RaceSpec">
+    <tag group="StandardDC" tag="aDEX"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGDisFah" name="Disease, Fah-jee rot" description="{b}Fah-jee rot:{/b} Fling-injury; {i}save{/i} Fort DC 20; {i}onset{/i} 1d2 days; {i}frequency{/i} 1/day; {i}effect{/i} 1d6 points of Constitution and 1d6 points of Charisma damage; {i}cure{/i} 4 consecutive saves. The save DC is Charisma-based." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFJWFlg" name="Fling" description="A fah-jee totem warrior can rend rotten parts from its body - wriggling arms, kicking legs, mummified heads, and other viscera - and throw them at its enemies as weapons. As a full-round action, a fah-jee totem warrior can make three ranged touch attacks at a range of 90 feet with no range increment. Each attack deals 1d6+5 points of damage and the creature struck risks contracting fah-jee rot." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGElecDi" name="Electric Discharge" description="Once every 1d4 rounds, a dire electric eel may release the electric charge it builds up in its body, dealing 2d6 points of electricity damage to all creatures within 10 feet of the eel. A DC 16 Reflex saving throw halves the damage. The save DC is Constitution-based." compset="RaceSpec">
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFmtFou" name="Foul" description="A flametooth is corrupted and cursed by the cannibalistic acts of depravity that led to its creation. If a flametooth is caught in the area of a {i}purify food and drink{/i} spell or similar magic effect that restores or preserves food, it is staggered for 1 round." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFmtQuk" name="Quickness" description="A flametooth is supernaturally quick. It can take an extra move action during its turn each round." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFmtRst" name="Roasting" description="Flameteeth are not immune to fire damage - indeed they often show signs of burns where they have attempted to gnaw on themselves and each other. When one does take fire damage, its flesh emits a powerful scent of spiced and roasted pig for 1 round. Any creature with an Intelligence of 3 or higher adjacent to the flametooth, that can both see and smell it, must succeed on a DC 19 Fortitude save or be nauseated for 1 round due to the conflict between the delicious smell and the horrific reality. This save DC is Charisma-based." compset="RaceSpec">
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGFmtTch" name="Torchmouth" description="The burning teeth of a flametooth cast normal light in a 60-foot cone and increases illumination levels for 60 feet beyond that by one step (to a maximum of normal light), like a bullseye lantern." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGRchSDs" name="Disease" description="Swarm-Injury; {i}save{/i} Fort DC 14; {i}onset{/i} 1d3 days; {i}frequency{/i} 1 day; {i}effect{/i} 1d3 points of Dexterity and 1d3 points of Constitution damage; {i}cure{/i} 2 consecutive saves." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGNcwIhC" name="Inhabit Corpse" description="A necroworm may take a standard action to burrow into any Medium or Large size corpse. After this, it may animate the corpse and control it from within. Corpses animated by a necroworm fight as zombies of their size and type with two exceptions: they are not limited to a single action per round, and the necroworm may extend its tail and stinger out of the zombie&apos;s mouth or back and make an attack with it (in addition to the zombie&apos;s attacks) each round. Damage dealt to the zombie has no effect on a necroworm inhabiting it, except that critical hits scored against the zombie deal their extra damage to the worm inside, and sneak attack damage may also be dealt to the worm. This is an exception to the rule that undead are immune to critical hits and sneak attacks. If a necroworm is killed while inhabiting the zombie, the corpse becomes inert instantly. Zombies animated by necroworms may not be turned, rebuked, or commanded. A necroworm must also use a standard action to exit a corpse downed in combat (this provokes an attack of opportunity), but not if the zombie was utterly destroyed (via a {i}disintegrate{/i} spell for example)." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGNcwIjA" name="Inject Acid" description="A successful attack made by a necroworm&apos;s stinger, which deals damage, also injects acid into the target. The acid continues to burn in the wound, dealing 1d4 extra points of acid damage on the round the hit occurs and for an additional 1d4 rounds thereafter." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGNcISuC" name="Susceptible to Critical Hits" description="Critical hits scored against the inhabited corpse deal their extra damage to the necroworm inside." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="1000">perform hero.childfound[xImmCrit].assign[Helper.SpcDisable]
+    perform hero.childfound[xImmCrit].assign[Hide.Special]</eval>
+    </thing>
+  <thing id="raFGNcISuP" name="Susceptible to Precision Damage" description="Precision damage (such as sneak attacks) scored against the inhabited corpse deal their extra damage to the necroworm inside." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Weakness"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="1000">perform hero.childfound[xImmCrit].assign[Helper.SpcDisable]
+    perform hero.childfound[xImmCrit].assign[Hide.Special]</eval>
+    </thing>
+  <thing id="raFGQNcSpn" name="Spawn Necroworms" description="A necroworm queen can take a standard action to release 1d4 necroworms from its posterior sac. The worms may immediately take action upon their release. The necroworm queen can only release necroworms once every 1d6 rounds, and only 3 times per day total." compset="RaceSpec">
+    <fieldval field="trkMax" value="3"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGQNcSpA" name="Spit Acid" description="Once every 1d4 rounds, a necroworm queen can spew forth a 30 ft. cone of acid which deals 4d6 points of damage to anyone in range (Reflex save DC 18 for half damage). The save DC is Dexterity-based." compset="RaceSpec">
+    <tag group="StandardDC" tag="aDEX"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGGrOcSp" name="Superior Two-Weapon Fighting" description="A girallon-sired orc fights with a weapon in two of its four hands. It does not take a penalty on attack or damage rolls for attacking with two weapons." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="5000">~remove the attack penalties
+          perform hero.assign[Hero.TwoWepSup]
+    
+          ~allow a second and third attack with the off-hand weapon
+          ~(the third in case the user adds more levels/HD to the Ettin)
+          perform hero.assign[Hero.TwoWepImp]
+          perform hero.assign[Hero.TwoWepGrt]
+    
+          ~double slice removes the damage penalty
+          perform hero.assign[Hero.DblSlice]</eval>
+    </thing>
+  <thing id="raFGDrlAcL" name="Accelerated Lycanthropy" description="Anyone damaged by a drolsharg&apos;s bite or shark-mawed tail is infected with a particularly aggressive and virulent strain of lycanthropy that immediately transforms them into a wereshark unless they make a DC 19 Fortitude save. Failure on the save causes them to transform as a full round action into hybrid form and then savagely attack anything nearby except the drolsharg. After 5 rounds, the afflicted collapse and return to humanoid form, but unless a remove curse is applied in 24 hours the lycanthropy persists. Drolshargs have no influence over weresharks they create. The save DC is Constitution-based." compset="RaceSpec">
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGDrlBlS" name="Blood Sense" description="A drolsharg can detect the blood of a living creature within 240 feet, and can pinpoint creatures by the smell of their blood up to 60 feet away. A drolsharg can smell blood in the water up to a mile away, and track by the scent of it as well." compset="RaceSpec">
+    <tag group="SpecType" tag="Sense"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGDrlFrz" name="Frenzy" description="A drolsharg enters frenzy when it taste blood (through any of its maws) and gains a +2 bonus to all saves, but suffers a -2 penalty to AC. The frenzy lasts until the drolsharg dies or all foes within 240 feet are slain" compset="RaceSpec">
+    <fieldval field="actName" value="Frenzy"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+          ~ If we're disabled, do nothing
+          doneif (tagis[Helper.SpcDisable] <> 0)
+    
+          if (field[abilActive].value <> 0) then
+            hero.child[aSTR].field[Bonus].value += 2
+            hero.child[aCON].field[Bonus].value += 2
+            hero.child[ArmorClass].field[Penalty].value -= 2
+            endif]]></eval>
+    </thing>
+  <thing id="raFGDrlHdM" name="Hundred Maws" description="A drolsharg&apos;s torso is nothing but sinew and gaping maws. The blood-hungry mouths of over a dozen sharks spasm and snap from the drolsharg&apos;s chest, yearning to taste flesh. Any foe grappling a drolsharg suffers the maws burrowing into their flesh and shredding them to gory bits, inflicting 2d6+9 points of damage." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final"><![CDATA[field[livename].text = "Hundrend Maws (2d6+9)"]]></eval>
+    </thing>
+  <thing id="raFGBtSDpS" name="Deepwater Stare" description="A benthic serpent&apos;s deep yellow-green eyes have a hypnotic quality that allows them a gaze attack in a 60 foot cone. Creatures in this area must make a DC 20 Will save (or grant the serpent concealment or total concealment if they avert or close their eyes) each round. If the save fails, the creature is dominated as the spell. A benthic servant can dominate only one creature per combat; once that creature is dominated, the gaze attack no longer applies to others. The save DC is Charisma-based." compset="RaceSpec">
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFgBtSCap" name="Capsize" description="A submerged benthic serpent that surfaces under a boat or ship less than 20 feet long capsizes the vessel 95% of the time. It has a 50% chance to capsize a vessel from 20 to 60 feet long and a 20% chance to capsize one over 60 feet long." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGNarPoi" name="Poison, Narekhin" compset="RaceSpec">
+    <comment><![CDATA[Modified version of poisons to allow for changing of number of dice damage and more freedom is how the poison is displayed.
+    
+    abValue: die type of damage
+    abValue2: number of saves
+    abValue3: number of dice of damage
+    abDuration: number of rounds
+    abText: extra damage specified by text
+    
+    when bootstrapping the livename field is used to specify the weapon and type of poison in the format: WEAPON-TYPE
+    
+    additionally if the poison has additional text the creature needs to specify it via the poison's field[descript].text field before Final Phase/20000
+    
+    Delete the tag Custom.Break (before Final/20000) in the poison if you do not want a line break between the poison stats and any extra text.]]></comment>
+    <fieldval field="abValue2" value="1"/>
+    <tag group="Custom" tag="Break" name="Line Break" abbrev="Line Break"/>
+    <tag group="Custom" tag="Poison" name="Poison" abbrev="Poison"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="StandardDC" tag="aCON" name="Constitution" abbrev="Constitution"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="20000"><![CDATA[~ default abValue3 to 1
+    if (field[abValue3].value < 1) then
+       field[abValue3].value = 1
+    endif
+    
+    ~ livename is used to store point attack and poison 
+    ~  type (injury etc) in the form "Weapon-Type"
+    
+    
+    
+    if (compare(field[livename].text, field[name].text) = 0) then
+        field[abSumm].text = field[livename].text & "; "
+    else
+        field[abSumm].text = "Poison; "
+    endif
+    
+    
+    if (field[abValue].value > 1) then
+       field[abSumm].text &= "{i}frequency{/i} 1/round for " & field[abDuration].value & " rounds; {i}effect{/i} " & field[abValue3].value & "d" & field[abValue].value & " Dex" & field[abText].text
+    
+    elseif (field[abValue].value = 1) then
+       field[abSumm].text &=  "{i}frequency{/i} 1/round for " & field[abDuration].value & " rounds; {i}effect{/i} 1 Dex" & field[abText].text 
+    endif
+    
+    if (field[abValue2].value = 1) then
+            field[abSumm].text &= "; {i}cure{/i} 1 save."
+          elseif (field[abValue2].value > 1) then
+            field[abSumm].text &= "; {i}cure{/i} " & field[abValue2].value & " consecutive saves."
+            endif
+    
+    ~ set livename to just poison
+    
+    field[livename].text = "Poison"
+    perform state.thing[raFGNarPoi].amendthing[name,field[livename].text]
+    
+    if (empty(field[descript].text) = 0) then
+       var descCurr as string
+       descCurr = field[descript].text
+       perform state.thing[raFGNarPoi].amendthing[description,field[abSumm].text]
+       if (tagcount[Custom.Break] = 0) then
+          perform state.thing[raFGNarPoi].amendthing[description,state.thing[raFGNarPoi].field[descript].text & " " & descCurr]
+       else
+       #appenddesc[raFGNarPoi,descCurr]
+      endif
+    else
+      perform state.thing[raFGNarPoi].amendthing[description,field[abSumm].text]
+    endif]]></eval>
+    <eval phase="Final" priority="20000" index="2"><![CDATA[      ~ If we're disabled, do nothing
+          doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~if we have a selected weapon, then add " plus/and poison" to the selected weapon
+          call fTargetFoc
+          doneif (state.isfocus = 0) 
+    
+       var len as number
+       var str as string
+       str = focus.field[wDamExtra].text
+       len = length(str)
+    
+      if (len = 0) then
+         #extradamage[focus," plus poison",field[name].text]
+      else
+         #extradamage[focus," and poison",field[name].text]
+      endif]]></eval>
+    </thing>
+  <thing id="raFGNarSpi" name="Poison Spines" description="Any character who attacks the narekhin with an unarmed attack or light weapon, or grapples with the sahuagin, has a chance of being poisoned." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGHgInkC" name="Ink Cloud" description="Harthagoa can emit a cloud of jet-black ink in an 80-foot spread once per minute as a free action. The cloud provides total concealment, which he normally uses to escape a fight that is going badly. Creatures within the cloud are considered to be in darkness." compset="RaceSpec" summary="Emit an ink cloud, which provides total concealment.">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="SpecType" tag="Defense" name="Defense" abbrev="Defense"/>
+    <tag group="Usage" tag="Minute" name="/minute" abbrev="/minute"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostAttr" priority="9000"><![CDATA[
+          call CalcValue
+    
+          field[livename].text = field[name].text & " (" & field[abValue].value & "' radius)"]]></eval>
+    </thing>
+  <thing id="raFGHgSmtG" name="Smite Good" description="5/day as a swift action, Harthagoa can choose a target within sight to smite. If this target is good, Harthagoa adds +6 to his attack rolls and adds +15 to all damage rolls made against the target of his smite. If the target of smite good is an outsider with the good subtype, a good-aligned dragon, or a good-aligned creature with levels of paladin or cleric, the bonus to damage on the first successful attack increases to 30 points. Regardless of the target, smite good attacks automatically bypass any DR the creature might possess. While smite good is in effect, Harthagoa gains a +6 deflection bonus." compset="RaceSpec" summary="+CHA to hit and +HD to melee damage against targeted good creature.">
+    <fieldval field="trkMax" value="5"/>
+    <tag group="Custom" tag="Smite" name="Smite" abbrev="Smite"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="Activation" name="Activation" abbrev="Activation"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+          ~ Generate our damage bonus
+          field[abValue].value += maximum(hero.child[aCHA].field[aModBonus].value,0)
+          field[abValue].value = round(2.5 * field[abValue].value,0,-1)
+    
+    var exDam as number
+    exDam = 2 * field[abValue].value
+    
+          ~ Generate our to-hit bonus
+          field[abValue2].value += maximum(hero.child[aCHA].field[aModBonus].value,0)
+    
+          ~ Generate our summary
+          field[abSumm].text = "+" & field[abValue2].value & " to hit, +" & field[abValue].value & " to damage when used (+" & exDam & " vs. good subtype, dragons, clerics or paladins)."
+    
+          if (field[abilActive].value <> 0) then
+            hero.child[Attack].field[Bonus].value += field[abValue2].value
+            hero.child[Damage].field[tDamBonus].value += field[abValue].value
+            hero.child[ArmorClass].field[tACDeflect].value += field[abValue2].value
+            endif]]></eval>
+    </thing>
+  <thing id="raFGSlSBir" name="Birth" description="A child slain by a slough shade rises at the next dawn as a slough born." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGSlSSng" name="Song of the Mire" description="Will negates. The deep song of the slough shade charms those who hear it to the deeps. When a slough shade sings, all creatures within a 60 foot radius must succeed on a Will save or become captivated. This is a sonic mind-affecting charm effect. A creature that successfully saves cannot be charmed by the same slough shade for 24 hours. A captivated victim walks towards the slough shade, taking the most direct route available, even if that route is underwater. The save DC is Charisma-based.\n\nFor each two slough born within 60 feet of a slough shade that join in her song, add 1 to the save DC (maximum +5)." compset="RaceSpec">
+    <fieldval field="actUserMin" value="0"/>
+    <fieldval field="actName" value="Shough Born"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="1000">doneif (field[abilActive].value = 0)
+    
+    field[abDC].value += round(field[actUser].value/2,0,-1)</eval>
+    </thing>
+  <thing id="raFGSlSVmD" name="Vomit Dead Water" description="The slough shade is able to vomit dead water at an opponent once every 1d4 rounds. The waters form a 10-foot cone and everyone within must make a Fortitude save or take 1d4 Constitution damage. The save DC is Charisma-based." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGSlSStn" name="Stench" description="A creature with the stench special ability secretes an oily chemical that nearly every other creature finds offensive. All living creatures (except those with the stench special ability) within 30 feet must succeed on a Fortitude save (DC 10 + 1/2 stench creature&apos;s racial HD + stench creature&apos;s Con modifier; the exact DC is given in the creature&apos;s descriptive text) or be sickened. The duration of the sickened condition is given in the creature&apos;s descriptive text. Creatures that successfully save cannot be affected by the same creature&apos;s stench for 24 hours. A {i}delay poison{/i} or {i}neutralize poison{/i} spell removes the effect from the sickened creature. Creatures with immunity to poison are unaffected, and creatures resistant to poison receive their normal bonus on their saving throws." compset="RaceSpec" summary="Living creatures in aura&apos;s range are sickened for listed duration (Fort neg).">
+    <fieldval field="abValue2" value="30"/>
+    <tag group="SpecType" tag="Aura" name="Aura" abbrev="Aura"/>
+    <tag group="StandardDC" tag="aCON" name="Constitution" abbrev="Constitution"/>
+    <tag group="Universal" tag="Universal" name="Universal Monster Ability or Core Rulebook ability" abbrev="Universal Monster Ability or Core Rulebook ability"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGIkHung" name="Hunger of the Void" description="An Iku-Tursas is cursed to remain endlessly ravenous. Any swallowed opponents are subject to a disintegrate effect (CL 16th). A DC 21 Fortitude save partially negates this effect (as the spell). The save DC is Charisma-based. In addition, the Iku-Tursas may eat through a 10&apos; cube of material of any type (including wall of force or forcecage spell effects) as a standard action." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGIkThra" name="Thrash" description="As a full-round action, an Iku-Tursas may make a thrash attack against every opponent within reach. It makes a single attack roll and compares the result to each target&apos;s armor class." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGBSwSkH" name="Seek Heart" description="Once per round while a swarm occupies an opponent&apos;s square, a single bronk may break off from the swarm and seek a living opponent&apos;s heart. If the swarm was able to deal damage to the target in that round, the individual bronk immediately crawls into the body at the wound dealing an additional 1d3 damage and starts crawling through a vein, heading for the heart. Although this has visible effects and appears quite horrible (the lump moving slowly up the leg, at first), it inflicts only 1 point of additional damage per round. Shielded by muscle and sinew, it gains total concealment once within the victim. It can be killed by a blow aimed directly at the visible lump (divide the rolled damage between the victim and the bronk). If the bronk&apos;s progress is not impeded, the target must make a DC 15 Fortitude save or the bronk slays its victim upon reaching and punching a hole through the wall of the heart. It then stays within thereafter, snacking on internal body fluids. A single bronk has 1 hp. A creature immune to critical hits is immune to this attack by a bronk." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGJBBloa" name="Bloating Bite" description="The bite of a Jabala carries a strange infection called Jabala&apos;ha, which causes a disgusting swelling of the victim&apos;s abdomen, face and extremities. Anyone bitten by a Jabala beetle and failing a DC 15 Fortitude save contracts Jabala&apos;ha. The victim shows no sign of infection until the disease incubates, but a DC 20 Heal check reveals their glands are swollen and their neck slightly bulged. Those who succumb to the Jabala&apos;ha eventually rupture (when reduced to 0 Dex), polluted blood and diseased innards bursting from them. The save DC is Constitution-based.\n\n{b}Jabala&apos;ha{/b} (Ex) Bite-injury; {i}save{/i} Fort DC 15; {i}onset{/i} 1 day; {i}frequency{/i} 1/day; {i}effect{/i} 1d3 Dex and 1d4 Cha; {i}cure{/i} 2 consecutive saves." compset="RaceSpec">
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGSkWAcc" name="Accursed Blood" description="The blood of these wights is polluted with Dajobas&apos; foul power. Anyone striking one of these wights in melee, grappling them, or otherwise touching them is splattered by the blood suffering 1d6 unholy damage as the disgusting fluid takes root on their flesh and festers (a DC 14 Reflex save halves this damage). The wights can also fling the blood at a foe as a ranged touch attack with an increment of 10 feet; on a successful hit, the target suffers 1d6 unholy damage (no save). The save DC is Charisma-based and includes a +2 racial bonus." compset="RaceSpec">
+    <fieldval field="abDC" value="2"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGBCBurr" name="Burrow through Wood" description="Black Curdles can burrow through wood and creep in the dark spaces between bulkheads, eating through sturdy timbers as it does. Treat this as a burrow speed of 10 feet that only applies to wooden structures." compset="RaceSpec">
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="First">hero.child[xBurrow].field[abValue].value = 10</eval>
+    </thing>
+  <thing id="raFGBCMott" name="Mottled Black" description="Black Curdles blend into shadows and dark wood with ease making them difficult to root out. A Black Curdle has a +10 racial bonus to Stealth checks made below deck of a ship or in any wooden structure&apos;s interior." compset="RaceSpec">
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="4000"><![CDATA[#racialsituational[hero.child[skStealth], "+10 below deck of a ship or in nay wooden structure",field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGExtrSt" name="Extradimensional Storage" description="A fetching monkey&#146;s stomach is a small extradimensional storage space used by the monkey to carry objects for its master.\n\nThe space holds up to 25 pounds of objects, often fruit or nuts gathered from high treetops." compset="RaceSpec">
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="rcFGTikJuK" name="Jungle King" description="As long as he has a spark of intelligence, the tikiman gains Acrobatics and Survival as class skills." compset="RaceCustom" summary="Acrobatics and Survival are class skills." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #makeclassskill[skAcrobat]
+    #makeclassskill[skSurvival]]]></eval>
+    </thing>
+  <thing id="rcFGTikAnC" name="Animal Caller" description="At your command, your tikiman can accuratly emulate the sound of any jungle animal native to Razor Coast. Your tikiman must have the jungle king ability to choose this power." compset="RaceCustom" summary="Emulate jungle animals." uniqueness="useronce">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Jungle King ability required."><![CDATA[#hasability[rcFGTikJuK] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcFGTikCli" name="Climb" description="You empower your tikiman with the skills to be a great climber. The tikiman gains 20 climb speed." compset="RaceCustom" summary="20ft climb speed." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #value[xClimb] += 20]]></eval>
+    </thing>
+  <thing id="rcFGTikHD" name="Hit Die Increase" description="You increase your tikiman&apos;s total hit dice by +1. Adjust the tikiman&apos;s ability scores, hit points, saving throws, skills, feats according to the monster advancement rules in the Pathfinder Bestiary. However, because the tikiman is a construct, its size does not change. If you gain an ability score boost, you cannot apply the boost to the tikiman&apos;s Constitution or Intelligence. You can take this power more than once each time increasing the tikiman&apos;s Hit Die by +1." compset="RaceCustom" summary="+1 Hit Die">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="cBonusHD"></bootstrap>
+    </thing>
+  <thing id="rcFGTikImB" name="Improved Bite" description="The tikiman increases his bite one size category as per the feat Improved Natural bite. The tikiman must have the jungle king power to take this power. You can take this power more than once each time increasing the tiki&apos;s bite by one size (maximum large)" compset="RaceCustom" summary="+1 size category bigger." maxlimit="3">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ increase bite by one size
+    perform hero.child[wBite].assign[Helper.DamageUp]]]></eval>
+    <exprreq message="Jungle King ability required."><![CDATA[#hasability[rcFGTikJuK] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcFGTikINA" name="Improved Natural Armor" description="You reinforce your tikiman giving it a +2 bonus to its natural armor. This power can be taken once for every five hit dice the tikiman possesses." compset="RaceCustom" summary="+2 natural armor.">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+          
+    ~+2 natural AC
+    hero.child[mNatural].field[arAC].value += 2]]></eval>
+    <prereq message="You may only purchase this ability once per 5 hit dice.">
+      <validate><![CDATA[
+    var nAllowed as number
+    nAllowed = round(hero.tagcount[Hero.HitDice]/5,0,-1)
+    
+    ~ if we're a pick, then there must be complevel/5 or fewer copies of
+    ~ this ability
+    if (@ispick <> 0) then
+       validif (tagcount[HasAbility.rcFGTikINA] <= nAllowed)
+       @message = "You may not have more than " & nAllowed & " copies of this ability."
+    ~ otherwise, look for fewer, since we're adding this
+    else
+      validif (tagcount[HasAbility.rcFGTikINA] < nAllowed)
+    endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="rcFGTikSab" name="Saboteur" description="As long as he has a spark of intelligence, the tikiman gains Disable Device and Stealth as class skills." compset="RaceCustom" summary="Disable Device and Stealth are class skills." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #makeclassskill[skDisable]
+    #makeclassskill[skStealth]]]></eval>
+    </thing>
+  <thing id="rcFGTikSpy" name="Spy" description="As long as he has a spark of intelligence, the tikiman gains Disguise and Perception as class skills." compset="RaceCustom" summary="Disguise and Perception are class skills." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #makeclassskill[skDisguise]
+    #makeclassskill[skPercep]]]></eval>
+    </thing>
+  <thing id="rcFGTikSwi" name="Swim" description="You empower your tikiman with a swim speed equal to its base speed. You may select this power more than once. Each additional time it is selected, increase the tikiman&apos;s swim speed by 10 feet." compset="RaceCustom" summary="Swim speed = base speed." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #value[xSwim] += hero.child[Speed].field[tSpeed].value]]></eval>
+    </thing>
+  <thing id="rcFGTikS10" name="Swim +10ft" description="You empower your tikiman with a swim speed equal to its base speed. You may select this power more than once. Each additional time it is selected, increase the tikiman&apos;s swim speed by 10 feet." compset="RaceCustom" summary="+10ft Swim speed.">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #value[xSwim] += 10]]></eval>
+    <exprreq message="Swim ability required."><![CDATA[#hasability[rcFGTikSwi] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcFGTikThi" name="Thief" description="As long as he has a spark of intelligence, the tikiman gains Sleight of Hand and Stealth as class skills." compset="RaceCustom" summary="Sleight of Hand and Stealth are class skills." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #makeclassskill[skSleight]
+    #makeclassskill[skStealth]]]></eval>
+    </thing>
+  <thing id="rcFGTikWea" name="Weapon Training" description="You imbue your tikiman with the ability to use a specific weapon. As long as your tikiman has a spark of intelligence, it gains weapon proficiency with the chosen weapon. You can take this power more than once, each time selecting a new weapon in which the tikiman gains proficiency." compset="RaceCustom" summary="Proficiency with the chosen weapon." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="fShowWhat" tag="Weapons"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <eval phase="First" priority="1000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    call ChosenProf]]></eval>
+    </thing>
+  <thing id="rcFGTikArs" name="Arsonist" description="{b}Mana Cost Power{/b}\nWith a snap of its fingers, the tikiman can produce a small flame capable of igniting combustible materials. The flame is 1 to 2 inches in height and burns for a number of rounds equal to the tikiman&apos;s hit dice level. You can terminate the effect as a swift action." compset="RaceCustom" summary="Create a small flame." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="Usage" tag="DayRound"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    field[trkMax].value = hero.tagcount[Hero.HitDice]]]></eval>
+    </thing>
+  <thing id="rcFGTikAuR" name="Autonomous Repair" description="{b}Mana Cost Power{/b}\nYou can focus mana into the tikiman granting it ability to temporarily spontaneously repair damage, effectively giving it fast healing 1. The tikiman repairs 1 point of damage each round. Unlike fast healing, fast repair allows the tikiman to reattach severed parts, though it cannot repair body parts that are completely destroyed. Autonomous repair functions as long as the tikiman is above -1 hit points. It does not function if you are not on the same plane the tikiman. Once activated, autonomous repair lasts for a number of hours equal to your yohunga level.{br}{br}Autonomous repair can be increased by 1 hit point per round for every additional mana point spent (maximum 5). The tikiman must have at least 11 HD before selecting this power." compset="RaceCustom" summary="Create a small flame." uniqueness="useronce">
+    <fieldval field="actUserMin" value="1"/>
+    <fieldval field="actUserMax" value="5"/>
+    <fieldval field="actName" value="Fast Healing"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Usage" tag="Hour"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xFastHeal"></bootstrap>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ Set the number of hours based on Masters Class
+    field[trkMax].value = master.tagcount[Classes.FGYohunga]
+    
+    ~ If ability active set the fast healling amount
+    If (field[abilActive].value <> 0) Then
+       #value[xFastHeal] += field[actUser].value
+    Endif]]></eval>
+    <exprreq message="11 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 11]]></exprreq>
+    </thing>
+  <thing id="rcFGTikBli" name="Blindsight" description="{b}Mana Cost Power{/b}\nYou temporarily imbue your tikiman with the supernatural ability to perceive things as if it had blindsight out to a range of 30 feet. The tikiman can maneuver and attack as normal, ignoring darkness, invisibility, and most forms of concealment as long as it has line of effect to the target. \n\nThe yohunga must be at least 11th level before selecting this power." compset="RaceCustom" summary="Blindsight out to a range of 30 feet." uniqueness="useronce">
+    <fieldval field="actName" value="Blindsight"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="rBlindSi">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <exprreq message="11th level yohunga required."><![CDATA[master.tagcount[Classes.FGYohunga] >= 11]]></exprreq>
+    </thing>
+  <thing id="rcFGTikBlk" name="Blink" description="{b}Mana Cost Power{/b}\nBy spending a point of mana, the tikiman gains the ability to {i}blink{/i} as per the spell. The caster level is the same as your yohunga level.{br}{br}A tikiman must have 7 HD before it can gain this power." compset="RaceCustom" summary="{i}Blink{/i} as per the spell." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spBlink3"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ Set the number of hours based on Masters Class
+    field[livename].text = field[name].text & " CL" & master.tagcount[Classes.FGYohunga]]]></eval>
+    <exprreq message="7 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 7]]></exprreq>
+    </thing>
+  <thing id="rcFGTikPar" name="Blowgun, Paralysis Darts" description="{b}Mana Cost Power{/b}\nBy expending a use of mana, the tikiman can coat a blowgun dart with a paralytic toxin. If the tikiman makes a successful ranged attack with his blowgun, the victim suffers from an effect identical to a {i}ghoul touch{/i} spell with a caster level equal to your yohunga class level. \n\nA tikiman must have at least 5 HD and weapon proficiency (blowgun) before it can gain this power." compset="RaceCustom" uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spGhouTou2"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ Set the number of hours based on Masters Class
+    field[livename].text = field[name].text & " CL" & master.tagcount[Classes.FGYohunga]]]></eval>
+    <exprreq message="Weapon proficiency (blowgun) required."><![CDATA[#hasfeat[fSimple] + hero.tagis[WepProf.wBlowgun] <> 0]]></exprreq>
+    <exprreq message="5 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 5]]></exprreq>
+    </thing>
+  <thing id="rcFGTikPoi" name="Blowgun, Poison Darts" description="{b}Mana Cost Power{/b}\nBy expending a use of mana, the tikiman can exude enough noxious poison to coat a dozen blowgun darts. You must choose the type of poison produced at the time he imbues his tikiman with this ability. You can choose any injury based poison with a CR no greater than half your yohunga level. If the darts go unused, any coated darts remain poisonous for the next 24 hours before wearing off. You can take this ability multiple times, each time selecting a different type of poison.{br}{br}A tikiman must have at least 7 HD and weapon proficiency (blowgun) before it can gain this power." compset="RaceCustom" uniqueness="useronce">
+    <fieldval field="usrCandid1" value="gType.Poison"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    field[livename].text = field[name].text & " CR" & round(master.tagcount[Classes.FGYohunga]/2,0,-1)]]></eval>
+    <exprreq message="7 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 7]]></exprreq>
+    <exprreq message="Weapon proficiency (blowgun) required."><![CDATA[#hasfeat[fSimple] + hero.tagis[WepProf.wBlowgun] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcFGTikSle" name="Blowgun, Sleep Powder" description="{b}Mana Cost Power{/b}\nBy expending a use of mana, your tikiman can use its blowgun to exhale a giant cloud of magical sleeping dust. All creatures within a 30-foot -radius must save or be affected by {i}deep slumber{/i} spell with a caster level equal to the yohunga&apos;s class level.\n\nA tikiman must have weapon proficiency (blowgun) before it can gain this power." compset="RaceCustom" uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spDeepSlu3"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ Set the number of hours based on Masters Class
+    field[livename].text = field[name].text & " CL" & master.tagcount[Classes.FGYohunga]]]></eval>
+    <exprreq message="Weapon proficiency (blowgun) required."><![CDATA[#hasfeat[fSimple] + hero.tagis[WepProf.wBlowgun] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcFGTikBrW" name="Breath Weapon" description="{b}Mana Cost Power{/b}\nYou grant your tikiman the power to exhale a cone or line of magical energy, gaining a breath weapon. Select either acid, cold, electricity, or fire. Thereafter you can spend a point of mana to make the tikiman breathe a 30-foot cone (or 60-foot line) that deals 1d6 points of damage of the selected type per each HD it possesses. Those caught in the breath weapon can attempt a Reflex save for half damage. The DC is equal to 10 + 1/2 the tikiman&apos;s HD + your Charisma modifier. \n\nThe tikiman must have at least 9 HD to gain this power." compset="RaceCustom" uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    field[livename].text = field[name].text & " " & hero.tagcount[Hero.HitDice] & "d6"]]></eval>
+    <exprreq message="9 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 9]]></exprreq>
+    </thing>
+  <thing id="rcFGTikDR" name="Damage Reduction" description="{b}Mana Cost Power{/b}\nBy spending a mana point you temporarily imbue the tikiman&apos;s body with mystical strength, granting it damage reduction. Choose one alignment: chaotic, evil, good, or lawful. The tikiman gains DR 5 that can be bypassed by weapons that possess the chosen alignment. The alignment must be opposite to one of your own alignments. The DR lasts for a number of hours equal to your yohunga level. At 12 Hit Die, you can spend 2 mana points to increase the protection to DR 10. \n\nA tikiman must have at least 7 HD before selecting this power." compset="RaceCustom" uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="DR"/>
+    <tag group="Usage" tag="DayHour"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="fShowWhat" tag="AlignOppos"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ Set the number of hours based on Masters Class
+    field[trkMax].value = master.tagcount[Classes.FGYohunga]
+    
+    field[abValue].value += 5
+    ~ If ability active set the DR amount
+    If (field[abilActive].value <> 0) Then
+       ~ Apply DR good
+       If (field[pChosen].chosen.tagis[thingid.selAxGood] <> 0) then
+          #applydr[xDamRdGood,field[abValue].value]
+       ~ Apply DR evil
+       ElseIf (field[pChosen].chosen.tagis[thingid.selAxEvil] <> 0) then
+          #applydr[xDamRdEvil,field[abValue].value]
+       ~ Apply DR Law
+       ElseIf (field[pChosen].chosen.tagis[thingid.selAxLaw] <> 0) then
+          #applydr[xDamRdLaw,field[abValue].value]
+       ~ Apply DR Chaos
+       ElseIf (field[pChosen].chosen.tagis[thingid.selAxChaos] <> 0) then
+          #applydr[xDamRdChao,field[abValue].value]
+       Endif
+    Endif]]></eval>
+    <exprreq message="7 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 7]]></exprreq>
+    </thing>
+  <thing id="rcFGTikDTS" name="Deliver Touch Spells" description="{b}Mana Cost Power{/b}\nIf the tikiman has 3 HD or higher, you can spend a point of mana to allow it to deliver touch spells on your behalf. If you are in contact with your tikiman at the time you cast a touch spell, you can designate the tikiman as the &quot;toucher.&quot; The tikiman can then deliver the touch spell just as the yohunga would. As usual, if the yohunga casts another spell before the touch is delivered, the touch spell dissipates." compset="RaceCustom" summary="Deliver touch spells.">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+          
+    ~+2 natural AC
+    hero.child[mNatural].field[arAC].value += 2]]></eval>
+    <exprreq message="3 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 3]]></exprreq>
+    </thing>
+  <thing id="rcFGTikDod" name="Dodge" description="{b}Mana Cost Power{/b}\nBy spending a point on mana, you imbue your tikiman with the uncanny ability to dodge deadly attacks. The tikiman gains a temporary +4 dodge bonus to AC for a number of rounds equal to the tikiman&apos;s hit dice." compset="RaceCustom" summary="+4 AC for rounds = to HD." uniqueness="useronce">
+    <fieldval field="actName" value="Dodge Deadly Attacks"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ Set the number of rounds equal to our hit dice
+    field[trkMax].value = hero.tagcount[Hero.HitDice]
+    ~ Set AC amount
+    field[abValue].value += 4
+    
+    ~ If ability active turn on user tracker and give +4 Dodge bonus AC
+    If (field[abilActive].value <> 0) Then
+       perform assign[User.Tracker]
+       hero.child[ArmorClass].field[tACDodge].value += field[abValue].value
+    Endif]]></eval>
+    </thing>
+  <thing id="rcFGTikEnA" name="Energy Attacks" description="{b}Mana Cost Power{/b}\nYou spend a point of mana to charge your tikiman&apos;s natural attacks with energy. Pick one energy type: acid, cold, electricity, or fire. All of the tikiman&apos;s natural attacks deal 1d6 points of energy damage of the chosen type on a successful hit. You can spend additional points of mana to increase the energy damage by 1d6 points per point of mana, however you can never imbue an amount of mana that exceeds more than half the tikiman&apos;s hit dice. \n\nThe tikiman must have at least 5 HD before gaining this power." compset="RaceCustom" summary="Create a small flame." uniqueness="useronce">
+    <fieldval field="actUserMin" value="1"/>
+    <fieldval field="actName" value="Energy Attacks"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="fShowWhat" tag="EnergyBase"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    var sEnergy as string
+    sEnergy = "(energy)"
+    
+    ~ Pull the Blood Energy tag from the selector thing
+    perform field[usrChosen1].chosen.pulltags[BloodEner.?]
+    ~ Get the energy name from the Blood Energy tag
+    If (tagcount[BloodEner.?] <> 0) then
+       sEnergy = tagnames[BloodEner.?]
+    Endif
+    
+    ~ If ability active set the amount of extra damage
+    If (field[abilActive].value <> 0) Then
+       ~ Show the energy damage on all natural attacks
+       foreach pick in hero from BaseWep where "wGroup.Natural"
+          #extradamage[eachpick,"+" & field[actUser].value & "d6 " & sEnergy,field[name].text]
+       nexteach
+    Endif]]></eval>
+    <eval phase="First" priority="1500" index="2">~ Set the total amount that can be activated
+    field[actUserMax].value = maximum(round(hero.tagcount[Hero.HitDice]/2,0,-1),1)</eval>
+    <exprreq message="5 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 5]]></exprreq>
+    </thing>
+  <thing id="rcFGTikRes" name="Energy Resistance" description="{b}Mana Cost Power{/b}\nYou can spend a point of mana to make your tikiman resistant to a particular energy type. Pick one energy type (acid, cold, electricity, fire, or sonic). The tikiman gains resist 5 against that energy type. The effect lasts for a number of hours equal to the tikiman&apos;s HD. This resistance increases by 5 for every 5 HD your tikiman possesses, to a maximum of 15 at 10 HD. This power can be selected more than once. Its effects do not stack. Each time you imbue a tikiman with this power, it applies to a different energy type." compset="RaceCustom" summary="Resistance to an energy type." maxlimit="5">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="fShowWhat" tag="Energy"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Try and find the base race
+    perform hero.findchild[BaseRace].setfocus
+    ~ if can't find then get out now!
+    doneif (state.isfocus = 0)
+    ~ Pull the Selection tag from the selector thing
+    perform field[usrChosen1].chosen.pulltags[RazorCoast.TikEn?]
+    ~ Push it to the race so we can test later
+    perform focus.pushtags[RazorCoast.TikEn?]
+    
+    ~ Set the amount of resistance
+    If (hero.tagcount[Hero.HitDice] >= 10) Then
+       field[abValue].value += 15
+    ElseIf (hero.tagcount[Hero.HitDice] >= 5) Then
+       field[abValue].value += 10
+    Else
+       field[abValue].value += 5
+    Endif
+    
+    ~ If ability active set the amount of Resistance
+    If (field[abilActive].value <> 0) Then
+       ~ Acid
+       If (field[usrChosen1].chosen.tagis[BloodEner.Acid] <> 0) Then
+          #applyresist[xDamRsAcid, field[abValue].value]
+       ~ Fire
+       ElseIf (field[usrChosen1].chosen.tagis[BloodEner.Cold] <> 0) Then
+          #applyresist[xDamRsCold, field[abValue].value]
+       ~ Electricity
+       ElseIf (field[usrChosen1].chosen.tagis[BloodEner.Elec] <> 0) Then
+          #applyresist[xDamRsElec, field[abValue].value]
+       ~ Fire
+       ElseIf (field[usrChosen1].chosen.tagis[BloodEner.Fire] <> 0) Then
+          #applyresist[xDamRsFire, field[abValue].value]
+       ~ Sonic
+       ElseIf (field[usrChosen1].chosen.tagis[BloodEner.Sonic] <> 0) Then
+          #applyresist[xDamRsSoni, field[abValue].value]
+       Endif
+    Endif]]></eval>
+    <prereq message="You can&apos;t pick the same energy type more than once.">
+      <validate><![CDATA[
+    ~ If not a pick we are valid, so get out now!
+    validif (@ispick <> 1)
+    @valid = 1
+    ~ Try and find the base race
+    perform hero.findchild[BaseRace].setfocus
+    ~ if can't find then get out now!
+    doneif (state.isfocus = 0)
+    
+    ~ Test each energy type and make sure we didn't take it twice
+    If (focus.tagcount[RazorCoast.TikEnAcid] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikEnCold] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikEnElec] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikEnFire] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikEnSonic] > 1) Then
+       @valid = 0
+    Endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="rcFGTikFrP" name="Frightful Presence" description="{b}Mana Cost Power{/b}\nBy spending a point of mana, the tikiman can radiate a frightful presence that causes all opponents within 30 feet to make a Will save or become shaken for 3d6 rounds. The DC of this save is equal to 10 + 1/2 the tikiman&apos;s HD + your Charisma modifier. If you have at least 4 more Hit Dice than the tikiman&apos;s opponent, that opponent becomes frightened instead. Foes with more HD than you are immune to this effect. \n\nThe tikiman must have at least 11 HD level before selecting this power." compset="RaceCustom" summary="30ft fear will save or shaken 3d6 rounds." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="11 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 11]]></exprreq>
+    </thing>
+  <thing id="rcFGTikGro" name="Grow" description="{b}Mana Cost Power{/b}\nBy spending a point of mana the tikiman temporarily triples in size, becoming a large construct for a number of rounds equal to your yohunga level. In its new size, the tikiman gains +10 to all attack and damage rolls but takes a -3 penalty to Reflex saves. It also increases its base speed by +10 ft. \n\nA tikiman must have 5 HD before it can gain this power." compset="RaceCustom" summary="Grow to size large." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="First" priority="4000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Set the number of hours based on Masters Class
+    field[trkMax].value = master.tagcount[Classes.FGYohunga]
+    ~ Show Tracker
+    perform assign[User.Tracker]
+    
+    ~ If not active get out now!
+    doneif (field[abilActive].value <> 1)
+    
+    ~ Set the number of hours based on Masters Class
+    field[trkMax].value = master.tagcount[Classes.FGYohunga]
+    
+    ~ Increase speed by +10ft
+    hero.child[Speed].field[tSpeed].value += 10
+    ~ Increase Attack and damage by 10
+    hero.child[Attack].field[Bonus].value += 10
+    hero.child[Damage].field[tDamBonus].value += 10
+    
+    ~ Set new size to Large
+    var sizetarget as number
+    sizetarget = 1
+    call SetSizeTo]]></eval>
+    <exprreq message="5 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 5]]></exprreq>
+    </thing>
+  <thing id="rcFGTikImm" name="Immunity" description="{b}Mana Cost Power{/b}\nYou spend a point of mana to temporarily make your tikiman immune to a specific energy type. Pick one energy type: acid, cold, electricity, fire, or sonic. The immunity lasts for a number of rounds equal to your yohunga level. This evolution can be selected more than once. Its effects do not stack. Each time it applies to a different energy type. \n\nThe tikiman must have at least 5 HD before selecting this power." compset="RaceCustom" summary="Immunity to a specific energy type." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="fShowWhat" tag="Energy"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Show Tracker
+    perform assign[User.Tracker]
+    ~ Set the number of hours based on Masters Class
+    field[trkMax].value = master.tagcount[Classes.FGYohunga]
+    ~ Try and find the base race
+    perform hero.findchild[BaseRace].setfocus
+    ~ if can't find then get out now!
+    doneif (state.isfocus = 0)
+    ~ Pull the Selection tag from the selector thing
+    perform field[usrChosen1].chosen.pulltags[RazorCoast.TikIm?]
+    ~ Push tags to hero
+    perform hero.pushtags[RazorCoast.TikIm?]
+    ~ Push it to the race so we can test later
+    perform focus.pushtags[RazorCoast.TikIm?]
+    
+    var sEnergy as string
+    ~ Get the energy name from the Tikiman Immunity Energy tag
+    If (tagcount[RazorCoast.TikIm?] <> 0) then
+       sEnergy = tagnames[RazorCoast.TikIm?]
+       ~ Set the summary text
+       field[abSumm].text = "You are immune to " & sEnergy & " damage."
+    Endif]]></eval>
+    <exprreq message="5 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 5]]></exprreq>
+    <prereq message="You can&apos;t pick the same energy type more than once.">
+      <validate><![CDATA[
+    ~ If not a pick we are valid, so get out now!
+    validif (@ispick <> 1)
+    @valid = 1
+    ~ Try and find the base race
+    perform hero.findchild[BaseRace].setfocus
+    ~ if can't find then get out now!
+    doneif (state.isfocus = 0)
+    
+    ~ Test each energy type and make sure we didn't take it twice
+    If (focus.tagcount[RazorCoast.TikImAcid] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikImCold] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikImElec] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikImFire] > 1) Then
+       @valid = 0
+    ElseIf (focus.tagcount[RazorCoast.TikImSonic] > 1) Then
+       @valid = 0
+    Endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="rcFGTikMaA" name="Magic Attacks" description="{b}Mana Cost Power{/b}\nYou can spend a point mana to infuse your tikiman&apos;s attacks with magic. Thereafter tikiman treats all of its natural attacks as if they were magic for the purpose of overcoming damage reduction. Spending two points allows the tikiman to enchant its attacks to bypass DR based on alignment." compset="RaceCustom" summary="Your natural attacks are treated as magic or aligned." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="rcFGTikMer" name="Merge into Tikiman" description="{b}Mana Cost Power{/b}\nAs a full-round action, you can spend a point of mana to place yourself inside one of your tikimen, taking control of the construct as if under the effects of a {i}magic jar{/i} spell. This transformation includes all of your gear. While merged in this way, you are protected from harm and cannot be the target of spells or effects. All effects and spells currently targeting you are suspended until you emerge from the tikiman (although durations continue to expire).{br}{br}You can cast spells while inside the tikiman by taking control of the construct for the duration of the casting. Any material components used for these spells are taken from your gear, even though they are otherwise inaccessible.{br}{br}You can direct all of the tikiman&apos;s actions while merged, can perceive through its senses, and can speak through its voice.{br}{br}You can remain within the tikiman for a number of rounds per day equal to your yohunga level. You can end this effect at any time as a swift action, emerging in a square adjacent to the tikiman if able. If the tikiman is destroyed while you are merged with it, you are immediately ejected, take 4d6 points of damage, and are stunned for 1 round." compset="RaceCustom" summary="Merge inside of your Tikiman." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="rcFGTikSce" name="Scent" description="{b}Mana Cost Power{/b}\nBy spending a point of mana the tikiman gains the scent ability and can use it to track individuals with the Survival skill. This effect lasts for a number of hours equal to the tikiman&apos;s hit dice.\n\nThe tikiman must have the jungle king power to take this power." compset="RaceCustom" summary="Gain the scent ability." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Usage" tag="DayHour"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xScent">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    ~ Set the number of hours based on Hit Dice
+    field[trkMax].value = hero.tagcount[Hero.HitDice]]]></eval>
+    <exprreq message="Jungle king power required."><![CDATA[#hasability[rcFGTikJuK] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcFGTikScy" name="Scrying Tikiman" description="{b}Mana Cost Power{/b}\nIf your tikiman has at least 14 HD, you many spend a mana point to scry on your tikiman (as if casting the {i}scrying{/i} spell)." compset="RaceCustom" summary="Scry on your tikiman as the spell." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spScrying4"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="14 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 14]]></exprreq>
+    </thing>
+  <thing id="rcFGTikShV" name="Shared Vision" description="{b}Mana Cost Power{/b}\nBy spending a point of mana you can see through your tikiman&apos;s eyes, seeing exactly what he sees. If there is no light, you also gain {i}darkvision.{/i} You can use this ability a number of rounds equal to your yohunga level. There is no range to this effect, but you must be on the same plane as your tikiman. You can end this effect as a free action." compset="RaceCustom" summary="See through your tikimans eyes." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Show Tracker
+    perform assign[User.Tracker]
+    ~ Set the number of hours based on Masters Class
+    field[trkMax].value = master.tagcount[Classes.FGYohunga]]]></eval>
+    </thing>
+  <thing id="rcFGTikSnA" name="Sneak Attack" description="{b}Mana Cost Power{/b}\nYou can spend a point of mana so your tikiman can make a sneak attack as a rogue with a level equal to the tikiman&apos;s hit dice.{br}{br}A tikiman must have 3 HD before it can gain this power." compset="RaceCustom" summary="Gain sneak attack as a rogue." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raSneakAtt">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ If not active get out now!
+    doneif (field[abilActive].value <> 1)
+    
+    ~ Set the number dice equal to a rogue
+    #value[raSneakAtt] += maximum(round(hero.tagcount[Hero.HitDice]/2,0,1),1)]]></eval>
+    <exprreq message="3 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 3]]></exprreq>
+    </thing>
+  <thing id="rcFGTikSpe" name="Speak with Creator" description="{b}Mana Cost Power{/b}\nA yohunga can spend a point of mana to communicate verbally with his tikiman, as if using a common language. Other creatures do not understand the communication without magical help. The effect lasts for a number of rounds equal to the tikiman&apos;s HD." compset="RaceCustom" summary="Communicate verbally with your master." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Show Tracker
+    perform assign[User.Tracker]
+    ~ Set the number of hours based on tikiman hit dice
+    field[trkMax].value = hero.tagcount[Hero.HitDice]]]></eval>
+    </thing>
+  <thing id="rcFGTikSpB" name="Speed Burst" description="{b}Mana Cost Power{/b}\nYou can spend a point of mana to make your tikiman double its base speed. Speed burst lasts for a number of rounds equal to the tikiman&apos;s hit dice." compset="RaceCustom" summary="Double your base speed." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Show Tracker
+    perform assign[User.Tracker]
+    ~ Set the number of hours based on tikiman hit dice
+    field[trkMax].value = hero.tagcount[Hero.HitDice]
+    
+    ~ If not active get out now!
+    doneif (field[abilActive].value <> 1)
+    hero.child[Speed].field[tSpeed].value *= 2]]></eval>
+    </thing>
+  <thing id="rcFGTikSR" name="Spell Resistance" description="{b}Mana Cost Power{/b}\nYou can spend a point of mana to imbue your tikiman with spell resistance for a number of hours equal to your yohunga level. The tikiman&apos;s spell resistance is equal to 11 + your yohunga level. This spell resistance does not apply to spells you cast. \n\nA tikiman must have 9 HD before it can gain this power." compset="RaceCustom" summary="You gain SR = 11 + yohunga level." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Usage" tag="Hour"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Show Tracker
+    perform assign[User.Tracker]
+    ~ Set the number of hours based on Masters Class
+    field[trkMax].value = master.tagcount[Classes.FGYohunga]
+    
+    ~ If not active get out now!
+    doneif (field[abilActive].value <> 1)
+    ~ Spell Resistance = 11 + Yohunga level
+    #value[xSplRs] += 11 + master.tagcount[Classes.FGYohunga]]]></eval>
+    <exprreq message="9 Hit Dice required."><![CDATA[hero.tagcount[Hero.HitDice] >= 9]]></exprreq>
+    </thing>
+  <thing id="rcFGTikTrM" name="Trap Master" description="{b}Mana Cost Power{/b}\nBy spending a point of mana, the tikiman can detect traps. Once detected, the tikiman may use disable device to remove the traps as a rogue with a level equal to your Yohunga level. \n\nThe tikiman must have the thief power to take this power." compset="RaceCustom" summary="Disable traps like a rogue." uniqueness="useronce">
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <exprreq message="Thief power required."><![CDATA[#hasability[rcFGTikThi] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcFGTikUnL" name="Uncanny Leap" description="{b}Mana Cost Power{/b}\nYou can spend a point of mana to make the tikiman magically leap its full base movement in any direction from a standing position." compset="RaceCustom" summary="Leap your base movement in any direction." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    </thing>
+  <thing id="rcFGTikWiS" name="Wild Scream" description="{b}Mana Cost Power{/b}\nYou can spend a point of mana to command your tikiman to utter an ear-splitting scream that emulates a {i}shout{/i} spell with a caster level equal to your yohunga level." compset="RaceCustom" summary="Use {i}shout{/i} spell w/CL = yohunga level." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spShout5"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AllowRCust" tag="rFGTikiman"/>
+    <eval phase="Final" priority="25000"><![CDATA[
+    ~ if we're disabled, just get out now
+    doneif (tagis[Helper.SpcDisable] <> 0)
+    ~ Change live name to include caster level
+    field[livename].text = field[name].text & " CL" & master.tagcount[Classes.FGYohunga]]]></eval>
+    </thing>
+  <thing id="rcFGTulKam" name="Tulita (Kamu)" description="The precise number of Tulita ethnicities remains unknown, though there were at one time thought to be over a dozen. During the early years of violent conquest, colonists wiped out at least two of the older and more powerful groups while others have become more reclusive and vanished into the wilds. The four most prominent sub-groups are the Kamu, Moamasu, Nakosha, and the Sugalo. Along with these are the distant Aizanes-Tulita of the eastern Razor Sea, though they are seldom found along the Razor Coast.\n\n{i}Kamu{/i} are squat and tend to be portly, the latter being a characteristic they believe displays their wealth and prominence. They live in matriarchal tribes with high-ranking females taking up to a dozen husbands. They practice both fire and water magic and enhance their powers with detailed, stylized tattoos.\n\nKamu treat battle poi as martial weapons." compset="RaceCustom" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <tag group="AllowRCust" tag="rHuman"/>
+    <tag group="EasyWeapon" tag="wBattleP" name="Battle poi" abbrev="Battle poi"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="raFGTulTa7">
+      <containerreq phase="First" priority="300"><![CDATA[count:Classes.? >=7]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raFGTulT11">
+      <containerreq phase="First" priority="375"><![CDATA[ !Custom.TulitaTatt & count:Classes.? >= 11]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="lFGTulita"></bootstrap>
+    <eval phase="First" priority="11000">~assign our weapon proficiencies to the hero
+perform hero.pushtags[WepProf.?]
+perform hero.pushtags[EasyWeapon.?]</eval>
+    </thing>
+  <thing id="rFGTulMoma" name="Tulita (Moamasu)" description="The precise number of Tulita ethnicities remains unknown, though there were at one time thought to be over a dozen. During the early years of violent conquest, colonists wiped out at least two of the older and more powerful groups while others have become more reclusive and vanished into the wilds. The four most prominent sub-groups are the Kamu, Moamasu, Nakosha, and the Sugalo. Along with these are the distant Aizanes-Tulita of the eastern Razor Sea, though they are seldom found along the Razor Coast.\n\n{i}Moamasu{/i} are coastal dwellers, slender and light with long black hair. Known as spear fishermen and pearl divers, they can hold their breath for nearly impossible lengths as they pluck natural treasures from the sea floor. They are also skilled artisans known for their detailed coral carvings.\n\nMoamasu treat coral bracers and other coral weapons as martial weapons." compset="RaceCustom" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <tag group="AllowRCust" tag="rHuman"/>
+    <tag group="EasyWeapon" tag="wFGBracCor" name="Coral bracers" abbrev="Coral bracers"/>
+    <tag group="EasyWeapon" tag="wFGBracUrc" name="Urchin spine bracers" abbrev="Urchin spine bracers"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="raFGTulTa7">
+      <containerreq phase="First" priority="300"><![CDATA[count:Classes.? >=7]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raFGTulT11">
+      <containerreq phase="First" priority="375"><![CDATA[ !Custom.TulitaTatt & count:Classes.? >= 11]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="lFGTulitaC"></bootstrap>
+    <eval phase="First" priority="11000">~assign our weapon proficiencies to the hero
+perform hero.pushtags[WepProf.?]
+perform hero.pushtags[EasyWeapon.?]</eval>
+    </thing>
+  <thing id="rcFGTulNak" name="Tulita (Nakosha)" description="The precise number of Tulita ethnicities remains unknown, though there were at one time thought to be over a dozen. During the early years of violent conquest, colonists wiped out at least two of the older and more powerful groups while others have become more reclusive and vanished into the wilds. The four most prominent sub-groups are the Kamu, Moamasu, Nakosha, and the Sugalo. Along with these are the distant Aizanes-Tulita of the eastern Razor Sea, though they are seldom found along the Razor Coast.\n\n{i}Nakosha{/i} are fierce but reclusive hunters that live in the inland wilderness. Though extremely short - just over five feet tall - they are famed for their manufacture of deadly poisons and are avid headhunters. \n\nNakosha do not gain a bonus feat at first level but instead gain the Poison Use ability and cannot accidentally poison themselves when applying poison to a weapon." compset="RaceCustom" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <tag group="AllowRCust" tag="rHuman"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="raPoiUse"></bootstrap>
+    <bootstrap thing="raFGTulTa7">
+      <containerreq phase="First" priority="300"><![CDATA[count:Classes.? >=7]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raFGTulT11">
+      <containerreq phase="First" priority="375"><![CDATA[ !Custom.TulitaTatt & count:Classes.? >= 11]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="lFGTulita"></bootstrap>
+    <eval phase="First">~ remove human bonus feat
+perform hero.childfound[raHuFeat].assign[Helper.SpcDisable]
+~perform hero.childfound[raHuFeat].assign[Hide.Special]</eval>
+    </thing>
+  <thing id="rcFGTulSug" name="Tulita (Sugalo)" description="The precise number of Tulita ethnicities remains unknown, though there were at one time thought to be over a dozen. During the early years of violent conquest, colonists wiped out at least two of the older and more powerful groups while others have become more reclusive and vanished into the wilds. The four most prominent sub-groups are the Kamu, Moamasu, Nakosha, and the Sugalo. Along with these are the distant Aizanes-Tulita of the eastern Razor Sea, though they are seldom found along the Razor Coast.\n\n{i}Sugalo{/i} are famed as the keepers of Tulita lore. Taxed with the duty of protecting many centuries of deep and secretive oral traditions, they know all there is of the sacred tribal knowledge. \n\nSugalo add their Wisdom modifiers to any knowledge checks involving the lore of Razor Coast, its people, creatures, or locations." compset="RaceCustom" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <tag group="AllowRCust" tag="rHuman"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="raFGTulTa7">
+      <containerreq phase="First" priority="300"><![CDATA[count:Classes.? >=7]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raFGTulT11">
+      <containerreq phase="First" priority="375"><![CDATA[ !Custom.TulitaTatt & count:Classes.? >= 11]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="lFGTulita"></bootstrap>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+field[abValue].value += #attrmod[aWIS]
+    
+foreach pick in hero from BaseSkill where "Helper.SkCatKnow"
+  #situational[eachpick,signed(field[abValue].value) & " vs. lore of Razor Coast, its people, creatures, or locations",field[name].text]
+nexteach]]></eval>
+    </thing>
+  <thing id="rcFGTulAiz" name="Tulita (Aizanes)" description="The precise number of Tulita ethnicities remains unknown, though there were at one time thought to be over a dozen. During the early years of violent conquest, colonists wiped out at least two of the older and more powerful groups while others have become more reclusive and vanished into the wilds. The four most prominent sub-groups are the Kamu, Moamasu, Nakosha, and the Sugalo. Along with these are the distant Aizanes-Tulita of the eastern Razor Sea, though they are seldom found along the Razor Coast.\n\n{i}Aizanes-Tulita{/i} are the inhabitants of the Aizanes Islands at the farthest eastern extent of the Razor Sea. Their culture has been shaped by centuries of contact with the traders of southern and western Libynos and diverges greatly in many ways from that of their western kin. This is primarily demonstrated in their belief in and devotion to the Loa, elemental spirits of near deific power who hold great influence over every aspect of their lives. While the Aizanes-Tulita still recognize Pele, Whale, Turtle, and Dolphin, their reverence long ago turned to the Loa making them something of a pariah among their kin on the Razor.\n\nAizanes-Tulita add their Wisdom modifier to Knowledge (nature) checks due to their close relationship with the Loa that comprise the natural world." compset="RaceCustom" uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <tag group="AllowRCust" tag="rHuman"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="raFGTulTa7">
+      <containerreq phase="First" priority="300"><![CDATA[count:Classes.? >=7]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raFGTulT11">
+      <containerreq phase="First" priority="375"><![CDATA[ !Custom.TulitaTatt & count:Classes.? >= 11]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="lFGTulitaA"></bootstrap>
+    <eval phase="PostAttr" priority="10000">#skillbonus[skKnowNat] += #attrmod[aWIS]</eval>
+    </thing>
+  <thing id="raFGDajSwp" name="Swamp Dweller" description="Dajobasu receive a +2 racial bonus on Stealth and Survival skill checks made in marshy terrain. Dajobasu move through marshy terrain with ease, ignoring difficult terrain in marshy environs." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #situational[hero.child[skStealth], "+2 in marshy terrain", field[name].text]
+    
+    #situational[hero.child[skSurvival], "+2 in marshy terrain", field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGDajWat" name="Waterborne" description="Dajobasu receive a +4 racial bonus on Swim skill checks and may hold their breath for a number of rounds equal to three times their Constitution before they risk drowning." compset="RaceSpec">
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raHoldBrea">
+      <assignval field="abValue" value="3"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="1000"><![CDATA[doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    hero.child[skSwim].field[Bonus].value += 4]]></eval>
+    </thing>
+  <thing id="raFGDajSml" name="Smell Lies" description="Dajobasu receive a +4 racial bonus on Sense Motive skill checks made to avoid being bluffed." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    #situational[hero.child[skSenseMot],"+4 vs. Bluff",field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGDajDrw" name="Drowning Curse" description="Once per day an aquaphobic dajobasu may target any foe within 30 ft. with their drowning curse as a free action. The target must succeed on a Will save or take -10 to any Swim checks thereafter. A {i}remove curse{/i} or like enchantment cures this effect. The save DC is Charisma-based" compset="RaceSpec">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGMehBoL" name="Bond to the Land" description="Menehune gain a +2 dodge bonus to AC when in a specific terrain type selected from the ranger&apos;s list of favored terrains. This choice is made at character creation, and cannot be changed." compset="RaceSpec">
+    <fieldval field="usrCandid1" value="component.BaseCustUs &amp; Helper.Secondary"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostLevel" priority="19000"><![CDATA[ doneif (field[usrChosen1].ischosen = 0)
+          
+    var sourcename as string
+    
+    if (field[usrChosen1].chosen.tagis[User.NeedDomain] <> 0) then
+      perform assign[User.NeedDomain]
+      perform assign[User.OptDomain]
+      perform assign[User.NoAutoName]
+      field[livename].text = field[name].text & " (" & lowercase(field[domDomain].text) & ")"
+      field[shortname].text = field[livename].text
+      sourcename = lowercase(field[domDomain].text)
+    else
+      field[livename].text = field[name].text & " (" & lowercase(field[usrChosen1].chosen.field[shortname].text) & ")"
+      sourcename = lowercase(field[usrChosen1].chosen.field[shortname].text)
+    endif
+    
+    #situational[hero.child[ArmorClass],"+2 dodge AC in " & sourcename & " environment",field[name].text]]]></eval>
+    </thing>
+  <thing id="raFGFireAs" name="Fire Assault" description="Once per day as a swift action, menehune can draw upon the elemental power lurking in their veins to shroud their arms in fire. Unarmed strikes with their elbows or hands (or attacks with weapons held in those hands) deal an additional 1d4 points of fire damage per every four character levels. This lasts for a number of rounds equal to the menehune&apos;s Charisma modifier plus half his character level. The menehune may end the fire assault as a free action." compset="RaceSpec">
+    <fieldval field="trkMax" value="1"/>
+    <fieldval field="actName" value="Fire Assualt"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="10000"><![CDATA[var dam as number
+    dam = round(#totallevelcount[]/4,0,-1) + 1
+    var dur as number
+    dur = round(#totallevelcount[]/2,0,-1) + hero.child[aCHA].field[aModBonus].value
+    
+    if (dur = 1) then
+      field[livename].text = "Fire Assault (" & dam & "d4 fire, " & dur & " round)"
+    else
+      field[livename].text = "Fire Assault (" & dam & "d4 fire, " & dur & " rounds)"
+    endif
+    
+    doneif (field[abilActive].value = 0)
+    foreach pick in hero from BaseWep where "!wCategory.RangeProj"
+       eachpick.field[wDamExtra].text &= " +" & dam & "d4 fire"
+    nexteach]]></eval>
+    </thing>
+  <thing id="raFGMehFrR" name="Fire Resistance" description="Menehune have a resistance 5 to fire." compset="RaceSpec">
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xDamRsFire">
+      <autotag group="Value" tag="5"/>
+      </bootstrap>
+    <eval phase="Final" priority="10000">doneif (tagis[Helper.SpcDisable] = 0)
+    
+    perform hero.child[xDamRsFire].delete[Value.?]</eval>
+    </thing>
+  <thing id="raFGTulTa7" name="Bonus Feat/Tattoo" description="You gain a bonus feat or Tulita tatto at 7th level." compset="RaceSpec">
+    <arrayval field="usrArray" index="0" value="Bonus Feat"/>
+    <arrayval field="usrArray" index="1" value="Tulita Tattoo"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="cfgFGTulTa">
+      <containerreq phase="First" priority="450">hero#Custom.TulitaTatt</containerreq>
+      </bootstrap>
+    <eval phase="First" priority="350"><![CDATA[~ If we're disabled, do nothing
+          doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    
+    if (compare(field[usrSelect].text,"Tulita Tattoo") = 0) then
+      ~ enable tattoo selection by assiging hero tag
+        perform hero.assign[Custom.TulitaTatt]
+        #resmax[resFeat] -= 1
+    endif]]></eval>
+    </thing>
+  <thing id="raFGTulT11" name="Bonus Feat/Tattoo" description="You gain a bonus feat or Tulita tatto at 11th level." compset="RaceSpec">
+    <arrayval field="usrArray" index="0" value="Bonus Feat"/>
+    <arrayval field="usrArray" index="1" value="Tulita Tattoo"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="cfgFGTulTa">
+      <containerreq phase="First" priority="450">hero#Custom.TulitaTatt</containerreq>
+      </bootstrap>
+    <eval phase="First" priority="400"><![CDATA[~ If we're disabled, do nothing
+          doneif (tagis[Helper.SpcDisable] <> 0)
+    
+    if (compare(field[usrSelect].text,"Tulita Tattoo") = 0) then
+      ~ enable tattoo selection by assiging hero tag
+        perform hero.assign[Custom.TulitaTatt]
+        #resmax[resFeat] -= 1
+    endif]]></eval>
+    </thing>
+  <thing id="rcFGTTCrsc" name="Crescent Moon" description="The Tulita art of tattooing is as ancient as the ocean. Most among the tribes bear the legacy of their family or the record of their own great deeds inscribed upon their flesh. Some of these tattoos are more than mere decoration or history. Shaman use potent alchemical inks ground from various herbs and plants at specific times of the day or year, and employ old scrimshaw needles filled with the mana of their tribe to inscribe powerful tattoos on the flesh of a warrior in an ancient rite. Only Tulita wise men and women know the ancient rituals necessary to inscribe these pictograms properly.\n\nThe magic of these tattoos can only be activated three times per day. A creature may only bear one of these tattoos. When a Tulita PC reaches 7th level, instead of taking their bonus feat for this level, they may opt to gain a tattoo instead as a rite of passage. If they do not choose to do so at 7th level, they may do so at 11th or higher in lieu of taking a new feat then. \n\n{b}Crescent Moon{b} As a free action, this tattoo allows its bearer to either generate as many {i}+2 icy burst shurikens{/i} as they can hurl in one round and throw them that round as if they were proficient with shurikens, or gain immunity to cold for three rounds." compset="RaceCustom">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="actName" value="Cold Immunity"/>
+    <fieldval field="actName2" value="Shurikens"/>
+    <fieldval field="usrCandid1" value="component.ItemSlot &amp; !thingid.isEqpArmor &amp; !thingid.isEqpEyes &amp; !thingid.isEqpHBand"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AllowRCust" tag="cfgFGTulTa"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Custom" tag="Tattoo"/>
+    <tag group="Custom" tag="TulitaTatt"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="iFGIcyShur">
+      <autotag group="Hide" tag="Weapon"/>
+      </bootstrap>
+    <bootstrap thing="xImmCold">
+      <autotag group="Hide" tag="Special"/>
+      <autotag group="Helper" tag="SpcDisable"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="9000" index="2">perform field[usrChosen1].chosen.pulltags[ExtraSlot.?,Hero]
+    perform forward[ExtraSlot.?]</eval>
+    <eval phase="PreLevel"><![CDATA[~ cold immunity
+    if (field[abilActive].value <> 0) then
+      perform assign[Helper.ChgDisab2]
+      perform hero.child[xImmCold].delete[Hide.Special]
+      perform hero.child[xImmCold].delete[Helper.SpcDisable]
+    ~ shurikens
+    elseif (field[abilAct2].value <> 0) then
+       perform assign[Helper.ChgDisab1]
+       perform hero.childfound[iFGIcyShur].delete[Hide.Weapon]
+       
+    endif]]></eval>
+    <evalrule phase="Validation" priority="5000" message="You may only have one magical tattoo per item slot (two for rings)" summary="You may only have one magical tattoo per item slot (two for rings)"><![CDATA[   ~Finished if nothing is selected
+       validif (field[usrChosen1].ischosen = 0)
+    
+    var searchexpr as string
+    var index as number
+    
+    searchexpr = "Custom.Tattoo & "
+    index = 0
+    
+    searchexpr &= tagids[Hero.?]
+    
+    foreach pick in hero from BaseMagicI where searchexpr
+      index += 1
+    nexteach
+    
+    if (tagis[Hero.EqpRing] <> 0) then
+      validif (index <= 2)
+    else
+      validif (index <= 1)
+    endif]]></evalrule>
+    </thing>
+  <thing id="rcFGTTWhal" name="Ridge Backed Whale" description="The Tulita art of tattooing is as ancient as the ocean. Most among the tribes bear the legacy of their family or the record of their own great deeds inscribed upon their flesh. Some of these tattoos are more than mere decoration or history. Shaman use potent alchemical inks ground from various herbs and plants at specific times of the day or year, and employ old scrimshaw needles filled with the mana of their tribe to inscribe powerful tattoos on the flesh of a warrior in an ancient rite. Only Tulita wise men and women know the ancient rituals necessary to inscribe these pictograms properly.\n\nThe magic of these tattoos can only be activated three times per day. A creature may only bear one of these tattoos. When a Tulita PC reaches 7th level, instead of taking their bonus feat for this level, they may opt to gain a tattoo instead as a rite of passage. If they do not choose to do so at 7th level, they may do so at 11th or higher in lieu of taking a new feat then. \n\n{b}Ridge Backed Whale{b} This tattoo allows its wearer to either cast {i}bull&apos;s strength{/i} on themselves, or make all unarmed strikes in one round as if they were one size category larger and possessed the Awesome Blow feat (even if they do not possess the prerequisites for this feat)." compset="RaceCustom">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="usrCandid1" value="component.ItemSlot &amp; !thingid.isEqpArmor &amp; !thingid.isEqpEyes &amp; !thingid.isEqpHBand"/>
+    <fieldval field="actName" value="Awesome Strikes"/>
+    <fieldval field="actName2" value="Bull&apos;s Strength"/>
+    <tag group="AllowRCust" tag="cfgFGTulTa"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Custom" tag="Tattoo"/>
+    <tag group="Custom" tag="TulitaTatt"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="9000">perform field[usrChosen1].chosen.pulltags[ExtraSlot.?,Hero]
+    perform forward[ExtraSlot.?]</eval>
+    <eval phase="PreLevel" index="2"><![CDATA[~ awesome strike
+    if (field[abilActive].value <> 0) then
+       perform assign[Helper.ChgDisab1]
+       perform hero.child[wUnarmed].assign[Helper.DamageUp]
+      
+    ~ bull's strength
+    elseif (field[abilAct2].value <> 0) then
+       #enhancementbonus[hero.child[aSTR], 4]
+      perform assign[Helper.ChgDisab2]
+       
+    endif]]></eval>
+    <evalrule phase="Validation" priority="5000" message="You may only have one magical tattoo per item slot (two for rings)" summary="You may only have one magical tattoo per item slot (two for rings)"><![CDATA[   ~Finished if nothing is selected
+       validif (field[usrChosen1].ischosen = 0)
+    
+    var searchexpr as string
+    var index as number
+    
+    searchexpr = "Custom.Tattoo & "
+    index = 0
+    
+    searchexpr &= tagids[Hero.?]
+    
+    foreach pick in hero from BaseMagicI where searchexpr
+      index += 1
+    nexteach
+    
+    if (tagis[Hero.EqpRing] <> 0) then
+      validif (index <= 2)
+    else
+      validif (index <= 1)
+    endif]]></evalrule>
+    </thing>
+  <thing id="rcFGTTDolp" name="School of Dolphins" description="The Tulita art of tattooing is as ancient as the ocean. Most among the tribes bear the legacy of their family or the record of their own great deeds inscribed upon their flesh. Some of these tattoos are more than mere decoration or history. Shaman use potent alchemical inks ground from various herbs and plants at specific times of the day or year, and employ old scrimshaw needles filled with the mana of their tribe to inscribe powerful tattoos on the flesh of a warrior in an ancient rite. Only Tulita wise men and women know the ancient rituals necessary to inscribe these pictograms properly.\n\nThe magic of these tattoos can only be activated three times per day. A creature may only bear one of these tattoos. When a Tulita PC reaches 7th level, instead of taking their bonus feat for this level, they may opt to gain a tattoo instead as a rite of passage. If they do not choose to do so at 7th level, they may do so at 11th or higher in lieu of taking a new feat then. \n\n{b}School of Dolphins:{/b} This tattoo allows the PC to cast aid, or add a +2 to attack and +2d6 to damage on all attacks made against any shark, wereshark, Dajobas worshipper, or any other monster related to Dajobas in a single round." compset="RaceCustom">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="usrCandid1" value="component.ItemSlot &amp; !thingid.isEqpArmor &amp; !thingid.isEqpEyes &amp; !thingid.isEqpHBand"/>
+    <fieldval field="actName" value="Aid"/>
+    <fieldval field="actName2" value="Dajobas Strike"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Custom" tag="Tattoo"/>
+    <tag group="Custom" tag="TulitaTatt"/>
+    <tag group="AllowRCust" tag="cfgFGTulTa"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raFGTTAid">
+      <autotag group="Hide" tag="Special"/>
+      <autotag group="Helper" tag="SpcDisable"/>
+      </bootstrap>
+    <eval phase="PreLevel" index="2"><![CDATA[~ aid
+    if (field[abilActive].value <> 0) then
+      perform assign[Helper.ChgDisab2]
+      perform hero.child[raFGTTAid].delete[Hide.Special]
+      perform hero.child[raFGTTAid].delete[Helper.SpcDisable]
+      perform hero.child[raFGTTAid].assign[SpecType.SpellLike]
+    
+    ~ dajobas
+    elseif (field[abilAct2].value <> 0) then
+      perform assign[Helper.ChgDisab1]
+      #situational[hero.child[Attack],"+2 vs. any shark, wereshark, Dajobas worshipper, or any other monster related to Dajobas",field[name].text]
+      foreach pick in hero from BaseWep
+        eachpick.field[wDamExtra].text &= "+2d6 vs. Dajobas related"
+      nexteach  
+    endif]]></eval>
+    <eval phase="PreLevel" priority="9000">perform field[usrChosen1].chosen.pulltags[ExtraSlot.?,Hero]
+    perform forward[ExtraSlot.?]</eval>
+    <evalrule phase="Validation" priority="5000" message="You may only have one magical tattoo per item slot (two for rings)" summary="You may only have one magical tattoo per item slot (two for rings)"><![CDATA[   ~Finished if nothing is selected
+       validif (field[usrChosen1].ischosen = 0)
+    
+    var searchexpr as string
+    var index as number
+    
+    searchexpr = "Custom.Tattoo & "
+    index = 0
+    
+    searchexpr &= tagids[Hero.?]
+    
+    foreach pick in hero from BaseMagicI where searchexpr
+      index += 1
+    nexteach
+    
+    if (tagis[Hero.EqpRing] <> 0) then
+      validif (index <= 2)
+    else
+      validif (index <= 1)
+    endif]]></evalrule>
+    </thing>
+  <thing id="raFGTTAid" name="Aid" compset="RaceSpec">
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spAid2"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="AtWill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="rcFGTTTurt" name="Turtle" description="The Tulita art of tattooing is as ancient as the ocean. Most among the tribes bear the legacy of their family or the record of their own great deeds inscribed upon their flesh. Some of these tattoos are more than mere decoration or history. Shaman use potent alchemical inks ground from various herbs and plants at specific times of the day or year, and employ old scrimshaw needles filled with the mana of their tribe to inscribe powerful tattoos on the flesh of a warrior in an ancient rite. Only Tulita wise men and women know the ancient rituals necessary to inscribe these pictograms properly.\n\nThe magic of these tattoos can only be activated three times per day. A creature may only bear one of these tattoos. When a Tulita PC reaches 7th level, instead of taking their bonus feat for this level, they may opt to gain a tattoo instead as a rite of passage. If they do not choose to do so at 7th level, they may do so at 11th or higher in lieu of taking a new feat then. \n\n{b}Turtle:{/b} This tattoo grants the PC a +4 natural armor bonus for 10 rounds, or the ability to cast {i}shield other{/i}." compset="RaceCustom">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="usrCandid1" value="component.ItemSlot &amp; !thingid.isEqpArmor &amp; !thingid.isEqpEyes &amp; !thingid.isEqpHBand"/>
+    <fieldval field="actName" value="AC Bonus"/>
+    <fieldval field="actName2" value="Shield Other"/>
+    <usesource source="CampRazorC"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Custom" tag="Tattoo"/>
+    <tag group="Custom" tag="TulitaTatt"/>
+    <tag group="AllowRCust" tag="cfgFGTulTa"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Usage" tag="Day"/>
+    <bootstrap thing="raFGTTShie">
+      <autotag group="Hide" tag="Special"/>
+      <autotag group="Helper" tag="SpcDisable"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="9000">perform field[usrChosen1].chosen.pulltags[ExtraSlot.?,Hero]
+    perform forward[ExtraSlot.?]</eval>
+    <eval phase="PreLevel" index="2"><![CDATA[~ ac bonus
+    if (field[abilActive].value <> 0) then
+      perform assign[Helper.ChgDisab2]
+      #applybonus[tACNatural,hero.child[ArmorClass],4]
+    
+    ~ shield other
+    elseif (field[abilAct2].value <> 0) then
+      perform assign[Helper.ChgDisab1]
+      perform hero.child[raFGTTShie].delete[Hide.Special]
+      perform hero.child[raFGTTShie].delete[Helper.SpcDisable]
+      perform hero.child[raFGTTShie].assign[SpecType.SpellLike]
+    endif]]></eval>
+    <evalrule phase="Validation" priority="5000" message="You may only have one magical tattoo per item slot (two for rings)" summary="You may only have one magical tattoo per item slot (two for rings)"><![CDATA[   ~Finished if nothing is selected
+       validif (field[usrChosen1].ischosen = 0)
+    
+    var searchexpr as string
+    var index as number
+    
+    searchexpr = "Custom.Tattoo & "
+    index = 0
+    
+    searchexpr &= tagids[Hero.?]
+    
+    foreach pick in hero from BaseMagicI where searchexpr
+      index += 1
+    nexteach
+    
+    if (tagis[Hero.EqpRing] <> 0) then
+      validif (index <= 2)
+    else
+      validif (index <= 1)
+    endif]]></evalrule>
+    </thing>
+  <thing id="raFGTTShie" name="Shield Other" compset="RaceSpec">
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="AtWill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpInfo" tag="spShieOth2"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="rcFGTTVipe" name="Viper&apos;s Fang" description="The Tulita art of tattooing is as ancient as the ocean. Most among the tribes bear the legacy of their family or the record of their own great deeds inscribed upon their flesh. Some of these tattoos are more than mere decoration or history. Shaman use potent alchemical inks ground from various herbs and plants at specific times of the day or year, and employ old scrimshaw needles filled with the mana of their tribe to inscribe powerful tattoos on the flesh of a warrior in an ancient rite. Only Tulita wise men and women know the ancient rituals necessary to inscribe these pictograms properly.\n\nThe magic of these tattoos can only be activated three times per day. A creature may only bear one of these tattoos. When a Tulita PC reaches 7th level, instead of taking their bonus feat for this level, they may opt to gain a tattoo instead as a rite of passage. If they do not choose to do so at 7th level, they may do so at 11th or higher in lieu of taking a new feat then. \n\n{b}Viper&apos;s Fang:{/b} This tattoo allows the PC to ignore the effects of one dose of poison, or inflict an additional 1d4 Con damage on all unarmed strikes made in one round." compset="RaceCustom">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="usrCandid1" value="component.ItemSlot &amp; !thingid.isEqpArmor &amp; !thingid.isEqpEyes &amp; !thingid.isEqpHBand"/>
+    <fieldval field="actName" value="Ignore Poison"/>
+    <fieldval field="actName2" value="Inflict Con Damage"/>
+    <usesource source="CampRazorC"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Custom" tag="Tattoo"/>
+    <tag group="Custom" tag="TulitaTatt"/>
+    <tag group="AllowRCust" tag="cfgFGTulTa"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Usage" tag="Day"/>
+    <eval phase="PreLevel" priority="9000">perform field[usrChosen1].chosen.pulltags[ExtraSlot.?,Hero]
+    perform forward[ExtraSlot.?]</eval>
+    <eval phase="PreLevel" index="2"><![CDATA[~ ignore poison
+    if (field[abilActive].value <> 0) then
+      perform assign[Helper.ChgDisab2]
+      
+    
+    ~ damager
+    elseif (field[abilAct2].value <> 0) then
+      perform assign[Helper.ChgDisab1]
+      hero.child[wUnarmed].field[wDamExtra].text &= " plus 1d4 Con"
+    endif]]></eval>
+    <evalrule phase="Validation" priority="5000" message="You may only have one magical tattoo per item slot (two for rings)" summary="You may only have one magical tattoo per item slot (two for rings)"><![CDATA[   ~Finished if nothing is selected
+       validif (field[usrChosen1].ischosen = 0)
+    
+    var searchexpr as string
+    var index as number
+    
+    searchexpr = "Custom.Tattoo & "
+    index = 0
+    
+    searchexpr &= tagids[Hero.?]
+    
+    foreach pick in hero from BaseMagicI where searchexpr
+      index += 1
+    nexteach
+    
+    if (tagis[Hero.EqpRing] <> 0) then
+      validif (index <= 2)
+    else
+      validif (index <= 1)
+    endif]]></evalrule>
+    </thing>
+  <thing id="rcFGTTVolc" name="Volcano" description="The Tulita art of tattooing is as ancient as the ocean. Most among the tribes bear the legacy of their family or the record of their own great deeds inscribed upon their flesh. Some of these tattoos are more than mere decoration or history. Shaman use potent alchemical inks ground from various herbs and plants at specific times of the day or year, and employ old scrimshaw needles filled with the mana of their tribe to inscribe powerful tattoos on the flesh of a warrior in an ancient rite. Only Tulita wise men and women know the ancient rituals necessary to inscribe these pictograms properly.\n\nThe magic of these tattoos can only be activated three times per day. A creature may only bear one of these tattoos. When a Tulita PC reaches 7th level, instead of taking their bonus feat for this level, they may opt to gain a tattoo instead as a rite of passage. If they do not choose to do so at 7th level, they may do so at 11th or higher in lieu of taking a new feat then. \n\n{b}Volcano{b} This tattoo allows its bearer to inflict an additional 2d6 fire damage on all unarmed strikes for one round, or gain immunity to fire for three rounds." compset="RaceCustom">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="actName" value="Fire Immunity"/>
+    <fieldval field="usrCandid1" value="component.ItemSlot &amp; !thingid.isEqpArmor &amp; !thingid.isEqpEyes &amp; !thingid.isEqpHBand"/>
+    <fieldval field="actName2" value="Fire Strike"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Custom" tag="Tattoo"/>
+    <tag group="Custom" tag="TulitaTatt"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AllowRCust" tag="cfgFGTulTa"/>
+    <bootstrap thing="xImmFire">
+      <autotag group="Hide" tag="Special"/>
+      <autotag group="Helper" tag="SpcDisable"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="9000" index="2">perform field[usrChosen1].chosen.pulltags[ExtraSlot.?,Hero]
+    perform forward[ExtraSlot.?]</eval>
+    <eval phase="PreLevel"><![CDATA[~ fire strike
+    if (field[abilAct2].value <> 0) then
+      hero.child[wUnarmed].field[wDamExtra].text &= " plus 2d6 fire"
+      
+    ~ fire immunity
+    elseif (field[abilActive].value <> 0) then
+       perform assign[Helper.ChgDisab1]
+       perform hero.child[xImmFire].delete[Hide.Special]
+       perform hero.child[xImmFire].delete[Helper.SpcDisable]
+    endif]]></eval>
+    <evalrule phase="Validation" priority="5000" message="You may only have one magical tattoo per item slot (two for rings)" summary="You may only have one magical tattoo per item slot (two for rings)"><![CDATA[   ~Finished if nothing is selected
+       validif (field[usrChosen1].ischosen = 0)
+    
+    var searchexpr as string
+    var index as number
+    
+    searchexpr = "Custom.Tattoo & "
+    index = 0
+    
+    searchexpr &= tagids[Hero.?]
+    
+    foreach pick in hero from BaseMagicI where searchexpr
+      index += 1
+    nexteach
+    
+    if (tagis[Hero.EqpRing] <> 0) then
+      validif (index <= 2)
+    else
+      validif (index <= 1)
+    endif]]></evalrule>
+    </thing>
+  <thing id="raFGCraftm" name="Craftsman" description="Members of this race gain a +2 racial bonus on all Craft or Profession checks to create objects from metal or stone." compset="RaceSpec" summary="+2 for Craft or Profession checks to create objects from metal or stone.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="raFGPyroma" name="Pyromaniac" description="Members of this race are treated as 1 level higher when casting spells with the fire descriptor, using granted powers of the Fire domain, using bloodline powers of the fire elemental bloodline, using the revelations of the oracle&apos;s flame mystery, and when determining the damage of alchemist bombs that deal fire damage. This ability does not give members of this race early access to level-based powers; it only affects powers that they could already use without this ability. If a member of this race has a Charisma of 11 or higher, it also gains the following spell-like abilities: 1/day - {i}dancing lights{/i}, {i}flare{/i}, {i}prestidigitation{/i}, {i}produce flame{/i}. The caster level for these spell-like abilities is equal to individual&apos;s character level." compset="RaceSpec" summary="+1 level for effects of several flame based class abilities.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raGnProdFl"></bootstrap>
+    <bootstrap thing="raGnPresti"></bootstrap>
+    <bootstrap thing="raGnFlare"></bootstrap>
+    <bootstrap thing="raGnDance"></bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~+1 Fire subschool spell Caster level
+    hero.childfound[ssFire].field[schCastLev].value += 1
+    
+    ~+1 effective level for the earth domain's powers
+    hero.childfound[dFirDart].field[xEffectLev].value += 1
+    hero.childfound[dFirRes6].field[xEffectLev].value += 1
+    hero.childfound[dFirRes12].field[xExtraLev].value += 1
+    hero.childfound[dFirRes20].field[xExtraLev].value += 1
+    
+    ~+1 effective level for the ash domain's powers
+    hero.childfound[dAshWall].field[xEffectLev].value += 1
+    
+    ~+1 effective level for the smoke domain's powers
+    hero.childfound[dSmoCloud].field[xEffectLev].value += 1
+    
+    ~only apply the fire elemental bloodline's effects if we chose fire
+    if (hero.picklives[cSorElem] <> 0) then
+      if (hero.child[cSorElem].tagis[BloodEner.Fire] <> 0) then
+        hero.childfound[cSorEleRay].field[xEffectLev].value += 1
+        hero.childfound[cSorERFire].field[xEffectLev].value += 1
+        hero.childfound[cSorEBlast].field[xEffectLev].value += 1
+        hero.childfound[cSorEMFire].field[xEffectLev].value += 1
+        hero.childfound[cSorElBody].field[xEffectLev].value += 1
+        endif
+      endif
+    
+    ~ Oracle's Mystery of Flames
+    hero.childfound[cOraBurnMa].field[xEffectLev].value += 1
+    hero.childfound[cOraCinder].field[xEffectLev].value += 1
+    hero.childfound[cOraFireBr].field[xEffectLev].value += 1
+    hero.childfound[cOraFirest].field[xEffectLev].value += 1
+    hero.childfound[cOraFormFi].field[xEffectLev].value += 1
+    hero.childfound[cOraGazeFl].field[xEffectLev].value += 1
+    hero.childfound[cOraHeatAu].field[xEffectLev].value += 1
+    hero.childfound[cOraMolten].field[xEffectLev].value += 1
+    hero.childfound[cOraTFlame].field[xEffectLev].value += 1
+    hero.childfound[cOraWingFi].field[xEffectLev].value += 1]]></eval>
+    </thing>
+  <thing id="abFGCPImCE" name="Immunity to Channel Energy" description="You are immune to channel energy." compset="Ability">
+    <fieldval field="shortname" value="channel energy"/>
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  </document>

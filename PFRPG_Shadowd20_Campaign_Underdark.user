@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="raS2DwfCH" name="Badlands" description="You are born artisan, cunning and quick with your hands. Whether you have chosen to use these gifts for noble pursuits or becoming a thief does not matter, you are mistrusted regardless by your fellow dwarves.\n\n{b}Benefit:{/b} +2 Dexterity, +2 Intelligence, -2 Charisma" compset="RaceCustom" summary="+2 Dex, +2 Int, -2 Cha" uniqueness="useronce">
+    <usesource source="srcUndDark"/>
+    <tag group="AllowRCust" tag="rDwarf"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="Shadowd20" tag="DwfSubRace"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <eval phase="First" priority="600"><![CDATA[
+      ~ Push all Shadowd20 tags to hero
+      perform hero.pushtags[Shadowd20.?]
+
+      ~set our focus to the hero's race
+      perform hero.findchild[BaseRace].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Remove Dwarf base bonuses
+      focus.field[rCON].value = 0
+      focus.field[rWIS].value = 0
+      focus.field[rCHA].value = 0
+
+      ~ Set the new values here
+      focus.field[rSTR].value += 0
+      focus.field[rDEX].value += 2
+      focus.field[rCON].value += 0
+      focus.field[rINT].value += 2
+      focus.field[rWIS].value += 0
+      focus.field[rCHA].value += -2]]></eval>
+    <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Shadowd20.DwfSubRace] <= @ispick]]></exprreq>
+    </thing>
+  <thing id="raS2DwfRS" name="Dream" description="You are a rare dwarf who is both eloquent and a born leader. Your words are given extra consideration amongst your people. However, by dwarven standards you are physically inept.\n\n{b}Benefit:{/b} +2 Charisma, +2 Wisdom, -2 Strength" compset="RaceCustom" summary="+2 Cha, +2 Wis, -2 Str" uniqueness="useronce">
+    <usesource source="srcUndDark"/>
+    <tag group="AllowRCust" tag="rDwarf"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="Shadowd20" tag="DwfSubRace"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <eval phase="First" priority="600"><![CDATA[
+      ~ Push all Shadowd20 tags to hero
+      perform hero.pushtags[Shadowd20.?]
+
+      ~set our focus to the hero's race
+      perform hero.findchild[BaseRace].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Remove Dwarf base bonuses
+      focus.field[rCON].value = 0
+      focus.field[rWIS].value = 0
+      focus.field[rCHA].value = 0
+
+      ~ Set the new values here
+      focus.field[rSTR].value += -2
+      focus.field[rDEX].value += 0
+      focus.field[rCON].value += 0
+      focus.field[rINT].value += 0
+      focus.field[rWIS].value += 2
+      focus.field[rCHA].value += 2]]></eval>
+    <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Shadowd20.DwfSubRace] <= @ispick]]></exprreq>
+    </thing>
+  <thing id="raS2DwfSAW" name="Sun" description="You are a learned dwarf, well steeped in the ancient lore of your people. However, all this focus upon book learning has kept you away from more physical pursuits. You are thus small and sickly by dwarven standards.\n\n{b}Benefit:{/b} +2 Intelligence, +2 Wisdom, -2 Constitution" compset="RaceCustom" summary="+2 Int, +2 Wis, -2 Con" uniqueness="useronce">
+    <usesource source="srcUndDark"/>
+    <tag group="AllowRCust" tag="rDwarf"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="Shadowd20" tag="DwfSubRace"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <eval phase="First" priority="600"><![CDATA[
+      ~ Push all Shadowd20 tags to hero
+      perform hero.pushtags[Shadowd20.?]
+
+      ~set our focus to the hero's race
+      perform hero.findchild[BaseRace].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Remove Dwarf base bonuses
+      focus.field[rCON].value = 0
+      focus.field[rWIS].value = 0
+      focus.field[rCHA].value = 0
+
+      ~ Set the new values here
+      focus.field[rSTR].value += 0
+      focus.field[rDEX].value += 0
+      focus.field[rCON].value += -2
+      focus.field[rINT].value += 2
+      focus.field[rWIS].value += 2
+      focus.field[rCHA].value += 0]]></eval>
+    <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Shadowd20.DwfSubRace] <= @ispick]]></exprreq>
+    </thing>
+  <thing id="raS2DwfTaS" name="Hill" description="Dwarves have a reputation as being a stolid, humorless people. But there are few dwarves, usually fine singers and storytellers, who are given leeway for being charismatic and quick of hand and wit. Of course, these brash tricksters are still often in trouble.\n\n{b}Benefit:{/b} +2 Charisma, +2 Dexterity, -2 Wisdom" compset="RaceCustom" summary="+2 Cha, +2 Dex, -2 Wis" uniqueness="useronce">
+    <usesource source="srcUndDark"/>
+    <tag group="AllowRCust" tag="rDwarf"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="Shadowd20" tag="DwfSubRace"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <eval phase="First" priority="600"><![CDATA[
+      ~ Push all Shadowd20 tags to hero
+      perform hero.pushtags[Shadowd20.?]
+
+      ~set our focus to the hero's race
+      perform hero.findchild[BaseRace].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Remove Dwarf base bonuses
+      focus.field[rCON].value = 0
+      focus.field[rWIS].value = 0
+      focus.field[rCHA].value = 0
+
+      ~ Set the new values here
+      focus.field[rSTR].value += 0
+      focus.field[rDEX].value += 2
+      focus.field[rCON].value += 0
+      focus.field[rINT].value += 0
+      focus.field[rWIS].value += -2
+      focus.field[rCHA].value += 2]]></eval>
+    <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Shadowd20.DwfSubRace] <= @ispick]]></exprreq>
+    </thing>
+  <thing id="raS2DwfWoL" name="Mountain" description="You were born for war. No one matches your prowess in battle, but alas also no one matches your recklessness.\n\n{b}Benefit:{/b} +2 Constitution, +2 Strength, -2 Wisdom" compset="RaceCustom" summary="+2 Con, +2 Str, -2 Wis" uniqueness="useronce">
+    <usesource source="srcUndDark"/>
+    <tag group="AllowRCust" tag="rDwarf"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="Shadowd20" tag="DwfSubRace"/>
+    <tag group="Helper" tag="Ethnicity"/>
+    <eval phase="First" priority="600"><![CDATA[
+      ~ Push all Shadowd20 tags to hero
+      perform hero.pushtags[Shadowd20.?]
+
+      ~set our focus to the hero's race
+      perform hero.findchild[BaseRace].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Remove Dwarf base bonuses
+      focus.field[rCON].value = 0
+      focus.field[rWIS].value = 0
+      focus.field[rCHA].value = 0
+
+      ~ Set the new values here
+      focus.field[rSTR].value += 2
+      focus.field[rDEX].value += 0
+      focus.field[rCON].value += 2
+      focus.field[rINT].value += 0
+      focus.field[rWIS].value += -2
+      focus.field[rCHA].value += 0]]></eval>
+    <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Shadowd20.DwfSubRace] <= @ispick]]></exprreq>
+    </thing>
+  <thing id="S2DwarfEth" name="Shadow d20 Dwarven Ethnicities" description="Give all dwarves a single Ethnicities." compset="Simple">
+    <usesource source="srcUndDark"/>
+    <eval phase="PreLevel" priority="10000">      
+      ~ If not dwarf get out now
+      doneif (#hasrace[rDwarf] = 0)
+
+      call GiveEthnic</eval>
+    </thing>
+  <thing id="mecUnderDa" name="Underdark Mechanic" compset="Mechanics">
+    <usesource source="srcUndDark"/>
+    <bootstrap thing="S2DwarfEth"></bootstrap>
+    </thing>
+  </document>

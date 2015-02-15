@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com
+
+This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
+    <info_history><![CDATA[2/27/2013
+-Added the "Bear, Kodiak" animal companion.
+
+Feb 17, 2013
+-Created new.]]></info_history>
+    </fileinfo>
+  <thing id="anWarGecko" name="Glitterscale War Gecko" description="An over sized lizard the size of a heavy warhorse scans the area, its bulging eyes darting this way and that, completely independent of one another. Every few moments a long pink tongue snaps from its wide mouth, either to snatch up some unseen insect or moisten an eye." compset="AnimalComp">
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rNumHands" value="0"/>
+    <arrayval field="anNatural" index="0" value="4"/>
+    <arrayval field="anCHA" index="0" value="-4"/>
+    <arrayval field="anSpeed" index="0" value="40"/>
+    <arrayval field="anINT" index="0" value="-8"/>
+    <arrayval field="anWIS" index="0" value="4"/>
+    <arrayval field="anDEX" index="0" value="4"/>
+    <arrayval field="anDEX" index="3" value="6"/>
+    <arrayval field="anCON" index="0" value="6"/>
+    <arrayval field="anCON" index="3" value="8"/>
+    <arrayval field="anSTR" index="0" value="8"/>
+    <arrayval field="anSTR" index="4" value="9"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Alignment" tag="NeutralGE" name="Neutral" abbrev="N"/>
+    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
+    <tag group="CompList" tag="cHelpCav" name="Cavaliers" abbrev="Cavaliers"/>
+    <tag group="CompList" tag="cHelpPal" name="Paladins" abbrev="Paladins"/>
+    <tag group="CompList" tag="cHelpRgr"/>
+    <tag group="SlotSet" tag="selMISQuaF"/>
+    <tag group="RaceSize" tag="Large1" name="Large" abbrev="Large"/>
+    <tag group="HasType" tag="tpAnimal" name="Animal" abbrev="Animal"/>
+    <tag group="Helper" tag="NotHum" name="NotHum" abbrev="NotHum"/>
+    <tag group="Helper" tag="Quadruped" name="Quadruped" abbrev="Quadruped"/>
+    <bootstrap thing="triComRide">
+      <containerreq phase="First" priority="502"><![CDATA[
+        fieldval:anCompLev >= 4 & hero#CompPower.Cavalier = 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="xClimb">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="2d6_104"/>
+      <autotag group="Value" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="raStealth">
+      <assignval field="livename" value="+4 Stealth in undergrowth"/>
+      </bootstrap>
+    </thing>
+  <thing id="triS2ComRi" name="Combat Riding" description="An animal trained to bear a rider into combat knows the tricks attack, come, defend, down, guard, and heel. Training an animal for combat riding takes 6 weeks. You may also &quot;upgrade&quot; an animal trained for riding to one trained for combat by spending 3 weeks and making a successful DC 20 Handle Animal check. The new general purpose and tricks completely replace the animal&apos;s previous purpose and any tricks it once knew. Many horses and riding dogs are trained in this way.\n\n{B}Shadow d20:{/B} This version of combat riding does not give Armor Proficiency (Light, Medium, Heavy) to all animal companions. Instead it ONLY gives Light Armor proficiency to Cavalier mounts as a bonus feat at level 1." compset="AnimTrick" summary="The animal has been trained to bear a rider into combat." replaces="triComRide" uniqueness="useronce">
+    <comment>Condition Bootstrap added for the Light Armor feat using (CompPower.Cavalier) as the bootstrap condition.  This tag gets applied by the Caveliar class.</comment>
+    <tag group="Helper" tag="GenPurpose" name="Animal Handling General Purpose Training" abbrev="Animal Handling General Purpose Training"/>
+    <bootstrap thing="triCome"></bootstrap>
+    <bootstrap thing="triDefend"></bootstrap>
+    <bootstrap thing="triDown"></bootstrap>
+    <bootstrap thing="triGuard"></bootstrap>
+    <bootstrap thing="triHeel"></bootstrap>
+    <bootstrap thing="fArmLight">
+      <containerreq phase="First" priority="500">CompPower.Cavalier</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="triAttack"></bootstrap>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+~combat riding can be an upgrade for riding, but combining the two would put total tricks at 7
+~so, if riding is also present, we'll add one to our max tricks
+if (hero.tagis[Ability.triRide] <> 0) then
+   #resmax[resAnTrick] += 1
+endif]]></eval>
+    </thing>
+  <thing id="triS2Fight" name="Fighting" description="An animal trained to engage in combat knows the tricks attack, down, and stay. Training an animal for fighting takes three weeks." compset="AnimTrick" summary="The animal has been trained to fight." replaces="triFight" uniqueness="useronce">
+    <tag group="Helper" tag="GenPurpose" name="Animal Handling General Purpose Training" abbrev="Animal Handling General Purpose Training"/>
+    <bootstrap thing="triAttack"></bootstrap>
+    <bootstrap thing="triDown"></bootstrap>
+    <bootstrap thing="triStay"></bootstrap>
+    </thing>
+  <thing id="triS2BardL" name="Barding Light" description="An animal trained to wear light barding (ie armor).  Training an animal for fighting takes one week." compset="AnimTrick" summary="The animal has been trained to wear light barding." uniqueness="useronce">
+    <fieldval field="triDC" value="15"/>
+    <usesource source="s20PFCamp"/>
+    <bootstrap thing="fArmLight">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <exprreq message="This same ability or equivalent has already been added.">#hasfeat[fArmLight] = @ispick</exprreq>
+    </thing>
+  <thing id="triS2BardM" name="Barding Medium" description="An animal trained to wear medium barding (ie armor).  Training an animal for fighting takes one week." compset="AnimTrick" summary="The animal has been trained to wear medium barding." uniqueness="useronce">
+    <fieldval field="triDC" value="15"/>
+    <usesource source="s20PFCamp"/>
+    <bootstrap thing="fArmMedium">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <exprreq message="Barding Light is required before taking medium."><![CDATA[#hasfeat[fArmLight] <> 0]]></exprreq>
+    </thing>
+  <thing id="triS2BardH" name="Barding Heavy" description="An animal trained to wear heavy barding (ie armor).  Training an animal for fighting takes one week." compset="AnimTrick" summary="The animal has been trained to wear heavy barding." uniqueness="useronce">
+    <fieldval field="triDC" value="15"/>
+    <usesource source="s20PFCamp"/>
+    <bootstrap thing="fArmHeavy">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <exprreq message="Barding Medium is required before taking heavy."><![CDATA[#hasfeat[fArmMedium] <> 0]]></exprreq>
+    </thing>
+  <thing id="anS2Kodiak" name="Bear, Kodiak" description="A large, powerful omnivore, the kodiak bear inhabits many of the world&apos;s forested hills. Equally happy consuming nuts, berries, fish, or small mammals, the grizzly is nonetheless fiercely territorial, and will chase off - or, failing that, kill and eat -any intruders it views as competition.\n\nWhen faced with a foe or small group of threats, the grizzly attempts to subdue or kill with its claws. When it can, the bear tries to grab a single target to deal continual damage until that target is dead, unconscious, or escapes." compset="AnimalComp">
+    <arrayval field="anINT" index="0" value="-8"/>
+    <arrayval field="anNatural" index="0" value="1"/>
+    <arrayval field="anNatural" index="3" value="3"/>
+    <arrayval field="anWIS" index="0" value="2"/>
+    <arrayval field="anSpeed" index="0" value="40"/>
+    <arrayval field="anSizeMod" index="3" value="1"/>
+    <arrayval field="anCHA" index="0" value="-4"/>
+    <arrayval field="anCON" index="0" value="2"/>
+    <arrayval field="anCON" index="3" value="4"/>
+    <arrayval field="anDEX" index="0" value="5"/>
+    <arrayval field="anDEX" index="3" value="3"/>
+    <arrayval field="anSTR" index="0" value="5"/>
+    <arrayval field="anSTR" index="3" value="10"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="SlotSet" tag="selMISBipH" name="Biped (hands)" abbrev="Biped (hands)"/>
+    <tag group="Alignment" tag="NeutralGE" name="Neutral" abbrev="N"/>
+    <tag group="CompList" tag="cHelpCav"/>
+    <tag group="CompList" tag="cHelpRgr"/>
+    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
+    <tag group="HasType" tag="tpAnimal" name="Animal" abbrev="Animal"/>
+    <tag group="RaceSize" tag="Medium0" name="Medium" abbrev="Medium"/>
+    <bootstrap thing="xClimb">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    </thing>
+  <thing id="anS2AntRid" name="Ant, Riding" compset="AnimalComp">
+    <comment>Cavalier only mount.</comment>
+    <arrayval field="anCHA" index="0" value="-4"/>
+    <arrayval field="anSpeed" index="0" value="40"/>
+    <arrayval field="anSTR" index="0" value="4"/>
+    <arrayval field="anSTR" index="3" value="6"/>
+    <arrayval field="anCON" index="0" value="7"/>
+    <arrayval field="anINT" index="0" value="-10"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Helper" tag="ManyLegs"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="CompList" tag="cHelpCav"/>
+    <tag group="SlotSet" tag="selMISVerm"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="HasType" tag="tpVermin"/>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="xClimb">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <eval phase="First" priority="10000"><![CDATA[
+If (hero.tagcount[Hero.HitDice] >= 4) Then
+  hero.child[aINT].field[aNormMod].value += 2
+  perform hero.child[aINT].delete[Helper.NoScore]
+Endif
+
+#resmax[resAnTrick] += 4]]></eval>
+    <exprreq message="Only a Cavalier can take this animal companion."><![CDATA[master.hero.tagis[Classes.Cavalier] + master.hero.tagis[Classes.Samurai] <> 0]]></exprreq>
+    </thing>
+  <thing id="anS2SalaCa" name="Cave Salamander" compset="AnimalComp">
+    <comment>Cavalier only mount.</comment>
+    <arrayval field="anSTR" index="3" value="8"/>
+    <arrayval field="anDEX" index="0" value="1"/>
+    <arrayval field="anCON" index="0" value="7"/>
+    <arrayval field="anCON" index="3" value="9"/>
+    <arrayval field="anWIS" index="0" value="3"/>
+    <arrayval field="anINT" index="0" value="-9"/>
+    <arrayval field="anCHA" index="0" value="-5"/>
+    <arrayval field="anSpeed" index="0" value="40"/>
+    <arrayval field="anSTR" index="0" value="6"/>
+    <arrayval field="anNatural" index="0" value="4"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="SlotSet" tag="selMISQuaS"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Helper" tag="Quadruped"/>
+    <tag group="CompList" tag="cHelpCav"/>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d3_3"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <exprreq message="Only a Cavalier can take this animal companion."><![CDATA[master.hero.tagis[Classes.Cavalier] + master.hero.tagis[Classes.Samurai] <> 0]]></exprreq>
+    </thing>
+  <thing id="anS2DaBeGi" name="Darkling Beetle, Giant" compset="AnimalComp">
+    <comment>Cavalier only mount.</comment>
+    <arrayval field="anSTR" index="0" value="4"/>
+    <arrayval field="anDEX" index="0" value="3"/>
+    <arrayval field="anCON" index="0" value="7"/>
+    <arrayval field="anINT" index="0" value="-10"/>
+    <arrayval field="anWIS" index="0" value="2"/>
+    <arrayval field="anCHA" index="0" value="-8"/>
+    <arrayval field="anSpeed" index="0" value="30"/>
+    <arrayval field="anNatural" index="0" value="5"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="HasType" tag="tpVermin"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Helper" tag="ManyLegs"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="CompList" tag="cHelpCav"/>
+    <tag group="SlotSet" tag="selMISVerm"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    <bootstrap thing="xBurrow">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <eval phase="First" priority="10000"><![CDATA[
+If (hero.tagcount[Hero.HitDice] >= 4) Then
+  hero.child[aINT].field[aNormMod].value += 2
+  perform hero.child[aINT].delete[Helper.NoScore]
+Endif
+
+#resmax[resAnTrick] += 4]]></eval>
+    <exprreq message="Only a Cavalier can take this animal companion."><![CDATA[master.hero.tagis[Classes.Cavalier] + master.hero.tagis[Classes.Samurai] <> 0]]></exprreq>
+    </thing>
+  <thing id="anS2Elk" name="Elk" compset="AnimalComp">
+    <comment>Cavalier only mount.</comment>
+    <arrayval field="anSTR" index="0" value="4"/>
+    <arrayval field="anDEX" index="0" value="5"/>
+    <arrayval field="anDEX" index="3" value="7"/>
+    <arrayval field="anCON" index="0" value="4"/>
+    <arrayval field="anCON" index="3" value="6"/>
+    <arrayval field="anINT" index="0" value="-8"/>
+    <arrayval field="anWIS" index="0" value="3"/>
+    <arrayval field="anCHA" index="0" value="-4"/>
+    <arrayval field="anSpeed" index="0" value="50"/>
+    <arrayval field="anNatural" index="0" value="3"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="SlotSet" tag="selMISQuaH"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Helper" tag="Quadruped"/>
+    <tag group="CompList" tag="cHelpCav"/>
+    <bootstrap thing="wHooves">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      <autotag group="Helper" tag="NatPrimary"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="wGore">
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <exprreq message="Only a Cavalier can take this animal companion."><![CDATA[master.hero.tagis[Classes.Cavalier] + master.hero.tagis[Classes.Samurai] <> 0]]></exprreq>
+    </thing>
+  <thing id="anS2EagleR" name="Eagle, Riding" compset="AnimalComp">
+    <comment>Cavalier only mount.</comment>
+    <arrayval field="anSTR" index="0" value="4"/>
+    <arrayval field="anSTR" index="3" value="6"/>
+    <arrayval field="anDEX" index="0" value="3"/>
+    <arrayval field="anCON" index="0" value="2"/>
+    <arrayval field="anINT" index="0" value="-8"/>
+    <arrayval field="anWIS" index="0" value="2"/>
+    <arrayval field="anCHA" index="0" value="-2"/>
+    <arrayval field="anSpeed" index="0" value="10"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="CompList" tag="cHelpCav"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="SlotSet" tag="selMISAvia"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Helper" tag="Quadruped"/>
+    <bootstrap thing="wTalon">
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="80"/>
+      </bootstrap>
+    <exprreq message="Only a Cavalier can take this animal companion."><![CDATA[master.hero.tagis[Classes.Cavalier] + master.hero.tagis[Classes.Samurai] <> 0]]></exprreq>
+    </thing>
+  <thing id="anS2GilaGi" name="Gila Monster, Giant" compset="AnimalComp">
+    <comment>Cavalier only mount.</comment>
+    <arrayval field="anSTR" index="0" value="6"/>
+    <arrayval field="anSTR" index="3" value="8"/>
+    <arrayval field="anDEX" index="0" value="-2"/>
+    <arrayval field="anCON" index="0" value="7"/>
+    <arrayval field="anCON" index="3" value="9"/>
+    <arrayval field="anINT" index="0" value="-9"/>
+    <arrayval field="anWIS" index="0" value="5"/>
+    <arrayval field="anCHA" index="0" value="-4"/>
+    <arrayval field="anSpeed" index="0" value="20"/>
+    <arrayval field="anNatural" index="0" value="4"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="CompList" tag="cHelpCav"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="SlotSet" tag="selMISQuaC"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Helper" tag="Quadruped"/>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d3_3"/>
+      </bootstrap>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="raPoiCON">
+      <autotag group="Target" tag="wBite"/>
+      <assignval field="abValue" value="2"/>
+      <assignval field="abValue2" value="1"/>
+      </bootstrap>
+    <exprreq message="Only a Cavalier can take this animal companion."><![CDATA[master.hero.tagis[Classes.Cavalier] + master.hero.tagis[Classes.Samurai] <> 0]]></exprreq>
+    </thing>
+  </document>

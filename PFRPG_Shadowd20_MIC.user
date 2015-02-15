@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[
+5/4/2013
+-Created new and moved over Healing Belt, Broken from AoW.
+-Added "Warlock's Scepter".]]></info_history>
+    </fileinfo>
+  <thing id="ioS2HeBeBr" name="Healing Belt, Broken" description="{i}This is a product of Thassilonian times and the magic to create these can NO longer be duplicated.{/i}\n\nThis is belt has the broken condition and no longer functions to its full potential. The belt has 3 charges that  are renewed each day at dawn. Spending 1 or more charges allows you to channel positive energy and heal damage with a touch.  You can also use this ability to harm undead dealing them an equivalent amount of damage instead.\n\n{b}One Charge:{/b} 1d8\n{b}Two Charges:{/b} 2d8\n{b}Three Charges:{/b} 3d8" compset="Wondrous">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="gCost" value="300"/>
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="iCL" value="3"/>
+    <usesource source="srcAoW"/>
+    <usesource source="srcMIC"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSubschool" tag="Healing"/>
+    <tag group="User" tag="Tracker"/>
+    </thing>
+  <thing id="iS2WarScep" name="Warlock&apos;s Scepter" description="This {i}+1 light mace{/i} confers a +1 profane bonus on your ranged touch attack rolls while you hold it. This is a continuous effect and requires no activation.\n\nFurthermore, a {i}warlock&apos;s scepter{/i} has 5 charges, which are renewed each day at dawn. Spending 1 or more charges improves the damage of the next {i}eldritch blast{/i} you make in that round.\n\n{i}1 charge:{/i} +1d6 damage.\n{i}3 charges:{/i} +2d6 damage.\n{i}5 charges:{/i} +4d6 damage.\n\nAfter these charges have been expended, the rod remains a {i}+1 light mace{/i}, but it no longer provides a bonus on ranged touch attack rolls until its charges are restored." compset="MagicWep" summary="This sturdy ebony rod is surmounted by a carving of a demonic, horned skull.">
+    <fieldval field="iCL" value="10"/>
+    <fieldval field="trkMax" value="5"/>
+    <fieldval field="BonEnhance" value="1"/>
+    <fieldval field="gCost" value="8305"/>
+    <usesource source="srcAoW"/>
+    <usesource source="srcMIC"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+~ If no points then get out now
+doneif (field[trkMax].value = field[trkUser].value)
+~ If not equipped get out now
+doneif (field[gIsEquip].value <> 1)
+
+~ +1 profane bonus to touch attack and eldritch blast
+#applybonus[BonProfane,hero.childfound[wS2EldBlas],1]
+#applybonus[BonProfane,hero.childfound[wS2RaTouch],1]
+#applybonus[BonProfane,hero.childfound[wRay],1]]]></eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wMaceLight"></bootstrap>
+      </child>
+    </thing>
+  </document>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <thing id="wUmWarscep" name="Warscepter" compset="Weapon">
+    <fieldval field="gSizeCost" value="25"/>
+    <fieldval field="gWeight" value="8"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wFtrGroup" tag="Flails"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="wType" tag="B"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="EquipType" tag="Wood"/>
+    </thing>
+  </document>

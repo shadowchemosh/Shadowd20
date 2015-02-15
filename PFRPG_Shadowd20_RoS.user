@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <thing id="mS2ShldGau" name="Shield, Gauntlet" description="A favorite of divine spellcasters, this exotic shield is a heavy steel shield built with a special bracing gauntlet.  The special gauntlet allows you to carry other items in your shield hand (such as material spell components), although you cannot use weapons with it.  You can cast a spell with somatic components using your shield gauntlet but you lose the shield&#146;s AC bonus until your next turn." compset="Armor">
+    <fieldval field="gSizeCost" value="50"/>
+    <fieldval field="gWeight" value="20"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="srcRoS"/>
+    <tag group="ArmorClass" tag="Shield"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="ArmorCheck" tag="2"/>
+    <tag group="ShldClass" tag="Heavy"/>
+    <tag group="ArmorAC" tag="2"/>
+    <tag group="ArmorMaxDx" tag="1000"/>
+    <tag group="ArmorArcFl" tag="35"/>
+    </thing>
+
+
+
+
+</document>

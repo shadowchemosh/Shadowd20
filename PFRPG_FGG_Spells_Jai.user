@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <thing id="spUmCondem" name="Condemned" description="A victim struck by this touch attack that fails its save cannot benefit from the healing effects of positive energy (cure spells, channel positive energy, etc.) until the condition is removed by a {i}dispel magic{/i} or {i}remove curse{/i}. Natural healing still works normally.  It does not, however, prevent the damaging effects of such spells and abilities to undead creatures." compset="Spell" summary="A victim struck by this touch attack that fails its save cannot benefit from the healing effects of positive energy (cure spells, channel positive energy, etc.) until the condition is removed by a {i}dispel magic{/i} or {i}remove curse{/i}.">
+    <fieldval field="sCompDesc" value="powdered skull, graveyard mold, and a dead man&apos;s blood"/>
+    <fieldval field="sTarget" value="one living creature"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="arHdCleric"/>
+    <tag group="sClass" tag="Cleric"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Permanent"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmDeMaEy" name="Dead Man&apos;s Eyes" description="By peering into a dead creature&apos;s eyes, you may see 1 minute/ level preceding the corpse&apos;s death as seen by the dead creature (for example, if the creature died in its sleep there is likely little to see).  You see these events in compressed time, 1 round for every minute of the corpse&apos;s past. A successful DC 15 concentration check gives near-perfect recall of the events; failure indicates fuzzy recall and partial details. A roll of a natural 1 indicates a mangled, inaccurate version of events.\n\nYou may dismiss the spell at any point, but if you witness the creature&apos;s final moment and it was a violent death, you immediately suffer 2d6 points of nonlethal damage from the empathic resonance of the death." compset="Spell" summary="By peering into a dead creature&apos;s eyes, you may see 1 minute/ level preceding the corpse&apos;s death as seen by the dead creature (for example, if the creature died in its sleep there is likely little to see).">
+    <fieldval field="sCompCost" value="50"/>
+    <fieldval field="sCompDesc" value="gem placed over each eye of the corpse"/>
+    <fieldval field="sTarget" value="one dead creature"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sSchool" tag="Divination"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    </thing>
+  <thing id="spUmGriFea" name="Grim Feast" description="You can cure yourself of 1d4 lost hit points per affected corpse by casting this spell on the bodies of size Small or larger, formerly living, creatures that died within the last hour. Dead bodies used in this way shrivel up and become unusable for anything else, including animation." compset="Spell" summary="You can cure yourself of 1d4 lost hit points per affected corpse by casting this spell on the bodies of size Small or larger, formerly living, creatures that died within the last hour.">
+    <fieldval field="sTarget" value="up to one fresh corpse/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="SpellEff" tag="HealDam"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmUnhCha" name="Unholy Channel" description="With this spell you may establish a link with an undead creature that you command. Through this link you may cast any single-target inflict spells to heal the undead creature as long as it is within long range (400 ft. + 40 ft./level). If you are also undead, any cure spell cast upon you has a 50% chance to harm either you or the undead recipient of your unholy channel, regardless of who was the original target of the spell. If the cure spell requires a Will or Reflex save, then the targeted creature must make the saving throw to determine the effects of the spell.  lf the spell allows a Fortitude save, then the creature affected must make the saving throw.\n\nYou can only have one {i}unholy channel{/i} in effect at any given time. An unholy channel cannot be established with a living creature." compset="Spell" summary="With this spell you may establish a link with an undead creature that you command.">
+    <fieldval field="sTarget" value="one undead creature"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sDuration" value="1 hour/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sSchool" tag="Divination"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sCastTime" tag="Round1"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sSave" tag="WillNeg"/>
+    </thing>
+  <thing id="spUmSunspe" name="Sunspear" description="This spell creates a glowing spear of white positive energy. At the caster&apos;s discretion, the weapon can appear and function as a shortspear, a spear, or a longspear.  The caster can wield the {i}sunspear{/i} proficiently as a melee weapon with an enhancement bonus to attack and damage rolls of +1, plus an additional +1 per 3 caster levels above 5th level. The spear glows brightly providing illumination as per the {i}light{/i} spell.\n\nThe caster can also use the sunspear to make a single melee touch or ranged touch attack in order to cure or inflict damage. The {i}sunspear&apos;s{/i} enhancement bonus applies to this attack. The {i}sunspear{/i} can be hurled up to the maximum range of the spell with no penalty to the roll. A successful attack results in a brilliant blast of positive energy inflicting 2d4+2 points per caster level. The victim must also make a Fortitude save or be blinded for 1d4 rounds.\n\nIf the caster elects to use the healing effect, she must touch a willing ally or make a ranged touch attack to a distant ally. If successful, the recipient is surrounded in a bright nimbus of white light and cured of 2d4+2 points per caster level. As with other positive energy effects, this effect damages undead. Any excess hit points over the target&apos;s normal maximum, gained for the effect, remain for 1 round per caster level as temporary hit points.\n\nWhen the {i}sunspear{/i} is used for either the special attack or healing effect, the spell ends regardless whether or not the touch was successful." compset="Spell" summary="This spell creates a glowing spear of white positive energy.">
+    <fieldval field="sTarget" value="see text"/>
+    <fieldval field="sDuration" value="1 minute/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDescript" tag="Light"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="FortPart"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sDescript" tag="Force"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmDoomwa" name="Doomwail" description="You let loose an ear-scourging howl that deafens and paralyzes creatures in its area of effect.  All those caught within the {i}doomwail{/i} must make a Fortitude saving throw. Those who succeed avoid the worst of the effects but are shaken for 2d4 rounds. Those who fail are shaken for 2d4 rounds and roll d% on the following table to determine the individual effect. These effects persist until magically cured.\n\n{b}d% Effect{/b} \n1-50 deafened \n51-75 paralyzed \n76-00 deafened and paralyzed" compset="Spell" summary="You let loose an ear-scourging howl that deafens and paralyzes creatures in its area of effect.">
+    <fieldval field="sArea" value="cone-shaped burst"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sSubschool" tag="Fear"/>
+    <tag group="sSubschool" tag="Sonic"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSave" tag="FortPart"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmChant" name="Chant" description="As long as you chant, you bring special favor upon your allies and bring disfavor to your enemies. You and your allies gain a +1 luck bonus on all attack rolls, saves, and skill checks while your foes suffer a -1 penalty on such rolls.  You must chant in a clear voice. Any interruption in your chanting, such as a failed concentration check, a {i}silence{/i} spell, or your speaking or casting another spell, ends the effect. As an exception to the general rule, the effects of this spell stack with those of a {i}prayer{/i} spell if cast by a cleric of the same deity and alignment during your chanting." compset="Spell" summary="As long as you chant, you bring special favor upon your allies and bring disfavor to your enemies.">
+    <fieldval field="sRange" value="40 ft."/>
+    <fieldval field="sArea" value="All allies and foes within a 40-ft burst centered on you"/>
+    <fieldval field="sDuration" value="concentration; maximum 5 minutes per level (see below)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmSpHaGr" name="Spectral Hand, Greater" description="This spell functions in all ways like {i}spectral hand{/i}, with the following exceptions. Upon casting the spell, the caster loses 1d8 hit points that return when the spell ends, but not if the hand is destroyed. Any ranged touch range spell of 6th-level or lower that can be cast by the spellcaster can be delivered by {i}greater spectral hand{/i}. The hand has the spellcaster&apos;s save bonuses +2, AC 24 plus the caster&apos;s Intelligence modifier. The hand has as many hit points as are lost during the casting." compset="Spell" summary=" Any ranged touch range spell of 6th-level or lower that can be cast by the spellcaster can be delivered by {i}greater spectral hand{/i}.">
+    <fieldval field="sEffect" value="one greater spectral hand"/>
+    <fieldval field="sDuration" value="1 min/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    </thing>
+  <thing id="spUmAciSpi" name="Acid Spittle" description="You belch forth a small viscous glob of potent acid at a nearby target as a ranged touch attack with a splash weapon. The target takes 1d6 points of acid damage +1 point per caster level (+20 maximum) unless a Reflex save is made for half damage.  Anyone within 5 ft. of where the acid glob strikes takes 1 point of acid damage +1 per two caster levels (+10 maximum) unless a Reflex save is made for half damage. If the acid glob is not spit before the spell&apos;s duration expires, it inflicts maximum damage upon the caster internally (no saving throw) unless otherwise protected from acid." compset="Spell" summary="You belch forth a small viscous glob of potent acid at a nearby target as a ranged touch attack with a splash weapon.">
+    <fieldval field="sTarget" value="one creature"/>
+    <fieldval field="sDuration" value="1 hour/level"/>
+    <fieldval field="sCompDesc" value="6 oz. of wine, consumed by caster"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sRange" tag="10"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sSave" tag="RefHalf"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sDescript" tag="Acid"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    </thing>
+  <thing id="spUmAniSha" name="Animate Shadow" description="You transform a normal shadow into a long, thick tentacle.  The tentacle remains rooted where the transmuted shadow fell upon the wall or floor, but the shadow tendril is able to reach up to 5 ft. per caster level to reach a target. The shadow tendril operates in most respects as an {i}animate rope{/i} spell but differs in that the shadow is intangible and attempts to attack or sever it pass harmlessly through.\n\nSince the shadow tendril is intangible, it cannot be used to climb upon or tie objects, but when directed against a creature the target must make a Reflex save or be entangled (the shadowy rope is quite solid to the victim). The victim is held in place as long as he is entangled. A DC 23 Strength check can burst the tendril, and a DC 20 Escape Artist check can slip its bonds. You can command it to release a creature and attempt to entangle a new target within range as a standard action." compset="Spell" summary="You transform a normal shadow into a long, thick tentacle.">
+    <fieldval field="sTarget" value="one shadow"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sDescript" tag="Darkness"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sSave" tag="RefNeg"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmBloods" name="Bloodstorm" description="This spell summons a whirlwind of blood that envelops the entire area of effect and has several effects on those caught within it. First, those in the area must make a Reflex save or be blinded by the swirling blood while they remain within the whirlwind and for 2d6 rounds after leaving it. Second, all attacks within the area have a -4 penalty to attack rolls, including ranged attacks fired into it. Third the blood deals 1d4 points of acid damage per round of exposure to the whirlwind.  Finally, any caught within it must make a Will save or become frightened if 8 HD or more or panicked if less than 8 HD." compset="Spell" summary="This spell summons a whirlwind of blood that envelops the entire area of effect and has several effects on those caught within it.">
+    <fieldval field="sArea" value="cylinder (10ft. radius 40 ft. high)"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <fieldval field="sSave" value="see text"/>
+    <fieldval field="sCompDesc" value="a small vial of blood"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDescript" tag="Fear"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sSave" tag="RefNeg"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmDetSha" name="Detect Shapechangers" description="You can sense the presence of creatures with the shapechanger subtype regardless of their current form. The spell has the added benefit of detecting other creatures in the spell&apos;s area that are currently using spells or other abilities to assume a form other than their natural form. The amount of information gained depends on how long you study a particular area or subject.\n\n{i}1st Round:{/i} Presence or absence of shapechangers or formaltered creatures.\n\n{i}2nd Round:{/i} Number of shapechangers and form-altered creatures in the area and the power of the most potent shapechanger or form-altered creature present.\n\n{i}3rd Round:{/i} The power and location of each aura. If an aura is outside your line of sight, then you discern its direction but not its exact location.\n\n{i}Aura Power:{/i} A shapechanger or form-altered creature aura&apos;s power depends on its CR as described on the table below.\n\n{b}Creature CR Aura Power{/b} \n3 or less         Dim \n4-6                   Faint \n7-9                   Moderate \n10-12              Strong \n13+                 Overwhelming\n\nEach round, you can turn to detect shapechangers and formaltered creatures in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it." compset="Spell" summary="You can sense the presence of creatures with the shapechanger subtype regardless of their current form.">
+    <fieldval field="sArea" value="cone-shaped emanation"/>
+    <fieldval field="sDuration" value="concentration, up to 10 min./level"/>
+    <fieldval field="sCompDesc" value="a sprig of wolfsbane"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="MorDF"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sRange" tag="60"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Concent"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Divination"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sCastTime" tag="Action1"/>
+    </thing>
+  <thing id="spUmEssBl5" name="Essential Blade" description="You touch a melee or natural weapon, suffusing it with raw magical force. So fortified, the weapon acquires the {i}ghost touch{/i} special quality, ignores hardness, and strikes as a melee touch attack." compset="Spell" summary="You touch a melee or natural weapon, suffusing it with raw magical force.">
+    <fieldval field="sCompDesc" value="the weapon"/>
+    <fieldval field="sTarget" value="1 melee or natural weapon"/>
+    <fieldval field="sDuration" value="1 minute/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sDescript" tag="Force"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmEssBl4" name="Essential Blade" description="You touch a melee or natural weapon, suffusing it with raw magical force. So fortified, the weapon acquires the {i}ghost touch{/i} special quality, ignores hardness, and strikes as a melee touch attack." compset="Spell" summary="You touch a melee or natural weapon, suffusing it with raw magical force.">
+    <fieldval field="sCompDesc" value="the weapon"/>
+    <fieldval field="sTarget" value="1 melee or natural weapon"/>
+    <fieldval field="sDuration" value="1 minute/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sDescript" tag="Force"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmEthBol" name="Ethereal Bolt" description="You release a bolt of translucent, blue-white energy that deals 1d10 points of force damage per caster level (maximum 5d10) to each incorporeal creature in its area. The bolt begins at your fingertips.\n\nThe energy released by this spell exists primarily on the Ethereal Plane. As such, it has no effect whatsoever upon creatures or objects that exist only in the Material Plane. The bolt ignores corporeal barriers and creatures.\n\nThe spell does not empower you to see into the Ethereal Plane or through solid objects." compset="Spell" summary="You release a bolt of translucent, blue-white energy that deals 1d10 points of force damage per caster level (maximum 5d10) to each incorporeal creature in its area.">
+    <fieldval field="sCompDesc" value="the eye of a creature with a gaze attack"/>
+    <fieldval field="sArea" value="120 ft. line"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sDescript" tag="Force"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="120"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="RefHalf"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmEyebur" name="Eyeburst" description="You cause a spark of blinding light to leap from your hand and explode in the face of your target, searing its face and causing the viscous fluid in its eyes to boil and possibly rupture. The target must make a Fortitude save or take 6d6 points of damage and be permanently blinded. A successful save halves the damage and avoids the blindness effect. Eyes destroyed in this way can only be restored by a {i}regenerate{/i} or {i}wish{/i} spell." compset="Spell" summary="You cause a spark of blinding light to leap from your hand and explode in the face of your target, searing its face and causing the viscous fluid in its eyes to boil and possibly rupture.">
+    <fieldval field="sTarget" value="one creature"/>
+    <fieldval field="sSave" value="Fortitude partial (see text)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Permanent"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSave" tag="FortPart"/>
+    <tag group="sLevel" tag="7"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmFouBl3" name="Fountain of Blood" description="You cause a geyser of blood to erupt from the ground, spraying all within a 20-foot by 20-foot area. The blood burns as a powerful acid, causing 1d6 points of acid damage per two caster levels (maximum 10d6). Clerics (or other classes and creatures) that have the Destruction domain are not affected by the {i}fountain of blood{/i}." compset="Spell" summary="You cause a geyser of blood to erupt from the ground, spraying all within a 20-foot by 20-foot area.">
+    <fieldval field="sArea" value="20-ft. square"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sDescript" tag="Acid"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="RefHalf"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmFouBl2" name="Fountain of Blood" description="You cause a geyser of blood to erupt from the ground, spraying all within a 20-foot by 20-foot area. The blood burns as a powerful acid, causing 1d6 points of acid damage per two caster levels (maximum 10d6). Clerics (or other classes and creatures) that have the Destruction domain are not affected by the {i}fountain of blood{/i}." compset="Spell" summary="You cause a geyser of blood to erupt from the ground, spraying all within a 20-foot by 20-foot area.">
+    <fieldval field="sArea" value="20-ft. square"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sDescript" tag="Acid"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="RefHalf"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmGreKno" name="Great Knock" description="This spell functions identically to the lesser {i}knock{/i} spell.  However, it also shatters welds, shackles, chains, and similar impediments (like portcullises), removing all methods preventing egress through a single portal, and removes any {i}arcane lock{/i}.\n\nMore significantly, you completely destroy the door or item in the process of opening it. Anyone standing within 10 feet of the other side of the door or within 10 feet of a chest, etc. takes 1d6 points of damage per two caster levels (maximum 5d6, or 2d6 if the item is small) from flying debris. The sound of object being destroyed is clearly audible as an explosion." compset="Spell" summary="This spell functions identically to the lesser {i}knock{/i} spell.">
+    <fieldval field="sArea" value="one door, box, or chest with an area of up to 25 sq. ft/level"/>
+    <fieldval field="sTarget" value="you, one creature, etc."/>
+    <fieldval field="sDuration" value="instantaneous; see text"/>
+    <fieldval field="sSave" value="none (Reflex half for burst effect)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="RefHalf"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmPlaTo5" name="Plague Touch" description="This spell is identical to the {i}contagion{/i} spell, but you can infect the subject with the disease of your choice from the Appendix of the Pathfinder Roleplaying Game or any other sources your GM allows." compset="Spell">
+    <fieldval field="sCompDesc" value="a piece of putrid flesh and a drop of blood"/>
+    <fieldval field="sTarget" value="one creature"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmPlaTo6" name="Plague Touch" description="This spell is identical to the {i}contagion{/i} spell, but you can infect the subject with the disease of your choice from the Appendix of the Pathfinder Roleplaying Game or any other sources your GM allows." compset="Spell">
+    <fieldval field="sCompDesc" value="a piece of putrid flesh and a drop of blood"/>
+    <fieldval field="sTarget" value="one creature"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="6"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmSacSpe" name="Sacrifice Spell" description="You can sacrifice a prepared spell (if a wizard) or an unused spell slot (if a sorcerer) to create bolts of pure magical force. The arcane energy is cannibalized and released in a silent, blue-white blast of destructive force that deals 1d8 damage/spell level (maximum 15d8) sacrificed to create it to the target.\n\nYou can select multiple prepared spells or unused spell slots to power a single energy bolt. {i}Sacrifice spell{/i} itself does not count towards the spells that fuel the bolt." compset="Spell" summary="You can sacrifice a prepared spell (if a wizard) or an unused spell slot (if a sorcerer) to create bolts of pure magical force.">
+    <fieldval field="sTarget" value="one creature"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sDescript" tag="Force"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="RefHalf"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmSever" name="Sever" description="You impede all contact that the target possesses with his deity by temporarily cutting the conduit through which such powers flow. The target is unable to cast any divine spell or use any spell-like or supernatural ability that is divine in nature, such as channeling energy.\n\nThe innate abilities of outsiders are not affected, however, an outsider&apos;s divine spells are subject to being severed." compset="Spell" summary="You impede all contact that the target possesses with his deity by temporarily cutting the conduit through which such powers flow.">
+    <fieldval field="sTarget" value="one divine spellcaster"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Round1"/>
+    <tag group="sSchool" tag="Abjur"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Concent"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="7"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmBloTen" name="Stelan&apos;s Blood Tentacles" description="When you cast this spell, all dead (within the last 24 hours) and dying creatures (those below 0 hit points and disabled) in the area have all the blood drawn from their bodies, killing them if still alive. Dying creatures are allowed a Fortitude save to avoid this effect, but dead creatures are not. The blood forms horrible tentacles of clotted, black blood that remain in contact with the bodies from which they were drawn. They lash out and flail at the caster&apos;s foes with a reach of 10 feet. One tentacle is created per corpse, up to a maximum of 1 per caster level (no more than 20).\n\nThe tentacles are AC 15 with 1 hp per level of the caster.  They have the attack bonus, CMB, and CMD of the caster.  They are immune to spells that do not cause damage, except for {i}disintegrate{/i}, {i}dispel magic{/i}, and those spells that can affect water or blood (which deal 1d6 hp per caster level, no save, unless otherwise noted).\n\nA tentacle that hits with its slam attack deals 1d6 points of damage and can start a grapple as a free action without provoking attacks of opportunity. On a successful grapple, the tentacle begins to drown its victim (see &quot;Drowning&quot; in Chapter 13 of the Pathfinder Roleplaying Game) as long as it is able to maintain the grapple." compset="Spell" summary="When you cast this spell, all dead (within the last 24 hours) and dying creatures (those below 0 hit points and disabled) in the area have all the blood drawn from their bodies, killing them if still alive.">
+    <fieldval field="sCompDesc" value="handful of dirt from a strangled man&apos;s grave"/>
+    <fieldval field="sTarget" value="all dead and dying creatures"/>
+    <fieldval field="sDuration" value="1 hour/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmAsSen3" name="Assassin&apos;s Senses" description="The critical threat range and multiplier of any weapon or natural attack that you are using increase by 1. This stacks with the Improved Critical feat, the {i}keen{/i} weapon quality, and other conditions that may have already increased these. It does not stack with multiple castings of this spell.\n\n{b}{i}Note:{/b} This is not coded.  You will need to track it yourself{/i}" compset="Spell" summary="The critical threat range and multiplier of any weapon or natural attack that you are using increase by 1.">
+    <fieldval field="sCompDesc" value="severed finger of a professional assassin"/>
+    <fieldval field="sTarget" value="you"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="ForDF"/>
+    <tag group="sSchool" tag="Divination"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmAsSen2" name="Assassin&apos;s Senses" description="The critical threat range and multiplier of any weapon or natural attack that you are using increase by 1. This stacks with the Improved Critical feat, the {i}keen{/i} weapon quality, and other conditions that may have already increased these. It does not stack with multiple castings of this spell.\n\n{b}{i}Note:{/b} This is not coded.  You will need to track it yourself{/i}" compset="Spell" summary="The critical threat range and multiplier of any weapon or natural attack that you are using increase by 1.">
+    <fieldval field="sCompDesc" value="severed finger of a professional assassin"/>
+    <fieldval field="sTarget" value="you"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="ForDF"/>
+    <tag group="sSchool" tag="Divination"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmBloBla" name="Bloodied Blade" description="You cast this spell on any piercing or slashing weapon, and it becomes dormant until activated by the weapon dealing at least 1 point of damage on a living creature or until the next sunrise, at which point the spell is discharged without effect.\n\nOnce activated, the weapon gains a limited feral intelligence and a lust to shed more blood. Every 5 points of damage that the weapon deals grants a +1 morale bonus to attack and damage rolls (maximum +5) for 1 round/caster level. Since this is a morale bonus, it stacks with any enhancement bonuses the weapon may have, but is not considered a magic bonus for purposes of overcoming damage reduction. In addition, any creature struck by a {i}bloodied blade{/i} must make a Will save or suffer a -2 morale penalty on attacks made against the blade&apos;s wielder due to the horrible aura of glee emanating from the weapon when it draws blood. This effect ends when the spell expires.\n\nIf the spell is cast on a weapon wielded by someone other than the caster, the weapon may receive a saving throw to avoid the effects of the spell if the wielder wishes. Weapons with the {i}holy{/i} weapon quality must make a saving throw when they slay a living creature while under the effects of this spell to avoid becoming {i}unholy{/i}. Similarly intelligent weapons with non-evil alignments that slay a living creature while under the effects of this spell must make a Will save or have their alignment shift one step before neutral evil. These effects can be reversed by a {i}remove curse{/i} spell." compset="Spell" summary="You cast this spell on any piercing or slashing weapon, and it becomes dormant until activated by the weapon dealing at least 1 point of damage on a living creature or until the next sunrise, at which point the spell is discharged without effect.">
+    <fieldval field="sCompDesc" value="one drop of the caster&apos;s blood"/>
+    <fieldval field="sTarget" value="one weapon touched"/>
+    <fieldval field="sDuration" value="1 day + 1 round/level (see below)"/>
+    <fieldval field="sSave" value="Will negates (object)"/>
+    <fieldval field="sResist" value="yes (object)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cdEvil"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmDisapp" name="Disappear" description="You disappear from sight with a brief puff of blue smoke and become invisible (as the spell) for the round of the casting and the following round. If not already visible, you reappear at the start of your action on the third round.\n\nThe spell was designed to be helpful under duress in order to escape combat. As a result, you receive a +4 bonus to concentration checks made to cast defensively or continue to casting even while being distracted. This bonus stacks with any other bonuses from Combat Casting, etc." compset="Spell" summary="You disappear from sight with a brief puff of blue smoke and become invisible (as the spell) for the round of the casting and the following round">
+    <fieldval field="sTarget" value="you"/>
+    <fieldval field="sRange" value="personal"/>
+    <fieldval field="sDuration" value="2 rounds"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSchool" tag="Illusion"/>
+    <tag group="sSubschool" tag="Glamer"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmLure4" name="Lure" description="When you place this enchantment on a small mundane item, the first person to see it must make a Will save or experience an overwhelming desire to possess it. This causes him to move immediately towards it, ignoring all dangers. While under the influence of this spell, the victim is considered flat-footed and fights at a - 4 attack penalty." compset="Spell" summary="When you place this enchantment on a small mundane item, the first person to see it must make a Will save or experience an overwhelming desire to possess it.">
+    <fieldval field="sCompDesc" value="a small mundane item"/>
+    <fieldval field="sTarget" value="person who sees it first (see below)"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Enchant"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSubschool" tag="Compulsion"/>
+    </thing>
+  <thing id="spUmLure2" name="Lure" description="When you place this enchantment on a small mundane item, the first person to see it must make a Will save or experience an overwhelming desire to possess it. This causes him to move immediately towards it, ignoring all dangers. While under the influence of this spell, the victim is considered flat-footed and fights at a - 4 attack penalty." compset="Spell" summary="When you place this enchantment on a small mundane item, the first person to see it must make a Will save or experience an overwhelming desire to possess it.">
+    <fieldval field="sCompDesc" value="a small mundane item"/>
+    <fieldval field="sTarget" value="person who sees it first (see below)"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Enchant"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSubschool" tag="Compulsion"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    </thing>
+  <thing id="spUmLure3" name="Lure" description="When you place this enchantment on a small mundane item, the first person to see it must make a Will save or experience an overwhelming desire to possess it. This causes him to move immediately towards it, ignoring all dangers. While under the influence of this spell, the victim is considered flat-footed and fights at a - 4 attack penalty." compset="Spell" summary="When you place this enchantment on a small mundane item, the first person to see it must make a Will save or experience an overwhelming desire to possess it.">
+    <fieldval field="sCompDesc" value="a small mundane item"/>
+    <fieldval field="sTarget" value="person who sees it first (see below)"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Enchant"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSubschool" tag="Compulsion"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    </thing>
+  <thing id="pUmLure" name="Lure" description="When you place this enchantment on a small mundane item, the first person to see it must make a Will save or experience an overwhelming desire to possess it. This causes him to move immediately towards it, ignoring all dangers. While under the influence of this spell, the victim is considered flat-footed and fights at a - 4 attack penalty." compset="InPlay" summary="While under the influence of this spell, the victim is considered flat-footed and fights at a - 4 attack penalty.">
+    <fieldval field="pMinimum" value="-4"/>
+    <fieldval field="pMaximum" value="-4"/>
+    <fieldval field="pDuration" value="1 round./level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give a MORALE bonus to hit to all weapons
+      hero.child[Attack].field[Penalty].value -= 4
+      
+      #situational[hero.child[Attack],"-4 attack penatly",field[name].text]]]></eval>
+    </thing>
+  <thing id="pUmChant" name="Chant (Ally)" description="As long as you chant, you bring special favor upon your allies and bring disfavor to your enemies. You and your allies gain a +1 luck bonus on all attack rolls, saves, and skill checks while your foes suffer a -1 penalty on such rolls.  You must chant in a clear voice. Any interruption in your chanting, such as a failed concentration check, a {i}silence{/i} spell, or your speaking or casting another spell, ends the effect. As an exception to the general rule, the effects of this spell stack with those of a {i}prayer{/i} spell if cast by a cleric of the same deity and alignment during your chanting." compset="InPlay" summary=" You and your allies gain a +1 luck bonus on all attack rolls, saves, and skill checks while your foes suffer a -1 penalty on such rolls.">
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="1"/>
+    <fieldval field="pDuration" value="1 round./level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give a LUCK bonus to hit to all weapons
+      hero.child[Attack].field[BonLuck].value += 1]]></eval>
+    </thing>
+  <thing id="pUmChantEn" name="Chant (Enemy)" description="As long as you chant, you bring special favor upon your allies and bring disfavor to your enemies. You and your allies gain a +1 luck bonus on all attack rolls, saves, and skill checks while your foes suffer a -1 penalty on such rolls.  You must chant in a clear voice. Any interruption in your chanting, such as a failed concentration check, a {i}silence{/i} spell, or your speaking or casting another spell, ends the effect. As an exception to the general rule, the effects of this spell stack with those of a {i}prayer{/i} spell if cast by a cleric of the same deity and alignment during your chanting." compset="InPlay" summary=" You and your allies gain a +1 luck bonus on all attack rolls, saves, and skill checks while your foes suffer a -1 penalty on such rolls.">
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="1"/>
+    <fieldval field="pDuration" value="1 round./level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give a LUCK penalty to hit to all weapons
+      hero.child[Attack].field[PenLuck].value -= 1]]></eval>
+    </thing>
+  <thing id="spUmBreLif" name="Bread of Life" description="You bless a loaf of bread with healing magic. Consuming a quarter of the loaf as a standard action that provokes attacks of opportunity sustains a Medium creature for 1 day as if it was a full meal. Two quarters will sustain a Large creature, and the entire loaf will sustain a Huge creature. Each quarter consumed heals 1d8 points of damage +1 per caster level." compset="Spell" summary="You bless a loaf of bread with healing magic.">
+    <fieldval field="sRange" value="touch"/>
+    <fieldval field="sTarget" value="one 2-lb. loaf of bread"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sCastTime" tag="Round1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="SpellEff" tag="HealDam"/>
+    </thing>
+  <thing id="spUmDivRai" name="Divine Raiment" description="This spell is similar to {i}sanctuary{/i}, but with the distinction that it does not break if you directly attack another while under the protection of the spell. Whether you attack or not, anyone wishing to direct harm towards you must make a Will save. Success means the attacker may act normally and need not save again in order to continue attacking. Failure means the attacker loses the action committed to the attack and may not attack the protected creature at all that round. However, the attacker may attempt another save the next round." compset="Spell" summary="This spell is similar to {i}sanctuary{/i}, but with the distinction that it does not break if you directly attack another while under the protection of the spell.">
+    <comment>The spell lists Missionary Domain, but I have not found information on this Domain to include it.</comment>
+    <fieldval field="sRange" value="touch"/>
+    <fieldval field="sTarget" value="self or one creature of same religion"/>
+    <fieldval field="sDuration" value="2 rounds/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cdProtect"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sSchool" tag="Abjur"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmAuMen" name="Aura of Menace" description="You create a subtle but very real aura of menace around yourself. You seem vaguely larger, fiercer, and more imposing. You gain a +1 morale bonus to Intimidate checks per character level (maximum +10)." compset="Spell" summary="You create a subtle but very real aura of menace around yourself.">
+    <fieldval field="sRange" value="personal"/>
+    <fieldval field="sTarget" value="you"/>
+    <fieldval field="sDuration" value="1 hour/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSubschool" tag="Glamer"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Illusion"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  <thing id="spUmChaFla" name="Chaos Flame" description="You create a ball of flame, that does 4d4 damage, that attempts to attack a target within range as a ranged touch attack each round. The caster must make a DC 13 Will save each round to select the target; if he fails, then the fire attacks a random target that round. The caster is never targeted by the spell, but his allies may be. The ball of flame instantly travels anywhere within its range each round to strike a target who can make a Reflex save for half damage.\n\nThis spell can be substituted for {i}fireball{/i} as the 2nd-level domain spell of the Fire domain." compset="Spell" summary="You create a ball of flame that attempts to attack a target within range each round">
+    <fieldval field="sTarget" value="one creature per round"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sDescript" tag="Fire"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sClass" tag="cdFire"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sDuration" tag="Instant"/>
+    </thing>
+  <thing id="spUmGanFar" name="Ganest&apos;s Farstrike" description="You create a bolt of flame that flies from your finger to strike any single target within the range of your sight. Your sight may be augmented with {i}eyes of the eagle{/i} or other effects to increase this range, but visual range based on remote viewing such as {i}scrying{/i} or similar effects do not allow the targeting of this spell. The spell deals 1d4 points of fire damage per caster level (maximum 10d4) and has a chance to set anything flammable that it hits on fire. The bolt flies in a parabolic arc that is clearly visible from a distance and can thus be avoided, which is why a successful Reflex save negates all damage.\n\nThis spell can be substituted for {i}fireball{/i} as the 3rd-level domain spell of the Fire domain." compset="Spell" summary="You create a bolt of flame that flies from your finger to strike any single target within the range of your sight.">
+    <fieldval field="sRange" value="line of sight"/>
+    <fieldval field="sTarget" value="one creature or object"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sDescript" tag="Fire"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cdFire"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="RefNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sCastTime" tag="Action1"/>
+    </thing>
+  <thing id="spUmVanWou" name="Vangal&apos;s Wounding" description="You cause blood to flow quickly from the affected target&apos;s wounds, inflicting 1d6 points of damage per round, with a maximum duration of 10 rounds. Victims are allowed one saving throw at the onset of the spell. A successful save reduces the damage each round by half. This spell works only on victims who have already sustained damage that has not fully healed. If the victim&apos;s wounds are fully healed while still under the effects of this spell, then the damage ceases." compset="Spell" summary="You cause blood to flow quickly from the affected target&apos;s wounds, inflicting 1d6 points of damage per round, with a maximum duration of 10 rounds.">
+    <fieldval field="sCompDesc" value="iron filings"/>
+    <fieldval field="sTarget" value="one injured, living creature"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sSave" tag="FortHalf"/>
+    <tag group="sResist" tag="Yes"/>
+    </thing>
+  <thing id="spUmMirSaf" name="Mirror Safe" description="Similar to a {i}bag of holding{/i}, this spell creates an extra-dimensional space beyond the surface of a mirror. The extra-dimensional space is able to hold 100 lb. per caster level. After {i}mirror safe{/i} has been cast, the caster can access the space freely up to one access per two caster levels. During the casting, the caster can set directions that will allow access to the safe and its contents. The &quot;combination&quot; to open the safe can be as simple as a command word or anything as complicated as the conditions needed to fulfill a {i}magic mouth{/i} activation. Each access opens the safe for a period of up to 5 minutes. If the spell runs out of access uses, it ends, and any items remaining within the mirror stay within the extra-dimensional space; the mirror will continue to radiate a faint lingering magical aura. Any caster may recast this spell to gain access to the space once again. \n\nA successful {i}dispel magic{/i} will end the duration of {i}mirror safe{/i}, but the items stored within remain there. {i}Break enchantment{/i}, {i}limited wish{/i}, {i}miracle{/i}, {i}wish{/i}, and {i}mage&apos;s disjunction{/i} will all end the {i}mirror safe{/i}, eject all items within it, and destroy the mirror. A mirror can have only one {i}mirror safe{/i} cast upon it at any given time, and it may link to only one extra-dimensional space at any given time.\n\nLiving matter can be placed within the {i}mirror safe{/i}. Anything inside the {i}mirror safe{/i} can exit the safe freely and leave the extra-dimensional space regardless of whether the {i}mirror safe{/i} is still active or not. If the spell is active, such an exit uses up one access of the {i}mirror safe{/i}. \n\nAny mirror can be used as the focus, but its dimensions limit the size of the items that can be placed within." compset="Spell" summary="Similar to a {i}bag of holding{/i}, this spell creates an extra-dimensional space beyond the surface of a mirror.">
+    <fieldval field="sCompDesc" value="a small coin and a small key"/>
+    <fieldval field="sFocusDesc" value="a mirror"/>
+    <fieldval field="sDuration" value="one access/2 levels"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Minute10"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="Helper" tag="NoAutoBook"/>
+    </thing>
+  </document>

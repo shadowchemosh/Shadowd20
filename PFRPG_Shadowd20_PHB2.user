@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com
+
+This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
+    <info_history>4/25/2012
+-Created New</info_history>
+    </fileinfo>
+  <thing id="fS2AgileSh" name="Agile Shield Fighter" description="You are skilled in combining your shield bash attack with an armed strike. When you use your shield in unison with a weapon, your training allows you to score telling blows with both.\n\n{B}Prerequisites:{/B} Proficiency with shields, Improved Shield Bash, Shield Focus.\n\n{B}Benefit:{/b} When making a shield bash and armed strike attack as part of a full attack action, you take a -2 penalty on each attack. These penalties replace the normal ones you incur for fighting with two weapons.\n\n{B}Special:{/B} This feat counts as Two-Weapon fighting for meeting the requirments of other feats." compset="Feat" summary="When making a shield bash and armed strike attack as part of a full attack action, you take a -2 penalty on each attack." uniqueness="useronce">
+    <usesource source="srcPHB2"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="HasFeat" tag="fTwoWep"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      perform hero.assign[Hero.TwoWep]]]></eval>
+    <exprreq message="Proficiency with shields required." iserror="no"><![CDATA[#hasfeat[fArmShield] <> 0]]></exprreq>
+    <exprreq message="Improved Shield Bash feat requried."><![CDATA[#hasfeat[fImpShBash] <> 0]]></exprreq>
+    <exprreq message="Shield Focus feat requried."><![CDATA[#hasfeat[fShieldFoc] <> 0]]></exprreq>
+    </thing>
+  <thing id="fS2ShWard" name="Shield Ward" description="You use your shield like a wall of steel and wood. When an opponent attempts to draw in close to you, your shield forces him away or ruins his attacks.\n\n{B}Prerequisite:{/b} Proficiency with shields, Shield Focus.\n\n{B}Benefit:{/b} You apply your shield bonus to your touch AC and CMD." compset="Feat" summary="You apply your shield bonus to your touch AC and CMD." uniqueness="useronce">
+    <usesource source="srcPHB2"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~set our focus to the currently equipped shield
+      perform hero.findchild[BaseArmor,"Helper.CurrShield"].setfocus
+      ~ If we didn't find one get out now
+      doneif (state.isfocus = 0)
+
+      ~ Set our bonus to our currently equipped shield bonus
+      field[abValue].value += focus.field[arAC].value
+
+      hero.child[ArmorClass].field[tACTouch].value += field[abValue].value
+      hero.child[Maneuver].field[tCMD].value += field[abValue].value]]></eval>
+    <exprreq message="Proficiency with shields required." iserror="no"><![CDATA[#hasfeat[fArmShield] <> 0]]></exprreq>
+    <exprreq message="Shield Focus feat requried."><![CDATA[#hasfeat[fShieldFoc] <> 0]]></exprreq>
+    </thing>
+  <thing id="fS2AcShDef" name="Active Shield Defense" description="Your expert use of your shield allows you to strike at vulnerable foes even when you forgo your own attacks in favor of defense.\n\n{B}Prerequisites:{/b} Proficiency with shields, Shield Focus.\n\n{B}Benefit:{/b} When fighting defensively and using a shield, you do not take the standard fighting defensively penalties on attacks of opportunity. When using the total defense action and a shield, you still threaten the area around you as normal. You can make attacks of opportunity with a -4 penalty.\n\n{B}Normal:{/b} You take a -4 penalty on all attacks while fighting defensively. You cannot attack while using the total defense action." compset="Feat" summary="When fighting defensively and using a shield, you do not take the standard fi ghting defensively penalties on AoO&apos;s." uniqueness="useronce">
+    <usesource source="srcPHB2"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)]]></eval>
+    <exprreq message="Proficiency with shields required." iserror="no"><![CDATA[#hasfeat[fArmShield] <> 0]]></exprreq>
+    <exprreq message="Shield Focus feat requried."><![CDATA[#hasfeat[fShieldFoc] <> 0]]></exprreq>
+    </thing>
+  </document>

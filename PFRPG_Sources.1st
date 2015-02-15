@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+<!--
+4/12/2014
+-Broke tags off to their own file.
+
+10/13/2013
+-Added new FeralWep tag to help identify which natural attacks came from the Feral druid archetype.
+
+Feb 3, 2013
+-Added Dragonborn Racial tags for breath weapon.
+
+v1.31 10/28/2012
+-Added new sources "No duplicate Shadow d20 races" and "Ouput Combat Actions to sheet"
+
+v1.24 7/16/2012
+-Added "Hide duplicate Shadow d20 races".
+
+v1.23 6/10/2012
+-Added better comments.
+-Added in some House Rules for TWF, THF, and Weapon Finesse.
+-Created new Parent Shadow d20 Campaigns.
+-Moved Razor Coast out of the AP section to Shadow d20 Campaigns.
+
+v1.18 3/25/2012
+-Added Sub Skill tag group.
+
+v1.11 1/14/2012
+-Removed the 3PP sources (ie pSGG) and used the community supplied ones. Should prevent duplicate things erros.
+-Rearragned the sources again to be better sorted.
+-Moved the potion note to be under Shadow d20.
+-Moved all races to be under there own headers.
+
+-->
+<!-- ============================================== -->
+<!-- SOURCES                                        -->
+<!-- ============================================== -->
+
+<!-- Shadow d20 Pathfinder -->
+  <source
+    id="pShadowd20"
+    name="Shadow d20 Pathfinder v1.66"
+    selectable="no"
+    parent="UserParent"
+    sortorder="0"
+    description="http://shadowd20.pbworks.com/ - Shadow d20 wiki house rules for Pathfinder.">
+    </source>
+  <source
+    id="s20PFCamp"
+    name="Shadow d20 Campaign Rules"
+    selectable="yes"
+    parent="pShadowd20"
+    sortorder="0"
+    description="Shadow d20 Pathfinder campaign by Tim Shadow.">
+    </source>
+  <source
+    id="srcJaiGods"
+    name="Shadow d20 Umarian Deities"
+    selectable="yes"
+    parent="pS2Deprec"
+    sortorder="1"
+    description="Jai&apos;s Umarian Deities converted to Pathfinder.">
+    </source>
+  <source
+    id="srcPotID"
+    name="Potions, Scrolls and Wands require ID"
+    selectable="yes"
+    parent="pShadowd20"
+    sortorder="9"
+    description="After selecting this option all Scrolls, Potions and Wands will require you to enter the Index Card ID.">
+    </source>
+
+<!-- Shadow d20 Pathfinder - Races -->
+  <source
+    id="pS20Races"
+    name="Shadow d20 Pathfinder - Races"
+    selectable="no"
+    parent="pShadowd20"
+    sortorder="10"
+    description="http://shadowd20.pbworks.com/ - Shadow d20 wiki house rules for Pathfinder.">
+    </source>
+  <source
+    id="srcWarforg"
+    name="Shadow d20 Runeforged Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Eberron's Runeforged race converted to Pathfinder with the name changed to Runeforged.">
+    </source>
+  <source
+    id="srcShifter"
+    name="Shadow d20 Shoanti Shifter Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Eberron's shifter race converted to Pathfinder.">
+    </source>
+  <source
+    id="srcDragonb"
+    name="Shadow d20 Dragonborn Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="3.5's Dragonborn race converted to Pathfinder.">
+    </source>
+  <source
+    id="srcChangel"
+    name="Shadow d20 Changeling Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Eberron's Changeling race converted to Pathfinder.">
+    </source>
+  <source
+    id="srcShaMino"
+    name="Shadow d20 Ulfen Minotaur Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="New Shadow d20 race for Pathfinder.">
+    </source>
+  <source
+    id="srcPlanTou"
+    name="Shadow d20 Planetouched Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="New Shadow d20 race for Pathfinder.">
+    </source>
+  <source
+    id="srcCatFolk"
+    name="Shadow d20 Catfolk Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Shadow d20 version of the Pathfinder race.">
+    </source>
+  <source
+    id="srcIguania"
+    name="Shadow d20 Iguanian Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="New Shadow d20 race for Pathfinder.">
+    </source>
+  <source
+    id="srcRatfolk"
+    name="Shadow d20 Ratfolk Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Shadow d20 version of the Pathfinder race.">
+    </source>
+  <source
+    id="srcDragEmp"
+    name="Shadow d20 Dragon Empire Races"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Dragon Empire Gazetteer Races.">
+    </source>
+  <source
+    id="srcDhampir"
+    name="Shadow d20 Dhampir Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Shadow d20 version of the Pathfinder race.">
+    </source>
+
+
+<!-- Shadow d20 Depreciated Sources -->
+  <source
+    id="pS2Deprec"
+    name="Deprecated"
+    selectable="no"
+    parent="UserParent"
+    sortorder="20"
+    description="These are no longer working">
+    </source>
+
+<!-- Converted 3.5 Books Parent and Children -->
+  <source
+    id="srcRoS"
+    name="Races of Stone"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Races of Stone converted to pathfinder rules.">
+    </source>
+  <source
+    id="Book9Sword"
+    name="Tome of Battle: Book of 9 Swords"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Tome of Battle: Book of 9 Swords converted to pathfinder rules.">
+    </source>
+  <source
+    id="srcSpellCo"
+    name="Spell Compendium"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Spell Compendium converted to pathfinder rules.">
+    </source>
+  <source
+    id="srcPHB2"
+    name="Players Handbook 2"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Players Handbook 2 converted to pathfinder rules.">
+    </source>
+  <source
+    id="srcMIC"
+    name="Magic Item Compendium"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Magic Item Compendium converted to pathfinder rules.">
+    </source>
+
+<!-- Shadow d20 Pathfinder - Campaigns -->
+  <source
+    id="pS20Camp"
+    name="Shadow d20 Pathfinder - Campaigns"
+    selectable="no"
+    parent="pShadowd20"
+    sortorder="20"
+    description="Campaigns">
+    </source>
+  <source
+    id="CampRazorC"
+    name="The Razor Coast"
+    selectable="yes"
+    parent="pS20Camp"
+    sortorder="0"
+    description="The Razor Coast Campaign module.">
+    </source>
+  <source
+    id="srcAoW"
+    name="Age of Worms"
+    selectable="yes"
+    parent="pS20Camp"
+    sortorder="0"
+    description="Shadow d20 Age of Worms Mythic Campaign.">
+    </source>
+  <source
+    id="srcUndDark"
+    name="Underdark"
+    selectable="yes"
+    parent="pS20Camp"
+    sortorder="0"
+    description="Brians Underdark/Drow campaign.">
+    </source>
+
+<!-- Paizo Fans United Children -->
+  <source
+    id="Wayfinder1"
+    name="Paizo Fans United - Wayfinder #1"
+    selectable="yes"
+    parent="pPaizoFans"
+    sortorder="0"
+    description="Wayfinder #1 3.5 rules converted to Pathfinder.">
+    </source>
+  <source
+    id="Wayfinder2"
+    name="Paizo Fans United - Wayfinder #2"
+    selectable="yes"
+    parent="pPaizoFans"
+    sortorder="0"
+    description="Wayfinder #2 3.5 rules converted to Pathfinder.">
+    </source>
+    
+    
+<!-- House Rules -->
+  <source
+    id="srcDex2Dmg"
+    name="Weapon Finesse applies Dex to Dmg"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="When you take the Weapon Finesse feat you gain your dex bonus to hit and to damage.">
+    </source>
+  <source
+    id="srcTWF"
+    name="Two-Weapon Fighting takes less penalties"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="Two-Weapon Fighting now takes less penalties as it only applies a negative when wielding two weapons when your  off-hand has more than one attack.">
+    </source>
+  <source
+    id="srcTHW"
+    name="Two-Handed Weapons receive 1.0x Str dmg"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="Two-Handed weapons will no longer get to apply the one-half strength damage bonus and power attack will no longer provide a +3 bonus to damage.">
+    </source>
+  <source
+    id="srcSpelDmg"
+    name="Spells get bonus dmg equal to your CL"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="All hit point dealing spells will now get a bonus on damage equal to your caster level.">
+    </source>
+  <source
+    id="srcNo1Rnd"
+    name="No 1 round casting spells"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="All 1 round casting time spells have will be changed to 1 full-round action instead.">
+    </source>
+
+
+<!-- Races To Show -->
+  <source
+    id="srcNoRaces"
+    name="No duplicate Shadow d20 races"
+    selectable="yes"
+    parent="OptRaces"
+    sortorder="0"
+    description="Hide races not allowed in Shadow d20 or that where already re-done in shadow d20 like Catfolk.">
+    </source>
+    
+    
+<!-- Output Options -->
+  <source
+    id="s2OutSheet"
+    name="Ouput Combat Actions to sheet"
+    selectable="no"
+    parent="pS2Deprec"
+    sortorder="0"
+    description="If checked then combat actions and affects will display to a printed character sheet.">
+    </source>
+
+    
+</document>

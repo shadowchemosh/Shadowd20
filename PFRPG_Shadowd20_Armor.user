@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+November 4, 2012</info_author>
+    <info_history>11/4/2012
+-Created new to store all the new custom armor.</info_history>
+    </fileinfo>
+  <thing id="mS2ElvChai" name="Elven Chain" description="This extremely light chainmail is made of very fine mithral links. This armor is treated, in all ways, like light armor, including when determining proficiency. The armor has an arcane spell failure chance of 20%, a maximum Dexterity bonus of +4, and an armor check penalty of -2." compset="Armor">
+    <comment>Setup so that magical versions of Elven Chain can be made.</comment>
+    <fieldval field="gWeight" value="20"/>
+    <fieldval field="gSizeCost" value="5150"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="PieceArcFl" tag="10"/>
+    <tag group="ArmorAC" tag="6"/>
+    <tag group="ArmorMaxDx" tag="4"/>
+    <tag group="ArmorCheck" tag="2"/>
+    <tag group="ArmorArcFl" tag="20"/>
+    <tag group="ArmorClass" tag="Light"/>
+    <tag group="RaceEquip" tag="rElf"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="ArmorCateg" tag="Gauntlets"/>
+    <tag group="Ability" tag="eMithral"/>
+    <tag group="HasAbility" tag="eMithral"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mSpellMA" name="Mage Armor" description="This does NOT work anymore. Please remove and add the the spell on Adjust tab for Mage Armor." compset="Armor" uniqueness="useronce" holdable="no">
+    <usesource source="s20PFCamp"/>
+    <tag group="ArmorMaxDx" tag="1000"/>
+    <tag group="ArmorCheck" tag="0"/>
+    <tag group="ArmorArcFl" tag="0"/>
+    <tag group="Helper" tag="NoPrereq"/>
+    <tag group="ArmorAC" tag="4"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="mS2DwPlate" name="Dwarven Plate" description="This full plate is made of adamantine, giving its wearer damage reduction of 3/-." compset="Armor">
+    <fieldval field="gWeight" value="50"/>
+    <fieldval field="gSizeCost" value="16500"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ArmorCateg" tag="Slows" name="Slows" abbrev="Slows"/>
+    <tag group="ArmorCheck" tag="5"/>
+    <tag group="ArmorClass" tag="Heavy" name="Heavy Armor" abbrev="Heavy"/>
+    <tag group="ArmorMaxDx" tag="1" name="1" abbrev="1"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="ArmorAC" tag="9" name="9" abbrev="9"/>
+    <tag group="ArmorArcFl" tag="35" name="35" abbrev="35"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="RaceEquip" tag="rDwarf"/>
+    <tag group="SpecSource" tag="DwarfPlate"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="HasAbility" tag="eAdamant"/>
+    <tag group="Ability" tag="eAdamant"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If equipped, add our damage reduction
+      if (field[gIsEquip].value <> 0) then
+         #applydr[xDamRd, 3]
+      endif]]></eval>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mS2DrPlate" name="Dragonhide Plate" description="This suit of full plate is made of dragonhide, rather than metal, so druids can wear it. It is otherwise identical to masterwork full plate." compset="Armor">
+    <fieldval field="gWeight" value="50"/>
+    <fieldval field="gSizeCost" value="3300"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ArmorCateg" tag="Slows" name="Slows" abbrev="Slows"/>
+    <tag group="ArmorCheck" tag="5"/>
+    <tag group="ArmorClass" tag="Heavy" name="Heavy Armor" abbrev="Heavy"/>
+    <tag group="ArmorMaxDx" tag="1" name="1" abbrev="1"/>
+    <tag group="ArmorAC" tag="9" name="9" abbrev="9"/>
+    <tag group="ArmorArcFl" tag="35" name="35" abbrev="35"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="SpecSource" tag="DwarfPlate"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="HasAbility" tag="eDragon"/>
+    <tag group="Ability" tag="eDragon"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mS2MithShi" name="Mithral Shirt" description="This extremely light chain shirt is made of very fine mithral links.\n\nThe armor has an arcane spell failure chance of 10%, a maximum Dexterity bonus of +6, and no armor check penalty. It is considered light armor." compset="Armor">
+    <fieldval field="gWeight" value="10"/>
+    <fieldval field="gSizeCost" value="1100"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
+    <tag group="ArmorMaxDx" tag="6"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="PieceArcFl" tag="0"/>
+    <tag group="ArmorAC" tag="4" name="4" abbrev="4"/>
+    <tag group="ArmorArcFl" tag="10"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="ArmorCheck" tag="0"/>
+    <tag group="Ability" tag="eMithral"/>
+    <tag group="HasAbility" tag="eMithral"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="shS2Buckle" name="Buckler" description="This small metal shield is worn strapped to your forearm. You can use a bow or crossbow without penalty while carrying it. You can also use your shield arm to wield a weapon (whether you are using an off-hand weapon or using your off hand to help wield a two-handed weapon), but you take a -1 penalty on attack rolls while doing so. This penalty stacks with those that may apply for fighting with your off hand and for fighting with two weapons. In any case, if you use a weapon in your off hand, you lose the buckler&apos;s AC bonus until your next turn. You can cast a spell with somatic components using your shield arm, but you lose the buckler&apos;s AC bonus until your next turn. You can&apos;t make a shield bash with a buckler." compset="Armor" replaces="shBuckler">
+    <comment>Allowed to make a Wooden Buckler or a Darkwood buckler.</comment>
+    <fieldval field="gWeight" value="5"/>
+    <fieldval field="gSizeCost" value="15"/>
+    <tag group="ArmorClass" tag="Shield" name="Shield" abbrev="Shield"/>
+    <tag group="ArmorMaxDx" tag="1000" name="1000" abbrev="1000"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="ShldClass" tag="Buckler" name="Buckler" abbrev="Buckler"/>
+    <tag group="ArmorArcFl" tag="5" name="5" abbrev="5"/>
+    <tag group="ArmorCheck" tag="1" name="1" abbrev="1"/>
+    <tag group="EquipType" tag="Wood"/>
+    <tag group="ArmorAC" tag="1" name="1" abbrev="1"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ Work out if we're equipped, or, if we're the child of a magic item, if
+      ~ our parent is equipped
+      var result as number
+      result = field[gIsEquip].value
+      if (container.ishero = 0) then
+        result += container.parent.field[gIsEquip].value
+        endif
+
+      ~ Taking an off-hand is ok with this shield, but you get -1 to hit
+      if (result <> 0) then
+        result = hero.assign[Hero.ShldOffOK]
+        result = hero.assign[Hero.OffShlP1]
+        endif]]></eval>
+    </thing>
+  <thing id="mFIXpfHidS" name="Hide shirt" description="Made from animal hide and giant lizard scales over a shirt of interwoven cords, these chest and shoulder coverings protect Shoanti riders without restricting their mobility. The wearer of a hide shirt can make a DC 15 Strength check as a standard action. If he succeeds, the armor gains the broken condition and drops to the ground rather than requiring the usual 1 minute it would take to remove it. The armor must be repaired as though it had taken 8 points of damage before it can be used again; a broken hide shirt grants no bonus to Armor Class." compset="Armor" replaces="mPFHideShi">
+    <fieldval field="gWeight" value="18"/>
+    <fieldval field="gSizeCost" value="20"/>
+    <usesource source="PathAdvent" name="Pathfinder Adventure Paths"/>
+    <usesource source="PCVarisia" parent="PCHeader" name="Varisia, Birthplace of Legends"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ArmorAC" tag="3" name="3" abbrev="3"/>
+    <tag group="ArmorArcFl" tag="15" name="15" abbrev="15"/>
+    <tag group="ArmorCheck" tag="1" name="1" abbrev="1"/>
+    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
+    <tag group="ArmorMaxDx" tag="4" name="4" abbrev="4"/>
+    </thing>
+  </document>

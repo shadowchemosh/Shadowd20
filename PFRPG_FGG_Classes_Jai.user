@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_todo>Class Tab:
+
+Justicar of Muir - Fort save does not fit into the 3 selections.  1, 2, 2, 3, 3, 4, 4, 5, 5, 6
+
+Class Special Tab:
+
+Cloak of Orcus - Eval Script line 18 - Cannot get the right side of the expression to calculate correctly.  I have it listed  as a note currently so that you can see what I did.
+
+Friend of Death - DC is not calculating correctly
+
+Necromantic Power - Not sure how to do this one.  I think it is just adding a name to the end of the ability, but not sure how to keep it adjusting to include extra dice
+
+Greater Summoning - This is an improvement to Summon Undead ability, and should replace it when aplied at level 9.
+
+Touch of the Dead God - The DC on this ability is not standard.  I do not know how to calculate it.
+
+Enemy of Evil - Is this best to just leave as text, or code it somehow?
+
+Celestial Companion - Level 1 Class Feature - No clue how to do this.
+
+Shield of Truth - Another wierd one where I want to search for a current shield, add to the AC to it, and possibly add Gizmo for Blinding ability.  If no shield is present, we just add a shield bonus.  Might be easier to add a flat AC bonus with no Gizmo.  Can not be used with Sword of Courage or Armor of Honor.  (Once Avatar is obtained at level 10, they can be used together)
+
+Sword of Courage - See ability for text, and Notes above for Shield of Truth
+
+Armor of Honor - See ability for text, and Notes above for Shield of Truth
+
+Avatar - See Sword, Shield and Armor ability
+
+Scourge of Evil - Holy hell!  Read the description...Stacks with everything...HELP!!!
+
+Demon-Bane - Stacks again....WTF?!?!?!?!?!?!?!</info_todo>
+    </fileinfo>
+  <thing id="cDiscOrcus" name="Disciple of Orcus" description="{b}Additional Requirement{/b}: The disciple must also bind his or her soul to the eternal service of Orcus through interaction with a demon and a special ritual. The Disciple must seek out this demon on his or her own. Potential Disciples deemed unworthy by the demon are normally devoured.\n\nThere are priests of Orcus, and there are Disciples of Orcus; fanatics who go to great lengths to appease their chosen lord. They begin their journey down the path of evil and death learning simple abilities that allow them to manipulate and control the dead. As they grow in power, the Disciples become closer and closer to their god, until finally, the penultimate power level is achieved; that of undeath itself.\n\n{b}Role:{/b} Clerics most often become Disciples of Orcus. As a matter of fact, no class without at least some divine spellcasting ability can ever hope to follow the path of the Disciple. Fighters, bards, wizards, sorcerers, and druids sometimes become Disciples of Orcus. Barbarians, monks, rangers, and rogues generally do not. A paladin can never become a Disciple of Orcus without changing alignments (though a fallen paladin/blackguard can).\n\nAn NPC Disciple of Orcus will be found anywhere there is a temple to Orcus, though most will be secluded or well hidden, as the worship of such a being is not widely accepted (something the Disciples hope to change in the near future). Their last known high altar was located in the lost city of Tsar, though many suspect a new center of worship was erected in the infamous Dungeon of Graves after Tsar&apos;s fall." compset="ClassLevel" maxlimit="10">
+    <usesource source="FGGGenera"/>
+    <tag group="ClassType" tag="Prestige"/>
+    <bootstrap thing="cHelpDoO"></bootstrap>
+    <link linkage="helper" thing="cHelpDoO"/>
+    <exprreq message="Must be able to cast divine spells of at least 3rd level"><![CDATA[tagcount[Hero.Divine] >= 3 + 1]]></exprreq>
+    <exprreq message="Knowledge (Religion) 6 ranks"><![CDATA[#skillranks[skKnowRel] >= 6]]></exprreq>
+    <exprreq message="Great Fortitude feat"><![CDATA[#hasfeat[fGreatFort] <> 0]]></exprreq>
+    <exprreq message="Power Attack feat"><![CDATA[#hasfeat[fPowerAtt] <> 0]]></exprreq>
+    <exprreq message="Must be a worshipper of Orcus"><![CDATA[#hasdeity[deiUmOrcus] <> 0]]></exprreq>
+    </thing>
+  <thing id="cDoOUmDark" name="Darkvision" description="The Disciple gains darkvision to a range of 60 feet. If the Disciple already possesses darkvision, the range is increased by 60 feet." compset="ClSpecial" summary="The Disciple gains darkvision to a range of 60 feet.">
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="SpecType" tag="Sense" name="Sense" abbrev="Sense"/>
+    <bootstrap thing="raDarkVis">
+      <autotag group="SpecSource" tag="cHelpDoO"/>
+      <autotag group="Value" tag="60"/>
+      <assignval field="abValue2" value="60"/>
+      </bootstrap>
+    <eval phase="First" priority="1000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)]]></eval>
+    </thing>
+  <thing id="cDoOUmSpDe" name="Speak with Dead" description="At 2nd level, a Disciple of Orcus can {i}speak with dead{/i} as the spell once per day and an additional time per day for every 3 Disciple levels thereafter (2 at 5th, 3 at 8th). The ability functions as if cast by a caster of a level equal to the Disciple&apos;s total divine spellcaster character levels." compset="ClSpecial">
+    <tag group="Usage" tag="Day"/>
+    <tag group="SpInfo" tag="spSpkDePha"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~We have a number of charges equal to the number of times we appear
+
+      field[listname].text = "Speak with Dead (" & field[xIndex].value & "/day)"
+
+      field[trkMax].value += field[xCount].value]]></eval>
+    </thing>
+  <thing id="cDoOUmAnDe" name="Animate Dead" description="Once per day at 1st level and an additional time per day every four Disciple levels, the Disciple of Orcus can {i}animate dead{/i} as the spell cast by a character equal to the Disciple&apos;s total divine spellcaster levels (Disciple class level plus any other divine spellcasting class levels)." compset="ClSpecial">
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="SpInfo" tag="spAnimDea4"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~We have a number of charges equal to the number of times we appear
+
+      field[listname].text = "Animate Dead (" & field[xIndex].value & "/day)"
+
+      field[trkMax].value += field[xCount].value]]></eval>
+    </thing>
+  <thing id="cDoOUmNePo" name="Necromantic Power" description="At 3rd level, when a Disciple uses channel negative energy to heal undead (or others who can benefit from negative energy in this way, such as a cleric with the Death domain and death&apos;s embrace ability), the recipients receive an additional 2d6 points of negative-energy healing. This increases by 1d6 for every 3 Disciple levels thereafter (2 at 6th, 3 at 9th).This does not apply when channel negative energy is used to harm the living." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+var nDice as number
+nDice = field[xIndex].value + 1
+
+~Set the list name
+field[listname].text = field[thingname].text & " (+" & nDice  & "d6)"
+
+~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+field[abValue].value += field[xCount].value + 1
+field[livename].text = field[thingname].text & " (+" & field[abValue].value  & "d6)"]]></eval>
+    </thing>
+  <thing id="cDoOUmSuUn" name="Summon Undead" description="At 4th level, a Disciple can summon undead. He can use this ability multiple times per day but can only summon a number of undead whose total HD do not exceed double his total divine spellcasting levels per day. The undead are commanded and controlled and remain for 1 round per divine spellcaster level." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="HDDay"/>
+    <tag group="User" tag="Tracker"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~ Loop through all classes where Caster Source is Divine
+foreach pick in hero from Class where "CasterSrc.Divine"
+   field[abValue].value += eachpick.field[cTotalLev].value
+nexteach
+
+~ Double our level for the final hit dice
+field[abValue2].value += field[abValue].value * (field[xCount].value + 1)
+
+~We have a number of charges equal to the number of times we appear
+field[trkMax].value += field[abValue2].value
+
+~ if we are now "Greater" summing then set values here
+If (field[xCount].value >= 2) Then
+   ~ Have live name show our remaning rounds 
+   field[livename].text = "Greater Summoning (" & field[abValue].value & "/rounds)"
+   ~ append description to thing
+   #appenddesc[cDoOUmSuUn,"At 9th level, the number of undead a Disciple can summon using his summon undead ability is increased by 50%. That is the Disciple can summon triple his total divine spellcasting class levels in Hit Dice."]
+else
+   ~ Have live name show our remaning rounds 
+   field[livename].text = field[name].text & " (" & field[abValue].value & "/rounds)"
+endif]]></eval>
+    </thing>
+  <thing id="cDoOUmClOr" name="Cloak of Orcus" description="All undead commanded or controlled by the Disciple gain channel resistance equal to one-half the Disciple&apos;s class level so long as they remain within 30 feet of the Disciple." compset="ClSpecial" summary="Undead within 30ft gain a channel reistance.">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~ One half our level as bonus
+field[abValue].value = round(field[xAllLev].value/2,0,-1)
+
+~We provide Channel Resistance to our undead
+field[livename].text = field[name].text & " (+" & field[abValue].value & ")"]]></eval>
+    </thing>
+  <thing id="cDoOUmImAn" name="Improved Animation" description="Undead animated by the Disciple by spell or spell-like ability have maximum hit points per Hit Die.\n\n{b}Note:{/b} You will need to alter the HPs manually" compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="First" priority="1000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)]]></eval>
+    </thing>
+  <thing id="cDoOUmFrDe" name="Friend of Death" description="Mindless undead will not attack the Disciple of Orcus unless provoked or attacked first. They simply ignore the Disciple so long as he takes no action against them. Intelligent undead must make a Will save (DC 10 + Disciple level + Disciple&apos;s Charisma modifier) each round in which they attempt to attack the Disciple." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostAttr" priority="20000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~ DC is 10 + level + Charisma
+field[abDC].value += 10 + field[xAllLev].value + #attrmod[aCHA]]]></eval>
+    </thing>
+  <thing id="cDoOUmToDe" name="Touch of the Death God" description="At 8th level, once per day the Disciple can make a melee touch attack against a single living creature to inflict 2d4 negative levels on a successful attack. The Fortitude save to remove a negative level has a DC of 15 + the Disciple&apos;s Charisma modifier. The Disciple gains 5 temporary hit points for every negative level he bestows upon a target." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <eval phase="PostAttr" priority="20000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~ DC is 15 + Charisma
+field[abDC].value += 15 + #attrmod[aCHA]]]></eval>
+    </thing>
+  <thing id="cDoOUmShOr" name="Shroud of Orcus" description="At 10th level, the Disciple completes his journey to become one with his master and gains the lich template. From this point forward he is irrevocably tied to the will of Orcus and cannot be {i}resurrected{/i} if destroyed unless Orcus chooses to let him (an unlikely event).\n\n{b}Note{/b}: You will have to add the Lich template in the class tab." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="First" priority="1000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)]]></eval>
+    </thing>
+  <thing id="cHelpDoO" name="Disciple of Orcus" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="8"/>
+    <fieldval field="cAbbr" value="DoO"/>
+    <fieldval field="cSkills" value="2"/>
+    <arrayval field="cMagLevTot" index="0" value="1"/>
+    <arrayval field="cMagLevTot" index="1" value="2"/>
+    <arrayval field="cMagLevTot" index="2" value="3"/>
+    <arrayval field="cMagLevTot" index="3" value="4"/>
+    <arrayval field="cMagLevTot" index="4" value="5"/>
+    <arrayval field="cMagLevTot" index="5" value="6"/>
+    <arrayval field="cMagLevTot" index="6" value="7"/>
+    <arrayval field="cMagLevTot" index="7" value="8"/>
+    <arrayval field="cMagLevTot" index="8" value="9"/>
+    <arrayval field="cMagLevTot" index="9" value="10"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlgnReq" tag="ChaotEvil"/>
+    <tag group="cRef" tag="Poor"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="Classes" tag="DiscOrcus" name="Disciple of Orcus"/>
+    <tag group="cAttack" tag="Medium"/>
+    <tag group="cFort" tag="Good"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="ClassSkill" tag="Profession"/>
+    <tag group="ClassSkill" tag="skHeal"/>
+    <tag group="ClassSkill" tag="skKnowLoc"/>
+    <tag group="ClassSkill" tag="skKnowRel"/>
+    <tag group="Helper" tag="NoExSpells"/>
+    <tag group="ClassPanel" tag="ExNeeded"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="CasterSrc" tag="Divine"/>
+    <bootstrap thing="cDoOUmAnDe">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmNePo">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmSuUn">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmClOr">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmImAn">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmFrDe">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmToDe">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmSuUn">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmShOr">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cClrChan">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmDark">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmAnDe">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmAnDe">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmSpDe">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmSpDe">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmSpDe">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmNePo">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cDoOUmNePo">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    </thing>
+  <thing id="cHelpJMu" name="Justicar of Muir" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="10"/>
+    <fieldval field="cAbbr" value="JMu"/>
+    <fieldval field="cSkills" value="2"/>
+    <arrayval field="cMagLevTot" index="0" value="1"/>
+    <arrayval field="cMagLevTot" index="1" value="2"/>
+    <arrayval field="cMagLevTot" index="2" value="3"/>
+    <arrayval field="cMagLevTot" index="3" value="4"/>
+    <arrayval field="cMagLevTot" index="4" value="5"/>
+    <arrayval field="cMagLevTot" index="5" value="6"/>
+    <arrayval field="cMagLevTot" index="6" value="7"/>
+    <arrayval field="cMagLevTot" index="7" value="8"/>
+    <arrayval field="cMagLevTot" index="8" value="9"/>
+    <arrayval field="cMagLevTot" index="9" value="10"/>
+    <usesource source="FGGGenera"/>
+    <tag group="ClassSkill" tag="skKnowRel"/>
+    <tag group="ClassSkill" tag="skRide"/>
+    <tag group="ClassSkill" tag="skSenseMot"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="WepProf" tag="wSwordBast"/>
+    <tag group="AlgnReq" tag="LawGood"/>
+    <tag group="cRef" tag="Poor"/>
+    <tag group="CasterSrc" tag="Divine"/>
+    <tag group="ClassSkill" tag="skKnowNobl"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="Classes" tag="JustiMuir" name="Justicar of Muir"/>
+    <tag group="cAttack" tag="Good"/>
+    <tag group="cFort" tag="Medium"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="ClassSkill" tag="Profession"/>
+    <tag group="ClassSkill" tag="skDiplo"/>
+    <tag group="ClassSkill" tag="skHandleAn"/>
+    <tag group="ClassSkill" tag="skHeal"/>
+    <tag group="Helper" tag="NoExSpells"/>
+    <bootstrap thing="cJMuExJust">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cJMuClaLim">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cJMuResIll">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cJMuZonTru">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cJMuZonTru">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cJMuZonTru">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cJMuZonTru">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cJMuEneEvi">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cJMuDisLie">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cJMuDisLie">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cJMuDisLie">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cJMuShiTru">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cJMuMarJus">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cJMuImmIll">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="xImmIllusi">
+      <containerreq phase="First" priority="500"><![CDATA[count:Classes.JustiMuir >= 5]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="cJMuSwoCou">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cJMuScoEvi">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cJMuTruSee">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cJMuArmHon">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cJMuHolWor">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cJMuAvatar">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cJMuDemBan">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    </thing>
+  <thing id="cJustiMuir" name="Justicar of Muir" description="{b}Additional Requirements{/b}: \n\n{b}Class:{/b} May not be an Ex-Paladin.  In addition, the PC must have taken his last level as a paladin prior to becoming a Justicar.\n\n{b}Weapon and Armor Proficiency:{/b} Justicar&apos;s gain proficiency in the bastard sword as an exotic weapon per the feat Exotic Weapon Proficiency (bastard sword).\n\n{b}Quest:{/b} A Justicar-to-be must complete an arduous {i}quest{/i} of some significance to Muir to demonstrate his worth to Muir before he may be ordained (see below).\n\n{b}Ordination:{/b} This is the most difficult of the requirements to become a Justicar. A Justicar of Muir must be ordained by a person with power to ordain Justicars. This power is only held by clerics of Muir of 13th level or higher and clerics of Thyr of 16th level or higher. Once the Justicar-to-be proves himself worthy by a {i}quest{/i} (see above), the ordaining priest must cast {i}bless{/i}, {i}zone of truth{/i}, {i}prayer{/i}, {i}discern lies{/i}, {i}mark of justice{/i}, {i}righteous might{/i}, and {i}holy word{/i} upon the Justicar-to-be. This ordination ritual also requires the presence of a holy relic of Muir, such as the {i}Stone of Tircople{/i}, the {i}Holy Sword of Karith{/i}, or the {i}Sword of Gerrant{/i}. Ordination should be a difficult and arduous process. A PC should not be allowed to become a Justicar of Muir simply because he meets the other prerequisites.\n\n{b}Class Limitations:{/b} Due to the length of the Limitations, these are added on the Class Tab\n\n{b}Description:{/b}\n\nA Justicar of Muir is the living embodiment of the first and most important of the triune virtues of Muir - Truth. As an embodiment of truth, and in keeping with the strictness of Muir, a Justicar of Muir must follow an extremely strict moral code beyond that required of a common paladin. The benefit of this purity and stricture is awe-inspiring - eventually allowing the Justicar of Muir to become an avatar of Muir herself.\n\n{b}Role:{/b} Justicars of Muir are the elite paladins in the worship of Muir. While there may be many paladins of Muir, there can never be more than 13 Justicars of Muir alive at any one time. The leader of the Justicars of Muir is known as the Grandmaster. The grandmaster must be a Justicar of at least 8th level.\n\nBecause the worship of Muir has waned substantially, it would be appropriate if there were no current Justicars in your game world and no priests of the necessary level to ordain a Justicar - thus requiring the PCs to find Flail&apos;s spirit or free Abysthor to locate a priest capable of ordaining a Justicar.\n\n{b}{i}Justicars in the Necromancer Games/Frog God Games World{/i}{/b}\n\nThe world in which {b}{i}The Slumbering Tsar Saga{/b} {/i}and the modules of {b}Necromancer Games{/b} are set, depicts a time when newer gods have replaced the older gods, such as Thyr and Muir. Their powers are on the decline. There are currently no living Justicars of Muir in the world, nor were there any when Canaara came to visit the priests of Thyr and Muir and captured the famed {i}Holy Sword of Karith{/i} (see module {b}{i}L1: Demons and Devils{/b} {/i}by {b}Necromancer Games{/b} for more details). The heyday of the Justicars was the time of the rule of the Second and Third High Lords, who ruled from the holy city of Tircople before its downfall during the time of the Battle of Tsar. The ordination of a Justicar of Muir should be an event for the world to notice - symbolizing the resurrection of the power of the older gods and a warning sign to all creatures of evil. Most current religions believe Justicars are but exaggerated myths.\n\nUsing a similar theme of decline and redemption in your campaign would serve to highlight even further the PC&apos;s quest to become a Justicar. Certainly, recovering the {i}Holy Sword of Karith{/i} ({b}{i}L1: Demons and Devils{/b}{/i}), freeing Abysthor from his imprisonment ({b}{i}D1: The Tomb of Abysthor{/b}{/i}), or resolving the ancient mystery of the slumbering city of Tsar ({b}{i}The Slumbering Tsar Saga{/b}{/i}) would justify ordination as a Justicar." compset="ClassLevel" maxlimit="10">
+    <tag group="ClassType" tag="Prestige"/>
+    <bootstrap thing="cHelpJMu"></bootstrap>
+    <link linkage="helper" thing="cHelpJMu"/>
+    <exprreq message="Must be a worshipper of Muir"><![CDATA[#hasdeity[deiUmMuir] <> 0]]></exprreq>
+    <exprreq message="Must have 8 ranks in Knowledge (Religion)"><![CDATA[#skillranks[skKnowRel] >= 8]]></exprreq>
+    <exprreq message="Must have 2 ranks in Sense Motive"><![CDATA[#skillranks[skSenseMot] >= 2]]></exprreq>
+    <exprreq message="Must have 2 ranks in Diplomacy"><![CDATA[#skillranks[skDiplo] >= 2]]></exprreq>
+    <exprreq message="Cannot have ranks in Bluff"><![CDATA[#skillranks[skBluff] <= 0]]></exprreq>
+    <exprreq message="Cannot have ranks in Disguise"><![CDATA[#skillranks[skDisguise] <= 0]]></exprreq>
+    <exprreq message="Cannot have ranks in Intimidate"><![CDATA[#skillranks[skIntim] <= 0]]></exprreq>
+    <exprreq message="Cannot have ranks in Sleight of Hand"><![CDATA[#skillranks[skSleight] <= 0]]></exprreq>
+    <exprreq message="Cannot have ranks in Stealth"><![CDATA[#skillranks[skStealth] <= 0]]></exprreq>
+    <exprreq message="Must have 3 levels of Paladin"><![CDATA[#levelcount[Paladin] >= 3]]></exprreq>
+    </thing>
+  <thing id="cJMuClaLim" name="Class Limitations" description="Justicars must follow a strict and rather unforgiving moral code.  Failure to follow these rules may result in the PC becoming a ex- Justicar.\n\n{b}Alignment:{/b} A Justicar must be lawful good. In addition to the strictures placed on a paladin, a Justicar must live by the following additional limitations:\n\n{b}Reject Cohorts and Henchmen:{/b} A Justicar may never gain followers, cohorts, henchmen, or hirelings. If, at the time of becoming a Justicar, the character has followers, cohorts, henchmen, or hirelings, he must renounce them and free them of their bonds of fealty or obligation. In addition, a Justicar may not hire men-at-arms. A Justicar may retain his special mount, if gained while a paladin. Once slain, however, a Justicar may not call a new mount. The only exception to this limitation is that a Justicar may retain his falcon familiar (see below) as long as he remains a Justicar. Willful disobedience of this principle results in the character becoming an ex-Justicar. Unintentional disobedience (accidentally obtaining a cohort because the cohort was enchanted to follow you, for example) requires {i}atonement{/i} and the Justicar must break the enchantment and rid himself of the cohort as quickly as possible. A simple offer by a prospective follower or cohort to follow you, if rejected, does not constitute disobedience.  This requirement does not prevent a Justicar from traveling with companions.\n\n{b}Reject Property:{/b} A Justicar may not own real property - land, buildings or other holdings, nor may he circumvent this by having agents or friends hold such property in his name. Willful disobedience of this principle results in the character becoming an ex-Justicar. Unintentional disobedience (inherited land, for example) requires {i}atonement{/i}. A gift of land, if rejected, does not constitute disobedience.\n\n{b}Reject Wealth:{/b} A Justicar may not possess more material wealth than is required to feed, clothe, and house his person in a modest fashion (usually no more than 100 gp). Willful disobedience of this principle results in the character becoming an ex-Justicar.  Unintentional disobedience (inheriting wealth, for example) requires {i}atonement{/i}. A gift of money or wealth, if rejected, does not constitute disobedience.\n\n{b}Reject Material Property and Magic:{/b} A Justicar may not carry more than his arms and armor, a pack with simple equipment, equipment for his mount, simple religious items, and simple clothes. He may not possess ornamental items. He may not possess magic items other than his arms and armor. He may, however, carry and use potions and scrolls created by priests of Thyr and Muir. Aside from arms and armor, all a Justicar need possess is faith in Muir. Willful disobedience of this principle results in the character becoming an ex-Justicar. Unintentional disobedience requires {i}atonement{/i}. Having a barred item hidden on you by an enemy, if unwanted, does not constitute disobedience if the Justicar immediately rejects the item once discovered.\n\n{b}Reject Disguise:{/b} As an embodiment of Truth, a Justicar may not thwart truth, regardless how noble the goal. Though he may tolerate it in others, a Justicar will not willingly disguise himself, accept magic intended to conceal or disguise his person or qualities, nor may he use protective magic based on disguise or hidden appearance. He will counsel against his companions using such tactics, though he will not split with persons who are otherwise good-aligned as a result of their use of such tactics. The Justicar simply will not take part in them. Willful disobedience of this principle results in the character becoming an ex-Justicar.  Unintentional disobedience (having a disguising spell cast upon you by a friend against your will) requires {i}atonement{/i}. Having a disguise or concealment spell cast upon you by an enemy, if unwanted, does not constitute disobedience if the Justicar immediately seeks to undo the disguise.\n\n{b}Reject Falsehood:{/b} A Justicar may not lie, regardless of how noble the goal. Lying means active deception. Standing silent or failing to answer a question is not lying. However, if a Justicar fails to answer a question because of an intent to deceive, he must do {i}atonement{/i}. Willful disobedience of this principle results in the character becoming an ex-Justicar. Unintentional disobedience (being magically compelled or otherwise forced to lie against your will, for example) requires {i}atonement{/i}. Because a Justicar embodies Truth, the GM is encouraged to demand the strictest compliance to this principle." compset="ClSpecial">
+    <tag group="Helper" tag="SpecUp"/>
+    </thing>
+  <thing id="cJMuExJust" name="Ex-Justicars" description="If a Justicar violates any of the strictures above, he becomes an ex-Justicar. He loses all Justicar spells and class features (including the service of the Justicar&apos;s falcon familiar, but not weapon, armor, and shield proficiencies). He may not progress any further in levels as a Justicar, nor can he ever regain his status as a Justicar. Muir is a strict and demanding goddess.\n\n{b}Torment:{/b} The above rules allow evil NPCs (or characters) to torment Justicars - attempting to give them wealth, magically disguising them against their will, etc. An evil creature can never cause a Justicar to become an ex-Justicar by such torment unless the Justicar willingly joins or fails to reject the evil character. At worst, such actions may require the Justicar to do {i}atonement{/i}. Note that in the case of such torment, a Justicar is free to attempt to slay the tormenting evil NPC prior to attempting to undo the source of the torment (breaking the spell on a charmed cohort, dismissing the {i}obscuring mist{/i} spell placed upon him, giving away treasure, etc.).  The only exception is lying. If a Justicar willfully lies, even to an evil opponent, he becomes an ex-Justicar." compset="ClSpecial">
+    <tag group="Helper" tag="SpecUp"/>
+    </thing>
+  <thing id="cJMuResIll" name="Resist Illusions" description="A Justicar gains a +4 divine bonus on Will saves against illusion magic. In addition, Justicars are allowed to save to disbelieve illusions without having to interact with the illusion, even if that is normally required to disbelieve the illusion." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~ if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~Let's add a situational bonus to Will saves vs. Illusions
+#situational[hero.child[svWill],"+4 divine bonus vs illusion magic",field[name].text]]]></eval>
+    </thing>
+  <thing id="cJMuZonTru" name="Zone of Truth" description="Once per day for every three Justicar levels, a Justicar can cast the spell {i}zone of truth{/i} as a spell-like ability.  The ability functions as if cast by a caster of a level equal to the Justicar&apos;s total character level." compset="ClSpecial">
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="SpInfo" tag="spZoneTru2"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~We have a number of charges equal to the number of times we appear
+
+      field[listname].text = "Zone of Truth (" & field[xIndex].value & "/day)"
+
+      field[trkMax].value += field[xCount].value]]></eval>
+    </thing>
+  <thing id="cJMuEneEvi" name="Enemy of Evil" description="A Justicar gains a +2 divine bonus to attack and damage rolls against evil-aligned undead and outsiders." compset="ClSpecial">
+    <fieldval field="actName" value="Attacking Undead/Outsider"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="First" priority="10000"><![CDATA[
+~ if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+~ If not activated get out now
+doneif (field[abilActive].value <> 1)
+
+~ Give +2H/D
+hero.child[Attack].field[Bonus].value += 2
+hero.child[Damage].field[tDamBonus].value += 2]]></eval>
+    </thing>
+  <thing id="cJMuCelCom" name="Celestial Companion" description="A Justicar gains a celestial falcon - the holy animal of Muir - as a companion per the druid animal companion rules (see &quot;Druid&quot; in Chapter 3 of the Pathfinder Roleplaying Game).\n\n{b}Starting Statistics: Size{/b} Small; {b}Speed{/b} 10 ft., fly 80 ft. (average); {b}AC{/b} +1 natural armor; {b}Attack{/b} bite (1d4), 2 talons (1d4); {b}Ability Scores{/b} Str 10, Dex 17, Con 12, Int 2, Wis 14, Cha 10; {b}Special Attacks{/b} smite evil 1/day as a swift action (adds Cha bonus to attack rolls and damage bonus equal to HD against evil foes;smite persists until the target is dead or the celestial falcon rests); {b}Special Qualities{/b} darkvision 60 ft., low-light vision, DR and energy resistance per {i}Pathfinder Roleplaying Game Bestiary{/i} &quot;Celestial Creature&quot;, SR equal to class level +5 \n\n{b}4th-Level Advancement: Ability Scores{/b} Str +2, Con +2." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cJMuDisLie" name="Discern Lies" description="At 2nd level, a Justicar can {i}discern lies{/i} as the spell once per day and an additional time per day for every 3 Justicar levels thereafter (2 at 5th, 3 at 8th). The ability functions as if cast by a caster of a level equal to the Justicar&apos;s total character level." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="SpInfo" tag="spDiscLie4"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~We have a number of charges equal to the number of times we appear
+
+      field[listname].text = "Discern Lies (" & field[xIndex].value & "/day)"
+
+      field[trkMax].value += field[xCount].value]]></eval>
+    </thing>
+  <thing id="cJMuShiTru" name="Shield of Truth" description="Beginning at 3rd level, a Justicar can invoke Muir&apos;s shield of truth once per day. Invoking this ability either enhances the Justicar&apos;s current shield or temporarily creates a supernatural shield for the Justicar to use. The shield has the following abilities: +2 divine truth bonus (if the shield is created, this is the only armor benefit it provides) and becomes a {i}blinding shield{/i} (see the &quot;Magic Items&quot; section in Chapter 15 of the Pathfinder Roleplaying Game), except the blinding effect only affects evil creatures. In addition, the shield radiates the effects of a {i}prayer{/i} spell for its duration. This ability lasts for 30 minutes. Shield of truth cannot be used in combination with either sword of courage or armor of honor until the Justicar gains the avatar ability." compset="ClSpecial">
+    <fieldval field="actName" value="Shield of Truth"/>
+    <fieldval field="trkMax" value="1"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Usage" tag="Day"/>
+    <eval phase="First" priority="10000"><![CDATA[~ If we're not shown, just get out now
+     doneif (tagis[Helper.ShowSpec] = 0)
+
+~Add a +2 Divine Truth bonus to AC that stacks with current shield]]></eval>
+    </thing>
+  <thing id="cJMuMarJus" name="Mark of Justice" description="Beginning at 4th level, the Justicar gains the ability to pass holy judgment on others once per day and place a {i}mark of justice{/i} on persons so judged as the spell (but as a standard action). The ability functions as if cast by a caster of a level equal to the Justicar&apos;s total character level." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="SpInfo" tag="spMarkJus4"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="cJMuImmIll" name="Immunity to Illusions" description="Beginning at 5th level, a Justicar is immune to all illusions. A Justicar notes the presence of illusions but recognizes them for what they are and disbelieves them immediately and automatically." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="SpecUp"/>
+    </thing>
+  <thing id="cJMuSwoCou" name="Sword of Courage" description="Beginning at 6th level, a Justicar can invoke Muir&apos;s sword of courage once per day. Invoking this ability either enhances the Justicar&apos;s current sword or temporarily creates a supernatural magical bastard sword for the Justicar to use. The sword gains a +2 divine courage bonus to attack and damage rolls.  The sword also becomes a {i}holy{/i} weapon (see the &quot;Magic Items&quot; section in Chapter 15 of the Pathfinder Roleplaying Game) for its duration. In addition, the sword radiates {i}remove fear{/i} in a 30-foot radius for its duration (caster level equal to the Justicar&apos;s total character level). The ability lasts for 30 minutes. Sword of courage cannot be used in combination with either shield of truth or armor of honor until the Justicar gains the avatar ability." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="cJMuScoEvi" name="Scourge of Evil" description="At 6th level, a Justicar gains an additional +1 divine bonus to attack and damage rolls and double the normal critical threat range against all evil-aligned creatures (of all types).  This ability stacks with the enemy of evil ability and the Improved Critical feat or {i}keen{/i} weapon quality if the Justicar has these as well." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cJMuTruSee" name="True Seeing" description="Beginning at 7th level, a Justicar can use {i}true seeing{/i} as the spell once per day. The ability functions as if cast by a caster of a level equal to the Justicar&apos;s total character level." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="SpInfo" tag="spTrueSee6"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cJMuArmHon" name="Armor of Honor" description="Beginning at 8th level, a Justicar can invoke Muir&apos;s armor of honor once per day. Invoking this ability either enhances the Justicar&apos;s current armor or temporarily creates a suit of magical chainmail around the Justicar. The armor gains a +2 divine honor bonus to AC. The armor also has the qualities of {i}moderate fortification{/i}, {i}invulnerability{/i}, and {i}spell resistance (15){/i} (see the &quot;Magic Items&quot; section in Chapter 15 of the Pathfinder Roleplaying Game) for its duration. This ability lasts for 30 minutes. Armor of honor cannot be used in combination with either shield of truth or sword of courage until the Justicar gains the avatar ability." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="cJMuHolWor" name="Holy Word" description="Beginning at 9th level, a Justicar can speak a {i}holy word{/i} as the spell once per day. The ability functions as if cast by a caster of a level equal to the Justicar&apos;s total character level." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="SpInfo" tag="spHolyWor7"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="cJMuAvatar" name="Avatar" description="At 10th level, a Justicar can use shield of truth, sword of courage, and armor of honor at the same time up to once per week. When all three powers are invoked at the same time it seems as if a spectral figure of Muir herself overlaps the body of the Justicar and mimics his every movement. In combat against evil creatures the figure of Muir becomes even more apparent. In addition to allowing all three powers to operate in unison, when a Justicar becomes an Avatar of Muir he is treated as if under the effects of a {i}greater heroism{/i} spell (caster level equal to the Justicar&apos;s total character level) for the duration of the ability. The avatar ability lasts only so long as all three abilities - shield of truth, sword of courage, and armor of honor - are in effect at the same time." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Week"/>
+    </thing>
+  <thing id="cJMuDemBan" name="Demon-bane" description="At 10th level, a Justicar becomes an evilkilling machine. His critical threat range is doubled against evil undead and outsiders. This ability stacks with both the scourge of evil ability (see above) and the Improved Critical feat or {i}keen{/i} weapon quality if the Justicar has these as well." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  </document>

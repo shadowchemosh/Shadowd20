@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com</info_author>
+    <info_history><![CDATA[
+March 17, 2013 - Tim Shadow
+-Moved out of razor coast and into the Universal procedures files.
+    
+March 13, 2013 - Tim Shadow
+-Added the new procedure "FGValidAbi" to test if a racial ability matches a specific text string value.
+-FGValidAbi is meant to be used in a "Pre-Req" script only.]]></info_history>
+    </fileinfo>
+
+<!--
+March 1, 2013 - Tim Shadow
+-Created new.
+-This procedure searchs for a specific racial special via its name not ID.
+-->
+<procedure id="FGValidAbi" scripttype="validate"><![CDATA[
+  ~ This procedure tests to see if it can find a match to a specific racial ability on a race.
+  ~ This allows one to say "Change Shape" is valid and not have to enter every single Unique ID for
+  ~ every possiable racial special.
+  ~ ===How to use this Procedure===
+  ~ var FGValidTxt as string
+  ~ var FGValidAbi as number
+  ~ FGValidTxt = "Change Shape"
+  ~ Call FGValidAbi
+  ~ @valid = FGValidAbi
+  var FGValidTxt as string
+  var FGValidAbi as number
+  ~ Init fields here
+  FGValidAbi = 0
+
+  ~ Loop through all the racial abilities
+  foreach pick in hero from RaceAbil
+     ~ Valid if we are the passed in ability text
+     If (compare(eachpick.field[name].text,FGValidTxt) = 0) Then
+        FGValidAbi = 1
+     Endif
+  nexteach
+]]>
+</procedure>
+
+<!--
+April 21, 2013 - Tim Shadow
+-Created New.
+-This procedure searchs for a specific spell pick via its Name instead of by Unique ID. This allows for searching for say Burning Hands and not have to care about its unique ID.
+-->
+<procedure id="FGHasSpell" scripttype="validate"><![CDATA[
+  ~ This procedure tests if a character has a specific spell and sets the valid field
+  ~ ===How to use this Procedure===
+  ~ var FGHasSpell as number
+  ~ var p_Spell    as string
+  ~ p_Spell = "Burning Hands"
+  ~ Call FGHasSpell
+  ~ @valid = FGHasSpell
+  var FGHasSpell as number
+  var p_Spell    as string
+
+  ~ Init fields here
+  FGHasSpell = 0
+
+  ~ Search through all the spells 
+  foreach pick in hero from BaseSpell
+     ~ Valid if we are the passed in spell name
+     If (pos(eachpick.field[name].text,p_Spell) <> -1) Then
+        FGHasSpell = 1
+     Endif
+  nexteach
+]]>
+</procedure>
+
+<!--
+April 4, 2013 - Tim Shadow
+-Created new.
+-This resource allows for a central place to control the Tikiman power points. This is because the power points are divided amoung all the tikiman the class has. So at level 5 when you have two Tikiman they get a total of 5 powers divided amoung the two tikiman.
+-->
+  <thing id="resTikiman" name="Tikiman Power Points" compset="Resource" panellink="classes">
+    <eval phase="First" priority="25000"><![CDATA[
+      ~ Our resource max is equal to our Yohunga class level
+      field[resMax].value += hero.tagcount[Classes.FGYohunga]
+      ]]></eval>
+    <eval phase="PostLevel" priority="150" index="2"><![CDATA[
+      ~ We have Powers equal to the Yohunga level minus any powers other
+      ~ Tikiman have used up
+      field[resLeft].value = field[resMax].value - field[resSpent].value
+      ]]></eval>
+    </thing>
+
+</document>

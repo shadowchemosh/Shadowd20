@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_BasicPack - Helper Things"/>
+  <fileinfo>
+    <info_author>
+      Tim Shadow (ShadowChemosh)
+    </info_author>
+    <info_history><![CDATA[
+    January 3, 2015 - Tim Shadow
+    -Created New.
+    -Make a new mechanic to hold global helper things. Also move Power Resistance helper to here from UP.
+
+    ]]></info_history>
+    </fileinfo>
+
+
+  <!-- ============================================================================================ -->
+  <!-- New Ultimate Psionics Mechanic                                                               -->
+  <!-- ============================================================================================ -->
+  <thing id="mechBasic" name="Basic Pack Mechanic" compset="Mechanics">
+    <!-- Psionic Helper Objects -->
+    <bootstrap thing="xPwrRes"></bootstrap>
+
+    </thing>
+
+  <!-- ============================================================================================ -->
+  <!-- New Base Class Headers                                                               -->
+  <!-- ============================================================================================ -->
+
+  <!-- ============================================================================================ -->
+  <!-- Helper Objects                                                                               -->
+  <!-- ============================================================================================ -->
+  <thing id="xPwrRes" name="Power Resistance" description="You have Power Resistance." compset="Ability" uniqueness="unique">
+    <fieldval field="shortname" value="PR"/>
+    <tag group="Helper"    tag="BaseAbil"/>
+    <tag group="Helper"    tag="ShowSpec"/>
+    <tag group="SpecType"  tag="Resist"/>
+    <tag group="Universal" tag="Universal"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+      call CalcValue
+
+      ~ Use our value field as the quality of spell resistance
+      field[livename].text = field[name].text & " (" & field[abValue].value & ")"
+
+      ~ specify a shortname for consistency with other resistances
+      field[shortname].text &= " " & field[abValue].value]]></eval>
+    </thing>
+
+  </document>

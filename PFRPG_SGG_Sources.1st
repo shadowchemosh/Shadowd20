@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+
+<!-- Super Genius Games -->
+  <source
+    id="pSGG"
+    name="Super Genius Games"
+    selectable="no"
+    parent="UserParent"
+    sortorder="10"
+    description="Parent source for Super Genius Games products.">
+    </source>
+
+  </document>

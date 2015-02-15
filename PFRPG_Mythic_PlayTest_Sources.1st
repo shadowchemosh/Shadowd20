@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+<!--
+
+
+November 14, 2012 - Tim Shadow
+-Created New.
+
+-->
+
+
+<!-- ============================================== -->
+<!-- CUSTOM GROUPS AND TAGS                         -->
+<!-- ============================================== -->
+
+  <!-- Group Mythic Playtest custom tags -->
+  <group id="MythicPT" width="7" visible="no">
+    <!-- Currently in use -->
+    <value id="Hero"        name="Mythic Hero"/>
+    <value id="Monster"     name="Mythic Monster"/>
+    <value id="Tier"        name="Mythic Tier"/>
+    <value id="Rank"        name="Mythic Rank"/>
+    <value id="Path"        name="Mythic Path"/>
+    <value id="Ascension"   name="Mythic Ascension"/>
+    <value id="Magic"       name="Mythic Magic"/>
+    <value id="DualPath"    name="Mythic Dual Paths allowed"/>
+    <value id="Skills"      name="Skill Ranks too high"/>
+    <value id="StatBlock"   name="Mythic Subtype Statblock"/>
+    <!-- Power Uses Attribute tags -->
+    <value id="aSTR"        name="Mythic Powers use Str"/>
+    <value id="aDEX"        name="Mythic Powers use Dex"/>
+    <value id="aCON"        name="Mythic Powers use Con"/>
+    <value id="aINT"        name="Mythic Powers use Int"/>
+    <value id="aWIS"        name="Mythic Powers use Wis"/>
+    <value id="aCHA"        name="Mythic Powers use Cha"/>
+    <!-- Selector Helper tags -->
+    <value id="SelFeat"     name="Mythic Feat Selection"/>
+    <value id="FeatMythic"  name="Feat Choice Mythic"/>
+    <value id="FeatOrd"     name="Feat Choice Ordinary"/>
+    <value id="SelSense"    name="Mythic Sense Selection"/>
+    <value id="Blindsight"  name="Sense Choice Blindsight"/>
+    <value id="Echolocati"  name="Sense Choice Echolocation"/>
+    <value id="Scent"       name="Sense Choice Scent"/>
+    <value id="Tremorsens"  name="Sense Choice Tremorsense"/>
+    <value id="SelAct"      name="Active or Disabled Selection"/>
+    <value id="Active"      name="Mythic Ability Active"/>
+    <value id="Disabled"    name="Mythic Ability Disabled"/>
+    <!-- Not currently in use -->
+    <value id="Race"        name="Mythic Race"/>
+    <value id="Power"       name="Mythic Power"/>
+    <value id="TrialLess"   name="Mythic Trial Lesser"/>
+    <value id="TrialGr"     name="Mythic Trial Greater"/>
+    <value id="UnivPathAb"  name="Mythic Universal Path Ability"/>
+    <value id="Flaw"        name="Mythic Flaw"/>
+  </group>
+
+
+<!-- ============================================== -->
+<!-- SOURCES                                        -->
+<!-- ============================================== -->
+  <source
+    id="pMythicPla"
+    name="Mythic Playtest (v1.11)"
+    selectable="no"
+    parent="pS2Deprec"
+    sortorder="0"
+    description="Community Created Mythic playtest add-on by ShadowChemosh.">
+    </source>
+  <source
+    id="srcMythicP"
+    name="Mythic Playtest: Playtest 1"
+    selectable="yes"
+    parent="pMythicPla"
+    sortorder="0"
+    description="Orginial playtest document material.">
+    </source>
+  <source
+    id="srcMythicA"
+    name="Mythic Playtest: Update 12/21/12"
+    selectable="no"
+    parent="pMythicPla"
+    sortorder="0"
+    description="This covers the changes in Jason Bulmahn board update on 12/12/12.">
+    </source>
+
+  </document>

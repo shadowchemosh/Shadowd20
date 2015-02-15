@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[3/29/2012
+-Added an "Activated" ability to the "Clear Ear" herb from the Adventurers Armory.
+
+8/21/2011
+-Finished coding of new Shadow d20 version of "Heirloom Weapon".
+-Hide the other copies of "Heirloom Weapon (AoO) and CMB".
+
+8/16/2011
+-Houseruled Heirloom Weapon back to pre-Errata status but with the following change. You get either proficincy with the weapon selected or if already proficient then you get +1 to hit.]]></info_history>
+    </fileinfo>
+  <thing id="trS2HeirlW" name="Heirloom Weapon" description="You carry a weapon that has been passed down from generation to generation in your family. This heirloom weapon is of masterwork quality (which you receive for FREE at 1st level). You gain either a +1 trait bonus on attack rolls with this specific weapon if you are normally proficient with the type of weapon selected. Or you are considered proficient with that specific weapon (but not other weapons of that type) even if you do not have the required proficiencies. In an example a fighter with Heirloom Weapon (Longsword) would receive a +1 trait bonus on attack rolls.  A wizard with Heirloom Weapon(Longsword) would instead gain proficiency in the weapon.\n\n{b}Note:{/b} You must manually add your master work heirloom weapon to the character and then select it from the 2nd drop down box to get the trait bonus on attack rolls." compset="Trait" summary="Free Masterwork weapon that you are proficient and +1 trait attacks" replaces="trHeirWeap" uniqueness="useronce">
+    <fieldval field="usrCandid1" value="thingid.iMagWeapon"/>
+    <usesource source="PCAdvArm"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="trCategory" tag="Equipment"/>
+    <eval phase="Level" priority="10000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+If (field[usrChosen1].chosen.tagis[Helper.Proficient] <> 0) Then
+   ~ Add to attacks
+   field[usrChosen1].chosen.field[wAttBonus].value += 1
+Else
+   ~var v_tag as string
+   ~v_tag = "Helper.ExoticProf"
+   ~call ChosenProf
+   perform field[usrChosen1].chosen.assign[Helper.Proficient]
+Endif]]></eval>
+    </thing>
+  <thing id="gS2ClearE" name="Clear Ear" description="This green gel is poured into the user&#146;s ear and takes effect 2 hours later, enhancing senses and memory but increasing irritability.  For 6 hours, the user gains a +2 alchemical bonus on Perception and Knowledge checks and a -2 penalty on all Charisma-based checks." compset="Gear">
+    <comment>Added an eval script so this herb can be activated.</comment>
+    <fieldval field="gWeight" value="-1"/>
+    <fieldval field="gCost" value="15"/>
+    <usesource source="PCAdvArm"/>
+    <tag group="Helper" tag="UsesQty"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="UsedUp"/>
+    <tag group="gType" tag="Black"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If not activated get out now
+doneif (field[abilActive].value <> 1)
+~ +2 bonus to Perception
+#applybonus[BonAlch,hero.child[skPercep],2]
+~ +2 bonus to all Knowledge skills
+foreach pick in hero from BaseSkill where "Helper.SkCatKnow"
+   #applybonus[BonAlch,eachpick,2]
+nexteach
+
+var Valid as number
+~ Give penalty to Cha based skills
+foreach pick in hero from BaseSkill
+  Valid = 0
+  ~ If we have a skill override then process here
+  if (eachpick.tagcount[SkillOver.?] <> 0) then
+     ~ Check Skill Overrides
+     if (eachpick.tagis[SkillOver.aCHA] <> 0) then
+        Valid += 1
+     endif
+  ~ if we don't have a skill override then process here
+  else
+     ~ Check normal skill attributes
+     if (eachpick.islinkage[skillattr] <> 0) then
+        if (eachpick.linkage[skillattr].tagis[thingid.aCHA] <> 0) then
+           Valid += 1
+        endif
+     endif
+  endif
+
+  ~ If valid skill then apply the penalty
+  if (Valid <> 0) then
+     eachpick.field[Penalty].value += -2
+  endif
+nexteach]]></eval>
+    </thing>
+  <hidden id="trHeirWMan"/>
+  <hidden id="trHeirWAoO"/>
+  </document>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+
+  <thing id="fB9supUnar" name="Superior Unarmed Strike" description="{i}Your unarmed strikes have become increasingly deadly, enabling you to strike your foes in their most vulnerable areas.{/i}\n\n{b}Prerequisite:{/b} Improved Unarmed Strike, base attack bonus +3.\n\n{b}Benefit:{/b} You deal more damage with your unarmed strikes, as shown on the table below.\n3rd(1d4); 4th-7th(1d6); 8th-11th(1d8); 12th-15th(1d10);16th-20th(2d6)\n\n{b}Special:{/b} If you are a monk, you instead deal unarmed damage as a monk four levels higher." compset="Feat" uniqueness="useronce">
+    <usesource source="Book9Sword"/>
+    <tag group="fCategory" tag="Combat"/>
+    <eval phase="First" priority="500"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+var level as number
+level = herofield[tLevel].value
+var result as number
+~result = hero.child[wUnarmed].delete[wMain.?]
+var dice as string
+
+if (hero.tagis[Classes.Monk] <> 0) then
+  hero.child[cMnkUnarm].field[xExtraLev].value += 4
+
+else
+  result = hero.child[wUnarmed].delete[wMain.?] 
+  if (level < 4) then
+    result = hero.child[wUnarmed].assign[wMain.1d4_4]
+    dice = "1d4"
+  elseif (level < 8) then
+    result = hero.child[wUnarmed].assign[wMain.1d6_5]
+  dice = "1d6"
+  elseif (level < 12) then
+    result = hero.child[wUnarmed].assign[wMain.1d8_6]
+    dice = "1d8"
+  elseif (level < 16) then
+    result = hero.child[wUnarmed].assign[wMain.1d10_304]
+    dice = "1d10"
+  else
+    result = hero.child[wUnarmed].assign[wMain.2d6_104]
+    dice = "2d6"
+  endif
+
+  field[livename].text = field[name].text & " (" & dice & ")"
+endif]]></eval>
+    <exprreq message="Must have a Base Attack Bonus of +3 or greater."><![CDATA[child[Attack].field[tAtkBase].value >= 3]]></exprreq>
+    <exprreq message="Improved unarmed strike required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
+    </thing>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</document>

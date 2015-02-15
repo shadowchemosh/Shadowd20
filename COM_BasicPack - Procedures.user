@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_BasicPack - Procedures"/>
+  <fileinfo>
+    <info_author><![CDATA[
+      Tim Shadow
+      Email: ShadowChemosh@yahoo.com
+    ]]>
+    </info_author>
+    <info_history><![CDATA[
+      January 9, 2015
+      -Created new to hold procedures useful for lots of packages.
+      -Added the new procedure "GiveEthnic" that gives a single ethnic choice for a race.
+      ]]>
+    </info_history>
+  </fileinfo>
+
+  <!-- =================================================================== -->
+  <!--                 Give a race a single ethnic choice.                 -->
+  <!-- =================================================================== -->
+  <procedure id="GiveEthnic" context="pick"><![CDATA[
+    ~ This procedure gives a race a single ethnic choice.
+    ~ Timing: Pre-Levels/10000
+
+    ~set our focus to the hero's race
+    perform hero.findchild[BaseRace].setfocus
+    doneif (state.isfocus = 0)
+    ~ Give one Ethnicity
+    focus.field[rGiveSpec].value = 1
+    perform focus.assign[Helper.OptCustom]
+    focus.field[rSpecName].text = "Ethnicities"  
+  ]]>
+  </procedure>
+
+</document>

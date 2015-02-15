@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+
+<!-- Kobold Quarteerly Parent and Child -->
+  <source
+    id="pKQ"
+    name="Kobold Quarterly"
+    selectable="no"
+    parent="UserParent"
+    sortorder="10"
+    description="Parent Source for kobold quarterly products.">
+    </source>
+
+<!-- Converted 3.5 Books Parent and Child -->
+  <source
+    id="p35"
+    name="3.5 Converted Books"
+    selectable="no"
+    parent="UserParent"
+    sortorder="10"
+    description="This is converted DnD 3.5 rules converted to pathfinder.">
+    </source>
+    
+<!-- Paizo Modules Parent and Child -->
+  <source
+    id="pPaizo"
+    name="Paizo Modules"
+    selectable="no"
+    parent="UserParent"
+    sortorder="10"
+    description="Paizo Gamemasetry Modules.">
+    </source>
+    
+<!-- Frog God Games -->
+  <source
+    id="pFrog"
+    name="Frog God Games"
+    selectable="no"
+    parent="UserParent"
+    sortorder="10"
+    description="Frog God Games pathfinder products.">
+    </source>
+    
+<!-- Paizo Fans United -->
+  <source
+    id="pPaizoFans"
+    name="Paizo Fans United"
+    selectable="no"
+    parent="UserParent"
+    sortorder="10"
+    description="Paizo Fans United pathfinder products (ie Wayfinder).">
+    </source>
+
+</document>

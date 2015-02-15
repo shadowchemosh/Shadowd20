@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com
+
+This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
+    <info_history>Feb 17, 2013
+-Created new.</info_history>
+    </fileinfo>
+  <thing id="deiSivana2" name="Sivanah" description="Sivanah (pronounced siv-AHN-ah) is the patron goddess of illusion magics. She is also known as the &quot;Seventh Veil&quot;, a name taken from the clothing she is most-often depicted wearing. Her symbol is a circle made of six dull-colored veils tied end-to-end." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Illusions, reflections, mystery"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdMadness"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdRune"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="WepProf" tag="wPFBladedS"/>
+    </thing>
+  <thing id="deiS2Ragat" name="Ragathiel" description="Ragathiel, General of Vengeance\n\nLG angel empyreal lord of chivalry, duty, and vengeance\n\n{B}Cult{/b}\n{B}Holy Symbol{/B} Bastard sword crossed with a crimson wing\n{B}Temples{/B} Battlefields, castles, fortresses, headquarters of knightly orders, war rooms\n{B}Worshipers{/B} The avowed, knights, soldiers, the wronged\n{B}Minions{/B} Aasimar paladins, blink dogs, kirin\n{B}Obedience{/B} Slay a proven wrongdoer in Ragathiel&apos;s name. It is not enough for the sacrifice to have an evil heart or evil intentions; the sacrifice must have committed evil or unlawful deeds. Gain a +4 sacred bonus on saving throws against spells and effects cast by evil creatures.\n\n{B}Boons{/B}\n{B}Virtuous Combat (Sp){/B} bless weapon 3/day, litany of righteousnessUC 2/day, or magic vestment 1/day\n{B}Retribution (Su){/B} You gain a sacred bonus equal to half your HD on damage rolls made with slashing weapons against the last creature to have physically wounded you within the last 24 hours.\n{B}Pure Soul (Sp){/B} You can cast holy aura on yourself once per day. In addition to the effects of the spell, you gain DR 10/ good and cold iron and you treat any weapon in hand as a +5 holy weapon for the duration of the effect.\n\nRagathiel, child of the archdevil Dispater and a goddess of fire, stands on the front line of the war between Heaven and Hell. He carves through legions of fiends and drives back lesser evils with the mere presence of his awful majesty.\n\nRagathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by Dispater himself.\n\nRagathiel&apos;s tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely&#151;though that trust took centuries to develop.\n\nRagathiel takes an active role in the battle against Hell&apos;s fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance.\n\nThe lower slopes of Heaven are home to Ragathiel&apos;s Fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be." compset="Deity" replaces="deiRagathi" uniqueness="unique">
+    <comment>Need an override to be able to control the new Empyeral Obedience feat.</comment>
+    <fieldval field="deiPortfol" value="Empyreal Lord of chivalry, duty, vengeance"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <tag group="AllowDom" tag="cdDestruct" name="Destruction" abbrev="Destruction"/>
+    <tag group="AllowDom" tag="cdGood" name="Good" abbrev="Good"/>
+    <tag group="AllowDom" tag="cdLaw" name="Law" abbrev="Law"/>
+    <tag group="AllowDom" tag="cdLeadersh" name="Leadership" abbrev="Leadership"/>
+    <tag group="AllowDom" tag="cdMartyr" name="Martyr" abbrev="Martyr"/>
+    <tag group="AllowDom" tag="cdNobility" name="Nobility" abbrev="Nobility"/>
+    <tag group="AllowDom" tag="cdRage" name="Rage" abbrev="Rage"/>
+    <tag group="DeityCat" tag="Empyreal" name="Empyreal Lord" abbrev="Empyreal Lord"/>
+    <tag group="ProductId" tag="Paizo" name="Paizo Publishing, LLC" abbrev="Paizo Publishing, LLC"/>
+    <tag group="WepProf" tag="wSwordBast" name="Bastard sword" abbrev="Bastard sword"/>
+    <tag group="AllowDom" tag="cdArchonG" name="Archon (Good)" abbrev="Archon (Good)"/>
+    <tag group="AllowDom" tag="cdArchonL" name="Archon (Law)" abbrev="Archon (Law)"/>
+    <tag group="AlignTemp" tag="LawGood" name="Lawful Good" abbrev="LG"/>
+    <bootstrap thing="abS2RagaOb">
+      <containerreq phase="First" priority="500"><![CDATA[Custom.Obedience <> 0]]></containerreq>
+      </bootstrap>
+    </thing>
+  </document>

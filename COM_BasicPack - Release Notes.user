@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_BasicPack - Release Notes"/>
+  <fileinfo>
+    <info_author><![CDATA[
+      Author:  Tim Shadow
+      Email: shadowchemosh@yahoo.com
+      ]]>
+      </info_author>
+    <info_history><![CDATA[
+<strong>v3.3  January 9, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Not allowed for PFS flagged on all "custom" items.</li>
+<li></li>
+</ul>
+
+<strong>New Features</strong>
+<ul>
+<li>New features and file layout to support community pack changes. Including the release of the Pathfinder 3PP Pack.</li>
+<li></li>
+</ul>
+
+<strong>Data File Authoring</strong>
+<ul>
+<li>New loadonce XML element added to all files. This requires at least HL 6.1e or the latest iPad app to load now. This also means the files in the community packs SHOULD not be copied to start a new file. If you do you will have issues with loading.</li>
+<li>Valdiation procedures from the old SGG pack has been moved to the basic pack. All packages have access to HaveSpell and CntMartWea.</li>
+<li>Added the new procedure "HaveSpell" to test if a character has access to a specific spell ID.</li>
+<li>Added the new procedure "CntMartWea" to count the number of martial weapon proficiencies a character has.</li>
+<li>Moved over Ultmate Psionics powers Discipines over to the basic pack. This allows everyone access to these.</li>
+<li>Power Resistance helper has been moved to the basic pack so it will be on all characters. This allows anything to add PR to any character by setting abValue on xPwrRes.</li>
+<li></li>
+<li></li>
+<li></li>
+
+</li>
+</ul>
+
+
+<strong>v3.0  January 1, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fixed all the "Weapon CMB" and "Weapon CMD" adjustments to better display weapon specific bonuses for Disarm, Sunder, and Trip attacks.</li>
+<li>Changed "Hero, Ability score increase" adjustment to allow negative numbers.</li>
+</ul>
+
+<strong>New Features</strong>
+<ul>
+<li>Added "Mythic Ability, Add Trackable" to force a mythic ability to display on the In-Play tab.</li>
+<li>Added "Mythic Ability, Remove Tracker" to remove a mythic ability from displaying on the In-Play tab.</li>
+<li>Added "Improved Weapon Finesse" feat that requires the feat "Weapon Finesse" and gives "Dex" to damage with light and finesse weapons.</li>
+<li>Added "Bolt Ace" archetype. This version of the Bolt Ace loses all access to guns and gains access to all crossbows. In addition the bolt ace loses Gunsmithing and gains Rapid Reload at first level.</li>
+<li>Added "Superstition" rage power that can be activated on the In-Play tab. This makes it easier to keep track of all those Morale bonus stacking issues.</li>
+<li>Added "Deal Nonlethal Dmg (-4H)" combat action so that the -4H is easily taken into account and all weapons will show they do "nonlethal" damage.</li>
+<li>Added "Combat: Flanking Bonus" allows you to increase/decrease the flanking bonus condition. This is a "Conferred Ability Adjustment" and is used to help those with Outflank feats or Menacing weapon property.</li>
+<li>Added "Armor Razors" which are like spiked armor but do slashing damage instead of piercing damage.</li>
+</ul>
+
+<strong>Data File Authoring</strong>
+<ul>
+<li>Tagged custom feats, equipment, and archetypes to be non-PFS legal.</li>
+</ul>
+      ]]></info_history>
+    </fileinfo>
+  </document>

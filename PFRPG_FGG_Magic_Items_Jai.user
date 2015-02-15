@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>If using The Tomb of Abysthor module, this file is required.</info_author>
+    </fileinfo>
+  <thing id="ipUmDeaBla" name="Deathbringer Blade" description="The {i}deathbringer blade{/i} ability can be applied to any slashing or piercing melee weapon. It functions as a {i}sword of life stealing{/i} bestowing a negative level when it deals a critical hit. The wielder gains 1d6 temporary hit points each time a negative level is bestowed on another. These temporary hit points last for 24 hours. One day after being struck, subjects must make a DC 16 Fortitude save for each negative level or lose a character level.\n\n{b}Note:{/b} You can add the {i}Deathbringer Blade{/i} spell adjustment on the Adjust tab to track the temporary HPs{/i}\n\nIn addition, as a move action on his own turn the wielder can choose to let the weapon steal his own life. This can only be done voluntarily and results in the wielder&apos;s immediate death as if by death magic.  When this is done, the weapon immediately explodes dealing 1d6 points of negative energy damage per level or hit die that the wielder possessed to anyone within 10 ft. Anyone within the area of effect of this explosion can make a DC 16 Fortitude save for half damage. The weapon is destroyed if this action is taken.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}death knell{/i}, {i}enervation{/i}; {b}Cost{/b} +3 Bonus" compset="ItemPower" summary="Bestows a negative level when it deals a critical hit." uniqueness="useronce">
+    <fieldval field="iCL" value="17"/>
+    <fieldval field="iPrice" value="3"/>
+    <usesource source="FGGGenera"/>
+    <usesource source="FGGModul"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="PowerReq" tag="Melee"/>
+    <tag group="PowerType" tag="Weapon" name="Weapon" abbrev="Weapon"/>
+    <prereq message="Requires Piercing or Slashing Weapon.">
+      <validate>@valid = tagis[wType.S] + tagis[wTypeOff.S] + tagis[wType.P] + tagis[wTypeOff.P]</validate>
+      </prereq>
+    </thing>
+  <thing id="pUmDeaBlad" name="Deathbringer Blade" description="The wielder gains 1d6 temporary hit points each time a negative level is bestowed on another. These temporary hit points last for 24 hours." compset="InPlay">
+    <fieldval field="pDuration" value="24 Hours"/>
+    <fieldval field="pWhat" value="Temp"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give Bonus HP
+      herofield[tCurrentHP].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="iUmHaMorDo" name="Hammer of Mordecai&apos;s Doom" description="This massive two-handed warhammer is a {i}+3 adamantine holy thundering warhammer{/i}. It is considered an exotic weapon (Dmg 1-10, Crit x3). Its head bears engravings depicting Thyr, Muir and a third faceless deity. It constantly emits light as a {i}light{/i} spell. Belonging to a powerful priest of good long ago named Mordecai, it was lost to the knowledge of men before the rise of Orcus in Tsar. In addition to dealing x3 damage and 2d8 points of sonic damage on a critical hit, it also unleashes a {i}holy smite{/i} (caster level 15) upon the creature that was struck.\n\nUnfortunately this weapon is also under a powerful curse that cannot be removed with anything short of divine intervention. As it betrayed its former owner to his death, it too will betray its current owner. On any critical hit where the sonic and {i}holy smite{/i} damage are sufficient to kill the creature struck, apply only the weapon damage and instead of the sonic and {i}holy smite{/i} effects the target creature is affected as if by a {i}heal{/i} spell (caster level 15) unless it is undead, in which case it receives the benefits of a {i}harm{/i} spell (caster level 15). The curse effect of this weapon cannot be learned through an {i}identify{/i} or {i}analyze dweomer{/i}." compset="MagicWep" summary="This massive two-handed warhammer is a {i}+3 adamantine holy thundering warhammer{/i}." uniqueness="unique">
+    <fieldval field="iCL" value="15"/>
+    <fieldval field="BonEnhance" value="3"/>
+    <fieldval field="gWeight" value="10"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Good"/>
+    <tag group="Helper" tag="CursedItem"/>
+    <tag group="iSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wType" tag="B"/>
+    <tag group="Helper" tag="MagicOnly"/>
+    <tag group="IsWeapon" tag="wWarhammer"/>
+    <child entity="wSpecMagic">
+      <bootstrap thing="iHoly"></bootstrap>
+      <bootstrap thing="iThunder"></bootstrap>
+      <bootstrap thing="wWarhammer"></bootstrap>
+      <bootstrap thing="eAdamant"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iUmHaThGod" name="Hammer of the Three Gods" description="This massive two-handed warhammer is a {i}+3 adamantine holy thundering warhammer{/i}. It is considered an exotic weapon (Dmg 1-10, Crit x3). Its head bears engravings depicting Thyr, Muir and a third faceless deity. It constantly emits light as a {i}light{/i} spell.  Belonging to a powerful priest of good long ago named Mordecai, it was lost to the knowledge of men before the rise of Orcus in Tsar. In addition to dealing x3 damage and 2d8 points of sonic damage on a critical hit, it also unleashes a {i}holy smite{/i} (caster level 15) upon the creature that was struck.\n\nUnfortunately this weapon is also under a powerful curse that cannot be removed with anything short of divine intervention. As it betrayed its former owner to his death, it too will betray its current owner. On any critical hit where the sonic and {i}holy smite{/i} damage are sufficient to kill the creature struck, apply only the weapon damage and instead of the sonic and {i}holy smite{/i} effects the target creature is affected as if by a {i}heal{/i} spell (caster level 15) unless it is undead, in which case it receives the benefits of a {i}harm{/i} spell (caster level 15).\n\nAdditionally, a second heretofore unrevealed aspect of the curse manifests if the hammer is used against the devourer at Area H2 of {b}{i}Slumbering Tsar: Temple-City of Orcus, Part 3 - The Harrow Lanes{/b} {/i}for which the curse was originally attuned. In this case any hit by the hammer, whether critical or not, that would reduce the devourer to 0 hp or below causes the normal {i}heal/harm{/i} effect as described above and also effects the wielder with a {i}blasphemy{/i} (caster level 20).The curse effect of this weapon cannot be learned through an {i}identify{/i} or {i}analyze dweomer{/i}.\n\nIt is possible that the curse on this hammer may be lifted and it be redeemed as the {i}Hammer of the Three Gods{/i} (see Event 8 in Chapter 1 of {b}{i}Slumbering Tsar: The Hidden Citadel, Part 1 - At the Feet of Orcus{/b}{/i}). If that occurs, the curse effects described above are lifted and it becomes simply a {i}+4 adamantine holy thundering warhammer{/i}.  A side note of the ownership of the hammer is that it also serves as a symbol of office. Mordecai was the last rightful patriarch of St. Harul&apos;s Hold who, in honor of the lost goddess, was a cleric of both Thyr and Muir. The new holder of the weapon is also the rightful patriarch of St. Harul&apos;s Hold and thus Tsar and its surrounding environs. Now it is possible that a PC willing to take levels in cleric devoted to either of those deities (or perhaps Kel herself as discussed in the &quot;Concluding the Adventure&quot; section of Chapter 13 in {b}{i}Part 6 - Caverns of the Barrier{/b}{/i}) can actually become that patriarch.  However if not, the PC can still claim rightful rulership over the hold even if only in a secular sense. If the PC is not evil and is willing to allow those churches to re-establish their clerical presence in Tsar, they would honor the position conferred by the hammer and let that individual govern as the secular authority until passing to the next patriarch upon his or her death.\n\n{b}Destruction{/b}\nIf a Patriarch of St. Harul&apos;s Hold is slain by the hammer or brought to his doom by the hammer&apos;s curse, the {i}Hammer of Mordecai&apos;s Doom{/i} will crumble to rusting fragments." compset="MagicWep" summary="This massive two-handed warhammer is a {i}+4 adamantine holy thundering warhammer{/i}." uniqueness="unique">
+    <fieldval field="iCL" value="15"/>
+    <fieldval field="BonEnhance" value="4"/>
+    <fieldval field="gWeight" value="10"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Good"/>
+    <tag group="iSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wType" tag="B"/>
+    <tag group="Helper" tag="MagicOnly"/>
+    <tag group="IsWeapon" tag="wWarhammer"/>
+    <child entity="wSpecMagic">
+      <bootstrap thing="iHoly"></bootstrap>
+      <bootstrap thing="iThunder"></bootstrap>
+      <bootstrap thing="wWarhammer"></bootstrap>
+      <bootstrap thing="eAdamant"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iUmDeardst" name="Dreadstorm" description="This vicious-looking pole-arm with a barbed and pitted head is one of the vile creations of the shadow-giant smith Larach-Umbriol. It was created as a twin to the cursed weapon that slew Gerrant of Gilboath, the Last Justicar of Muir. {i}Dreadstorm{/i} is a {i}+3 human bane wounding guisarme{/i}. Three times per day as a standard action, the wielder can activate a {i}blade barrier{/i} that completely surrounds the wielder in a 20-foot radius. This {i}blade barrier{/i} lasts up to 15 minutes but can be dismissed by the wielder as a free action. The {i}blade barrier{/i} deals 15d6 points of damage per round (DC 19 Reflex save for half) and provides the usual +4 bonus to AC and +2 bonus on Reflex saves on attacks made through it, though not the attacks of the wielder as long as he is attacking with {i}Dreadstorm{/i}.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}blade barrier{/i}, {i}mage&apos;s sword{/i}, {i}summon monster I{/i} ; {b}Cost{/b} 117,309 gp" compset="MagicWep" summary="{i}Dreadstorm{/i} is a {i}+3 human bane wounding guisarme{/i}" uniqueness="unique">
+    <fieldval field="BonEnhance" value="3"/>
+    <fieldval field="gSizeCost" value="9"/>
+    <fieldval field="gCost" value="234300"/>
+    <fieldval field="iCL" value="15"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <tag group="iDescript" tag="Force"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <bootstrap thing="spBladBar6">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wGuisarme"></bootstrap>
+      <bootstrap thing="iBane">
+        <assignval field="iCustSpec" value="Human"/>
+        </bootstrap>
+      <bootstrap thing="iWounding"></bootstrap>
+      </child>
+    </thing>
+  <thing id="isUmSacNec" name="Saca-Baroo&apos;s Staff of Necromancy" description="This staff is made from ebony-stained bones wired together with fire-hardened sinews and twisted copper. It allows the use of the following spells:\n\n&#149;  {i}Deathwatch {/i}(1 charge)\n&#149;  {i}Death Knell{/i} (1 charge)\n&#149;  {i}Halt undead{/i} (1 charge)\n&#149;  {i}Enervation{/i} (2 charges)\n&#149;  {i}Waves of fatigue{/i} (2 charges)\n&#149; {i}Circle of death{/i} (3 charges)\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Staff, {i}circle of death{/i}, {i}death knell{/i}, {i}deathwatch{/i}, {i}enervation{/i}, {i}halt undead{/i}, {i}waves of fatigue{/i} ; {b}Cost{/b} 41,000 gp" compset="Staff" summary="This staff is made from ebony-stained bones wired together with fire-hardened sinews and twisted copper.">
+    <fieldval field="gCost" value="82000"/>
+    <fieldval field="gWeight" value="5"/>
+    <fieldval field="iCL" value="13"/>
+    <fieldval field="trkMax" value="10"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <bootstrap thing="spDeatKne1">
+      <autotag group="ChargeUse" tag="1"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Helper" tag="StaffSpell"/>
+      </bootstrap>
+    <bootstrap thing="spDeathwa1">
+      <autotag group="ChargeUse" tag="1"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Helper" tag="StaffSpell"/>
+      </bootstrap>
+    <bootstrap thing="spEnervat4">
+      <autotag group="ChargeUse" tag="2"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Helper" tag="StaffSpell"/>
+      </bootstrap>
+    <bootstrap thing="spHaltUnd3">
+      <autotag group="ChargeUse" tag="1"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Helper" tag="StaffSpell"/>
+      </bootstrap>
+    <bootstrap thing="spWaveFat5">
+      <autotag group="ChargeUse" tag="2"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Helper" tag="StaffSpell"/>
+      </bootstrap>
+    <bootstrap thing="spCircDea6">
+      <autotag group="ChargeUse" tag="3"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Helper" tag="StaffSpell"/>
+      </bootstrap>
+    </thing>
+  <thing id="iUmDarKiss" name="Dark Kiss" description="{b}Alignment{/b} CE\n{b}Ego{/b} 13\n{b}Senses{/b} 30 ft. vision and hearing\n{b}Int{/b} 10, {b}Wis{/b} 12, {b}Cha{/b} 12 \n{b}Communication{/b} empathy \n{b}Lesser Power{/b}: {i}hold person{/i}on an enemy 3/day.\n\n{b}Personality{/b}: Dark Kiss, whose real name was forgotten, was a cold-blooded serial killer who killed for the sport of it. He was fond of decapitating his victims and stamping their foreheads with his sigil - the bloody impression of his lips. He called it his &quot;dark kiss&quot;. Eventually he was caught red-lipped, so to speak, and was lynched on the spot. The kukri he used in his killings, however, has continued to float throughout the land spawning numerous copycat killers over the years." compset="MagicWep" summary="{i}+3 vorpal ghost touch kukri{/i}" uniqueness="useronce">
+    <fieldval field="gCost" value="194300"/>
+    <fieldval field="gSizeCost" value="3"/>
+    <fieldval field="BonEnhance" value="3"/>
+    <fieldval field="iCL" value="18"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <bootstrap thing="spHoldPer2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wKukri"></bootstrap>
+      <bootstrap thing="iGhostTch"></bootstrap>
+      <bootstrap thing="iVorpal"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iUmDeaMock" name="Death&apos;s Mockery" description="{b}Alignment{/b} NE\n{b}Ego{/b} 16\n{b}Senses{/b} 60 ft. vision and hearing\n{b}Int{/b} 13, {b}Wis{/b} 10, {b}Cha{/b} 13 \n{b}Communication{/b} empathy \n{b}Lesser Power{/b}: {i}deathwatch{/i} continually active, {i}mirror image{/i} 1/day\n{b}Special Purpose{/b}: Cheat death with ever-greater feats of risk and daring-do.\n{b}Dedicated Power{/b}: +2 luck bonus on attack, damage, saving throw, skill check and ability check rolls.\n\n{b}Personality{/b}: This was the signature weapon of the legendary jewel thief and illusionist Raveene. The rogue was never caught and was \nbelieved to have stashed away several fortunes of his ill-gotten gains, including the crown jewels of the overking. The weapon is recognizable by its silver blade embossed with a laughing skull and the hollow, sepulchral laughter that issues from the blade whenever its {i}dancing{/i} ability is activated. Like its former owner, it seeks to drive its new owner into more and more dangerous endeavors in a never-ending quest for thrills. Who or what spirit inhabits this weapon is lost to history, but undoubtedly he eventually fell to his own thrill-seeking." compset="MagicWep" summary="{i}+4 dancing silver dagger{/i}" uniqueness="useronce">
+    <fieldval field="gCost" value="188420"/>
+    <fieldval field="gSizeCost" value="2"/>
+    <fieldval field="BonEnhance" value="4"/>
+    <fieldval field="iCL" value="15"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <bootstrap thing="spDeathwa1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Constant"/>
+      </bootstrap>
+    <bootstrap thing="spMirrIma2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <eval phase="First" priority="5000"><![CDATA[
+
+       if (field[gIsEquip].value <> 0) then
+        #applybonus[BonLuck, hero.child[ArmorClass], 2]
+        #applybonus[BonLuck, hero.child[svAll], 2]
+        foreach pick in hero from BaseAttr
+          #situational[each,"+2 Luck bonus to all checks.",field[thingname].text]
+          nexteach
+        endif]]></eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wKukri"></bootstrap>
+      <bootstrap thing="iDancing"></bootstrap>
+      <bootstrap thing="eAlchSilv"></bootstrap>
+      </child>
+    </thing>
+  <thing id="irUmRinAza" name="Ring of Azarkites" description="This ring is made of white gold and bears a rune in Celestial recognizable as the symbol of the trumpet archon Azarkites with a DC 30 Knowledge (religion) or Knowledge (planes) check. Azarkites was an archon favored by the powers of good who was felled during the Battle of Tsar. He was known to have a magical ring, but when he was prepared for burial it was nowhere to be found. It had been stolen by a fellow soldier that gave in to avarice. It was never found, but the gods cursed the ring to turn on its wearer.\n\nThe ring is a {i}ring of protection +5{/i} and grants the wearer a +2 bonus to his Strength and a +10 ft. bonus to his base speed. However, once the ring has been put on, it cannot be removed short of the death of the wearer or the application of a {i}break enchantment{/i} and an {i}atonement{/i} spell cast on him. It can then be removed, though if put back on it becomes stuck once again.\n\nThe worst part of the ring, though, is the nature of its curse. While it always retains its deflection bonus, each week it is worn the wearer loses 1 point of Strength. The bonus points are lost first, but after two weeks it begins to remove the wearer&apos;s natural Strength. Likewise each month that it is worn, the wearer loses 10 feet of speed from all his forms of movement. Eventually the wearer&apos;s Strength drops to 0 or his speed drops to 0 and he becomes helpless. If the ring is removed, these return at the rate of 1 point of Strength per day and 10 feet of speed per week. {i}Restoration{/i} can hasten this process in which case 10 feet of speed equals one ability point.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Forge Ring, {i}bull&apos;s strength{/i}, {i}haste{/i}, {i}shield of faith{/i}\n{b}Cost{/b} This is a unique ring that was not originally crafted to bear its current curse and as such cannot be created." compset="Ring" summary="The ring is a {i}ring of protection +5{/i} and grants the wearer a +2 bonus to his Strength and a +10 ft. bonus to his base speed." uniqueness="useronce">
+    <fieldval field="gCost" value="66000"/>
+    <fieldval field="iCL" value="15"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Abjur"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <eval phase="First" priority="5000"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        hero.child[ArmorClass].field[tACDeflect].value = maximum(hero.child[ArmorClass].field[tACDeflect].value, 5)
+        #enhancementbonus[hero.child[aSTR], 2]
+        #enhancementbonus[hero.child[Speed], 10]
+      endif]]></eval>
+    </thing>
+  <thing id="ioUmFezTrS" name="Fez of True Seeing" description="This purple velvet head covering has a red silk tassel dangling to one side. Once per day as a free action the wearer can use {i}true seeing{/i} as the spell.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wonderous Item, {i}bull&apos;s strength{/i}, {i}haste{/i}, {i}shield of faith{/i}\n{b}Cost{/b} This is a unique ring that was not originally crafted to bear its current curse and as such cannot be created." compset="Wondrous" summary="Once per day as a free action the wearer can use {i}true seeing{/i} as the spell.">
+    <fieldval field="iCL" value="13"/>
+    <fieldval field="gCost" value="23400"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="iSchool" tag="Divination"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="gType" tag="Wonder"/>
+    <bootstrap thing="spTrueSee5">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioUmCorCro" name="Cornu Crown" description="This crown is made of platinum but remains dull no matter how much it is polished. It is in the shape of a curving ram&apos;s horn or cornucopia. It is a creation of absolute evil bestowed upon his first Grand Cornu by Orcus himself. Anyone of lawful neutral, neutral, or chaotic neutral alignment that touches the crown takes 5d4 points of damage per round. Anyone of lawful good, neutral good, or chaotic good alignment that touches the crown takes 5d6 points of damage per round. Only someone who is lawful evil, neutral evil, or chaotic evil can safely handle the {i}Cornu Crown{/i}. If worn by someone of evil alignment, it grants a +5 deflection bonus to his Armor Class and a +4 profane bonus to his Wisdom and Charisma. It further allows that individual to rebuke or command undead as a cleric four levels higher than his character level.\n\n{b}Destruction{/b}\nWhen the last High Altar of Orcus in the world is destroyed and consecrated, the {i}Cornu Crown{/i} loses all magical abilities." compset="Wondrous" summary="This crown is made of platinum but remains dull no matter how much it is polished. It is in the shape of a curving ram&apos;s horn or cornucopia." uniqueness="useronce">
+    <fieldval field="iCL" value="19"/>
+    <fieldval field="gWeight" value="3"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="iSchool" tag="Abjur"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="AlgnReq" tag="Evil" name="Any Evil" abbrev="Any Evil"/>
+    <eval phase="First" priority="5000"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        hero.child[ArmorClass].field[tACDeflect].value = maximum(hero.child[ArmorClass].field[tACDeflect].value, 5)
+        #applybonus[BonProfane, hero.child[aWIS], 2]
+        #applybonus[BonProfane, hero.child[aCHA], 2]
+      endif]]></eval>
+    </thing>
+  <thing id="ipUmWraith" name="Wraith" description="A {i}wraith{/i} weapon can strike both corporeal and incorporeal creatures, since the weapon exists in both the Ethereal and Material planes. In addition it strikes material opponents as an incorporeal touch ignoring armor bonuses to AC. On a successful hit, the struck creature must make a DC 17 Fortitude save or take 1d6 points of Constitution damage.  If a critical hit is scored, the Constitution loss is drain unless the save is made. On each successful attack that deals Constitution damage or drain, the wielder gains 5 temporary hit points. This attack is similar to the incorporeal touch of the wraith as detailed in the {i}Pathfinder Roleplaying Game Bestiary{/i}. It does not create spawn.\n\n{b}Note{/b}: This weapon property appears in several of the modules, with different text in each one.  The version used here is from ST7.  On the Adjust tab you can add &quot;Wraith weapon HP&apos;s&quot; to adjust the temp HP&apos;s.  \n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}energy drain{/i}; {b}Cost{/b} +4 Bonus" compset="ItemPower" summary="A {i}wraith{/i} weapon can strike both corporeal and incorporeal creatures, since the weapon exists in both the Ethereal and Material" uniqueness="useronce">
+    <fieldval field="iPrice" value="4"/>
+    <fieldval field="iCL" value="17"/>
+    <usesource source="FGGModul"/>
+    <usesource source="FGGGenera"/>
+    <tag group="PowerType" tag="Weapon"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    </thing>
+  <thing id="ioUmBoKnow" name="Book of Knowledge" description="Spirits that inhabit the book can be dispatched by the owner to perform the following tasks.\n\n&#149; Gain general information on the local population (within 20 miles), providing a +4 inherent bonus to Knowledge (local) or Diplomacy checks used to gather information.  This use of the book takes 1 hour.\n\n&#149; Scan the mind of a known subject matter expert within 20 miles to ascertain the answer to a question. The book&apos;s owner may then make an appropriate Knowledge skill check using half of the subject&apos;s normal skill bonus in addition to any skill bonus that the owner may have.  Answers are written on blank pages in the book by the spirits. Subjects under the effects of {i}mind blank{/i}, {i}protection from evil{/i}, or similar spells that prevent the intrusion of {i}detect thoughts{/i} or summoned creatures cannot be scanned in this manner. Scanning spirits can be detected by the subject with a DC 22 Perception check and sent away with a successful {i}dispel magic{/i} or if the subject succeeds on a DC 22 Will save, in which case the book will not function again for one day. This use of the book requires 4 hours.  \n\nThere are 20 pages in the book for answers to be written on. When found, 2d10 of these pages have already been used. When full, the book cannot be used again until pages are blank again. Writing on a page fades after 1 year allowing its use again.\n\nWhenever a Knowledge skill check fails, there is a 10% chance that the spirits collect false information and write it on a page instead." compset="Wondrous" summary="Spirits that inhabit the book can be dispatched by the owner to perform the following tasks.">
+    <fieldval field="iCL" value="11"/>
+    <fieldval field="gCost" value="4800"/>
+    <fieldval field="gWeight" value="3"/>
+    <fieldval field="trkMax" value="20"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="iSchool" tag="Divination"/>
+    </thing>
+  <thing id="ioUmCroDar" name="Crown of Darkness" description="This is a cornucopia-shaped helm of dark metal set with a multitude of dark jewels. It serves as the miter of the Grand Cornu of Orcus. These jewels each possess a magic power: ten black sapphires, twenty black opals, thirty black pearls, and forty azurites. The jewels&apos; functions are as follows:\n\n&#149; Black Sapphire: {i}finger of death{/i} (save DC 22)\n&#149; Black Opal: {i}wall of ice{/i} (save DC 19)\n&#149; Black Pearl: {i}black tentacles{/i}\n&#149; Azurite: {i}deeper darkness{/i}\n\nThe crown may be used once per round, but each gem can perform its spell-like power just once. Until all its jewels are depleted, the {i}crown of darkness{/i} also has the following magical properties when activated.\n\n&#149; It emanates a dark aura when good or neutrally-aligned outsiders are within 30 feet. This darkness causes 1d6 points of damage per round to all such creatures within that range. The area within range is considered dim illumination.\n\n&#149; The wearer may command any weapon he wields to become a {i}wraith{/i} weapon (see above). This is in addition to whatever abilities the weapon may already have (unless the weapon already is a {i}wraith{/i} weapon). The command takes 1 round to take effect.\n\n&#149; The crown provides {i}death ward{/i} to its wearer.\n\nOnce all of its jewels have lost their magic, the crown loses its powers and the gems turn to worthless powder. Removing a jewel destroys it.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wonderous Item, {i}black tentacle&apos;s{/i}, {i}death&apos;s ward{/i}, {i}deeper darkness{/i}, {i}detect good{/i}, {i}energy drain{/i}, {i}finger of death{/i}, {i}wall of ice{/i}; {b}Cost{/b} 77,500 gp" compset="Wondrous">
+    <fieldval field="gCost" value="155000"/>
+    <fieldval field="gWeight" value="3"/>
+    <fieldval field="iCL" value="17"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Varied"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <bootstrap thing="spBlacTen3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="30"/>
+      </bootstrap>
+    <bootstrap thing="spDeepDar3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="40"/>
+      </bootstrap>
+    <bootstrap thing="spFingDea7">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="10"/>
+      </bootstrap>
+    <bootstrap thing="spWallIce3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="20"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioUmAshAmP" name="Ashes of Amnu-Paket" description="This is a small, finger-sized gold receptacle stoppered by a polished fang and sealed with platinum wire. If the seal is broken, the interior is seen to hold a small amount of fine ash. This legendary item is (truthfully) said to hold the remains of the last vizier of the Tu Chai Palace, the powerful ogre mage Amnu-Paket. The Tu Chai Palace is considered an equally mythical palace said to have existed an age ago in the exotic lands of the north hanging from the side of a magnificent peak. Amnu-Paket was considered both the wisest of sages and a cruel despot, and the holder of his ashes was rumored to both benefit from his wisdom and suffer from bad luck. The {i}ashes of Amnu-Paket{/i} disappeared long ago from the knowledge of man.  Actually the receptacle was secreted within a hidden compartment inside the fabulously-carved emerald called the Tu Chai Palace. Thus the owner of the emerald receives both the benefits and penalties associated with the ashes, more than likely never even realizing the source of the effects.\n\nThe individual who owns the ashes (or the Tu Chai Palace if they are still hidden within) is the continual recipient of the following effects: a +4 increase to his Wisdom score in the form of an enhancement bonus, a +5 insight bonus on any Knowledge checks, and a -2 luck penalty on all saves and ability checks. The owner does not have to have the ashes in his possession; he merely has to be the recognized owner of them (or the emerald if applicable). If an entire party claims the emerald as a treasure, it is the individual responsible for its storage who receives the benefits and penalties.  The curse of bad luck cannot be removed from the item. The only way to rid oneself of the penalties is to have the item stolen, sell it, or give it away to another individual. Giving it to another as a loan or to merely care for the item (such as to a museum or bank) does not transfer the effects.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wonderous Item, {i}bestow curse{/i}, {i}fox&apos;s cunning{/i}, {i}owl&apos;s wisdom{/i}; {b}Cost{/b} 12,500 gp" compset="Wondrous">
+    <fieldval field="gCost" value="25000"/>
+    <fieldval field="iCL" value="8"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="First" priority="5000"><![CDATA[~+4 enhancement bonus to Wisdom score
+        hero.child[aWIS].field[BonEnhance].value = maximum(hero.child[aWIS].field[BonEnhance].value, 4)
+
+~+5 insight bonus to Knowledge checks
+      foreach pick in hero from BaseSkill where "Helper.SkCatKnow"
+        eachpick.field[BonInsight].value += 5
+        nexteach
+
+~-2 luck penalty on all saves
+       hero.child[svAll].field[PenLuck].value -= 2
+
+~-2 luck penalty on all ability checks
+        foreach pick in hero from BaseAttr
+          #situational[each,"-2 Luck bonus to all checks.",field[thingname].text]
+          nexteach]]></eval>
+    </thing>
+  <thing id="iUmExsangu" name="Exsanguinator" description="{b}Alignment{/b} CN\n{b}Ego{/b} 19\n{b}Senses{/b} 120 ft. darkvision and hearing\n{b}Int{/b} 17, {b}Wis{/b} 10, {b}Cha{/b} 17 \n{b}Communication{/b} speech, telepathy\n{b}Lesser Power{/b}: {i}deathwatch{/i} continually active, {i}daze monster{/i} 3/day, {i}hold person{/i} 3/day\n{b}Greater Power{/b}: {i}haste{/i} on owner 3/day\n{b}Special Purpose{/b}: drink the blood of the living.\n\n{b}Personality{/b}: This handaxe is fashioned much like a meat cleaver.  The chaotic and warped personality has one purpose and one purpose only, to drink the blood of the living. When a creature is hit by {i}Exsanguinator{/i} it leaves a bloodless wound, the blood having been magically absorbed by the blade. A creature killed by the handaxe falls to the ground as a completely bloodless corpse. Whenever anyone of any alignment first grasps the weapon, a DC 19 Will save is required. On a failed save the handaxe uses its {i}haste{/i} ability on the wielder who then turns on any living creatures nearby and attempts to satiate {i}Exsanguinator&apos;s{/i} blood lust on them. If the character is chaotic and makes his save, he can use the weapon normally. However, the handaxe will continually whisper dreams of bloodletting into his mind telepathically. The handaxe demands that it be the wielder&apos;s primary weapon in combat, and another Will save is required if the character refuses. {i}Exsanguinator{/i} uses its abilities in battle to assist its wielder in making easier targets for him to attack. Anytime the wielder spares an opponent in combat, another Will save is necessary to prevent an indiscriminate killing spree." compset="MagicWep" summary="{i}+3 keen wounding handaxe{/i}">
+    <fieldval field="gSizeCost" value="6"/>
+    <fieldval field="gCost" value="104000"/>
+    <fieldval field="iCL" value="15"/>
+    <fieldval field="BonEnhance" value="3"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <bootstrap thing="spDazeMon1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spDeathwa1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Active"/>
+      </bootstrap>
+    <bootstrap thing="spHaste2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spHoldPer2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wHandaxe"></bootstrap>
+      <bootstrap thing="iKeen"></bootstrap>
+      <bootstrap thing="iWounding"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iUmMacBloo" name="Mace of Blood" description="This {i}+3 heavy mace{/i} must be coated in blood every day, or its bonus fades away (until the mace is coated again). The character using this mace must make a DC 13 Will save every day it is within his possession or become chaotic evil.\n\n{b}Note{/i}: The alignment change must be made manually\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, creator must be at least 9th level and chaotic evil; {b}Cost{/b} 8,000 gp" compset="MagicWep" summary="{i}+3 heavy mace{/i}">
+    <fieldval field="BonEnhance" value="3"/>
+    <fieldval field="gCost" value="15988"/>
+    <fieldval field="gSizeCost" value="12"/>
+    <fieldval field="iCL" value="8"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Abjur"/>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wMaceHeavy"></bootstrap>
+      </child>
+    </thing>
+  <thing id="ioUmTeleTr" name="Teleport Trunks" description="These trunks always come in pairs. Each looks like an old wooden or hardened leather steamer trunk without a lock. They stand 2 feet high are 4 1/2 feet long and are 3 feet wide. They are nondescript until a creature climbs inside and the lid is closed. Upon doing so, that creature and all gear and objects up to its maximum load that will fit within the closed trunk, are instantly teleported as the {i}greater teleport{/i} spell to the interior of the other trunk in the pair. The other trunk must be closed and empty for this to function. The {i}teleport{/i} functions as long as both trunks on are on the same plane. The trunk can hold one Medium, four Small, eight Tiny, twenty-four diminutive, or one hundred forty-four Fine creatures. A Large creature can squeeze into the trunk with a successful DC 20 Escape Artist but can not bring any gear other than mundane, nonbulky clothing and a light weapon.  The trunk can function once every 10 minute up to 3 times per day.\n\n{b}Note{/b}: The trunks weigh 50 lb. each\n\n{b}Construction{/b}\n{b}Requirements{/b}:  Craft Wondrous Item, {i}greater teleport{/i}; {b}Cost{/b} 25,000 gp" compset="Wondrous">
+    <fieldval field="gCost" value="50000"/>
+    <fieldval field="gWeight" value="50"/>
+    <fieldval field="iCL" value="14"/>
+    <fieldval field="trkMax" value="3"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="pUmWrWeHP" name="Wraith weapon HP&apos;s" description="On each successful attack that deals Constitution damage or drain, the wielder gains 5 temporary hit points." compset="InPlay">
+    <fieldval field="pDuration" value="24 Hours"/>
+    <fieldval field="pWhat" value="Temp"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give Bonus HP
+      herofield[tCurrentHP].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="ioUmGaTirK" name="Cursed Game of Tirleng-Ka" description="This infamous game board is a chess set of alternating alabaster and malachite squares. The playing pieces are likewise composed of alabaster and malachite respectively. It was said to have been created a thousand years ago by the military genius Tirleng-ka. Legends say that no army led by the general could be defeated in battle. He was often noted as saying that the battlefield is like a chess match, and he would actually set up a game board in his command tent before a battle and play out a game through the course of the actual battle.  It wasn&apos;t until later that one of his subordinates learned the truth; the battle truly was only a game to the general. He would play out the match against himself and order his troop maneuvers during the battle based on his moves in the game. Such was his skill at chess that he never failed to achieve victory, even though sometimes at an atrocious cost in lives.\n\nWhen the rumors ran through the ranks of his officers and soldiers, men who had served him faithfully through dozens of campaigns, accepting the horrible tolls sometimes exacted as a necessary part of war, realized he had been playing games with their lives on a whim and had needlessly sent thousands to their deaths. His once-loyal forces mutinied in a howling bloodthirsty mob and found him in his command tent playing another game.  They seized their general and flayed him alive, his blood splattering all over the chess match in progress. Strangely, when the deed was done, they found the chess board and pieces unsullied. The officers took the game board and pieces as spoils and divided the semi-precious stones among themselves. Thus in blood and betrayal was born the {i}cursed game of Tirleng-ka.{/i}\n\nIt wasn&apos;t until years later when the pieces and board were finally reunited by chance, that the magical powers they possessed were discovered.  Whether these powers had been present all along or only manifested due to the nature of the general&apos;s death is unknown. Regardless the new owner used the board&apos;s powers to become a powerful war-captain in his own right. It was also he, however, that discovered the curse of the game as well, when his officers betrayed him and hung him from the support pole of his own tent. Once again, the pieces were divided as spoils. Over the centuries, the pieces have been assembled only a few other times, each time the new owner was able to use the powers of the board to achieve great militarily victories only to end his life in betrayal and murder by his own men. The last owner was slain during the Battle of Tsar. The pieces were deliberately separated and hidden to prevent anyone from ever again gaining their power and suffering the inevitable fate, though there is always someone willing to look, thinking that they will be the one who is finally able to beat the curse.\n\nAs a finely crafted game board of alabaster and malachite, the item is worth 800 gp, and each individual piece (16 in all) is worth another 50 gp. However, only when the board and all of the pieces are assembled, does it begin to radiate a magical dweomer and the owner have access to its powers.\n\nTo use the powers of the game, the wielder must spend 10 minutes setting up the board and arranging the pieces properly before the magic will function. Typically, field commanders did this in the safety of their tents overlooking the coming battlefield. Once the allotted time is spent in assembly, the wielder and all of his allies within line of effect out to any range gain a +2 insight bonus on their attack and damage rolls. If the board was assembled before the battle is joined, all allies gain a +2 insight bonus to initiative as well. Furthermore the weapons of all the wielder&apos;s effected allies are treated as aligned like the wielder&apos;s alignment for the purposes of overcoming damage reduction. These effects remain as long as the wielder remains by the board surveying the field of battle. If the board is upset, the effects are lost until another 10 minutes is spent preparing it. The wielder may fight and take actions to defend the board, but the effect ends if he steps more than 5 feet away, in which case it must be once again reset.\n\nBy manipulating pieces on the board (individually or as groups listed below) as a full-round action, the wielder can create additional effects as listed below. All effects are at caster level 20th.\n\n&#149; Malachite Pawn (8) - casts {i}bless{/i} on all allies within 30 ft. once per day (stacks with insight bonuses).\n&#149; All Malachite Pawns (1) - functions as a {i}bronze horn of Valhalla{/i} once per hour.\n&#149; Malachite Rook (2) - casts {i}wall of iron{/i} once per day.\n&#149; Malachite Knight (2) - casts {i}magic fang{/i} on all allied Animals within 100 ft. once per day.\n&#149; Malachite Bishop (2) - casts {i}fl ame strike{/i} once per day.\n&#149; Malachite Queen (1) - functions as a {i}horn of blasting{/i} 3/day.\n&#149; Malachite King (1) - functions as a {i}rod of rulership{/i} once per day for up to 60 minutes at a time.\n&#149; Malachite Castle* (1) - casts {i}insect plague{/i} once per day.\n&#149; Alabaster Pawn (8) - casts {i}virtue{/i} on all allies within 30 ft. once per day.\n&#149; All Alabaster Pawns (1) - casts {i}shield of faith{/i} on all allies within 100 ft once per hour.\n&#149; Alabaster Rook (2) - casts {i}globe of invulnerability{/i} once per day.\n&#149; Alabaster Knight (2) - creates effects of {i}horseshoes of zephyr{/i} on all allies&apos; mounts within 100 ft. once per day.\n&#149; Alabaster Bishop (2) - casts {i}divine power{/i} on all allies within 10 ft. once per day.\n&#149; Alabaster Queen (1) - casts {i}blade barrier{/i} 3/day.\n&#149; Alabaster King (1) - casts {i}status{/i} on all allies within one mile once per day.\n&#149; Alabaster Castle* (1) - casts {i}mass cure light wounds{/i} on all allies within 300 ft. once per day.\n\nEach individual piece can be moved as many times as described within its entry. In addition they can be used in conjunction with other pieces to activate those specific powers as well. Thus each malachite pawn can be used to cast a {i}bless{/i} once per day and then all the malachite pawns can be used to invoke the powers of a {i}bronze horn of Valhalla{/i}. The bonuses from similar pieces don&apos;t stack on the same creatures unless they have already worn off. Otherwise different allies will have to come within range for the effect to work again. Next to each entry is a parenthetical number showing the numbers of that piece present on the board and thus, the number of times that power can be used during the specified time period.\n\n*Castle - This involves maneuvering a king and one of the rooks of a like color. This function can only be used if neither that king nor the rook in question has already been moved previously in the battle.\n\nThe alleged curse on the game is up to you. It could be that all of the previous owners have met unfortunate ends due to coincidence, using the magic item callously and ultimately alienating their subordinates. Feel free to come up with something suitably grievous for your campaign. Regardless it should not be something that occurs soon, each of the prior owners having used the item to great effect for some time before meeting his fate. Build up the suspense of the presumed curse through foreshadowing and dropping veiled hints.  Even if there is actually no curse, it should keep the players nervous and on their toes waiting for the headsman&apos;s axe to fall.\n\n{b}Destruction{/b}: \nIf the game is set up and used in a battle which the wielder then deliberately loses and is himself killed with his blood spilling upon the game board, then it loses its magical properties, though perhaps not its sinister reputation.\n\n{b}Note{/b}: There has been no coding done with this due to the amount of variables." compset="Wondrous">
+    <fieldval field="iCL" value="20"/>
+    <fieldval field="gWeight" value="15"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="Helper" tag="CursedItem"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSchool" tag="Enchant"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    </thing>
+  <thing id="ioUmReGrMi" name="Reverse Gravity Mine" description="This small, often rusty, iron ball is marked with many magical sigils and glyphs. When activated by a command word it can be buried in up to a foot of soil or other matter and activated when anything size Small or larger approaches within 10 feet. It can likewise be deactivated by a command word that can be shouted from outside the area of its effect. When a mine is activated the {i}reverse gravity{/i} affects all within a 20-foot-radius. The activation causes the 1-foot layer of whatever substance is atop the mine to explode upward, this deals 1d6 points of bludgeoning damage on anyone in the area of effect if the mine was buried in a typical rocky soil. Determine damage for other substances as you see fit. The soil and anyone in the area are thrown 60 feet into air at which time the {i}reverse gravity{/i} ends sending all tumbling back to the ground. Anyone without the means to arrest their fall suffers 6d6 points of damage followed by 3d6 points of additional bludgeoning damage from the debris raining to earth once again for typical soil or other damage as you deem appropriate for other substances.\n\n{b}Construction{/b}\n{b}Requirements{/b}:  Craft Wondrous Item, Widen Spell, {i}reverse gravity{/i}; {b}Cost{/b} 2,800 gp" compset="Wondrous" stacking="merge">
+    <fieldval field="iCL" value="16"/>
+    <fieldval field="gWeight" value="16"/>
+    <fieldval field="gCost" value="5600"/>
+    <usesource source="FGGSlTsar"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    </thing>
+  </document>

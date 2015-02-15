@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Contact: shadowchemosh@gmail.com</info_author>
+    <info_history>v1.1 10/23/2010
+-Added DC adjust script for Min-effecting spells from Chris(areteas@gmail.com).
+
+v1.0 1/1/2010
+-Created New</info_history>
+    </fileinfo>
+  <thing id="cKQsArcBar" name="Arcane Barrier" description="At 3rd level, you gain a +1 bonus on all saves against arcane spells. At 20th level, this bonus increases to +3. As you begin to exhibit more control over your body, you also gain DR 1/piercing, which increases to DR 2/piercing at 7th level, DR 3/piercing at 11th level, DR 4/piercing at 15th level, and DR 5/piercing at 19th level." compset="ClSpecial">
+    <usesource source="KQwebsite"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="SpecType" tag="Defense"/>
+    <bootstrap thing="xDamRdP"></bootstrap>
+    <eval phase="Final" priority="1000" index="2"><![CDATA[~Final Phase 1,000
+var DR as number
+var lvl as number 
+
+      ~if we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      lvl = #levelcount[Sorcerer]
+      if (lvl >= 19) then
+        DR = 5
+      elseif (lvl >= 15) then
+        DR = 4
+      elseif (lvl >= 11) then
+        DR = 3
+      elseif (lvl >= 7) then
+        DR = 2
+      elseif (lvl >= 3) then
+        DR = 1
+      endif
+
+~Description
+field[listname].text = field[thingname].text & "(DR" & DR & "/Piercing)"
+
+~if we're not the first copy, get out now
+~doneif (tagis[Helper.FirstCopy] = 0)
+~field[abValue].value += field[xCount].value * 5
+~field[abValue].value = .5
+
+field[abSumm].text = "At 3rd level, you gain a +1 bonus on all saves against arcane spells. At 20th level, this bonus increases to +3."
+
+field[livename].text = "Arcane Barrier(DR" & DR & "/Piercing)"]]></eval>
+    <eval phase="PostLevel" priority="1000"><![CDATA[var DR as number
+var lvl as number 
+
+      ~if we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      lvl = #levelcount[Sorcerer]
+      if (lvl >= 19) then
+        DR = 5
+      elseif (lvl >= 15) then
+        DR = 4
+      elseif (lvl >= 11) then
+        DR = 3
+      elseif (lvl >= 7) then
+        DR = 2
+      elseif (lvl >= 3) then
+        DR = 1
+      endif
+
+      #applyresist[xDamRdP, DR]]]></eval>
+    </thing>
+  <thing id="cKQsClawFR" name="Claw Force Ray" description="Starting at 1st level, you can unleash a ray of force that takes the shape of a slashing tiger claw. To do so is a standard action, targeting any foe within 30 ft. as a ranged touch attack. This ray deals 1d4 force damage +1 for every 2 caster levels you possess. You can use this ability a number of times per day equal to 3 + your Charisma modifier." compset="ClSpecial" summary="Ranged touch attack deals 1d4 force damage">
+    <usesource source="KQwebsite"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="Usage" tag="Day"/>
+    <bootstrap thing="wS2RaTouch"></bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      var bonus as number
+      bonus = field[xAllLev].value / 2
+      field[abValue].value += round(bonus,0,-1)
+
+      if (field[abValue].value>0) then
+         field[listname].text = field[thingname].text & "(1d4+" & field[abValue].value & ")"
+         field[abSumm].text = "Ranged touch attack deals 1d4+" & field[abValue].value & " force damage."
+         field[livename].text = "Claw Force Ray(1d4+" & field[abValue].value & ")"
+      else
+         field[abSumm].text = "Ranged touch attack deals 1d4 force damage"
+         field[livename].text = "Claw Force Ray(1d4)"
+      endif]]></eval>
+    <eval phase="PostAttr" priority="10000" index="2">field[trkMax].value += 3 + hero.child[aCHA].field[aModBonus].value</eval>
+    </thing>
+  <thing id="cKQsEmptMB" name="Empty Mind, Empty Body" description="At 20th level, you gain a form of mastery over your mind and physical form, granting you a continuous {i}mind blank{/i} effect. In addition, you can go ethereal once per day as the spell {i}ethereal jaunt{/i}. (Your CL is equal your sorcerer level.)" compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="KQwebsite"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="cKQsRevlEy" name="Revealing Eye" description="At 15th level, you gain the ability to see things as they really are for a number of minutes per day equal to 1/2 your sorcerer level. This ability functions as {i}true seeing{/i}, but it does not need to be used in consecutive rounds. To activate the ability is a standard action." compset="ClSpecial">
+    <usesource source="KQwebsite"/>
+    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="Usage" tag="DayMinute"/>
+    <eval phase="PreAttr" priority="10000">~Pre-Attributes 10,000
+#trkmax[cKQsRevlEy] = round(#levelcount[Sorcerer]/2,0,-1)</eval>
+    </thing>
+  <thing id="cKQsZeroPr" name="Zero Presence" description="At 9th level, you can turn invisible for a number of rounds equal to your caster level. This ability functions as {i}greater invisibility{/i}. These rounds need not be consecutive." compset="ClSpecial">
+    <usesource source="KQwebsite"/>
+    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="Usage" tag="DayRound"/>
+    <eval phase="PreAttr" priority="10000">~Pre-Attributes 10,000
+#trkmax[cKQsZeroPr] = herofield[tMaxCaster].value</eval>
+    </thing>
+  <thing id="cKQsRaksha" name="Rakshasa" description="Brilliant and malevolent, rakshasas are nefarious outsiders who cherish power and cruelty above all else. In their far-ranging quest for pleasure and worship, rakshasas often pay little heed to the lives they destroy. One of the more indulgent of this race has left its mark on your family.\n\n{b}Bloodline Arcana{/b}: Whenever you cast a mind-affecting spell, increase the spell&#146;s DC by +1.\n\n{b}Bloodline Powers{/b}: Tainted by the power of the mystical rakshasas, you display a growing power within your blood&#151;a power over mind, body, and time." compset="CustomSpec" summary="{b}Bloodline Arcana{/b}: Whenever you cast a mind-affecting spell, increase the spell&#146;s DC by +1." uniqueness="unique">
+    <usesource source="KQwebsite" parent="pKQ" name="Kobold Quarterly Website"/>
+    <tag group="SpecSource" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="fInclude" tag="fAlertness" name="Alertness" abbrev="Alertness"/>
+    <tag group="fInclude" tag="fComCast" name="Combat Casting" abbrev="Combat Casting"/>
+    <tag group="fInclude" tag="fDodge" name="Dodge" abbrev="Dodge"/>
+    <tag group="fInclude" tag="fImpInit" name="Improved Initiative" abbrev="Improved Initiative"/>
+    <tag group="fInclude" tag="fPersuas" name="Persuasive" abbrev="Persuasive"/>
+    <tag group="fInclude" tag="fQuickSpl" name="Quicken Spell" abbrev="Quicken Spell"/>
+    <tag group="fInclude" tag="fSpellFoc" name="Spell Focus" abbrev="Spell Focus"/>
+    <tag group="fInclude" tag="fSpellPen" name="Spell Penetration" abbrev="Spell Penetration"/>
+    <tag group="ClassSkill" tag="skDisguise" name="Disguise" abbrev="Disguise"/>
+    <bootstrap thing="cKQsEmptMB">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="spDisgSel1">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 3]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spDeteTho2">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 5]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spDisplac3">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 7]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spPhanKil4">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 9]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="sPFBalePo4">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 11]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spDisinte6">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 13]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spPolyGre7">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 15]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spIronBod8">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 17]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spTimeSto9">
+      <containerreq phase="First" priority="500"><![CDATA[
+        count:Classes.Sorcerer >= 19]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="cKQsArcBar">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cKQsZeroPr">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cKQsClawFR">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cKQsRevlEy">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <eval phase="PostLevel" priority="1000">~add 1 to the DC of mind-effecting spells
+hero.child[ssMind].field[schDC].value += 1</eval>
+    </thing>
+  </document>

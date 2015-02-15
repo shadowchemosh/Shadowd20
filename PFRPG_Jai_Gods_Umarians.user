@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Jai</info_author>
+    <info_history>5/3/2011
+-Added Umarian Knight Deities to data set.</info_history>
+    </fileinfo>
+  <thing id="UmarHeaven" name="Umarian Knight of Heaven" description="The Heavens are a place of beauty.  They are where the souls travel once they leave their mortal bodies.  It is a place of reflection and knowledge.  Known by many names, it is the place where all will go once their business is done." compset="Deity" summary="Known by many names, it is the place where all will go once their business is done." uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdDivine"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdTactics"/>
+    <tag group="AllowDom" tag="cdThought"/>
+    <tag group="AllowDom" tag="cdCharm"/>
+    <tag group="AllowDom" tag="cdLove"/>
+    <tag group="AllowDom" tag="cdStars"/>
+    <tag group="AllowDom" tag="cdVoid"/>
+    <tag group="WepProf" tag="wS2ScimDbl"/>
+    <tag group="DeityCat" tag="Umarian"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    </thing>
+  <thing id="UmarFire" name="Umarian Knight of Fire" description="The element of destruction and rebirth fire is the beginning and the end.  It can cleanse the soul of all wrong doings.  Fire opens the pine cone to allow its seeds to be spread and begin new life.  It can destroy nations with its insatiable hunger.  To wield the power of fire is to wield the power of life and death." compset="Deity" summary="The element of destruction and rebirth fire is the beginning and the end." uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="AllowDom" tag="cdDay" name="Day" abbrev="Day"/>
+    <tag group="AllowDom" tag="cdDestruct" name="Destruction" abbrev="Destruction"/>
+    <tag group="AllowDom" tag="cdFire" name="Fire" abbrev="Fire"/>
+    <tag group="AllowDom" tag="cdLight" name="Light" abbrev="Light"/>
+    <tag group="AllowDom" tag="cdSun" name="Sun" abbrev="Sun"/>
+    <tag group="DeityCat" tag="Umarian" name="Umarian Knights" abbrev="Umarian Knights"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="AlignTemp" tag="NeutNeut" name="True Neutral" abbrev="N"/>
+    <tag group="WepProf" tag="wPFMetHamm"/>
+    <tag group="AllowDom" tag="cdAsh" name="Ash" abbrev="Ash"/>
+    </thing>
+  <thing id="UmarDeath" name="Umarian Knight of Death" description="Death is inevitable.  Nothing lasts forever.  None can escape its grasp.  Neither infant nor king can withstand its judgment.  To cheat death is an affront to the very nature of existence.  Undeath is an abomination and must be destroyed at all costs." compset="Deity" summary="Death is inevitable." uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdAncestor"/>
+    <tag group="AllowDom" tag="cdPhDeath"/>
+    <tag group="AllowDom" tag="cdInevitab"/>
+    <tag group="AllowDom" tag="cdMurder"/>
+    <tag group="AllowDom" tag="cdRepose"/>
+    <tag group="DeityCat" tag="Umarian"/>
+    <tag group="WepProf" tag="wScythe"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    </thing>
+  <thing id="UmarSpace" name="Umarian Knight of Space (Ice)" description="Space is limitless.  Who knows what wonders it possesses?  The stars above serve as a guide for navigation, they tell the history of the worlds in their constellations, and they provide light in the darkness of the night.  What other wonders do they hold, what other worlds are out there?" compset="Deity" summary="Space is limitless.  Who knows what wonders it possesses?" uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="Umarian"/>
+    <tag group="AllowDom" tag="cdDarkTape"/>
+    <tag group="AllowDom" tag="cdDarkness"/>
+    <tag group="AllowDom" tag="cdIce"/>
+    <tag group="AllowDom" tag="cdLoss"/>
+    <tag group="AllowDom" tag="cdNight"/>
+    <tag group="AllowDom" tag="cdStars"/>
+    <tag group="AllowDom" tag="cdVoid"/>
+    <tag group="WepProf" tag="wFlailHvy"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    </thing>
+  <thing id="UmarAir" name="Umarian Knight of Air" description="Air is the life giving element.  We breathe it, it cools us on a hot day with its gentle breeze, its force can destroy towns.  The winged creatures of the world feel the wind in their faces with each flight." compset="Deity" summary="Air is the life giving element." uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="DeityCat" tag="Umarian"/>
+    <tag group="AllowDom" tag="cdCloud"/>
+    <tag group="AllowDom" tag="cdSeasons"/>
+    <tag group="AllowDom" tag="cdStorms"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="AllowDom" tag="cdWind"/>
+    <tag group="WepProf" tag="wLongbow"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="UmarWater" name="Umarian Knight of Water" description="The element of change, water cannot be restrained for long.  It continues to flow finding ways around obstacles.  It can erode the mountains and cleanse the world." compset="Deity" summary="The element of change, water cannot be restrained for long." uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="DeityCat" tag="Umarian"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="AllowDom" tag="cdFreedom"/>
+    <tag group="AllowDom" tag="cdIce"/>
+    <tag group="AllowDom" tag="cdLiberat"/>
+    <tag group="AllowDom" tag="cdMemory"/>
+    <tag group="AllowDom" tag="cdOceans"/>
+    <tag group="AllowDom" tag="cdPurity"/>
+    <tag group="AllowDom" tag="cdThievery"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="WepProf" tag="wS20Curve"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="UmarEarth" name="Umarian Knight of Earth" description="The element of stability, Earth is unyielding and immoveable.  It is the building block of the world." compset="Deity" summary="The element of stability, Earth is unyielding and immoveable." uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdCaves"/>
+    <tag group="AllowDom" tag="cdDecay"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdGrowth"/>
+    <tag group="AllowDom" tag="cdMetal"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="AllowDom" tag="cdStrength"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="WepProf" tag="wPFEarthbr"/>
+    <tag group="DeityCat" tag="Umarian"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="UmarLife" name="Umarian Knight of Life" description="Every life has a purpose.  From the plankton eaten by large mammals of the sea to the dragons that fly the skies.  The beginning of a new life is something to be celebrated, and the loss of a life is something to be honored and mourned.  While there are times that the taking of a life is necessary for survival, it should be honored for its sacrifice.  Undeath is an abomination and must be destroyed at all costs." compset="Deity" summary="Every life has a purpose.  Every life should be honored and respected." uniqueness="unique">
+    <usesource source="srcJaiGods"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdResurrec"/>
+    <tag group="WepProf" tag="wStarknife"/>
+    <tag group="DeityCat" tag="Umarian"/>
+    <tag group="AllowDom" tag="cdCommun"/>
+    <tag group="AllowDom" tag="cdFamily"/>
+    <tag group="AllowDom" tag="cdGlory"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdRepose"/>
+    <tag group="AllowDom" tag="cdRestorat"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    </thing>
+  </document>

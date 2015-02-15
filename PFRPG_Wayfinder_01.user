@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Contact: ShadowChemosh@gmail.com</info_author>
+    <info_history><![CDATA[
+1/14/2012
+-Changed around the sources to work off the ones in PFRPG_Sources.1st file.
+
+2/1/2011
+-Changed Unique ID on the Gunslinger PrC to not clash with Gunslinger base 
+class
+
+10/23/2010
+-Created New]]></info_history>
+    <info_todo></info_todo>
+    </fileinfo>
+  <thing id="trW1SlayOa" name="Slayer&#146;s Oath" description="{b}This religion trait is available to all characters of the listed faith:{/b} Iomedae, Pharasma or Sarenrae\n\nYou have sworn your life to stopping the propagation of the undead; your goddess has heard and approved your choice. You earn a +1 trait bonus on weapon damage rolls when battling the undead." compset="Trait" summary="You earn a +1 trait bonus on weapon damage rolls when battling the undead." uniqueness="useronce">
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Religion"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1Jaded" name="Jaded" description="You have seen horror and death as far back as you can remember. Maybe you are unfazed by the gruesome, or have become a cynic as a defense against the dark realities of the corners of the world. You have a +2 trait bonus on saving throws against Fear." compset="Trait" summary="You have a +2 trait bonus on saving throws against Fear." uniqueness="unique">
+    <comment>Wayfinder#1 pg50</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1GhostS" name="Ghost Sight" description="When you were younger you suffered a brush with death. Perhaps you were almost killed by a wight, close to dying from a grievous wound, or actually died and were raised. Since then you have not been the same. You can see beyond the veil, able to see ghost and spirits and detect the taint of the undead. You receive a +2 trait bonus to Perception checks when trying to locate undead, and can attempt to locate ethereal undead (though they are still considered merely invisible, +20 to Stealth)." compset="Trait" summary="You receive a +2 trait bonus to Perception checks when trying to locate undead, and can attempt to locate ethereal undead (though they are still considered merely invisible, +20 to Stealth)." uniqueness="useronce">
+    <comment>Wayfinder#1 pg50</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Magic"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1ChildS" name="Child of Spring" description="{b}This religion trait is available to all characters of the listed faith:{/b} Gozreh\n\nYou have spent long months tending the ever-blooming flowers and lush trees of Evergreen Park in the Green Ridge district, the largest park in Absalom. You receive a +1 trait bonus on Knowledge (nature) checks, and Knowledge (nature) is always a class skill for you. You may always make Knowledge (nature) checks as though you were trained in the skill." compset="Trait" summary="You receive a +1 trait bonus on Knowledge (nature) checks, and Knowledge (nature) is always a class skill for you. You may always make Knowledge (nature) checks as though you were trained in the skill." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Religion"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skKnowNat] += 1
+#makeclassskill[skKnowNat]</eval>
+    </thing>
+  <thing id="trW1EnvIom" name="Envoy of Iomedae" description="{b}This religion trait is available to all characters of the listed faith:{/b} Iomedae\n\nBefore you took up the mantle of adventurer, you traveled far and wide in Absalom&#146;s most storied messenger corps, the Winged Sandals. You gain a +1 trait bonus on Knowledge (geography) and Diplomacy checks." compset="Trait" summary="You gain a +1 trait bonus on Knowledge (geography) and Diplomacy checks." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Religion"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skKnowGeog] += 1
+#skillbonus[skDiplo] += 1</eval>
+    </thing>
+  <thing id="trW1HeroHa" name="Hero of the Hall" description="{b}This religion trait is available to all characters of the listed faith:{/b} Cayden Cailean\n\nBurned to the ground more than a dozen times, Cayden&#146;s Hall is home to the most boisterous revelry in Absalom. You&#146;ve survived many a night of drunken carousing at the Hall, and even started a few successful adventures there. You receive a +2 trait bonus on Fortitude saves against poison (including alcohol) and on saves against effects that cause the nauseated or sickened condition." compset="Trait" summary=" You receive a +2 trait bonus on Fortitude saves against poison (including alcohol) and on saves against effects that cause the nauseated or sickened condition." uniqueness="useronce">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Religion"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1KeepCo" name="Keeper of Coins" description="{b}This religion trait is available to all characters of the listed faith:{/b} Abadar\n\nCommerce is the lifeblood of any great city, and grist for the mill of the Vault of Abadar. As a faithful servant of your god, you&#146;ve served the Vault, whether as clergy or laity. You&#146;ve learned to keep a sharp eye out for the best deal, and gain a +1 trait bonus on Perception and Sense Motive checks." compset="Trait" summary="You gain a +1 trait bonus on Perception and Sense Motive checks." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Religion"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skPercep] += 1
+#skillbonus[skSenseMot] += 1</eval>
+    </thing>
+  <thing id="trW1AntiDe" name="Antiquities Dealer" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYou are no stranger to the grey market trade in relics of the past. You have turned a tidy profit overtime, though the school of hard knocks has taught you to keep your eyes peeled for fakes. You gain a +1 trait bonus to Appraise checks and Appraise is always a class skill for you." compset="Trait" summary="You gain a +1 trait bonus to Appraise checks and Appraise is always a class skill for you." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skAppraise] += 1
+#makeclassskill[skAppraise]</eval>
+    </thing>
+  <thing id="trW1AnTomb" name="An Tomb Treader" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYour exposure to the An tradition of masonry has given you an instinctive ability to find your way out of any structure. Once each day you can, if inside a man made structure, make a DC 20 Survival check. If you succeed, you retrace your steps and find the entrance you used to get inside." compset="Trait" summary="Once each day you can, if inside a man made structure, make a DC 20 Survival check. If you succeed, you retrace your steps and find the entrance you used to get inside." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PathLegacy"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1Biling" name="Bilingual Background" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nOsirion teems with many languages and dialects. You have taken it upon yourself to ensure that you are conversant with the two most prevalent. You gain Osiriani or Common as a free bonus language. You also gain a +1 trait bonus to Knowledge (local - Osirion)." compset="Trait" summary="You gain Osirion or Common as a free bonus language. You also gain a +1 trait bonus to Knowledge (local - Osirion)." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="PathLegacy"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Skill"/>
+    <eval phase="PreLevel" priority="10000" index="2">~Pre-Levels 10,000
+herofield[tLangsSpk].value += 1</eval>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skKnowLoc] += 1
+~#makeclassskill[]</eval>
+    <evalrule phase="Validation" priority="5000" message="Pick one of the following languages: Osiriani or Common" summary="Pick one of the following languages: Osiriani or Common"><![CDATA[~validation Phase 5,000
+validif (hero.childlives[lCommon] + hero.childlives[lPFosirian] <> 0)]]></evalrule>
+    </thing>
+  <thing id="lPFosirian" name="Osiriani" description="The most widespread language of Garund, Osiriani is directly descended from Ancient Osiriani. Modern Osiriani readers can, with some effort, decipher writings made in Ancient Osiriani." compset="Language" uniqueness="unique">
+    <usesource source="Wayfinder1"/>
+    </thing>
+  <thing id="trW1CivicA" name="Civic Artisan" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nA member of Osirion&#146;s Khemet dynasty has seen fit to publicly purchase one of your works. Your creation either rests in the Palace of the Forthbringer or another famed locale such as the Exhibitory of Sothis. This recognition of your talents has enabled you to fetch better prices for your subsequent works. When you make a Craft check to earn money for the week, you earn an extra 10%." compset="Trait" summary="When you make a Craft check to earn money for the week, you earn an extra 10%." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1ChildK" name="Child of the Khamsin" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nLife amongst Osirion&#146;s greatest sandstorms has taught you to stand fast against the forces that would seek to bring your people to their knees. You have a +1 trait bonus to CMD to resist bull rushes and trip attempts. In addition, when facing a windstorm or other wind effect, you are treated as one size larger than you actually are." compset="Trait" summary="You have a +1 trait bonus to CMD to resist bull rushes and trip attempts. In addition, when facing a windstorm or other wind effect, you are treated as one size larger than you actually are." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="Final" priority="10000">~Final Phase 10,000
+      ~add a +1 bonus to the Bull Rush maneuver(CMD) only
+      hero.child[manBullRus].field[manCMD].value += 1
+      ~add a +1 bonus to the Trip maneuver(CMD) only
+      hero.child[manTrip].field[manCMD].value += 1</eval>
+    </thing>
+  <thing id="trW1DawnIn" name="Dawnflower Initiate" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nWell-versed in the text of The Birth of Light and Truth, you have taken the words of Sarenrae&#146;s teachings to heart. The Cult of the Dawnflower&#146;s introduction to Osirion from the East is pivotal to the philosophies and character that now ingrain Osirion&#146;s people. You gain a +1 trait bonus to Knowledge (religion) and one of the following: Weapon Proficiency with the scimitar; a +1 trait bonus to DC of channeled energy; or Knowledge (religion) is always a class skill for you." compset="Trait" summary="You gain a +1 trait bonus to Knowledge (religion) and one of the following: Weapon Proficiency with the scimitar; a +1 trait bonus to DC of channeled energy; or Knowledge (religion) is always a class skill for you." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <fieldval field="usrCandid1" value="thingid.wScimitar|thingid.cClrChan|thingid.skKnowRel"/>
+    <usesource source="PathLegacy"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="5000" index="2"><![CDATA[~Pre-Levels 5,000
+      ~ If we've not chosen anything, get out
+      doneif (field[usrChosen1].ischosen = 0)
+
+~If scimitar selected make the character proficient
+if (field[usrChosen1].chosen.pulltags[thingid.wScimitar] = 1) then
+      foreach pick in hero where "IsWeapon.wScimitar"
+        perform eachpick.assign[Broadcast.WepProf]
+      nexteach
+endif
+~If Know(Religion) selected make it a class skill
+if (field[usrChosen1].chosen.pulltags[thingid.skKnowRel] = 1) then
+   #makeclassskill[skKnowRel]
+endif
+~If Channel Energy selected give it a +1 to the DC
+if (field[usrChosen1].chosen.pulltags[thingid.cClrChan] = 1) then
+      #dc[xChannel] += 1
+      ~also add to the DC of our help
+      #dc[fComUnHelp] += 1
+      #dc[fTurUnHelp] += 1
+endif]]></eval>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skKnowRel] += 1
+~#makeclassskill[skAppraise]</eval>
+    </thing>
+  <thing id="trW1DesLab" name="Desert Laborer" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYou do not shy away from putting your back into your work, investing long days into projects that others might not even contemplate. You receive a +2 trait bonus to Fortitude saves to resist damage from a hot environment. You also recover from fatigue and exhaustion in one-half the time." compset="Trait" summary="You receive a +2 trait bonus to Fortitude saves to resist damage from a hot environment. You also recover from fatigue and exhaustion in one-half the time." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1DromWa" name="Dromedary Warrior" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYour people have fought while using camels as their cavalry of choice for centuries, confounding their foes with these deceptively intelligent beasts. Your skill with a camel in battle provides you with a +4 trait bonus to Ride checks to perform a fast mount or dismount on a camel, as well as to all Ride checks to spur on your camel or use it as cover while riding. You also receive a +2 trait bonus to Handle Animal checks to train a camel to adopt the combat purpose or to teach it the attack trick." compset="Trait" summary="Your skill with a camel in battle provides you with a +4 trait bonus to Ride checks to perform a fast mount or dismount on a camel, as well as to all Ride checks to spur on your camel or use it as cover while riding. You also receive a +2 trait bonus to Handle Animal checks to train a camel to adopt the combat purpose or to teach it the attack trick." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1ElemSw" name="Elemental Swarm Caller" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYour people have followed and even lived amongst the nomadic elemental clans that act as the desert&#146;s soul. When you cast summon monster or summon nature&#146;s ally and choose to summon 1d3 earth or air elementals of a level lower than the level of your spell, you automatically summon one extra elemental (1d3+1 in total)." compset="Trait" summary="When you cast summon monster or summon nature&#146;s ally and choose to summon 1d3 earth or air elementals of a level lower than the level of your spell, you automatically summon one extra elemental (1d3+1 in total)." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skAppraise] += 1
+#makeclassskill[skAppraise]</eval>
+    </thing>
+  <thing id="trW1EtoHag" name="Eto Haggler" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe mercantile ambiance of Eto has made you very shrewd when trying to find or strike bargains. You get a +1 trait bonus on Appraise and Bluff checks." compset="Trait" summary="You get a +1 trait bonus on Appraise and Bluff checks." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skAppraise] += 1
+#skillbonus[skBluff] += 1</eval>
+    </thing>
+  <thing id="trW1FelDev" name="Feline Devotee" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nFor some, such as you, cats are more than pets, they are creatures of deep karmic significance. Cats may be portents of great fortune and, to those who mistreat them, harbingers of doom. You have a +2 trait bonus to wild empathy checks with cats of all sizes, be they domestic or wild. If you select a cat, leopard, tiger, or lion as your animal companion or familiar, the creature gains your choice of Run, Skill Focus (Climb), or Stealthy as a bonus feat.\n{B}Add Feat Manually{/b}" compset="Trait" summary="You have a +2 trait bonus to wild empathy checks with cats of all sizes, be they domestic or wild. If you select a cat, leopard, tiger, or lion as your animal companion or familiar, the creature gains your choice of Run, Skill Focus (Climb), or Stealthy as a bonus feat." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1SnkDev" name="Hetkoshu-Hes (Friend of the River Fiends)" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe banks of Osirion&#146;s River Sphinx are fraught with iridescent black-scaled cobras and crocodiles, collectively known as Hetkoshu. There are some such as you, however, who have made communion with these dangerous predators. You have a +2 trait bonus to wild empathy checks with all snakes and crocodiles. If you select a constrictor snake, crocodile or viper snake as your animal companion or familiar, the creature gains your choice of Athletic, Run, or Stealthy as a bonus feat.\n{B}Add Feat Manually{/b}" compset="Trait" summary="You have a +2 trait bonus to wild empathy checks with all snakes and crocodiles. If you select a constrictor snake, crocodile or viper snake as your animal companion or familiar, the creature gains your choice of Athletic, Run, or Stealthy as a bonus feat." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <fieldval field="shortname" value="Friend of the River Fiends"/>
+    <usesource source="PathLegacy"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1HetkWr" name="Hetkoshu Wrestler" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYou are one of the courageous few who dare to tackle river crocodiles with your bare hands &#150; and you have the scars to prove it! You get a +4 trait bonus to grapple CMB checks made while underwater." compset="Trait" summary="You get a +4 trait bonus to grapple CMB checks made while underwater." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <fieldval field="shortname" value="Friend of the River Fiends"/>
+    <usesource source="PathLegacy"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1HierCi" name="Hieroglyphic Cipherist" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nSteeped in the math, grammar and history of symbolic writings, you have a deep appreciation for the mysteries of the hieroglyphics of ancient Osirion. You receive a +1 bonus to all Linguistics checks as well as a +2 trait bonus to all of your saves against traps and spells that arise from glyphs and sigils." compset="Trait" summary="You receive a +1 bonus to all Linguistics checks as well as a +2 trait bonus to all of your saves against traps and spells that arise from glyphs and sigils." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skLinguist] += 1</eval>
+    </thing>
+  <thing id="trW1IpeqRe" name="Ipeq Reservist" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe martial atmosphere of Ipeq has given you a soldier&#146;s instinct for fighting as part of a unit. The first time you strike a creature, you get a +1 trait bonus to damage if it has already been damaged by an ally in that round. If your ally also has this trait, you deal +2 damage instead." compset="Trait" summary="The first time you strike a creature, you get a +1 trait bonus to damage if it has already been damaged by an ally in that round. If your ally also has this trait, you deal +2 damage instead." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1KeepOl" name="Keeper of the Old Ways" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe past is the key to the future. Nowhere does this adage have more currency than in Osirion, the cradle of civilization, and you have mined the past for its secrets. You gain a +1 trait bonus to Knowledge (history). You also gain Ancient Osirion as a free bonus language." compset="Trait" summary="You gain a +1 trait bonus to Knowledge (history). You also gain Ancient Osirion as a free bonus language." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="PathLegacy"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Skill"/>
+    <eval phase="PreLevel" priority="10000" index="2">~Pre-Levels 10,000
+herofield[tLangsSpk].value += 1</eval>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skKnowHist] += 1</eval>
+    <evalrule phase="Validation" priority="5000" message="You also gain Ancient Osirion as a free bonus language." summary="You also gain Ancient Osirion as a free bonus language."><![CDATA[~validation Phase 5,000
+validif (hero.childlives[lPFancOsir] <> 0)]]></evalrule>
+    </thing>
+  <thing id="lPFancOsir" name="Osiriani, Ancient" description="The old outdated language of Garund. Modern Osiriani readers can, with some effort, decipher writings made in Ancient Osiriani." compset="Language" uniqueness="unique">
+    <usesource source="Wayfinder1"/>
+    </thing>
+  <thing id="trW1LightL" name="Lightning Lasher" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYou have worked with a whip for most of your life and wielding it is second nature. When you need it most, it just seems to find your hand. You may draw a whip as a free action or pick-up a loose whip in your square or in an adjacent square as a swift action. You also receive a +2 trait bonus to your attack roll when you use your whip to snare a beam, post or other terrain item so that you may use your whip as a fulcrum to swing across its length." compset="Trait" summary="You may draw a whip as a free action or pick-up a loose whip in your square or in an adjacent square as a swift action. You also receive a +2 trait bonus to your attack roll when you use your whip to snare a beam, post or other terrain item so that you may use your whip as a fulcrum to swing across its length." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1OsiEmb" name="Osirion Embalmer" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nYou are well versed in the ancient traditions of necromantic embalming and the secrets of their origins. You receive a +1 trait bonus to Profession (embalmer) checks. In addition, should you create undead with an animate dead, create undead, or greater create undead spell you may choose to grant your resulting creations either an extra +1 to their natural armor or +5 to their Speed." compset="Trait" summary="Should you create undead with an animate dead, create undead, or greater create undead spell you may choose to grant your resulting creations either an extra +1 to their natural armor or +5 to their Speed." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skW1ProfEm] += 1</eval>
+    </thing>
+  <thing id="skW1ProfEm" name="Profession: Embalmer" compset="Skill" uniqueness="unique">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="Helper" tag="TrainOnly" name="TrainOnly" abbrev="TrainOnly"/>
+    <tag group="Helper" tag="ExtraSkill" name="ExtraSkill" abbrev="ExtraSkill"/>
+    <tag group="Helper" tag="SkCatProf" name="Profession Skill" abbrev="Profession Skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    </thing>
+  <thing id="trW1RisGua" name="Risen Guardsman" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe Risen Guard is the elite fanatical bodyguard of Osirion&#146;s ruling dynasty. The Ruby Prince rewards its devotion by granting its leadership access to the Sothis treasury to fund their needs for healing and resurrection as required. Your time amongst the Risen Guard has taught you well that as long as a cleric is nearby, there is little to fear in any battle. Indeed, protecting your priests is among the best of stratagems a warrior can adopt. You receive a +2 trait bonus to saves against fear and intimidation whenever an allied cleric is within your line of sight. If you witness a foe injure an allied cleric, you gain a +1 trait bonus to damage against that foe should you hit with your next attack." compset="Trait" summary=" You receive a +2 trait bonus to saves against fear and intimidation whenever an allied cleric is within your line of sight. If you witness a foe injure an allied cleric, you gain a +1 trait bonus to damage against that foe should you hit with your next attack." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1Shiman" name="Shiman-Sehk Scavenger" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe abundance of food and water at Shuman-Sehk and their scarcity elsewhere has left you with a ferocious drive to avoid the rigors of hunger and thirst. You get a +2 trait bonus on Perception and Survival checks made for the purpose of finding or locating food and drink." compset="Trait" summary="You get a +2 trait bonus on Perception and Survival checks made for the purpose of finding or locating food and drink." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1TephuS" name="Tephu Scholar" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe information you gleaned while poring through the historical archives of Tephu sometimes prove useful in other fields too. Once each day when making a Knowledge check, you can choose to first make a DC 20 Knowledge (history) check. You gain a trait bonus on that check equal to the amount by which you exceeded the DC of the Knowledge (history) check. You do not suffer a penalty if you fail the check." compset="Trait" summary="When making a Knowledge check, you can choose to first make a DC 20 Knowledge (history) check. You gain a trait bonus on that check equal to the amount by which you exceeded the DC of the Knowledge (history) check. You do not suffer a penalty if you fail the check." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PathLegacy"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="trW1TotraP" name="Totra Pride" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nThe legacy of oppression suffered by the citizens of Totra makes you very hostile towards anyone who tries to push you around. You get a +2 trait bonus on your next attack roll made against any creature that unsuccessfully targets you with a fear effect. This bonus increases to +4 against creatures who failed their Intimidate check against you." compset="Trait" summary=" You get a +2 trait bonus on your next attack roll made against any creature that unsuccessfully targets you with a fear effect. This bonus increases to +4 against creatures who failed their Intimidate check against you." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1WatiRe" name="Wati Remedies" description="{b}You must be from the listed region to select this trait:{/b} Osirion\n\nAfter listening to countless tales of the ancient pestilence that devastated Wati, you find yourself almost instinctively taking steps to keep yourself and your friends free from contacting illness. Your constant vigilance gives you a +1 trait bonus on Fortitude saving throws against disease. In addition, you get a +2 trait bonus on any Heal check made to treat a disease." compset="Trait" summary="Your constant vigilance gives you a +1 trait bonus on Fortitude saving throws against disease. In addition, you get a +2 trait bonus on any Heal check made to treat a disease." uniqueness="unique">
+    <comment>Wayfinder#1 pg2</comment>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="cHelpDDS" name="Dawnflower Dervish of Sarenrae" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="8"/>
+    <fieldval field="cAbbr" value="DDS"/>
+    <fieldval field="cSkills" value="4"/>
+    <fieldval field="shortname" value="Dawnflower"/>
+    <arrayval field="cMagLevTot" index="1" value="1"/>
+    <arrayval field="cMagLevTot" index="2" value="2"/>
+    <arrayval field="cMagLevTot" index="3" value="3"/>
+    <arrayval field="cMagLevTot" index="5" value="4"/>
+    <arrayval field="cMagLevTot" index="6" value="5"/>
+    <arrayval field="cMagLevTot" index="7" value="6"/>
+    <arrayval field="cMagLevTot" index="9" value="7"/>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="ClassSkill" tag="skHeal"/>
+    <tag group="ClassSkill" tag="skKnowRel"/>
+    <tag group="ClassSkill" tag="skPercep"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="ClassSkill" tag="skSwim"/>
+    <tag group="ExtraLev1" tag="Divine"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="Classes" tag="W1Dervish" name="Dawnflower Dervish of Sarenrae"/>
+    <tag group="cAttack" tag="Medium"/>
+    <tag group="cFort" tag="Poor"/>
+    <tag group="cRef" tag="Good"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="ClassSkill" tag="skAcrobat"/>
+    <tag group="ClassSkill" tag="Perform"/>
+    <bootstrap thing="cDDSChan">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDDSLiScim">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDance">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDance">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDance">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDance">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDance">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDomDan">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDomDan">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDomDan">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDomDan">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cDDSFastMo">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cDDSFastMo">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cDDSFastMo">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cDDSElabPa">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cDDSTireDa">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cDDSDawnBl">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    </thing>
+  <thing id="cW1Dervish" name="Dawnflower Dervish of Sarenrae" description="{B}Wayfinder #1 - By Lissa &#147;SunshineGrrrl&#148; Guillet{/B}\nThe Dawnflower dervish sect of the Church of Sarenrae is a group of combat-oriented clerics working towards the destruction of evil. They wander the world to bring Sarenrae&#146;s light to its darkest corners.\n\nThe first of the Dawnflower dervishes were desert nomads who spread the faith of Sarenrae through their beautiful sword dances. Eventually other priests saw not only the beauty, but also the martial prowess that these dances conferred in combat. They shared this with the head church, which gave the Dawnflower dervishes official sanction and status.\n\nA Dawnflower dervish of Sarenrae uses dance as a beautiful but deadly martial art. As the Dawnflower dervish dances, she channels a fragment of her patron goddess. In this way, a devout dervish becomes a burning whirlwind of divine justice." compset="ClassLevel" maxlimit="10">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="ClassType" tag="Prestige"/>
+    <bootstrap thing="cHelpDDS"></bootstrap>
+    <link linkage="helper" thing="cHelpDDS"/>
+    <exprreq message="Perform(Dance) 1 rank required."><![CDATA[#skillranks[skPerfDanc] >= 1]]></exprreq>
+    <exprreq message="Acrobatics 1 rank required."><![CDATA[#skillranks[skAcrobat] >= 1]]></exprreq>
+    <exprreq message="Knowledge(Religion) 5 rank required."><![CDATA[#skillranks[skKnowRel] >= 5]]></exprreq>
+    <exprreq message="Must have a Base Attack Bonus of +4 or greater."><![CDATA[child[Attack].field[tAtkBase].value >= 4]]></exprreq>
+    <exprreq message="Combat Expertise feat required."><![CDATA[#hasfeat[fComExpert] <> 0]]></exprreq>
+    <exprreq message="Dodge feat required."><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Mobility feat required."><![CDATA[#hasfeat[fMobility] <> 0]]></exprreq>
+    <exprreq message="Weapon Focus (Scimitar) feat required."><![CDATA[tagis[WepFocus.wScimitar] <> 0]]></exprreq>
+    <exprreq message="Must have Channel Energy class ability."><![CDATA[#hasability[cClrChan] + #hasability[cPalChan] <> 0]]></exprreq>
+    </thing>
+  <thing id="cDDSLiScim" name="Light Scimitars" description="A Dawnflower dervish learns to move with the grace of fire. She may treat scimitars as light weapons." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[~Pre-Levels 1,000
+~ find all scimitars on the hero
+foreach pick in hero from BaseWep where "IsWeapon.wScimitar" 
+         ~Change it from a one-handed weapon to a light weapon.
+         perform eachpick.delete[wClass.OneHanded]
+         perform eachpick.assign[wClass.Light]
+nexteach]]></eval>
+    </thing>
+  <thing id="cDDSChan" name="Channel Energy" description="A Dawnflower dervish of Sarenrae adds her levels in this class for all abilities related to channel energy." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="Helper" tag="ClExLose" name="ClExLose" abbrev="ClExLose"/>
+    <bootstrap thing="xChannel"></bootstrap>
+    <eval phase="PostLevel" priority="10000">~ Set our name properly
+      var v_turnname as string
+      call cClrTurnNm
+      field[livename].text = v_turnname
+
+      ~ Add our cleric level to our turning level.
+      hero.child[xChannel].field[abValue].value += field[xTotalLev].value</eval>
+    </thing>
+  <thing id="cDDSDance" name="Dawnflower Dance" description="Once per day, a dervish can use a swift action to enter an ecstatic Dawnflower dance. She must be wielding a scimitar, and her other hand must hold a scimitar or be empty.\n\nIn this state, the Dawnflower dervish adds her Wisdom modifier or half her class level (whichever is lower) to all scimitar attack and damage rolls. In addition, if the Dawnflower dervish charges a foe, she can make a full attack (instead of a single attack).\n\nWhile dancing, the Dawnflower dervish cannot cast spells (except as described under domain dance) or activate magic items that require a command word, a spell trigger (such as a wand), or a spell completion (such as a scroll) to function. She can use bardic performances that utilize Perform (dance).\n\nThe Dawnflower dance lasts a number of rounds equal to 4 + half her Dawnflower dervish level. A dervish may prematurely end the dance. At the end of the dance, the Dawnflower dervish loses the dance&#146;s benefits and restrictions, and becomes fatigued for the remainder of the encounter.\n\nA Dawnflower dervish can use this ability once per day at 1st level. At 3rd level, and every odd level after that, she can use Dawnflower dance an additional time per day." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[~Pre-Attributes 10,000
+
+~Set the list name to include (/day)
+field[listname].text = field[thingname].text & "(" & field[xIndex].value & "/day)"
+
+
+~ If we're not active, do nothing
+doneif (tagis[Helper.ShowSpec] = 0)
+
+  ~Set the correct uses per day value
+  #trkmax[cDDSDance] = field[xIndex].value]]></eval>
+    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we are not activated get out now
+      doneif (field[abilActive].value = 0)
+
+var lvl as number
+var wis as number
+var bonus as number
+wis = hero.child[aWIS].field[aModBonus].value
+lvl = round(#levelcount[W1Dervish]/2,0,-1)
+
+~figure out what is lower wis mod or half class level
+if (wis < lvl) then
+   bonus = wis
+else
+   bonus = lvl
+endif
+
+~ Go through each scimitar pick on the hero
+foreach pick in hero from BaseWep where "IsWeapon.wScimitar" 
+  eachpick.field[wAttBonus].value += bonus
+  eachpick.field[wDamBonus].value += bonus
+nexteach]]></eval>
+    </thing>
+  <thing id="cDDSDomDan" name="Domain Dance" description="At every even level, a Dawnflower dervish may choose one of Sarenrae&#146;s domains. The dervish may cast divine spells from the chosen domain (whether as domain spells or from her regular slots) during a Dawnflower dance. This ability does not give access to the domain&#146;s spells or granted powers; just the ability to cast those spells during a Dawnflower dance.\n\nIn addition, whenever a dervish casts a spell from a chosen domain during a Dawnflower dance, she gains magical effect related to the spell&#146;s domain. This effect lasts until the end of her next turn, until she is disarmed, or the Dawnflower dance ends. While any of these effects are active, the Dawnflower dervish&#146;s scimitar attacks are treated as good-aligned for the purposes of overcoming damage reduction.\n\n{i}Fire:{/i} The dervish&#146;s scimitar(s) ignites with fire, gaining the flaming weapon quality.\n\n{i}Glory:{/I} Golden runes appear along the scimitar(s) blade. It deals an extra 1d6 points of damage to evil outsiders.\n\n{i}Good:{/i} The dervish&#146;s scimitar(s) glows with golden light, radiating a magic circle against evil.\n\n{i}Healing:{/i} The scimitar(s) loses its luster. The dervish may choose to deal nonlethal damage with the weapon without penalty.\n\n{i}Sun:{/i} The dervish&#146;s scimitar(s) trails sunlight, which inflicts an extra 1d6 points of damage to undead.\n\nMultiple instances of the same effect do not stack." compset="ClSpecial">
+    <fieldval field="usrCandid1" value="thingid.cdFire|thingid.cdGlory|thingid.cdGood|thingid.cdHealing|thingid.cdSun"/>
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    </thing>
+  <thing id="cDDSFastMo" name="Fast Movement" description="At 2nd level, a Dawnflower dervish gains a 5-feet enhancement bonus to her speed. At 5th level this becomes 10-feet and at 8th level this becomes 15-feet. A Dawnflower dervish loses this bonus if she is wearing medium or heavy armor, carrying a shield, or carrying a medium or heavy load." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="Final"><![CDATA[~Final Phase 100
+var speed as number
+speed = 5 * field[xIndex].value
+~Set the list name to include (+ft)
+field[listname].text = field[thingname].text & " +" & speed  & " ft"
+
+~ If we're not active, do nothing
+doneif (tagis[Helper.ShowSpec] = 0)
+
+      var disable as number
+      disable = 0
+      if (hero.tagis[Hero.MedArmor] <> 0) then
+        disable = 1
+      elseif (hero.tagis[Hero.HeavyArmor] <> 0) then
+        disable = 1
+      elseif (hero.tagis[Hero.EquipShld] <> 0) then
+        disable = 1
+      elseif (hero.tagis[Encumbered.Light] = 0) then
+        disable = 1
+      endif         
+      
+      ~ If we're wearing medium, heavy or shield we're done
+      if (disable = 1) then
+        perform assign[Helper.SpcDisable]
+        done
+      endif
+
+  ~Increase speed
+  hero.child[Speed].field[BonEnhance].value += speed]]></eval>
+    </thing>
+  <thing id="cDDSElabPa" name="Elaborate Parry" description="At 7th level, a Dawnflower dervish gains an extra +4 bonus to Armor Class when she fights defensively or uses all-out defense." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cDDSTireDa" name="Tireless Dance" description="At 9th level, a Dawnflower dervish is no longer fatigued after a Dawnflower dance." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cDDSDawnBl" name="Dawnflower Blossom" description="At 10th level, while performing a Dawnflower dance, a dervish can gain the magical effects of domain dance by expending one or more Channel Energy as a swift action. The Dawnflower dervish may activate any number of domain dance effects of her choice. These effects last for two rounds per Channel Energy expended, until she is disarmed, or the Dawnflower dance ends. For example, a Dawnflower dervish can expend two Channel Energys to keep the Fire, Sun, and Good domain effects up for four rounds.\n\nIn addition, while these effects are active, a Dawnflower dervish radiates {i}daylight{/i} as the spell, except that it dispels spells with the Darkness descriptor of 6th level or lower." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <usesource source="PathLegacy"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cHelpNLU" name="Necro-Lord of Urgathoa" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="8"/>
+    <fieldval field="cAbbr" value="NLU"/>
+    <fieldval field="shortname" value="Necoro-Lord"/>
+    <arrayval field="cMagLevTot" index="0" value="1"/>
+    <arrayval field="cMagLevTot" index="1" value="2"/>
+    <arrayval field="cMagLevTot" index="2" value="3"/>
+    <arrayval field="cMagLevTot" index="3" value="4"/>
+    <arrayval field="cMagLevTot" index="4" value="5"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="cRef" tag="Poor"/>
+    <tag group="ExtraLev1" tag="Arcane"/>
+    <tag group="ExtraLev1" tag="Divine"/>
+    <tag group="AlgnReq" tag="Evil"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="Classes" tag="W1NecoroL" name="Necro-Lord of Urgathoa"/>
+    <tag group="cAttack" tag="Poor"/>
+    <tag group="cFort" tag="Good"/>
+    <tag group="ClassSkill" tag="Profession"/>
+    <tag group="ClassSkill" tag="skDiplo"/>
+    <tag group="ClassSkill" tag="skHeal"/>
+    <tag group="ClassSkill" tag="skKnowArca"/>
+    <tag group="ClassSkill" tag="skKnowRel"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="ClassSkill" tag="skUseMagic"/>
+    <bootstrap thing="cNLUGlutto">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cNLU1wDeat">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cNLUPlague">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cNLUPlague">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cNLUCreFaW">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cNLUSpawnM">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cNLUCheatD">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    </thing>
+  <thing id="cW1NecoroL" name="Necro-Lord of Urgathoa" description="{b}Special:{/b} Ability to create undead. The ability to cast animate dead, create undead, or create greater undead qualifies, as does many undead&#146;s Create Spawn ability. Using magic items, however, does not qualify.\n\n{b}Wayfinder#1 - By Ross Byers{/b}\nNecro-lords are servants of Urgathoa, favored for their ability to spread the plague of undeath amongst the world of the living. They lead cults of the Urgathoa, initiate pestilences and pandemics, and create undead wherever they can.\n\nNecro-lords are overwhelmingly clerics and necromancers (both living and undead), though vampires, ghouls, wights, and other spawn-creating undead can also take up the mantle of a necro-lord." compset="ClassLevel" maxlimit="5">
+    <usesource source="Wayfinder1"/>
+    <tag group="ClassType" tag="Prestige"/>
+    <bootstrap thing="cHelpNLU"></bootstrap>
+    <link linkage="helper" thing="cHelpNLU"/>
+    <exprreq message="Heal 2 ranks required."><![CDATA[#skillranks[skHeal] >= 2]]></exprreq>
+    <exprreq message="Knowledge (Religion) 2 ranks required."><![CDATA[#skillranks[skKnowRel] >= 1]]></exprreq>
+    <exprreq message="Must have a Base Attack Bonus of +4 or greater."><![CDATA[child[Attack].field[tAtkBase].value >= 4]]></exprreq>
+    </thing>
+  <thing id="cNLUGlutto" name="Gluttony" description="A necro-lord requires twice as much food and water as he would otherwise." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cNLU1wDeat" name="One With Death" description="A Necro-lord lives at the intersection of life and death. A living necro-lord becomes immune to damage from negative energy, while an undead one becomes immune to damage from positive energy. (Other effects relying on negative or positive energy, such as a cleric&#146;s Turn Undead ability, work normally, they simply deal no damage.)\n\nAt 5th level, a necro-lord is healed by both positive and negative energy." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cNLUPlague" name="Plaguebearer" description="A necro-lord is immune to nonmagical diseases. However, the necro-lord may choose at the time of infection to become a carrier for the disease. A carrier shows all superficial signs of a disease (such as sores, boils, a cough, etc.) and can infect others, but suffers no ability damage or other serious ill effects. A carrier can attempt Fortitude saves to recover (or choose not to) or be magically healed as normal.\n\nAdditionally, a necro-lord may cast {i}contagion{/i} or {i}remove disease{/i} each once per day as a spell-like ability. The save DC is Charisma-based.\n\nAt 4th level, a necro-lord becomes immune to magical diseases as well, and may cast {i}contagion{/i} and {i}remove disease{/i} each twice per day." compset="ClSpecial" summary="A necro-lord may cast {i}contagion{/i} or {i}remove disease{/i} each once per day as a spell-like ability. The save DC is Charisma-based.">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpInfo" tag="spContagi4"/>
+    <tag group="SpInfo" tag="spRemoDis3"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[~Pre-Attributes 10,000
+
+~Set the list name to include (/day)
+field[listname].text = field[thingname].text & "(" & field[xIndex].value & "/day)"
+
+~Increase DC by Spell Level
+field[abDC].value += 4
+
+~ If we're not active, do nothing
+doneif (tagis[Helper.ShowSpec] = 0)
+
+  ~Set the correct uses per day value
+  #trkmax[cDDSDance] = field[xIndex].value]]></eval>
+    </thing>
+  <thing id="cNLUCreFaW" name="Create Food and Water" description="At 2nd level, a necro-lord may cast create food and water (CL 1st) once per day as a spell-like ability, save that the food and drink produced is delicious, in addition to being nourishing.\n\nAt 4th level, the necro-lord may cast heroes&#146; feast (CL 3rd) instead." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spCreaFoo3"/>
+    </thing>
+  <thing id="cNLUSpawnM" name="Spawn Mastery" description="At 3rd level, whenever a necro-lord would create a free-willed undead, that undead is instead under the necro-lord&#146;s control. A necro-lord can control up to 4 HD of undead per necro-lord level in this manner. Excess undead are free-willed unless previously controlled undead are released." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[field[abValue].value = 4 * #levelcount[W1NecoroL]
+
+~Set the list name to include total Hit Die
+field[livename].text = field[thingname].text & "(" & field[abValue].value & "HD)"]]></eval>
+    </thing>
+  <thing id="cNLUCheatD" name="Cheat Death" description="At 5th level, if a necro-lord is ever slain or destroyed, his soul steals away from Pharasma&#146;s Boneyard, just as Urgathoa did ages ago. The necro-lord rises as if affected by {i}raise dead{/i} 1d4 hours after its death. This affects even destroyed undead, but not a creature that has been dismembered or had its body destroyed.\n\nHowever, escape from Pharasma is fleeting. A creature restored in this manner will simply drop dead after 2d6 days, unless otherwise restored to full life. The GM should roll this secretly, so the necro-lord does not know how much time remains. A {i}raise dead{/i} or similar spell will restore a living creature to life. Undead creatures, such as a lich, can replace a destroyed phylactery. As most undead cannot be restored to life (or unlife), they will be destroyed when the effect ends." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="trW1HuntBl" name="Hunter&#146;s Blood" description="You didn&#146;t choose the path of the hunt, the hunt chose you. You were born inside a family of those dedicated to hunting the undead. Since an early age you were taught the tools of the trade, how to hunt and kill your quarry. Be careful when using your family name &#150; it&#146;s better known than you are. You earn a +1 trait bonus on Diplomacy when used to gather information, Knowledge (religion), and Survival when used for tracking when related to an undead quarry. Choose one as these as a class skill. The undead have a +1 bonus on any roll to learn about you, as your family&#146;s fame precedes you." compset="Trait" summary="You earn a +1 trait bonus on Diplomacy when used to gather information, Knowledge (religion), and Survival when used for tracking when related to an undead quarry. Choose one as these as a class skill. The undead have a +1 bonus on any roll to learn about you, as your family&#146;s fame precedes you." uniqueness="useronce">
+    <fieldval field="usrCandid1" value="thingid.skDiplo|thingid.skKnowRel|thingid.skSurvival"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Social"/>
+    <eval phase="PreLevel" priority="1000">~Pre-levels  1000
+    
+      perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="trW1WithoP" name="Without a Past" description="You knew you were going into a world where none go unscathed, and there is no turning back, so you decided to forsake your past in order to protect your loved ones. You earn +1 trait bonus to Bluff and Linguistics when used to forge documents, and choose one as a class skill. You have no old friends or family to go in times of need, yet at least they remain safe from your enemies finding and taking their wrath out on them." compset="Trait" summary=" You earn +1 trait bonus to Bluff and Linguistics when used to forge documents, and choose one as a class skill." uniqueness="useronce">
+    <fieldval field="usrCandid1" value="thingid.skBluff|thingid.skLinguist"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Social"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="1000">~Pre-levels  1000
+    
+      perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="fW1Halo" name="Halo" description="{i}Your deity has blessed you with her holy symbol, showing you as one of her chosen ones, and even when the birthmark is not seen your aura is strong enough to be felt and sometimes seen.{/I}\n\n{b}Prerequisites:{/b} Birthmark trait, any good alignment, must follow a good deity.\n\n{b}Benefit:{/b} Whenever your birthmark is seen you gain one of two benefits. If it is seen by good-aligned creatures or someone of the same faith, you gain a +2 morale bonus to Diplomacy checks when dealing with them. If seen by the undead or enemies of your deity, you instead get a +2 morale bonus to Intimidate checks against them (even mindless undead). If you can channel energy, you may do so without the use of a holy symbol and can instead touch your birthmark.\n\n{b}Special:{/b} If you are not a cleric or paladin you gain an aura of good as strong as a cleric of your character level (see the detect evil spell for more information on auras). If you are a cleric or paladin then your aura is twice as strong, as if you were a character of twice your level.\n\n{b}Normal:{/b} You need a holy symbol to channel positive energy." compset="Feat" summary="If your birthmark is seen by good-aligned creatures or someone of the same faith, you gain a +2 morale bonus to Diplomacy checks when dealing with them. If seen by the undead or enemies of your deity, you instead get a +2 morale bonus to Intimidate checks against them (even mindless undead). If you can channel energy, you may do so without the use of a holy symbol and can instead touch your birthmark." uniqueness="useronce">
+    <usesource source="Wayfinder1"/>
+    <tag group="fCategory" tag="W1backgrou" name="Background"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Birthmark trait required."><![CDATA[hero.tagis[HasTrait.trBirthmar] <> 0]]></exprreq>
+    <exprreq message="Good alignment required."><![CDATA[hero.tagis[Alignment.Good] <> 0]]></exprreq>
+    </thing>
+  <thing id="fW1HuntOfD" name="Hunter of the Dead" description="{i}You have dedicated yourself to the hunt whole heartedly, and it has paid off. Your experience battling the undead has given you insight in how better to confront and destroy your quarry.{/I}\n\n{b}Prerequisite:{/b} Deliver the killing blow to 30 undead creatures, necromancers, or clerics and minions of Urgathoa.\n\n{b}Benefit:{/b} As long as you carry some sort of trophy harvested from an undead creature, you gain a +2 morale bonus on all saving throws to resist energy drain attacks and necromancy spells. You also gain a +2 competence bonus on attack rolls and weapon damage rolls against undead, necromancers or clerics and minions of Urgathoa." compset="Feat" summary="As long as you carry some sort of trophy harvested from an undead creature, you gain a +2 morale bonus on all saving throws to resist energy drain attacks and necromancy spells. You also gain a +2 competence bonus on attack rolls and weapon damage rolls against undead, necromancers or clerics and minions of Urgathoa." uniqueness="useronce">
+    <usesource source="Wayfinder1"/>
+    <tag group="fCategory" tag="Achieve"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="fW1LightIn" name="A Light in the Darkness" description="{i}Your deity has blessed you for your dedication in the destruction of the undead. From now on, whenever you battle them, you can feel their will and strength more clearly fueling your actions.{/I}\n\n{b}Prerequisite:{/b} Deal 200 points of damage to undead creatures by channeling positive energy.\n\n{b}Benefit:{/b} Whenever you channeling positive energy, you deal +1d6 damage against undead and add +2 to the DC of the saving throw to resist." compset="Feat" summary="Whenever you channeling positive energy, you deal +1d6 damage against undead and add +2 to the DC of the saving throw to resist." uniqueness="useronce">
+    <usesource source="Wayfinder1"/>
+    <tag group="fCategory" tag="Achieve"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trW1FaithF" name="Faith of the Failed" description="{b}This religion trait is available to all characters of the listed faith:{/b} various\n\nYou follow one of the many would-be gods who accepted the Test of the Starstone. The less faithful say your god failed and perished, but you know they merely await the proper time to reveal their ascension. Your deep-rooted conviction provides a +1 trait bonus on Will saves." compset="Trait" summary="Your deep-rooted conviction provides a +1 trait bonus on Will saves." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Religion"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="5000">~Pre-Levels 5,000
+
+      hero.child[svWill].field[Bonus].value += 1</eval>
+    </thing>
+  <thing id="trW1MaskSh" name="Masked in Shadow" description="{b}This religion trait is available to all characters of the listed faith:{/b} Norgorber\n\nWhile Absalom allows the faith of the Reaper of Reputation, his adherents prefer to conceal their true identities beneath masks. When masked or disguised, you receive a +1 trait bonus on Bluff and Stealth checks. You never risk poisoning yourself when applying poison to a blade or using a poisoned weapon." compset="Trait" summary="When masked or disguised, you receive a +1 trait bonus on Bluff and Stealth checks. You never risk poisoning yourself when applying poison to a blade or using a poisoned weapon." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Religion"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skKnowGeog] += 1
+#skillbonus[skDiplo] += 1</eval>
+    </thing>
+  <thing id="trW1AudHol" name="Audience of the Holt" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nYou have spent many afternoons seated on the roots of the Grand Holt, listening to the wisdom of its druids, learning patience and the lore of the natural world. You receive a +1 trait bonus on Perception, Knowledge (nature) and Animal Empathy checks." compset="Trait" summary="You receive a +1 trait bonus on Perception, Knowledge (nature) and Animal Empathy checks." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="Final" priority="5000" index="2">~Post-Levels 5,000
+    doneif (hero.tagis[Ability.cWildEmp] = 0)
+    hero.child[cWildEmp].field[abValue].value += 1</eval>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skPercep] += 1
+#skillbonus[skKnowNat] += 1</eval>
+    </thing>
+  <thing id="trW1Blackb" name="Blackblade Student" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nTrained at Blackblade&#146;s, a new and successful dueling academy, you&#146;ve learned to think on your feet and anticipate your enemy&#146;s reaction. When you are not surprised and have a weapon in hand, you gain a +2 trait bonus on initiative checks. In addition, you receive a +1 trait bonus to your CMB against disarm attempts." compset="Trait" summary="When you are not surprised and have a weapon in hand, you gain a +2 trait bonus on initiative checks. In addition, you receive a +1 trait bonus to your CMB against disarm attempts." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="Final" priority="10000" index="2">~Final Phase 10,000
+      ~add a +1 bonus to the Disarm(CMB) only
+      hero.child[manDisarm].field[manCMB].value += 1</eval>
+    </thing>
+  <thing id="trW1DanceK" name="Dancer of Kortos" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nThe Grand Dance Hall of Kortos is famed for the skill and grace of its Vudrani-trained dance troupes. The performers of the Hall are known for their social grace as well, all a part of Lord Punjeer&#146;s carefully choreographed grooming of merchants and investors. You receive a +1 trait bonus on Diplomacy and Perform (dance) checks. Perform (dance) is always considered a class skill for you." compset="Trait" summary=" You receive a +1 trait bonus on Diplomacy and Perform (dance) checks. Perform (dance) is always considered a class skill for you." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skDiplo] += 1
+#skillbonus[skPerfDanc] += 1
+#makeclassskill[skPerfDanc]</eval>
+    </thing>
+  <thing id="trW1GreenG" name="Green of the Grotto" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nThe performers of the Grotto are renowned throughout the Inner Sea. You&#146;ve worn the green tunic of an apprentice of the Grotto and honed your talents at the feet of masters. You gain a +1 trait bonus on any one category of Perform check as well as Craft (painting) and Craft (sculpting) checks. You may choose one of Perform (dance), Craft (painting) or Craft (sculpting) to always be a class skill for you." compset="Trait" summary="You gain a +1 trait bonus on any one category of Perform check as well as Craft (painting) and Craft (sculpting) checks. You may choose one of Perform (dance), Craft (painting) or Craft (sculpting) to always be a class skill for you." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <fieldval field="usrCandid1" value="thingid.skPerfDanc|thingid.skCrafPain|thingid.skCrafScul"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skCrafPain] += 1
+#skillbonus[skCrafScul] += 1
+      perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
+    </thing>
+  <thing id="trW1Hotspu" name="Hotspur" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nNoted for their brash attitudes and tight leather clothes, the hotspurs are Absalom&#146;s bravos, equally quick with blade and cutting gibe. Your misspent youth as a hotspur provides a +1 trait bonus to initiative checks and Bluff checks." compset="Trait" summary="Your misspent youth as a hotspur provides a +1 trait bonus to initiative checks and Bluff checks." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skBluff] += 1</eval>
+    <eval phase="PreLevel" priority="5000" index="2">~Pre-levels 5,000
+      hero.child[Initiative].field[Bonus].value += 1</eval>
+    </thing>
+  <thing id="trW1KiteBa" name="Kite Battler" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nYou&#146;ve spent long hours in the parks of Absalom, testing your skill against other kite fliers. In the process, you&#146;ve learned patience and a keen eye for distance. You receive a +1 trait bonus on concentration checks to cast a spell defensively or under difficult conditions, and a +1 trait bonus on any attack roll that includes a range penalty." compset="Trait" summary="You receive a +1 trait bonus on concentration checks to cast a spell defensively or under difficult conditions, and a +1 trait bonus on any attack roll that includes a range penalty." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    </thing>
+  <thing id="trW1Libera" name="Liberated" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nYou survived the wretched environs of Misery Row, Absalom&#146;s slave district. Whether you escaped or one-time master freed you, your days of slavery left their mark on you. You receive a +1 trait bonus on Fortitude saves and ignore the first point of nonlethal damage taken each hour." compset="Trait" summary="You receive a +1 trait bonus on Fortitude saves and ignore the first point of nonlethal damage taken each hour." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <fieldval field="usrCandid1" value="thingid.skPerfDanc|thingid.skCrafPain|thingid.skCrafScul"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <eval phase="PreLevel" priority="5000">~Pre-Levels 5,000
+
+      hero.child[svFort].field[Bonus].value += 1</eval>
+    </thing>
+  <thing id="trW1MastMi" name="Master of Misery" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nWhether as guard, merchant or mere laborer, you are a veteran of Misery Row, slave market of Absalom. You learned well how to assert your position of superiority. When armed, you receive a +2 trait bonus to melee weapon damage rolls against unarmed humanoids &#150; even those using natural weapons or improved unarmed strikes. This bonus applies only to creatures with the humanoid type, not human-appearing creatures of other types such as monstrous humanoids and outsiders." compset="Trait" summary="When armed, you receive a +2 trait bonus to melee weapon damage rolls against unarmed humanoids &#150; even those using natural weapons or improved unarmed strikes. This bonus applies only to creatures with the humanoid type, not human-appearing creatures of other types such as monstrous humanoids and outsiders." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <fieldval field="usrCandid1" value="thingid.skPerfDanc|thingid.skCrafPain|thingid.skCrafScul"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    </thing>
+  <thing id="trW1Sodden" name="Sodden" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nWhen the quake turned the Puddles district&#146;s all-too frequent flooding problems into a permanent situation, every resident who could afford to leave moved on. You had nowhere else to go, and spent your days eking out a damp and miserable existence. You receive a +1 trait bonus on Climb and Swim checks, and Swim is always considered a class skill for you." compset="Trait" summary=" You receive a +1 trait bonus on Climb and Swim checks, and Swim is always considered a class skill for you." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#skillbonus[skClimb] += 1
+#skillbonus[skSwim] += 1
+#makeclassskill[skSwim]</eval>
+    </thing>
+  <thing id="trW1TamerB" name="Tamer of the Beast" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nYou&#146;ve spent long hours laboring at the Beast, the cargo crane at Absalom&#146;s docks. You&#146;ve learned to move fast when things go wrong. You receive a +1 trait bonus on initiative checks and a +1 trait bonus to Reflex saves against physical attacks and objects (but not spells)." compset="Trait" summary="You receive a +1 trait bonus on initiative checks and a +1 trait bonus to Reflex saves against physical attacks and objects (but not spells)." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <usesource source="Wayfinder1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <eval phase="PreLevel" priority="5000" index="2">~Pre-levels 5,000
+      hero.child[Initiative].field[Bonus].value += 1</eval>
+    </thing>
+  <thing id="trW1WarIro" name="Warrior of the Irorium" description="{b}You must be from the listed region to select this trait:{/b} Absalom\n\nYou have trained among the warriors of the Irorium arena, mastering crowd-pleasing combat techniques. You receive a +1 trait bonus to a combat maneuver of your choice." compset="Trait" summary="You receive a +1 trait bonus to a combat maneuver of your choice." uniqueness="unique">
+    <comment>Wayfinder#1 pg54</comment>
+    <fieldval field="usrCandid1" value="thingid.manBullRus|thingid.manDisarm|thingid.manFeint|thingid.manGrapple|thingid.manOverrun|thingid.manSunder|thingid.manTrip"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <eval phase="Final" priority="10000"><![CDATA[~Pre-Levels 5,000
+      ~ If we've not chosen anything, get out
+      doneif (field[usrChosen1].ischosen = 0)
+
+~If Bull Rush
+if (field[usrChosen1].chosen.pulltags[thingid.manBullRus] = 1) then
+      hero.child[manBullRus].field[manBonus].value += 1
+endif
+~If Disarm
+if (field[usrChosen1].chosen.pulltags[thingid.manDisarm] = 1) then
+      hero.child[manDisarm].field[manBonus].value += 1
+endif
+~If Feint
+if (field[usrChosen1].chosen.pulltags[thingid.manFeint] = 1) then
+      hero.child[manFeint].field[manBonus].value += 1
+endif
+~If Grapple
+if (field[usrChosen1].chosen.pulltags[thingid.manGrapple] = 1) then
+      hero.child[manGrapple].field[manBonus].value += 1
+endif
+~If Over Run
+if (field[usrChosen1].chosen.pulltags[thingid.manOverrun] = 1) then
+      hero.child[manOverrun].field[manBonus].value += 1
+endif
+~If Sunder
+if (field[usrChosen1].chosen.pulltags[thingid.manSunder] = 1) then
+      hero.child[manSunder].field[manBonus].value += 1
+endif
+~If Trip
+if (field[usrChosen1].chosen.pulltags[thingid.manTrip] = 1) then
+      hero.child[manTrip].field[manBonus].value += 1
+endif]]></eval>
+    </thing>
+  <thing id="spW1EnerL2" name="Energy Loop" description="This spell forms a crackling circle in the air that gives creatures passing through it an energy aura that not only protects them from that sort of energy but also allows them to deal extra damage of that type when they make a melee attack. The caster must choose which sort of energy to make the circle from at the moment of casting and once made cannot change this decision. Any creature passing through the circle develops a flickering corona, the color of which corresponds to the energy type of the circle (acid=black, cold=white, electricity=blue, fire=red, sonic=green). The creature gains energy resistance 10 to that energy type for one minute, until it deals damage with a melee attack, or it touches ground (whichever comes first). If the creature makes a successful melee attack while protected with this aura it deals an extra 1d6 points of energy damage to its opponent.\n\nCreatures may travel through this circle multiple times, regaining the energy aura with each trip. If a mounted creature passes through the circle both the mount and the rider gain the energy aura and continue to share its effects if one of them loses the aura but remains in contact with the other.\n\nAnimals and similar creatures only fly through this circle if specifically trained to do so (see sidebar)." compset="Spell">
+    <fieldval field="sRange" value="long (400 ft. + 40 ft./level)"/>
+    <fieldval field="sDuration" value="1 round/level (D)"/>
+    <fieldval field="sSave" value="Yes (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sRange" tag="Long"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="sDuration" tag="Dismiss"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    </thing>
+  <thing id="cSorW1shad" name="Shadow" description="Born with the ability to bend the perceptions of others to their advantage, sorcerers with the shadow bloodline are masters of deception. Where shadow bloodline sorcerers get their powers is as mysterious as the power itself. Is it in the blood? Perhaps they are touched by some fell power? Regardless of the source, these sorcerers have a penchant for secrecy, silence, and stealth. As their power grows, they gain the ability to manipulate shadow so well it is nearly impossible to determine what is real and what is illusion.\n\n{b}Bloodline Arcana:{/b} When casting {i}summon monster{/i} spells, shadow-blooded sorcerers can summon any of the following additional creatures:\n{i}Summon monster III:{/I} shadow\n{i}Summon monster V:{/i} shadow mastiff\n{i}Summon monster VII:{/i} greater shadow" compset="CustomSpec">
+    <usesource source="Wayfinder1"/>
+    <tag group="fInclude" tag="fBlindFgt"/>
+    <tag group="fInclude" tag="fDeceit"/>
+    <tag group="fInclude" tag="fDodge"/>
+    <tag group="fInclude" tag="fLightRef"/>
+    <tag group="fInclude" tag="fSilentSpl"/>
+    <tag group="fInclude" tag="fSkillFoc"/>
+    <tag group="fInclude" tag="fSpellFoc"/>
+    <tag group="fInclude" tag="fWindStan"/>
+    <tag group="SpecSource" tag="cHelpSor"/>
+    <tag group="ClassSkill" tag="skStealth"/>
+    <bootstrap thing="sPFRMA1013">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 3]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="sPFRMA2008">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 5]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spDisplac3">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 7]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spShadCon4">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 9]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spShadEvo5">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 11]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spShadWal5">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 13]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spShadCon7">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 17]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spShades9">
+      <containerreq phase="First" priority="500"><![CDATA[        count:Classes.Sorcerer + count:Classes.W1ShadowS >= 19]]></containerreq>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1veil">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1ShMa">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1shSt">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1Deep">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1ClSh">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    </thing>
+  <thing id="cSorW1veil" name="Veil of Darkness" description="As a standard action, you can conjure a 10 foot square plane of shadow within 30 ft. This veil lasts for one round and obscures vision, providing 20% concealment in both directions. The veil does not hinder movement, but a creature passing through the veil becomes dazed for the remainder of its turn (Will DC 12 plus Cha modifier to resist). Once a creature has been dazed by veil of darkness, it is immune to this effect for one day.  You can use this ability a number of times per day equal to 3 + your Charisma modifier." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <eval phase="PostAttr" priority="10000">~Post-attributes 10,000
+field[trkMax].value += 3 + hero.child[aCHA].field[aModBonus].value
+#dc[cSorW1veil] = 12 + hero.child[aCHA].field[aModBonus].value</eval>
+    </thing>
+  <thing id="cSorW1Deep" name="Deeper Shadows" description="At 15th level, any spell that is part of the Shadow subschool that is partially real is 10% more real than normal. For example, shadow conjuration cast by a sorcerer with this ability is 30% real. This ability does not stack with other similar abilities." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cSorW1ShMa" name="Shadow Mask" description="At 3rd level, you gain the ability to manipulate raw shadow. As a move action, a shadow sorcerer can alter the shadows around him to conceal his presence. The effect lasts as long as he maintains concentration. Shadow mask provides a +4 circumstance bonus to all Stealth checks while it is active. At 9th level, the Stealth bonus increases to +6 and for the duration of the effect the sorcerer has 20% concealment. At 15th level, the bonus to Stealth increases to +8 and he can summon the shadow mask as a swift action." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cSorW1shSt" name="Shadow Step" description="At 9th level, as long as the sorcerer is in an area of shadowy illumination, he can step into and move through the Plane of Shadow as a standard action. Every round spent moving though the Plane of Shadow, the sorcerer moves up to triple his normal speed in the Material Plane. A shadow sorcerer can spend a number of rounds equal to his sorcerer level per day in the Plane of Shadow. This duration need not be consecutive. When returning to the Material Plane, the sorcerer appears in a random unoccupied location within a 10 foot square. This ability is otherwise identical to the shadow walk spell." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="DayRound"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[~Post-attributes 10,000
+
+~ If we're not active, do nothing
+doneif (tagis[Helper.ShowSpec] = 0)
+
+field[trkMax].value += #levelcount[Sorcerer]]]></eval>
+    </thing>
+  <thing id="cSorW1ClSh" name="Cloak of Shadow" description="At 20th level, the barrier between the Plane of Shadow and Material Plane around a sorcerer with this bloodline blurs. In any lighting except full natural daylight, a cloak of shadows extends in a 10 foot radius around the sorcerer. The sorcerer gains 50% concealment against attacks originating outside the cloak. The sorcerer&#146;s own vision is unimpaired by the cloak. Illusions within the cloak of shadow are partially real and much more difficult to disbelieve. The DC to disbelieve illusions within the cloak increases by +2 and any quasi-real effects are 20% more real than normal (this overlaps but does not stack with deeper shadows or any other similar ability) as long as they remain within the cloak" compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cHelpSHS" name="Shadow Scout" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="8"/>
+    <fieldval field="cAbbr" value="SHS"/>
+    <fieldval field="cSkills" value="4"/>
+    <arrayval field="cMagLevTot" index="0" value="1"/>
+    <arrayval field="cMagLevTot" index="1" value="2"/>
+    <arrayval field="cMagLevTot" index="2" value="3"/>
+    <arrayval field="cMagLevTot" index="3" value="4"/>
+    <arrayval field="cMagLevTot" index="4" value="5"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="ClassSkill" tag="skClimb"/>
+    <tag group="ClassSkill" tag="skDiplo"/>
+    <tag group="ClassSkill" tag="skEscape"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="ClassSkill" tag="skKnowArca"/>
+    <tag group="ClassSkill" tag="skKnowDun"/>
+    <tag group="ClassSkill" tag="skKnowGeog"/>
+    <tag group="ClassSkill" tag="skKnowNat"/>
+    <tag group="ClassSkill" tag="skKnowPlan"/>
+    <tag group="ClassSkill" tag="skPercep"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="ClassSkill" tag="skStealth"/>
+    <tag group="ClassSkill" tag="skSurvival"/>
+    <tag group="ClassSkill" tag="skSwim"/>
+    <tag group="ClassSkill" tag="skUseMagic"/>
+    <tag group="ClassSkill" tag="skBluff"/>
+    <tag group="cRef" tag="Good"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="Classes" tag="W1ShadowS" name="Shadow Scout"/>
+    <tag group="cAttack" tag="Medium"/>
+    <tag group="cFort" tag="Poor"/>
+    <tag group="ExtraLev1" tag="Arcane"/>
+    <bootstrap thing="cSHSLegOfS">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSHSHuntBo">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSHSFastSt">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cSHSArcArm">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cSHSShadSt">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cSHSInsCas">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cSHSShaSte">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cSHSFavEne">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cSHSInsDec">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cSHSNondet">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1shSt">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1veil">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSorW1ShMa">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    </thing>
+  <thing id="cW1ShadowS" name="Shadow Scout" description="{b}Wayfinder#1 - By Dennis &#147;daOgre&#148; Baker{/b}\nGnomes were plunged into a hostile world when they first arrived on Golarion. Many of them died before the gnomes found some relatively safe havens. During this time of chaos a new tradition was formed, a blending of traditional pathfinding and the gnomish affinity for shadow and illusion magic. These were the first of the shadow scouts.\n\nShadow scouts are pathfinders in the truest sense, they are scouts and rangers but they lean heavily on magic, stealth, and deception in addition to more mundane skills. The tradition of the shadow scout is carried on in all enclaves, including among the svirfneblin in the Darklands. While it&#146;s primarily a gnomish tradition, there are a few humans and halflings who have discovered the path of the shadow scout as well." compset="ClassLevel" maxlimit="5">
+    <usesource source="Wayfinder1"/>
+    <tag group="ClassType" tag="Prestige"/>
+    <bootstrap thing="cHelpSHS"></bootstrap>
+    <link linkage="helper" thing="cHelpSHS"/>
+    <exprreq message="Stealth 5 ranks required."><![CDATA[#skillranks[skStealth] >= 2]]></exprreq>
+    <exprreq message="Spellcraft 5 ranks required."><![CDATA[#skillranks[skSpellcr] >= 5]]></exprreq>
+    <exprreq message="Knowledge (the planes) 5 ranks required."><![CDATA[#skillranks[skKnowPlan] >= 5]]></exprreq>
+    <exprreq message="Favored Enemy class ability required."><![CDATA[childfound[resEnemSel].field[resMax].value <> 0]]></exprreq>
+    <exprreq message="Ability to cast 2nd-level Arcane spells required."><![CDATA[tagcount[Hero.Arcane] >= 2 + 1]]></exprreq>
+    <exprreq message="Ability to spontaneously cast Arcane spells required."><![CDATA[tagis[Hero.SpontArc] <> 0]]></exprreq>
+    </thing>
+  <thing id="cSHSLegOfS" name="Legacy of Shadow" description="If a shadow scout has sorcerer levels with the shadow bloodline the levels from both classes stack for the purposes of determining his bloodline powers and bonus spells known. If the shadow scout does not have levels of sorcerer or is a sorcerer of a bloodline other than the shadow bloodline, he instead gains bloodline powers and bonus spells of a shadow bloodline sorcerer of level equal to his shadow scout level." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cSHSHuntBo" name="Hunter&#146;s Bond" description="If the shadow scout has an animal companion from another class, he adds half his shadow scout level to his effective level for determining the abilities of his animal companion. If the scout does not have a hunter&#146;s bond from another class, this class feature does not grant one." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cSHSFastSt" name="Fast Stealth" description="At 2nd level, a shadow scout can move at full speed using Stealth without penalty." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cSHSArcArm" name="Arcane Armor Training" description="At 2nd level, a shadow scout gains Arcane Armor Training as a bonus feat." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    <bootstrap thing="fArcArmTra"></bootstrap>
+    </thing>
+  <thing id="cSHSShadSt" name="Shadow Stalker" description="At 3rd level, a shadow scout adds his favored enemy bonus on Stealth checks when used against creatures of the selected type." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cSHSInsCas" name="Insightful Casting" description="A 3rd level, a shadow scout adds his favored enemy bonus on damage dealt by spells with a casting time of &#147;Instantaneous.&#148; Each applicable creature in the spell&#146;s area of effect takes this additional damage." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cSHSShaSte" name="Shadow Step" description="At 4th level, a shadow scout gains the {i}shadow step{/i} power of the Shadow bloodline." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostAttr" priority="10001"><![CDATA[~Post-attributes 10,000
+
+~ If we're not active, do nothing
+doneif (tagis[Helper.ShowSpec] = 0)
+
+#trkmax[cSorW1shSt] += #levelcount[W1ShadowS]]]></eval>
+    </thing>
+  <thing id="cSHSFavEne" name="Favored Enemy" description="At 5th level, a shadow scout may select an additional favored enemy. In addition, the bonus against any one favored enemy (including the one just selected, if so desired) increases by +2." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Extra"/>
+    <bootstrap thing="resEnemUpg"></bootstrap>
+    <eval phase="PostLevel" priority="100000"><![CDATA[~Post-Levels 100,000
+
+~ If we're not active, do nothing
+doneif (tagis[Helper.ShowSpec] = 0)
+
+hero.child[resEnemSel].field[resMax].value += 1
+hero.child[resEnemUpg].field[resMax].value += 1]]></eval>
+    </thing>
+  <thing id="cSHSInsDec" name="Insightful Deception" description="At 5th level, any time the shadow scout uses illusion magic against a favored enemy, the scout adds 1/2 his favored enemy bonus to the Will save DC to disbelieve the illusion." compset="ClSpecial">
+    <usesource source="Wayfinder1"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="cSHSNondet" name="Nondetection" description="A shadow scout gains the ability to cast {i}nondetection{/I} as a spell-like ability, usable 3/day. The caster level is equal to the character&#146;s level. The save DC is Charisma-based" compset="ClSpecial">
+    <fieldval field="trkMax" value="3"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spNondete3"/>
+    <eval phase="PreAttr" priority="10000">~Pre-Attributes 10,000
+
+~Increase DC by Spell Level
+field[abDC].value += 3</eval>
+    </thing>
+  <thing id="spW1Falco5" name="Falcon Flag" description="This spell temporarily folds and animates a flag, banner, or similar object bearing some symbol linked with the caster. The flag takes the shape of a bird of prey and grants enhanced movement and vitality to any friendly creature that chooses to follow it. The flag flies with a speed of 90 ft. per round towards the destination set by the caster at the time of casting. The destination must be known to the caster or be a specified distance and direction. Creatures following the flag on land may keep pace with it, regardless of their normal speed, without any risk of suffering fatigue so long as it remains in view. Though these creatures gain a limited ability to bypass minor obstacles (leaping over fences, streams, etc.) the flag always chooses a route that avoids more formidable barriers that might cause followers to lose sight of it during their journey. Creatures following the flag may chose to stop at any time, including if attacked or threatened.\n\nWhen the flag reaches the destination set by the caster or the spell duration ends, the flag unfolds and flutters to the ground. Creatures guided by the flag to its destination experience a burst of energy and valor on arrival lasting for the remaining duration of the spell. This grants them a +1 morale bonus on attack rolls, damage rolls, and Will saving throws, as well as 1d8 + caster level temporary hit points." compset="Spell">
+    <fieldval field="sRange" value="medium (100 ft. + 10 ft./level)"/>
+    <fieldval field="sDuration" value="1 hour/level (D)"/>
+    <fieldval field="sSave" value="Yes (harmless)"/>
+    <fieldval field="sResist" value="Spell Resistance Yes (harmless)"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sCastTime" tag="Round1"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sDuration" tag="Hour"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    </thing>
+  <thing id="spW1Falco3" name="Falcon Flag" description="This spell temporarily folds and animates a flag, banner, or similar object bearing some symbol linked with the caster. The flag takes the shape of a bird of prey and grants enhanced movement and vitality to any friendly creature that chooses to follow it. The flag flies with a speed of 90 ft. per round towards the destination set by the caster at the time of casting. The destination must be known to the caster or be a specified distance and direction. Creatures following the flag on land may keep pace with it, regardless of their normal speed, without any risk of suffering fatigue so long as it remains in view. Though these creatures gain a limited ability to bypass minor obstacles (leaping over fences, streams, etc.) the flag always chooses a route that avoids more formidable barriers that might cause followers to lose sight of it during their journey. Creatures following the flag may chose to stop at any time, including if attacked or threatened.\n\nWhen the flag reaches the destination set by the caster or the spell duration ends, the flag unfolds and flutters to the ground. Creatures guided by the flag to its destination experience a burst of energy and valor on arrival lasting for the remaining duration of the spell. This grants them a +1 morale bonus on attack rolls, damage rolls, and Will saving throws, as well as 1d8 + caster level temporary hit points." compset="Spell">
+    <fieldval field="sRange" value="medium (100 ft. + 10 ft./level)"/>
+    <fieldval field="sDuration" value="1 hour/level (D)"/>
+    <fieldval field="sSave" value="Yes (harmless)"/>
+    <fieldval field="sResist" value="Spell Resistance Yes (harmless)"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sCastTime" tag="Round1"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sDuration" tag="Hour"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    </thing>
+  <thing id="spW1FaFeS3" name="False Feather Screen" description="This spell subjects the target to the unceasing harassment of a flock of birds that only it can see and hear. The aggravation caused by these illusionary birds leaves the target distracted and unable to adequately defend itself or strike at its enemies. The target becomes flat-footed and all of its opponents gain concealment against its attacks. If the target attempts to cast a spell or perform any other action which requires intense focus it must succeed in a Concentration check (or Spellcraft if your game does not have the Concentration skill) to avoid losing that action." compset="Spell">
+    <fieldval field="sRange" value="Close (25 ft. + 5 ft./2 levels)"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <fieldval field="sSave" value="Will disbelief"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sSubschool" tag="Phantasm"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="sSave" tag="WillDis"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Illusion"/>
+    </thing>
+  <thing id="spW1LaunP2" name="Launching Perch" description="This spell enables one creature no larger than yourself to balance on a glove covering your forearm and briefly gain the ability to make a devastating flying charge once it leaps off. While the target may take no action while perched on your arm in this way, it is effectively weightless from your perspective and has no impact on your encumbrance or speed. However, this does fully engage your arm, meaning you cannot use it for any other purpose. The glove, similar in appearance to what falconers wear when taking raptors hunting, provides extraordinary stability to the target, allowing it to maintain its balance under even the most extreme conditions unless it chooses to step off or you stop concentrating on the spell.\n\nWhen the target leaves your arm it gains the ability to fly for one round at three times its base land speed or twice its fly speed (whichever is greater). During that round, the creature may also chose to make a special flying charge. This allows it to make a full attack and grants it an additional +2 bonus on its attack rolls. In addition, any successful attack it makes as part of this charge automatically scores a critical threat (but the target must still make a confirmation roll as normal)." compset="Spell">
+    <fieldval field="sRange" value="Touch"/>
+    <fieldval field="sDuration" value="Concentration + 1 round"/>
+    <fieldval field="sSave" value="Yes (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sDuration" tag="Concent"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sComp" tag="V"/>
+    </thing>
+  <thing id="spW1PlumL4" name="Plumage Lure" description="This spell causes the feathers of a willing creature with a fly speed to emit pulses of light that other specific sorts of creatures find almost irresistibly intriguing. The caster must designate a particular type or subtype of creature as susceptible to these pulses at the time of casting. Creatures normally immune to mind-affecting effects, or those who lack the ability to see, are not vulnerable to this spell. Any eligible creature belonging to the category established by the caster that comes within 30 feet of the target and has a clear line of sight must make a Will saving throw to avoid becoming fascinated. Fascinated creatures follow the target if it moves away and remain under its influence so long as they can continue to see it and stay within 90 feet of it.\n\nAnimals and similar creatures only stay within sight of those they have fascinated if specifically trained to do so (see sidebar)." compset="Spell">
+    <fieldval field="sRange" value="Touch"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sSubschool" tag="Pattern"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Illusion"/>
+    </thing>
+  <thing id="spW1PlunH1" name="Plunging Hood" description="This spell creates a black leather mask around the target&#146;s head that renders it both blind and deaf until removed. Though vaguely similar to the hood falconers use to make birds of prey more docile, this mask perfectly fits the contours of the target&#146;s head but has neither eye nor ear holes. Any creature (whether the target or another) with hands or similar manipulative limbs can remove the mask as a standard action, but those lacking them must also succeed in Dexterity check (DC 15) in order to do so.\n\nIf cast on a creature with multiple heads the caster must decide on which head the mask appears. If cast on a creature with eyes, ears, or similar sensory organs on any part of its body except its head (or on a creature without a head), the mask tears and falls to pieces without actually affecting the target.\n\nThe mask renders the target immune to all fear effects (including those already affecting it when this spell is cast) until it is removed. Once taken off the mask loses this ability, even if placed back on the target again, but it still makes the target blind and deaf while worn." compset="Spell">
+    <fieldval field="sRange" value="medium (100 ft. + 10 ft./level)"/>
+    <fieldval field="sDuration" value="instantaneous"/>
+    <fieldval field="sSave" value="Reflex negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="RefNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSubschool" tag="Creation"/>
+    </thing>
+  <thing id="spW1TaloT3" name="Talon Tagalong" description="This spell makes you effectively weightless to one particular flying creature (including but not limited to animal companions and familiars) allowing it to carry you without any impact on its speed or encumbrance. You must remain in contact with the creature and in the air at all times. If either of you chooses to break free, the creature lands, or it suffers damage, the spell ends immediately. Similarly, if you take damage or suffer any other sort of distraction you must succeed in a Concentration check (or Spellcraft if your game does not have the Concentration skill) in order to keep your grip. If the spell ends in mid-air, you fall to the ground in the exact same manner as an expired fly spell.\n\nSince the spell eliminates weight as a consideration, it allows you to use creatures far smaller than yourself for transportation. In theory, assuming you find some way to communicate with it, even a housefly or bee could carry you to your destination. However, only one caster may use this spell on any given creature at a time. Even if the creature is large enough to carry multiple passengers, additional castings of the spell automatically fail and the weight of these casters affects the creature as normal.\n\nMost creatures only consent to serve as transportation for this spell if specially trained (see sidebar) or are somehow persuaded to do so whether by magic or other means. If you have the ability to communicate with the creature, it must have a friendly attitude towards you in order to ferry you through the air. If you do not have the ability to communicate with the creature, it must have a helpful attitude instead." compset="Spell">
+    <fieldval field="sRange" value="personal"/>
+    <fieldval field="sDuration" value="Concentration"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sDuration" tag="Concent"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    </thing>
+  <thing id="spW1TaloT2" name="Talon Tagalong" description="This spell makes you effectively weightless to one particular flying creature (including but not limited to animal companions and familiars) allowing it to carry you without any impact on its speed or encumbrance. You must remain in contact with the creature and in the air at all times. If either of you chooses to break free, the creature lands, or it suffers damage, the spell ends immediately. Similarly, if you take damage or suffer any other sort of distraction you must succeed in a Concentration check (or Spellcraft if your game does not have the Concentration skill) in order to keep your grip. If the spell ends in mid-air, you fall to the ground in the exact same manner as an expired fly spell.\n\nSince the spell eliminates weight as a consideration, it allows you to use creatures far smaller than yourself for transportation. In theory, assuming you find some way to communicate with it, even a housefly or bee could carry you to your destination. However, only one caster may use this spell on any given creature at a time. Even if the creature is large enough to carry multiple passengers, additional castings of the spell automatically fail and the weight of these casters affects the creature as normal.\n\nMost creatures only consent to serve as transportation for this spell if specially trained (see sidebar) or are somehow persuaded to do so whether by magic or other means. If you have the ability to communicate with the creature, it must have a friendly attitude towards you in order to ferry you through the air. If you do not have the ability to communicate with the creature, it must have a helpful attitude instead." compset="Spell">
+    <fieldval field="sRange" value="personal"/>
+    <fieldval field="sDuration" value="Concentration"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="Wayfinder1"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sDuration" tag="Concent"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    </thing>
+  </document>

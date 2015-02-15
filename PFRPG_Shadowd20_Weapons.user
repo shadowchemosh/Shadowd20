@@ -1,0 +1,1091 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+ShadowChemosh@yahoo.com
+
+This file is a central place to hold all the weapons as I am starting to need to override lots of weapons.</info_author>
+    <info_history><![CDATA[
+3/11/2014
+-Fixed Claw Blades weapons.
+
+1/19/2013
+-Fixed "Eldritch Blast" again to be really fixed this time. Had to add new "Ranged" fields to get the totals to work and feats like Point-Blank Shot.  Hopefully this is the last fix needed.
+
+11/17/2013
+-Added "Firearm Bullet & Powder, Crafted" that combines the gun Bullet and Black Powder into a single piece of ammoo to buy. It also has the correct price of 1gp 1sp for a crafted version using the gunsmithing feat.
+
+9/21/2013
+-Added in "Claw Blades" weapons.
+
+8/25/2013
+-Fixed "Eldritch Blast" timing a little so that Vitrilic Blast can adjust the die size now.
+
+5/25/2013
+-"Eldritch Blast" will no longer ever show additional attacks now.  This includes extra attacks from level or Hast spell.
+
+4/27/2013
+-Changed "Bane" weapons to be activated to they are easier to use in the iPad app.
+
+9/3/2012
+-Changed "Firearm Bayonet, Sword" to be sourced to CoT also.
+-Added "Crafted Bullets" and "Crafted Gunpowder".
+
+8/21/2012
+-Changed "Firearm, Minotaur Rifle" to be sourced to CoT and to match the new Pathfinder gun changes. Also added in the new HL features for guns.
+
+8/18/2012
+-Changed "Crossbow, Minotaur Double" to only be -2 penalty to hit not -4 penalty.]]></info_history>
+    </fileinfo>
+  <thing id="wRcCutlass" name="Cutlass" description="A light slashing weapon especially favored by pirates and other nautical raiders, the cutlass is a heavy blade about 2 feet long with a curved edge. It is easy to wield in close quarters and can deal vicious gashes to an opponent. You receive a +2 circumstance bonus to your Combat Maneuver Defense whenever a foe attempts to disarm your cutlass due to its heavy basket hilt.\n\n{B}Note:{/b} To show the +2 bonus go to the Adjust tab and put in a Weapon Disarm CMD adjustment." compset="Weapon">
+    <comment>Stromwrack pg107</comment>
+    <fieldval field="gSizeCost" value="15"/>
+    <fieldval field="gWeight" value="3"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wProfReq" tag="Martial"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="Helper" tag="Finesse"/>
+    <tag group="wFtrGroup" tag="BladeLight"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wCritMin" tag="19"/>
+    <tag group="wFtrGroup" tag="Pirate"/>
+    </thing>
+  <thing id="wRcXbowAqu" name="Crossbow, aquatic" description="This special version of a light crossbow is strung especially tautly with thicker wire and reinforced so as not to snap under the increased tension. The aquatic crossbow is not subject to the normal –2 penalty on ranged attack rolls for every five feet of distance (see Ranged Attacks Underwater, page 93 of the Dungeon Master’s Guide), and uses its normal range increment of 40 feet both in and out of the water." compset="Weapon">
+    <fieldval field="gSizeCost" value="250"/>
+    <fieldval field="gWeight" value="4"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wCritMin" tag="19"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wMain" tag="1d8_6"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="EquipType" tag="Wood"/>
+    <tag group="wFtrGroup" tag="Crossbows"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="wClass" tag="OneHanded"/>
+    <tag group="Helper" tag="BucklerOK"/>
+    <tag group="wRangeInc" tag="40" name="40" abbrev="40"/>
+    <tag group="wMaxStrBon" tag="5"/>
+    <tag group="wMaxStrPen" tag="0"/>
+    <tag group="wBuyStr" tag="100"/>
+    <tag group="wType" tag="P"/>
+    <tag group="w1HandPen" tag="4"/>
+    <tag group="wFtrGroup" tag="Pirate"/>
+    </thing>
+  <thing id="wRcHarpoon" name="Harpoon, Steel" description="A harpoon is a barbed spear with an attached rope 50 feet or less in length. If you are proficient in the harpoon, it is a grappling weapon. On a successful critical hit with a weapon of this type, you can grapple the target of the attack. You can then attempt a combat maneuver check to grapple your opponent as a free action. This grapple attempt does not provoke an attack of opportunity from the creature you are attempting to grapple if that creature is not threatening you. While you grapple the target with a grappling weapon, you can only move or damage the creature on your turn. You are still considered grappled, though you do not have to be adjacent to the creature to continue the grapple. If you move far enough away to be out of the weapon&apos;s reach, the grapple ends.\n\nThe harpoon appears in {i}Pathfinder RPG Ultimate Combat{/i} as a Bronze Age weapon; it uses the same stats here, but is made out of steel. A harpoon&apos;s weight includes the weight of 50 feet of hemp rope - it can be lightened by using shorter or lighter rope.\n\n{b}Shadow d20:{/b} I removed the weight of the rope as most times it will not be used that way.  I also increased the range increment to 50ft to make having the exotic weapon harpoon feet more worth while." compset="Weapon" replaces="wHarpoonSt">
+    <fieldval field="gSizeCost" value="5"/>
+    <fieldval field="gWeight" value="6"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="wMain" tag="1d8_6"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wFtrGroup" tag="Spears"/>
+    <tag group="wCategory" tag="RangeThrow"/>
+    <tag group="wRangeInc" tag="50"/>
+    <tag group="wType" tag="P"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wFtrGroup" tag="Thrown"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wSpecial" tag="Grapple"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="IsWeapon" tag="wHarpoon"/>
+    <eval phase="First" priority="1000">
+      if (tagis[Helper.ExoticProf] = 0) then
+        perform delete[wSpecial.Grapple]
+        perform assign[wSpecial.Brace]
+        perform assign[IsWeapon.wSpear]
+        endif</eval>
+    </thing>
+  <thing id="wRcGunPist" name="Firearm, Pistol" description="Description: The single-shot, rifled-bore pistol is relatively easy to conceal. You gain a +2 bonus on Sleight of Hand checks made to conceal a pistol.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gWeight" value="4"/>
+    <fieldval field="gSizeCost" value="50"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wFtrGroup" tag="RcGun"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wRangeInc" tag="60"/>
+    <tag group="wMaxStrBon" tag="0"/>
+    <tag group="wType" tag="B"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Helper" tag="BucklerOK"/>
+    <tag group="wCritMin" tag="20"/>
+    </thing>
+  <thing id="wRcGunRifl" name="Firearm, Rifle" description="Description: Firing small-caliber rounds at high velocity from a rifled barrel, a rifle makes for an excellent long-range weapon and is favored by snipers.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gWeight" value="20"/>
+    <fieldval field="gSizeCost" value="450"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wFtrGroup" tag="RcGun"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wRangeInc" tag="150" name="150"/>
+    <tag group="wMaxStrBon" tag="0"/>
+    <tag group="wCritMin" tag="19"/>
+    <tag group="wType" tag="B"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="EquipType" tag="Metal"/>
+    </thing>
+  <thing id="wRcGunMusk" name="Firearm, Musket" description="Description: This smooth-bore longarm fires large-caliber bullets. What it lacks in accuracy it makes up for in high damage potential.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gSizeCost" value="250"/>
+    <fieldval field="gWeight" value="9"/>
+    <usesource source="CampRazorC"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d8_6"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wFtrGroup" tag="RcGun"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wRangeInc" tag="90" name="90"/>
+    <tag group="wMaxStrBon" tag="0"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wType" tag="B"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="wCritMult" tag="3"/>
+    </thing>
+  <thing id="wRcGunBul" name="Firearm, Bullets" description="Although each type of firearm fires differently sized bullets, individual bullets cost the same, regardless of the firearm they are used for. A pouch of 10 bullets costs 1 gp." compset="Weapon" lotsize="10" stacking="merge">
+    <comment>Hidden</comment>
+    <fieldval field="gWeight" value="0.1"/>
+    <fieldval field="gSizeCost" value="0.1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="NormalOnly" name="NormalOnly" abbrev="NormalOnly"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    </thing>
+  <thing id="wRcGunBulM" name="Firearm, Bullets" description="Although each type of firearm fires differently sized bullets, individual bullets cost the same, regardless of the firearm they are used for. A pouch of 10 bullets costs 1 gp." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gSizeCost" value="0.1"/>
+    <fieldval field="gWeight" value="0.1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="MagicOnly"/>
+    <tag group="Helper" tag="MagicAmmo"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    </thing>
+  <thing id="wRcGunBlun" name="Firearm, Blunderbuss" description="Description: This firearm fires lead shot from its bell-shaped muzzle, making it effective as a fowling-piece or as a personal defense weapon. However, the blunderbuss loses its effectiveness with distance.\n{B}Special:{/b} This firearm deals 1 die less damage per range increment beyond the first. It cannot deal precision-based damage, such as from a sneak attack or from attacking a favored enemy.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+    <comment>wRcGunBlun</comment>
+    <fieldval field="gSizeCost" value="200"/>
+    <fieldval field="gWeight" value="8"/>
+    <usesource source="CampRazorC"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="2d8_204"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wFtrGroup" tag="RcGun"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wRangeInc" tag="20"/>
+    <tag group="wMaxStrBon" tag="0"/>
+    <tag group="wCritMin" tag="19"/>
+    <tag group="wType" tag="B"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="EquipType" tag="Wood"/>
+    <tag group="wCritMult" tag="3"/>
+    </thing>
+  <thing id="wRcGunMrif" name="Firearm, Minotaur Rifle" description="Firing large-caliber rounds at high velocity from a rifled barrel, a minotaur rifle makes for an excellent long-range weapon and is favored by Ulfen Minotaur hunters." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gSizeCost" value="550"/>
+    <fieldval field="wMisfire" value="1"/>
+    <fieldval field="wMisRadius" value="5"/>
+    <fieldval field="wCapacity" value="1"/>
+    <fieldval field="gWeight" value="10"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wRangeInc" tag="40"/>
+    <tag group="wMaxStrBon" tag="0"/>
+    <tag group="wCritMin" tag="19"/>
+    <tag group="wType" tag="B"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="wEasyRace" tag="Rd20Mino"/>
+    <tag group="EquipType" tag="Wood"/>
+    <tag group="wSpecial" tag="S2Misfire"/>
+    <tag group="wFtrGroup" tag="Firearms"/>
+    <tag group="wCategory" tag="Firearm"/>
+    <tag group="SpecGroup" tag="FireEarly"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="wMain" tag="2d6_104"/>
+    <tag group="wFtrGroup" tag="RcGun"/>
+    </thing>
+  <thing id="wRcBayKnif" name="Firearm Bayonet, Knife" description="Bayonets easily fit onto rifles, attaching to the stock below the barrel. Firearm bayonets come in two kinds: knife and sword. A knife bayonet attached to a firearm functions as a shortspear, while a sword bayonet attached to a firearm is treated as a spear. A rifle with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gSizeCost" value="2"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wClass" tag="OneHanded" name="One-Handed" abbrev="One-Handed"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wMain" tag="1d6_5" name="1d6" abbrev="1d6"/>
+    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
+    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="wFtrGroup" tag="Firearms"/>
+    <tag group="wCategory" tag="Firearm"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <eval phase="PreLevel" priority="1000" name="Thing Crossbow Bayonet, Knife: Eval Script #1"><![CDATA[field[wAttBonus].value -= 2
+
+~if we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+  container.parent.field[wAttBonus].value -= 2
+endif]]></eval>
+    </thing>
+  <thing id="wRcBaySwor" name="Firearm Bayonet, Sword" description="Bayonets easily fit onto rifles, attaching to the stock below the barrel. Firearm bayonets come in two kinds: knife and sword. A knife bayonet attached to a firearm functions as a shortspear, while a sword bayonet attached to a firearm is treated as a spear. A rifle with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gSizeCost" value="4"/>
+    <fieldval field="gWeight" value="2"/>
+    <usesource source="PathCounTh"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Target" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="WepEpFoc" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="WepEpSpec" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="WepFocus" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="WepGrFoc" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="WepGrSpec" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="WepProf" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="WepSpec" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="thingid" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="wFtrGroup" tag="Spears" name="Spears" abbrev="Spears"/>
+    <tag group="wMain" tag="1d8_6"/>
+    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
+    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
+    <tag group="Activated" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="DevCrit" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="ImpCrit" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <tag group="OverCrit" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
+    <eval phase="PreLevel" priority="1000" name="Thing Crossbow Bayonet, Knife: Eval Script #1"><![CDATA[field[wAttBonus].value -= 2
+
+~if we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+  container.parent.field[wAttBonus].value -= 2
+endif]]></eval>
+    </thing>
+  <thing id="wRcBayPist" name="Firearm Bayonet, Pistol" description="Adding a short blade to the front of a pistol allows you to defend yourself in melee combat without having to draw a different weapon. The blade functions as a dagger.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+    <comment>Hidden</comment>
+    <fieldval field="gSizeCost" value="4"/>
+    <fieldval field="gWeight" value=".5"/>
+    <usesource source="CampRazorC"/>
+    <tag group="IsWeapon" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="OverCrit" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="Target" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="WepEpFoc" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="WepEpSpec" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="WepFocus" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="WepGrFoc" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="WepGrSpec" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="WepProf" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="WepSpec" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="thingid" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wFtrGroup" tag="Close" name="Close" abbrev="Close"/>
+    <tag group="wMain" tag="1d4_4" name="1d4" abbrev="1d4"/>
+    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
+    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
+    <tag group="Activated" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="DevCrit" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="ImpCrit" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
+    <eval phase="PreLevel" priority="1000" name="Thing Hand Crossbow Blade: Eval Script #1"><![CDATA[field[wAttBonus].value -= 2
+
+~if we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+  container.parent.field[wAttBonus].value -= 2
+endif]]></eval>
+    </thing>
+  <thing id="wRcXbowDou" name="Crossbow, Minotaur Double" description="This heavy weapon fires a pair of irontipped bolts with a single squeeze of the trigger.   Due to its size and weight, you take a –2 penalty on your attack roll if you’re proficient with it, or –8 if you’re not.  If the attack hits, the target takes damage from both bolts. Critical hits, sneak attack damage, and other precision-based damage only apply to the first bolt.\n\n{b}Load:{/b} Loading one bolt is a standard action; the Rapid Reload feat reduces this to a move action.  Crossbow Mastery allows you to reload both bolts as a move action." compset="Weapon">
+    <fieldval field="gWeight" value="18"/>
+    <fieldval field="gSizeCost" value="300"/>
+    <usesource source="srcShaMino"/>
+    <tag group="wFtrGroup" tag="Crossbows" name="Crossbows" abbrev="Crossbows"/>
+    <tag group="wMain" tag="1d8_6" name="1d8" abbrev="1d8"/>
+    <tag group="wMaxStrBon" tag="0" name="0" abbrev="0"/>
+    <tag group="wMaxStrPen" tag="0" name="0" abbrev="0"/>
+    <tag group="wProfReq" tag="Exotic" name="Exotic" abbrev="Exotic"/>
+    <tag group="wRangeInc" tag="80" name="80" abbrev="80"/>
+    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
+    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
+    <tag group="Helper" tag="BucklerOK" name="BucklerOK" abbrev="BucklerOK"/>
+    <tag group="wCategory" tag="RangeProj" name="Projectile Weapon" abbrev="Projectile"/>
+    <tag group="wEasyRace" tag="Rd20Mino"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCritMin" tag="19" name="19" abbrev="19"/>
+    <tag group="wFtrGroup" tag="Pirate"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <eval phase="PreAttr" priority="10000">var Penalty as number
+~Check to see if proficient or not and to apply the -4 penalty if not
+if (tagis[Helper.Proficient] = 0) then
+    Penalty = -8
+Else 
+    Penalty = -2
+endif
+
+~ This weapon always takes a penalty
+field[wAttBonus].value += Penalty
+
+~ We need to alter our parent if we are a magic item
+if (container.ishero = 0) then
+   container.parent.field[wAttBonus].value += Penalty
+endif</eval>
+    </thing>
+  <thing id="wd20GreatB" name="Greatbow" description="Cannot be used while mounted." compset="Weapon">
+    <fieldval field="gWeight" value="6"/>
+    <fieldval field="gSizeCost" value="150"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="BucklerOK" name="BucklerOK" abbrev="BucklerOK"/>
+    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
+    <tag group="wCategory" tag="RangeProj" name="Projectile Weapon" abbrev="Projectile"/>
+    <tag group="wClass" tag="TwoHanded" name="Two-Handed" abbrev="Two-Handed"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="3" name="3" abbrev="3"/>
+    <tag group="wFtrGroup" tag="Bows" name="Bows" abbrev="Bows"/>
+    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wMaxStrBon" tag="0" name="0" abbrev="0"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wRangeInc" tag="120"/>
+    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
+    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
+    <tag group="Helper" tag="Always2H" name="Always2H" abbrev="Always2H"/>
+    <tag group="wEasyRace" tag="Rd20Mino"/>
+    <tag group="wGroup" tag="Rd20Mino"/>
+    <tag group="Helper" tag="BracArcBow" name="BracArcBow" abbrev="BracArcBow"/>
+    </thing>
+  <thing id="wd20GcomB" name="Greatbow, Composite" description="-2 to attacks if used by someone with a strength below its rating. Counts as a Greatbow for proficiency &amp; feat purposes." compset="Weapon">
+    <fieldval field="gWeight" value="6"/>
+    <fieldval field="gSizeCost" value="200"/>
+    <fieldval field="wShortName" value="Greatbow, Comp."/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
+    <tag group="wBuyStr" tag="200"/>
+    <tag group="wCategory" tag="RangeProj" name="Projectile Weapon" abbrev="Projectile"/>
+    <tag group="wClass" tag="TwoHanded" name="Two-Handed" abbrev="Two-Handed"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="3" name="3" abbrev="3"/>
+    <tag group="wFtrGroup" tag="Bows" name="Bows" abbrev="Bows"/>
+    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wRangeInc" tag="110" name="110" abbrev="110"/>
+    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
+    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
+    <tag group="Helper" tag="Always2H" name="Always2H" abbrev="Always2H"/>
+    <tag group="Helper" tag="BracArcBow" name="BracArcBow" abbrev="BracArcBow"/>
+    <tag group="wEasyRace" tag="Rd20Mino"/>
+    <tag group="IsWeapon" tag="wd20GreatB"/>
+    <tag group="wGroup" tag="Rd20Mino"/>
+    <tag group="Helper" tag="BucklerOK" name="BucklerOK" abbrev="BucklerOK"/>
+    <tag group="RaceEquip" tag="Rd20Mino"/>
+    </thing>
+  <thing id="wd20Mlaxe" name="Longaxe, Minotaure" description="A minotaur longaxe looks like a greataxe with an elongated haft. This feature makes the weapon awkward to wield by those unfamiliar with its use, but those proficient with the weapon can use the haft&apos;s extra length to attack foes more than 5 feet away as long as they are willing to forgo precision in favor of dealing extra damage. \n\nIf you are proficient with the minotaur longaxe, you can treat it as a reach weapon any time you use the Power Attack feat. When you use a longaxe in this manner, you can strike opponents 10 feet away with it, but you cannot use it against an adjacent foe. Because you determine the use of the Power Attack for an entire turn, you must wield the longaxe as either a reach weapon or a normal weapon until the beginning of your next turn once you make the decision. You cannot wield it as both a reach weapon and a normal weapon in the same turn.\n\nCharacters proficient with the longaxe can treat it as a greataxe for purposes of any of the following feats: Greater Weapon Focus, Greater Weapon Specialization, Improved Critical, Weapon Focus, and Weapon Specialization.\n\n{b}Note:{/b} The Ulfen Minotaur treats a minotaur longaxe as a martial weapon instead of an exotic weapon." compset="Weapon">
+    <fieldval field="gWeight" value="15"/>
+    <fieldval field="gSizeCost" value="35"/>
+    <usesource source="srcShaMino"/>
+    <tag group="wFtrGroup" tag="Axes" name="Axes" abbrev="Axes"/>
+    <tag group="wMain" tag="1d12_404" name="1d12" abbrev="1d12"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wType" tag="S" name="Slashing" abbrev="S"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="wClass" tag="TwoHanded" name="Two-Handed" abbrev="Two-Handed"/>
+    <tag group="wEasyRace" tag="Rd20Mino"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="IsWeapon" tag="wGreataxe"/>
+    <tag group="wGroup" tag="Rd20Mino"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="wCritMult" tag="3" name="3" abbrev="3"/>
+    </thing>
+  <thing id="wS20IceAxe" name="Axe, Ice" description="More tool than weapon, the ice axe has a sharp metal head that is perpendicular to the shaft and has a spiked handle. It grants a +1 circumstance bonus on Climb checks in mountainous and/or icy terrain, even if you do not possess the Exotic Weapon Proficiency (ice axe) feat. If you do posses this feat, the bonus increases to a +4 circumstance bonus. A climber with an ice axe can cut handholds or footholds in an ice wall. Doing so takes 1 minute per hand/foot hold, and one hand/foot hold is needed per 3 feet. As with any surface with handholds and footholds it has a climb DC of 15. An ice axe may be used as a martial weapon, but takes a -2 penalty on attack rolls in this case." compset="Weapon">
+    <fieldval field="gSizeCost" value="10"/>
+    <fieldval field="gWeight" value="5"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="4"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wFtrGroup" tag="Axes"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wType" tag="P"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wClass" tag="OneHanded"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~Pre-Levels 10,000
+~ Work out if we're equipped, or, if we're the child of a magic item, if
+~ our parent is equipped
+var result as number
+result = field[gIsEquip].value
+if (container.ishero = 0) then
+    result += container.parent.field[gIsEquip].value
+endif
+
+~ If equipped, +4 bonus to climb
+if (result <> 0) then
+    if (#hasfeat[fExoticWep] <> 0) then
+        #skillbonus[skClimb] += 4
+    else
+        #skillbonus[skClimb] += 1
+    endif
+endif]]></eval>
+    </thing>
+  <thing id="wS20BrodSw" name="Broadsword" description="Broadswords appeared in a variety of forms, but generally had a long, wide, straight, double-edged blade with a simple cross-guard (or &quot;cruciform&quot; hilt). The typical form was a single hand weapon used for hacking, shearing cuts and also for limited thrusting which evolved from the Mendev swords of late Antiquity. Over time, the sword became more tapered and rigid, to facilitate thrusting, and began to add a series of protective rings to the hilt, to defend the fingers and hand. The blade length started to grow giving birth to the &quot;Claymore&quot; or &quot;Greatsword&quot; of today that are very often used by crusaders near the Worldwound." compset="Weapon">
+    <fieldval field="gWeight" value="6"/>
+    <fieldval field="gSizeCost" value="25"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="2d4_6"/>
+    <tag group="wProfReq" tag="Martial"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wClass" tag="OneHanded"/>
+    </thing>
+  <thing id="wS20BrSwBr" name="Broadsword Breaker" description="Broadsword breakers appeared in almost as many variety of forms as normal broadswords. The major difference being the uniquely designed cross guard that not only protected the wielders hands, but where specialized in catching and breaking others swords. During Sundering &amp; Disarm attempts against other swords and swords only; the broadsword breaker gets an additional +2 bonus on the Combat Manuver Bonus for Disarm and Sunder attacks. You do not receive this bonus when defending against Disarm or Sunder attempts." compset="Weapon">
+    <fieldval field="gSizeCost" value="95"/>
+    <fieldval field="gWeight" value="7"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="2d4_6"/>
+    <tag group="wProfReq" tag="Martial"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wClass" tag="OneHanded"/>
+    <tag group="wCritMin" tag="20"/>
+    </thing>
+  <thing id="wS2OsirKho" name="Osirian Khopesh" description="The Osirian khopesh begins as a straight blade extending 2 feet from its hilt. It then extends a further 2 feet in a curved crescent, enabling the weapon to be used for trip attacks. If you are tripped during your own trip attempt, you can drop the khopesh to avoid being tripped." compset="Weapon">
+    <fieldval field="gWeight" value="8"/>
+    <fieldval field="gSizeCost" value="20"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wProfReq" tag="Martial"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCritMin" tag="19"/>
+    </thing>
+  <thing id="wS2RaTouch" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
+    <fieldval field="wFixRanDam" value="As Spell"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="Helper" tag="FixSizeDmg"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="Shadowd20" tag="TouchWep"/>
+    <tag group="Helper" tag="SingleAtt"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="wClass" tag="Light"/>
+    </thing>
+  <thing id="wS2Touch" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
+    <fieldval field="wFixDamage" value="As Spell"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="Helper" tag="Finesse"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="Helper" tag="FixSizeDmg"/>
+    <tag group="Shadowd20" tag="TouchWep"/>
+    <tag group="Helper" tag="SingleAtt"/>
+    </thing>
+  <thing id="wS2ScimDbl" name="Scimitar, Osirion Double" description="The people of osirion use a dangerous and exotic double weapon with curving scimitar blades on each end. You can fight with a double weapon as if fighting with two weapons, but if you do, you incur all the normal attack penalties as if using a one-handed weapon and a light weapon. A creature using a double weapon in one hand, such as a Large creature using a Medium double scimitar, can’t use it as a double weapon." compset="Weapon">
+    <fieldval field="gSizeCost" value="125"/>
+    <fieldval field="gWeight" value="10"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="18"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wOff" tag="1d6_5"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wFtrGroup" tag="Double"/>
+    <tag group="wCategory" tag="Double"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wTypeOff" tag="S"/>
+    </thing>
+  <thing id="wXbBayKnif" name="Crossbow Bayonet, Knife" description="Bayonets easily fit onto light or heavy crossbows, attaching to the stock below where the bolt fires. Crossbow bayonets come in two kinds: knife and sword. A knife bayonet attached to a crossbow functions as a shortspear, while a sword bayonet attached to a crossbow is treated as a spear. A crossbow with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+    <fieldval field="gSizeCost" value="2"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wFtrGroup" tag="Spears"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wType" tag="P"/>
+    <tag group="wClass" tag="OneHanded"/>
+    <tag group="wFtrGroup" tag="Pirate"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[field[wAttBonus].value -= 2
+
+~if we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+  container.parent.field[wAttBonus].value -= 2
+endif]]></eval>
+    </thing>
+  <thing id="wxbBaySwor" name="Crossbow Bayonet, Sword" description="Bayonets easily fit onto light or heavy crossbows, attaching to the stock below where the bolt fires. Crossbow bayonets come in two kinds: knife and sword. A knife bayonet attached to a crossbow functions as a shortspear, while a sword bayonet attached to a crossbow is treated as a spear. A crossbow with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+    <fieldval field="gSizeCost" value="4"/>
+    <fieldval field="gWeight" value="2"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wFtrGroup" tag="Spears"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wMain" tag="1d8_6"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wType" tag="P"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wFtrGroup" tag="Pirate"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[field[wAttBonus].value -= 2
+
+~if we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+  container.parent.field[wAttBonus].value -= 2
+endif]]></eval>
+    </thing>
+  <thing id="wXbBayHand" name="Hand Crossbow Blade" description="Adding a short blade to the front of a hand crossbow allows you to defend yourself in melee combat without having to draw a different weapon. The blade functions as a dagger.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+    <fieldval field="gSizeCost" value="4"/>
+    <fieldval field="gWeight" value=".5"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wMain" tag="1d4_4"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wType" tag="P"/>
+    <tag group="wFtrGroup" tag="Close"/>
+    <tag group="wClass" tag="Light"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[field[wAttBonus].value -= 2
+
+~if we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+  container.parent.field[wAttBonus].value -= 2
+endif]]></eval>
+    </thing>
+  <thing id="wTouchFine" name="Melee Touch Attack" description="Changed so that Weapon Finesse correctly applies to touch attacks." compset="Weapon" replaces="wTouch">
+    <tag group="Helper" tag="Bootstrap" name="Bootstrap" abbrev="Bootstrap"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="Helper" tag="Helper" name="Helper" abbrev="Helper"/>
+    <tag group="Helper" tag="NatAttSpec" name="NatAttSpec" abbrev="NatAttSpec"/>
+    <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
+    <tag group="Helper" tag="Static" name="Static" abbrev="Static"/>
+    <tag group="Helper" tag="Finesse"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="Helper" tag="NoSelect"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    </thing>
+  <thing id="wS2Scimita" name="Scimitar" compset="Weapon" replaces="wScimitar">
+    <comment><![CDATA[Now acts like a light weapon for purpsoses of TWF when "Shadow d20" is turned on.]]></comment>
+    <fieldval field="gSizeCost" value="15"/>
+    <fieldval field="gWeight" value="4"/>
+    <tag group="wCritMin" tag="18" name="18" abbrev="18"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wFtrGroup" tag="BladeHeavy" name="Blades, Heavy" abbrev="Blades, Heavy"/>
+    <tag group="wGroup" tag="cHelpDrd" name="Druid" abbrev="Druid"/>
+    <tag group="wMain" tag="1d6_5" name="1d6" abbrev="1d6"/>
+    <tag group="wProfReq" tag="Martial" name="Martial" abbrev="Martial"/>
+    <tag group="wType" tag="S" name="Slashing" abbrev="S"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="wClass" tag="OneHanded" name="One-Handed" abbrev="One-Handed"/>
+    <eval phase="PreLevel" priority="4500"><![CDATA[
+~ If Shadow d20 not activated, don't do anything
+doneif (hero.tagis[source.s20PFCamp] <> 1)
+
+perform assign[Helper.TwoWpLight]
+
+~ If we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+   perform container.parent.assign[Helper.TwoWpLight]
+endif]]></eval>
+    </thing>
+  <thing id="wS2EldBlas" name="Eldritch Blast" description="A warlock attacks his foes with eldritch power, using baleful magical energy to deal damage and sometimes impart other debilitating effects." compset="Weapon">
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="Helper" tag="FixSizeDmg"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="wRangeInc" tag="60"/>
+    <tag group="Helper" tag="SingleAtt"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Shadowd20" tag="TouchWep"/>
+    <bootstrap thing="abS2EldBla"></bootstrap>
+    <eval phase="PostAttr" priority="10000" index="2">~ Give a Int bonus to the Eldritch Blast Weapon
+field[wDamBonus].value += #attrmod[aINT]</eval>
+    <eval phase="Final" priority="11000"><![CDATA[
+~ Set the Fix Ranged Damage amount text
+field[wFixRanDam].text = #value[abS2EldBla] & "d" & #value2[abS2EldBla] & signed(field[wDamBonus].value + field[dmrBonus].value)
+
+~ Remove any extra high tags
+perform delete[Helper.ExtraHigh]
+
+~ Temp fix for problems in v8.0
+~field[wAttMelee].value = field[wRanAtk].value
+~field[wAttack].value = field[wRanAtk].value]]></eval>
+    </thing>
+  <thing id="wS2BoarAxe" name="Axe, Boarding" description="Basically a hand axe with a backwardpointing spike, a boarding axe is used to chop through hatches or rigging, to drag burning debris off a ship, or as a weapon. A boarding axe is a one-handed martial weapon that uses the same statistics as a handaxe, except it deals slashing or piercing damage. In addition, the spike grants a +2 circumstance bonus on Climb checks on wooden surfaces." compset="Weapon">
+    <fieldval field="gSizeCost" value="6"/>
+    <fieldval field="gWeight" value="3"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wProfReq" tag="Martial"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wFtrGroup" tag="Axes"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="wType" tag="P"/>
+    <tag group="wType" tag="S"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="wS2BrasKni" name="Knife, Brass" description="Pirates often carry long brass knives for working aboard a ship. Though brass doesn&apos;t hold as sharp an edge as steel, it isn&apos;t vulnerable to rust like steel is. In a pinch, a pirate can use his brass knife as a weapon. Mostly, though, they are used for cutting ropes, cleaning fish, and other sundry tasks.{br}{br}A brass knife has the fragile quality. A fragile weapon gains the broken condition if the wielder rolls a natural 1 on an attack roll with the weapon. If a fragile weapon is already broken, rolling a natural 1 destroys it instead." compset="Weapon">
+    <fieldval field="gSizeCost" value="2"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wFtrGroup" tag="BladeLight"/>
+    <tag group="wFtrGroup" tag="Thrown"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wCategory" tag="RangeThrow"/>
+    <tag group="wSpecial" tag="Fragile"/>
+    <tag group="wCritMin" tag="19"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wType" tag="P"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wMain" tag="1d4_4"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wClass" tag="Light"/>
+    </thing>
+  <thing id="wS2Cat9Tai" name="Cat-o&apos;-Nine-Tails" description="A cat-o&apos;-nine-tails, also known as the &quot;captain&apos;s daughter&quot; is a short whip made of nine knotted thongs about 3 feet in length, designed to lacerate and inflict great pain without doing serious permanent damage.\n\nA cat-o&apos;-nine-tails deals no damage to any creature with an armor bonus of +1 or higher or a natural armor bonus of +3 or higher." compset="Weapon">
+    <fieldval field="gSizeCost" value="1"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wProfReq" tag="Martial"/>
+    <tag group="wFtrGroup" tag="Flails"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wSpecial" tag="Disarm"/>
+    <tag group="wSpecial" tag="Nonlethal"/>
+    <tag group="wType" tag="S"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d4_4"/>
+    </thing>
+  <thing id="wS2GaffBoa" name="Gaff, Boarding" description="A gaff hook is a long pole with a hook on one end for spearing fish. Pirates often add extra, heavier hooks to both ends of gaff hooks to assist with boarding actions. After the pirates use grappling hooks to draw ships close together, they hook the gunwales together with boarding gaffs to prevent the ships from drifting. Small crafts often use boarding gaffs in place of grappling hooks.{br}{br}Boarding gaffs bite deeply into the wood of the railing.{br}{br}It takes 1 minute to pry a boarding gaff loose. Most pirates use a boarding axe or cutlass to cut through boarding gaffs rather than trying to unhook them one by one.{br}{br}The gaff can also be used for fishing when not in combat." compset="Weapon">
+    <fieldval field="gSizeCost" value="8"/>
+    <fieldval field="gWeight" value="8"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wFtrGroup" tag="Double"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCategory" tag="Double"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wSpecial" tag="Reach"/>
+    <tag group="wSpecial" tag="Trip"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wOff" tag="1d6_5"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wCategory" tag="Reach"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="wS2PikeBoa" name="Pike, Boarding" description="A boarding pike is an 8-foot-long pole topped with a foot-long tapered metal tip. Boarding pikes look much like longspears, but the metal pike is designed to flow into the wooden haft, leaving no grooves, collars, or spikes that could trap salt water and cause rust. Boarding pikes are mainly used defensively, to repel boarding actions. The pikes are kept in brackets around the mast, so sailors can quickly grab pikes and brace them against the gunwale to repel boarders." compset="Weapon">
+    <fieldval field="gSizeCost" value="8"/>
+    <fieldval field="gWeight" value="9"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wFtrGroup" tag="PoleArms"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wSpecial" tag="Brace"/>
+    <tag group="wSpecial" tag="Reach"/>
+    <tag group="wCategory" tag="Reach"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="wType" tag="P"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d8_6"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="wS2GrapHoo" name="Grappling Hook" description="A grappling hook is usually thought of as a climbing instrument, but is also used to grapple enemy ships and draw them close before a boarding action.{br}{br}Grappling hooks bite deeply into the wood of the railing. It takes 1 minute to pry a grappling hook free. The rope attached to a grappling hook can be cut, but pirates often target the rigging and masts to make it difficult to remove the hooks. Tying off the rope of a grappling hook is a move action.{br}{br}A grappling hook can also be used as a ranged weapon.{br}{br}If you are proficient in the grappling hook, it is a grappling weapon. On a successful critical hit with a weapon of this type, you can grapple the target of the attack. You can attempt a combat maneuver check to grapple your opponent as a free action. This grapple attempt does not provoke an attack of opportunity from the creature you are attempting to grapple if that creature is not threatening you. While you grapple the target with a grappling weapon, you can only move or damage the creature on your turn.{br}{br}You are still considered grappled, though you do not have to be adjacent to the creature to continue the grapple. If you move far enough away to be out of the weapon&apos;s reach, the grapple ends.{br}{br}A grappling hook&apos;s weight includes the weight of 50 feet of hemp rope. It can be reduced by using shorter or lighter rope." compset="Weapon">
+    <fieldval field="gSizeCost" value="6"/>
+    <fieldval field="gWeight" value="14"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wFtrGroup" tag="Thrown"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCategory" tag="RangeThrow"/>
+    <tag group="wSpecial" tag="Grapple"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wType" tag="P"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="wS2HookHan" name="Hook Hand" description="Pirates who lose a hand in the course of their adventures sometimes attach hooks to their wrists.{br}{br}Your opponent cannot use a disarm action to disarm you of a hook hand. Hook hands generally do not interfere with routine activities, but you cannot use another weapon two-handed if you have a hook hand attached. You cannot use any type of weapon if both your hands are hook hands, and you may have trouble with routine activities.{br}{br}Hook hands presume that the wrist joint is intact. If the wrist joint is not intact, use the prosthesis statistics instead. It takes 1 minute to attach or detach a hook hand." compset="Weapon">
+    <fieldval field="gSizeCost" value="10"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="CampRazorC"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wFtrGroup" tag="Close"/>
+    <tag group="wFtrGroup" tag="Pirate"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wSpecial" tag="Disarm"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wType" tag="S"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wMain" tag="1d4_4"/>
+    </thing>
+  <thing id="wS2GunMiRi" name="Firearm, Minotaur Rifle" description="Firing large-caliber rounds at high velocity from a rifled barrel, a minotaur rifle makes for an excellent long-range weapon and is favored by Ulfen Minotaur hunters.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+    <comment><![CDATA[Special version for "Council of Thieves".
+
+Hidden]]></comment>
+    <fieldval field="gSizeCost" value="550"/>
+    <fieldval field="gWeight" value="10"/>
+    <fieldval field="wMisfire" value="1"/>
+    <fieldval field="wMisRadius" value="5"/>
+    <fieldval field="wCapacity" value="1"/>
+    <usesource source="PathCounTh"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wRangeInc" tag="150" name="150"/>
+    <tag group="wMaxStrBon" tag="0"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="wEasyRace" tag="Rd20Mino"/>
+    <tag group="EquipType" tag="Wood"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wFtrGroup" tag="Firearms"/>
+    <tag group="wSpecial" tag="S2ExpDice" name="Exploding Dice"/>
+    <tag group="RaceEquip" tag="Rd20Mino"/>
+    <tag group="wSpecial" tag="S2Misfire" name="Misfire"/>
+    <tag group="wMain" tag="2d6_104"/>
+    <tag group="wProfReq" tag="Exotic"/>
+    <tag group="wFtrGroup" tag="RcGun"/>
+    <tag group="wCategory" tag="Firearm"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="SpecGroup" tag="FireEarly"/>
+    </thing>
+  <thing id="wS2GunBul" name="Firearm Bullet, Crafted" description="The ammunition of most one-handed and two-handed firearms, firearm bullets typically take the form of small balls of lead or some other metal. \n\n{B}Note:{/b} This ammo was crafted using the {I}Gunsmithing{/i} feat." compset="Weapon" stacking="merge">
+    <fieldval field="gWeight" value=".0167"/>
+    <fieldval field="gSizeCost" value=".1"/>
+    <usesource source="UltCombat" parent="UCHeader" name="Ultimate Combat"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="UltEquip"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="NormalOnly" name="NormalOnly" abbrev="NormalOnly"/>
+    <tag group="SpecGroup" tag="FireEarly" name="Firearm, Early" abbrev="Firearm, Early"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <prereq message="Gunsmithing Feat required.">
+      <validate><![CDATA[
+        ~ this only applies to Pathfinder Society characters
+        validif (hero.tagis[Dependant.ItemCrRep] = 0)
+
+        ~ we need the gunsmithing feat
+        validif (#hasfeat[fGunsmithi] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="wS2BlackPo" name="Black Powder, Crafted" description="Black powder is the key explosive component within a firearm that enables it to function, but in larger amounts this alchemical material can be quite destructive on its own as well. A single dose of black powder is enough to power a single shot from most one-handed and two-handed firearms, while 10 doses are required to fire a cannon. Black powder is often stored and transported in kegs (which hold 100 doses), but in this quantity the powder itself becomes dangerous. Exposure to fire, electricity, or a misfire explosion causes black powder to explode—a single keg that explodes in this manner deals 5d6 points of fire damage to anyone within a 20-foot burst (DC 15 Reflex half ). Storing black powder in a powder horn protects the powder from explosion.\n\n{B}Note:{/b} This Black Powder was crafted using the {I}Gunsmithing{/i} feat." compset="Weapon" stacking="merge">
+    <fieldval field="gSizeCost" value="1"/>
+    <usesource source="UltCombat" parent="UCHeader" name="Ultimate Combat"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <tag group="Helper" tag="NormalOnly" name="NormalOnly" abbrev="NormalOnly"/>
+    <tag group="SpecGroup" tag="FireEarly" name="Firearm, Early" abbrev="Firearm, Early"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <prereq message="Gunsmithing Feat required.">
+      <validate><![CDATA[
+        ~this only applies to Pathfinder Society characters
+        validif (hero.tagis[Dependant.ItemCrRep] = 0)
+
+        ~we need the gunsmithing feat
+        validif (#hasfeat[fGunsmithi] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="wS2GunBulM" name="Firearm bullet, Crafted" description="The ammunition of most one-handed and two-handed firearms, firearm bullets typically take the form of small balls of lead or some other metal.\n\n{B}Note:{/b} This ammo was crafted using the {I}Gunsmithing{/i} feat." compset="Weapon">
+    <fieldval field="gWeight" value="0.167"/>
+    <fieldval field="gSizeCost" value=".1"/>
+    <usesource source="UltCombat" parent="UCHeader" name="Ultimate Combat"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="UltEquip"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="MagicAmmo" name="MagicAmmo" abbrev="MagicAmmo"/>
+    <tag group="Helper" tag="MagicOnly" name="MagicOnly" abbrev="MagicOnly"/>
+    <tag group="SpecGroup" tag="FireEarly" name="Firearm, Early" abbrev="Firearm, Early"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <prereq message="Gunsmithing Feat required.">
+      <validate><![CDATA[
+        ~ this only applies to Pathfinder Society characters
+        validif (hero.tagis[Dependant.ItemCrRep] = 0)
+
+        ~ we need the gunsmithing feat
+        validif (#hasfeat[fGunsmithi] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="wS2BrKnuck" name="Brass knuckles" description="These weapons fit snugly around the knuckles and allow you to deal lethal damage with an unarmed strike. You may hold, but not wield, a weapon or other object in a hand wearing brass knuckles. You may cast a spell with a somatic component while wearing brass knuckles if you make a successful concentration check (DC 10 + the level of the spell you&apos;re casting). Monks are proficient with brass knuckles. Brass knuckles can&apos;t be disarmed.\n\n{b}Shadow d20:{/b} Brass knuckles will always do your unarmed strike damage. This damage then can only be done with a characters fists and does not allow one to make unarmed strikes with legs, knees, or other parts of the characters body." compset="Weapon" replaces="wBrKnuckle">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gSizeCost" value="1"/>
+    <usesource source="APG" parent="APGHeader" name="Advanced Player&apos;s Guide"/>
+    <usesource source="PCAdvArm" parent="PCHeader" name="Adventurer&apos;s Armory"/>
+    <usesource source="UltEquip" parent="UEHeader" name="Ultimate Equipment"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wFtrGroup" tag="Close" name="Close" abbrev="Close"/>
+    <tag group="wFtrGroup" tag="Monk" name="Monk" abbrev="Monk"/>
+    <tag group="wMain" tag="1d3_3" name="1d3" abbrev="1d3"/>
+    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
+    <tag group="wSpecial" tag="Monk" name="Monk" abbrev="Monk"/>
+    <tag group="wType" tag="B" name="Bludgeoning" abbrev="B"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+perform delete[wMain.?]
+perform hero.child[wUnarmed].pulltags[wMain.?]
+field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
+field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
+
+~if we're a custom/magic weapon, we need to alter our parent, too
+if (container.ishero = 0) then
+   container.parent.field[wAttBonus].value -= 2
+   container.parent.field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
+   container.parent.field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
+   perform container.parent.delete[wMain.?]
+   perform container.parent.pushtags[wMain.?]
+endif]]></eval>
+    </thing>
+  <thing id="iS2Bane" name="Bane" description="A bane weapon excels at attacking one type or subtype of creature. Against its designated foe, its effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2d6 points of damage against the foe. Bows, crossbows, and slings so crafted bestow the bane quality upon their ammunition.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}summon monster I{/i}; {b}Cost{/b} +1 Bonus" compset="ItemPower" summary="+2 &amp; +2d6 damage vs chosen type" replaces="iBane" uniqueness="useronce">
+    <comment>Modified to be able to turn on/off the extra damage. This is needed for the iPad app.</comment>
+    <fieldval field="iPrice" value="1"/>
+    <fieldval field="iCL" value="8"/>
+    <fieldval field="actName" value="Attacking "/>
+    <tag group="Helper" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <tag group="PowerType" tag="Weapon" name="Weapon" abbrev="Weapon"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="iSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="Helper" tag="CustomSpec" name="CustomSpec" abbrev="CustomSpec"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+~ If we are not active get out now!
+doneif (field[abilActive].value <> 1)
+
+~ If we are on a component
+if (parent.tagis[component.BaseWep] <> 0) then
+   #extradamage[parent,"+2d6 vs. " & field[iCustSpec].text,field[name].text]
+else
+  foreach pick in hero from BaseWep where container.child[gCustMagic].field[gWeapExpr].text
+    #extradamage[eachpick,"+2d6 vs. " & field[iCustSpec].text,field[name].text]
+  nexteach
+endif]]></eval>
+    <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
+~ Set activation name to be "vs Bane (NAME)"
+field[actName].text &= field[iCustSpec].text
+
+~ If we are not active get out now!
+doneif (field[abilActive].value <> 1)
+
+~ Give +2 Hit/Dmg
+parent.field[Bonus].value += 2]]></eval>
+    </thing>
+  <thing id="abS2EldBla" name="Eldritch Blast Helper" description="Helper object to control the dice and die size of the Eldritch Blast weapon." compset="Ability">
+    <usesource source="s20PFCamp"/>
+    <eval phase="Final" priority="9000">~ We need to be allowed to adjust the value of the Die size from
+~ outside so set the abValue1 as dice, and abValue2 as die size.
+field[abValue].value += hero.child[cWitS2ElBl].field[abValue].value
+field[abValue2].value += hero.child[cWitS2ElBl].field[abValue2].value</eval>
+    </thing>
+  <thing id="wS2GunBP" name="Firearm Bullet &amp; Powder, Crafted" description="The ammunition of most one-handed and two-handed firearms, firearm bullets typically take the form of small balls of lead or some other metal. \n\nBlack powder is the key explosive component within a firearm that enables it to function, but in larger amounts this alchemical material can be quite destructive on its own as well. A single dose of black powder is enough to power a single shot from most one-handed and two-handed firearms, while 10 doses are required to fire a cannon. Black powder is often stored and transported in kegs (which hold 100 doses), but in this quantity the powder itself becomes dangerous. Exposure to fire, electricity, or a misfire explosion causes black powder to explode—a single keg that explodes in this manner deals 5d6 points of fire damage to anyone within a 20-foot burst (DC 15 Reflex half ). Storing black powder in a powder horn protects the powder from explosion.\n\n{B}Note:{/b} This item combines the Black Powder &amp; Firearm Bullet into a single piece of ammo that was crafted using the {I}Gunsmithing{/i} feat." compset="Weapon" stacking="merge">
+    <fieldval field="gWeight" value=".0167"/>
+    <fieldval field="gSizeCost" value="1.10"/>
+    <usesource source="UltCombat" parent="UCHeader" name="Ultimate Combat"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="UltEquip"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="NormalOnly" name="NormalOnly" abbrev="NormalOnly"/>
+    <tag group="SpecGroup" tag="FireEarly" name="Firearm, Early" abbrev="Firearm, Early"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <prereq message="Gunsmithing Feat required.">
+      <validate><![CDATA[
+        ~ this only applies to Pathfinder Society characters
+        validif (hero.tagis[Dependant.ItemCrRep] = 0)
+
+        ~ we need the gunsmithing feat
+        validif (#hasfeat[fGunsmithi] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="wS2GunBPM" name="Firearm Bullet &amp; Powder, Crafted" description="The ammunition of most one-handed and two-handed firearms, firearm bullets typically take the form of small balls of lead or some other metal. \n\nBlack powder is the key explosive component within a firearm that enables it to function, but in larger amounts this alchemical material can be quite destructive on its own as well. A single dose of black powder is enough to power a single shot from most one-handed and two-handed firearms, while 10 doses are required to fire a cannon. Black powder is often stored and transported in kegs (which hold 100 doses), but in this quantity the powder itself becomes dangerous. Exposure to fire, electricity, or a misfire explosion causes black powder to explode—a single keg that explodes in this manner deals 5d6 points of fire damage to anyone within a 20-foot burst (DC 15 Reflex half ). Storing black powder in a powder horn protects the powder from explosion.\n\n{B}Note:{/b} This item combines the Black Powder &amp; Firearm Bullet into a single piece of ammo that was crafted using the {I}Gunsmithing{/i} feat." compset="Weapon">
+    <fieldval field="gWeight" value=".0167"/>
+    <fieldval field="gSizeCost" value="1.1"/>
+    <usesource source="UltCombat" parent="UCHeader" name="Ultimate Combat"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="UltEquip"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="SpecGroup" tag="FireEarly" name="Firearm, Early" abbrev="Firearm, Early"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="Helper" tag="MagicAmmo"/>
+    <tag group="Helper" tag="MagicOnly"/>
+    <prereq message="Gunsmithing Feat required.">
+      <validate><![CDATA[
+        ~ this only applies to Pathfinder Society characters
+        validif (hero.tagis[Dependant.ItemCrRep] = 0)
+
+        ~ we need the gunsmithing feat
+        validif (#hasfeat[fGunsmithi] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="wS2GunBP1" name="Firearm Bullet &amp; Powder" description="The ammunition of most one-handed and two-handed firearms, firearm bullets typically take the form of small balls of lead or some other metal. \n\nBlack powder is the key explosive component within a firearm that enables it to function, but in larger amounts this alchemical material can be quite destructive on its own as well. A single dose of black powder is enough to power a single shot from most one-handed and two-handed firearms, while 10 doses are required to fire a cannon. Black powder is often stored and transported in kegs (which hold 100 doses), but in this quantity the powder itself becomes dangerous. Exposure to fire, electricity, or a misfire explosion causes black powder to explode—a single keg that explodes in this manner deals 5d6 points of fire damage to anyone within a 20-foot burst (DC 15 Reflex half ). Storing black powder in a powder horn protects the powder from explosion.\n\n{B}Note:{/b} This item combines the Black Powder &amp; Firearm Bullet into a single piece of ammo. This simply allows for easier tracking in HL." compset="Weapon" stacking="merge">
+    <fieldval field="gWeight" value=".0167"/>
+    <fieldval field="gSizeCost" value="11"/>
+    <usesource source="UltCombat" parent="UCHeader" name="Ultimate Combat"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="UltEquip"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="NormalOnly" name="NormalOnly" abbrev="NormalOnly"/>
+    <tag group="SpecGroup" tag="FireEarly" name="Firearm, Early" abbrev="Firearm, Early"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <prereq message="Gunsmithing Feat required.">
+      <validate><![CDATA[
+        ~ this only applies to Pathfinder Society characters
+        validif (hero.tagis[Dependant.ItemCrRep] = 0)
+
+        ~ we need the gunsmithing feat
+        validif (#hasfeat[fGunsmithi] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="wS2GunBP1M" name="Firearm Bullet &amp; Powder" description="The ammunition of most one-handed and two-handed firearms, firearm bullets typically take the form of small balls of lead or some other metal. \n\nBlack powder is the key explosive component within a firearm that enables it to function, but in larger amounts this alchemical material can be quite destructive on its own as well. A single dose of black powder is enough to power a single shot from most one-handed and two-handed firearms, while 10 doses are required to fire a cannon. Black powder is often stored and transported in kegs (which hold 100 doses), but in this quantity the powder itself becomes dangerous. Exposure to fire, electricity, or a misfire explosion causes black powder to explode—a single keg that explodes in this manner deals 5d6 points of fire damage to anyone within a 20-foot burst (DC 15 Reflex half ). Storing black powder in a powder horn protects the powder from explosion.\n\n{B}Note:{/b} This item combines the Black Powder &amp; Firearm Bullet into a single piece of ammo. This simply allows for easier tracking in HL." compset="Weapon">
+    <fieldval field="gWeight" value=".0167"/>
+    <fieldval field="gSizeCost" value="11"/>
+    <usesource source="UltCombat" parent="UCHeader" name="Ultimate Combat"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="UltEquip"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="SpecGroup" tag="FireEarly" name="Firearm, Early" abbrev="Firearm, Early"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="Helper" tag="MagicAmmo"/>
+    <tag group="Helper" tag="MagicOnly"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <prereq message="Gunsmithing Feat required.">
+      <validate><![CDATA[
+        ~ this only applies to Pathfinder Society characters
+        validif (hero.tagis[Dependant.ItemCrRep] = 0)
+
+        ~ we need the gunsmithing feat
+        validif (#hasfeat[fGunsmithi] <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="wS2RanIc5" name="Range Increment 5" description="place holder for the Range Increment 5." compset="Weapon">
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="Helper" tag="NoSelect"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="wRangeInc" tag="5" name="5"/>
+    </thing>
+  <thing id="wS2Rock" name="Rock" description="This is a generic &quot;Rock Weapon&quot; that can be used for many different monsters like giants." compset="Weapon">
+    <usesource source="UserParent"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wType" tag="B"/>
+    <tag group="wSpecial" tag="Improvised"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wFtrGroup" tag="Natural"/>
+    <tag group="wFtrGroup" tag="Thrown"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wRangeInc" tag="20"/>
+    <tag group="Helper" tag="BucklerOK"/>
+    <tag group="Helper" tag="NormalOnly"/>
+    <tag group="IsWeapon" tag="wRock"/>
+    <tag group="wCategory" tag="RangeThrow"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="wMain" tag="1d4_4"/>
+    <tag group="wCritMin" tag="20"/>
+    </thing>
+  <hidden id="wRcGunPist"/>
+  <hidden id="wRcGunRifl"/>
+  <hidden id="wRcGunBlun"/>
+  <hidden id="wRcGunBulM"/>
+  <hidden id="wRcGunBul"/>
+  <hidden id="wRcBayKnif"/>
+  <hidden id="wRcBayPist"/>
+  <hidden id="wRcBaySwor"/>
+  <hidden id="wRcGunMrif"/>
+  <hidden id="wS2GunMiRi"/>
+  <hidden id="wRcGunMusk"/>
+  </document>

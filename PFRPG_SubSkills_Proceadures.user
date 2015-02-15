@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>
+      Tim Shadow
+      Email: ShadowChemosh@yahoo.com
+    </info_author>
+    <info_history><![CDATA[
+      6/28/2014
+      -Moved proceadures out to their own file.
+      -Remove SkillAbil.? tags so we are not found by other scripts. This has to be done very early!
+      ]]>
+    </info_history>
+  </fileinfo>
+    
+  <!-- This procedure was added for v9.5 of Pathfinder when they made changes to the skills
+       linkage. Without being linked to a attribute sub-skills threw error messages. This
+       attempts to fix the issue by removing the new SkillAbil.? tag
+  -->
+  <procedure id="SetupSubSk" context="pick"><![CDATA[
+    ~ Delete all SkillAbil.? attributes
+    perform delete[SkillAbil.?]
+    ]]>
+  </procedure>
+
+  <procedure id="CalcSubSkT" context="pick"><![CDATA[
+    ~Procedure is used to total up the External Skill Ranks
+
+    ~ Calculte External Skill Total
+    field[skExtRanks].value = field[Bonus].value + field[Penalty].value + field[BonAlch].value + field[ModCirc].value + field[BonComp].value + field[PenComp].value + field[BonEnhance].value + field[BonInsight].value + field[BonLuck].value + field[PenLuck].value + field[BonMorale].value + field[PenMorale].value + field[BonProfane].value + field[PenProfane].value + field[BonSacred].value + field[PenSacred].value + field[BonTrait].value + field[PenTrait].value
+
+    ~ Set focus to all skills so its faster to calc all the fields    
+    perform hero.child[AllSkills].setfocus   
+
+    ~ Calculte ALL Skill Total
+    ~ Based on a bonus/penalty value from ALL Skill we need to subtract or add in the amount
+    field[skExtRanks].value += (focus.field[Bonus].value + focus.field[Penalty].value + focus.field[BonAlch].value + focus.field[ModCirc].value + focus.field[BonComp].value + focus.field[PenComp].value + focus.field[BonEnhance].value + focus.field[BonInsight].value + focus.field[BonLuck].value + focus.field[PenLuck].value + focus.field[BonMorale].value + focus.field[PenMorale].value + focus.field[BonProfane].value + focus.field[PenProfane].value + focus.field[BonSacred].value + focus.field[PenSacred].value + focus.field[BonTrait].value + focus.field[PenTrait].value) * -1
+    ]]>
+  </procedure>
+
+
+  <procedure id="CalcSubSk" context="pick"><![CDATA[
+    ~Procedure is used to auto-calculate the total value of any Sub Skill
+    var skill as string
+    ~ Get parent skill
+    skill = tagids[SubSkill.?,"+"]
+    ~ Replace the SubSkill group with thingid
+    skill = replace(skill,"SubSkill","thingid",1)
+    ~ If Parent Skill is a class skill then so are we   
+    If (hero.firstchild[skill].tagis[Helper.ClassSkill] = 1) Then
+       perform assign[Helper.ClassSkill]
+    Endif
+    ~ Calculte External Skill Total
+    call CalcSubSkT
+    ~ Set the skill total value including Parent total
+    field[skTotal].value = hero.firstchild[skill].field[skTotal].value + field[skExtRanks].value
+    ]]>
+  </procedure>
+
+
+  <procedure id="CalcSubPer" context="pick"><![CDATA[
+    ~Procedure is used to auto-calculate the total value of Perception Skill ONLY
+    var skill as string
+    ~ Get parent skill
+    skill = tagids[SubSkill.?,"+"]
+    ~ Replace the SubSkill group with thingid
+    skill = replace(skill,"SubSkill","thingid",1)
+    ~ If Perceptions is a class skill then so are we   
+    If (hero.firstchild[skill].tagis[Helper.ClassSkill] = 1) Then
+       perform assign[Helper.ClassSkill]
+    Endif
+    ~ Calculte External Skill Total
+    call CalcSubSkT
+    ~ Set the skill total value including Perception total
+    field[skTotal].value = hero.child[skPercep].field[skTotal].value + field[skExtRanks].value
+    ]]>
+  </procedure>
+  
+  <procedure id="CalcSubAcr" context="pick">~Procedure is used to auto-calculate the total value of Acrobatics Skill ONLY
+    ~ If Acrobatics is a class skill then so are we
+    If (hero.child[skAcrobat].tagis[Helper.ClassSkill] = 1) Then
+       perform assign[Helper.ClassSkill]
+    Endif
+    ~ Calculte External Skill Total
+    call CalcSubSkT
+    ~ Set the skill total value including Perception total
+    field[skTotal].value = hero.child[skAcrobat].field[skTotal].value + field[skExtRanks].value</procedure>
+
+
+</document>

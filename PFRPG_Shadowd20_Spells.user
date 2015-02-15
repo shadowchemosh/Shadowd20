@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[1/25/2013
+-Changed "Conjurer's Toolbelt" to be 10 lbs not 1 lb items as it wouldn't allow for conjuring any useful tool.
+
+4/29/2012
+-Created New.]]></info_history>
+    </fileinfo>
+  <thing id="sp_FRClnCo" name="Clandestine Conversation" description="The targets can converse without anyone overhearing what they are saying. Creatures who can read lips might still be able to determine what is said, but no Perception check can possibly allow one to overhear the conversation. While under the effect of this spell, a target creature can speak to someone  not affected by this spell, but everyone can hear that conversation normally. Only when one target creature speaks to the other target creature does the conversation remain private." compset="Spell" summary="converse without anyone overhearing">
+    <fieldval field="sTarget" value="Two Creatures"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Illusion"/>
+    <tag group="sSubschool" tag="Figment"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="sp_Frclean" name="Clean" description="You wave your hands in a circular motion over an object and all dirt on the target immediately vanishes as though the object was just scrubbed thoroughly clean." compset="Spell">
+    <fieldval field="sTarget" value="One object"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="Cleric"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    </thing>
+  <thing id="sp_FrClofA" name="Cleanse of Alcohol" description="The target of a cleanse of alcohol spell finds himself completely cured of any effect caused by indulging in alcohol." compset="Spell">
+    <fieldval field="sTarget" value="Personal or one creature"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Round1"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Healing"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="sp_FrClotA" name="Cloth Armor" description="With a word, you cause bedding, draperies, unworn loose clothing, or tapestries to gird you, forming an improvised suit of armor equivalent to padded armor. When you remove the armor, it collapses back into its constituent parts." compset="Spell">
+    <fieldval field="sFocusDesc" value="unworn clothing"/>
+    <fieldval field="sTarget" value="You "/>
+    <fieldval field="sDuration" value="24 hours or until removed"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Hour24"/>
+    <tag group="sSave" tag="RefNeg"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sCastTime" tag="Swift1"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    </thing>
+  <thing id="sp_FrConTo" name="Conjurer&apos;s Toolbelt" description="This spell creates a small tool that appears in your hand. The tool may not weigh more than 10 lb. and can be no larger than one cubic foot in size. The tool can be just about anything within the aforesaid limit and appropriate to the campaign. You could, for example, create a hacksaw, lock pick, crowbar, hammer, etc. The tool persists until it is broken, dispelled, or the duration of this spell expires. The tool will be of ordinary manufacture." compset="Spell">
+    <fieldval field="sEffect" value="Conjures a nonmagical tiny object"/>
+    <fieldval field="sDuration" value="1 min./level"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sCastTime" tag="Action1"/>
+    </thing>
+  <thing id="spFrCrSnow" name="Create Snow" description="This spell generates clean, unpolluted snow. Snow can be created in an area as small as will actually contain the snow, or in an area three times as large (possibly creating a downpour or filling many small receptacles).\n\n{B}Note:{/b} Conjuration spells cannot create substances or objects within a creature. Snow weighs about eight pounds per gallon. One cubic foot of snow contains roughly eight gallons and weighs about 60 pounds." compset="Spell">
+    <fieldval field="sEffect" value="Up to 2 gallons of snow/level"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Cold"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sDescript" tag="Water"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sCastTime" tag="Action1"/>
+    </thing>
+  <thing id="sp_FrCrySy" name="Crystal Symbol" description="You create a thin crystal in the form of your holy symbol or divine focus that comes out of the tip of your finger and flies in the direction you point, like an arrow. Make a ranged attack roll (not a touch attack). If you succeed, the shard inflicts 1d3 points of divine damage. After it hits or misses its target, the crystal turns to powder." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="SpellEff" tag="DamUntyped"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="SeeText"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sRange" tag="Close"/>
+    </thing>
+  <thing id="sp_FrGuMot" name="Guardian Mote" description="You call into existence a vaguely shaped, shadowy mote that is about 1 inch high. The mote is silent and amorphous in shape and leaps to interpose attacks. It places itself between you and the most apparent danger (but not attacks you are unaware of). This magical guardian mote blocks damage from the next successful attack made against you, absorbing 1d3 points of damage. No matter how much or how little damage is actually inflicted by the attack, the guardian mote winks out of existence as soon as it prevents damage from one attack; you take any excess damage. The effect also only prevents damage; any additional effects of an attack are not prevented (for example the effect of a vorpal weapon). A guardian mote cannot prevent damage dealt by area effect spells or similar effects. For example, it can prevent damage from a single magic missile but not from multiple missiles or from a fireball." compset="Spell">
+    <fieldval field="sEffect" value="Phantom guardian mote"/>
+    <fieldval field="sDuration" value="1 min./level or until discharged"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    </thing>
+  <thing id="spFrHeaTea" name="Heaven’s Teardrop" description="You cause a bit of light to coalesce into a teardrop and fall from the sky tracing a red-hot streak onto a designated target. You make a ranged attack (not a touch attack) to strike the target. The heaven’s teardrop deals 1 point of bludgeoning damage and 1 point of fire damage." compset="Spell">
+    <fieldval field="sTarget" value="One creature or object"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sDescript" tag="Fire"/>
+    <tag group="sDescript" tag="Light"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    </thing>
+  <thing id="spFr_Infwe" name="Infuse Weapon" description="Choose an energy type when you cast the spell (acid, cold, electricity, fire, and sonic); the spell gains this energy descriptor. Infuse weapon gives the touched weapon a +1 bonus of the chosen energy type on damage rolls.\nYou can’t cast this spell on a natural weapon, such as an unarmed strike (though a monk’s unarmed strike is considered a weapon, and thus it can be enhanced by this spell)." compset="Spell">
+    <fieldval field="sTarget" value="Weapon touched"/>
+    <fieldval field="sEffect" value="Weapon touched"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sDescript" tag="Acid"/>
+    <tag group="sDescript" tag="Cold"/>
+    <tag group="sDescript" tag="Electric"/>
+    <tag group="sDescript" tag="Fire"/>
+    <tag group="sDescript" tag="Sonic"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Object"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    </thing>
+  <thing id="spFrLghtMF" name="Light My Fire" description="With this spell you are able to start a fire with easily combustible materials, such as paper, dried kindling, or lantern oil. As a general rule, if it could be ignited with flint and steel, it can be ignited with this spell. This spell functions much faster than the normal means of starting a fire, instantly lighting a small fire roughly equivalent to the size of a torch. This spell is not powerful to deal damage directly (though fires started by it could)." compset="Spell">
+    <fieldval field="sTarget" value="Unattended, non-magical objects"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Round1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sSubschool" tag="Fire"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    </thing>
+  <thing id="spFrPointr" name="Pointer" description="Pointer causes you to emit a beam of light from the index finger of your Dominant hand. This light can be any color in the visible spectrum chosen at time of casting. Unless the air has a high density of particles (such as smoke or fog) the light appears only as a dot against whatever solid surface at which you are pointing.\n\nIf a feline with an intelligence score of 1 or 2 sees the dot, it must make a Will save or have an overpowering urge to hunt the dot. It will do so as if it were stalking any other creature, and may chase it rapidly or lie in wait at its own discretion. If chasing the dot poses an obvious danger, or if the feline is threatened by other dangers, the saving throw automatically succeeds.\n\nLikewise, if the feline encounters a danger while chasing the light, the effect ends." compset="Spell">
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sDuration" value="1 minute/level (D)"/>
+    <fieldval field="sSave" value="None, or Will negates; see text;"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSubschool" tag="Light"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sSave" tag="SeeText"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Evocation"/>
+    </thing>
+  <thing id="spFrQuill" name="Quill" description="This spell conjures a perfectly formed quill pen, usually pure white. The conjured quill has a soft glow. The quill does not need ink; it creates its own as needed. The quill vanishes if it leaves the caster&apos;s hand." compset="Spell">
+    <fieldval field="sTarget" value="Self"/>
+    <fieldval field="sDuration" value="10 minutes/level"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="10Minute"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sCastTime" tag="Action1"/>
+    </thing>
+  <thing id="spFrRmercy" name="Ray of Mercy" description="You point your finger and from it erupts a thin blue ray. You must make a ranged touch attack to use the ray to strike a foe. If it hits, you deal 1d4 points of nonlethal damage. This spell has no effect on objects, undead, or constructs." compset="Spell">
+    <fieldval field="sCompDesc" value="splinter from a blunt arrow"/>
+    <fieldval field="sTarget" value="One living creature"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="SpellEff" tag="DamNonleth"/>
+    </thing>
+  <thing id="spFrRigCon" name="Rigged Coin" description="Rigged coin causes a coin you touch to always land with the same face up when flipped. You decide which face will land up at time of casting." compset="Spell">
+    <fieldval field="sTarget" value="Coin touched"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Minute1"/>
+    <tag group="sSave" tag="Object"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Object"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="spFrShdFla" name="Shield Open Flame" description="You shield a single small flame no larger than a torch from being extinguished by non-magical gusts of wind (including tornado- and hurricane-like gusts of wind). Magical wind (such as that produced by a gust of wind spell) extinguishes the flame normally and ends this spell." compset="Spell">
+    <fieldval field="sTarget" value="One small flame"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Abjur"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="10"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="10Minute"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="spFrSpdrth" name="Spider’s Thread" description="You create a single ropelike strand of spider web that possesses the Strength of an above-average person. One end of the strand is adhesive, the rest is not. You can use the sticky end to shoot the strand to the ceiling of a cave and swing across a chasm on it. You could even attempt to stick one end to a creature so it could not get away. In this case, the creature gets a saving throw, and those who fail must take a standard action to attempt a Strength check (DC 15) to tear the strand away. The spider’s thread can support the weight of about 200 lbs. If you use it as rope (tying it to something rather than relying on the adhesive) it proves about twice as strong as a normal rope. The spider’s thread can be destroyed in 1 round by fire. The strand has a hardness of 2 and 5 hit points." compset="Spell">
+    <fieldval field="sArea" value="A 1-inch-thick strand that measures 25 ft.+ 5"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="3Rounds"/>
+    <tag group="sSave" tag="RefNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="spFrSubAgg" name="Subconscious Aggression" description="Your words cause your target’s clumsy attack to become a venting of pent up wrath against an ally. You force a target that has just rolled a natural 1 on an attack roll to instead take a normal attack roll with that same attack against its nearest ally within range of the attack (if there are multiple allies roll randomly). If the creature makes a successful save, has no ally, or if all its allies are out of attack range, the results of the natural 1 roll occur normally." compset="Spell">
+    <fieldval field="sTarget" value="One living creature"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Immed1"/>
+    <tag group="sSchool" tag="Enchant"/>
+    <tag group="sSubschool" tag="Compulsion"/>
+    <tag group="sSubschool" tag="MindAffect"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="spFrSumriz" name="Summarize" description="This spell allows you to quickly summarize a text of up to 250 pages. If a text is over 250 pages, two or more castings of the spell are needed to summarize the entire text. The caster chooses the form of the summary at the time of casting: mental or audible. The summary, in the form of a short paragraph, is either mentally understood at the end of casting or audibly spoken at the end of the spell’s casting." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="Object"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Object"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Divination"/>
+    </thing>
+  <thing id="spFrTimer" name="Timer" description="Timer sounds an audible alarm after a set time, not to exceed 2 hours per caster level. You choose what type of alarm sound timer creates during casting and cannot thereafter change the sound’s basic character.\nAnyone within the area will hear the alarm sound clearly. Reduce the distance by 10 feet for each interposing closed door and by 20 feet for each substantial interposing wall. The sound lasts for 1 round. Creatures within a silence spell cannot hear the alarm." compset="Spell">
+    <fieldval field="sArea" value="80-ft.-radius emanation centered on a point in"/>
+    <fieldval field="sDuration" value="Until discharged; maximum 2 hours/level"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSchool" tag="Illusion"/>
+    <tag group="sSubschool" tag="Figment"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Hour"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sCastTime" tag="Action1"/>
+    </thing>
+  <thing id="spFrTrifIm" name="Trifling Image" description="You create a very small, immobile illusion of any object, force, or creature you visualize. The illusion does not create sound, smell, texture, or temperature, nor does it move. The resulting illusion matches your visualization exactly, even if the image in your mind differs somehow from the real object, force, or creature—if such exists at all." compset="Spell">
+    <fieldval field="sArea" value="One square foot"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Illusion"/>
+    <tag group="sSubschool" tag="Figment"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Hour"/>
+    <tag group="sSave" tag="WillDis"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="spFrUltray" name="Ultrasonic Ray" description="You fire from your fingertip a focused beam of sonic energy too shrill to hear at a single creature or object. On a successful ranged touch attack, you inflict 1d3 points of sonic damage." compset="Spell">
+    <fieldval field="sTarget" value="One creature or object"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sSubschool" tag="Sonic"/>
+    <tag group="SpellEff" tag="DamSonic"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="0"/>
+    </thing>
+  <thing id="sp_Frawken" name="Awaken" description="You snap your fingers, and one sleeping creature within range immediately awakens, as though slapped awake." compset="Spell" summary="Awaken one subject.">
+    <fieldval field="sTarget" value="One Living Creature"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sSchool" tag="Enchant"/>
+    <tag group="sSubschool" tag="Compulsion"/>
+    <tag group="sSubschool" tag="MindAffect"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sCastTime" tag="Immed1"/>
+    <tag group="sResist" tag="Harmless"/>
+    </thing>
+  <thing id="spS2TravD4" name="Traveling Dream" description="This spell functions like {I}arcane eye{/i}, except as noted above. Upon casting this spell you fall asleep for its duration, creating an invisible magic sensor (called a dreamscryer) that is the exact size and shape of your body, is recognizable as you, and cannot pass through spaces that your body cannot enter. Unlike the invisible sensor created by {I}arcane eye{/i}, children (no older than 10) of any race and animals can see your dreamscryer. Sleeping creatures can sense its presence and might incorporate your image into their dreams. Force effects and any abjuration spell that wards out creatures (such as {I}magic circle against evil{/i}) are effective barriers against a dreamscryer (regardless of your creature type, alignment, or other specifics). If you dismiss the spell or the dreamscryer is dispelled or destroyed, you awaken." compset="Spell" replaces="spTravDrm4">
+    <fieldval field="sRange" value="unlimited"/>
+    <fieldval field="sDuration" value="1 hour/level (D)"/>
+    <fieldval field="sSave" value="none"/>
+    <fieldval field="sResist" value="no"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="PathRise"/>
+    <tag group="HasDeity" tag="deiDesna"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sSchool" tag="Divination"/>
+    <tag group="sSubschool" tag="Scrying"/>
+    <tag group="sRange" tag="Unlimited"/>
+    <tag group="sDuration" tag="Hour"/>
+    <tag group="sDuration" tag="Dismiss"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    </thing>
+  <thing id="spUnused1" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sClass" tag="cHelpWaP"/>
+    </thing>
+  <thing id="spUnused2" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spUnused3" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spUnused4" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spUnused5" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spUnused6" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="6"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spUnused7" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="7"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spUnused8" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="8"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spUnused9" name=" -Open Spell Slot-" description="Add this spell to your character to show having open spell slot.\n\nWhen preparing spells for the day, a wizard can leave some of these spell slots open. Later during that day, he can repeat the preparation process as often as he likes, time and circumstances permitting. During these extra sessions of preparation, the wizard can fill these unused spell slots. He cannot, however, abandon a previously prepared spell to replace it with another one or fill a slot that is empty because he has cast a spell in the meantime. That sort of preparation requires a mind fresh from rest. Like the first session of the day, this preparation takes at least 15 minutes, and it takes longer if the wizard prepares more than one-quarter of his spells." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="9"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    </thing>
+  <thing id="spS2CorTo1" name="Corrosive Touch" description="Your successful melee touch attack deals 1d4 points of acid damage per caster level (maximum 5d4)." compset="Spell">
+    <comment>Spell Resistance no longer applies.</comment>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <fieldval field="sTarget" value="creature or object touched"/>
+    <usesource source="UltMagic"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpSum"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sDescript" tag="Acid"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    </thing>
+  <thing id="spS20BoL5" name="Breath of Life" description="Unlike other spells that heal damage, breath of life can bring recently slain creatures back to life. If cast upon a creature that has died within 1 round, apply the healing from this spell to the creature. If the healed creature&apos;s hit point total is at a negative amount less than its Constitution score, it comes back to life and stabilizes at its new hit point total. If the creature&apos;s hit point total is at a negative amount equal to or greater than its Constitution score, the creature remains dead. Creatures brought back to life through breath of life gain a temporary negative level that lasts for 1 day.\n\nCreatures slain by death effects cannot be saved by breath of life.\n\nLike cure spells, breath of life deals damage to undead creatures rather than curing them, and cannot bring them back to life. \n\n{b}Shadow d20:{/b} Breath of Life is treated effectively as a {i}“cure”{/i} spell so clerics that channel positive energy can spontaneously cast {i}Breath of Life{/I}." compset="Spell" summary="Cures 5d8 damage +1/level (max +25).  Can be applied to a creature that died within 1 round and can be spontaneously cast." replaces="spBreaLif5">
+    <comment><![CDATA[ My reasons for changing this spell came from comments from James Jacobs on the paizo boards who is a co-creator of PFRPG.  "Well... my not-so-secret agenda WAS to make it a spell that clerics could cast on the fly. It's an important spell and concept, and one that helps to keep unplanned deaths from ruining a campaign. Letting clerics cast it on the fly as cure deadly wounds means they don't have to keep one prepared at all times (it's sort of a spell tax otherwise), and helps to let them save their allies from sudden death."]]></comment>
+    <fieldval field="sRange" value="Touch"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <tag group="sLevel" tag="5" name="5" abbrev="5"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="~[($s_TouchZ]Tch~[(#]"/>
+    <tag group="sResist" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="sClass" tag="cHelpClr" name="Cleric" abbrev="Cleric"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="~[($s_SZ]S~[(#]"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="~[($s_VZ]V~[(#]"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sCastTime" tag="Action1" name="1 Action" abbrev="Action1"/>
+    </thing>
+  <thing id="spS20cf3" name="Continual Flame" description="A flame, equivalent in brightness to a torch, springs forth from an object that you touch. The effect looks like a regular flame, but it creates no heat and doesn’t use oxygen. A continual flame can be covered and hidden but not smothered or quenched.\n\n{B}Shadow d20:{/b} Optionally this spell can be cast as Continual Light instead of continual flame. Continual light causes any object to shed light in a 20ft radius without the effect of a flame. This allows objects that normally do not shed light to have a Continual Light cast on them(ie a coin). In all other ways Continual Light is the same as Continual Flame.\n\nLight spells counter and dispel darkness spells of an equal or lower level." compset="Spell" replaces="spContFla3">
+    <fieldval field="sRange" value="Touch"/>
+    <fieldval field="sDuration" value="Permanent"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="~[($s_SZ]S~[(#]"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="~[($s_VZ]V~[(#]"/>
+    <tag group="sDuration" tag="Permanent" name="Permanent" abbrev="Permanent"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="~[($s_TouchZ]Tch~[(#]"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sSubschool" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="sCastTime" tag="Action1" name="1 Action" abbrev="Action1"/>
+    <tag group="sClass" tag="cHelpAdp" name="Adept" abbrev="Adept"/>
+    <tag group="sClass" tag="cHelpClr" name="Cleric" abbrev="Cleric"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="~[($s_MZ]M~[(#]"/>
+    </thing>
+  <thing id="spS2DrmFe1" name="Dream Feast" description="The next time the target sleeps (within 8 hours), she dreams of a rich feast with her favorite food and drink. When she awakens, she is sated as if she ate and drank a nutritious meal, regardless of what she dreamed she ate. The target must sleep for at least 1 hour to gain the benefits of this spell. Being awakened during this period interrupts the spell and cancels its effects.\n\nIf you sleep with this spell prepared, you may automatically expend it while you sleep to gain the spell’s benefit. This expenditure does not count as spellcasting for the purpose of determining available spell slots (you could go to sleep at midnight, expend this spell during an 8-hour period of sleep, and still prepare your full allotment of spells in the morning)." compset="Spell" replaces="spDrmFeas1">
+    <fieldval field="sRange" value="Touch"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="PathRise"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="HasDeity" tag="deiDesna"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    </thing>
+  <thing id="inS2InhSmi" name="Inheritor&apos;s Smite" description="You channel the power of Iomedae into your weapon arm, allowing you to strike with great force. Your next melee attack (if made before the end of the next round) gains a +5 sacred bonus on the attack roll. If it hits, you may immediately attempt a bull rush (with a +5 sacred bonus on your check) against the target without provoking an attack of opportunity; if your combat maneuver check exceeds the defender’s CMD by more than 5, you do not need to move with the target to push him back more than 5 feet. Most priests use this spell to create a break in an enemy’s line or to force a dangerous opponent away from a fallen ally or strategic object." compset="Spell" replaces="sPFInhSmi2">
+    <fieldval field="sRange" value="personal"/>
+    <fieldval field="sDuration" value="see text"/>
+    <fieldval field="sSave" value="none"/>
+    <fieldval field="sResist" value="no"/>
+    <fieldval field="sTarget" value="you"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    <tag group="sRange" tag="Personal" name="Personal" abbrev="{ref s_Pers}Pers{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="HasDeity" tag="deiIomedae" name="Iomedae" abbrev="Iomedae"/>
+    <tag group="sCastTime" tag="Swift" name="1 Swift Action" abbrev="1 Swift Action"/>
+    <tag group="sClass" tag="cHelpClr" name="Cleric" abbrev="Cleric"/>
+    <tag group="sClass" tag="cHelpPal" name="Paladin" abbrev="Paladin"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    </thing>
+  <thing id="spFr_Char1" name="Char Lash" description="{i}A 15-foot-long, blazing coil of red-hot charcoal and cinders springs forth from your hand. {/i}\n\nYou wield this snakelike coil as if it were a whip. Attacks with the char lash are melee touch attacks with a reach of 15 feet, but you cannot use it to make attacks of opportunity. The lash deals 1d6 points of fire damage + 1 point per two caster levels (maximum +5). Though the charcoal and cinders can flow into any nook or crevice (and thus bypass armor and natural armor), they strike with enough force to allow you to add your Strength modifier to damage dealt. A char lash can ignite combustible materials such as parchment, straw, dry sticks, and cloth. Controlling a char lash is difficult, even for those trained to do so. If any attack roll made with the char lash is a natural 1 (a 1 shows on the die roll), you strike yourself with the char lash, dealing damage normally." compset="Spell">
+    <fieldval field="sRange" value="Medium (100 ft. +10 ft/level)"/>
+    <fieldval field="sDuration" value="1 min./level (D)"/>
+    <fieldval field="sSave" value="Reflex half"/>
+    <fieldval field="sResist" value="No"/>
+    <fieldval field="sEffect" value="whip-like coil of fire"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sSubschool" tag="Fire"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="15"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="SpellEff" tag="DamFire"/>
+    </thing>
+  <thing id="spFr_Heatl" name="Heat Lightning" description="You produce vertical strokes of lightning that flash downward for 1 round,  dealing creatures and objects in the area 1d6 points of nonlethal damage +1 point per caster level (maximum +5), or half-damage on a successful Reflex save. On a failed save, creatures are also dazzled for 1 round and catch on fire, immediately taking an additional 1d6 points of fire damage. A creature catching on fire continues to burn in subsequent rounds unless it makes a DC 15 Reflex save to put out the flames). The lightning strokes ignite unattended, flammable objects in the area." compset="Spell">
+    <fieldval field="sRange" value="Medium (100 ft. +10 ft/level)"/>
+    <fieldval field="sDuration" value="1 round"/>
+    <fieldval field="sSave" value="Reflex half"/>
+    <fieldval field="sResist" value="No"/>
+    <fieldval field="sCompDesc" value="pointed rod of iron or copper."/>
+    <fieldval field="sArea" value="Cylinder (5-ft. radius, 30 ft. high)"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sSubschool" tag="Electric"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sComp" tag="MorDF"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sRange" tag="Medium" name="Medium (100 + 10 ft./level)" abbrev="{ref s_Medium}Med{ref}"/>
+    <tag group="sDuration" tag="Special"/>
+    <tag group="sSave" tag="SeeText"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSave" tag="RefHalf" name="Reflex Half" abbrev="Reflex Half"/>
+    </thing>
+  <thing id="spFr_Char2" name="Char Lash" description="{i}A 15-foot-long, blazing coil of red-hot charcoal and cinders springs forth from your hand. {/i}\n\nYou wield this snakelike coil as if it were a whip. Attacks with the char lash are melee touch attacks with a reach of 15 feet, but you cannot use it to make attacks of opportunity. The lash deals 1d6 points of fire damage + 1 point per two caster levels (maximum +5). Though the charcoal and cinders can flow into any nook or crevice (and thus bypass armor and natural armor), they strike with enough force to allow you to add your Strength modifier to damage dealt. A char lash can ignite combustible materials such as parchment, straw, dry sticks, and cloth. Controlling a char lash is difficult, even for those trained to do so. If any attack roll made with the char lash is a natural 1 (a 1 shows on the die roll), you strike yourself with the char lash, dealing damage normally." compset="Spell">
+    <fieldval field="sRange" value="Medium (100 ft. +10 ft/level)"/>
+    <fieldval field="sDuration" value="1 min./level (D)"/>
+    <fieldval field="sSave" value="Reflex half"/>
+    <fieldval field="sResist" value="No"/>
+    <fieldval field="sEffect" value="whip-like coil of fire"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sSubschool" tag="Fire"/>
+    <tag group="sRange" tag="15"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="SpellEff" tag="DamFire"/>
+    </thing>
+  <thing id="spFr_char3" name="Char Lash" description="{i}A 15-foot-long, blazing coil of red-hot charcoal and cinders springs forth from your hand. {/i}\n\nYou wield this snakelike coil as if it were a whip. Attacks with the char lash are melee touch attacks with a reach of 15 feet, but you cannot use it to make attacks of opportunity. The lash deals 1d6 points of fire damage + 1 point per two caster levels (maximum +5). Though the charcoal and cinders can flow into any nook or crevice (and thus bypass armor and natural armor), they strike with enough force to allow you to add your Strength modifier to damage dealt. A char lash can ignite combustible materials such as parchment, straw, dry sticks, and cloth. Controlling a char lash is difficult, even for those trained to do so. If any attack roll made with the char lash is a natural 1 (a 1 shows on the die roll), you strike yourself with the char lash, dealing damage normally." compset="Spell">
+    <fieldval field="sRange" value="Medium (100 ft. +10 ft/level)"/>
+    <fieldval field="sDuration" value="1 min./level (D)"/>
+    <fieldval field="sSave" value="Reflex half"/>
+    <fieldval field="sResist" value="No"/>
+    <fieldval field="sEffect" value="whip-like coil of fire"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sSubschool" tag="Fire"/>
+    <tag group="sRange" tag="15"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="SpellEff" tag="DamFire"/>
+    </thing>
+  <thing id="spFr_FirBt" name="Fire Bolt" description="You fire a small bolt of fire at the target. You must succeed on a ranged touch attack to hit your target. The bolt deals 1d3 points of fire damage. This fire disappears after 1 round. It can not start fires.\n\nThis spell is only useable by Elemental: Fire bloodline Sorcerers." compset="Spell" summary="Bolt deals 1d3 Fire damage.">
+    <fieldval field="sEffect" value="One bolt of fire"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="0" name="0" abbrev="0"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Creation" name="Creation" abbrev="Creation"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sSchool" tag="Fire"/>
+    <tag group="sDescript" tag="Fire"/>
+    <tag group="SpellEff" tag="DamFire"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spS2SteBr2" name="Steal breath" description="You pull the breath from a creature’s lungs, dealing damage and leaving it unable to speak, use breath weapons, or cast spells with verbal components. If the target fails its saving throw, it takes 2d6 points of damage, and it cannot speak, use breath weapons, or do anything else requiring breathing, and a visible line of swirling air leaves the target’s mouth and enters your mouth.\n\nIf, during the duration, the target moves out of range or line of effect to you, the spell immediately ends. This spell has no effect on creatures that do not need to breathe air." compset="Spell">
+    <fieldval field="sCompDesc" value="V, S"/>
+    <fieldval field="sRange" value="close (25 ft. + 5 ft./2 levels)"/>
+    <fieldval field="sTarget" value="one living creature"/>
+    <fieldval field="sDuration" value="1 round (see text)"/>
+    <fieldval field="sSave" value="Fortitude negates; see text"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="srcCatFolk"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sSubschool" tag="Air"/>
+    <tag group="sSave" tag="SeeText"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sDescript" tag="Air"/>
+    <exprreq message="Mwangi Catfolk race required."><![CDATA[#hasrace[rS2CatFolk] <> 0]]></exprreq>
+    </thing>
+  <thing id="spS2TagHOL" name="zTag Holder" description="This thing just holds special tags like the new &quot;Full-Round Action&quot; casting time." compset="Spell">
+    <usesource source="pShadowd20"/>
+    <tag group="sCastTime" tag="FullAction" name="1 Full Action"/>
+    <tag group="sLevel" tag="9"/>
+    </thing>
+  <thing id="spS2Pearl1" name=" -Pearl of Power 1-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Universal"/>
+    </thing>
+  <thing id="spS2Pearl2" name=" -Pearl of Power 2-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Universal"/>
+    </thing>
+  <thing id="spS2Pearl3" name=" -Pearl of Power 3-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Universal"/>
+    </thing>
+  <thing id="spS2RaFir0" name="Ray of Fire" description="A ray of fire and flame projects from your pointing finger. You must succeed on a ranged touch attack with the ray to deal damage to a target. The ray deals 1d3 points of fire damage." compset="Spell" summary="Ray deals 1d3 fire damage.">
+    <fieldval field="sEffect" value="Ray"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sLevel" tag="0" name="0" abbrev="0"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cHelpMag" name="Magus" abbrev="Magus"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="sClass" tag="cHelpWiz" name="Wizard" abbrev="Wizard"/>
+    <tag group="sClass" tag="fShadeUsk" name="Shade of the Uskwood" abbrev="Shade of the Uskwood"/>
+    <tag group="sDescript" tag="Fire"/>
+    <tag group="SpellEff" tag="DamFire"/>
+    <tag group="sSchool" tag="Fire"/>
+    </thing>
+  <thing id="spS2CuMW2" name="Cure Moderate Wounds" description="This spell functions like {i}cure light wounds{/i}, except that it cures 2d8 points of damage + 1 point per caster level (maximum +10).\n\n{B}Shadow d20:{/b} Druid now gets &quot;Cure&quot; spells at the same level as cleric." compset="Spell" summary="Cures 2d8 damage +1/level (max. +10).">
+    <comment><![CDATA[Druid now gets "Cure" spells as the same level as cleric.]]></comment>
+    <fieldval field="sMythic" value="The damage cured increases to 4d8 points of damage + 2 points per caster level (maximum +20). The spell cures up to 2 points of ability damage if the target is a living creature. The target chooses what types of ability damage are cured."/>
+    <fieldval field="sTarget" value="Creature touched"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will half (harmless); see text"/>
+    <fieldval field="sResist" value="Yes (harmless); see text"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cHelpDrd" name="Druid" abbrev="Druid"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="DescInfo" tag="spCureLig1" name="Cure Light Wounds" abbrev="Cure Light Wounds"/>
+    </thing>
+  <thing id="spS2CuLWM5" name="Cure Light Wounds, Mass" description="You channel positive energy to cure 1d8 points of damage + 1 point per caster level (maximum +25) on each selected creature. Like other cure spells, mass cure light wounds deals damage to undead in its area rather than curing them. Each affected undead may attempt a Will save for half damage.\n\n{B}Shadow d20:{/b} Druid now gets &quot;Cure&quot; spells at the same level as cleric." compset="Spell" summary="Cures 1d8 damage + 1/level, affects 1 subject/level.">
+    <comment><![CDATA[Druid now gets "Cure" spells as the same level as cleric.]]></comment>
+    <fieldval field="sTarget" value="One creature/level, no two of which can be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will half (harmless) or Will half; see text"/>
+    <fieldval field="sResist" value="Yes (harmless) or yes; see text"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sLevel" tag="5" name="5" abbrev="5"/>
+    </thing>
+  <thing id="spS2CuCW4" name="Cure Critical Wounds" description="This spell functions like {i}cure light wounds{/i}, except that it cures 4d8 points of damage + 1 point per caster level (maximum +20).\n\n{B}Shadow d20:{/b} Druid now gets &quot;Cure&quot; spells at the same level as cleric." compset="Spell" summary="Cures 4d8 damage + 1/level (max +20).">
+    <comment><![CDATA[Druid now gets "Cure" spells as the same level as cleric.]]></comment>
+    <fieldval field="sMythic" value="The damage cured increases to 8d8 points of damage + 2 points per caster level (maximum +40). The spell cures up to 4 points of ability damage if the target is a living creature. The target chooses what types of ability damage are cured."/>
+    <fieldval field="sTarget" value="Creature touched"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will half (harmless); see text"/>
+    <fieldval field="sResist" value="Yes (harmless); see text"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="DescInfo" tag="spCureLig1" name="Cure Light Wounds" abbrev="Cure Light Wounds"/>
+    </thing>
+  <thing id="spS2CuCWM8" name="Cure Critical Wounds, Mass" description="This spell functions like {i}mass cure light wounds{/i}, except that it cures 4d8 points of damage + 1 point per caster level (maximum +40).\n\n{B}Shadow d20:{/b} Druid now gets &quot;Cure&quot; spells at the same level as cleric." compset="Spell" summary="Cures 4d8 damage + 1/level for many creatures.">
+    <comment><![CDATA[Druid now gets "Cure" spells as the same level as cleric.]]></comment>
+    <fieldval field="sTarget" value="One creature/level, no two of which can be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will half (harmless) or Will half; see text"/>
+    <fieldval field="sResist" value="Yes (harmless) or yes; see text"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="8" name="8" abbrev="8"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="DescInfo" tag="spCureLig5" name="Cure Light Wounds, Mass" abbrev="Cure Light Wounds, Mass"/>
+    </thing>
+  <thing id="spS2CuMWM6" name="Cure Moderate Wounds, Mass" description="This spell functions like {i}mass cure light wounds{/i}, except that it cures 2d8 points of damage + 1 point per caster level (maximum +30).\n\n{B}Shadow d20:{/b} Druid now gets &quot;Cure&quot; spells at the same level as cleric." compset="Spell" summary="Cures 2d8 damage + 1/level, affects 1 subject/level.">
+    <comment><![CDATA[Druid now gets "Cure" spells as the same level as cleric.]]></comment>
+    <fieldval field="sTarget" value="One creature/level, no two of which can be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will half (harmless) or Will half; see text"/>
+    <fieldval field="sResist" value="Yes (harmless) or yes; see text"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="6" name="6" abbrev="6"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="DescInfo" tag="spCureLig5" name="Cure Light Wounds, Mass" abbrev="Cure Light Wounds, Mass"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    </thing>
+  <thing id="spS2CuSW3" name="Cure Serious Wounds" description="This spell functions like {i}cure light wounds{/i}, except that it cures 3d8 points of damage + 1 point per caster level (maximum +15).\n\n{B}Shadow d20:{/b} Druid now gets &quot;Cure&quot; spells at the same level as cleric." compset="Spell" summary="Cures 3d8 damage + 1/level (max +15).">
+    <comment><![CDATA[Druid now gets "Cure" spells as the same level as cleric.]]></comment>
+    <fieldval field="sMythic" value="The damage cured increases to 6d8 points of damage + 2 points per caster level (maximum +30). The spell cures up to 3 points of ability damage if the target is a living creature. The target chooses what types of ability damage are cured."/>
+    <fieldval field="sTarget" value="Creature touched"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will half (harmless); see text"/>
+    <fieldval field="sResist" value="Yes (harmless); see text"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="DescInfo" tag="spCureLig1" name="Cure Light Wounds" abbrev="Cure Light Wounds"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    </thing>
+  <thing id="spS2CuCSW7" name="Cure Serious Wounds, Mass" description="This spell functions like {i}mass cure light wounds{/i}, except that it cures 3d8 points of damage + 1 point per caster level (maximum +35).\n\n{B}Shadow d20:{/b} Druid now gets &quot;Cure&quot; spells at the same level as cleric." compset="Spell" summary="Cures 3d8 damage + 1/level, affects 1 subject/level.">
+    <comment><![CDATA[Druid now gets "Cure" spells as the same level as cleric.]]></comment>
+    <fieldval field="sTarget" value="One creature/level, no two of which can be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will half (harmless) or Will half; see text"/>
+    <fieldval field="sResist" value="Yes (harmless) or yes; see text"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="7" name="7" abbrev="7"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="DescInfo" tag="spCureLig5" name="Cure Light Wounds, Mass" abbrev="Cure Light Wounds, Mass"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  </document>

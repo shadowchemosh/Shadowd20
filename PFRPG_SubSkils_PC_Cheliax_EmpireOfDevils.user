@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <thing id="trS2DumpSa" name="Dump Salvager" description="{b}You must be from the listed region to select this trait:{/b} Westcrown\nYou grew up in or around Westcrown&#146;s rubbish-strewn shores and spent your spare time digging through trash looking for things worth selling. You gain a +3 trait bonus on Perception checks to search for concealed items.{br}{br}{B}Shadow d20:{/b} This version of the trait will add to the Hidden Sub-Skill." compset="Trait" summary="You gain a +3 trait bonus on Perception checks to search for concealed items." uniqueness="useronce">
+    <usesource source="PCCheliax"/>
+    <tag group="trCategory" tag="Regional" name="Regional" abbrev="Regional"/>
+    <eval phase="PreLevel" priority="10000">
+~ Bonus on Hidden items
+#applybonus[BonTrait,hero.childfound[skS2PercHi],3]</eval>
+    </thing>
+  </document>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history>June 12, 2013 - Jai Erwin
+- Consolidated Things to fit into the correct FGG Core Package file.</info_history>
+    </fileinfo>
+  <thing id="pFGHideWep" name="Remove Weapon" description="Removes weapon" compset="InPlay">
+    <tag group="Adjustment" tag="YourWep"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="First" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+~ If we're not chosen, get out now
+doneif (field[pChosen].ischosen = 0)
+perform field[pChosen].chosen.assign[Hide.Weapon]]]></eval>
+    </thing>
+  <thing id="pFGACnatur" name="Armor Class (Natural)" description="Adjusts natural AC bonus" compset="InPlay">
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+hero.child[ArmorClass].field[tACNatural].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pFGNumAtta" name="Number of Attacks" description="Changes the number of attacks with a specific weapon." compset="InPlay">
+    <fieldval field="pMinimum" value="1"/>
+
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Adjustment" tag="YourWep"/>
+    <eval phase="First" priority="2000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+~ If we're not chosen, get out now
+doneif (field[pChosen].ischosen = 0)
+
+var ValueTag as string
+~ Create new Value.X tag where X is the counter value
+ValueTag = "Value." & field[pAdjust].value
+~ Delete any existing Value tags and replace with our new one
+perform field[pChosen].chosen.delete[Value.?]
+perform field[pChosen].chosen.assignstr[ValueTag]]]></eval>
+    </thing>
+  <thing id="pFGPrimWar" name="Primal Warror" description="When you make melee attack rolls and weapon damage rolls with a simple weapon, natural weapon or an unarmed strike you may add your Wisdom modifier as an attack and damage bonus in addition to your Strength modifier. This bonus also applies to rolls made to confirm critical threats you score. You may also add your Wisdom modifier as an attack bonus to your CMB when you make grapple attacks, bull rush attacks or overrun attacks." compset="InPlay">
+    <fieldval field="pDuration" value="1 round/level"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PostAttr"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+var bon as number
+bon = hero.child[aWIS].field[aModBonus].value
+
+~ add bonus to CMB for grapple, bull rush and overrun
+hero.child[manGrapple].field[manCMB].value += bon
+hero.child[manBullRus].field[manCMB].value += bon
+hero.child[manOverrun].field[manCMB].value += bon
+
+foreach pick in hero from BaseWep where "IsWeapon.wUnarmed | component.BaseNatWep | wProReq.Simple"
+  eachpick.field[wBonus].value += bon
+nexteach]]></eval>
+    </thing>
+  <thing id="pFGBrdFOT" name="Bard: Fortune of Turtle" description="You are affected by a Bard&apos;s Fortune of Turtle ability.\n\n{b}Calculated effects{/b}: Luck bonus on attack rolls, skill checks, and saving throws." compset="InPlay">
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="4"/>
+    <fieldval field="pDuration" value="Performance"/>
+
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="AdjInfo" name="AdjInfo" abbrev="AdjInfo"/>
+    <tag group="Helper" tag="AdjConfer" name="Conferred Ability Adjustment" abbrev="Conferred Ability Adjustment"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add to our attack bonus
+#applybonus[BonLuck, hero.child[Attack], field[pAdjust].value]
+~ Add to our skill bonus
+#applybonus[BonLuck, hero.child[AllSkills], field[pAdjust].value]
+~ Add to our saves bonus
+#applybonus[BonLuck, hero.child[svAll], field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pFGBrdSOW" name="Bard: Speed of Whale" description="You are affected by a Bard&apos;s Speed of Whale ability.\n\n{b}Calculated effects{/b}: Enhancement bonus to speed (+5ft per bonus) and a dodge bonus to AC." compset="InPlay">
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="5"/>
+    <fieldval field="pDuration" value="Performance"/>
+
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="AdjInfo" name="AdjInfo" abbrev="AdjInfo"/>
+    <tag group="Helper" tag="AdjConfer" name="Conferred Ability Adjustment" abbrev="Conferred Ability Adjustment"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+~ calc the speed (bonus times 5ft)
+field[abValue].value += field[pAdjust].value * 5
+
+~ Add to our attack bonus
+#applybonus[BonEnhance, hero.child[Speed], field[abValue].value]
+~ give dodge bonus to AC
+hero.child[ArmorClass].field[tACDodge].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pFGBrdHH" name="Bard: Helping Hand" description="You are affected by a Bard&apos;s Helping Hand ability.\n\n{b}Calculated effects{/b}: Temporary Hit Points.\n\n{B}Note:{/b} Use the counter to set the number of temporary hit points and as you take damage lower the counter to show losing the temporary hit points first." compset="InPlay">
+    <fieldval field="pMinimum" value="0"/>
+    <fieldval field="pMaximum" value="20"/>
+    <fieldval field="pDuration" value="Performance"/>
+
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give Bonus HP
+      herofield[tCurrentHP].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pFGPakCheT" name="Pakeha: Chieftain&apos;s Tales" description="All Tulita and pakehas within 60 feet who can hear the pakeha (including the pakeha himself) gain a +2 morale bonus on attack and damage rolls. The bonus lasts for as long as the paheka speaks plus 1 round. Reciting an inspirational story in this manner requires a standard action to initiate and a move action each round to maintain the ability." compset="InPlay">
+    <fieldval field="pMinimum" value="2"/>
+    <fieldval field="pMaximum" value="2"/>
+    <fieldval field="pDuration" value="paheka speaks plus 1 round"/>
+
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="AdjInfo" name="AdjInfo" abbrev="AdjInfo"/>
+    <tag group="Helper" tag="AdjConfer" name="Conferred Ability Adjustment" abbrev="Conferred Ability Adjustment"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Give a morale bonus to hit and damage
+foreach pick in hero from BaseWep
+  #applybonus[BonMorale, eachpick, field[pAdjust].value]
+nexteach]]></eval>
+    </thing>
+  <thing id="pFGHarBles" name="Harthagoa&apos;s Blessing" description=" Harthagoa affords many protections upon dread lacedons created in his name. It receives its Charisma bonus as an insight bonus to initiative, a deflection bonus to AC, and as a resistance bonus to saves." compset="InPlay">
+
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="PostAttr"><![CDATA[
+    ~ If we're not enabled, get out now
+    doneif (field[pIsOn].value = 0)
+    
+    
+    
+    ~ add CHR deflection bonus to AC 
+    
+    ~ add CHR bonus to saves 
+    ~ add CHR insight bonus to initiative 
+          hero.child[svFort].field[Bonus].value += #attrmod[aCHA]
+          hero.child[svRef].field[Bonus].value += #attrmod[aCHA]
+          hero.child[svWill].field[Bonus].value += #attrmod[aCHA]
+          #applybonus[tACDeflect, hero.child[ArmorClass], hero.child[aCHA].field[aModBonus].value]
+    #applybonus[BonInsight, hero.child[Initiative], hero.child[aCHA].field[aModBonus].value]]]></eval>
+    </thing>
+  <thing id="pFGUrchDmg" name="Urchin Spine Damage" description="The spines of one of these urchins splinter in the flesh of a foe, causing terrible pain. Anyone struck with a urchin spines suffers a -1 penalty to attacks, saves and skill checks until receiving a DC 20 Heal check to painstakingly remove the shards (which takes one minute), or the application of curative magic. This penalty may stack from multiple urchin spine wounds, but never exceeds -4." compset="InPlay">
+    <fieldval field="pMinimum" value="-4"/>
+    <fieldval field="pMaximum" value="-1"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <eval phase="PreLevel" priority="100000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Give an untyped penalty to hit to all weapons
+#applypenalty[Penalty, hero.child[Attack], field[pAdjust].value]
+#applypenalty[Penalty, hero.child[svAll], field[pAdjust].value]
+#applypenalty[Penalty, hero.child[AllSkills], field[pAdjust].value]]]></eval>
+    </thing>
+  </document>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <thing id="cSorUmVerm" name="Verminous" description="The taint of vermin and filth runs through your veins, ever calling you to the gutters and vile, dark corners of the world.\n\n{b}Bonus Feats:{/b} Skill Focus is for Knowledge (Nature)\n\n{b}Bloodline Arcana{/b} You can use {i}beast shape{/i} spells to assume the form of appropriately sized creatures of the vermin type as well as creatures of the animal type.\n\n{b}Bloodline Powers{/b} The spawn of vermin lurk just beneath your skin and answer to your mental call." compset="CustomSpec" summary="The taint of vermin and filth runs through your veins, ever calling you to the gutters and vile, dark corners of the world." uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    <tag group="fInclude" tag="fAthletic"/>
+    <tag group="fInclude" tag="fBlindFgt"/>
+    <tag group="fInclude" tag="fDodge"/>
+    <tag group="fInclude" tag="fGreatFort"/>
+    <tag group="fInclude" tag="fImpInit"/>
+    <tag group="fInclude" tag="fImpUnarm"/>
+    <tag group="fInclude" tag="fScorStyle"/>
+    <tag group="fInclude" tag="fSkillFoc"/>
+    <tag group="SpecSource" tag="cHelpSor"/>
+    <tag group="Custom" tag="cSorUmCaVe"/>
+    <tag group="ClassSkill" tag="skSurvival"/>
+    <bootstrap thing="spGianVer4">
+      <autotag group="BonusSplAt" tag="9"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spHarm6">
+      <autotag group="BonusSplAt" tag="13"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spInsePla5">
+      <autotag group="BonusSplAt" tag="11"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spPoison3">
+      <autotag group="BonusSplAt" tag="7"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spSummSwa2">
+      <autotag group="BonusSplAt" tag="5"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spSymbIns8">
+      <autotag group="BonusSplAt" tag="17"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="spEnduEle1">
+      <autotag group="BonusSplAt" tag="3"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="cSorUmVeSi">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSorUmSwAf">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cSorUmCaVe">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cSorUmCaVe">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cSorUmCaVe">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <containerreq phase="First" priority="500"><![CDATA[count:Classes.Sorcerer >= 11 & Custom.cSorUmCaVe]]></containerreq>
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="Helper" tag="NatOverSec"/>
+      <autotag group="Custom" tag="cSorUmCaVe"/>
+      </bootstrap>
+    <bootstrap thing="raUmVerPoi">
+      <containerreq phase="First" priority="500"><![CDATA[count:Classes.Sorcerer >= 11]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="spAntipat9">
+      <autotag group="BonusSplAt" tag="19"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <bootstrap thing="cSorUmSwCa">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cSorUmVeAp">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="spCreeDoo7">
+      <autotag group="BonusSplAt" tag="15"/>
+      <autotag group="SpellType" tag="cHelpSor"/>
+      </bootstrap>
+    <eval phase="First" priority="300"><![CDATA[
+~ if we do NOT already got a bite attack assign tag to hero
+If (hero.childlives[wBite] <> 1) Then
+   perform hero.assign[Custom.cSorUmCaVe]
+Else
+   var nValid as number
+   nValid = 1
+   ~ find all bites and see if its one we are selves have bootstrapped
+   foreach pick in hero from BaseWep where "thingid.wBite" 
+      if (eachpick.root.tagis[thingid.cSorUmVerm] <> 1) Then
+         nValid = 0
+      endif
+   nexteach
+   ~ if the bite is from ourself then apply the tag to the hero
+   ~ so we correctly bootstrap again.
+   If (nValid <> 0) Then
+      perform hero.assign[Custom.cSorUmCaVe]
+   Endif
+Endif]]></eval>
+    </thing>
+  <thing id="cSorUmVeSi" name="Vermin Sight" description="At 1st level, you gain darkvision 60 ft. and tremorsense 60 ft." compset="ClSpecial" summary="You gain darkvision 60 ft. and tremorsense 60 ft.">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <bootstrap thing="xTremorsen">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    </thing>
+  <thing id="cSorUmSwAf" name="Swarm Affinity" description="At 3rd level, swarms of vermin recognize you as one of their own. You can walk among vermin swarms without fear of being harmed by them at all." compset="ClSpecial" summary="You can walk among vermin swarms without fear of being harmed by them at all.">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Defense"/>
+    </thing>
+  <thing id="cSorUmCaVe" name="Carapace of the Vermin" description="At 9th level, your flesh becomes chitinous and more rigid, increasing your natural armor bonus by +1. At 11th level, this bonus increases to +2, and at 17th level it increases to +3. In addition at 11th level, small mandibles develop in your mouth and you gain a poisonous bite attack. If used as part of a full-round action, the bite is made at your full attack bonus - 5. On a hit it deals 1d6 points of damage plus half your Strength modifier. Poison (bite - injury; save Fort DC 10 + 1/2 Hit Dice + Con modifier; frequency 1/round for 4 rounds; effect 1d2 Strength damage; cure 1 save). If you already have a poisonous bite, your bite remains unchanged but the DC for the poison&apos;s Fortitude save increases by 4." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
+~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+
+~ Give a bonus equal to the number of times we are on the hero
+hero.child[mNatural].field[Bonus].value += field[xCount].value]]></eval>
+    </thing>
+  <thing id="raUmVerPoi" name="Poison" description="Poison (bite - injury; save Fort DC 10 + 1/2 Hit Dice + Con modifier; frequency 1/round for 4 rounds; effect 1d2 Strength damage; cure 1 save). If you already have a poisonous bite, your bite remains unchanged but the DC for the poison&apos;s Fortitude save increases by 4." compset="RaceSpec" summary="frequency 1/round for 4 rounds; effect 1d2 Strength damage; cure 1 save">
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Custom" tag="cSorUmCaVe" name="Carapace of the Vermin"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="20000" index="2"><![CDATA[
+~ Add in half our level to the DC
+field[abDC].value += round(herofield[tLevel].value/2,0,-1)
+
+~ if we did get the bite from Carapace of the Vermin get out now!
+doneif (hero.tagis[Custom.cSorUmCaVe] <> 0)
+~ we had an existing bite so add 4 to our DC value
+field[abDC].value += 4]]></eval>
+    <eval phase="Final" priority="20000"><![CDATA[
+~ Set extra damage onto the bite attack
+#extradamage[hero.childfound[wBite]," plus poison",field[name].text]]]></eval>
+    </thing>
+  <thing id="cSorUmSwCa" name="Swarm Carrier" description="At 15th level, the larva of countless vermin gestate within your flesh. They are clearly visible as small lumps and masses shifting across your body as they move about beneath your skin. Once per day as a free action, you can open your mouth and vomit forth swarms from your gullet just as if you had cast a creeping doom spell (caster level 15th)." compset="ClSpecial" summary="At 15th level, the larva of countless vermin gestate within your flesh.">
+    <bootstrap thing="spCreeDoo7">
+      <containerreq phase="First" priority="500"><![CDATA[count:Classes.Sorcerer >= 15]]></containerreq>
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="User" tag="Tracker"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="cSorUmVeAp" name="Verminous Apotheosis" description="At 20th level, you are more vermin than not. You gain all of the immunities of vermin and command all vermin (including swarms) within 30 feet that have fewer Hit Dice then you. The Hit Dice of each swarm or vermin is considered separately. Once the vermin or swarms have left the area of effect, they continue to obey your telepathic commands for 1d6+2 rounds. If they come back within the area of effect they come under your control again. Three times a day as a move action you can change shape into vermin swarm of your choice. This transformation lasts for 1 round per level. You can change back at will as a move action." compset="ClSpecial">
+    <fieldval field="trkMax" value="3"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Usage" tag="Day"/>
+    <bootstrap thing="xImmMind">
+      <containerreq phase="First" priority="500"><![CDATA[count:Classes.Sorcerer >= 20]]></containerreq>
+      </bootstrap>
+    </thing>
+  </document>

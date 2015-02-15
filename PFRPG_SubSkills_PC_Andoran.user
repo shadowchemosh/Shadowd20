@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com</info_author>
+    <info_history><![CDATA[1/23/2010
+-Created New for Andoran, Spirit of Liberty data set.
+-Added "Kobold's Neighbor" trait to correctly give bonus to Perception(Traps) and Disable Device(Traps)]]></info_history>
+    </fileinfo>
+  <thing id="trS2KoboNe" name="Kobold&apos;s Neighbor" description="You grew up in wilderness where kobolds make their homes. You learned early on how to find traps before they find you, how to disable them, and when you should just walk away. You gain a +2 trait bonus to Perception checks to discover traps and a +1 trait bonus to Disable Device checks.{br}{br}{B}Shadow d20:{/b} This version of the trait will add to the Perception (Traps) Sub-Skill." compset="Trait" uniqueness="useronce">
+    <usesource source="PCAndoran"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="PreLevel" priority="5000">#applybonus[BonTrait,hero.childfound[skDisable],1]
+#applybonus[BonTrait,hero.childfound[skS2PercTr],2]</eval>
+    </thing>
+  </document>

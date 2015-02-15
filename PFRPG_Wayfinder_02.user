@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Contact: ShadowChemosh@gmail.com</info_author>
+    <info_history><![CDATA[
+1/14/2012
+-Changed around the sources to work off the ones in PFRPG_Sources.1st file.
+
+2/1/2011
+-Changed Unique ID on the Gunslinger PrC to not clash with Gunslinger base 
+class
+
+v1.0 - 10/23/2010
+-Created New
+-Added "The Gunslinger" PrC only so far.]]></info_history>
+    <info_todo>-Everything besides The Gunslinger PrC.</info_todo>
+    </fileinfo>
+  <thing id="cPrCGunsli" name="The Gunslinger" description="While most people view firearms as more of an exotic oddity than anything else, a select few have embraced this odd mesh of technology and alchemy in an effort to master the potential power of these strange devices. As they delve deeper into the workings of their firearms, gunslingers learn the inner workings of their tools, allowing them to fire faster than normal, utilize the environment around them to strike targets others would find impossible to hit, and become increasingly accurate with their weapon of choice.\n\nGunslingers can be found throughout the known world, though they tend toward larger numbers in those areas with diminished or a complete lack of magic, as these areas tend to highlight their abilities. At their peak, they wield power unparalleled by any who do not rely upon the ways of magic, but their motivations are far from unified. Some feel the call to defend those who cannot defend themselves, while others use their skills to prey upon the weak or to seize power.\n\n{B}Role:{/B} Gunslingers tend to be ranged combatants, though they are not without power in close combat. They are among the most potent combatants on a field that lacks access to magic, and even in confrontations where magic plays a role they are a force to be reckoned with." compset="ClassLevel" maxlimit="10">
+    <usesource source="Wayfinder2"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ClassType" tag="Prestige"/>
+    <bootstrap thing="cHelpGsl"></bootstrap>
+    <link linkage="helper" thing="cHelpGsl"/>
+    <exprreq message="Base attack bonus +6 required."><![CDATA[child[Attack].field[tAtkBase].value >= 6]]></exprreq>
+    <exprreq message="Perception 3 ranks required."><![CDATA[#skillranks[skPercep] >= 3]]></exprreq>
+    <exprreq message="Bluff 3 ranks required."><![CDATA[#skillranks[skBluff] >= 3]]></exprreq>
+    <exprreq message="Craft (Gunsmithing) 5 ranks required."><![CDATA[#skillranks[skCrafGuns] >= 5]]></exprreq>
+    <exprreq message="Intimidate 3 ranks required."><![CDATA[#skillranks[skIntim] >= 3]]></exprreq>
+    <exprreq message="Deadly Aim feat required."><![CDATA[#hasfeat[fRcDdAim] <> 0]]></exprreq>
+    <exprreq message="Improved Initiative feat required."><![CDATA[#hasfeat[fImpInit] <> 0]]></exprreq>
+    </thing>
+  <thing id="cGslCloseQ" name="Close Quarters" description="At 1st level, a gunslinger&#146;s use of a firearm does not provoke an attack of opportunity." compset="ClSpecial"></thing>
+  <thing id="cGslRapidR" name="Rapid Reload (Firearm)" description="At 2nd level, a gunslinger is able to reload firearms at an amazing speed. Flintlock weapons require a move action to reload. Percussion cap weapons can reload a single shot as a swift action. A revolver can be fully loaded as a full round action." compset="ClSpecial"></thing>
+  <thing id="cGslRicoch" name="Ricochet" description="At 4th level, a gunslinger may, as a full round attack, attempt to angle a single shot off a hard surface (stone, metal, brick, etc) to hit an opponent who has full cover or concealment. In order to accomplish this attack, the gunslinger must either see (via a reflected image) or pinpoint the intended target by sound. The attack is made at a -4 modifier to hit, but the target does not benefit from cover or concealment for the attack." compset="ClSpecial"></thing>
+  <thing id="cGslMarksm" name="Marksman" description="Beginning at 6th level, a gunslinger&#146;s accuracy increases. The gunslinger gains a +1 bonus to hit with their firearms within 30 feet (this bonus does stack with the bonus from the Point Blank Shot feat), and firearm attacks are treated as if they were one range increment closer (to a minimum of short range). At 8th level, this bonus increases to +2 and firearm attacks are treated as if they were two increments closer. At 10th level, this bonus increases to +3 and firearm attacks are treated as if they were three increments closer. This ability extends the maximum range of a firearm." compset="ClSpecial">
+    <eval phase="Render" priority="10000"><![CDATA[~Set the list name
+field[listname].text = field[thingname].text & " +" & field[xIndex].value
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+field[abValue].value += field[xCount].value
+field[livename].text = field[thingname].text & " +" & field[abValue].value]]></eval>
+    </thing>
+  <thing id="cHelpGsl" name="The Gunslinger" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="10"/>
+    <fieldval field="cAbbr" value="Gsl"/>
+    <fieldval field="cSkills" value="4"/>
+    <arrayval field="cBonFtTot" index="0" value="1"/>
+    <arrayval field="cBonFtTot" index="2" value="2"/>
+    <arrayval field="cBonFtTot" index="4" value="3"/>
+    <arrayval field="cBonFtTot" index="6" value="4"/>
+    <arrayval field="cBonFtTot" index="8" value="5"/>
+    <usesource source="Wayfinder2"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ClassSkill" tag="skCrafGuns"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="ClassSkill" tag="skKnowLoc"/>
+    <tag group="ClassSkill" tag="skPercep"/>
+    <tag group="ClassSkill" tag="skSleight"/>
+    <tag group="cFort" tag="Good"/>
+    <tag group="cWill" tag="Poor"/>
+    <tag group="Classes" tag="Gunsling" name="The Gunslinger"/>
+    <tag group="cAttack" tag="Good"/>
+    <tag group="cRef" tag="Good"/>
+    <tag group="fInclude" tag="fCritFoc"/>
+    <tag group="fInclude" tag="fDodge"/>
+    <tag group="fInclude" tag="fFarShot"/>
+    <tag group="fInclude" tag="fImpCrit"/>
+    <tag group="fInclude" tag="fRcImpPr"/>
+    <tag group="fInclude" tag="fImpVitStr"/>
+    <tag group="fInclude" tag="fMasCraft"/>
+    <tag group="fInclude" tag="fPointBlnk"/>
+    <tag group="fInclude" tag="fPrecStrik"/>
+    <tag group="fInclude" tag="fQuickDraw"/>
+    <tag group="fInclude" tag="fRapidShot"/>
+    <tag group="fInclude" tag="fVitStr"/>
+    <tag group="fInclude" tag="fWepFoc"/>
+    <tag group="ClassSkill" tag="skBluff"/>
+    <tag group="WepProf" tag="wRcGunBlun"/>
+    <tag group="WepProf" tag="wRcGunBulM"/>
+    <tag group="WepProf" tag="wRcGunBul"/>
+    <tag group="WepProf" tag="wRcGunMrif"/>
+    <tag group="WepProf" tag="wRcGunMusk"/>
+    <tag group="WepProf" tag="wRcGunPist"/>
+    <tag group="WepProf" tag="wRcGunRifl"/>
+    <bootstrap thing="cGslMarksm">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="fArmLight"></bootstrap>
+    <bootstrap thing="fSimple"></bootstrap>
+    <bootstrap thing="cGslCloseQ">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cGslRapidR">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cGslRicoch">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cGslMarksm">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cGslMarksm">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    </thing>
+  </document>

@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[
+6/8/2013
+-Added the "Rod of Seven Parts" artificate.
+-Added the weapons "Sword of Aaqa" and "Lighting Sword".
+
+5/4/2013
+-Moved out the Healing Belt, Broken to the MIC .user file.
+    
+4/27/2013
+-Added activation to Durindana for when fighting against undead.
+
+4/5/2013
+-added "Greataxe of life stealing" item from Beyond Dooms Day Door.
+-added "Inubrix" special material (ie Sky Metal).
+
+3/9/2013
+-added "The Apostolic Scrolls" item to give the situational note to Know Relegion.
+
+2/27/2013
+-Updated "Durindana" to 10th level stats.
+--8CL; 2/day Daylight
+--New Powers: Sarenrae's Baleful Eye; Saint's Grace
+--Added the "Called" weapon power from UE.
+
+1/11/2013
+-Updated "Durindana" to 6th level stats.
+--6CL; 1/day Daylight; 1/day Magic Circle against Evil.
+--+1d6 vs Evil.
+
+9/30/2012
+-Updated "Durindana" to use #extradamage[] macro.
+
+7/25/2012
+-Added "Durindana", Broadhead Arrows.
+
+7/5/2012
+-Added the "Hunter of the Dead" archetype for Inquistor's that is based of the Vampire Hunter archetype.
+-Moved some stuff over to a DM .user file for the NPC campaign.
+-Added some custom magic items for the NPC Campaign.]]></info_history>
+    </fileinfo>
+  <thing id="irS2PosEnF" name="Ring of Positive Energy Focus" description="{i}This is a product of Thassilonian times and the magic to create these can NO longer be duplicated.{/i}\n\nThis ring increases the amount of healing you receive from positive sources. When you receive healing that comes from a positive energy source like {i}Cure Light Wounds{/I} or a cleric&apos;s Channel Energy ability you receive 1 additional hit point per die used. In example a witch using a {I}Cure Light Wounds{/I} spell heals you for 5 points would actually heal you for 6.  If a cleric&apos;s Channel Energy was to affect you with 2d6 you would receive 2 additional points of healing." compset="Ring" summary="This ring increases the amount of healing you recieve from poitive sources by 1 point.">
+    <fieldval field="gCost" value="500"/>
+    <fieldval field="iCL" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="arS2HotD" name="Hunter of the Dead" description="Undead are a scourge upon the living. The hunter of the dead believes that that all undead must be eradicated as just one reckless night-feeder can turn an entire city into a den of undead.\n\nHunter of the dead use their skills and magic to track and slay the hungry dead, walking a fine line between the purity of good magic and the tempting evil of turning dark necromancy against the unliving. Rare even in grim Ustalav, and slain on sight in Nidal and Geb, hunter of the deads lead lonely existences under the constant threat of becoming that which they live to destroy." compset="ClassVary" uniqueness="unique">
+    <usesource source="srcAoW"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cInqDetAli"/>
+    <tag group="AbModify" tag="cInqBane"/>
+    <bootstrap thing="cInqS2UndB">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cInqS2DetU">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cInqS2SunS">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cInqS2OaU">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpInq"/>
+    <eval phase="PreLevel" priority="5500" index="2"><![CDATA[~Post-levels 5500
+hero.child[cInqJSmiti].field[usrCandid1].text = ""]]></eval>
+    <eval phase="PostLevel" priority="11000"><![CDATA[~ Post-Levels 11000
+foreach pick in hero where "thingid.cInqJSmiti & ClSpecWhen.6"
+   eachpick.field[listname].text = "Judgement of Smiting: Magic, Silver"
+nexteach
+
+foreach pick in hero where "thingid.cInqJSmiti & ClSpecWhen.10"
+   eachpick.field[listname].text = "Judgement of Smiting: Magic, Silver, Adamantine"
+nexteach
+
+ if (hero.child[cHelpInq].field[cClrTurn].value < 0) then
+   hero.child[cInqJSmiti].field[livename].text = "Judgement of Profane Smiting"
+ elseif (hero.child[cHelpInq].field[cClrNeutGE].value > 0) then
+   hero.child[cInqJSmiti].field[livename].text = "Judgement of Profane Smiting"
+ else
+   hero.child[cInqJSmiti].field[livename].text = "Judgement of Sacred Smiting"
+ endif
+ hero.child[cInqJSmiti].field[livename].text &= " (Magic"
+ if (hero.child[cInqJSmiti].field[xCount].value >= 2) then
+   hero.child[cInqJSmiti].field[livename].text &= ", Silver"
+ endif
+ if (hero.child[cInqJSmiti].field[xCount].value >= 3) then
+   hero.child[cInqJSmiti].field[livename].text &= ", Adamantine"
+ endif
+ hero.child[cInqJSmiti].field[livename].text &= ")"]]></eval>
+    </thing>
+  <thing id="cInqS2DetU" name="Detect Undead" description="This ability works like the standard Inquisitor ability to detect alignment, except as {i}detect undead{/i} instead of {i}detect alignment{/i}. This ability replaces {i}detect alignment{/i}." compset="ClSpecial">
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="Helper" tag="ClExLose" name="ClExLose" abbrev="ClExLose"/>
+    <tag group="SpInfo" tag="spDeteUnd1" name="Detect Undead" abbrev="Detect Undead"/>
+    </thing>
+  <thing id="cInqS2UndB" name="Undead Bane" description="A hunter of the dead can only imbue her weapons with the undead-bane ability, but it persists even when she isn&#146;t holding the weapon." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="ClExLose"/>
+    </thing>
+  <thing id="cInqS2SunS" name="Sun Strike" description="At 5th level, a hunter of the dead can infuse a single weapon she wields with the purifying light of the sun as a swift action for a number of rounds per day equal to her inquisitor level. These rounds do not need to be consecutive. While a weapon is infused with the sun, it deals +1d6 points of damage to any creature that is susceptible or vulnerable to sunlight, including many types of undead (particularly spectres, vampires, and wraiths). This additional damage also applies to oozes and fungus-based monsters. A weapon infused with sun strike sheds illumination as if it were a sunrod." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="DayRound"/>
+    <tag group="Helper" tag="ClExLose"/>
+    <eval phase="Final" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] = 0)
+
+field[abDuration].value += field[xAllLev].value
+
+field[abValue].value += 1
+field[livename].text = field[thingname].text & " +" & field[abValue].value & "d6"]]></eval>
+    </thing>
+  <thing id="cInqS2OaU" name="Oath Against Undeath" description="A hunter of the dead with this oath vows to restore the natural state of death to any animate corpse she encounters, and destroy the undead energy in the process. While a few hunter of the dead who take this oath recognize that not all undead are evil, others are quite willing to purge neutral and good undead along with all the evil ones.\n\n{b}Code of Conduct{/b}\nDestroy all undead. Put to rest the poor souls turned against their will. Prevent the taint of undeath from spreading to the newly dead, blessing or burning the corpses as necessary." compset="ClSpecial">
+    <tag group="Helper" tag="ClExLose"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="ioS2AugMW" name="Augment Crystal, Masterwork" description="An augment crystal is a small gem, crystal, or similar object that provides a magical effect when affixed to a weapon, shield, or suit of armor. Each item can hold a single augment crystal, but an attached crystal can be swapped for another one at any time. Attaching an augment crystal to (or removing it from) an item requires a move action that doesn&#146;t provoke attacks of opportunity. This is a product of thassilonian times and the magic to create these can NO longer be duplicated.\n\nThis crystal can {i}only{/i} be applied to non-masterwork weapon, armor, or shield. Doing so causes the item to become a masterwork version.\n\n{B}HL Note:{/b} Remove your non-masterwork item and add a masterwork version of the item. Then select it from the list below so you can keep track of which item this is augmenting." compset="Wondrous">
+    <fieldval field="usrCandid1" value="thingid.iMagWeapon|thingid.iMagArmor"/>
+    <fieldval field="gCost" value="300"/>
+    <fieldval field="iCL" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    </thing>
+  <thing id="ioS2WepS" name="Weapon Crystal, Slashing" description="An augment crystal is a small gem, crystal, or similar object that provides a magical effect when affixed to a weapon. Each item can hold a single weapon crystal, but an attached crystal can be swapped for another one at any time. Attaching an weapon crystal to (or removing it from) a weapon requires a move action that does not provoke attacks of opportunity. This is a product of thassilonian times and the magic to create these can NO longer be duplicated.\n\nThis crystal can be applied to both non-masterwork and masterwork weapons and doing so causes the damage type to change to Slashing only.  If placed on a bow or crossbow the projectiles become slashing regardless of the type of arrow being fired." compset="Wondrous">
+    <fieldval field="gCost" value="300"/>
+    <fieldval field="iCL" value="1"/>
+    <fieldval field="usrCandid1" value="component.BaseWep|thingid.iMagWeapon"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <eval phase="First" priority="10000"><![CDATA[~ if nothing chosen get out now
+doneif (field[usrChosen1].ischosen <> 1)
+
+~ remove all old damage types and replace with Slashing
+perform field[usrChosen1].chosen.delete[wType.?]
+perform field[usrChosen1].chosen.assign[wType.S]]]></eval>
+    </thing>
+  <thing id="iS2Durinda" name="Durindana" description="{i}Durindana is an austere Bastard Sword.  Those familiar with the arts of the forge recognize the craftsmanship as dwarven, but the style of the blade is distinctly human.  A faint tracery of Celestial script runs the length of the blade, naming the weapon Durindana (meaning &quot;Light of Sarenrae&quot;) and proclaiming its role as the reliquary for the finger bones of Saint Ardtan.{/i}\n\n{i}Durindana{/i} is a blade sacred to the faith of Sarenrae, forged by a dwarf weaponsmith over a thousand years ago to house the finger bones of the legendary undead-hunter, Saint Ardtan. Ardtan was slain defending a dwarf stronghold from a plague of vampires. In gratitude for his sacrifice, the dwarf thane presented the church of Sarenrae with this sword to honor the hero. When Ardtan was canonized several years later, the hilt of the sword was hollowed out to serve as a reliquary for the saint&apos;s fingerbones. The church kept {i}Durindana{/i} in its securest vaults, allowing it to be used only by the holiest persons and only in times of dire need. Even though many of its wielders have died in battle, {i}Durindana{/i} always finds its way back into the hands of a holy warrior.\n\n+2 Bastard Sword that does an additional +1d6 points of divine damage to undead and +1d6 vs evil creatures. It also overcomes the DR of any undead it hits.\n\nDurindana&apos;s caster level is 12.\n{B}2/day{/b} - Daylight.\n{b}1/day{/b} - Magic Circle against Evil\n\n{B}Powers{/b}\n{I}Sarenrae&apos;s Baleful Eye (Su):{/I} Starting at 10th level, as long as you carry {i}Durindana{/i} before you, your channel energy gains a +2 bonus on the DC and a bonus to damage vs undead equal to your caster level. These affects only apply when you are using your channel energy to damage undead.\n\n{i}Saint&apos;s Grace (Su):{/i} {i}Durindana{/i} provides you with a +2 divine bonus on all saving throws." compset="MagicWep" summary="+1 Bastard Sword and does an additional 1d6 points of divine damage to undead" uniqueness="useronce">
+    <fieldval field="BonEnhance" value="2"/>
+    <fieldval field="iCL" value="20"/>
+    <fieldval field="actName" value="Attacking Undead"/>
+    <fieldval field="actName2" value="Attacking Evil"/>
+    <usesource source="srcAoW"/>
+    <tag group="iSubschool" tag="Light"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <tag group="iSubschool" tag="Good"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <bootstrap thing="spDayligh3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="2"/>
+      <assignval field="sCL" value="12"/>
+      </bootstrap>
+    <bootstrap thing="spMagiaga3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      <assignval field="sCL" value="12"/>
+      </bootstrap>
+    <bootstrap thing="ipS2DurGra"></bootstrap>
+    <bootstrap thing="ipS2DurEye"></bootstrap>
+    <eval phase="Final" priority="10000"><![CDATA[
+~ Only when active show extra damage. This is becasuse of the iPad
+If (field[abilActive].value <> 0) Then
+   #extradamage[this,"+2d6 vs undead",field[name].text]
+Endif
+
+~ Only when active show extra damage. This is becasuse of the iPad
+If (field[abilAct2].value <> 0) Then
+   #extradamage[this,"+1d6 vs Evil",field[name].text]
+Endif]]></eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wSwordBast"></bootstrap>
+      </child>
+    </thing>
+  <thing id="ipS2Deathl" name="Deathless" description="This armor protects its wearer from harmful negative and positive energy, including channeled energy. The armor absorbs the first 10 points of positive or negative energy damage per attack that the wearer would normally take. The wearer has a 25% chance to ignore negative levels from any attack. Deathless armor does not block healing of any kind and does not protect against positive or negative energy effects that do not deal damage or bestow negative levels. The {i}deathless{/i} ability can be applied to armor of any sort, but not shields." compset="ItemPower">
+    <fieldval field="iPrice" value="+1"/>
+    <usesource source="srcAoW"/>
+    <tag group="PowerType" tag="Armor"/>
+    <tag group="PowerReq" tag="Armor"/>
+    </thing>
+  <thing id="wS2ArroBH" name="Arrows, Broadhead" description="These arrows have thicker jagged edge tips.  They deal slashing damage rather than piercing damage. \n\nAn arrow used as a melee weapon is treated as a light improvised weapon (&#150;4 penalty on attack rolls) and deals damage as a dagger of its size (critical multiplier x2). Arrows come in a leather quiver that holds 20 arrows." compset="Weapon" lotsize="20" stacking="merge">
+    <fieldval field="gWeight" value="0.30"/>
+    <fieldval field="gSizeCost" value="0.5"/>
+    <usesource source="srcAoW"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wMain" tag="1d4_4" name="1d4" abbrev="1d4"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
+    <tag group="wType" tag="S"/>
+    <tag group="Helper" tag="NormalOnly" name="NormalOnly" abbrev="NormalOnly"/>
+    </thing>
+  <thing id="wS2ArroBhM" name="Arrows, Broadhead" description="These arrows have thicker jagged edge tips.  They deal slashing damage rather than piercing damage. \n\nAn arrow used as a melee weapon is treated as a light improvised weapon (&#150;4 penalty on attack rolls) and deals damage as a dagger of its size (critical multiplier x2). Arrows come in a leather quiver that holds 20 arrows." compset="Weapon">
+    <fieldval field="gWeight" value="0.30"/>
+    <fieldval field="gSizeCost" value="0.5"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="MagicOnly" name="MagicOnly" abbrev="MagicOnly"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wMain" tag="1d4_4" name="1d4" abbrev="1d4"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
+    <tag group="Helper" tag="MagicAmmo" name="MagicAmmo" abbrev="MagicAmmo"/>
+    <tag group="wType" tag="S"/>
+    </thing>
+  <thing id="ioS2SWLong" name="Spellworm, Longstrider" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="50"/>
+    <fieldval field="iCL" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="iDescript" tag="Evil"/>
+    <bootstrap thing="spLongstr1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWPrGo" name="Spellworm, Protection From Good" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="50"/>
+    <fieldval field="iCL" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Abjur"/>
+    <bootstrap thing="spProtGoo1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWTrSt" name="Spellworm, True Strike" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Checking marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="50"/>
+    <fieldval field="iCL" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Divination"/>
+    <bootstrap thing="spTrueStr1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWDiFa" name="Spellworm, Divine Favor" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="350"/>
+    <fieldval field="iCL" value="9"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <bootstrap thing="spDiviFav1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWInvi" name="Spellworm, Invisibility" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="300"/>
+    <fieldval field="iCL" value="3"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Illusion"/>
+    <bootstrap thing="spInvisib2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWMiIm" name="Spellworm, Mirror Image" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="300"/>
+    <fieldval field="iCL" value="3"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Illusion"/>
+    <bootstrap thing="spMirrIma2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWSile" name="Spellworm, Silence" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="300"/>
+    <fieldval field="iCL" value="3"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Illusion"/>
+    <bootstrap thing="spSilence2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWDisp" name="Spellworm, Displacement" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="750"/>
+    <fieldval field="iCL" value="5"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Illusion"/>
+    <bootstrap thing="spDisplac3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWFly" name="Spellworm, Fly" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="750"/>
+    <fieldval field="iCL" value="5"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <bootstrap thing="spFly3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWPrEn" name="Spellworm, Protection from Energy" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="750"/>
+    <fieldval field="iCL" value="5"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <bootstrap thing="spProtfro3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="ioS2SWChMo" name="Spellworm, Charm Monster" description="A {i}spellworm{/i} imparts the ability to perform a single casting of a spell to its host.\n\n{b}Description:{/b} A {i}spellworm{/i} looks like any other Tiny Kyuss worm, save for faintly glowing arcane sigils that adorn its sickening flesh. For as long as a host creature is bound to a {i}spellworm,{/i} its pupils turn a dull and sickly green.\n\n{b}Activation:{/b} Like other Kyuss worms, a {i}spellworm{/i} must be inside a host creature in order to be used. Once a host creature has successfully taken the worm into its body, casting the stored spell is a standard-action, just like using a spell-like ability.\n\n{b}Effect:{/b} A {i}spellworm{/i} grants its host the ability to cast one spell. The host casts the spell as a full-round action. This follows the normal rules for casting the spell in question, including provoking attacks of opportunity, being subject to arcane spell failure, and any other applicable restrictions. The worm provides the power to cast the spell at the given caster level, even if the host&apos;s relevant ability score is too low to normally cast the spell, but the saving throw DC is dependant on the host&apos;s relevant ability score. Upon casting this spell the {i}spellworm{/i} it is destroyed.\n\n{B}Note:{/b} Check marking this item means you have let the worm burrow into you and it won&apos;t come out until used." compset="Wondrous">
+    <fieldval field="gCost" value="1400"/>
+    <fieldval field="iCL" value="7"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iDescript" tag="Evil"/>
+    <tag group="iSchool" tag="Enchant"/>
+    <bootstrap thing="spCharMon4">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="wS2ArrDurM" name="Arrows, Durable" description="These arrows are tightly wrapped in strands of some kind of alchemical glue. Durable arrows don&#146;t break due to normal use, whether or not they hit their target; unless the arrow goes missing, an archer can retrieve and reuse a durable arrow again and again. Durable arrows can be broken in other ways (such as deliberate snapping, hitting a fire elemental, and so on). If crafted with magic (such as bane), the magic only lasts for one use of the arrow, but the nonmagical arrow can still be reused or imbued with magic again." compset="Weapon">
+    <fieldval field="gWeight" value="0.15"/>
+    <fieldval field="gSizeCost" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="MagicOnly" name="MagicOnly" abbrev="MagicOnly"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wMain" tag="1d4_4" name="1d4" abbrev="1d4"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
+    <tag group="Helper" tag="MagicAmmo" name="MagicAmmo" abbrev="MagicAmmo"/>
+    <tag group="wType" tag="P"/>
+    </thing>
+  <thing id="wS2ArrDur" name="Arrows, Durable" description="These arrows are tightly wrapped in strands of some kind of alchemical glue. Durable arrows don&#146;t break due to normal use, whether or not they hit their target; unless the arrow goes missing, an archer can retrieve and reuse a durable arrow again and again. Durable arrows can be broken in other ways (such as deliberate snapping, hitting a fire elemental, and so on). If crafted with magic (such as bane), the magic only lasts for one use of the arrow, but the nonmagical arrow can still be reused or imbued with magic again." compset="Weapon" lotsize="20">
+    <fieldval field="gWeight" value="0.15"/>
+    <fieldval field="gSizeCost" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wMain" tag="1d4_4" name="1d4" abbrev="1d4"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
+    <tag group="wType" tag="P"/>
+    </thing>
+  <thing id="ioS2Zosiel" name="Zosiel&apos;s Silver Diadem" description="{i}Originally wielded by a minor Wind Duke named Zosiel.  He died moments before the artifact &apos;Rod of Law&apos; was used against the Queen of Chaos during the Battle of Pesh.{/i}\n\nIcosiol&apos;s blessing restores this ancient item to its full potential as well, transforming it into a {i}Headband of mental prowess (Wis &amp; Cha +6){/i} that functions also as a {i}circlet of persuasion{/i} and grants its wearer the ability to speak and understand Auran. If the owner of the diadem tries to sell the item, Icosiol&apos;s blessing fades and it becomes a {i}circlet of Wisdom +2{/i} again." compset="Wondrous">
+    <fieldval field="iCL" value="15"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="gType" tag="Wonder"/>
+    <bootstrap thing="lAuran"></bootstrap>
+    <eval phase="PostAttr" priority="5000" index="2"><![CDATA[
+      doneif (field[gIsEquip].value = 0)
+
+      ~ Iterate through all our skills
+      var ChaSkill as number
+
+      ~ Give bonus only to CHA skills
+      foreach pick in hero from BaseSkill
+        ChaSkill = 0
+
+        ~ Check Skill Override
+        if (eachpick.tagis[SkillOver.aCHA] <> 0) then
+          ChaSkill = 1
+          endif
+
+        ~ If it has a normal linkage to Charisma it also qualifies.
+        if (eachpick.islinkage[skillattr] <> 0) then
+          if (eachpick.linkage[skillattr].tagis[thingid.aCHA] <> 0) then
+            ChaSkill = 1
+            endif
+          endif
+
+        if (ChaSkill = 1) then
+          #competencebonus[each, 3]
+          endif
+        nexteach
+
+      #situational[hero.child[aCHA],"+3 Competence bonus on Ability Checks",field[thingname].text]]]></eval>
+    <eval phase="PreLevel" priority="4000"><![CDATA[
+If (field[gIsEquip].value <> 0) then
+   #enhancementbonus[hero.child[aWIS], 6]
+   #enhancementbonus[hero.child[aCHA], 6]
+Endif]]></eval>
+    </thing>
+  <thing id="ipS2DurGra" name="Saint&apos;s Grace" description="{i}Durindana{/i} provides you with a +2 divine bonus on all saving throws." compset="Ability">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Defense"/>
+    <eval phase="PreLevel" priority="10000">~ Give a +2 divine bonus to all saves
+hero.child[svAll].field[Bonus].value += 2</eval>
+    </thing>
+  <thing id="ipS2DurEye" name="Sarenrae&apos;s Baleful Eye" description="As long as you carry {i}Durindana{/i} before you, your channel energy gains a +2 bonus on the DC and a bonus to damage vs undead equal to your caster level. These affects only apply when you are using your channel energy to damage undead." compset="Ability" summary="Channel Energy vs Undead DC +2 and your Caster Level as bonus damage.">
+    <fieldval field="actName" value="Channel vs Undead"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+~ If not enabled get out now!
+doneif (field[abilActive].value <> 1)
+
+#dc[xChannel] += 2
+~ Channel Energy bonus damage
+#value3[xChannel] += herofield[tMaxCaster].value]]></eval>
+    </thing>
+  <thing id="ipS2Called" name="Called" description="A {i}called{/i} weapon can be teleported to the wielder&#146;s hand as a swift action that does not provoke attacks of opportunity, even if the weapon is in the possession of another creature. This ability has a maximum range of 100 feet, and effects that block teleportation prevent the return of a {i}called{/i} weapon. A {i}called{/i} weapon must be in a creature&#146;s possession for at least 24 hours for this ability to function. \n\n{b}Construction{/b}\n{b}Requirements{/b} Craft Magic Arms and Armor, {i}teleport{/i}; {b}Cost{/b} +1 Bonus" compset="ItemPower" summary="Teleport your weapon to your hand from up to 100 feat away as a swift action.">
+    <fieldval field="iCL" value="9"/>
+    <fieldval field="iPrice" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="PowerType" tag="Weapon"/>
+    <tag group="Helper" tag="Shadow"/>
+    </thing>
+  <thing id="ioS2AposSc" name="The Apostolic Scrolls" description="This minor artifact of the cult of Kyuss, {b}is no longer magical{/b}, consists of a 5-foot-long sheet of vellum sewn to a pair of darkwood rollers. Several copies of the scrolls are thought to exist, and all have the same purpose - providing the user with the ability to contact one of the &quot;Apostles of Kyuss&quot; so it can perform a mass sacrifice in honor of its master. The scrolls are written in Abyssal and contain a long and complex litany filled with horrific imagery and descriptions. Performing this ritual takes 24 hours, but it can be split into three 8-hour shifts over the course of three days.\n\nOnce activated, the scrolls transport an ulgurstasta from the Wormcrawl Fissure to a single point within 100 feet of the scrolls as directed by the reader. The scrolls create a special containment sphere to protect the ulgurstasta during its growth period. The sphere is a 20-foot radius sphere of force similar to a {i}wall of force{/i}. The scrolls themselves are protected by {i}temporal stasis{/i}, and the two are connected by a beam of writhing green light.\n\nEach day that passes, the ulgurstasta gains 1d8 hit points, up to the maximum allowed by its hit dice (204 hit points for a 17-Hit-Die specimen). This hit point gain is permanent.\n\nDuring this stage, anyone who touches the scrolls can &quot;feel&quot; the ulgurstasta&apos;s evil mind and can communicate with it telepathically. The ulgurstasta is ready to perform the final portion of the ritual once it reaches maximum hit points The containment sphere is invisible, and feels like a cold, transparent barrier of rubbery material. The reader of the scrolls who created the sphere can touch it safely, but any other creature who touches it takes 12d6 points of damage from negative energy (DC 20 Fortitude save for half damage).\n\nThe reader of the {i}Apostolic Scrolls{/i} can cause the sphere to vanish at any time as a standard action. The sphere can also be destroyed in one of the following ways.\n\nEach copy of the {i}Apostolic Scrolls{/i} works only once. When the sphere of containment is taken down and the ulgurstasta within is released, the scrolls become nonmagical.\n\nThe lore within remains, however, and if consulted it grants a +4 bonus on any Knowledge (religion) checks made about Kyuss and his cult." compset="Wondrous">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="iCL" value="20"/>
+    <usesource source="srcAoW"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="iSubschool" tag="Evil"/>
+    <eval phase="Render" priority="1000"><![CDATA[~+4 bonus on any Knowledge (religion) checks made about
+~Kyuss and his cult.
+#situational[hero.child[skKnowRel],"+4 bonus vs Kyuss and his cult.",field[name].text]]]></eval>
+    </thing>
+  <thing id="gS2BozalCh" name="Bozal&apos;s Chest" description="The trunk is an art object both disgusting and fascinating, and emanates an aura of abjuration and necromancy if subjected to detect magic. Made of darkwood and bound with steel, the trunk measures 36x18x18 inches. A steel plaque representing a screaming skull infested by worms, the unholy symbol of Kyuss, is nailed to the lid. The side panels are painted in tones of black and green with a cycle of apocalyptic images that runs around the trunk like a frieze. The images are divided into two horizontal strips, underground and aboveground, by a cutaway of the earth&#146;s crust. Underground, the horrible figure of a man made of worms lies imprisoned in a huge stone monolith. The figure has been represented in perspective on all the trunk&#146;s four sides. Huge green worms writhe in the surrounding caverns and break through the cavern&#146;s crust to invade the aboveground part of the paintings, where a sickly green light illuminates a blasted landscape. There, the writhing worms tower over a population of monstrous undead and naked, terrified victims." compset="Gear">
+    <fieldval field="gCost" value="500"/>
+    <fieldval field="gWeight" value="25"/>
+    <usesource source="srcAoW"/>
+    <tag group="thing" tag="holder"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="gType" tag="AdventGear"/>
+    </thing>
+  <thing id="iS2AxeLife" name="Greataxe of life stealing" description="This black iron {i}+2 Greataxe{/i} bestows a negative level when it deals a critical hit. The sword wielder gains 1d6 temporary hit points each time a negative level is bestowed on another. These temporary hit points last for 24 hours. One day after being struck, subjects must make a DC 16 Fortitude save for each negative level gained or they become permanent.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}enervation{/i}; {b}Cost{/b} 13,015 gp" compset="MagicWep">
+    <fieldval field="gSizeCost" value="15"/>
+    <fieldval field="gCost" value="25700"/>
+    <fieldval field="iCL" value="17"/>
+    <fieldval field="BonEnhance" value="2"/>
+    <usesource source="srcAoW"/>
+    <tag group="iSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wGreataxe"></bootstrap>
+      </child>
+    </thing>
+  <thing id="mS2Inubrix" name="Inubrix" description="This metal&#146;s structure allows it to pass through iron and steel without touching them, seemingly shifting in and out of phase with reality. This quality earned the pale metal the nickname &#147;ghost iron.&#148; Inubrix is associated with necromancy magic, temperance, and gluttony. Inubrix is the softest of the solid skymetals, being only slightly less malleable than lead. It doesn&#146;t function well for crafting armor as a result, and though inubrix weapons can penetrate most metal armors with relative ease, the weapons tend to break easily. Inubrix has 10 hit points per inch of thickness and hardness 5. \n\nAn inubrix weapon deals damage as if it were one size category smaller than its actual size, and is always treated as if it had the broken condition. It ignores all armor or shield bonuses granted by iron or steel armor or shields. Inubrix weapons cannot damage these materials at all (and, by extension, cannot harm iron golems or similar creatures)." compset="Material" summary="Ignore armor/shield bonuses from iron/steel, but can&apos;t damage those materials.">
+    <fieldval field="mtDesc" value="Reduce damage, treated as broken, passes though iron/steel."/>
+    <fieldval field="mtCostWep" value="5000"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="MatRqMetal" name="Requires Metal" abbrev="Requires Metal"/>
+    <tag group="Helper" tag="MatWepOK" name="MatWepOK" abbrev="MatWepOK"/>
+    <tag group="Helper" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <eval phase="First" priority="5000">perform container.parent.setfocus
+perform focus.assign[Helper.DamageDown]
+perform focus.assign[Helper.Broken]</eval>
+    </thing>
+  <thing id="ioS2Rod7Pa" name="Rod of Seven Parts" description="This great artifact of Law was forged eons ago by the Wind Dukes for use in their war against the Queen of Chaos. It was sundered into seven parts during the battle of Pesh, and its fragments scattered across the multiverse. Over time, fragments of the {i}Rod of Seven Parts{/i} have surfaced here and there, often in times of great need. Unfortunately, the {i}Rod of Seven Parts{/i} remains unstable, and once its purpose is served it fragments anew, its components scattering, often returning to the site of Wind Duke tombs or ruins (as is the case of this fragment).{br}{br}This fragment comes from the tip of the original rod. The fragment measures 15 inches long, and it can be used to cast {i}heal{/i} once per day.{br}{br}A nonlawful character who possesses a single segment of the Rod must make a DC 17 Will save each week to avoid becoming lawful. A lawful character who holds a segment of the Rod and thinks of it as part of a larger item can determine in what direction the next-larger segment lies by making a successful DC 20 Concentration check. Unfortunately, this segment is the largest fragment of the rod, and so cannot be used to find the others.{br}{br}The powers of the remaining fragments (as well as the resonating powers possessed by the reconstructed rod) is another story." compset="Wondrous">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="iCL" value="20"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="ArtiMajor"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSchool" tag="Air"/>
+    <tag group="iSubschool" tag="Air"/>
+    <tag group="iSubschool" tag="Healing"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <bootstrap thing="spHeal7">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      <assignval field="sCL" value="20"/>
+      </bootstrap>
+    </thing>
+  <thing id="iS2Beshkas" name="Beshka&apos;s Luck blade" description="This Luck Blade holds 1 {i}wish{/i} and was given to the party for freeing the female efreeti named Beshka.\n\nThis {i}+2 scimitar{/i} gives its possessor a +1 luck bonus on all saving throws. Its possessor also gains the power of good fortune, usable once per day. This extraordinary ability allows its possessor to reroll one roll that she just made. She must take the result of the reroll, even if it&apos;s worse than the original roll. In addition, a luck blade may contain up to three {i}wishes{/i} (when randomly rolled, a {i}luck blade{/i} holds 1d4&#150;1 {i}wishes{/i}, minimum 0). When the last {i}wish{/i} is used, the sword remains a {i}+2 scimitar{/i}, still grants the +1 luck bonus, and still grants its reroll power." compset="MagicWep" uniqueness="useronce">
+    <fieldval field="gSizeCost" value="10"/>
+    <fieldval field="gCost" value="62360"/>
+    <fieldval field="iCL" value="17"/>
+    <fieldval field="wShortName" value="Luck Blade"/>
+    <fieldval field="trkMax" value="1"/>
+    <fieldval field="BonEnhance" value="2"/>
+    <usesource source="srcAoW"/>
+    <tag group="iSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <bootstrap thing="spWish9">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="UsedUp"/>
+      <assignval field="trkMax" value="1"/>
+      <assignval field="sCL" value="17"/>
+      </bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not equipped, get out
+      doneif (field[gIsEquip].value + field[wIs2nd].value = 0)
+
+      #applybonus[BonLuck, hero.child[svAll], 1]]]></eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wScimitar"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iS2Lightni" name="Lightning Sword" description="The {i}lightning sword{/i} is a {i}+2 shocking burst mithral short sword{/i}. Used by the Wind Duke Icosiol on the battlefield of Pesh, the {i}lightning sword{/i} is the companion blade to the {i}sword of Aaqa{/i}. The {i}lightning sword&apos;s{/i} pommel is a single huge star sapphire that glitters with electrical energy.\n\nThree times per day by drawing the {i}lightning sword{/i}, the wielder can gain the effects of a {i}fly{/i} spell (caster level 9). This effect springs into being as part of the act of drawing the sword.\n\nIf the wielder fights with the {i}lightning sword{/i} and the {i}sword of Aaqa{/i}, he may strike the two swords together as a standard action to generate 30-foot line of sonic energy. All creatures in this area take 6d6 sonic damage (Reflex DC 18 half ). This ability can be used three times per day." compset="MagicWep" summary="The {i}lightning sword{/i} is a {i}+2 shocking burst mithral temple sword{/i}." uniqueness="useronce">
+    <fieldval field="BonEnhance" value="2"/>
+    <fieldval field="iCL" value="9"/>
+    <fieldval field="gCost" value="35000"/>
+    <usesource source="srcAoW"/>
+    <tag group="iSubschool" tag="Air"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <bootstrap thing="spFly3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      <assignval field="sCL" value="9"/>
+      </bootstrap>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wShortswd"></bootstrap>
+      <bootstrap thing="eMithral"></bootstrap>
+      <bootstrap thing="iShockBrst"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iS2Aaqa" name="Sword of Aaqa" description="The {i}sword of Aaqa{/i} is a {i}+2 axiomatic mithril long sword{/i} with a hilt set with six pale sapphires the size of grapes. Used by the Wind Duke Icosiol on the battlefield of Pesh, the {i}sword of Aaqa{/i} is the companion blade to the {i}lightning sword{/i}. Whenever the wielder scores a critical hit on a creature with the {i}sword of Aaqa{/i} (even if that creature is normally immune to damage from critical hits), the sword creates a powerful blast of wind storm force wind. The creature hit can make a DC 18 Fortitude save to resist the effects of the wind. Small or smaller creatures (or flying Medium creatures) are blown away by this blast of wind. Creatures on the ground are knocked down and roll 1d4x10 feet, taking 1d4 points of nonlethal damage per 10 feet. Flying creatures are blown back 2d6x10 feet and take 2d6 points of nonlethal damage. Medium creatures (or flying Large creatures) that fail this save are knocked down. Huge (or land-bound Large) and larger creatures suffer no noticeable effect from the blast of wind.\n\nIf the wielder fights with the {i}lightning sword{/i} and the {i}sword of Aaqa{/i}, he may strike the two swords together as a standard action to generate 30-foot line of sonic energy. All creatures in this area take 6d6 sonic damage (Reflex DC 18 half ). This ability can be used three times per day." compset="MagicWep" summary="The {i}sword of Aaqa{/i} is a {i}+2 axiomatic mithril temple sword{/i}." uniqueness="useronce">
+    <fieldval field="BonEnhance" value="2"/>
+    <fieldval field="iCL" value="9"/>
+    <fieldval field="gCost" value="35000"/>
+    <usesource source="srcAoW"/>
+    <tag group="iSubschool" tag="Air"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <bootstrap thing="spLighBol3">
+      <containerreq phase="First" priority="500">iS2Aaqa.Both</containerreq>
+      <autotag group="Usage" tag="Day"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <assignval field="sCL" value="6"/>
+      <assignval field="sDC" value="4"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="ipS2DurGra"></bootstrap>
+    <eval phase="First"><![CDATA[
+~ If not equipped get out now!
+doneif (field[gIsEquip].value + field[wIs2nd].value <> 1)
+~ If ligtning sword not equipped get out now!
+doneif (hero.childfound[iS2Lightni].field[gIsEquip].value + hero.childfound[iS2Lightni].field[wIs2nd].value <> 1)
+
+~ Assign the BOTH tag to the hero
+perform hero.assign[iS2Aaqa.Both]]]></eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wLongsword"></bootstrap>
+      <bootstrap thing="eMithral"></bootstrap>
+      <bootstrap thing="iAxiomatic"></bootstrap>
+      </child>
+    </thing>
+  <thing id="gS2SruBook" name="Sruggut&apos;s Books" description="Sruggut has collected several impressive books in his nest, all of which have been preserved by ancient magic. The majority of the books comprise a collection of religious studies on necromancy. These books grant a +4 circumstance bonus on Knowledge (arcana) checks having to do with necromancy and a +4 circumstance bonus on Knowledge (religion) checks having to do with gods of death and undeath. They are worth 8,000 gp as a collection, and weigh 50 pounds in all." compset="Gear">
+    <fieldval field="gCost" value="8000"/>
+    <fieldval field="gWeight" value="50"/>
+    <usesource source="srcAoW"/>
+    <tag group="gType" tag="AdventGear"/>
+    <tag group="Helper" tag="Valuable"/>
+    <eval phase="Render" priority="1000"><![CDATA[
+#situational[hero.child[skKnowRel],"+4 circumstance bonus vs gods of death and undeath.",field[name].text]
+#situational[hero.child[skKnowArca],"+4 circumstance bonus vs necromancy",field[name].text]]]></eval>
+    </thing>
+  <thing id="ioS2ChroDi" name="Chromatic Disk" description="A spell weaver is never without its chromatic disk. This 6-inch-diameter indestructible disk glows with colors that slowly shift through the spectrum.\n\nThis object stores ten additional spell levels of energy that the creature can tap and use as it wishes - the spell weaver could, for example, cast two extra 5th-level spells in a day, or three 3rd-level spells and one 1st-level spell, or any other combination of extra spell levels that adds up to ten, so long as no single spell is higher than 5th level. (For this purpose, two 0-level spells are equivalent to one 1st-level spell.) To tap this spell energy, a spell weaver must hold the chromatic disk in at least one of its hands. The disk automatically recharges itself to full power every night, at midnight. A spell powered by the disk is cast as though the caster had the Spell Focus feat for the spell in question." compset="Wondrous">
+    <fieldval field="trkMax" value="5"/>
+    <usesource source="srcAoW"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Hero" tag="EqpHand"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Usage" tag="Charges"/>
+    </thing>
+  <thing id="ioS2KnowWo" name="Knowledge Worm" description="This worm is covered with strange tiny runes. The worm has no ability to infest a host on their own.\n\nConsuming a knowledge worm exposes the imbiber to the dangers of the worm, which immediately begins to burrow its way through the eater&apos;s body. This inflicts damage each round, but at the same time fills the victim&apos;s mind with flashes of obscure knowledge. The victim automatically realizes that if the worm reaches his brain, this knowledge could take root - provided the worm doesn&apos;t kill him first.\n\nIf a victim survives the worm, the worm dissolves in his brain, imparting a +2 bonus to one of the 12 Knowledge skills. This effect is permanent." compset="Wondrous">
+    <fieldval field="gCost" value="1000"/>
+    <fieldval field="usrCandid1" value="component.BaseSkill &amp; Helper.SkCatKnow"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="gType" tag="Wonder"/>
+    <eval phase="PreLevel" priority="4000"><![CDATA[
+~ If we have not chosen then get out now
+doneif (field[usrChosen1].ischosen <> 1)
+var sSearch as String
+
+~ Attempt to give the +2 bonus to the selected Knowledge skill.
+~ Note if its not live on ther hero it won't work
+sSearch = field[usrChosen1].chosen.tagids[thingid.?]
+hero.findchild[BaseSkill,sSearch].field[Bonus].value += 2]]></eval>
+    </thing>
+  </document>

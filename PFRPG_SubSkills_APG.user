@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com</info_author>
+    <info_history><![CDATA[11/17/2013
+-Had "Monster Lore" sub-skill disable itself if the Monster Lore class ability is disabled.
+
+6/9/2013
+-Added "Earplugs" to correct update the sub-skill Perception (Hearing) when worn.
+
+10/15/2011
+-Added inquisitor's "Monster Lore" skill as a new APG sub-skill.
+
+12/10/2010
+-Broke the APG items out to its own .user file in preperation to release to the community.
+-Added in the "Blood Hound" spell adjustment.]]></info_history>
+    </fileinfo>
+  <thing id="mS2AgileBr" name="Agile Breastplate" description="This breastplate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and jump checks is only &#150;1 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty)." compset="Armor" replaces="mAgBreastp">
+    <fieldval field="gSizeCost" value="400"/>
+    <fieldval field="gWeight" value="25"/>
+    <usesource source="APG"/>
+    <tag group="ArmorArcFl" tag="25"/>
+    <tag group="ArmorClass" tag="Medium"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="ArmorCateg" tag="Slows"/>
+    <tag group="ArmorAC" tag="6"/>
+    <tag group="ArmorMaxDx" tag="3"/>
+    <tag group="ImpArmChk3" tag="skS2AcroJu"/>
+    <tag group="ImpArmChk3" tag="skClimb"/>
+    <tag group="ArmorCheck" tag="4"/>
+    </thing>
+  <thing id="cRogS2CanO" name="Canny Observer" description="When a rogue with this talent makes a Perception check to hear the details of a conversation or to find concealed or secret objects (including doors and traps), she gains a +4 bonus." compset="CustomSpec" replaces="cRogCannyO" uniqueness="useronce">
+    <usesource source="APG"/>
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecSource" tag="cHelpRog"/>
+    <eval phase="PreLevel" priority="5000">hero.child[skS2PercTr].field[Bonus].value += 4</eval>
+    </thing>
+  <thing id="pS2Bloodho" name="Bloodhound" description="You gain the scent special quality, including the ability to track by scent. You receive a +8 competence bonus on Perception checks involving smell and a +4 competence bonus on Survival checks to track using scent. You take a -4 penalty on saving throws against odor-related effects such as the stench ability and {I}stinking cloud{/i}. A creature under the effects of {I}bloodhound{/i} can detect poison by scent with a DC 20 Perception check." compset="InPlay" replaces="pBloodhoun">
+    <fieldval field="pDuration" value="1 hour/level"/>
+    <usesource source="APG"/>
+    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <bootstrap thing="xDogTrack">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="xScent">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="skS2PercSm"></bootstrap>
+    <bootstrap thing="skS2SurvTr"></bootstrap>
+    <eval phase="PreLevel" priority="5000">~ +8 bonus to smell
+#skillbonus[skS2PercSm] += 8
+~ +4 bonus to track
+#skillbonus[skS2SurvTr] += 4</eval>
+    </thing>
+  <thing id="ms2AgileHP" name="Agile Half Plate" description="This style of half-plate is specially crafted in a manner that allows extra maneuverability for some physical activities. The armor check penalty for Climb checks and jump checks is only &#150;4 (masterwork and mithral versions of this armor reduce this penalty as well as the normal penalty). In addition, unlike most heavy armors, the wearer can still run at quadruple speed instead of triple speed." compset="Armor" replaces="mAgHalfPla">
+    <fieldval field="gSizeCost" value="850"/>
+    <fieldval field="gWeight" value="55"/>
+    <usesource source="APG"/>
+    <tag group="ArmorArcFl" tag="40"/>
+    <tag group="ArmorClass" tag="Heavy"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="ImpArmChk2" tag="skClimb"/>
+    <tag group="ImpArmChk2" tag="skS2AcroJu"/>
+    <tag group="ArmorCateg" tag="Gauntlets"/>
+    <tag group="ArmorCateg" tag="Slows"/>
+    <tag group="ArmorAC" tag="8"/>
+    <tag group="ArmorMaxDx" tag="0"/>
+    <tag group="ArmorCheck" tag="7"/>
+    </thing>
+  <thing id="skS2MonLor" name="Monster Lore" description="The inquisitor adds her Wisdom modifier on Knowledge skill checks in addition to her Intelligence modifier, when making skill checks to identify the abilities and weaknesses of creatures." compset="Skill" uniqueness="unique">
+    <usesource source="APG"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Render" priority="10005"><![CDATA[
+~ Only do the calculation if the Inquister monster lore ability live
+doneif (hero.childlives[cInqMoLore] <> 1)
+~ If we are disabled then get out now!
+doneif (hero.childfound[cInqMoLore].tagis[Helper.SpcDisable] <> 0)
+
+~apply this value to ourself, but use the total from the Inquisters
+~Monster Lore class ability.
+field[skTotal].value = hero.child[cInqMoLore].field[abValue].value + field[Bonus].value + field[BonComp].value + field[BonEnhance].value + field[BonTrait].value]]></eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks." summary="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="gS2Earplug" name="Earplugs" description="Made of waxed cotton or cork, earplugs give you a +2 circumstance bonus on saves against effects that require hearing but also cause a &#150;5 penalty on hearing-based Perception checks." compset="Gear" summary="+2 save vs. hearing effects, -5 hearing-based Perception." replaces="gEarplugs">
+    <comment>Changed to apply the -5 penalty to the Sub-skill Perception Hearing.</comment>
+    <fieldval field="gCost" value="0.03"/>
+    <usesource source="APG" parent="APGHeader" name="Advanced Player&apos;s Guide"/>
+    <usesource source="PCAdvArm" parent="PCHeader" name="Adventurer&apos;s Armory"/>
+    <usesource source="UltEquip" parent="UEHeader" name="Ultimate Equipment"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+~ If not equipped get out now!
+doneif (field[gIsEquip].value = 0)
+
+#situational[hero.child[svAll],"+2 circumstance bonus vs. effects that require hearing",field[thingname].text]
+#situational[hero.child[skPercep],"-5 to hearing checks",field[thingname].text]
+~ Give penalty to sub-skill
+hero.childfound[skS2PercHe].field[Penalty].value += -5]]></eval>
+    </thing>
+  </document>

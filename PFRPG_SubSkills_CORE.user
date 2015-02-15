@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+Email: ShadowChemosh@yahoo.com</info_author>
+    <info_history><![CDATA[
+6/9/2013
+-Fixed Sub-skills as HL timing for totals in skills was moved up.
+-Fixed Sub-skills double penalty when the AllSkills Thing was used for giving a bonus/penalty to all skills.
+    
+1/26/2013
+-Changed monk's "High Jump" to add to the Jump Sub-skill. Including the +20 for spending a Ki Point.
+
+10/2/2012
+-Added some situtational notes for Elven Magic.
+
+6/13/2012
+-Added new sub-skills called "Acrobatics (Balance)" and "Acrobatics (Tumbling)".
+
+5/26/2012
+-Added new sub-skill called "Survival (Lost)".
+-Changed "Wayfinder" to give a bonus to "Survival (Lost)".
+
+5/23/2012
+-Changed "+4 to Survival when tracking by Scent" Racial Ability to give bonus to the sub-skill Survival (Track).
+-Changed "Acrobatics (Jump)" Racial Ability to give a bonus to the sub-skill Acrobatics (Jump) skill.
+
+3/25/2012
+-Added new sub skill "Diplomacy (Gather Info)".
+-Redid the procedure CalcSubSk to use the new Tag Group SubSkill that I added. This finally allows for a the procedure to now be fully generic. It pulls the parent Skill now through the SubSkill.? group tag.
+
+3/20/2012
+-Merged in Sub skills from the pirate campaign Razor Coast.
+
+11/10/2011
+-Added "Perception (Stone)" sub skill.
+-Modified dwarven "Stonecunning" to add to new sub skill.
+-New Procedure "CalcSubSk" Calculate Sub-Skill Generic total was added. This will help as the calculations for the skill bonuses will all be calculated in a single function now.
+-New Procedure "CalcSubPer" Calculate Sub-Skill Percption total was added.
+-New Procedure "CalcSubAcr" Calculate Sub-Skill Acrobatics total was added.
+
+7/21/2011
+-Fixed bug when both Armor and Shield is equipped when calculating Acrobatics(Jump).
+
+6/26/2011
+-Added Spellcraft(Magic Items) sub-skill.
+-Added CL vs SR sub-skill.
+-Modified Elven Magic to add to new Spellcraft(magic Items) skill.
+
+2/25/2011
+-Changed the timing on "Track" to allow other class abilities more time to override the abValue.
+
+1/23/2010
+-Fixed wording on "Perception(Sight)".
+
+12/27/2010
+-Modified "Ring of Jumping" to apply its bonus correctly to Acrobatics(Jump) checks.
+-Modified "Ring of Improved Jumping" to apply its bonus correctly to Acrobatics(Jump) checks.
+-Changed all the Sub Skills to NOT be associated with a Linked Attribute so that Buff Spells and magic items don't find these skills and add bonuses to them.  The bonus should be applied to the Parent skill then picked up by the sub-skill.
+
+12/1/2010
+-Modified "Boots of Striding and Springing" to apply its bonus correctly only to Acrobatics(Jump) checks.
+
+11/27/2010
+-Bug fixes for Acrobatics(Jump) for Mithral/Magical agile Breastplate armor.
+-Added "Acrobatics(Jump)" skill that will auto-calc the correct Jump Value based on speeds greater/lesser than 20 and then include the base value from Acrobstics.
+-Added a replace thing to the Agile Breastplate so that it will also only give a -1 ACP for Acrobatics(Jump) skills.
+-Fixed Rogues Trapfinding so that it does NOT apply its bonus to ALL Disable Device checks.
+-Added new skills: Disable Device(traps); Perception(traps). Both of these are manually added, but are set to be Sub-skills of the main skills Disable Device and Perception.  Really useful for rogue characters as their Trapfinding class ability will add into these two skills so that it is easier to see your total.
+-Added new skill: Survival(Track). This will be correctly added to from the Ranger's Track class ability.
+-Added new skill: Perception(Smell), Perception(Taste), Perceptin(Sight), Perception(Hearing), Perception(Touch).
+-Found a better way to have a "in your face" error when putting skill ranks in Sub-skills or into Concentration.
+-Changed "Canny Observer" rogue trait to apply its +4 bonus to Perception(Traps).
+-Changed "Kobold's Neighbor" trait to apply its +2 bonus to Perception(Traps).]]></info_history>
+    </fileinfo>
+  <thing id="skS2AcroJu" name="Acrobatics (Jump)" description="Creatures with a base land speed above 30 feet receive a +4 racial bonus on Acrobatics checks made to jump for every 10 feet of their speed above 30 feet. Creatures with a base land speed below 30 feet receive a –4 racial bonus on Acrobatics checks made to jump for every 10 feet of their speed below 30 feet. No jump can allow you to exceed your maximum movement for the round.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="SubSkill" tag="skAcrobat" name="Acrobatics Sub-skill"/>
+    <link linkage="skillattr" thing="aDEX"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+var SpeedMod as number
+var ACP as number
+var arACP as number
+~Figure out if we have a bonus or penalty do to speed being
+~faster/slower than 30ft
+SpeedMod = ((hero.child[Speed].field[tSpeedMod].value - 30)/10)*4
+
+~ Find any worn armor and check to see if it has a specific Jump skill bonus
+foreach pick in hero from BaseArmor
+  If (eachpick.field[gIsEquip].value <> 0) then
+    If (eachpick.tagis[ImpArmChk1.skS2AcroJu] <> 0) then
+       ACP += 1
+    elseIf (eachpick.tagis[ImpArmChk2.skS2AcroJu] <> 0) then
+       ACP += 2
+    elseIf (eachpick.tagis[ImpArmChk3.skS2AcroJu] <> 0) then
+       ACP += 3
+    elseIf (eachpick.tagis[ImpArmChk4.skS2AcroJu] <> 0) then
+       ACP += 4
+    elseIf (eachpick.tagis[ImpArmChk5.skS2AcroJu] <> 0) then
+       ACP += 5
+    endif
+    ~ Make sure we are not greater than the armors ACP
+    arACP += eachpick.field[arArmorChk].value * -1
+    If (ACP > arACP) then
+       ACP = arACP
+    Endif
+  endif
+nexteach
+
+~ Calculte External Parents Skill Total
+call CalcSubSk
+~ Add in the speed modification and ACP values to the jump skill
+field[skTotal].value += SpeedMod + ACP]]></eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2AcroSh" name="Acrobatics (Ship)" description="Your balance and other acrobatic skill checks are increased while on board a ship.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="SubSkill" tag="skAcrobat" name="Acrobatics Sub-skill"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <link linkage="skillattr" thing="aDEX"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks." summary="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2DisaTr" name="Disable Device (Traps)" description="Add this skill if you are have any specific bonuses to Disable Device for traps only.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skDisable" name="Disable Device Sub-skill"/>
+    <link linkage="skillattr" thing="aINT"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2PercTr" name="Perception (Traps)" description="Add this skill if you have any specific bonuses when searching for traps.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2SurvTr" name="Survival (Track)" description="To find tracks or to follow them for 1 mile requires a successful Survival check. You must make another Survival check every time the tracks become difficult to follow. If you are not trained in this skill, you can make untrained checks to find tracks, but you can follow them only if the DC for the task is 10 or lower. Alternatively, you can use the Perception skill to find a footprint or similar sign of a creature&apos;s passage using the same DCs, but you can&apos;t use Perception to follow tracks, even if someone else has already found them.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <fieldval field="skAbbrev" value="Srvl(Trck)"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skSurvival" name="Survival Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can&apos;t have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2PercSm" name="Perception (Smell)" description="Add this skill if you have any specific bonuses with smell.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="cRgrS2Trac" name="Track" description="A ranger adds half his level (minimum 1) to Survival skill checks made to follow or identify tracks." compset="ClSpecial" summary="You add half your level (minimum 1) to all survival checks made to follow or identify tracks." replaces="cRgrTrack">
+    <eval phase="Render" priority="1000" index="4"><![CDATA[
+    ~our bonus is level /2, min 1
+    field[livename].text = field[name].text & signed(field[abValue].value)
+    field[abSumm].text = signed(field[abValue].value) & " to survival checks to track."]]></eval>
+    <eval phase="PostLevel" priority="1000">~our bonus is level /2, min 1
+field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),1)</eval>
+    <eval phase="PostLevel" priority="1100" index="2">~ give bonus to Survival(Track)
+#skillbonus[skS2SurvTr] += field[abValue].value</eval>
+    </thing>
+  <thing id="cRogS2trap" name="Trapfinding" description="A rogue adds 1/2 her level to Perception skill checks made to locate traps and to Disable Device skill checks (minimum +1). A rogue can use Disable Device to disarm magic traps." compset="ClSpecial" summary="Bonus to find or disable traps, including magical ones." replaces="cRogTrapfn">
+    <comment>Fix</comment>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~our bonus is level /2, min 1
+      var bonus as number
+      bonus = field[xTotalLev].value / 2
+      field[abValue].value += maximum(round(bonus,0,-1),1)
+      field[livename].text = field[thingname].text & " +" & field[abValue].value
+      field[abSumm].text = "+" & field[abValue].value & " to find or disable traps."
+
+      ~Trapfinding only applies to Disable for Traps
+      #skillbonus[skS2DisaTr] += field[abValue].value
+      ~Trapfinding only applies to Search for Traps
+      #skillbonus[skS2PercTr] += field[abValue].value]]></eval>
+    </thing>
+  <thing id="skS2PercTa" name="Perception (Taste)" description="Add this skill if you have any specific bonuses with taste.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2PercSi" name="Perception (Sight)" description=" Add this skill if you have any specific bonuses with sight.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2PercHe" name="Perception (Hearing)" description="Add this skill if you have any specific bonuses with hearing.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2PercTo" name="Perception (Touch)" description="Add this skill if you have any specific bonuses with touch.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="ioS2BtStri" name="Boots of Striding and Springing" description="These boots increase the wearer&apos;s base land speed by 10 feet. In addition to this striding ability (considered an enhancement bonus), these boots Allow the wearer to make great leaps. She can jump with a +5 competence bonus on Acrobatics checks." compset="Wondrous" replaces="ioBtStride">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="5500"/>
+    <fieldval field="iCL" value="3"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Hero" tag="EqpFoot" name="Feet" abbrev="Feet"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <eval phase="PreLevel" priority="5000">~ If not equiped then get out now
+doneif (field[gIsEquip].value = 0)
+
+#enhancementbonus[hero.child[Speed], 10]
+#competencebonus[hero.childfound[skS2AcroJu], 5]</eval>
+    </thing>
+  <thing id="irS2Jump" name="Ring of Jumping" description="This ring continually allows the wearer to leap about, providing a +5 competence bonus on all his Jump checks.{br}{br}Faint transmutation; CL 2nd; Forge Ring, creator must have 5 ranks in the Jump skill; Price 2,500 gp." compset="Ring" replaces="irJump">
+    <fieldval field="gCost" value="2500"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[~ If we are not worn get out now
+doneif (field[gIsEquip].value <> 1)
+
+~ Apply bonus to Acrobatics Jump
+#applybonus[BonComp,hero.child[skS2AcroJu],5]]]></eval>
+    </thing>
+  <thing id="irS2JumImp" name="Ring of Jumping, Improved" description="As jumping, except it grants a +10 competence bonus on its wearer&apos;s Jump check.{br}{br}Moderate transmutation; CL 7th; Forge Ring, creator must have 10 ranks in the Jump skill; Price 10,000 gp." compset="Ring" replaces="irJumpImp">
+    <fieldval field="gCost" value="10000"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[~ If we are not worn get out now
+doneif (field[gIsEquip].value <> 1)
+
+~ Apply bonus to Acrobatics Jump
+#applybonus[BonComp,hero.child[skS2AcroJu],10]]]></eval>
+    </thing>
+  <thing id="skS2SplCrM" name="Spellcraft (Magic Items)" description="When using detect magic or identify to learn the properties of magic items, you can only attempt to ascertain the properties of an individual item once per day. Additional attempts reveal the same results.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <fieldval field="skAbbrev" value="SC(Items)"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skSpellcr" name="Spellcraft Sub-Skill"/>
+    <link linkage="skillattr" thing="aINT"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can&apos;t have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="raS2ElMagi" name="Elven Magic" description="+2 racial bonus on caster checks to overcome spell resistance.  +2 to spellcraft checks to determine the properties of a magic item." compset="RaceSpec" replaces="raElMagic">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <eval phase="First" priority="20000"><![CDATA[~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~ set the bonus here
+field[abValue].value += 2
+~ +2 bonus to Spell Resistance (NOTE This also calcs into the 
+~ sub-skill)
+herofield[tOverSplRs].value += field[abValue].value
+~ +2 bonus to Spell Craft(Magic Items)
+#skillbonus[skS2SplCrM] += field[abValue].value
+~ Tell Spellcraft about the situational modifier
+#situational[hero.childfound[skSpellcr],"+2 bonus to id magic items",field[name].text]]]></eval>
+    </thing>
+  <thing id="skS2ClSr" name="CL vs SR" description="Caster level modifier added to a d20 to overcome Spell Resistance.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="Helper" tag="ClassSkill"/>
+    <tag group="SubSkill" tag="skS2ClSr" name="Caster Level vs SR Sub-skill"/>
+    <link linkage="skillattr" thing="aINT"/>
+    <eval phase="Final" priority="50000">~ Total any SR bonuses with Max Caster Level to set the sub-skills
+~ total bonus
+field[skTotal].value = herofield[tOverSplRs].value + herofield[tMaxCaster].value
+
+~ Calculte External Skill Total from Parent skill
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can&apos;t have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2PercSt" name="Perception (Stone)" description="Add this skill if you have any specific bonuses when using perception against stonework.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="raS2StoneC" name="Stonecunning" description="+2 racial bonus to Perception checks to notice unusual stonework, such as traps and hidden doors located in stone walls or floors.  You receive a check to notice such things when you pass within 10&apos;, even if not actively looking." compset="RaceSpec" summary="+2 bonus to Perception vs unusual stonework. Free check within 10 feet." replaces="raStonecun">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+field[abValue].value += 2
+      
+field[livename].text = field[thingname].text & " +" & field[abValue].value
+field[abSumm].text = "+" & field[abValue].value & " bonus to Perception vs unusual stonework. Free check within 10 feet."
+
+~ +2 bonus to Perception (Stone)
+#skillbonus[skS2PercSt] += field[abValue].value
+
+~ Tell Perception about the situational modifier
+#situational[hero.childfound[skPercep],"+" & field[abValue].value & " bonus vs unusual stonework.",field[name].text]]]></eval>
+    </thing>
+  <thing id="skS2HaAnRe" name="Handle Animal (Reptiles)" description="Add this skill if you are have any specific bonuses for Handle Animal - Reptiles.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skHandleAn" name="Handle Animal Sub-skill"/>
+    <link linkage="skillattr" thing="aCHA"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2DiplGa" name="Diplomacy (Gather Info)" description="Add this skill if you are have any specific bonuses to Gather Information.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skDiplo" name="Diplomacy Sub-skill"/>
+    <link linkage="skillattr" thing="aCHA"/>
+    <eval phase="Final" priority="50000">~ Calculte External Skill Total from Parent skill
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2HaAnRo" name="Handle Animal (Rodents)" description="Add this skill if you are have any specific bonuses for Handle Animal - Rodents.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skHandleAn" name="Handle Animal Sub-skill"/>
+    <link linkage="skillattr" thing="aCHA"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="xS2DogTrac" name="+4 to Survival when tracking by Scent" description="+4 to Survival when tracking by Scent." compset="RaceSpec" replaces="xDogTrack">
+    <tag group="SpecType" tag="Skill" name="Skill Modifiers" abbrev="Skill Modifiers"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PreLevel" priority="10000">field[abValue].value += 4
+#skillbonus[skS2SurvTr] += field[abValue].value</eval>
+    </thing>
+  <thing id="raS2Jump" name="Acrobatics (Jump)" description="You gain the specified bonus to acrobatics checks made to jump." compset="RaceSpec" replaces="raJump" uniqueness="unique">
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="SpecType" tag="Skill" name="Skill Modifiers" abbrev="Skill Modifiers"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+call TotalValue
+
+~ Use our value field as the bonus
+field[livename].text = field[name].text & " " & signed(field[abValue].value)
+
+~ Give a bonus to the sub-skill Acrobatics(Jump)
+#skillbonus[skS2AcroJu] += field[abValue].value]]></eval>
+    </thing>
+  <thing id="skS2SurvLo" name="Survival (Lost)" description="Add this skill if you have any specific bonuses on Survival checks to avoid becoming lost.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <fieldval field="skAbbrev" value="Srvl(Lost)"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skSurvival" name="Survival Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can&apos;t have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="ioS2WayFSt" name="Wayfinder, Standard" description="A small magical device patterned off ancient relics of the Azlanti, a {i}wayfinder{/i} is typically made from silver and bears gold accents. With a command word, you can use a {i}wayfinder{/i} to shine (as the {i}light{/i} spell). The {i}wayfinder{/i} also acts as a nonmagical (magnetic) compass, granting you a +2 circumstance bonus on Survival checks to avoid becoming lost. All {i}wayfinders{/i} include a small indentation designed to hold a single {i}ioun stone{/i}. An {i}ioun stone{/i} slotted in this manner grants you its normal benefits (as if it were orbiting your head), but frequently reveals entirely new powers due to the magic of the {i}wayfinder{/i} itself (see Seeker of Secrets page 51).\n\n{b}Note{/b}: This item costs only 250gp for members of the Pathfinder Society\n\n{b}Construction{/b}\n{b}Requirements{/b} Craft Wondrous Item, {i}light{/i}; {b}Cost{/b} 250 gp" compset="Wondrous" replaces="ioWayFStan">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="500"/>
+    <fieldval field="iCL" value="5"/>
+    <usesource source="CSSeekerSe" parent="CSHeader" name="Seekers of Secrets"/>
+    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <tag group="thing" tag="holder" name="Holder" abbrev="???"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="iSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="Custom" tag="Wayfinder"/>
+    <bootstrap thing="spLight0">
+      <containerreq phase="First" priority="2500">fieldval:gHeldCount = 0</containerreq>
+      <autotag group="Usage" tag="AtWill"/>
+      <autotag group="Helper" tag="SpellLike"/>
+      </bootstrap>
+    <holdlimit>Helper.IounStone</holdlimit>
+    <eval phase="First" priority="10000"><![CDATA[      
+      ~ If not equipped get out now
+      doneif (field[gIsEquip].value <> 1)
+
+      #applybonus[ModCirc,hero.child[skS2SurvLo],2]
+
+      #situational[hero.childfound[skSurvival],"+2 to avoid becoming lost",field[thingname].text]
+
+      ~ Set the Custom.Wayfinder tag on each ioun stone we hold
+      ~ so that the ioun stone secondary affect works. This is
+      ~ needed so we don't have to turn on Seeker of Secrets package.
+      foreach gear in this where "Helper.IounStone"
+        perform each.pushtags[Custom.?]
+      nexteach]]></eval>
+    <evalrule phase="Validation" priority="5000" message="A Wayfinder can only hold one Ioun Stone." summary="A Wayfinder can only hold one Ioun Stone."><![CDATA[
+      validif (field[gHeldCount].value <= 1)]]></evalrule>
+    </thing>
+  <thing id="skS2AcroBa" name="Acrobatics (Balance)" description="First, you can use Acrobatics to move on narrow surfaces and uneven ground without falling. A successful check allows you to move at half speed across such surfaces—only one check is needed per round. Use the following table to determine the base DC, which is then modified by the Acrobatics skill modifiers noted below. While you are using Acrobatics in this way, you are considered flat-footed and lose your Dexterity bonus to your AC (if any). If you take damage while using Acrobatics, you must immediately make another Acrobatics check at the same DC to avoid falling or being knocked prone.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="SubSkill" tag="skAcrobat" name="Acrobatics Sub-skill"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <link linkage="skillattr" thing="aDEX"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2AcroTu" name="Acrobatics (Tumbling)" description="In addition, you can move through a threatened square without provoking an attack of opportunity from an enemy by using Acrobatics. When moving in this way, you move at half speed. You can move at full speed by increasing the DC of the check by 10. You cannot use Acrobatics to move past foes if your speed is reduced due to carrying a medium or heavy load or wearing medium or heavy armor. If an ability allows you to move at full speed under such conditions, you can use Acrobatics to move past foes. You can use Acrobatics in this way while prone, but doing so requires a full-round action to move 5 feet, and the DC is increased by 5. If you attempt to move through an enemy’s space and fail the check, you lose the move action and provoke an attack of opportunity.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="SubSkill" tag="skAcrobat" name="Acrobatics Sub-skill"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <link linkage="skillattr" thing="aDEX"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="skS2PercHi" name="Perception (Hidden)" description="Add this skill if you have any specific bonuses when looking for hidden or concealed items.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill"/>
+    <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    <eval phase="Final" priority="50000">~ Calculte External Parents Skill Total
+call CalcSubSk</eval>
+    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
+call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
+validif (field[skRanks].value = 0)
+
+hero.panelvalid[skills] = 0</evalrule>
+    </thing>
+  <thing id="cMnkS2HiJu" name="High Jump" description="At 5th level, a monk adds his level to all Acrobatics checks made to jump, both for vertical jumps and horizontal jumps. In addition, he always counts as having a running start when making jump checks using Acrobatics. By spending 1 point from his ki pool as a swift action, a monk gains a +20 bonus on Acrobatics checks made to jump for 1 round." compset="ClSpecial" summary="You add your monk level to acrobatics checks made to jump" replaces="cMnkHiJump">
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="User" tag="Activation" name="Activation" abbrev="Activation"/>
+    <eval phase="Render" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+var total as number
+total = field[abValue].value + field[abValue2].value
+
+field[livename].text = field[name].text & " (" & signed(field[abValue].value) & "/" & signed(total) & " with Ki point)"
+
+if (field[abilActive].value <> 0) then
+    field[abValue].value += field[abValue2].value
+endif
+
+field[abSumm].text = "+" & field[abValue].value & " to Acrobatics checks made to jump."
+field[actName].text = "High Jump: 1 Ki: +" & field[abValue2].value
+      
+#situational[hero.child[skAcrobat],signed(field[abValue].value) & " to jump",field[thingname].text]]]></eval>
+    <eval phase="PostLevel" priority="20000" index="2"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] <> 1)
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+field[abValue].value += field[xAllLev].value
+~ We set our actname to a value so that it can be added to by the Gnome 
+~ Monk Favored class ability. Default value is 20.
+field[abValue2].value += 20
+~ Give Level bonus
+#skillbonus[skS2AcroJu] += field[abValue].value
+~ If ability active add in 2nd bonus to jump
+if (field[abilActive].value <> 0) then
+    #skillbonus[skS2AcroJu] += field[abValue2].value
+endif]]></eval>
+    </thing>
+  </document>

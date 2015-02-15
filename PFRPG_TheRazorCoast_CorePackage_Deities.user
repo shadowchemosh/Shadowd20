@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history>June 12, 2013 - Jai Erwin
+- Consolidated Things to fit into the correct FGG Core Package file.
+
+5/3/2013 - Tim Shadow
+-Updated Damballa to access new FGG Creation domain as per PG pg42.</info_history>
+    </fileinfo>
+  <thing id="deiFGPele" name="Great Pele" description="{b}Symbol:{/b} Smoking volcano\n{b}Garb:{/b} Traditional Tulita garb with headdress and tiki mask\n{b}Form of Worship and Holidays:{/b} Ritual prayers held before a great bonfire or on special occasions at the rim of an active volcano crater. The use of fire resistant magic is forbidden in these rituals, causing severe burns to many adherents\n{b}Typical Worshippers:{/b} Tulita, fire giants, menehune, creatures of elemental fire, fire cults\n\nPele is the mother figure and creator to the Tulita peoples. Said to reside in the volcano of Fiery Heart north of Port Shaw, only the extremely devout or extremely foolish would dare to approach her fuming home. Fiery, furious, and full of wrath it was by her will that the isles of the Razor bubbled up from the oceans, and this activity continues as she brings the smoldering lava from her heart to pierce the cold waters to continually make new islands. Despite her role as the creator of the People, the Tulita do not picture her as a maternal figure but rather as a vengeful matriarch who demands of them purity and devotion lest they face the purifying wrath of her molten anger. She is a ruthless defender of her islands and her children and can be called upon to rain vengeance and fury upon those who would dare to exploit them." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Anger, flames, islands, land, lava, lightning, righteous vengeance, storms, volcanoes, wind"/>
+    <fieldval field="deiEpithet" value="Mother of Fire"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AlignTemp" tag="ChaotNeut"/>
+    <tag group="AllowDom" tag="cdAsh"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdFire"/>
+    <tag group="AllowDom" tag="cdRage"/>
+    <tag group="AllowDom" tag="cdSmoke"/>
+    <tag group="AllowDom" tag="cdStorms"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="WepProf" tag="wBattleP"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGLukaM" name="Luka Moa" description="{b}Symbol:{/b} Draconic eye with a flaming pupil\n{b}Garb:{/b} Scaled armor, fire-blackened robes, scars from ritual burns\n{b}Form of Worship and Holidays:{/b} None known, but likely included burning of live sacrifices\n{b}Typical Worshippers:{/b} Deranged cultists, madmen, arsonists\n\nOne of the Atua, Lakua Mao is an ancient deific dragon that lives beyond the sky. In ancient times, she is said to have raged across the world burning and devouring everything in her path. Legends tell how Lakua Mao almost defeated Pele, however she finally extinguished the dragon&apos;s fires by throwing her into the ocean. During this battle, some tribes of Tulita was able to imprison several of Lakua Mao&apos;s draconic children in magical cauls and inter them in sacred places where they would siphon their magical energy to use it for their own purposes. Now the cults of Lakua Mao are all but extinct as an organized religion. Only a few madmen and pyromaniacs on the fringes of society seek to venerate her name by destroying in fire the world around them." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Combustion, dominance, misery, pain, suffering "/>
+    <fieldval field="deiEpithet" value="The Red Misery"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AlignTemp" tag="LawEvil"/>
+    <tag group="AllowDom" tag="cdArson"/>
+    <tag group="AllowDom" tag="cdCatastro"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdDragon"/>
+    <tag group="AllowDom" tag="cdFire"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdScalykin"/>
+    <tag group="AllowDom" tag="cdSlavery"/>
+    <tag group="AllowDom" tag="cdTactics"/>
+    <tag group="AllowDom" tag="cdTyranny"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wSpear"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGTmate" name="Tumatenga" description="{b}Symbol:{/b} Stylized turtle, viewed from above\n{b}Garb:{/b} Traditional Tulita garb, usually with a tortoise shell shield, amulet, or tattoo to identify with Turtle\n{b}Form of Worship and Holidays:{/b} The nights of the new moon when sea turtles climb the beaches to lay their eggs. Groups of warriors are assigned to protect these laying grounds until the turtles have hatched and crawled safely back to into the waves.\n{b}Typical Worshippers:{/b} Tulita leaders, warriors\n\nTumatenga, the great turtle spirit is one of the great totem spirits of the Tulita known as the Three. In the timeless years, Tumatenga was forced to subdue and tame his wilder and less disciplined siblings in order to protect the fledgling race of mankind. By his example, he brought the people law and balance along with the darker aspect of defense, the art of war." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Balance, focus, industriousness, law, longevity, patience, stubbornness"/>
+    <fieldval field="deiEpithet" value="Grandfather Turtle, Old Angry Face"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AlignTemp" tag="LawGood"/>
+    <tag group="AllowDom" tag="cdDefense"/>
+    <tag group="AllowDom" tag="cdGlory"/>
+    <tag group="AllowDom" tag="cdHonor"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdLeadersh"/>
+    <tag group="AllowDom" tag="cdLiberat"/>
+    <tag group="AllowDom" tag="cdLoyalty"/>
+    <tag group="AllowDom" tag="cdNobility"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="AllowDom" tag="cdRevoluti"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wNet"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="RC_GreatTo"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGTohor" name="Tohoraha" description="{b}Symbol:{/b} Stylized whale with its nose touching its tail\n{b}Garb:{/b} Traditional Tulita garb and gray sealskin robes with white headdresses\n{b}Form of Worship and Holidays:{/b} Sacrifices of valuable goods made over the deepest parts of the sea. Known as the Running, twice a year when the whale pods pass through the area on their great migrations, worshippers take canoe and seek these travelers out in order to pray to them and ask their blessing. A canoe that is sunk in this sometimes dangerous endeavor is considered to have been ill favored.\n{b}Typical Worshippers:{/b} Tulita whale riders, totemic tribes, fishermen\n\nThe great traveler of the waves, Tohoraha is the Whale, the force that embodies the Deeps and the many secrets they hold. It is said that everything that has ever transpired upon or beneath the waves is known by Tohoraha and is remembered, so Tulita and mainlander sailors alike are known to make small offerings to him in order to propitiate him for any past offenses they may have committed. Even the basest pirate has been known on occasion to pitch a chest of gold or spill the blood of some valuable prisoner overboard to prevent any potential wrath from the Whale. Whalers have the hardest time with this as their very purpose is an affront to Tohoraha, yet more than one whaling vessel has been known to make offerings in hopes of averting his anger nevertheless." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Creativity, intuition, energy, history, prudence, the sea, tribes, vigilance"/>
+    <fieldval field="deiEpithet" value="Whale, The Lore Keeper, The Watcher"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdExplorat"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="DeityCat" tag="RC_GreatTo"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="WepProf" tag="wFGTewhate"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGPapah" name="Papahu" description="{b}Symbol:{/b} Leaping Dolphin\n{b}Garb:{/b} Traditional Tulita Garb with blue robes\n{b}Form of Worship and Holidays:{/b} Every full moon, the followers of Papahu take tot heir canoes to hunt sharks in honor of their goddess. Each shark jaw taken is dedicated to Dolphin and incorporated into icons and shrines\n{b}Typical Worshippers:{/b} Tulita explorers, messengers, arcane spellcasters, fighters of oppression, lovers\n\nOne of the Three, Papahu is precocious and wild. She embodies both love and freedom. She was the first to give the gift of sorcery to the people, teaching them the arts of scrying and how to shapeshift into her form. When Pele learned she had taught mortals how to use magic, she became angered with her. To avoid her wrath, she fled from her Pele and dove into the raging seas." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Compassion, love, freedom, magic, messages, tribal brotherhood"/>
+    <fieldval field="deiEpithet" value="Dolphin, The Herald"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    <tag group="AllowDom" tag="cdCharm"/>
+    <tag group="AllowDom" tag="cdFreedom"/>
+    <tag group="AllowDom" tag="cdLiberat"/>
+    <tag group="AllowDom" tag="cdLove"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="WepProf" tag="wShortswd"/>
+    <tag group="DeityCat" tag="RC_GreatTo"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGAizan" name="Aizan" description="Aizan is the Loa with dominion over Water, especially the sea. She is often called the Mistress or Mother of the Sea. Often considered a deity of commerce, her colors are gold, yellow, and white, and her veve is a palm frond. She is regarded as the archetypal Priestess (and her husband Loco is likewise &apos;the great Priest&apos;). Her domains are Luck, Magic, Travel, and Water. Her subdomains are Divine, Oceans, and Trade. Her favored weapon is the pouwhenua." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="Mother of the Sea"/>
+    <fieldval field="deiPortfol" value="Commerce, water and the sea"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdOceans"/>
+    <tag group="AllowDom" tag="cdTrade"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="DeityCat" tag="RC_Loa" name="Loa"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdDivine"/>
+    <tag group="WepProf" tag="wFGPouwSpr"/>
+    <tag group="WepProf" tag="wFGPouwStf"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGDamba" name="Damballa" description="Damballa, ruler of Air, may be a super-Loa. She is considered by the Aizanes-Tulita to be the goddess of the sky, and is sometimes called the primordial creator of all life. Her colors are blue and white, and her veve is a pair of serpents. Her domains are Air, Chaos, Creation, Sun, and Weather. Her subdomains are Cloud, Light, Storms, and Wind. Her favored weapon is the shortbow." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="Ruler of the Air"/>
+    <fieldval field="deiPortfol" value="Sky and life"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdCloud"/>
+    <tag group="AllowDom" tag="cdLight"/>
+    <tag group="AllowDom" tag="cdStorms"/>
+    <tag group="AllowDom" tag="cdSun"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="AllowDom" tag="cdWind"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdRCCreati"/>
+    <tag group="DeityCat" tag="RC_Loa"/>
+    <tag group="AllowDom" tag="cdAir"/>
+    <tag group="WepProf" tag="wShortbow"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="AllowDom" tag="cdFGCreati"/>
+    </thing>
+  <thing id="deiFGLegba" name="Legba" description="Legba (often &quot;Papa Legba&quot;) is the intermediary between the Loa and humanity. The patron Loa of speech and understanding, he is the first and last spirit invoked in any ceremony involving the Loa, as his permission is required. He opens and closes the doorway to the spirit-world. His only color is white, and his veve is either a dog or a crutch (or cane). Papa Legba&apos;s domains are Animal, Knowledge, Law, Protection, and Strength. His subdomains are Defense, Memory, Loyalty, Resolve, and Thought. His favored weapon is a quarterstaff." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="Papa Legba"/>
+    <fieldval field="deiPortfol" value="Speech and understanding"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdDefense"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdLoyalty"/>
+    <tag group="AllowDom" tag="cdMemory"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="AllowDom" tag="cdResolve"/>
+    <tag group="AllowDom" tag="cdStrength"/>
+    <tag group="AllowDom" tag="cdThought"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="DeityCat" tag="RC_Loa"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGOggun" name="Oggun" description="Oggun, lord of Earth, presides over hunting and metal. Some claim he has dominion over both politics and war. He is the patron Loa of smiths. His colors are brown and green, and his veve is a blade (machete or saber). He is the archetypal Military General (Fighter). His domains are Animal, Earth, Nobility, and War. His subdomains are Fur, Heroism, Leadership, Metal, and Tactics. His favored weapon is a longsword." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="Lord of Earth"/>
+    <fieldval field="deiPortfol" value="Politics, war, and smiths"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdFur"/>
+    <tag group="AllowDom" tag="cdHeroism"/>
+    <tag group="AllowDom" tag="cdLeadersh"/>
+    <tag group="AllowDom" tag="cdMetal"/>
+    <tag group="AllowDom" tag="cdNobility"/>
+    <tag group="AllowDom" tag="cdTactics"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wLongsword"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="RC_Loa"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGSamed" name="Samedi" description="Samedi (often &quot;Baron Samedi&quot;), the Loa of Death, is also a spirit of Fire. The most fearsome of all the Loa, his is the realm most closely associated with the Aizanes-Tulita beliefs commonly called voudu, or death-magic. His colors are red and black, and his symbol is a coffin. His &apos;wife&apos;, the Loa &quot;Maman Brigitte,&quot; is technically a cohort in his black arts, though more often his servant than partner. His domains are Darkness, Death, Fire, Law, Luck, and Repose. His subdomains are Ancestors, Fate, Loss, Souls, and Undead. His favored weapon is the trident." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="Baron Samedi"/>
+    <fieldval field="deiPortfol" value="Death and fire"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdAncestor"/>
+    <tag group="AllowDom" tag="cdDarkness"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdFate"/>
+    <tag group="AllowDom" tag="cdFire"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdLoss"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="AllowDom" tag="cdInqPersi"/>
+    <tag group="AllowDom" tag="cdRepose"/>
+    <tag group="AllowDom" tag="cdSouls"/>
+    <tag group="AllowDom" tag="cdUndead"/>
+    <tag group="WepProf" tag="wTrident"/>
+    <tag group="DeityCat" tag="RC_Loa"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGQuell" name="Quell" description="Quell is a god of ancient Hyperborea that has found his way into the pantheon of every culture to occupy Akados since the days of that great empire. He represents the dangers of a life upon the sea and those who brave them either to earn a living or for the sake of adventure. Most major ports have a Chapterhouse of Quell where a sea priest conducts blessings upon the fleets and provides guidance of coming weather patterns. As a god of hearth and home for seafarers, the Chapterhouses of Quell also do charitable work for the poor and destitute of their home cities seeking to ease suffering, feed the poor, and heal the sick. They only charge those who can afford to pay for their services from.\n\nQuell has become the most prevalent god upon the Razor Coast, certainly within Port Shaw, and perhaps supplanting even the veneration of the native gods by the Tulita, such is his influence. Many Tulita that look to the sea for their survival and feel abandoned by their totem gods have turned to the worship of Quell in hopes of capturing some of the prosperity that seems to cling to the mainlander colonists." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Oceans, seas, sailors, maritime exploration and trade, sea ports"/>
+    <fieldval field="deiEpithet" value="The Sea King, Lord of the Blue"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    <tag group="AllowDom" tag="cdCommun"/>
+    <tag group="AllowDom" tag="cdExplorat"/>
+    <tag group="AllowDom" tag="cdFlotsam"/>
+    <tag group="AllowDom" tag="cdHome"/>
+    <tag group="AllowDom" tag="cdOceans"/>
+    <tag group="AllowDom" tag="cdStorms"/>
+    <tag group="AllowDom" tag="cdTrade"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="WepProf" tag="wHarpoon"/>
+    <tag group="WepProf" tag="wHarpoonSt"/>
+    <tag group="WepProf" tag="wTrident"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGBelon" name="Belon" description="Belon appears to his worshippers as an elderly man wearing flowing white robes and carrying a walking staff. Belon is the embodiment of things learned upon the road, be they magical or mundane knowledge. Priests of Belon often serve as guides, educating themselves in local customs in order to afford better traveling conditions for those in their care." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Common sense, magical knowledge, overland journeys, roads, travelers, worldly wisdom"/>
+    <fieldval field="deiEpithet" value="The Wise, God of Travel, Wanderer in White"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdArcane"/>
+    <tag group="AllowDom" tag="cdDeceptio"/>
+    <tag group="AllowDom" tag="cdExplorat"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdMemory"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGBowbe" name="Bowbe" description="Bowbe is the embodiment of barbarian wrath and frenzy. He appears as a mighty barbarian dressed in the pelt of Urson the Great Bear, whom he can summon to his side by tossing the pelt to the ground and calling its name. Bowbe carries the greatsword {i}Bm&apos;fob{/i} in one hand and the warhammer {i}Wytch-Killer{/i} in the other.\n\nBowbe revels in war and the slaughter of his foes. His battles against giants are legendary, as is his hatred for the undead, arcanists, lawyers, guardsmen, and most other civilized authority figures.\n\nUnlike other gods, Bowbe aids only those who take his name in vain. Thus it is not uncommon to hear berserkers cursing their god for his indifference as readily as they curse their foes. Bowbe only grants the raising of one of his followers if that follower immediately seeks blood vengeance against his killers. Bowbe grants no healing spells higher than 4th level." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Berserk rage, blood letting, violence"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdBlood"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdFerocity"/>
+    <tag group="AllowDom" tag="cdStrength"/>
+    <tag group="AllowDom" tag="cdRCVengea"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wGreatswd"/>
+    <tag group="WepProf" tag="wWarhammer"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AlignTemp" tag="ChaotNeut"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGKunul" name="Kunulo" description="An evil sea deity, Kunulo is largely unknown to surface-dwellers. Usually depicted as a combination of sea serpent, shark, and squid, Kunulo is the embodiment of pure, alien evil, combining the ruthless law of nature and the cruel chaos of the sea. As such he is revered by evil pirates who feed his minions victims that are bound and thrown, still alive, into the sea." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Chaos, frenzy feeding, oceans, sea creatures, shipwrecks, whirlpools"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdCatastro"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdFear"/>
+    <tag group="AllowDom" tag="cdFlotsam"/>
+    <tag group="AllowDom" tag="cdOceans"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="WepProf" tag="wTrident"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGPekko" name="Pekko" description="Pekko takes many guises among his worshippers, often appearing as a gnome, human, or dwarf of portly girth, wearing a leather apron and carrying a beaker for measuring and sampling ale. In all guises he carries a staff in one hand and a barrel of ale over his shoulder. Pekko may be boisterous and emotional, laughing one minute or brooding and tearful the next, but always quick to recover and share his good mood once again." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Ale, brewing, camaraderie, harvest festivals, spirits, travel"/>
+    <fieldval field="deiEpithet" value="God of Ale and Spirits"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdCommun"/>
+    <tag group="AllowDom" tag="cdFriendsh"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdGrowth"/>
+    <tag group="AllowDom" tag="cdHome"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGVanit" name="Vanitthu" description="Some claim that Vanitthu is the son of the great god Anumon; others go so far as to say that Vanitthu is yet another aspect of the great god (this schism has caused considerable conflict within the faith). In either case, Vanitthu is the embodiment of martial perfection, law, the strength of the state, and the punishment of the guilty. A grim and resolute deity, Vanitthu is always shown bearing a spear made of lightning and a polished mithral shield. He often appears to his followers on the field of battle, especially to those engaged in or defending against sieges." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Defense, justice, law, righteous combat, sieges"/>
+    <fieldval field="deiEpithet" value="God of the Steadfast Guard"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AlignTemp" tag="LawNeut"/>
+    <tag group="AllowDom" tag="cdDefense"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdLoyalty"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="AllowDom" tag="cdTactics"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wSpear"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGDajob" name="Dajobas" description="{b}Symbol:{/b} Open shark&apos;s jaws\n{b}Garb:{/b} Bloodstained tatters of whatever was being worn before transforming into wereform. Scars from the infecting bite are prominently displayed among weresharks.\n{b}Form of Worship and Holidays:{/b} Blood moon (the full moon when a group victims of newly infected by the Kiss of Dajobas make their first transformation into weresharks). Worship usually takes place in the form of ritual infection of new populations of victims or wanton slaughter and devouring of such populations. There is little organized worship.\n{b}Typical Worshippers:{/b} Weresharks, sahuagin, sharks, cannibalistic pirates\n\nCast off by his worshippers, Dajobas was hurled into the black depths of the ocean&apos;s deepest rift where the night-waters flow cold and the only sustenance are cold bloodless things, tube worms, and wretched slimy sacs of spur-like bone. There he wallows, his hunger raging, and dreams darkly of revenge and slaughter. His bloody dreams streak through sea and mist, cling like barnacles to passing ships, or crawl a-land, spewed out by the sea like venomous humors. These cancerous thoughts, born from Dajobas&apos; rage and hunger sometimes take hold in the hearts of sahuagin warlords, hunting dire sharks, blood-drenched corsairs and vikings, and priests of other sea gods, led astray by the Shark God&apos;s promise of terrible power." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Cannibalism, carnage, hunger, the ocean, war, blood, sharks, alligators, swamps, ruin"/>
+    <fieldval field="deiEpithet" value="The Shark, Devourer of Worlds"/>
+    <usesource source="CampRazorC"/>
+
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="AlignTemp" tag="ChaotEvil"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="WepProf" tag="wFGClubSha"/>
+    <tag group="WepProf" tag="wDaggerPun"/>
+    <tag group="DeityCat" tag="RC_GreatTo"/>
+    <tag group="AllowDom" tag="cdFGHunger"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    </thing>
+  <thing id="deiFGElmar" name="Elmarran" description="Unlike deities of other pantheons, the divine beings worshipped in the Domain of Hawkmoon defy description and subscribe to no single alignment. They have no set forms and no gender. For the purpose of bringing their inscrutable natures closer to human understanding, worshippers have given them names and anthropomorphic characteristics, and attempted at least to surmise their realms of control and the areas they influence. All gods have been assigned a primary dichotomy, and several lesser fields of influence. Because of this complexity, beings of various alignments and vocations might pray to the same deity.\n\nTo this end, those who know Elmarran best-being themselves followers of the sea and the everchanging portents its tide brings-picture him as a withered old man, with wise, dark eyes and a flowing white beard with blue streaks. Elmarran tends toward the chaotic, and since many of his followers have an evil bent, he is sometimes erroneously seen in that light. His influence extends beyond the ocean to rivers and lakes, and many who make their living upon these watery surfaces pay him homage. However, he is also the god of aging, disguise, and change. The old and infirm often send prayer his way, in the hope that they will encounter the final change on peaceful terms. Many sages and philosophers, as they enter their venerable years, take to a worship of Elmarran out of a learned respect for the wisdom that old age brings, and an acquired prerogative to ignore the whims and rules of younger men.\nElmarran is capricious, and many of his followers are of that ilk whose tempestuous passions randomly change course as a ship driven before the storm.\n\nTypical Worshippers: sailors, the elderly, sages, spies, actors, philosophers, fishermen, and the temperamental." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="God of the Sea and Change"/>
+
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdSun"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="AllowDom" tag="cdWeather"/>
+    <tag group="WepProf" tag="wNet"/>
+    <tag group="WepProf" tag="wSpear"/>
+    <tag group="DeityCat" tag="DomHawk"/>
+    </thing>
+  </document>

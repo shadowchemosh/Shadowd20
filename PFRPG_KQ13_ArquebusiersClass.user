@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <thing id="cHelpARQ" name="Arquebusiers" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="10"/>
+    <fieldval field="cAbbr" value="ARQ"/>
+    <fieldval field="cSkills" value="2"/>
+    <arrayval field="cBonFtTot" index="0" value="1"/>
+    <arrayval field="cBonFtTot" index="3" value="2"/>
+    <arrayval field="cBonFtTot" index="6" value="3"/>
+    <arrayval field="cSBonFtTot" index="9" value="1"/>
+    <arrayval field="cSBonFtTot" index="12" value="2"/>
+    <arrayval field="cSBonFtTot" index="15" value="3"/>
+    <arrayval field="cSBonFtTot" index="18" value="4"/>
+    <usesource source="KQ13"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ClassSkill" tag="skUseMagic"/>
+    <tag group="WepProf" tag="wRcGunMusk"/>
+    <tag group="WepProf" tag="wRcGunPist"/>
+    <tag group="WepProf" tag="wRcGunRifl"/>
+    <tag group="cRef" tag="Good"/>
+    <tag group="cWill" tag="Poor"/>
+    <tag group="Classes" tag="Arquebusi" name="Arquebusiers"/>
+    <tag group="cAttack" tag="Good"/>
+    <tag group="ClassSkill" tag="Profession"/>
+    <tag group="cFort" tag="Poor"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="fInclude" tag="fAgileMan"/>
+    <tag group="fInclude" tag="fDeadAim"/>
+    <tag group="fInclude" tag="fDodge"/>
+    <tag group="fInclude" tag="fFarShot"/>
+    <tag group="fInclude" tag="fPointBlnk"/>
+    <tag group="fInclude" tag="fPrecShot"/>
+    <tag group="fInclude" tag="fQuickDraw"/>
+    <tag group="fInclude" tag="fRapidRel"/>
+    <tag group="fIncSec" tag="fCritFoc"/>
+    <tag group="fIncSec" tag="fManyshot"/>
+    <tag group="fIncSec" tag="fMobility"/>
+    <tag group="fIncSec" tag="fRapidShot"/>
+    <tag group="fIncSec" tag="fShotRun"/>
+    <tag group="fIncSec" tag="fVitStr"/>
+    <tag group="ClassSkill" tag="skSleight"/>
+    <tag group="ClassSkill" tag="skDisable"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="ClassSkill" tag="skKnowDun"/>
+    <tag group="ClassSkill" tag="skKnowEng"/>
+    <tag group="ClassSkill" tag="skPercep"/>
+    <tag group="ClassSkill" tag="skRide"/>
+    <tag group="fInclude" tag="fPFgunslin"/>
+    <tag group="fIncSec" tag="fAgileMan"/>
+    <tag group="fIncSec" tag="fDeadAim"/>
+    <tag group="fIncSec" tag="fDodge"/>
+    <tag group="fIncSec" tag="fFarShot"/>
+    <tag group="fIncSec" tag="fPFgunslin"/>
+    <tag group="fIncSec" tag="fPointBlnk"/>
+    <tag group="fIncSec" tag="fPrecShot"/>
+    <tag group="fIncSec" tag="fQuickDraw"/>
+    <tag group="fIncSec" tag="fRapidRel"/>
+    <tag group="ClassSkill" tag="skStealth"/>
+    <bootstrap thing="fWepMart"></bootstrap>
+    <bootstrap thing="fSimple"></bootstrap>
+    <bootstrap thing="cArqCraftB">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cArqCallSh">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cArqEnAmmo">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cArqCrafFi">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cArqPeAmmo">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="fArmMedium"></bootstrap>
+    <bootstrap thing="cArq2tap">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cArqSeAmmo">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cArqImCaSh">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cArqDiAmmo">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cArqCripSh">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cArqAlAmmo">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cArqIm2tap">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cArqBrAmmo">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <bootstrap thing="cArqDeadSh">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="fArmLight"></bootstrap>
+    </thing>
+  <thing id="cArquebusi" name="Arquebusiers" description="{B}Kobold Quarterly#13{/b}\nA paragon of bravado and gunplay, the arquebusier is unmatched in his ability to craft and wield firearms of all types. These warriors, hailing from across the land, embody precision, discipline, and the path of the gunslinger.\n\n{b}Role{/b} Arquebusiers are experts at ranged combat, capable of using firearms with more skill than any other combatant. Their abilities allow them to reach targets unreachable by archers and melee combatants and to alter the scene of battle with precisely placed shots. An arquebusier may serve as the party&#146;s main combatant, or in a secondary combat role." compset="ClassLevel" maxlimit="20">
+    <usesource source="KQ13" parent="pKQ" name="Kobold Quarterly#13"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ClassType" tag="Normal"/>
+    <bootstrap thing="cHelpARQ"></bootstrap>
+    <link linkage="helper" thing="cHelpARQ"/>
+    </thing>
+  <thing id="cArqCraftB" name="Bulletcrafting" description="From 1st level onwards, you may make a DC 10 Craft (gunsmithing) check to create up to 10 bullets or 2 cartridges once per day after 1 hour&#146;s work. The Craft DC increases by 5 for every additional 5 bullets or 1 cartridge crafted." compset="ClSpecial"></thing>
+  <thing id="cArqCallSh" name="Called Shot" description="Beginning at 2nd level, you may attempt to hit a target in a specific area or location with a ranged attack as full-round action. This attack takes a -4 penalty to hit, but if successful, it deals an additional 1d6 hp damage.\n\nIn addition, calling a shot may be used to manipulate the environment, such as shooting a switch, shooting out a window, or shooting an object out of a character&#146;s hand. In these instances, the required AC of the attack is equal to the target&#146;s AC plus half the range increment between you and the target. Calling a shot constitutes a full-round action." compset="ClSpecial" summary="This full-round action attack takes a -4 penalty to hit, but if successful, it deals an additional 1d6 hp damage.">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="cArqEnAmmo" name="Enhanced Ammunition" description="Starting at 3rd level, any ammunition you make is considered masterwork, granting a +1 bonus to attack rolls. In addition, this bonus increases by 1 every 3 levels past 6th level, to a maximum of +5. Bonuses granted by masterwork firearms apply as normal to enhanced ammunition and do not stack (only the higher enhancement bonus applies)." compset="ClSpecial">
+    <eval phase="PostLevel" priority="10000"><![CDATA[~Post-Levels 10,000
+      var bonus as number
+      bonus = #levelcount[Arquebusi] /9
+      bonus = round(bonus,0,-1) + 1
+      ~bonus = field[xAllLev].value / 2
+      field[abValue].value += bonus
+
+      if (field[abValue].value>0) then
+         field[listname].text = field[thingname].text & "(+" & field[abValue].value & "H)"
+         field[abSumm].text = "Craft masterwork ammunition with a bonus of +" & field[abValue].value & " to hit."
+         field[livename].text = "Enhanced Ammunition(+" & field[abValue].value & ")"
+      endif]]></eval>
+    </thing>
+  <thing id="cArqCrafFi" name="Craft Firearm" description="At 5th level, you are experienced enough to repair and craft firearms and gain 1 rank in the Craft (Gunsmithing) skill. In addition to the cost of materials (approximately 100 gp), repairing a damaged firearm requires at least 2 hours and adequate facilities to be completed. For most damage, a blacksmith&#146;s forge and workshop are required to repair the weapon. See &quot;Misfires&quot; section. Creating a firearm takes 2 weeks, half the cost of a completed firearm (see Table ####), and a DC 25 Craft (gunsmithing) check. If the check fails by 5 or less, an inferior firearm is created. These inferior products fail to fire 25% of the time and are destroyed on a roll of 1, dealing 4d6 hp damage to the wielder. If the check fails by more than 5, the funds and effort are wasted, and work must begin again with fresh materials." compset="ClSpecial">
+    <eval phase="PreLevel" priority="5000"><![CDATA[~Pre-levels 5000
+~ If we're no active, do nothing
+doneif (#levelcount[Arquebusi] < 5)
+
+    var bonus as number
+    ~count the number of hit dice we have, then subract any ranks that have already been applied to the chosen skill
+    ~and don't let the value go below 0
+    bonus = maximum(1 - hero.child[skCrafGuns].field[skUser].value - hero.child[skCrafGuns].field[skExtRanks].value - hero.child[skCrafGuns].field[skInnate].value,0)
+          
+    ~now, we'll add innate ranks to that skill
+    hero.child[skCrafGuns].field[skInnate].value += bonus
+          
+    ~and since innate ranks count towards the total ranks spent by a character,
+    ~we'll add the same amount to the max skill points
+    #resmax[resSkill] += bonus]]></eval>
+    </thing>
+  <thing id="cArqPeAmmo" name="Penetrating Ammunition" description="Starting at 6th level, ammunition you create gains a +1 bonus to damage. This bonus increases every 3 levels past 9th level, to a maximum of +4." compset="ClSpecial">
+    <eval phase="PostLevel" priority="10000"><![CDATA[~Post-Levels 10,000
+      var bonus as number
+      bonus = #levelcount[Arquebusi] /9
+      bonus = round(bonus,0,-1) + 1
+      ~bonus = field[xAllLev].value / 2
+      field[abValue].value += bonus
+
+      if (field[abValue].value>0) then
+         field[listname].text = field[thingname].text & "(+" & field[abValue].value & "D)"
+         field[abSumm].text = "Craft masterwork ammunition with a bonus of +" & field[abValue].value & " on damage."
+         field[livename].text = "Penetrating Ammunition(+" & field[abValue].value & ")"
+      endif]]></eval>
+    </thing>
+  <thing id="fPFgunslin" name="Gunslinger" description="{i}You are so skilled with firearms that you can fire one without letting down your guard.{/i}\n{b}Prerequisites:{/b} Base attack bonus +4, Weapon Focus (any firearm), proficiency with any firearm.\n{b}Benefit:{/b} When you attack with a firearm, you do not provoke attacks of opportunity. \n{b}Normal:{/b} Attacking with any kind of ranged weapon in a threatened square provokes attacks of opportunity." compset="Feat" summary=" When you attack with a firearm, you do not provoke attacks of opportunity." uniqueness="useronce">
+    <usesource source="KQ13"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Weapon Focus (any firearm) feat is required."><![CDATA[#hasfeat[fWepFoc] <> 0]]></exprreq>
+    <exprreq message="Base attack bonus of +4 or higher required."><![CDATA[child[Attack].field[tAtkBase].value >= 4]]></exprreq>
+    </thing>
+  <thing id="cArq2tap" name="Double Tap" description="Starting at 8th level, you may choose to make one additional attack with your ready, loaded firearm on the same target at your full attack bonus as a full-round action. In the case of single-shot firearms, this requires dropping one firearm and drawing the second for a shot or using two firearms(ie pistols). This provokes an additional attack of opportunity from any enemies other than the target." compset="ClSpecial"></thing>
+  <thing id="cArqSeAmmo" name="Seeking Ammunition" description="Starting at 9th level, ammunition you make gains the {i}seeking{/i} weapon quality. (Firearm ammunition curves toward its target, negating any miss chances that would otherwise apply.)" compset="ClSpecial"></thing>
+  <thing id="cArqImCaSh" name="Improved Called Shot" description="At 11th level and beyond, your called shots take a standard action rather than a full-round action. Instead of 1d6 additional hp damage, an improved called shot instead deals 2d6 additional hp damage." compset="ClSpecial"></thing>
+  <thing id="cArqDiAmmo" name="Distance Ammunition" description="Starting at 12th level, ammunition you make gains the {i}distance{/i} weapon quality. (The range increment for firearm ammunition is doubled.)" compset="ClSpecial"></thing>
+  <thing id="cArqCripSh" name="Crippling Shot" description="At 14th level, you may use your improved called shot ability to deal 1d6 Strength damage or 1d6 Constitution damage instead of 2d6 additional damage." compset="ClSpecial"></thing>
+  <thing id="cArqAlAmmo" name="Aligned Ammunition" description="Starting at 15th level, any ammunition you make gains one of the following aligned\nweapon qualities: {i}anarchic, axiomatic, holy, or unholy{/i}. You must choose the granted ability while crafting the ammunition and cannot choose an ability that is the opposite of your alignment." compset="ClSpecial"></thing>
+  <thing id="cArqIm2tap" name="Improved Double Tap" description="Starting at 17th level, you may make a third attack with a ready, loaded firearm at your full attack bonus. Additional attacks of opportunity are no longer provoked with a double tap." compset="ClSpecial"></thing>
+  <thing id="cArqBrAmmo" name="Brilliant Energy Ammunition" description="Starting at 18th level, you may modify your firearm so that any ammunition gains the {i}brilliant energy{/i} weapon quality when fired. (This ammunition gives off light in a 10-ft. radius, ignores nonliving matter, and bypasses armor and shield bonuses to AC. {i}Brilliant energy{/i} ammunition cannot harm undead, constructs, and objects.)" compset="ClSpecial"></thing>
+  <thing id="cArqDeadSh" name="Deadly Shot" description="Starting at 20th level, any confirmed critical hits you make automatically kill your target unless that target makes a Fortitude save with a DC equal to 10 + your total character level. If the saving throw is made, the target takes normal critical damage." compset="ClSpecial"></thing>
+  <thing id="skCrafGuns" name="Craft: Gunsmithing" description="You are skilled at the process of fixing and creating firearms." compset="Skill" uniqueness="unique">
+    <tag group="Helper" tag="ExtraSkill" name="ExtraSkill" abbrev="ExtraSkill"/>
+    <tag group="Helper" tag="SkCatCraft" name="Craft Skill" abbrev="Craft Skill"/>
+    <link linkage="skillattr" thing="aINT"/>
+    </thing>
+  </document>

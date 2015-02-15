@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+<!--
+4/12/2014
+-Broke the tags away from sources.
+
+-->
+
+<!-- ============================================== -->
+<!-- CUSTOM GROUPS AND TAGS                         -->
+<!-- ============================================== -->
+
+<!-- Group Shadowd20 custom tags -->
+  <group id="Shadowd20" name="Shadow d20">
+    <!-- Misc tags -->
+    <value id="Tim"         name="Tim Shadow"/>                           <!-- Me -->
+    <value id="Race"        name="Shadow d20 Race"/>                      <!-- Shadow d20 race tag -->
+    <value id="SAP"         name="Standard Adventuring Pack Item"/>       <!-- Shadow d20 SAP kit item tag -->
+    <value id="TwoWep"      name="Shadow d20 Two-Weapon Fighting"/>
+    <value id="DwfSubRace"  name="Dwarven Sub-Race"/>
+
+    <!-- PHB2 Druid Feral Archetype Tags -->
+    <value id="FeralLevel"  name="Feral Extra Level"/>
+    <value id="FeralForm"   name="Feral Druid Form"/>                     <!-- PHB2 Druid Varient Shapechanged Tag -->
+    <value id="FeralWep"    name="Feral Druid Natural Weapon"/>           <!-- PHB2 Druid Varient Natural Attack Tag -->
+    <value id="Predator"    name="Predator Form"/>                        <!-- PHB2 Druid Varient Predator Form -->
+    <value id="Predator2"   name="Predator 2nd"/>
+    <value id="Predator3"   name="Predator 3rd"/>
+    <value id="Predator4"   name="Predator 4th"/>
+    <value id="Predator8"   name="Predator 8th"/>
+    <value id="Predator9"   name="Predator 9th"/>
+    <value id="Predator10"  name="Predator 10th"/>
+    <value id="PredatorMo"  name="Predator Form Mobility"/>               <!-- PHB2 Druid Varient Predator Form 4th level -->
+    <value id="Ferocious"   name="Ferocious Predator Form"/>                <!-- PHB2 Druid Varient Ferocious Slayer Form -->
+    <value id="FerImpCrit"  name="Ferocious Slayer Improved Critical"/>   <!-- PHB2 Druid Varient Ferocious Slayer Form 10th-->
+    <value id="Aerial"      name="Aerial Form"/>                          <!-- PHB2 Druid Varient Aerial Form -->
+    <value id="Aerial6"     name="Aerial 6th"/>
+    <value id="Aerial7"     name="Aerial 7th"/>
+    <value id="AerialFly"   name="Aerial Form Flyby Attack"/>             <!-- PHB2 Druid Varient Aerial Form 7th level -->
+    <value id="ForAvenger"  name="Forest Avenger Form"/>                  <!-- PHB2 Druid Varient Forest Avenger Form -->
+    <value id="ForAvOver"   name="Forest Avenger Form Imp Overrun"/>      <!-- PHB2 Druid Varient Forest Avenger Form 14th -->
+    <value id="ElemFury"    name="Elemental Fury Form"/>                  <!-- PHB2 Druid Varient Elemental Fury Form -->
+    <value id="ElemFuryCl"  name="Elemental Fury Form Gr Cleave"/>        <!-- PHB2 Druid Varient Elemental Fury Form 18th -->
+  
+    <!-- Planetouched Spell-Like Abilities -->
+    <value id="PtSp"        name="Planetouched Spell-Like Ability"/>
+  
+    <!-- Touch Attacks Weapons -->
+    <value id="TouchWep"    name="Touch Attack Weapon"/>
+    <!-- ART Tags -->
+    <value id="raS2MinAC"   name="Tough Hides ART"/>
+
+    <!-- Spell Adjustment Tags -->
+    <value id="UndeadAnat"  name="Undead Anatomy Spell Adjustment"/>
+    <value id="UndeadAna2"  name="Undead Anatomy 2"/>
+    <value id="UndeadAna3"  name="Undead Anatomy 2"/>
+  </group>
+
+<!-- Group Dragonborn custom tags -->
+  <group id="Dragonborn" name="Dragonborn Race">
+    <!-- Breath Weapon Energy tags -->
+    <value id="Acid"        name="Acid Damage"/>
+    <value id="Elec"        name="Electricty Damage"/>
+    <value id="Fire"        name="Fire Damage"/>
+    <value id="Cold"        name="Fire Damage"/>
+  </group>
+
+<!-- Group Shifter Race custom tags -->
+  <group id="Shifter" name="Shifter Race">
+    <!-- Shifter feat tags -->
+    <value id="Feat"        name="Shifter Feat"/>
+    <value id="Greatrend"   name="Greatrend Feat"/>
+    <!-- Shifter shifting tags -->
+    <value id="Shifting"    name="Shifting Activated"/>
+    <value id="Hybrid"      name="Hybrid Alt Form Activated"/>
+    <!-- Shifter Types tags -->
+    <value id="Beasthide"   name="Beasthide Shifter"/>
+    <value id="Cliffwalk"   name="Cliffwalk Shifter"/>
+    <value id="Dreamsight"  name="Dreamsight Shifter"/>
+    <value id="Gorebrute"   name="Gorebrute Shifter"/>
+    <value id="Longstride"  name="Longstride Shifter"/>
+    <value id="Longtooth"   name="Longtooth Shifter"/>
+    <value id="Razorclaw"   name="Razorclaw Shifter"/>
+    <value id="Swiftwing"   name="Swiftwing Shifter"/>
+    <value id="Truedive"    name="Truedive Shifter"/>
+    <value id="Wildhunt"    name="Wildhunt Shifter"/>
+    <!-- lycanthrope heritage tags -->
+    <value id="Heritage"    name="Lycanthrope Heritage"/>
+    <value id="Bear"        name="Bear Heritage"/>
+    <value id="Boar"        name="Boar Heritage"/>
+    <value id="Rat"         name="Rat Heritage"/>
+    <value id="Tiger"       name="Tiger Heritage"/>
+    <value id="Wolf"        name="Wolf Heritage"/>
+    <value id="Wolverine"   name="Wolverine Heritage"/>
+  </group>
+
+<!-- Group Runeforged Race custom tags -->
+  <group id="Runeforged" name="Ruenforged Race">
+    <!-- Armor tags -->
+    <value id="Armor"       name="Runeforged Armor"/>
+    <value id="Armored"     name="Armored Body"/>
+    <value id="Adamantine"  name="Adamantine Body"/>
+    <value id="Composite"   name="Composite Plating Body"/>
+    <value id="Ironwood"    name="Ironwood Body"/>
+    <value id="Mithral"     name="Mithral Body"/>
+    <value id="Unarmored"   name="Unarmored Body"/>
+    <value id="Spikes"      name="Armor Spikes"/>
+    <value id="Slam"        name="Runeforged Slam Attack"/>
+  </group>
+
+<!-- Group Sub Skill custom tags -->
+  <group id="SubSkill" name="Sub-Skills">
+    <value id="skAcrobat"   name="Acrobatics Sub-skill"/> 
+    <value id="skS2ClSr"    name="Caster Level vs SR Sub-skill"/>
+    <value id="skConcent"   name="Concentration Sub-skill"/>
+    <value id="skDisable"   name="Disable Device Sub-skill"/>
+    <value id="skDiplo"     name="Diplomacy Sub-skill"/>
+    <value id="skHandleAn"  name="Handle Animal Sub-skill"/>
+    <value id="skS2MonLor"  name="Knowledge Monster Sub-skill"/>
+    <value id="skPercep"    name="Perception Sub-skill"/>
+    <value id="skSpellcr"   name="Spellcraft Sub-skill"/>
+    <value id="skSurvival"  name="Survival Sub-skill"/>
+    <value id="skUseMagic"  name="Use Magic Device Sub-skill"/>
+  </group>
+
+<!-- Magic Item Group custom tags -->
+  <group id="iS2Aaqa" name="AoW Weapon">
+    <value id="Both"        name="Lighting and Aaqa swords equipped"/> 
+  </group>
+
+<!-- Sneak Attack Damage inherited from the wMain damage tag -->
+  <group
+    id="SneakDmg"
+    visible="no"
+    inherit="wMain">
+  </group>
+
+<!-- Sneak Attack weapon tags inherited from the IsWeapon tag grou-->
+  <group
+    id="SneakWep"
+    visible="no"
+    inherit="IsWeapon">
+  </group>
+    
+</document>

@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[
+6/1/2014
+-Scripted the "Captian's Locker" to work with Fire as She Bears.
+-Added "Healing Sting" allowed for "Razor Coast/Skull and Shackles" campaigns.
+
+4/3/2014
+-Added "Bowsprit of Defense, Minor" campaign magic item.
+
+2/16/2014
+-Added the "Whale Skull, Arcane" from the Ripetide Cove.
+
+12/29/2013
+-Removed the UE version of the Sextant, when RC is turned on, and for now we will play with the version from RC.
+
+7/28/2013
+-Fixed text on "Aquatic Born" Razor Coast trait.
+
+4/1/2012
+-Added "Corsair" fighter archetype.
+-Added "Freebooter" ranger archetype.
+
+3/10/2012
+-Moved "Acrobatics (Ship)" to the Sub-skill file.
+-Added in TWF and Weapon Finease rules.
+
+
+2/27/2011
+-Added "Lizardfolk" as a playable race for Razor Coast campaign.
+-Added "Acrobatics(Ship)" skill for Razor Coast Campaign.
+-Changed "Sailor's Balance" and "Sea Legs" to give a Trait bonus to the Acrobstics(Ship).
+
+11/27/2010
+-Fixed Rich Parents Trait.  The core version gets hidden and a new version appears.]]></info_history>
+    </fileinfo>
+  <thing id="trRcSeaWol" name="Sea Wolf" description="Raiding and pillaging other communities is a key element of your homeland&apos;s culture. You send out hosts of warriors to prove themselves in months-long sea voyages against other nations. Such raids are not seen as crimes in your homeland, but as a test of strength and ability. You are an expert naval raider, ranging far and wide in search of booty and fame. You begin play with one of the following weapons: short sword, cutlass, or rapier.  This weapon is free and is of masterwork quality.  You also gain a +2 trait bonus on attack rolls when boarding an enemy ship." compset="Trait" summary="You gain a +1 trait bonus on attack rolls when boarding an enemy ship." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Religion"/>
+    </thing>
+  <thing id="trRcPerlDi" name="Pearl Diver" description="You spent many months aboard the pearl ships. These ships would gather young men who would dive into the coral reefs and search for oysters. The longer one could hold their breath the better his chance was of getting an oyster with a pearl. You can now hold your breath for three times your Con score instead of the normal two times. Your ability to hold your breath also makes you more resilient against gas attacks allowing you to gain a +2 trait bonus on saving throws vs any gas related attacks." compset="Trait" summary="You can now hold your breath for three times your Con score instead of the normal two times. Your ability to hold your breath also makes you more resilient against gas attacks allowing you to gain a +2 trait bonus on saving throws vs any gas related attacks." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trRcDekHan" name="Deckhand" description="Most of the sailors on a large ship are deckhands - that is, able-bodied seamen who handle the ship’s sails, lines, small boats, and deck maintenance as directed by their boatswains or officers. You are an experienced deck hand and gain a +1 trait bonus on Profession(sailor) and Climb checks." compset="Trait" summary="You are an experienced deck hand and gain a +1 trait bonus on Acrobatics and Climb checks." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="PreLevel" priority="5000">~Pre-Attributes 5,000
+#applybonus[BonTrait,hero.childfound[skProfSail],1]
+#applybonus[BonTrait,hero.childfound[skClimb],1]</eval>
+    </thing>
+  <thing id="trRcPilot" name="Pilot" description="The pilot is the ship’s officer in charge of navigation. On smaller vessels, the ship’s captain or master serves as its pilot, but on larger ships the pilot is one of the officers who performs her duties under the captain’s supervision. You gain a +1 trait bonus on Profession (sailor) and Knowledge (geography) checks. Additionally while aboard a ship you always know where true north lies." compset="Trait" summary="You gain a +1 trait bonus on Profession(sailor) and Knowledge(geography) checks. Additionally while aboard a ship you always know where true north lies." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Religion"/>
+    <eval phase="PreLevel" priority="5000">~Pre-Attributes 5,000
+#applybonus[BonTrait,hero.childfound[skProfSail],1]
+#applybonus[BonTrait,hero.childfound[skKnowGeog],1]</eval>
+    </thing>
+  <thing id="trRcSurgeo" name="Ship&apos;s Surgeon" description="You are experienced at treating injuries and wounds. Small ships rarely carry a surgeon, but even a small crew has at least one or two members who are skilled in healing. You gain a +2 trait bonus on Heal checks, and Heal is always a class skill for you. In addition you may cast {I}Stabilize{/I} as a spell-like ability a number of times per day equal to your character level." compset="Trait" summary="You gain a +2 trait bonus on Heal checks, and Heal is always a class skill for you." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spStabili0"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Usage" tag="Day"/>
+    <eval phase="PreAttr" priority="5000"><![CDATA[~Pre-Attributes 5,000
+#applybonus[BonTrait,hero.childfound[skHeal],2]
+#makeclassskill[skHeal]
+
+field[trkMax].value += #totallevelcount[]
+
+field[abValue].value += 1
+field[livename].text = field[thingname].text & " CL" & field[abValue].value]]></eval>
+    </thing>
+  <thing id="trRcWindFi" name="Windfinder: Alter Winds" description="In some seafaring societies, a ship&apos;s crew is not complete without a windfinder--a character whose spells can soothe or command the winds. A windfinder is usually a bard or a druid, but sorcerers and wizards can fill this job as well, provided they know the right spells. The windfinder&apos;s duties are generally not as militant or officious as a ship&apos;s mage or ship&apos;s prelate; few ships carry all three.  You are able to manipulate the winds turning them slightly in your favor. This ability only affects ships that use sails and wind for movement. You can increase the speed of your ship by +5ft of its maximum speed as listed on page 215 of the Game Mastery Guide. In addition one time per day you may use the spell {I}Alter Winds{/i} as a spell-like ability with your caster level equal to half your character level.\n\n{B}Note:{/b} The exact rules effect of this trait will be decided once the Ship-to-ship combat rules are selected." compset="Trait" summary="You can increase the speed of your ship by +5ft of its maximum speed as listed on page 215 of the Game Mastery Guide." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpInfo" tag="spAlteWin1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Magic"/>
+    <tag group="User" tag="Tracker"/>
+    <eval phase="Final"><![CDATA[field[abValue].value += maximum(round(#totallevelcount[]/2,0,-1),1)
+
+
+field[livename].text = field[thingname].text & " CL" & field[abValue].value]]></eval>
+    </thing>
+  <thing id="trRcBosn" name="Boatswain" description="Boatswain is often abbreviated (and pronounced) bos&apos;n or bosun. A boatswain is an experienced sailor who supervises the deckhands in performing their duties and keeps them in line. He is also skilled in deck rigging and handling cargo - setting up cargo booms, rigging hoists to raise heavy loads over the side, lashing ships together, and other such tasks. You gain a +1 trait bonus on Profession(sailor) and Intimidate checks." compset="Trait" summary="You gain a +1 trait bonus on Profession(sailor) and Knowledge(nature) checks." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="PreLevel" priority="5000">~Pre-Attributes 5,000
+#applybonus[BonTrait,hero.childfound[skProfSail],1]
+#applybonus[BonTrait,hero.childfound[skIntim],1]</eval>
+    </thing>
+  <thing id="trRcNatSwi" name="Natural Swimmer" description="You have a love of water and swiming and your oldest memory is of swimming in the ocean. You gain a +2 trait bonus on Swim checks, and swim is always a class skill for you." compset="Trait" summary=" You gain a +2 trait bonus on Swim checks, and swim is always a class skill for you." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+#applybonus[BonTrait,hero.childfound[skSwim],2]
+#makeclassskill[skSwim]</eval>
+    </thing>
+  <thing id="trRcOldSal" name="Old Salt" description="You are an old hand at shipboard life, having mastered the myriad skills that are required of an experienced sailor. Additionally, you have an eye for the weather. You gain a +1 trait bonus on Acrobatics and Profession(sailor) checks. Additionally, you can use a Profession (sailor) check to predict the weather (as described in the Survival skill on page 107 of the Core Rulebook)." compset="Trait" summary="You gain a +1 trait bonus on Acrobatics and Profession(sailor) checks. Additionally, you can use a Profession (sailor) check to predict the weather (as described in the Survival skill on page 107 of the Core Rulebook)." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="5000">~Pre-Attributes 5,000
+#applybonus[BonTrait,hero.childfound[skAcrobat],1]
+#applybonus[BonTrait,hero.childfound[skProfSail],1]</eval>
+    </thing>
+  <thing id="trRcSailBa" name="Sailor’s Balance" description="You are experienced with the rolling decks of the ship and maintain strong footing, even in a terrible storm. You gain a +3 trait bonus on Acrobatics checks made to keep your balance while on the deck or in the rigging of a ship. In addition you can move across a slippery deck at your normal speed." compset="Trait" summary="You gain a +3 trait bonus on Acrobatics checks made to keep your balance while on the deck or in the rigging of a ship. In addition you can move across a slippery deck at your normal speed." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <bootstrap thing="skS2AcroSh"></bootstrap>
+    <eval phase="PreLevel" priority="5000">#applybonus[BonTrait, Hero.child[skS2AcroSh], 3]</eval>
+    </thing>
+  <thing id="trRcSeaLeg" name="Sea Legs" description="You are accustomed to the rolling motion on board a ship and can use this motion to your advantage. As long as you are on board a ship, you get a +2 trait bonus on Acrobatics checks to keep your balance and on initiative checks." compset="Trait" summary="As long as you are on board a ship, you get a +2 trait bonus on Acrobatics checks to keep your balance and on initiative checks." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <fieldval field="actName" value="On board Ship"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <bootstrap thing="skS2AcroSh"></bootstrap>
+    <eval phase="PreLevel" priority="5000">~ Give +2 trait bonus to Acrobitics(Ship)
+#applybonus[BonTrait, Hero.child[skS2AcroSh], 2]
+
+~ If not active we are done
+doneif (field[abilActive].value = 0)
+
+#applybonus[BonTrait, hero.child[Initiative], 2]</eval>
+    </thing>
+  <thing id="trRcShipMa" name="Ship’s Mage" description="You form a potent supernatural bond with a ship. Your spells are safer when cast aboard this ship. Spells you cast while aboard a ship that is familiar to you deal no damage to that ship. It takes one week of living and working aboard a ship to become familiar with it. You can only be familiar with one ship at a time; the familiarity with a particular ship fades should you become familiar with another ship. Additionally, should you remain away from the ship you are familiar with for more than a month, that familiarity fades as well." compset="Trait" summary="Spells you cast while aboard a ship that is familiar to you deal no damage to that ship." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Magic"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trRcStormM" name="Storm Magic" description="You gain a boost in spellcasting power during storms. All spells you cast while you are affected by a storm (either natural or magical) are at +1 caster level." compset="Trait" summary=" All spells you cast while you are affected by a storm are at +1 CL." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <fieldval field="actName" value="Affected by a storm"/>
+    <fieldval field="abValue" value="1"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="trCategory" tag="Magic"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If not active get out now
+doneif (field[abilActive].value <> 1)
+
+~ Loop through all Arcane/Divine classes
+foreach pick in hero from Class where "CasterSrc.Divine|CasterSrc.Arcane"
+  ~ increase/decrease caster level
+  eachpick.field[cCasterLev].value += field[abValue].value
+nexteach]]></eval>
+    </thing>
+  <thing id="trRcSteamM" name="Steam Magic" description="You are skilled at casting fiery spells into the water, causing terrible gouts of scalding steam. You need not make a Spellcraft check to successfully cast spells or use spell-like abilities with the fire descriptor targeted on water (see page 432 of the Core Rulebook)." compset="Trait" summary="You need not make a Spellcraft check to successfully cast spells or use spell-like abilities with the fire descriptor targeted on water (see page 432 of the Core Rulebook)." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Magic"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trRcSunkSo" name="Sunken Song" description="You can project your voice underwater. By tremendous effort of will and sheer musical ability, you can use Perform (sing) underwater even though you cannot breathe water. This is more like a forceful humming than singing, and words are not intelligible, but you are able to produce bardic music effects. The maximum distance of such effects (where applicable) is unchanged. This trait does not help with Perform checks involving oratory or wind instruments." compset="Trait" summary="By tremendous effort of will and sheer musical ability, you can use Perform (sing) underwater even though you cannot breathe water." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Campaign"/>
+    </thing>
+  <thing id="trRcToothB" name="Toothed Blow" description="You are able to hammer your foes more effectively underwater. When making unarmed strikes, your attacks count as piercing weapons as well as bludgeoning weapons, but only when underwater. This allows you to avoid the penalties for using bludgeoning weapons underwater when making unarmed strikes." compset="Trait" summary="When making unarmed strikes, your attacks count as piercing weapons as well as bludgeoning weapons, but only when underwater." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="mRcSharksk" name="Sharkskin" description="Similar to leather armor in appearance, sharkskin is treated so that the sharp toothlike scales covering the skin remain attached to the outside of thea rmor. Additionally, shark teeth are embedded along the forearms, shoulders, and legs, which count as armor spikes. Sharkskin armor provides a +6 circumstance bonus on Escape Artist checks made when the wearer is bound with rope or similar easily cut bindings." compset="Armor">
+    <fieldval field="gSizeCost" value="85"/>
+    <fieldval field="gWeight" value="15"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="ArmorClass" tag="Light"/>
+    <tag group="ArmorAC" tag="3"/>
+    <tag group="ArmorMaxDx" tag="6"/>
+    <tag group="ArmorCheck" tag="1"/>
+    <tag group="ArmorArcFl" tag="10"/>
+    </thing>
+  <thing id="mRcShell" name="Shell" description="This armor is created from specially treated tortoise or monstrous crab shells. The armormaking process softens the shells, making them far more pliable and likely to bend instead of shatter when struck. Shell armor includes a breastplate, shoulder guards, and even gauntlets created from smaller and smaller shells. The main difference between shell and chitin armor is the degree of coverage; shell armor usually leaves the legs bare." compset="Armor">
+    <fieldval field="gSizeCost" value="25"/>
+    <fieldval field="gWeight" value="20"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="ArmorClass" tag="Medium"/>
+    <tag group="ArmorAC" tag="4"/>
+    <tag group="ArmorCheck" tag="2"/>
+    <tag group="ArmorMaxDx" tag="3"/>
+    <tag group="ArmorArcFl" tag="20"/>
+    </thing>
+  <thing id="mRcChitin" name="Chitin" description="Chitin armor is constructed from the shells of giant vermin or similar creatures. For aquatic races, monstrous crabs are the most popular source for chitin armor. The chitin is treated for flexibility and often cut and reshaped in long strips bound together by tightly woven cord where necessary." compset="Armor">
+    <fieldval field="gSizeCost" value="75"/>
+    <fieldval field="gWeight" value="20"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="ArmorClass" tag="Medium"/>
+    <tag group="ArmorAC" tag="5"/>
+    <tag group="ArmorMaxDx" tag="4"/>
+    <tag group="ArmorCheck" tag="3"/>
+    <tag group="ArmorArcFl" tag="30"/>
+    </thing>
+  <thing id="ipRcKeel" name="Keel" description="{b}Weight:{/b} +2 lbs.\nThis is a tapered ridge, like the long fin of an eel, that runs along the middle of the outer surface of a piece of armor, usually on the chest, back, and helmet. Adding a keel to a suit of armor lets the wearer move more efficiently through water. A suit of armor fitted with a keel grants the wearer a +2 circumstance bonus on Swim checks. A keel does not confer any benefit to shields." compset="ItemPower" summary="+2 circumstance bonus on Swim checks">
+    <fieldval field="iPriceCash" value="50"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="PowerReq" tag="Armor"/>
+    <tag group="Helper" tag="NotMagicPw"/>
+    <tag group="PowerType" tag="Armor"/>
+    <eval phase="PreAttr" priority="5000">~Pre-Attributes 5,000
+~Only apply the The bonus if the armor is worn
+If (container.parent.field[gIsEquip].value = 1) then
+   #skillbonus[skSwim] += 2
+endif</eval>
+    <eval phase="First" priority="5000" index="2">~ Increase our weight by 2
+container.parent.field[gWeight].value += 2
+
+~Tells HL for custom magic armor that this power does not require +1
+~perform assign[Helper.NotMagicPw]</eval>
+    </thing>
+  <thing id="gRcSwimGog" name="Swimming Goggles" description="This is a leather frame containing a clear piece of glass (sometimes two) made to fit tightly over the eyes. Wearing a set of swimming goggles improves visibility underwater. In clear water, the wearer’s vision extends to 6d8x10 feet. Swimming goggles don’t make it any easier to see through murky or fast-moving water." compset="Gear">
+    <fieldval field="gCost" value="15"/>
+    <fieldval field="gWeight" value=".5"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="Hero" tag="EqpEyes"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="gType" tag="AdventGear"/>
+    </thing>
+  <thing id="gRcAirPlnt" name="Air Plant" description="The air plant is a bizarre form of pond vegetation whose spongy structure produces and stores air, keeping the plant at the surface so it can receive adequate light. This mass remains alive and continues to produce air even after being cut from the plant, provided it is kept moist and well lit. When placed in the mouth, a fist-sized piece of this material can provide enough air to sustain a Medium air-breathing creature for 5 minutes. After that time, the submerged creature must begin holding its breath and risks drowning. The air plant dies after use and can’t be recharged-another portion must be procured." compset="Gear">
+    <fieldval field="gCost" value="25"/>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="gType" tag="SpecSubs"/>
+    </thing>
+  <thing id="gRcFloatBl" name="Float Bladder" description="This is an emergency flotation device for those who find themselves cast overboard. It can also be used to support a nonswimmer being assisted through water. A float bladder is a sack of oiled hide that can be filled with air. It has a long neck that is knotted shut after filling and ropes or straps to fasten it to the wearer. A float bladder can keep afloat one Medium creature. Treat this as a leather object (hardness 2); if it takes 5 or more points of damage, the skin is punctured. The round after puncturing, the user must begin making Swim checks to remain afloat. A punctured or deflated float bladder is a burden to a swimmer, imposing a -2 penalty on Swim checks if it is not removed." compset="Gear">
+    <fieldval field="gCost" value="10"/>
+    <fieldval field="gWeight" value="3"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="gType" tag="AdventGear"/>
+    </thing>
+  <thing id="gRcHatBico" name="Hat, Bicorne" description="A bicorne is a semicircular hat usually worn by captains and admirals. It is braided and showy, the better to call out the high rank of its wearer." compset="Gear">
+    <fieldval field="gCost" value="50"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="gType" tag="Clothing"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="GearSize"/>
+    </thing>
+  <thing id="gRcHatTric" name="Hat, Tricorne" description="A tricorne is the classic three-cornered hat. It is generally worn by the upper classes and can be both civilian and military garb. A tricorne can range from a simple leather or felt version to a very fancy silk item with feathers. The price given here is for a well-made felt tricorne." compset="Gear">
+    <fieldval field="gCost" value="15"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="gType" tag="Clothing"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="GearSize"/>
+    </thing>
+  <thing id="gRcOilskin" name="Oilskin Suit" description="Inhabitants of rainy climates and misty seacoasts, and those who make their living from the sea, need reliable clothing to keep out the dampness and chill. An oilskin suit consists of high boots, heavy trousers, a long coat or cape, and a wide-brimmed hat. These garments are made of heavy-duty cloth such as cotton or linen, then waterproofed with flaxseed oil." compset="Gear">
+    <fieldval field="gCost" value="10"/>
+    <fieldval field="gWeight" value="10"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="gType" tag="AdventGear"/>
+    <tag group="Hero" tag="EqpBody"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="GearSize"/>
+    </thing>
+  <thing id="trRcMastSa" name="Master Sailor" description="You worked all your life on and around ships picking up many different areas of skill. You gain a +2 trait bonus in Profession (sailor), and Profession (sailor) is always a class skill for you." compset="Trait" summary="You gain a +2 trait bonus in Profession (sailor), and Profession (sailor) is always a class skill for you." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="PreLevel" priority="5000">~Pre-Attributes 5,000
+#applybonus[BonTrait,hero.childfound[skProfSail],2]
+#makeclassskill[skProfSail]</eval>
+    </thing>
+  <thing id="cFtrWGuns" name="Weapon Training: Guns" description="Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls.\n\nEvery four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups.\n\nA fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter&apos;s Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group.\n\n{b}Guns{/b}: Any type of handheld firearm including pistols, rifles, or muskets." compset="CustomSpec" summary="Guns" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="SpecSource" tag="cHelpFtr" name="Fighter" abbrev="Fighter"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="wFtrGroup" tag="RcGun"/>
+    <tag group="SpecType" tag="Attack"/>
+    <eval phase="Render" priority="1000" index="2">call cFtrWepSum</eval>
+    </thing>
+  <thing id="cRgrGuns" name="Combat Style (Firearms)" description="Allows the ranger to pick from a variety of firearm-related combat style bonus feats." compset="CustomSpec" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Secondary" name="Secondary" abbrev="Secondary"/>
+    <tag group="SpecSource" tag="cHelpRgr" name="Ranger" abbrev="Ranger"/>
+    <tag group="fInclude" tag="fFarShot"/>
+    <tag group="fInclude" tag="fPFgunslin"/>
+    <tag group="fInclude" tag="fPointBlnk"/>
+    <tag group="fInclude" tag="fPrecShot"/>
+    <tag group="fInclude" tag="fQuickDraw"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~at level 6, we add more bonus feats available (we add them to ourself, and then at First/1500, all fInclude tags are forwarded to the class)
+      if (hero.tagcount[Classes.Ranger] >= 6) then
+        perform assign[BonusFor.RgrGuns6]
+        endif
+
+      ~at level 10, we add more bonus feats available (we add them to ourself, and then at First/1500, all fInclude tags are forwarded to the class)
+      if (hero.tagcount[Classes.Ranger] >= 10) then
+        perform assign[BonusFor.RgrArch10]
+        endif]]></eval>
+    </thing>
+  <thing id="fRcImpPr" name="Improved Precise Shot" description="{i}Your ranged attacks ignore anything but total concealment and cover.{/I}\n\n{b}Prerequisites{/b}: Dex 19, Point-Blank Shot, Precise Shot, base attack bonus +11.\n\n{b}Benefit{/b}: Your ranged attacks ignore the AC bonus granted to targets by anything less than total cover, and the miss chance granted to targets by anything less than total concealment. Total cover and total concealment provide their normal benefits against your ranged attacks.\n\n{b}Normal{/b}: See the normal rules on the effects of cover and concealment in Combat." compset="Feat" summary="Ignore certain AC / concealment bonuses. Auto-hit target in Grapple." uniqueness="useronce">
+    <comment>Hidden</comment>
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="RgrGuns6" name="Ranger Guns Style Level 6"/>
+    <tag group="BonusFor" tag="RgrArch6" name="Ranger Archery Style Level 6" abbrev="Ranger Archery Style Level 6"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <exprreq message="Base attack bonus +11 required." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 11]]></exprreq>
+    <exprreq message="Dexterity 19 required." iserror="no"><![CDATA[child[aDEX].field[aFinalVal].value >= 19]]></exprreq>
+    <exprreq message="Point Blank Shot required." iserror="no"><![CDATA[#hasfeat[fPointBlnk] <> 0]]></exprreq>
+    <exprreq message="Precise Shot required." iserror="no"><![CDATA[#hasfeat[fPrecShot] <> 0]]></exprreq>
+    </thing>
+  <thing id="fRcDdAim" name="Deadly Aim" description="{i}You can make exceptionally deadly ranged attacks by pinpointing a foe&apos;s weak spot, at the expense of making the attack less likely to succeed.{/I}\n\n{b}Prerequisites{/b}: Dex 13, base attack bonus +1.\n\n{b}Benefit{/b}: You can choose to take a –1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by –1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage." compset="Feat" uniqueness="useronce">
+    <comment>Hidden</comment>
+    <usesource source="CampRazorC"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="RgrGuns6"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="User" tag="Activation" name="Activation" abbrev="Activation"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      var bonus as number
+      bonus = hero.child[Attack].field[tAtkBase].value / 4
+      field[abValue].value += round(bonus,0,-1) + 1
+
+      field[abValue2].value += field[abValue].value * 2
+
+      field[livename].text = "Deadly Aim +" & field[abValue2].value & "/-" & field[abValue].value
+
+      if (field[abilActive].value <> 0) then
+        hero.child[Attack].field[tAtkRanged].value -= field[abValue].value
+
+        foreach pick in hero from BaseWep where "wCategory.Range?"
+          eachpick.field[wDamBonus].value += field[abValue2].value
+          nexteach
+        endif]]></eval>
+    <exprreq message="Base attack bonus +1 required." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 1]]></exprreq>
+    <exprreq message="Dexterity 13 required." iserror="no"><![CDATA[child[aDEX].field[aFinalVal].value >= 13]]></exprreq>
+    </thing>
+  <thing id="fRcRapiGun" name="Rapid Firearm Reload" description="Choose a type firearm. You can reload such weapons quickly.\n\n{b}Prerequisite{/b}: Weapon Proficiency (firearm type choosen).\n\n{b}Benefit{/b}: The time required for you to reload your firearm is reduced to a free action (for a pistols) or a move action (for a rifle). Reloading a firearm still provokes an attack of opportunity.\n\nIf you have selected this feat for pistol, you may fire that weapon as many times in a full-attack action as you could attack if you were using a bow.\n\n{b}Special{/b}: You can gain Rapid Firearms Reload multiple times. Each time you take the feat, it applies to a new type of firearm." compset="Feat" summary="You can reload fast with one type of firearm." uniqueness="useronce">
+    <comment>Hidden</comment>
+    <fieldval field="usrCandid1" value="component.BaseWep &amp; !Helper.NoSelect &amp; !component.Specific &amp; !wCategory.Ammunition &amp; wFtrGroup.RcGun"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="BonusFor" tag="RgrGuns6"/>
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~ If we haven't chosen anything, get out now
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Assign the appropriate tag to all weapons that meet the criteria
+      var id as string
+      id = field[usrChosen1].chosen.idstring
+      foreach pick in hero where "IsWeapon." & id
+        perform eachpick.assign[Broadcast.RapidRel]
+        nexteach]]></eval>
+    </thing>
+  <thing id="s2LvlBonus" name="Shadow d20 1/2 AC &amp; Saves Bonus" description="This gives a level bonus of 1/2 character level to AC and saves.  This is used for campaigns that are low in magic." compset="Simple" uniqueness="unique">
+    <eval phase="PreLevel" priority="5000">var Bonus as number
+Bonus = round(#totallevelcount[]/2,0,-1)
+hero.child[ArmorClass].field[Bonus].value += Bonus
+hero.child[svFort].field[Bonus].value += Bonus
+hero.child[svRef].field[Bonus].value += Bonus
+hero.child[svWill].field[Bonus].value += Bonus
+
+#value2[abS2RcCamp] += Bonus</eval>
+    </thing>
+  <thing id="meCamRazor" name="Razor Coast mechanic" description="Note this is now HIDDEN!" compset="Mechanics">
+    <usesource source="CampRazorC"/>
+    <tag group="wFtrGroup" tag="RcGun" name="Guns - Razor Coast"/>
+    <bootstrap thing="s2LvlBonus"></bootstrap>
+    <bootstrap thing="s2ActPtBon"></bootstrap>
+    <bootstrap thing="s2LvlAttDm"></bootstrap>
+    <bootstrap thing="abS2RcCamp"></bootstrap>
+    <bootstrap thing="s2GunACBon"></bootstrap>
+    </thing>
+  <thing id="trRcRivFig" name="River Fighter" description="You are used to fighting while swimming.  You may swim downstream or cross-current as a charge if you make your Swim DC by 5 or more." compset="Trait" summary="You may swim downstream or cross-current as a charge if you make your Swim DC by 5 or more." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trRcRivRat" name="River Rat" description="You learned to swim right after you learned to walk. As a youth, a gang of river pirates put you to work swimming in nighttime rivers and canals with a dagger in your teeth so you could sever the anchor ropes of merchant vessels. You gain a +1 trait bonus to damage dealt with a dagger and a +1 trait bonus to Swim checks. Swim is always a class skill for you." compset="Trait" summary=" You gain a +1 trait bonus to damage dealt with a dagger and a +1 trait bonus to Swim checks. Swim is always a class skill for you." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Regional"/>
+    <eval phase="PreLevel" priority="5000">#applybonus[BonTrait,hero.childfound[skSwim],1]
+#makeclassskill[skSwim]</eval>
+    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[~ Go through each dagger pick on the hero
+foreach pick in hero where "IsWeapon.wDagger"
+   ~ Add +1 damage bonus
+   each.field[wDamBonus].value += 1
+nexteach]]></eval>
+    </thing>
+  <thing id="trRcJungFi" name="Jungle Fighter" description="You are sure-footed in jungle environments, and your speed may not be reduced to less than 10 feet by difficult terrain in jungles (meaning you may take a 5-foot step in difficult terrain and not provoke an attack of opportunity)." compset="Trait" summary="Your speed may not be reduced to less than 10 feet by difficult terrain in jungles." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="trRcSpirtT" name="Spirit Talker (Mwangi Faiths)" description="You are a devote of the shamanistic practices of the Mwangi, having little use for the deities of the colonials.  You gain a +1 racial bonus on Will saves against divine spells and spell-like effects employed against you by clerics or paladins of Aroden, Abadar, Iomedae, Gozreh, and Shelyn - but you suffer a -1 penalty on Will saves against divine spells cast by devotees of Mwangi faiths." compset="Trait" summary="Gain a +1 racial bonus on Will saves against divine spells from clerics and paladins of Colonial deities, but suffer a -1 penalty to Will saves from divine spells by devotees of Mwangi faiths." uniqueness="useronce">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="trCategory" tag="Faith"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="spRcAltWi1" name="Alter Winds" description="You subtly enhance or diminish the effects of natural winds within the spell&apos;s area, which is an immobile emanation around a point touched by you as the spell is cast. Within the area, natural (but not magical) wind effects  are either increased or decreased by one step in intensity. The maximum wind force you can affect with this spell is based on your caster level, as shown on the table below. Alter winds has no effect on magical wind effects." compset="Spell">
+    <fieldval field="sRange" value="touch"/>
+    <fieldval field="sDuration" value="1 hour/level"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="yes"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sDuration" tag="Hour"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sCastTime" tag="1Minute"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSubschool" tag="Air"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="s2ActPtBon" name="Shadow d20 +3 Action Points" description="Give a +3 bonus to Action Points." compset="Simple" uniqueness="unique">
+    <eval phase="PostLevel" priority="10001"><![CDATA[
+~ If action points not live then get out now!
+doneif (hero.childlives[hActionPts] <> 1)
+
+~Increase Action Point total for EVERYONE by 3
+#trkmax[hActionPts] += 3
+
+#appenddesc[hActionPts,"{b}Razor Coast{/b} In this campaign you gain an additional 3 action points per level."]]]></eval>
+    </thing>
+  <thing id="trRcAquBor" name="Aquatic Born" description="You have spent so many hours swimming with dolphins that you can now duplicate some of their speed in the water. You gain a swim speed of 10ft." compset="Trait" summary="You gain a 10ft swim speed." uniqueness="useronce">
+    <comment>New Traits for The Razor Coast or any Pirate Like Game.</comment>
+    <usesource source="CampRazorC"/>
+    <tag group="trCategory" tag="Regional"/>
+    <tag group="DescInfo" tag="xSwim"/>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    </thing>
+  <thing id="s2LvlAttDm" name="Shadow d20 1/3 Attack &amp; Dmg Bonus" description="This gives a level bonus of +1 per 3 character level to all attack and damage.  This is used for campaigns that are low in magic." compset="Simple" uniqueness="unique">
+    <eval phase="PreLevel" priority="10000">var Bonus as number
+~ Calc +1 per 3 levels bonus
+Bonus = round(#totallevelcount[]/3,0,-1)
+
+~ Give a Bonus to all weapons
+hero.child[Attack].field[Bonus].value += Bonus
+hero.child[Damage].field[tDamBonus].value += Bonus
+
+~ Set Razor Coast Campaign Thing
+#value[abS2RcCamp] += Bonus</eval>
+    </thing>
+  <thing id="rS2Lizardf" name="Lizardfolk" description="Lizardfolk are proud and powerful reptilian predators that make their communal homes in scattered villages deep within swamps and marshes. Uninterested in colonization of the dry lands and content with the simple weapons and rituals that have served them well for millennia, lizardfolk are viewed by many other races as backwater savages, but within their isolated communities lizardfolk are actually a vibrant people filled with tradition and an oral history stretching back to before humans walked upright.{br}{br}Most lizardfolk stand 6 to 7 feet tall and weigh 200 to 250 pounds, their powerful muscles covered in scales of gray, green, or brown. Some breeds have short dorsal spikes or brightly colored frills, and all swim well by moving with flicks of their powerful 4-foot-long tails. While completely at home in the water, they breathe air and return to their clustered mound-dwellings to breed and sleep. As their reptilian blood makes them sluggish in the cold, most lizardfolk hunt and work during the day and retreat to their homes at night to curl up with other tribesmen in the shared warmth of large peat fires.{br}{br}Though generally neutral, lizardfolks&apos; standoffish demeanor, staunch rejection of civilization&apos;s &quot;gifts,&quot; and legendary ferocity in battle cause them to be viewed negatively by most humanoids. These traits stem from good reasons, however, as their own slow rate of reproduction is no match for warm-blooded humanoids, and those tribes who don&apos;t defend their wetland territories to the last breath quickly find themselves overwhelmed by the mammalian hordes. As for their tendency to consume the bodies of dead friends and enemies alike, the practical lizardfolk are quick to point out that life is hard in the swamp, and nothing should go to waste.{br}{br}The lizardfolk presented here dwell in a swampy environment. Lizardfolk tribes can exist in other environments as well, but they lose their swim speed and instead gain a climb speed of 15 feet." compset="Race">
+    <fieldval field="rSTR" value="2"/>
+    <fieldval field="rCON" value="2"/>
+    <fieldval field="rINT" value="-2"/>
+    <fieldval field="rAC" value="2"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="RaceSize" tag="Medium0" name="Medium" abbrev="Medium"/>
+    <tag group="RaceType" tag="Feature"/>
+    <tag group="HasType" tag="tpHumanoid" name="Humanoid" abbrev="Humanoid"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Shadowd20" tag="Race"/>
+    <tag group="Hero" tag="NoDefComm" name="NoDefComm" abbrev="NoDefComm"/>
+    <bootstrap thing="lDraconic"></bootstrap>
+    <bootstrap thing="raHoldBrea"></bootstrap>
+    <bootstrap thing="raS2LizSwi"></bootstrap>
+    <bootstrap thing="raS2LizNat"></bootstrap>
+    <bootstrap thing="raS2LizAgi"></bootstrap>
+    <bootstrap thing="stReptilia"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    </thing>
+  <thing id="raS2LizSwi" name="Swimming" description="You have a swim speed of 15ft.  This means for each move-action used you can swim 15ft and you receive a +8 racial bonus on swim checks." compset="RaceSpec">
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+~ 15 ft swim speed
+#value[xSwim] += 15]]></eval>
+    </thing>
+  <thing id="raS2LizNat" name="Natural Armor +2" description="You have a natural armor bonus of +2." compset="RaceSpec"></thing>
+  <thing id="raS2LizAgi" name="Agile" description="Lizardfolk gain a +4 racial bonus on Acrobatics checks due to there long tails." compset="RaceSpec">
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+~ +4 to Acrobatics
+#skillbonus[skAcrobat] += 4]]></eval>
+    </thing>
+  <thing id="arS2Corsai" name="Corsair" description="A corsair is a pirate who focuses on shipboard combat, relying on his strength of arms over his agility. He specializes in traditional pirate weapons, but often wears heavier armor than is normally seen on a ship. A corsair moves and fights easily in his armor, however, even in the water. Captains value corsairs because of the skill they exhibit in defending the ship and in boarding actions." compset="ClassVary" uniqueness="unique">
+    <arrayval field="cvBonFtMod" index="1" value="-1"/>
+    <arrayval field="cvBonFtMod" index="3" value="-1"/>
+    <arrayval field="cvBonFtMod" index="5" value="-2"/>
+    <arrayval field="cvBonFtMod" index="7" value="-2"/>
+    <arrayval field="cvBonFtMod" index="9" value="-2"/>
+    <arrayval field="cvBonFtMod" index="11" value="-2"/>
+    <arrayval field="cvBonFtMod" index="13" value="-2"/>
+    <arrayval field="cvBonFtMod" index="15" value="-2"/>
+    <arrayval field="cvBonFtMod" index="17" value="-2"/>
+    <arrayval field="cvBonFtMod" index="19" value="-2"/>
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="AbReplace" tag="cFtrArmor"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <bootstrap thing="fCleave">
+      <containerreq phase="First" priority="500"><![CDATA[count:Classes.Fighter>=2]]></containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="cFtrS2DeFi">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cFtrS2ArPi">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cFtrS2ArPi">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cFtrS2ArPi">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cFtrS2ImDF">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="fGreatClv">
+      <containerreq phase="First" priority="500"><![CDATA[count:Classes.Fighter>=6]]></containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpFtr"/>
+    </thing>
+  <thing id="cFtrS2Wpir" name="Weapon Training (Pirate)" description="Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls.\n\nEvery four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups.\n\nA fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter&apos;s Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group.\n\n{b}Pirate{/b}: crossbow, cutlass, dagger, hook hand, rapier, and short sword." compset="CustomSpec" summary="Guns" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="wFtrGroup" tag="Pirate"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="SpecSource" tag="arS2Corsai"/>
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <eval phase="Render" priority="1000" index="2">call cFtrWepSum</eval>
+    </thing>
+  <thing id="cFtrS2DeFi" name="Deck Fighting" description="A corsair is used to fighting on crowded decks, and isn&apos;t fazed by fighting multiple opponents at once. At 2nd level, he gains Cleave as a bonus feat. He may use this feat even if he does not meet the prerequisites. A corsair does not take the normal -2 penalty to his AC when using the Cleave feat. This ability replaces the fighter&apos;s 2nd-level bonus feat." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="11000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] = 0)
+
+~ If we don't have Cleave feat get out now!
+doneif (hero.childlives[fCleave] <> 1)
+
+~ If cleave feat is active remove the -2 penalty to AC
+if (hero.child[fCleave].field[abilActive].value <> 0) then
+   hero.child[ArmorClass].field[Penalty].value += 2
+endif]]></eval>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] = 0)
+
+#appenddesc[fCleave,"{b}Addition from Deck Fighting{/b}: You longer take the -2AC penalty."]]]></eval>
+    </thing>
+  <thing id="cFtrS2ArPi" name="Armored Pirate" description="A corsair wears heavier armor than is common aboard a ship. At 3rd level, the corsair reduces the armor check penalty of any light armor he wears to 0 for purposes of Acrobatics and Swim checks. At 7th level, this becomes true of medium armor as well. At 11th level, it includes heavy armor. This ability replaces armor training." compset="ClSpecial" summary="Reduces armor check penalty for Acrobatics &amp; Swim checks.">
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[~ Set the list name
+field[listname].text = field[thingname].text & " (Light Armor)"
+If (field[xIndex].value >= 2) then 
+   field[listname].text = field[thingname].text & " (Medium Armor)"
+Endif
+If (field[xIndex].value >= 3) then
+  field[listname].text = field[thingname].text & " (Heavy Armor)"
+Endif
+
+~only run the rest for the first copy
+doneif (tagis[Helper.FirstCopy] = 0)
+
+~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] = 0)
+
+var ArmorType as string
+var ACP as number
+
+~ Set the type of armor the ability uses
+If (field[xCount].value = 1) then 
+  ArmorType = "ArmorClass.Light"
+ElseIf (field[xCount].value = 2) then 
+  ArmorType = "ArmorClass.Light | ArmorClass.Medium"
+Elseif (field[xCount].value >= 3) then 
+  ArmorType = "ArmorClass.Light | ArmorClass.Medium | ArmorClass.Heavy"
+Endif
+
+~ Find the armor ACP so we know how much to reduce
+ACP = 0
+foreach pick in hero from BaseArmor where ArmorType
+  If (eachpick.field[gIsEquip].value <> 0) then
+     ACP -= eachpick.field[arArmorChk].value
+  Endif
+nexteach
+
+~ Reduce Swim and Acrobatics by the ACP amount
+hero.child[skSwim].field[Penalty].value += ACP
+hero.child[skAcrobat].field[Penalty].value += ACP]]></eval>
+    </thing>
+  <thing id="cFtrS2ImDF" name="Improved Deck Fighting" description="At 6th level, the corsair gains Great Cleave as a bonus feat. He may use this feat even if he does not meet the prerequisites. A corsair does not take the normal -2 penalty to his AC when using the Great Cleave feat. This ability replaces the fighter&apos;s 6th level bonus feat." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="Render" priority="10000"><![CDATA[
+~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] = 0)
+
+#appenddesc[fGreatClv,"{b}Addition from Deck Fighting{/b}: You longer take the -2AC penalty."]]]></eval>
+    </thing>
+  <thing id="arS2Freebo" name="Freebooter" description="A freebooter is a natural leader, a pirate who works well with a variety of people and in a variety of roles. Her specialized combat tactics help organize and direct a crew, and freebooters&apos; talents are in high demand. Most freebooters work as independent agents. A freebooter signs on with a crew when she feels the urge to travel, and often moves to a new ship when her contract ends." compset="ClassVary" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="Helper" tag="RemovePrim"/>
+    <tag group="Helper" tag="RemFavEnem"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cWoodStrid"/>
+    <bootstrap thing="cRagS2FrBa">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2FrBa">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2FrBa">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2FrBa">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2FrBo">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2FaSw">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cRagS2FrBa">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpRgr"/>
+    </thing>
+  <thing id="cRagS2FrBa" name="Freebooter&apos;s Bane" description="At 1st level, the freebooter can, as a move action, indicate an enemy in combat and rally her allies to focus on that target. The freebooter and her allies gain a +1 bonus on weapon attack and damage rolls against the target. This ability applies only to allies who can see or hear the freebooter and who are within 30 feet of the freebooter at the time she activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1.{br}{br}The freebooter&apos;s bane lasts until the target dies or the freebooter selects a new target. This ability replaces favored enemy." compset="ClSpecial">
+    <tag group="User" tag="Activation"/>
+    <tag group="SpecType" tag="Aura"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+field[listname].text = field[thingname].text & " (+" & field[xIndex].value & ")"
+
+~only run the rest for the first copy
+doneif (tagis[Helper.FirstCopy] = 0)
+
+~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] = 0)
+
+~ Set our bonus based on the counts added to hero
+field[abValue].value += field[xCount].value 
+
+field[abSumm].text = "+" & field[abValue].value & " to hit & damage versus selected target."
+
+field[livename].text = field[thingname].text & " +" & field[abValue].value
+
+~ If active give bonus to hit and damage
+If (field[abilActive].value <> 0)then
+  hero.child[Attack].field[Bonus].value += field[abValue].value
+  hero.child[Damage].field[tDamBonus].value += field[abValue].value
+Endif]]></eval>
+    </thing>
+  <thing id="cRagS2FrBo" name="Freebooter&apos;s Bond" description="At 4th level, a freebooter forms a bond with her crewmates. This bond allows her to spend a move action to grant her allies extra combat prowess when they work as a team. All allies within 30 feet who can see or hear the freebooter gain an additional +2 bonus on attack rolls when flanking with the freebooter or with another ally affected by this ability. This ability replaces hunter&apos;s bond." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cRagS2FaSw" name="Fast Swimmer" description="Starting at 7th level, a freebooter may swim half her speed as a move action or her normal speed as a full-round action with a successful Swim check. The freebooter gains a +2 bonus on Swim checks.{br}{br}This ability replaces woodland stride." compset="ClSpecial">
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[~ If we're not shown, just get out now
+doneif (tagis[Helper.ShowSpec] = 0)
+
+~ give a +2 bonus to swim
+#skillbonus[skSwim] += 2]]></eval>
+    </thing>
+  <thing id="raS2LizCli" name="Climbing" description="You have a climb speed of 15ft. This means for each move-action used you can climb 15ft and you receive a +8 racial bonus on climb checks." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="CampRazorC"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="RaReplace" tag="raS2LizSwi"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="AllowRCust" tag="rS2Lizardf"/>
+    <eval phase="First" priority="10000"><![CDATA[~if we've been replaced, get out now
+doneif (tagis[Helper.SpcReplace] <> 0)
+
+#value[xClimb] += 15]]></eval>
+    </thing>
+  <thing id="meSkullSha" name="Skull and Shackels Mechanic" compset="Mechanics">
+    <usesource source="PathSkulSh"/>
+    <bootstrap thing="s2ActPtBon"></bootstrap>
+    <bootstrap thing="s2ProfAllG"></bootstrap>
+    </thing>
+  <thing id="abS2RcCamp" name="Razor Coast Campaign" description="For this campaign players will receive built in bonuses based on their levels.  These bonuses help to off-set the fact that its a very low magic campaign.\n\n* You receive 3 bonus Action Points a level.\n* You receive a bonus to AC and saving throws equal to 1/2 your character level.\n* You receive a bonus to all attack and damage rolls qual to 1/3 your character level.\n* When you wear armor or shields you gain a bonus to your touch AC vs guns.\n** +1 for medium armor\n** +2 for heavy armor\n** +1 for any shield" compset="Ability" summary="You recieve bonuses to AC, saves, attack &amp; damage based on your level." uniqueness="useronce">
+    <comment>abValue = Bonus damage
+abValue = Bonus AC</comment>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="Render" priority="1000"><![CDATA[
+~ Set the campaign values here
+field[livename].text = field[name].text & " " & signed(field[abValue].value) & " att/dmg " & signed(field[abValue2].value) & " AC"]]></eval>
+    </thing>
+  <thing id="s2GunACBon" name="Shadow d20 Bonus touch AC vs guns" description="This gives a bonus to your touch AC vs guns when wearing Medium, Heavy, or a shield." compset="Simple" uniqueness="unique">
+    <eval phase="Final" priority="50000"><![CDATA[
+~ If not wearing medium or heavy armor get out now!
+doneif (hero.tagis[Hero.MedArmor] + hero.tagis[Hero.HeavyArmor] + hero.tagcount[ShldClass.?] = 0)
+
+var bonus as number
+
+~ If medium armor +1 bonus
+If (hero.tagis[Hero.MedArmor] <> 0) Then
+   bonus += 1
+~ If heavy armor then +1 bonus
+ElseIf (hero.tagis[Hero.HeavyArmor] <> 0) Then
+   bonus += 2
+EndIf
+
+~ If equipped a shield give a another +1 bonus
+If (hero.tagcount[ShldClass.?] <> 0) Then
+   bonus += 1
+Endif
+
+~ Set the situational text
+#situational[hero.child[ArmorClass],signed(bonus) & " touch AC bonus vs guns.","Armor vs Guns:"]]]></eval>
+    </thing>
+  <thing id="pS2RumRati" name="Campaign: Rum Ration" description="Aboard many ships, half a pint of rum is distributed to each crew member at dusk. The rum ration is doled out more to keep the crew sated and docile than for recreation.\n\n{b}Type{/b} ingested; {b}Addiction{/b} minor, Fortitude save\n\n{b}Price{/b} 2 sp \n\n{b}Effect{/b} variable; +1d4 alchemical bonus to Charisma and fatigued for 8hrs. Use the counter to set this bonus to your Charisma score.\n\n{b}Damage{/b} 1 Con, use the &quot;Ability Score Damage&quot; adjustment to track the amount of Con damage you have taken." compset="InPlay">
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="4"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value <> 1)
+
+      ~we're Fatigued
+      perform hero.assign[Condition.pcnFatigue]
+      
+      ~ Give alchemical bonus to Cha
+      #applybonus[BonAlch,hero.child[aCHA],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="s2ProfAllG" name="Shadow d20 give prof to all guns" description="Gives proficincy to all guns." compset="Simple" uniqueness="unique">
+    <eval phase="First" priority="650">~ All Guns
+perform hero.assign[Hero.ProfGun]
+~ One-handed guns
+~perform hero.assign[Hero.ProfGun1]
+~ Two-handed guns
+~perform hero.assign[Hero.ProfGun2]
+      <after name="Bootstrap Type Abilities"/>
+      </eval>
+    </thing>
+  <thing id="ioS2WhaSku" name="Whale Skull, Arcane" description="This whale skulls scrimshaw carvings function as arcane scrolls of {i}alter self{/i}, {i}black tentacles{/i}, {i}blur{/i}, {i}color spray{/i}, {i}daylight{/i}, {i}enlarge person{/i}, {i}hypnotism{/i}, {i}slow{/i}, {i}touch of idiocy{/i}, and {i}vampiric touch{/i}." compset="Wondrous" uniqueness="useronce">
+    <comment>AP55, Page 50</comment>
+    <fieldval field="gWeight" value="25"/>
+    <fieldval field="gCost" value="2050"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <bootstrap thing="spAlteSel2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spBlacTen4">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spBlur2">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spColoSpr1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spDayligh3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spEnlaPer1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spHypnoti1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spSlow3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spToucIdi3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spVampTou3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Uses"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    </thing>
+  <thing id="facS2Disre" name="Infamy and Disrepute" description="Some pirates only do what they do for the promise of wealth, being little more than brigands of the waves. Others do it for the reputation, fearsomeness, and power that comes with numbering among the most notorious scallywags on the seas. That&apos;s where Infamy comes in.\n\nNumerous times over the course of their careers, the PCs - as members of a single pirate crew - will have the opportunity to recount their victories, boast of the treasures they&apos;ve won, and spread tales of their outrages. All of this has the potential to win the PCs Infamy, but that alone isn&apos;t the goal. At the most basic level, infamous pirates have the potential to pressgang unfortunates into their crews, get repairs to their ships in nearly any port, and win discounts from merchants they&apos;d prefer not to rob. As a crew becomes more and more infamous, however, its legend stretches across the seas, allowing it to garner support from other pirate lords, win more favorable vessels, and even rally whole pirate armadas under its flag. This system allows characters to track how their legend is growing over the course of the campaign, along with providing them tangible rewards for building appropriately piratical reputations.\n\n{b}Infamy and Disrepute Scores:{/b} In a method similar to the tracking system for Fame and Prestige Points detailed in Pathfinder Campaign Setting: Pathfinder Society Field Guide, a party has two related scores, Infamy and Disrepute. Infamy tracks how many points of Infamy the crew has gained over its career - think of this as the sum of all the outlandish stories and rumors about the PCs being told throughout the Shackles. Infamy rarely, if ever, decreases, and reaching certain Infamy thresholds provides useful benefits and allows others to be purchased using points of Disrepute. Infamy is limited by actual skill, however, and a group&apos;s Infamy score can never be more than 4 × the PCs&apos; average party level.\n\nDisrepute is a spendable resource - a group&apos;s actual ability to cash in on its reputation. This currency is used to purchase impositions, deeds others might not want to do for the group, but that they perform either to curry the group&apos;s favor or to avoid its disfavor. This score will likely fluctuate over the course of a pirate crew&apos;s career and can go as high as the group&apos;s Infamy (but never higher), and at times might even drop to zero. This isn&apos;t something to worry about, though, as a low Disrepute score has no bearing on a crew&apos;s overall reputation - on the contrary, it merely means they&apos;re making use of the benefits their status has won them.\n\n{b}Winning Infamy and Disrepute:{/b} A few things are required to gain Infamy: an audience, a deed to tell about, and a flair for storytelling. Proof of the group&apos;s deed in the form of plunder doesn&apos;t hurt either. To gain Infamy, the PCs must moor their ship at a port for 1 full day, and the PC determined by the group to be its main storyteller must spend this time on shore carousing and boasting of infamous deeds. This PC must make either a Bluff, Intimidate, or Perform check to gauge the effectiveness of her recounting or embellishing. However, it does represent that even the PCs&apos; legend can only take them so far, and if a group&apos;s Disrepute drops lower than the Disrepute price of a benefit, the crew must spend time building its Disrepute back up before it can purchase that benefit.\n\n{b}Infamy and Disrepute per Port:{/b} No matter how impressionable (or drunk) the crowd, no one wants to hear the same tales and boasts over and over again. Thus, a group can only gain a maximum of 5 points of Infamy and Disrepute from any particular port. However, this amount resets every time a group reaches a new Infamy threshold. Thus, once a group gains 5 points of Infamy and Disrepute in Quent, it can gain no further points of Infamy from that port until it reaches the next Infamy threshold, though the crew can travel to another port and gain more Infamy by boasting to a new audience." compset="Faction" uniqueness="unique">
+    <usesource source="PathSkulSh"/>
+    <tag group="Helper" tag="Reputation"/>
+    <tag group="Faction" tag="facSPirate"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="bnS2Pirate" name="Bonus Tactic: Pirate Charge" description="Choose one tactic. The commander always knows this tactic, and the commander&apos;s army can use this tactic even if it doesn&apos;t know that tactic on its own. You can select this boon multiple times; each time you select it, choose a new tactic." compset="ArmyBoon">
+    <tag group="DescInfo" tag="atS2PirCha"/>
+    </thing>
+  <thing id="atS2PirCha" name="Pirate Charge" description="Your army of pirates is skilled at putting the fear into mundane sailors, provoking stupid mistakes and overconfidence in battle. The target army must attempt a Morale check (DC = 10 + your army&apos;s ACR) at the start of each Melee or Ranged phase; failure means it reduces its OM and DV against your army by 2 for that phase. If the target army succeeds at two of these Morale checks, it&apos;s immune to this tactic for the remainder of the battle." compset="ArmyTactic">
+    <usesource source="CampRazorC"/>
+    <tag group="StandardDC" tag="ACR"/>
+    </thing>
+  <thing id="ioS2BowDef" name="Bowsprit of Defense, Minor" description="This elaborate bowsprit is carved into the shape of armored mermaid. When affixed to a ship, it provides the ship with SR 15 as well as a +3 deflection bonus to the armor class of all Hull &amp; Rigging Locations. These defenses apply only to the ship itself, not to her crew, passengers, or other creatures aboard the ship.\n\n{b}Construction{/b}\n{b}Requirements{/b} Craft Wondrous Item, {i}shield of faith, spell resistance{/i}; {b}Cost{/b} 40,000 gp" compset="Wondrous" summary="Bowsprit gives ship only SR 25 and +5 AC">
+    <fieldval field="gWeight" value="500"/>
+    <fieldval field="gCost" value="80000"/>
+    <fieldval field="iCL" value="10"/>
+    <fieldval field="abValue" value="3"/>
+    <usesource source="PathSkulSh"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="iSchool" tag="Abjur" name="Abjuration" abbrev="Abjur"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="AlwaysAvl" name="AlwaysAvl" abbrev="AlwaysAvl"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[
+#applysr[15]
+
+~ Find all ship hull locations
+foreach pick in hero where "FaSB.Hull"
+  ~ Increase all Hull Locations AC
+  eachpick.field[abValue4].value += field[abValue].value
+nexteach
+
+~ Find all ship rigging locations
+foreach pick in hero where "FaSB.Rigging"
+  ~ Increase all Rigging Locations AC
+  eachpick.field[abValue3].value += field[abValue].value
+nexteach]]></eval>
+    </thing>
+  <thing id="ioS2CapLoc" name="Captain&apos;s locker" description="This iron-banded sea chest is 2-1/2 feet by 3 feet by 4 feet in size and is decorated with chains and brass skulls. The chest has no lock, but any standard lock can be easily attached to its hasp. The interior of a {i}captain&apos;s locker{/i} functions similarly to a {i}type IV bag of holding{/i}, and can hold up to 2,500 pounds or a volume of 250 cubic feet. The chest&apos;s weight remains the same, regardless of what it is holding. A {i}captain&apos;s locker{/i} does not rot or take any other damage from immersion in water and is watertight, even if opened underwater. \n\nWhen a {i}captain&apos;s locker{/i} is placed within the hold of a ship or some other enclosed cargo-carrying vehicle (such as a freight wagon with a cargo box), the chest warps the dimensions of the cargo hold so that the area&apos;s cargo capacity increases by 50% without changing the weight of the vehicle {i}(The Encumbrance Values will be increased by 50% to work with Fire as She Bears rules){/I}. The cargo area remains attached to the vehicle, however, so outside conditions that affect the vehicle can also affect the cargo hold. If the {i}captain&apos;s locker{/i} is removed from the cargo area while the hold contains more cargo than it could contain on its own, any excess cargo is forcibly expelled through hatches or other means of egress, dealing 3d6 points of damage to anyone standing within 5 feet of the means of egress.\n\n{b}Construction{/b} \n{b}Requirements{/b} Craft Wondrous Item, {i}mage&apos;s magnificent mansion{/i}, {i}secret chest{/i}; {b}Cost{/b} 15,000 gp" compset="Wondrous" summary="Increases cargo capacity of a ship." replaces="ioCapLockr">
+    <comment>Increase weight encumbrance by 1.5 times.</comment>
+    <fieldval field="gCost" value="30000"/>
+    <fieldval field="iCL" value="13"/>
+    <fieldval field="gWeight" value="150"/>
+    <usesource source="PathSkulSh" parent="PathAdvent" name="Skull &amp; Shackles"/>
+    <tag group="thing" tag="holder_top" name="Top Holder" abbrev="???"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="iSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PostAttr" priority="1500"><![CDATA[
+~ If not equipped get out now!
+doneif (field[gIsEquip].value <> 1)
+~ If not a Fire as She Bears ship get out now!
+doneif (#hasrace[rS2FasBShp] <> 1)
+
+~Post-Attributes/1500
+herofield[tEncumLgt].value *= 1.5
+herofield[tEncumMed].value *= 1.5
+herofield[tEncumHvy].value *= 1.5]]></eval>
+    </thing>
+  <thing id="spRcHeaSti" name="Healing Sting" description="Focusing the power of negative energy, you deal 1d12 points of damage +1 per caster level (maximum 1d12+10) to a living creature and gain an equal amount of hit points if you make a successful melee touch attack. A {i}healing sting{/i} cannot give you more hit points than your full normal total. Excess hit points are lost.\n\n{b}Shadow d20:{/b} Note you do NOT get the damage bonus from your CL to the amount healed by this spell." compset="Spell" summary="Touch deals 1d12 damage +1/level; caster gains damage as hp.">
+    <fieldval field="sCompDesc" value="Five dried wasp bodies."/>
+    <fieldval field="sTarget" value="You and one living creature"/>
+    <usesource source="CampRazorC"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sClass" tag="cHelpDrd" name="Druid" abbrev="Druid"/>
+    <tag group="sSubschool" tag="Healing"/>
+    <tag group="SpellEff" tag="DamNegativ"/>
+    <tag group="SpellEff" tag="HealDam"/>
+    </thing>
+  <thing id="ioS2Jalhaz" name="Jalhazar&apos;s wheel" description="Handles of polished bone and grim skulls decorate this ornately carved ship&apos;s wheel. When grasped, the wheel&apos;s handles feel comfortably smooth. Those who stand watch at the wheel claim to hear the whispered guidance of Captain Xiribal Jalhazar, and occasionally feel ghostly hands holding the ship&apos;s course true. When fitted to the helm of a ship, Jalhazar’s wheel reduces the speed used to make turns. For 90 degree turns, the speed used is reduced from 3 to 2. For 180 degree turns, the speed used is reduced from 4 to 2. One time per day, the ship can make a 90 or 180 degree turn without using up any speed.\n\n{b}Construction{/b}\n{b}Requirements{/b} Craft Wondrous Item, {i}animate objects{/i}, {i}haste{/i}, creator must have 10 ranks in Profession (sailor); {b}Cost{/b} 3,750 gp" compset="Wondrous" summary="90/180 degree turns use 2 squares of movement. 1/day make turn using no speed." replaces="ioJaLhazWh">
+    <comment>Changed wording to be  usable in FaSB rules.</comment>
+    <fieldval field="gWeight" value="15"/>
+    <fieldval field="gCost" value="7500"/>
+    <fieldval field="iCL" value="11"/>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PathSkulSh" parent="PathAdvent" name="Skull &amp; Shackles"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="iSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    </thing>
+  <thing id="ioS2SviEye" name="Svingli&apos;s eye" description="Unlike the heavy cast-brass mariner&apos;s astrolabes normally used at sea, this astrolabe is of the more common type found on land ({i}Pathfinder RPG Advanced Player&apos;s Guide{/i} 185), made of flat discs of brass. The famed navigator-astrologer Svingli of Morm, a drowned settlement of old Lirgen, was said to have sacrificed her eye to the instrument to grant her knowledge of things beyond mortal sight, thus giving the astrolabe its name.\n\nIn addition to an astrolabe&apos;s normal +2 circumstance bonus, {i}Svingli&apos;s Eye{/i} grants a further +2 competence bonus on Knowledge (geography), Profession (sailor), and Survival checks when used to navigate on land or sea. Once per day, the user can make a DC 20 Perception check while using {i}Svingli&apos;s Eye{/i} as a move action to catch a glimpse of how things really are for 1 round, as if with a {i}true seeing{/i} spell. While using the astrolabe&apos;s {i}true seeing{/i} ability, the user can also see through concealment caused by smoke or fog and gains a +10 competence bonus on Perception checks to spot hidden or disguised creatures or objects.\n\n{b}Construction{/b}\n{b}Requirements {/b}Craft Wondrous Item, {i}know direction{/i}, {i}true seeing{/i}; {b}Cost{/b} 14,600 gp" compset="Wondrous" summary="+2 to navigation checks." replaces="ioSvingEye">
+    <fieldval field="gWeight" value="6"/>
+    <fieldval field="gCost" value="28800"/>
+    <fieldval field="iCL" value="10"/>
+    <fieldval field="trkMax" value="1"/>
+    <fieldval field="abValue" value="4"/>
+    <fieldval field="abValue2" value="2"/>
+    <usesource source="PathSkulSh" parent="PathAdvent" name="Skull &amp; Shackles"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="iSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="Helper" tag="AlwaysAvl" name="AlwaysAvl" abbrev="AlwaysAvl"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If not equipped get out now!
+doneif (field[gIsEquip].value <> 1)
+
+#applybonus[ModCirc,hero.child[skKnowGeog],field[abValue].value]
+#applybonus[ModCirc,hero.child[skSurvival],field[abValue].value]
+
+#applybonus[ModCirc,hero.child[skProfSail],field[abValue2].value]]]></eval>
+    </thing>
+  <hidden id="fRcImpPr"/>
+  <hidden id="meCamRazor"/>
+  <hidden id="cFtrWGuns"/>
+  <hidden id="fRcRapiGun"/>
+  <hidden id="fRcDdAim"/>
+  <preclude id="gSextant" source="CampRazorC"/>
+  <preclude id="wAlcCartEn" source="CampRazorC"/>
+  <preclude id="wAlcCartFl" source="CampRazorC"/>
+  <preclude id="wAlcCart" source="CampRazorC"/>
+  <preclude id="wAlcCartSa" source="CampRazorC"/>
+  <preclude id="wAlcCarDr" source="CampRazorC"/>
+  </document>

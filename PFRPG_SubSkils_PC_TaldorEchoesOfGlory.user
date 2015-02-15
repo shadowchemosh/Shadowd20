@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+shadowchemosh@yahoo.com</info_author>
+    <info_history><![CDATA[
+4/7/2012
+-Created new.
+-Added "Philanderous Compact" magic item added with an activation and sub-skill Diplomancy (Gather Info).]]></info_history>
+    </fileinfo>
+  <thing id="ioS2PhiCom" name="Philanderous Compact" description="This small, polished leather case opens to reveal a mirror, face powder, rouge, and a puff. Using the puff and uttering a command word allows you to change your appearance once per day as per disguise self. Additionally, you get a +2 competence bonus to Gather Information checks.\n\n{b}Requirements:{/b} Craft Wondrous Item, disguise self, creator must have at least 2 ranks in Gather Information; Cost 750 gp" compset="Wondrous">
+    <fieldval field="gCost" value="1500"/>
+    <fieldval field="iCL" value="1"/>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="PCTaldor"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="iSchool" tag="Illusion"/>
+    <bootstrap thing="skS2DiplGa">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[abilActive].value = 0)
+~ If Subskill Gather Info not live then get out now
+doneif (hero.childlives[skS2DiplGa] = 0)
+
+~ Give a competence bonus to SubSkill - Gather Info
+#applybonus[BonComp,hero.child[skS2DiplGa],2]]]></eval>
+    </thing>
+  </document>
