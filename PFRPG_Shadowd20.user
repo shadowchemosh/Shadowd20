@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <fileinfo>
-    <info_author>  
-      Tim Shadow
+    <info_author>Tim Shadow
       Email: ShadowChemosh@yahoo.com
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
@@ -576,6 +575,7 @@ version 1.40 - Released May 12, 2013
     </thing>
   <thing id="s2Info1Rou" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before." compset="Ability" summary="1 round casting time spells are now 1 Full-Round action instead.">
     <usesource source="srcNo1Rnd"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Final" priority="10000"><![CDATA[
       ~ Only show us if we are a spellcaster
       If (hero.tagis[Hero.Caster] <> 0) Then
@@ -584,17 +584,19 @@ version 1.40 - Released May 12, 2013
     </thing>
   <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a bonus on damage equal to your caster level. This should help some with how little damage spellcasters do vs melee characters." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a bonus on damage.">
     <usesource source="srcSpelDmg"/>
-    <eval phase="Final" priority="10000"><![CDATA[
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="Final" priority="10000">
       ~ Only show us if we are a spellcaster
-      If (hero.tagis[Hero.Caster] <> 0) Then
-         perform assign[Helper.ShowSpec]
-      Endif]]></eval>
+      doneif (hero.tagis[Hero.Caster] = 0)
+
+      ~ Show us
+      perform assign[Helper.ShowSpec]</eval>
     </thing>
   <thing id="s20SpelDmg" name="Shadow d20 Spell Damage" description="Just show a info about spell damage bonus if your arcane or divine caster." compset="Simple" uniqueness="useronce">
     <usesource source="srcSpelDmg"/>
     <bootstrap thing="s2InfoSpDm"></bootstrap>
     <eval phase="PostLevel" priority="15000"><![CDATA[
-      ~Finished if not a Arcane or Divine caster
+      ~ Finished if not a Arcane or Divine caster
       doneif (hero.tagis[Hero.Caster] <> 1)
 
       var sTag as string
@@ -621,7 +623,8 @@ version 1.40 - Released May 12, 2013
           ~ tags
           foreach pick in hero from BaseClSpec where sTag
              ~ Increase damage by the CL
-             eachpick.field[abValue].value += nCL
+             ~eachpick.field[abValue3].value += nCL
+             eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell-like ability does hit point damage it gains a bonus equal to your caster level (" & signed(nCL) & ")."  
           nexteach
           ~ increase count
           iX += 1
@@ -629,10 +632,21 @@ version 1.40 - Released May 12, 2013
       sName &= ")"
       ~ Update live name of the Special Ability
       hero.childfound[s2InfoSpDm].field[livename].text = hero.childfound[s2InfoSpDm].field[name].text & sName
+      
       ~ Find all touch attack weapons and show Extra Damage
       foreach pick in hero from BaseWep where "Shadowd20.TouchWep"
          #extradamage[eachpick,sName,field[name].text]
-      nexteach]]></eval>
+      nexteach
+      ]]></eval>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      ~ Finished if not a Arcane or Divine caster
+      doneif (hero.tagis[Hero.Caster] <> 1)    
+      
+      ~ Give damage CL text on to all spells on character
+      foreach pick in hero from BaseSpell
+        eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell does hit point damage it gains a bonus equal to your caster level (" & signed(eachpick.field[sCL].value) & ")."  
+      nexteach
+      ]]></eval>
     </thing>
   <thing id="s20SkillPo" name="Shadow d20 Increase Class Skill Points" description="Give an increase to some class skill points.\n\n-Clerics increased by 2 per level." compset="Simple">
     <usesource source="pShadowd20"/>

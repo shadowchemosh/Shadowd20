@@ -352,7 +352,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
     </thing>
   <thing id="arClrHoWar" name="Holy Warrior" description="Some clerics think of themselves more as holy warriors than proselytizers or shepherds. For these clerics, the ability to fight trumps all other concerns. Holy Warriors are the crusaders of the faith doing things that no Paladin or warrior could." compset="ClassVary" uniqueness="unique">
     <fieldval field="cvHitDice" value="10"/>
-    <arrayval field="cvCastTot" index="0" column="1" value="1"/>
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <arrayval field="cvCastTot" index="2" column="2" value="1"/>
     <arrayval field="cvCastTot" index="4" column="3" value="1"/>
     <arrayval field="cvCastTot" index="6" column="4" value="1"/>
@@ -361,10 +361,12 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
     <arrayval field="cvCastTot" index="12" column="7" value="1"/>
     <arrayval field="cvCastTot" index="14" column="8" value="1"/>
     <arrayval field="cvCastTot" index="16" column="9" value="1"/>
+    <arrayval field="cvCastTot" index="0" column="1" value="1"/>
     <usesource source="s20PFCamp"/>
-    <tag group="ClVaryName" tag="AppParen"/>
     <tag group="cAttack" tag="Good"/>
     <tag group="Helper" tag="RemovePrim"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="fArmHeavy"></bootstrap>
     <bootstrap thing="cHWS2WarSk">
       <autotag group="ClSpecWhen" tag="1"/>
@@ -523,19 +525,15 @@ hero.child[Attack].field[Penalty].value += 2</eval>
     <tag group="abCategory" tag="S2RogSkTr"/>
     </thing>
   <thing id="arDrdFeral" name="Feral" description="Taking the feral archetype means you can focus on your actions in combat (rather than worrying about your animal companion) while still unleashing nature&apos;s fury upon your foes." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="s20PFCamp"/>
-    <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cDrdWild"/>
     <tag group="AbReplace" tag="cDrdWildAn"/>
     <tag group="AbReplace" tag="cDrdWildEl"/>
     <tag group="Helper" tag="RemovePrim"/>
     <tag group="AbReplace" tag="cDrdWildPl"/>
-    <bootstrap thing="cDrdPreFor">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
-    <bootstrap thing="cDrdFeral">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ClVaryName" tag="AppParen"/>
     <bootstrap thing="cDrdS2SaCl">
       <autotag group="ClSpecWhen" tag="4"/>
       </bootstrap>
@@ -550,6 +548,12 @@ hero.child[Attack].field[Penalty].value += 2</eval>
       </bootstrap>
     <bootstrap thing="cDrdEleFor">
       <autotag group="ClSpecWhen" tag="16"/>
+      </bootstrap>
+    <bootstrap thing="cDrdPreFor">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cDrdFeral">
+      <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpDrd"/>
     </thing>
@@ -1072,16 +1076,11 @@ hero.child[Attack].field[Penalty].value += 2</eval>
     <exprreq message="1 rank in Spellcraft required."><![CDATA[#skillranks[skSpellcr] >= 1]]></exprreq>
     </thing>
   <thing id="arWitWarlo" name="Warlock" description="Born of a supernatural bloodline, a warlock seeks to master the perilous magic that suffuses his soul. Unlike sorcerers or wizards, who approach arcane magic through the medium of spells, a warlock invokes powerful magic through a mysterious patron. By harnessing this innate magical gift through fearsome determination and force of will, a warlock can perform feats of supernatural effects, beguile the weak-minded, or scour his foes with blasts of eldritch power." compset="ClassVary" uniqueness="unique">
-    <fieldval field="srcPageNum" value="65"/>
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="RemoveCast"/>
     <tag group="ClVaryName" tag="AppParen"/>
-    <bootstrap thing="cWitS2ElBl">
-      <autotag group="ClSpecWhen" tag="3"/>
-      </bootstrap>
-    <bootstrap thing="cWitS2ElBl">
-      <autotag group="ClSpecWhen" tag="5"/>
-      </bootstrap>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="RemoveCast"/>
     <bootstrap thing="cWitS2ElBl">
       <autotag group="ClSpecWhen" tag="7"/>
       </bootstrap>
@@ -1153,8 +1152,19 @@ hero.child[Attack].field[Penalty].value += 2</eval>
     <bootstrap thing="cWitS2ElBl">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpWit"/>
-    <eval phase="PostLevel" priority="20000">linkage[varies].field[cConcCheck].value += #levelcount[Witch]</eval>
+    <eval phase="PostLevel" priority="20000">
+     ~ Add witch levels to concenentrtion check 
+     linkage[varies].field[cConcCheck].value += #levelcount[Witch]
+
+     ~ Set the caster flag
+     perform hero.assign[Hero.Caster]</eval>
     </thing>
   <thing id="cWitS2ElBl" name="Eldritch Blast" description="The first ability a warlock learns is {i}eldritch blast.{/i} A warlock attacks his foes with eldritch power, using baleful magical energy to deal damage and sometimes impart other debilitating effects.\n\nAn {i}eldritch blast{/i} is a ray with a range of 60 feet. It is a ranged touch attack that affects a single target, allowing no saving throw. An {i}eldritch blast{/i} deals 1d6 points of damage + additional damage equal to the warlocks’s Intelligence modifier at 1st level and increases in power as the warlock rises in level. An {i}eldritch blast{/i} is the equivalent of a spell whose level is equal to one-half the warlock&apos;s class level (round down), with a minimum spell level of 1st and a maximum of 9th when a warlock reaches 18th level or higher.\n\nAn {i}eldritch blast{/i} is subject to spell resistance, although the Spell Penetration feat and other effects that improve caster level checks to overcome spell resistance also apply to {i}eldritch blast.{/i} An {i}eldritch blast{/i} deals half damage to objects. Metamagic feats cannot improve a warlock&apos;s {i}eldritch blast{/i} (because it is a spell-like ability, not a spell). However, the feat Ability Focus ({i}eldritch blast{/i}) increases the DC for all saving throws (if any) associated with a warlock&apos;s {i}eldritch blast{/i} by 2.\n\nThis ability replaces Spell casting." compset="ClSpecial">
     <comment>abValue2 - Set the die size of the Blast damage</comment>
@@ -1182,9 +1192,11 @@ hero.child[Attack].field[Penalty].value += 2</eval>
       Endif]]></eval>
     </thing>
   <thing id="arNinTraFi" name="Trap Finding" description="Trap finding Ninjas are about getting into places they should not be and living to tell the tell.  They practice so often with traps and locks that little time is left for learning the use of poisons." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="s20PFCamp"/>
-    <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cAsnPoison"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ClVaryName" tag="AppParen"/>
     <bootstrap thing="cRogTrapfn">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
@@ -1406,9 +1418,11 @@ hero.child[Attack].field[Penalty].value += 2</eval>
       #value[xFastHeal] += field[abValue].value]]></eval>
     </thing>
   <thing id="arRgrShift" name="Shifter Ranger" description="Many shifters become rangers, both from their love of the ranger&apos;s solitude and single-minded purpose, and from their inherent connection to the natural world. Racial archetype levels allow the shifter ranger to enjoy an even stronger bond with the wilderness, enhancing his own shifting abilities and even sharing them with his animal companion." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="srcShifter"/>
-    <tag group="AbReplace" tag="cAnimShare"/>
     <tag group="ClVaryName" tag="Replace"/>
+    <tag group="AbReplace" tag="cAnimShare"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="cRgrShaShi">
       <autotag group="ClSpecWhen" tag="4"/>
       </bootstrap>
@@ -1438,17 +1452,15 @@ hero.child[Attack].field[Penalty].value += 2</eval>
     </thing>
   <thing id="arS2SwoSai" name="Sword Saint" description="Sword saints hail from lands where samurai are prevalent, and are often ronin who wander the world seeking new challenges to perfect their intricate style of swordplay called {i}iaijutsu{/i}. The following benefits apply only when a sword saint is using a sword and carrying nothing in his other hand. The sword saint is an archetype of the samurai alternate class ({i}Ultimate Combat{/i} 18)." compset="ClassVary" uniqueness="unique">
     <fieldval field="cvAnimStar" value="-1"/>
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="srcDragEmp"/>
-    <tag group="AbReplace" tag="cAnimLink" name="Animal Companion Link"/>
     <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cSamMntArc" name="Mounted Archery"/>
     <tag group="AbReplace" tag="cCavBanner" name="Banner"/>
     <tag group="AbReplace" tag="cCavGrBann" name="Greater Banner"/>
     <tag group="AbReplace" tag="cCavRide" name="Mounted"/>
-    <bootstrap thing="cAnimClass"></bootstrap>
-    <bootstrap thing="cSamS2TeIa">
-      <autotag group="ClSpecWhen" tag="5"/>
-      </bootstrap>
+    <tag group="AbReplace" tag="cAnimLink" name="Animal Companion Link"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="cSamS2IaSt">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
@@ -1484,6 +1496,10 @@ hero.child[Attack].field[Penalty].value += 2</eval>
       </bootstrap>
     <bootstrap thing="cSamS2IaSt">
       <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="cAnimClass"></bootstrap>
+    <bootstrap thing="cSamS2TeIa">
+      <autotag group="ClSpecWhen" tag="5"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpSam"/>
     </thing>
@@ -1591,7 +1607,7 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
   <thing id="arS2WitWhi" name="White Haired Witch" description="A white-haired witch concentrates her mysterious powers on improving her prowess in melee, using feats of agility and her prehensile hair to deal extreme damage. Rogue talents and advanced rogue talents marked with an asterisk (*) can be found in the {i}Pathfinder RPG Advanced Player&apos;s Guide{/i}. The white-haired witch is an archetype of the witch class.\n\n{B}Replaces:{/b} Hexes, Major Hexes, and Grand Hexes." compset="ClassVary" uniqueness="unique">
     <fieldval field="cvSpecSing" value="Rogue Trick"/>
     <fieldval field="cvSpecName" value="Rogue Tricks"/>
-    <arrayval field="cvCustTot" index="0" value="-1"/>
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <arrayval field="cvCustTot" index="1" value="-2"/>
     <arrayval field="cvCustTot" index="3" value="-3"/>
     <arrayval field="cvCustTot" index="5" value="-4"/>
@@ -1608,12 +1624,10 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
     <arrayval field="cvCustTot" index="17" value="-5"/>
     <arrayval field="cvCustTot" index="18" value="-5"/>
     <arrayval field="cvCustTot" index="19" value="-5"/>
+    <arrayval field="cvCustTot" index="0" value="-1"/>
     <usesource source="srcDragEmp"/>
-    <tag group="cAttack" tag="Medium"/>
     <tag group="ClVaryName" tag="Replace"/>
-    <bootstrap thing="cWitS2Cons">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
+    <tag group="cAttack" tag="Medium"/>
     <bootstrap thing="wSlam">
       <autotag group="wMain" tag="1d4_4"/>
       <autotag group="Helper" tag="NatSizeDmg"/>
@@ -1631,11 +1645,14 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
     <bootstrap thing="cWitS2WhHa">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
+    <bootstrap thing="cWitS2Cons">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpWit"/>
-    <eval phase="First" priority="10000" index="3">perform hero.assign[ClassVary.arWhiHaiWi]</eval>
     <eval phase="Final" priority="99999999" index="2"><![CDATA[
       ~ Final Phase 99999999
       linkage[varies].field[cCstSpExpr].text = "(SpecSource.cHelpRog) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & (thingid.cRogAnoDay |thingid.cRogAssaLe |thingid.cRogComTri |thingid.cRogDefRol |thingid.cRogFiness |thingid.cRogImpEva |thingid.cRogMajMag |thingid.cRogMinMag |thingid.cRogOpport |thingid.cRogPosAtk |thingid.cRogRedire |thingid.cRogResili |thingid.cRogSlipMi |thingid.cRogSurpri |thingid.cRogReexam |thingid.cRogWeTrai)"]]></eval>
+    <eval phase="First" priority="10000" index="3">perform hero.assign[ClassVary.arWhiHaiWi]</eval>
     </thing>
   <thing id="cWitS2WhHa" name="White Hair" description="At 1st level, a white-haired witch gains the ability to use her hair as a weapon. This functions as a primary natural attack with a reach of 5 feet. The hair deals 1d4 points of damage (1d3 for a Small witch) plus the witch&apos;s Intelligence modifier. In addition, whenever the hair strikes a foe, the witch can attempt to grapple that foe with her hair as a free action without provoking an attack of opportunity, using her Intelligence modifier in place of her Strength modifier when making the combat maneuver check. When a white-haired witch grapples a foe in this way, she does not gain the grappled condition.\n\nAt 4th level and every four levels thereafter, a white-haired witch&apos;s hair adds 5 feet to its reach, to a maximum of 30 feet at 20th level.\n\nThe hair cannot be sundered or attacked as a separate creature. In addition, a white-haired witch further improves her ability to control her hair as she progresses in level, gaining the following abilities." compset="ClSpecial">
     <tag group="AbilType" tag="Super"/>
@@ -1665,26 +1682,27 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
     <tag group="AbilType" tag="Extra"/>
     </thing>
   <thing id="arS2RagYok" name="Yokai hunter" description="Yokai hunters possess a supernatural tether to the spirit worlds that shroud mortal existence. They use their powers to peer into the realm of the dead, and are adept at hunting those who dwell in the realm between the Material Plane and the Great Beyond, the supernatural beings Tians refer to as {i}yokai{/i}. The yokai hunter is an archetype of the ranger class." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="srcDragEmp"/>
-    <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cWoodStrid" name="Woodland Stride"/>
     <tag group="AbReplace" tag="cRgrCamo" name="Camouflage"/>
-    <bootstrap thing="cRagS2FaYo">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
+    <tag group="ClVaryName" tag="AppParen"/>
     <bootstrap thing="cRagS2YoSe">
       <autotag group="ClSpecWhen" tag="7"/>
       </bootstrap>
     <bootstrap thing="cRagS2ReYo">
       <autotag group="ClSpecWhen" tag="12"/>
       </bootstrap>
+    <bootstrap thing="cRagS2FaYo">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpRgr"/>
-    <eval phase="Final" priority="99999999" index="2"><![CDATA[
-      ~ Reset the Custom List of allowed FE
-      linkage[varies].field[cFav1Expr].text = "!Helper.Secondary & (thingid.feAberr|thingid.feDragon|thingid.feFey|thingid.feMagicBst|thingid.feOutNat|thingid.feUndeadIn)"]]></eval>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       ~ Don't increase FE bonus.
       hero.child[resEnemUpg].field[resMax].value -= hero.child[resEnemUpg].field[resMax].value]]></eval>
+    <eval phase="Final" priority="99999999" index="2"><![CDATA[
+      ~ Reset the Custom List of allowed FE
+      linkage[varies].field[cFav1Expr].text = "!Helper.Secondary & (thingid.feAberr|thingid.feDragon|thingid.feFey|thingid.feMagicBst|thingid.feOutNat|thingid.feUndeadIn)"]]></eval>
     </thing>
   <thing id="cRagS2FaYo" name="Favored Yokai" description="A yokai hunter possesses a supernatural ability to sense beings connected to the spirit world, such as kami, oni, and ghosts, and is formidable at fighting them. At 1st level, a yokai hunter gains a +2 bonus on weapon attacks and damage rolls against one of the following creature types (and subtypes, if applicable), which are considered yokai for the purposes of this archetype: aberration, dragon, fey, magical beast, outsider (native), and undead (incorporeal). (A GM may choose to alter this list for the purposes of her campaign.) At 5th level and every five levels thereafter, a yokai hunter may select another favored yokai from this list, gaining a +2 bonus on weapon attacks and damage rolls against that yokai.\n\nIn addition, whenever a yokai hunter sees a favored yokai that is disguised or has not made its otherworldly essence known, he gains an automatic check to identify the creature as such. To make this check, a yokai hunter rolls 1d20 and adds his yokai hunter level and Charisma modifier (DC 10 + 1/2 the yokai&apos;s Hit Dice + the yokai&apos;s Cha modifier). A successful check means that the yokai hunter recognizes the creature&apos;s ties to the spiritual world. Regardless of whether the check is successful, a yokai hunter gains the bonus on weapon attacks and damage rolls against favored yokai.\n\nThis ability replaces favored enemy. Ranger abilities that rely on a favored enemy instead rely on this ability." compset="ClSpecial">
     <tag group="AbilType" tag="Super"/>
