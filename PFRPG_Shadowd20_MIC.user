@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <fileinfo>
     <info_history><![CDATA[
@@ -6,12 +6,11 @@
       -Created new and moved over Healing Belt, Broken from AoW.
       -Added "Warlock's Scepter".]]></info_history>
     </fileinfo>
-  <thing id="ioS2HeBeBr" name="Healing Belt, Broken" description="{i}This is a product of Thassilonian times and the magic to create these can NO longer be duplicated.{/i}\n\nThis is belt has the broken condition and no longer functions to its full potential. The belt has 3 charges that are renewed each day at dawn. Spending 1 or more charges allows you to channel positive energy and heal damage with a touch.  You can also use this ability to harm undead dealing them an equivalent amount of damage instead.\n\n{b}One Charge:{/b} 1d8\n{b}Two Charges:{/b} 2d8\n{b}Three Charges:{/b} 3d8" compset="Wondrous">
+  <thing id="ioS2HeBeBr" name="Healing Belt, Broken" description="This is belt has the broken condition and no longer functions to its full potential. The belt has 3 charges that are renewed each day at dawn. Spending 1 or more charges allows you to channel positive energy and heal damage with a touch.  You can also use this ability to harm undead dealing them an equivalent amount of damage instead.\n\n{b}One Charge:{/b} 1d8\n{b}Two Charges:{/b} 2d8\n{b}Three Charges:{/b} 3d8\n\n{i}This is a product of Thassilonian times and the magic to create these can NO longer be duplicated.{/i}" compset="Wondrous">
     <fieldval field="trkMax" value="3"/>
     <fieldval field="gCost" value="300"/>
     <fieldval field="gWeight" value="1"/>
     <fieldval field="iCL" value="3"/>
-    <usesource source="srcAoW"/>
     <usesource source="srcMIC"/>
     <tag group="Helper" tag="EquipMag"/>
     <tag group="Usage" tag="Day"/>
@@ -21,17 +20,28 @@
     <tag group="iSchool" tag="Conjur"/>
     <tag group="iSubschool" tag="Healing"/>
     <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Hero" tag="EqpWaist"/>
+    <tag group="abAction" tag="Standard"/>
     </thing>
-  <thing id="iS2WarScep" name="Warlock&apos;s Scepter" description="This {i}+1 light mace{/i} confers a +1 profane bonus on your ranged touch attack rolls while you hold it. This is a continuous effect and requires no activation.\n\nFurthermore, a {i}warlock&apos;s scepter{/i} has 5 charges, which are renewed each day at dawn. Spending 1 or more charges improves the damage of the next {i}eldritch blast{/i} you make in that round.\n\n{i}1 charge:{/i} +1d6 damage.\n{i}3 charges:{/i} +2d6 damage.\n{i}5 charges:{/i} +4d6 damage.\n\nAfter these charges have been expended, the rod remains a {i}+1 light mace{/i}, but it no longer provides a bonus on ranged touch attack rolls until its charges are restored.{br}{br}{i}This is a product of Thassilonian times and the magic to create these can NO longer be duplicated.{/i}" compset="MagicWep" summary="This sturdy ebony rod is surmounted by a carving of a demonic, horned skull.">
+  <thing id="iS2WarScep" name="Warlock&apos;s Scepter" description="This {i}+1 light mace{/i} confers a +1 profane bonus on your ranged touch attack rolls while you hold it. This is a continuous effect and requires no activation.\n\nFurthermore, a {i}warlock&apos;s scepter{/i} has 5 charges, which are renewed each day at dawn. Spending 1 or more charges improves the damage of the next {i}eldritch blast{/i} you make in that round.\n\n{i}1 charge:{/i} +1d6 damage.\n{i}3 charges:{/i} +2d6 damage.\n{i}5 charges:{/i} +4d6 damage.\n\nAfter these charges have been expended, the rod remains a {i}+1 light mace{/i}, but it no longer provides a bonus on ranged touch attack rolls until its charges are restored.\n\n{i}Prerequisites:{/i} Craft Magic Arms and Armor, Craft Rod, {i}bestow curse{/I}." compset="MagicWep" summary="This sturdy ebony rod is surmounted by a carving of a demonic, horned skull.">
     <fieldval field="iCL" value="10"/>
     <fieldval field="trkMax" value="5"/>
     <fieldval field="BonEnhance" value="1"/>
     <fieldval field="gCost" value="8305"/>
-    <usesource source="srcAoW"/>
+    <fieldval field="actUserMin" value="1"/>
+    <fieldval field="actUserMax" value="5"/>
+    <fieldval field="actIncrNam" value="Charges"/>
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue3" value="2"/>
+    <fieldval field="abValue5" value="4"/>
     <usesource source="srcMIC"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="iSchool" tag="Necromancy"/>
     <tag group="Usage" tag="Day"/>
     <tag group="User" tag="Tracker"/>
-    <tag group="iSchool" tag="Necromancy"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
@@ -44,8 +54,80 @@
       #applybonus[BonProfane,hero.childfound[wS2EldBlas],1]
       #applybonus[BonProfane,hero.childfound[wS2RaTouch],1]
       #applybonus[BonProfane,hero.childfound[wRay],1]]]></eval>
+    <eval phase="Final" index="2"><![CDATA[
+      ~ If not active get out now!
+      doneif (field[abilActive].value <> 1)
+      ~ If not equipped get out now
+      doneif (field[gIsEquip].value <> 1)
+
+      ~ Increase the number of eldritch blast dice by the user
+      ~ activation value set.
+      if (field[actUser].value = 1) then
+        #value[abS2EldBla] += field[abValue].value
+      elseif (field[actUser].value = 3) then
+        #value[abS2EldBla] += field[abValue3].value
+      elseif (field[actUser].value = 5) then
+        #value[abS2EldBla] += field[abValue5].value
+      endif]]></eval>
     <child entity="wSpecMagic">
       <bootstrap thing="wMaceLight"></bootstrap>
       </child>
+    </thing>
+  <thing id="ioS2GlEldA" name="Gloves of Eldritch Admixture" description="{i}Dark whorls stream across these leather gloves, dizzying the eye and clouding the mind.{/i}\n\nWarlocks prize these gloves, which allow them to enhance their {i}eldritch blasts{/i} with pure energy. {i}Gloves of eldritch admixture{/i} have 3 charges, which are renewed each day at dawn. As a swift action spend 1 or more charges to add extra damage to the next {i}eldritch blast{/i} you make before the end of your turn. This damage can be acid, cold, or fire, as chosen by you each time you activate the gloves.\n\n{i}1 charge:{/i} +2d6 points of damage.\n{i}2 charges:{/i} +3d6 points of damage.\n{i}3 charges:{/i} +4d6 points of damage.\n\n{i}Prerequisites:{/i} Craft Wondrous Item, {i}Melf&apos;s acid arrow{/i} or {i}vitriolic blast{/i} invocation ({i}CAr{/i} 136), {i}scorching ray{/i} or {i}brimstone blast{/i} invocation ({i}CAr{/i} 132), {i}ray of ice{/i} ({i}SC{/i} 167) or {i}hellrime blast{/i} invocation ({i}CAr{/i} 134)." compset="Wondrous">
+    <fieldval field="gCost" value="3000"/>
+    <fieldval field="iCL" value="3"/>
+    <fieldval field="actIncrNam" value="Charges"/>
+    <fieldval field="actUserMin" value="1"/>
+    <fieldval field="actUserMax" value="3"/>
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="abValue2" value="3"/>
+    <fieldval field="abValue3" value="4"/>
+    <fieldval field="trkMax" value="3"/>
+    <usesource source="srcMIC"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Hero" tag="EqpHand"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="abAction" tag="Swift"/>
+    <eval phase="Final"><![CDATA[
+      ~ If not active get out now!
+      doneif (field[abilActive].value <> 1)
+      ~ If not equipped get out now
+      doneif (field[gIsEquip].value <> 1)
+
+      ~ Increase the number of eldritch blast dice by the user
+      ~ activation value set.
+      if (field[actUser].value = 1) then
+        #value[abS2EldBla] += field[abValue].value
+      elseif (field[actUser].value = 2) then
+        #value[abS2EldBla] += field[abValue2].value
+      elseif (field[actUser].value = 3) then
+        #value[abS2EldBla] += field[abValue3].value
+      endif]]></eval>
+    </thing>
+  <thing id="ioS2HeaBel" name="Healing Belt" description="While wearing a {i}healing belt{/i}, you gain a +2 competence bonus on Heal checks. This is a continuous effect and requires no activation. In addition, the belt has 3 charges, which are renewed each day at dawn. As a standard action spend 1 or more charges to channel positive energy and heal damage with a touch. (You can also use this ability to harm undead, dealing them an equivalent amount of damage instead.) \n\n{i}1 charge:{/i} Heals 2d8 points of damage.\n{i}2 charges:{/i} Heals 3d8 points of damage.\n{i}3 charges:{/i} Heals 4d8 points of damage.\n\n{i}This is a product of Thassilonian times and the magic to create these can NO longer be duplicated.{/i}" compset="Wondrous" summary="Use charges to heal yourself.">
+    <fieldval field="trkMax" value="3"/>
+    <fieldval field="gCost" value="750"/>
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="iCL" value="3"/>
+    <usesource source="srcMIC"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSubschool" tag="Healing"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Hero" tag="EqpWaist"/>
+    <tag group="abAction" tag="Standard"/>
     </thing>
   </document>
