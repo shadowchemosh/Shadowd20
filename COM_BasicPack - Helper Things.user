@@ -6,6 +6,9 @@
       Tim Shadow (ShadowChemosh)
     </info_author>
     <info_history><![CDATA[
+    January 28, 2015 - Tim Shadow
+    -Added logic for hidding community Deities.
+
     January 3, 2015 - Tim Shadow
     -Created New.
     -Make a new mechanic to hold global helper things. Also move Power Resistance helper to here from UP.
@@ -15,17 +18,41 @@
 
 
   <!-- ============================================================================================ -->
-  <!-- New Ultimate Psionics Mechanic                                                               -->
+  <!-- Basic Pack Mechanic                                                               -->
   <!-- ============================================================================================ -->
   <thing id="mechBasic" name="Basic Pack Mechanic" compset="Mechanics">
+    <!-- Community Product ID tag -->   
+    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community"/>
+    <!-- Community Deity Tag -->   
+    <tag group="DeityCat" tag="CB" name="Community Deity"/>
+
     <!-- Psionic Helper Objects -->
     <bootstrap thing="xPwrRes"></bootstrap>
 
     </thing>
 
   <!-- ============================================================================================ -->
-  <!-- New Base Class Headers                                                               -->
+  <!-- New Base Class Archetype Headers                                                             -->
   <!-- ============================================================================================ -->
+
+
+
+
+  <!-- ============================================================================================ -->
+  <!-- Trait Headers                                                                                -->
+  <!-- ============================================================================================ -->
+  <thing id="trBPPsioni" name="Psionic" compset="Trait" isshowonly="yes">
+    <tag group="trCategory" tag="Psionic"/>
+    </thing>
+  <thing id="trBPCrimes" name="Crimes" compset="Trait" isshowonly="yes">
+    <tag group="trCategory" tag="Crimes"/>
+    </thing>
+  <thing id="trBPDream" name="Dream" compset="Trait" isshowonly="yes">
+    <tag group="trCategory" tag="Dream"/>
+    </thing>
+  <thing id="trBPTrain" name="Training" compset="Trait" isshowonly="yes">
+    <tag group="trCategory" tag="Training"/>
+    </thing>
 
   <!-- ============================================================================================ -->
   <!-- Helper Objects                                                                               -->
@@ -43,7 +70,8 @@
       field[livename].text = field[name].text & " (" & field[abValue].value & ")"
 
       ~ specify a shortname for consistency with other resistances
-      field[shortname].text &= " " & field[abValue].value]]></eval>
+      field[shortname].text &= " " & field[abValue].value
+      ]]></eval>
     </thing>
 
   </document>

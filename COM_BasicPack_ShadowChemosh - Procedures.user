@@ -860,7 +860,12 @@
     ~ Set the item weight
     field[gWeight].value += S2Weight
     ~ Set the item weight
-    field[gearWeight].value += S2Weight]]></procedure>
+    field[gearWeight].value += S2Weight
+    
+    ~ Set the desc with info
+    field[DescAppend].text = "{B}Cost:{/B} " & digitgroup(Cost) & "gp" & "{br}" & "{B}Pages:{/B} " & Pages
+    ]]>
+    </procedure>
 
 
 </document>

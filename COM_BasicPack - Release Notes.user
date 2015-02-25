@@ -8,18 +8,129 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
-<strong>v3.3  January 9, 2015</strong>
+<strong>v3.7 February 25, 2015</strong>
 
 <strong>Bug Fixes</strong>
 <ul>
-<li>Not allowed for PFS flagged on all "custom" items.</li>
-<li></li>
+<li>File name changes to accommodate loading the GM Pack and GM Mythic Pack onto the iPad. This has gotten further but is still an outstanding issue!</li>
+<li>ShadowChemosh Equipment - Fixed the weight bug on spellbooks from 15lbs to 3lbs. Stupid bug keeps coming back! Issue #17.</li>
+<li>ShadowChemosh Adjustments -"Skill Bonus, All of Type" - Fixed issue where the adjustment was not able to be turned off.</li>
+<li>ShadowChemosh - Fixed incorrect PFS sources.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Equipment - Moved over some of Frumple's helpful universal items to the Basic Pack: Goodberry, Improvised Weapon, Unholy Water Flask, Torch, and Rock.</li>
+<li>ShadowChemosh Equipment - Added "- Custom Magic Item -" item for easily adding any custom magic item.</li>
+<li>Paizo Module (Blood of Dragonscar) player items added to the Basic Pack.</li>
+<li>ShadowChemosh Adjustments - "PFS, Non-Core Spell" allows you to make a non-core spell valid in a PFS Core Campaign. This should be useful with the current news that wizards will have the ability to gain non-core spells.</li>
+<li>ShadowChemosh Adjustments - Spells Per Day, Secondary - allows for adjusting the seconday spell counts (ie Domain spells).</li>
+<li>ShadowChemosh Adjustments - Mythic Ranks - Easily adjust the number of mythic ranks any mythic monster has.</li>
+<li>ShadowChemosh Adjustments (Frumple) - Added "Equipment, Uses/Period" Easily adjust the number of uses a piece of equipment has.</li>
+<li>We Be Goblins (ShadowChemosh) - Added in the player stuff.</li>
+<li>LoF: The End of Eternity (ShadowChemosh) - Added player items.</li>
+<li>Kingmaker: War of the River Kings (ShadowChemosh) - Added player items.</li>
+<li>Blood of Dragonscare (ShadowChemosh) - Added player items.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Added trait headers for Psionic, Crimes, Dream, and Training.</li>
+<li>Added universal ability "SR vs Good".</li>
+<li>Added Ability Healing universal ability.</li>
+<li>Added "Resistant to Blows" universal ability.</li>
+<li>Added universal abilities: Half Dmg from Ranged Attacks and Energy Attacks.</li>
+<li>I moved over the "duplicated" Things from the GM Pack to the Basic Pack so all Packs have access to them.</li>
+<li>Moved over the new DR Things from Path of War to Basic Pack: Damage Reduction, Evil or Chaotic; Damage Reduction, Good or Chaotic</li>
+<li>Added new logic to add a "Source ID Abbreviation" to class names. This helps identify them in the list. You can activate this by adding the new PackHelper.ClsSrcAbr tag and setting the "Source" info into the srcBookInf field.</li>
+<li>Deprecated the double 'Goodberry' items so that only one is selectable.</li>
+</ul>
+
+<strong>v3.6 February 8, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fix iPad being unable to load more than one Community Pack. Multiple Packs will now work correctly on the iPads.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>None</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+<strong>v3.5 February 4, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fix issues with loading of the community version of Radiance for the Wrath of the Righteous AP.</li>
+<li>Added more file renames to the installer.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>None</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+<strong>v3.4 February 1, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Misc script changes/fixes to the Way of the Wicked player items.</li>
+<li>Lots of misc changes to support the merge in of the old "Community Player Pack".</li>
+<li>Added logic to allow specific stuff in for PFS Core Games that match to the Pathfinder Core. In example the "Concentration: Cleric" skill is allowed as Cleric is a core class.</li>
+<li>Changed Adjustments to sort correctly in the new sections on the Adjust tab.</li>
+</ul>
+
+<strong>New Features</strong>
+<ul>
+<li>The "Community Player Pack" has been full deprecated and its features have been merged into the Basic Pack.</li>
+<li>After much thought I am not going to make a PFS Pack. Instead the PFS Boons will exist within the Pathfinder Basic Pack. I think this will make everyone's lives easier actually.</li>
+<li>All player friendly Things (Feats, Magic Items, Weapons, Gear, feats, archetypes, and Wondrous Items have been merged over from the deprecated "Community Player Pack".</li>
+<li>Universial Things merged into the Basic Pack. This includes such things as Frumple's Disease Helpers, Frumples Breath Weapon Helper, Damage Reductions, and many Racial Specials that can be reused by all Packs.</li>
+<li>New ShadowChemosh Equipment:</li>
+<li>Goodberry magic item for tracking of casting of the spell.</li>
+<li>Touch Attack weapon you can add to help you track attack bonus easier.</li>
+<li>Ranged Touch Attack weapon you can add to help you track attack bonus easier.</li>
+<li>Dragonhide Plate as non-specific armor which allows you to make magic versions of the armor.</li>
+<li>Dwarven Plate as non-specific armor which allows you to make magic versions of the armor.</li>
+<li>Elven Chain as non-specific armor which allows you to make magic versions of the armor.</li>
+<li>Mithral Shirt as non-specific armor which allows you to make magic versions of the armor.</li>
+<li>Please note if you have one of the older versions of the above armors you will get a notice that it has been deprecated and you will need to re-add the armor to your character. Sorry!</li>
+<li>Unique player items added for AP85 - Fires of Creation.</li>
+</ul>
+
+<strong>Data File Authoring</strong>
+<ul>
+<li>New loadonce XML element added to all files. This requires at least HL 6.1e or the latest iPad app to load now. This also means the files in the community packs SHOULD not be copied to start a new file. If you do you will have issues with loading.</li>
+<li>NEW PROCEDURES</li>
+<li>GiveEthnic - When called at Pre-Levels/10000 will give the current race the ability to select a single Ethnic ability.</li>
+<li>IncSwarm - this increases the number of dice damage in a swarm attack by one. A proceedure is needed since swarm attack now takes damage tag as well as abValue for its damage</li>
+<li>multTarget - This add "plus xxx" to multiple targeting things. This is added from the thing's thingname if the user wants to add the amount of damage the user needs to specify the variable v_damage before calling procedure as well as adding the multTarg.IncDam tag to the thing use the field abText if we want text between v_damage and the name.</li>
+<li>abilLabel - Adds the correct ability type (ie Ex, Su, Sp).</li>
+<li>RemLowLght - Removes Low Light Vision.</li>
+<li>RemDarkvis - Removed Darkvision.</li>
+<li>ResLowLght - Adds Low Light Vision back.</li>
+<li>ResDarkvis - Adds Darkvision back.</li>
+<li>overrideDC - This manually overrides the auto DC calculation allowing user to specify level independent of the actual monster HD/level to use set the variable v_level before procedure to specify level/HD procedure needs to be called after Final/10000 (when normal DC  calculation is called).</li>
+<li>DiseaseTxt - Used by the new Disease Helper Things.</li>
+<li>HaveSpell - This procedure tests if a character has a specific spell and sets the valid field.</li>
+<li>CntMartWea - This procedure counts the number of martial weapons a hero has.</li>
+</ul>
+
+<strong>v3.3  January 11, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Not allowed for PFS flagged on most "ShadowChemosh" things.</li>
 </ul>
 
 <strong>New Features</strong>
 <ul>
 <li>New features and file layout to support community pack changes. Including the release of the Pathfinder 3PP Pack.</li>
-<li></li>
 </ul>
 
 <strong>Data File Authoring</strong>
@@ -28,17 +139,11 @@
 <li>Valdiation procedures from the old SGG pack has been moved to the basic pack. All packages have access to HaveSpell and CntMartWea.</li>
 <li>Added the new procedure "HaveSpell" to test if a character has access to a specific spell ID.</li>
 <li>Added the new procedure "CntMartWea" to count the number of martial weapon proficiencies a character has.</li>
-<li>Moved over Ultmate Psionics powers Discipines over to the basic pack. This allows everyone access to these.</li>
+<li>Moved over Ultimate Psionics powers Disciplines over to the basic pack. This allows everyone access to these.</li>
 <li>Power Resistance helper has been moved to the basic pack so it will be on all characters. This allows anything to add PR to any character by setting abValue on xPwrRes.</li>
-<li></li>
-<li></li>
-<li></li>
-
-</li>
 </ul>
 
-
-<strong>v3.0  January 1, 2015</strong>
+<strong>v3.0-v3.2  January 1, 2015</strong>
 
 <strong>Bug Fixes</strong>
 <ul>

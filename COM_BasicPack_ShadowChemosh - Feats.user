@@ -33,6 +33,7 @@ abValue2 = Plus Bonus to increase</comment>
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="HasFeat" tag="fVitStr"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Final" priority="9999999999"><![CDATA[
       ~ If not active get out now!
       doneif (field[abilActive].value <> 1)

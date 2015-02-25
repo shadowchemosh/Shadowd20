@@ -103,11 +103,4 @@ Feb 17, 2013
       hero.child[Attack].field[tAtkMelee].value += 2]]></eval>
     <exprreq message="Mwangi Catfolk race required."><![CDATA[#hasrace[rS2CatFolk] <> 0]]></exprreq>
     </thing>
-  <thing id="ioS2Custom" name="- Custom Magic Item -" description="Add this to have a customizable magic item where you can set the name, weight and value yourself." compset="Wondrous">
-    <usesource source="s20PFCamp"/>
-    <tag group="gType" tag="Wonder"/>
-    <tag group="Helper" tag="EquipAvail"/>
-    <tag group="Helper" tag="Custom" name="Custom Magic Item" abbrev="Custom Magic Item"/>
-    <tag group="Helper" tag="EquipMag"/>
-    </thing>
   </document>
