@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <fileinfo>
     <info_history><![CDATA[6/14/2014 - Tim Shadow
@@ -30,7 +30,7 @@
     <tag group="NeedType" tag="tpS2Ship"/>
     <tag group="ProductId" tag="Shadowd20"/>
     </thing>
-  <thing id="rcS2HullLo" name="Hull" description="A Hull Location is Colossal, and has a hardness of 5 and 150 hit points. The standard hull is sized for non-specialized vessels. Most ships use the standard hull but you can purchase other types on the {b}&quot;Gear&quot;{/b} tab.\n\nThe Armor Class of a ship&#146;s Hull Location is 10 + your ship&#146;s Dexterity bonus + your ship&#146;s armor bonus.\n\n{B}Note:{/b} This hull location will disable itself once it has zero hit points." compset="RaceCustom" summary="A single hull location of your ship.">
+  <thing id="rcS2HullLo" name="Hull" description="A Hull Location is Colossal, and has a hardness of 5 and 150 hit points. The standard hull is sized for non-specialized vessels. Most ships use the standard hull but you can purchase other types on the {b}&quot;Gear&quot;{/b} tab.\n\nThe Armor Class of a ship’s Hull Location is 10 + your ship’s Dexterity bonus + your ship’s armor bonus.\n\n{B}Note:{/b} This hull location will disable itself once it has zero hit points." compset="RaceCustom" summary="A single hull location of your ship.">
     <comment>1 = Hardness
 2 = 
 3 = 
@@ -884,8 +884,8 @@ hero.findchild[BaseRace].field[livename].text = field[domDomain].text]]></eval>
     <fieldval field="rSpecSing" value="Hull Location"/>
     <fieldval field="rSpec2ndSi" value="Rigging Location"/>
     <fieldval field="rSpeed" value="2"/>
+    <fieldval field="rHitDice" value="1"/>
     <usesource source="CampRazorC"/>
-    <tag group="NoScore" tag="aCON"/>
     <tag group="NoScore" tag="aINT"/>
     <tag group="NoScore" tag="aWIS"/>
     <tag group="HasType" tag="tpS2Ship"/>
@@ -901,7 +901,7 @@ hero.findchild[BaseRace].field[livename].text = field[domDomain].text]]></eval>
     <tag group="Hero" tag="NoDefComm"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="NoScore" tag="aCHA"/>
-    <bootstrap thing="stS2FaSBSh"></bootstrap>
+    <tag group="NoScore" tag="aCON"/>
     <bootstrap thing="raS2BlwWat"></bootstrap>
     <bootstrap thing="raS2RiggNu"></bootstrap>
     <bootstrap thing="raS2SpdWth"></bootstrap>
@@ -913,23 +913,7 @@ hero.findchild[BaseRace].field[livename].text = field[domDomain].text]]></eval>
     <bootstrap thing="raS2Encumb"></bootstrap>
     <bootstrap thing="wS2RamAtt"></bootstrap>
     <bootstrap thing="raS2HullNu"></bootstrap>
-    <eval phase="First">~ Strength (Str) = 30 + the number of Hull Locations. 
-~ A ship&#146;s Strength will be further modified by whether 
-~ you opted to build with Sleek (&#150;4) or Broad (+4) Hulls.
-field[rSTR].value += 20 + hero.tagcount[FaSB.Hull]
-
-~ Dexterity (Dex) = 10 + the number of Rigging Locations 
-~ - the number of Hull Locations.
-field[rDEX].value += hero.tagcount[FaSB.Rigging] - hero.child[raS2HullNu].field[domDomain].text
-
-~ Hide Unarmed Strike weapon always
-perform hero.child[wUnarmed].assign[Hide.Weapon]
-
-~ Hide skills when exported to statblock
-perform hero.child[skBluff].assign[Hide.Statblock]
-perform hero.child[skDiplo].assign[Hide.Statblock]
-perform hero.child[skDisguise].assign[Hide.Statblock]
-perform hero.child[skIntim].assign[Hide.Statblock]</eval>
+    <bootstrap thing="stS2FaSBSh"></bootstrap>
     <eval phase="First" priority="10000" index="2">~ Calculate speed as 2 + Rigging Locations
 hero.child[Speed].field[tSpeed].value += hero.tagcount[FaSB.Rigging]
 
@@ -944,6 +928,24 @@ hero.child[Speed].field[tSpeedMod].value = hero.child[Speed].field[tSpeed].value
 #situational[hero.child[svFort],"Captain's base save value",""]
 #situational[hero.child[svWill],"Captain's base save value",""]
 #situational[hero.child[svRef],"Captain's base save value -2",""]]]></eval>
+    <eval phase="First">
+~ Strength (Str) = 30 + the number of Hull Locations. 
+~ A ship’s Strength will be further modified by whether 
+~ you opted to build with Sleek (–4) or Broad (+4) Hulls.
+field[rSTR].value += 20 + hero.tagcount[FaSB.Hull]
+
+~ Dexterity (Dex) = 10 + the number of Rigging Locations 
+~ - the number of Hull Locations.
+field[rDEX].value += hero.tagcount[FaSB.Rigging] - hero.child[raS2HullNu].field[domDomain].text
+
+~ Hide Unarmed Strike weapon always
+perform hero.child[wUnarmed].assign[Hide.Weapon]
+
+~ Hide skills when exported to statblock
+perform hero.child[skBluff].assign[Hide.Statblock]
+perform hero.child[skDiplo].assign[Hide.Statblock]
+perform hero.child[skDisguise].assign[Hide.Statblock]
+perform hero.child[skIntim].assign[Hide.Statblock]</eval>
     </thing>
   <thing id="gS2BroaRud" name="Broad Rudder" description="A wide rudder makes a ship more nimble, granting a +1 bonus on all Profession (sailor) checks to maneuver the vessel.\n\n{i}Requirements{/i}: Craft (ships) DC 16" compset="Gear">
     <fieldval field="gCost" value="500"/>
@@ -1236,7 +1238,7 @@ field[livename].text = field[name].text & " " & herofield[tEncum].value & "/" & 
 ~ Set Summary text
 field[abSumm].text = "Current Encumbrance: " & herofield[tEncum].value & "/" & herofield[tEncumHvy].value & " lbs"]]></eval>
     </thing>
-  <thing id="wS2RamAtt" name="Ram Attack" description="In order to make a ram attack, your ship must move at least 8 squares in a straight line. Up to 6 of those squares of movement can occur in the previous round &#151; essentially, the Captain can choose to make a ram attack over 2 rounds if he doesn&#146;t have enough movement available in one round. The Captain targets a specific Hull Location on the enemy ship. His ship collides with this Location, inflicting 4d8 + the ship&#146;s Strength modifier to that Location, and half this amount of damage to all neighboring Locations. In addition, any Hull Locations at the front of the ramming Captain&#146;s ship also takes half the total damage, unless the ship was equipped with a ram. A ram attack ignores up to 10 points of hardness on the Hull Location it strikes. Damage suffered applies equally to the Hull Location and the Below the Waterline Location; that is, if the damage inflicted is 35 points, this amount of damage is applied to both the struck Hull Location as well as the Below the Waterline Location." compset="Weapon">
+  <thing id="wS2RamAtt" name="Ram Attack" description="In order to make a ram attack, your ship must move at least 8 squares in a straight line. Up to 6 of those squares of movement can occur in the previous round — essentially, the Captain can choose to make a ram attack over 2 rounds if he doesn’t have enough movement available in one round. The Captain targets a specific Hull Location on the enemy ship. His ship collides with this Location, inflicting 4d8 + the ship’s Strength modifier to that Location, and half this amount of damage to all neighboring Locations. In addition, any Hull Locations at the front of the ramming Captain’s ship also takes half the total damage, unless the ship was equipped with a ram. A ram attack ignores up to 10 points of hardness on the Hull Location it strikes. Damage suffered applies equally to the Hull Location and the Below the Waterline Location; that is, if the damage inflicted is 35 points, this amount of damage is applied to both the struck Hull Location as well as the Below the Waterline Location." compset="Weapon">
     <usesource source="CampRazorC"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Helper" tag="FixSizeDmg"/>
