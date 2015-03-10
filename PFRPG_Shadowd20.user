@@ -317,6 +317,7 @@ version 1.40 - Released May 12, 2013
     <bootstrap thing="s20Rods"></bootstrap>
     <bootstrap thing="s20Rogue2"></bootstrap>
     <bootstrap thing="S20Teamwor"></bootstrap>
+    <bootstrap thing="s20NoXP"></bootstrap>
     <eval phase="First" priority="10000"><![CDATA[
       ~ If not human get out now
       ~#hasrace[rHuman] + #hasrace[rElf] + #hasrace[rDwarf] +
@@ -585,8 +586,7 @@ version 1.40 - Released May 12, 2013
   <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a bonus on damage equal to your caster level. This should help some with how little damage spellcasters do vs melee characters." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a bonus on damage.">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="Final" priority="10000">
-      ~ Only show us if we are a spellcaster
+    <eval phase="Final" priority="10000">~ Only show us if we are a spellcaster
       doneif (hero.tagis[Hero.Caster] = 0)
 
       ~ Show us
@@ -636,8 +636,7 @@ version 1.40 - Released May 12, 2013
       ~ Find all touch attack weapons and show Extra Damage
       foreach pick in hero from BaseWep where "Shadowd20.TouchWep"
          #extradamage[eachpick,sName,field[name].text]
-      nexteach
-      ]]></eval>
+      nexteach]]></eval>
     <eval phase="Final" priority="50000" index="2"><![CDATA[
       ~ Finished if not a Arcane or Divine caster
       doneif (hero.tagis[Hero.Caster] <> 1)    
@@ -645,8 +644,7 @@ version 1.40 - Released May 12, 2013
       ~ Give damage CL text on to all spells on character
       foreach pick in hero from BaseSpell
         eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell does hit point damage it gains a bonus equal to your caster level (" & signed(eachpick.field[sCL].value) & ")."  
-      nexteach
-      ]]></eval>
+      nexteach]]></eval>
     </thing>
   <thing id="s20SkillPo" name="Shadow d20 Increase Class Skill Points" description="Give an increase to some class skill points.\n\n-Clerics increased by 2 per level." compset="Simple">
     <usesource source="pShadowd20"/>
@@ -766,13 +764,19 @@ version 1.40 - Released May 12, 2013
     <tag group="trCategory" tag="Training"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
-  <hidden id="fKQAddFavT"/>
+  <thing id="s20NoXP" name="Shadow d20 No XP" description="This helper script prevents the need of using XP on level up." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="PostAttr" priority="5000"><![CDATA[
+      ~ This tag tells HL to not use XP!
+      perform hero.assign[Hero.NoAdvance]
+      ]]></eval>
+    </thing>
   <hidden id="cRslAddAC"/>
   <hidden id="fKQDeadAcc"/>
   <hidden id="fKQImpDA"/>
   <hidden id="mSpellMA"/>
   <hidden id="fKQAddFavE"/>
-  <preclude id="rAasimar" source="srcNoRaces"/>
+  <hidden id="fKQAddFavT"/>
   <preclude id="raS2CatCur" source="ARG"/>
   <preclude id="raS2CatFal" source="ARG"/>
   <preclude id="raS2CatSce" source="ARG"/>
@@ -791,4 +795,5 @@ version 1.40 - Released May 12, 2013
   <preclude id="rTiefling" source="srcNoRaces"/>
   <preclude id="rCatfolk" source="srcNoRaces"/>
   <preclude id="rRatfolk" source="srcNoRaces"/>
+  <preclude id="rAasimar" source="srcNoRaces"/>
   </document>
