@@ -414,7 +414,7 @@ version 1.40 - Released May 12, 2013
       var nPower  as number
 
       ~ Set houserule text on Power Attack
-      #appenddesc[fPowerAtt,"{b}Shadow d20:{/b} Two-handed weapons will NO longer get 1.5x Strength damage or get +50% bonus when using Power Attack."]
+      #appenddesc[fPowerAtt,"{b}Shadow d20:{/b} Two-handed weapons will NO longer get 1.5x Strength damage or get +50% bonus when using Power Attack until your character is level 6."]
 
       ~ If we have power attack feat then process here
       If (hero.childlives[fPowerAtt] <> 0) Then
@@ -696,20 +696,6 @@ version 1.40 - Released May 12, 2013
         Endif
       nexteach]]></eval>
     </thing>
-  <thing id="s20MythTxt" name="Shadow d20 Mythic Text Changes" description="This Thing sets the text desc on Mythic Things with house rules text." compset="Simple">
-    <usesource source="s20PFCamp"/>
-    <eval phase="Render" priority="200"><![CDATA[
-      ~ Make Mythic Surges a free action
-      #appenddesc[MythSurge,"{b}Shadow d20:{/b} This is now a FREE action to use instead of a immediate action. This means you can use multiple surges to increase a single d20 roll. I think this feels more mythic and is balanced by the limited number of surges per day."]
-
-      ~ Make Mythic Feat Changes
-      foreach thing in BaseFeat where "thingid.fMyVitStri"
-        ~ Mythic Vital Strike NERF
-        If (eachthing.tagis[thingid.fMyVitStri] <> 0) Then
-          perform eachthing.amendthing[description,"You can strike your foes with incredible force.{br}{br}{b}Prerequisite{/b}: Vital Strike.{br}{br}{b}Benefit{/b}: Whenever you use Vital Strike, Improved Vital Strike, or Greater Vital Strike increase the number of weapon's damage dice for the attack by two extra dice. In example Vital Strike would have its dice increased to four times instead of two times and Greater Vital Strike would roll six times instead of four.{br}{br}{B}Shadow d20:{/b} Feat changed to be better balanced for Mythic Campaigns."]
-        Endif  
-      nexteach]]></eval>
-    </thing>
   <thing id="s20Rogue2" name="Shadow d20 Rogue 1/day to 1/Encounter TEXT addition" description="All one time a day rogue abilities are being changed to 1/day." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="Render" priority="200"><![CDATA[
@@ -766,10 +752,9 @@ version 1.40 - Released May 12, 2013
     </thing>
   <thing id="s20NoXP" name="Shadow d20 No XP" description="This helper script prevents the need of using XP on level up." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <eval phase="PostAttr" priority="5000"><![CDATA[
+    <eval phase="PostAttr" priority="5000">
       ~ This tag tells HL to not use XP!
-      perform hero.assign[Hero.NoAdvance]
-      ]]></eval>
+      perform hero.assign[Hero.NoAdvance]</eval>
     </thing>
   <hidden id="cRslAddAC"/>
   <hidden id="fKQDeadAcc"/>

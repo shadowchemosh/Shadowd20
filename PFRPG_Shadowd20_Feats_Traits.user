@@ -1633,11 +1633,9 @@ endif]]></eval>
     <tag group="trCategory" tag="Racial"/>
     <tag group="Race" tag="rShifters"/>
     <eval phase="Final" priority="50000"><![CDATA[
-var text as string
-foreach pick in hero from BaseWep
-   text = "+" & eachpick.tagvalue[wCritMult.?] & " on threat"
-   #extracrit[eachpick, text ,field[name].text]   
-nexteach]]></eval>
+      foreach pick in hero from BaseWep
+         #extracrit[eachpick, signed(eachpick.tagvalue[wCritMult.?]) & " on threat" ,field[name].text]   
+      nexteach]]></eval>
     <eval phase="First" priority="10000" index="2">perform hero.assign[Shifter.Feat]</eval>
     </thing>
   <thing id="trS2Skitti" name="Skittish" description="Just because you jump at shadows doesn&apos;t mean that the shadows aren&apos;t out to get you. Years of practice have taught you to react at a moment&apos;s notice. You gain a +1 trait bonus to initiative checks and a +1 trait bonus to Reflex saves against traps.\n\n{B}Note:{/b} This counts as a shifter feat." compset="Trait" summary="+1 trait bonus to initiative checks and a +1 trait bonus to Ref saves vs traps." uniqueness="useronce">

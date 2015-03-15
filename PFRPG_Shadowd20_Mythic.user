@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="s20MythTxt" name="Shadow d20 Mythic Text Changes" description="This Thing sets the text desc on Mythic Things with house rules text." compset="Simple">
+    <usesource source="s20PFCamp"/>
+    <eval phase="Render" priority="200"><![CDATA[
+      ~ Make Mythic Surges a free action
+      #appenddesc[MythSurge,"{b}Shadow d20:{/b} This is now a FREE action to use instead of a immediate action. This means you can use multiple surges to increase a single d20 roll up to your Mythic Tier. So in example if you are Mythic Tier 2 then you could add up to two surges to your d20 roll. I think this feels more mythic and is balanced by the limited number of surges per day."]
+
+      ~ Make Mythic Feat Changes
+      foreach thing in BaseFeat where "thingid.fMyVitStri"
+        ~ Mythic Vital Strike NERF
+        If (eachthing.tagis[thingid.fMyVitStri] <> 0) Then
+          perform eachthing.amendthing[description,"You can strike your foes with incredible force.{br}{br}{b}Prerequisite{/b}: Vital Strike.{br}{br}{b}Benefit{/b}: Whenever you use Vital Strike, Improved Vital Strike, or Greater Vital Strike increase the number of weapon's damage dice for the attack by two extra dice. In example Vital Strike would have its dice increased to four times instead of two times and Greater Vital Strike would roll six times instead of four.{br}{br}{B}Shadow d20:{/b} Feat changed to be better balanced for Mythic Campaigns."]
+        Endif  
+      nexteach]]></eval>
+    </thing>
+  <thing id="fS2MyPowAt" name="Power Attack" description="Your attacks are truly devastating.\n\n{b}Prerequisite{/b}: Power Attack.\n\n{b}Benefit{/b}: As a free action spend mythic power to increase your Power Attack damage for one round. You gain a +3 bonus on melee damage rolls instead of +2. When your base attack bonus reaches +4 and every 4 points thereafter, the amount of bonus damage increases by +3 instead of +2. In addition, the bonus damage from this feat is doubled on a critical hit, before it&apos;s multiplied by the weapon&apos;s critical multiplier.\n\n{b}Note:{/b} The bonus displayed on this feat is the amount of damage you should multiply by your weapon&apos;s critical multiplier when you critically hit.\n\n{b}Shadow d20:{/b} This feat is changed to so that a mythic point needs to be spent to activate the extra damage for one round. The mythic damage increase all the time was seen as too after I ran through Wrath of the Righteous." compset="Feat" summary="Use 1 power to eliminate attack penalties of Power attack for 1 min." uniqueness="useronce">
+    <fieldval field="actName" value="Mythic Power"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="fCategory" tag="Mythic" name="Mythic" abbrev="Mythic"/>
+    <tag group="fMythAssoc" tag="fPowerAtt" name="Power Attack" abbrev="Power Attack"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Activation" name="Activation" abbrev="Activation"/>
+    <tag group="abAction" tag="Free"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Do nothing if this feat is disabled
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~ Calculate our bonus damage 
+      field[abValue].value += round(#BAB[]/4,0,-1) + 1
+      ~field[abValue].value *= 2
+
+      field[livename].text = field[name].text & " " & signed(field[abValue].value)
+
+      ~ If not activated get out now!
+      doneif (field[abilActive].value = 0)
+
+      #value2[fPowerAtt] *= 1.5
+      #value2[fPowerAtt] = round(hero.childfound[fPowerAtt].field[abValue2].value,0,-1)]]></eval>
+    <exprreq message="Power Attack required."><![CDATA[#hasfeat[fPowerAtt] <> 0]]></exprreq>
+    </thing>
+  <preclude id="fMyPowAtta" source="s20PFCamp"/>
+  </document>
