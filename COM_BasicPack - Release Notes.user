@@ -8,6 +8,24 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.8 February 27, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Thing 'xxVulLight' - Contains duplicates of tag 'Shadow' in group 'Helper' - Emergency Fix!</li>
+<li>ShadowChemosh Equipment - Touch Attack and Ranged Touch attacked now allowed for CORE PFS games.</li>
+<li>ShadowChemosh Adjustments -"Skill Bonus, All of Type" - Fixed issue where the adjustment was not able to be turned off.</li>
+<li>ShadowChemosh - Fixed incorrect PFS sources.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>None</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
 <strong>v3.7 February 25, 2015</strong>
 
 <strong>Bug Fixes</strong>

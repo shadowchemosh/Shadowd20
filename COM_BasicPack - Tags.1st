@@ -12,6 +12,7 @@
   <!-- ========================= -->
   <group id="PackHelper" name="Community Helper">
     <value id="ClsSrcAbr"   name="Class Source Abbrevation"/>
+    <value id="Touch"       name="Touch Attack Weapon"/>
   </group>
 
 

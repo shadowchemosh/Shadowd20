@@ -195,9 +195,9 @@
         perform eachthing.amendthing[description,sText]
       nexteach]]></eval>
     </thing>
-  <thing id="cS2BbnSupe" name="Superstition" description="The barbarian gains a +2 morale bonus on saving throws made to resist spells, supernatural abilities, and spell-like abilities. This bonus increases by +1 for every 4 levels the barbarian has attained. While raging, the barbarian cannot be a willing target of any spell and must make saving throws to resist all spells, even those cast by allies.\n\n{B}ShadowChemosh:{/b} This version of Superstition can be activated on the In-Play tab allowing for an easier tracking of stacking and non-stacking morale bonsues." compset="CustomSpec" summary="+2 save vs. magic while raging." uniqueness="unique">
+  <thing id="cS2BbnSupe" name="Superstition" description="The barbarian gains a +2 morale bonus on saving throws made to resist spells, supernatural abilities, and spell-like abilities. This bonus increases by +1 for every 4 levels the barbarian has attained. While raging, the barbarian cannot be a willing target of any spell and must make saving throws to resist all spells, even those cast by allies.\n\n{B}ShadowChemosh:{/b} This version of Superstition can be activated on the In-Play tab allowing for an easier tracking of stacking and non-stacking morale bonsues." compset="CustomSpec" summary="While raging, gain bonus to save vs magic, but must resist all spells, even allies&apos;." uniqueness="unique">
     <comment><![CDATA[Added "activated Logic"]]></comment>
-    <tag group="SpecSource" tag="cHelpBbn"/>
+    <usesource source="s20PFCamp"/>
     <tag group="User" tag="Activation"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="thingid" tag="cBbnSupers"/>
@@ -205,9 +205,12 @@
     <tag group="abDuration" tag="ConstRage"/>
     <tag group="abCategory" tag="BbnRagePow"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="SpecSource" tag="cHelpBbn"/>
+    <bootstrap thing="cBbnSupers">
+      <autotag group="Helper" tag="SpcDisable"/>
+      <autotag group="Hide" tag="Special"/>
+      </bootstrap>
     <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
       ~ if we've been disabled, get out now
       doneif (tagis[Helper.SpcDisable] <> 0)
       ~ If in a rage then get out now
@@ -216,13 +219,11 @@
       ~ We can't ativate unless we are raging
       perform assign[Helper.ChgDisab1]]]></eval>
     <eval phase="PreAttr" priority="10000" index="3"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
       ~ if we've been disabled, get out now
       doneif (tagis[Helper.SpcDisable] <> 0)
 
       ~ Adjust our total bonus
-      field[abValue].value += round(field[xTotalLev].value / 4, 0, -1) + 2
+      field[abValue].value += round(field[xTotalLev].value / 4, 0, -1) + #value[cBbnSupers]
       ~ If not activated, just get out now
       doneif (field[abilActive].value <> 1)
       ~ If disabled then just get out now
@@ -231,11 +232,6 @@
       ~ Add Luck Morale to our saving throws
       #applybonus[BonMorale,hero.child[svAll],field[abValue].value]]]></eval>
     <eval phase="Final" priority="10000" index="4"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
       ~ Set live name
       field[livename].text = field[name].text & " " & signed(field[abValue].value)
 
@@ -246,9 +242,10 @@
       doneif (field[abilActive].value - tagis[Helper.ChgDisab1] = 1)
       
       ~ Set summary fields and situational text
-      field[abSumm].text = signed(field[abValue].value) & " save vs. magic while raging."
+      field[abSumm].text = signed(field[abValue].value) & " save vs. magic while raging, but resist all spells, even allies'."
       #situational[hero.child[svAll],signed(field[abValue].value) & " save vs. magic while raging.",field[name].text]]]></eval>
-    <eval phase="First" priority="10">~ We need to mimic the base Superstition rage power
+    <eval phase="First" priority="10">
+      ~ We need to mimic the base Superstition rage power
       perform hero.assign[Ability.cBbnSupers]</eval>
     </thing>
   </document>

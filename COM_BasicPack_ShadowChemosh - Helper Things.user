@@ -13,6 +13,31 @@
 
       ]]></info_history>
     </fileinfo>
+  <!-- ============================================================================================ -->
+  <!-- Mechanic                                                                                     -->
+  <!-- ============================================================================================ -->
+  <thing id="mecSCAdjus" name="ShadowChemosh Mechanic" compset="Mechanics">
+    <!-- Range Increment helper tags -->
+    <tag group="wRangeInc" tag="5"/>
+
+    <!-- Critical Minimum helper tags so that we can go really low -->
+    <tag group="wCritMin" tag="17" name="17" abbrev="17"/>
+    <tag group="wCritMin" tag="16" name="16" abbrev="16"/>
+    <tag group="wCritMin" tag="15" name="15" abbrev="15"/>
+    <tag group="wCritMin" tag="14" name="14" abbrev="14"/>
+    <tag group="wCritMin" tag="13" name="13" abbrev="13"/>
+    <tag group="wCritMin" tag="12" name="12" abbrev="12"/>
+    <tag group="wCritMin" tag="11" name="11" abbrev="11"/>
+    <tag group="wCritMin" tag="10" name="10" abbrev="10"/>
+
+    </thing>
+
+    
+  <!-- ============================================================================================ -->
+  <!-- Selection Helpers                                                                            -->
+  <!-- ============================================================================================ -->
+
+  <!-- Value Selections Helpers -->
   <thing id="selS2Valu1" name="Value 1" description="Field abValue 1" compset="SelectHelp">
     <usesource source="s20PFCamp"/>
     <tag group="Selection" tag="S2abValue"/>
@@ -38,15 +63,8 @@
     <tag group="Selection" tag="S2abValue"/>
     <tag group="Value" tag="5"/>
     </thing>
-    
 
-  <thing id="isEqpS2Les" name="Slotless Equipment Slot" compset="ItemSlot"></thing>
-
-  <thing id="mecSCAdjus" name="Adjustment Mechanic" compset="Mechanics">
-    <usesource source="s20PFCamp"/>
-    <tag group="wRangeInc" tag="5"/>
-    </thing>
-
+  <!-- Bonus Type Selections Helpers -->
   <thing id="zSCAlchemi" name="Alchemical" compset="SelectHelp">
     <tag group="AdjustBon" tag="Selector"/>
     <tag group="AdjustBon" tag="Alchemical"/>
@@ -95,6 +113,8 @@
     <tag group="AdjustBon" tag="Selector"/>
     <tag group="AdjustBon" tag="Bonus"/>
     </thing>
+
+  <!-- Armor Class Type Selections Helpers -->
   <thing id="zSCArmor" name="Armor" compset="SelectHelp">
     <tag group="AdjustAC" tag="Selector"/>
     <tag group="AdjustAC" tag="Armor"/>
@@ -127,6 +147,11 @@
     <tag group="AdjustAC" tag="Misc"/>
     </thing>
 
+   
+  <!-- ============================================================================================ -->
+  <!-- Equipment Item Slots                                                                         -->
+  <!-- ============================================================================================ -->
+  <thing id="isEqpS2Les" name="Slotless Equipment Slot" compset="ItemSlot"></thing>
 
 
   </document>
