@@ -1724,53 +1724,6 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="Defense"/>
     </thing>
-  <thing id="yBbnSupers" name="Superstition" description="The barbarian gains a +2 morale bonus on saving throws made to resist spells, supernatural abilities, and spell-like abilities. This bonus increases by +1 for every 4 levels the barbarian has attained. While raging, the barbarian cannot be a willing target of any spell and must make saving throws to resist all spells, even those cast by allies." compset="CustomSpec" summary="+2 save vs. magic while raging." replaces="cBbnSupers" uniqueness="unique">
-    <comment><![CDATA[Added "activated Logic", Added in new features from Pathfinder v7.0.]]></comment>
-    <tag group="SpecSource" tag="cHelpBbn" name="Barbarian" abbrev="Barbarian"/>
-    <tag group="User" tag="Activation"/>
-    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
-    <tag group="ProductId" tag="Shadowd20"/>
-    <tag group="abCategory" tag="BbnRagePow"/>
-    <eval phase="PostLevel" priority="10000" index="3"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      ~ If in a rage then get out now
-      doneif (hero.child[cBbnRage].field[abilActive].value <> 0)
-
-       ~we can't enter be on unless we are raging
-       perform assign[Helper.ChgDisab1]]]></eval>
-    <eval phase="PreAttr" priority="10000" index="2"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] = 0)
-
-      ~ Adjust our total bonus
-      var bonus as number
-      bonus = field[xTotalLev].value / 4
-      bonus = round(bonus, 0, -1) + 2
-      field[abValue].value += bonus
-
-      ~ If not activated, just get out now
-      doneif (field[abilActive].value <> 1)
-      ~ If disabled then just get out now
-      doneif (tagis[Helper.ChgDisab1] <> 0)
-
-      ~ Add Luck Morale to our saving throws
-      #applybonus[BonMorale,hero.child[svAll],field[abValue].value]]]></eval>
-    <eval phase="Final" priority="10000"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      ~ Set live and summary fields
-      field[livename].text = "Superstition +" & field[abValue].value
-      field[abSumm].text = "+" & field[abValue].value & " save vs. magic while raging."
-
-      #situational[hero.child[svAll],"+" & field[abValue].value & " save vs. magic while raging.",field[name].text]]]></eval>
-    </thing>
   <thing id="cRogS2Focu" name="Skill Focus" description="Pick one skill. You gain a +3 bonus on all checks involving the chosen skill. You can pick this same skill trick mutliple times. You may also pick the same skill and the bonuses will stack." compset="CustomSpec" summary="You gain a +3 bonus on all checks involving a chosen skill.">
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="Secondary"/>
