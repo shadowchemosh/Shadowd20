@@ -21,15 +21,24 @@
   <!-- =================================================================== -->
   <procedure id="GiveEthnic" context="pick"><![CDATA[
     ~ This procedure gives a race a single ethnic choice.
-    ~ Timing: Pre-Levels/10000
+    ~ Timing: First/15000
+    ~ Note Timing is important is we should be "after" all other LW Ethnicity scripts
 
-    ~set our focus to the hero's race
+    ~ Set our focus to the hero's race
     perform hero.findchild[BaseRace].setfocus
     doneif (state.isfocus = 0)
-    ~ Give one Ethnicity
-    focus.field[rGiveSpec].value = 1
+    
+    ~ Only if we have no Racial Custom Specials should we give a value. This way
+    ~ we don't stack by accident.
+    if (focus.field[rGiveSpec].value = 0) then
+      ~ Give one Ethnicity
+      focus.field[rGiveSpec].value = 1
+    endif  
+    
+    ~ Set Helper tag and Ethnicity text
     perform focus.assign[Helper.OptCustom]
     focus.field[rSpecName].text = "Ethnicities"  
+    focus.field[rSpecSing].text = "Ethnicity"
     ]]>
   </procedure>
 
@@ -104,6 +113,12 @@
     var dam as string
     if (this.tagis[multTarg.IncDam] <> 0) then
       dam = v_damage & " " & field[abText].text & " " & this.field[shortname].text
+      ~ Test to see if parm damage is blank and if so do not append two blank spaces
+      if (compare(v_damage,"") <> 0) then
+        dam = v_damage & " " & field[abText].text & " " & this.field[shortname].text
+      else
+        dam = field[abText].text & " " & this.field[shortname].text
+      endif 
     else
       dam = this.field[shortname].text
     endif 

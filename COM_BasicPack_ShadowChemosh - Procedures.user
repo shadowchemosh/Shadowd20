@@ -237,38 +237,118 @@
     ~ If class "thingid" is blank then get out now!
     doneif (empty(S2_Class) = 1)
 
-    ~ append the thingid.? group to the tag id.
-    S2_Class = "thingid." & S2_Class
-
-    ~ Calculate the total concentration value
-    field[skTotal].value = hero.findchild[BaseClHelp,S2_Class].field[cConcCheck].value
+    ~ If we are a racial Concentration skill then get the race field
+    if (compare(S2_Class,"Race") = 0) then
+      field[skTotal].value = hero.findchild[BaseRace].field[rSpConcen].value      
+    
+    ~..Get the passed in "Cass" concentration value
+    else
+      ~ append the thingid.? group to the tag id.
+      S2_Class = "thingid." & S2_Class
+      ~ Calculate the total concentration value
+      field[skTotal].value = hero.findchild[BaseClHelp,S2_Class].field[cConcCheck].value
+    endif
 
     ~ Add in all the different "bonus" and "penalty" fields
     field[skTotal].value += field[Bonus].value + field[Penalty].value + field[BonAlch].value + field[ModCirc].value + field[BonComp].value + field[PenComp].value + field[BonEnhance].value + field[BonInsight].value + field[BonLuck].value + field[PenLuck].value + field[BonMorale].value + field[PenMorale].value + field[BonProfane].value + field[PenProfane].value + field[BonSacred].value + field[PenSacred].value + field[BonTrait].value + field[PenTrait].value    
 
+    ~ --------------------------------------------
+    ~ Situational Feats
+    ~ --------------------------------------------
+
     ~ If we have the combat casting feat add a situational note
     If (hero.tagis[HasFeat.fComCast] <> 0) Then
-      #situational[this,"+4 when casting defensivley","Combat Casting"]    
+      #situational[this,"+4 bonus when casting defensivley or grappled.","Combat Casting"]    
     Endif
 
     ~ If we have the Dimensional Agility feat add a situational note
     If (hero.tagcountstr["HasFeat.fDimenAgil"] <> 0) Then
-      #situational[this,"+4 when casting teleportation spells","Dimensional Agility"]    
+      #situational[this,"+4 bonus when casting teleportation spells.","Dimensional Agility"]    
     Endif
 
     ~ If we have the Shielded Caster feat add a situational note
     If (hero.tagcountstr["HasFeat.fShieldCas"] <> 0) Then
-      #situational[this,"+4 compentence when adjacent to an ally","Shielded Caster"]    
+      #situational[this,"+4 compentence bonus when adjacent to an ally.","Shielded Caster"]    
     Endif
 
     ~ If we have the Unusual Origin (Changeling) feat add a situational note
     If (hero.tagcountstr["HasFeat.fUnOrigCha"] <> 0) Then
-      #situational[this,"+2 when within 30ft of two other changelings","Unusual Origin (Changeling)"]    
+      #situational[this,"+2 bonus when within 30ft of two other changelings.","Unusual Origin (Changeling)"]    
     Endif
 
     ~ If we have the Warrior Priest feat add a situational note
-    If (hero.tagcountstr["HasFeat.fShieldCas"] <> 0) Then
-      #situational[this,"+2 when casting defensivley or grappled","Warrior Priest"]    
+    If (hero.tagcountstr["HasFeat.fWarriPrie"] <> 0) Then
+      #situational[this,"+2 bonus when casting defensivley or grappled.","Warrior Priest"]    
+    Endif
+    
+    ~ If we have the Grappled Caster feat add a situational note
+    If (hero.tagcountstr["HasFeat.fGrapCaste"] <> 0) Then
+      #situational[this,"+4 bonus when grappled which stacks with Combat Casting bonus.","Grappled Caster"]    
+    Endif
+
+
+    ~ If we have the Focused Eidolon feat add a situational note
+    If (hero.tagcountstr["HasFeat.fFocusEido"] <> 0) Then
+      #situational[this,"+4 bonus when adjacent to your eidolon.","Focused Eidolon"]    
+    Endif
+
+    ~ If we have the Mage of the Wild feat add a situational note
+    If (hero.tagcountstr["HasFeat.fMageWild"] <> 0) Then
+      #situational[this,"+2 bonus when you are in a terrain type you have selected the Attuned to the Wild feat for.","Mage of the Wild"]    
+    Endif
+
+    ~ If we have the Meditative Concentration feat add a situational note
+    If (hero.tagcountstr["HasFeat.fMedConcen"] <> 0) Then
+      #situational[this,"+4 bonus after you perform combat meditation.","Meditative Concentration"]    
+    Endif
+
+    ~ If we have the Perfect Center feat add a situational note
+    If (hero.tagcountstr["HasFeat.fPerCenter"] <> 0) Then
+      #situational[this,"You can take 10 even if it is not normally allowed due to strenuous circumstances.","Perfect Center"]    
+    Endif
+    
+    ~ If we have the Uncanny Concentration feat add a situational note
+    If (hero.tagcountstr["HasFeat.fUncanConc"] <> 0) Then
+      #situational[this,"You do not need to make concentration checks when affected by vigorous or violent motion or by violent weather.","Uncanny Concentration"]    
+    Endif
+
+    ~ If we have the Waterway Caster feat add a situational note
+    If (hero.tagcountstr["HasFeat.fWaterCast"] <> 0) Then
+      #situational[this,"+4 bonus when casting spells underwater. Automatically succeed while subjected to vigorouis or violent motion while swimming or on a ship.","Waterway Caster"]    
+    Endif
+
+    ~ --------------------------------------------
+    ~ Situational Traits
+    ~ --------------------------------------------
+
+    ~ If we have the Battlefield Caster trait add a situational note
+    If (hero.tagcountstr["HasTrait.trBattle"] <> 0) Then
+      #situational[this,"+1 trait bonus when casting defensively.","Battlefield Caster"]    
+    Endif
+
+    ~ If we have the Kuthite Caster trait add a situational note
+    If (hero.tagcountstr["HasTrait.trKuthCast"] <> 0) Then
+      #situational[this,"+4 trait bonus when casting spells with the darkness, pain, or shadow descriptors.","Kuthite Caster"]    
+    Endif
+
+    ~ If we have the Kwanlai Believer trait add a situational note
+    If (hero.tagcountstr["HasTrait.trKwanlaiB"] <> 0) Then
+      #situational[this,"+2 trait bonus when casting divine spells.","Kwanlai Believer"]    
+    Endif
+
+    ~ If we have the Quantium University Graduate trait add a situational note
+    If (hero.tagcountstr["HasTrait.trQuUnGrad"] <> 0) Then
+      #situational[this,"+2 trait bonus when casting arcane spells.","Quantium University Graduate"]    
+    Endif
+
+    ~ If we have the Scion of the Shory trait add a situational note
+    If (hero.tagcountstr["HasTrait.trScionSho"] <> 0) Then
+      #situational[this,"+2 bonus when casting flight spells such as {i}levitate, fly{/i} or {i}overland flight{/i}.","Scion of the Shory"]    
+    Endif    
+
+    ~ If we have the Shipboard Caster trait add a situational note
+    If (hero.tagcountstr["HasTrait.trShipCast"] <> 0) Then
+      #situational[this,"+3 bonus when on a ship or other water-going vessel.","Shipboard Caster"]    
     Endif
     ]]>
   </procedure>

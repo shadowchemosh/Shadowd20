@@ -1330,7 +1330,7 @@ doneif (field[pChosen].ischosen = 0)
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <tag group="Helper" tag="NoIncr"/>
-    <tag group="OthAdjCat" tag="Attributes"/>
+    <tag group="OthAdjCat" tag="Saves"/>
     <eval phase="Final" priority="25000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value = 0)
@@ -1519,7 +1519,7 @@ field[pCandExpr].text = "component.SelectHelp & (AdjustBon.Selector|AdjustAC.Sel
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
-    <tag group="OthAdjCat" tag="Attributes"/>
+    <tag group="OthAdjCat" tag="Saves"/>
     <eval phase="PreLevel" priority="11000" index="2"><![CDATA[~ Picks on Hero
 field[pUsePicks].value = 1
 ~ Set search expression for CORE spell school
@@ -1569,7 +1569,7 @@ Endif]]></eval>
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
-    <tag group="OthAdjCat" tag="Attributes"/>
+    <tag group="OthAdjCat" tag="Saves"/>
     <eval phase="PreLevel" priority="11000" index="2"><![CDATA[~ Picks on Hero
 field[pUsePicks].value = 1
 ~ Set search expression for CORE spell school
@@ -1619,7 +1619,7 @@ Endif]]></eval>
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
-    <tag group="OthAdjCat" tag="Attributes"/>
+    <tag group="OthAdjCat" tag="Saves"/>
     <eval phase="PreLevel" priority="11000" index="2"><![CDATA[
       ~ Picks on Hero
       field[pUsePicks].value = 1
@@ -1670,7 +1670,7 @@ Endif]]></eval>
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
-    <tag group="OthAdjCat" tag="Attributes"/>
+    <tag group="OthAdjCat" tag="Saves"/>
     <eval phase="PreLevel" priority="11000" index="2"><![CDATA[
       ~ Picks on Hero
       field[pUsePicks].value = 1
@@ -4956,7 +4956,7 @@ call S2SetName]]></eval>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
     <tag group="Helper" tag="NoIncr"/>
-    <eval phase="Final"><![CDATA[
+    <eval phase="Render" priority="99999999"><![CDATA[
       ~ If nothing chosen, get out now
       doneif (field[pChosen].ischosen <> 1)
       ~ If we're not enabled, get out now
@@ -5006,9 +5006,72 @@ call S2SetName]]></eval>
 
       perform hero.assign[CompPower.tmCelest]]]></eval>
     </thing>
-  <hidden id="yACNatural"/>
-  <hidden id="yACShield"/>
-  <hidden id="yACtouch"/>
+  <thing id="pS2ClsRng" name="Class Ability: Range" description="Select this adjustment to adjust class ability range value up or down." compset="InPlay">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="ClassAbil"/>
+    <tag group="OthAdjCat" tag="Class"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust range value up or down
+      field[pChosen].chosen.field[abRange].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2wFlurry" name="Weapon Flurry of Blows" description="Select this adjustment to force the selected weapon to show Flurry of Blow values." compset="InPlay">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="YourWep"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="MelAttOver" tag="aCON"/>
+    <tag group="OthAdjCat" tag="Equipment"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Set Show Flurry of Blows tag
+      perform field[pChosen].chosen.assign[Helper.ShowFlurry]]]></eval>
+    </thing>
+  <thing id="pS2CanOfIn" name="Wondrous Item: Candle of Invocation" description="Each of these special tapers is dedicated to one of the nine alignments. Simply burning the candle generates a favorable aura for the individual if the candle&apos;s alignment matches that of the character. Characters of the same alignment as the burning candle add a +2 morale bonus on Attack rolls, saving throws, and skill checks while within 30 feet of the flame.\n\nA cleric whose alignment matches the candle&apos;s operates as if two levels higher for purposes of determining spells per day if he burns the candle during or just prior to his spell preparation time. He can even cast spells normally unavailable to him As if he were of that higher level, but only so long as the candle continues to burn. Except in special cases (see below), a candle burns for 4 hours. It is possible to extinguish the candle simply by blowing it out, so users often place it in a lantern to protect it from drafts And the like. Doing this doesn&apos;t interfere with its magical properties.\n\nIn addition, burning a candle also allows the owner to cast a gate spell, the respondent being of the same alignment as the candle, but the taper is immediately consumed in the process.\n\n{b}Note:{/b} This adjustment assumes you are adding it because you are the correct alignment." compset="InPlay">
+    <fieldval field="pMinimum" value="2"/>
+    <fieldval field="pMaximum" value="2"/>
+    <fieldval field="pDuration" value="4 hours"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Adjustment" tag="Class"/>
+    <tag group="SpInfo" tag="spGate9"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      field[abValue].value += field[pAdjust].value
+
+      ~ Give bonus to Attack, Saves, and all Skills
+      #applybonus[BonMorale,hero.child[Attack],field[abValue].value]    
+      #applybonus[BonMorale,hero.child[svAll],field[abValue].value]    
+      #applybonus[BonMorale,hero.child[AllSkills],field[abValue].value]
+
+      ~ If we're not chosen, get out now
+      doneif (field[pChosen].ischosen = 0)
+
+      ~ Hide the weapon always
+      ~field[pChosen].chosen.assign[Hide.Weapon]]]></eval>
+    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If we're not chosen, get out now
+      doneif (field[pChosen].ischosen = 0)
+
+      field[pChosen].chosen.field[cMagicLev].value += field[abValue].value
+      field[pChosen].chosen.field[cCasterLev].value += field[abValue].value]]></eval>
+    </thing>
   <hidden id="pS2wViciou"/>
   <hidden id="pS2DRall"/>
   <hidden id="pS2DRbludg"/>
@@ -5060,4 +5123,7 @@ call S2SetName]]></eval>
   <hidden id="yACarmor"/>
   <hidden id="yACdeflect"/>
   <hidden id="yACdodge"/>
+  <hidden id="yACNatural"/>
+  <hidden id="yACShield"/>
+  <hidden id="yACtouch"/>
   </document>

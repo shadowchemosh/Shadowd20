@@ -140,7 +140,7 @@
     <usesource source="s20PFCamp"/>
     <tag group="fShowWhat" tag="Classes"/>
     <tag group="Helper" tag="GearNoSize"/>
-    <tag group="gType" tag="Tools"/>
+    <tag group="gType" tag="Tomes"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="10000"><![CDATA[
@@ -160,7 +160,7 @@
     <tag group="fShowWhat" tag="Classes"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="gType" tag="Tools"/>
+    <tag group="gType" tag="Tomes"/>
     <tag group="Value" tag="100"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -179,13 +179,14 @@
     <fieldval field="gWeight" value="1"/>
     <usesource source="s20PFCamp"/>
     <usesource source="PCAdvArm"/>
-    <tag group="fShowWhat" tag="Classes"/>
+    <usesource source="UltEquip"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Value" tag="50"/>
-    <tag group="gType" tag="Tools"/>
+    <tag group="gType" tag="Tomes"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="fShowWhat" tag="Classes"/>
     <eval phase="PreLevel" priority="10500"><![CDATA[
       var Cost   as number
       var Pages  as number
@@ -241,7 +242,6 @@
   <thing id="wTouchAtta" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
     <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
     <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
     <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
@@ -255,12 +255,12 @@
     <tag group="IsWeapon" tag="wTouch"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="PackHelper" tag="Touch"/>
+    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
     </thing>
   <thing id="wRangedTou" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
     <fieldval field="wFixRanDam" value="As Spell"/>
     <usesource source="s20PFCamp"/>
-    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
     <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
     <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
     <tag group="wMain" tag="1_1" name="1" abbrev="1"/>
@@ -272,6 +272,7 @@
     <tag group="IsWeapon" tag="wRay"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="PackHelper" tag="Touch"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
     </thing>
   <thing id="wImp1d4" name="Improvised Weapon" description="This is a generic &quot;improvised Weapon&quot; that can be used to represent anything from a broken bottle to a chair leg.\n\n{B}Note:{/b} To change the damage die size go to the &quot;Adjust&quot; tab, then &quot;Other Adjustments&quot; and add &quot;Weapon Size&quot;.\n\n{B}Note2:{/b} To turn any normal weapon into a Improvised Weapon you can make a custom weapon and add the &quot;Improvised&quot; item power." compset="Weapon">
     <usesource source="s20PFCamp"/>
@@ -301,7 +302,7 @@
     <tag group="Helper" tag="UsesQty"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="wuTorch" name="Torch" description="A torch can be used as imporvised weapon that does additional fire damage." compset="Weapon">
+  <thing id="wuTorch" name="Torch" description="A torch can be used as improvised weapon that does additional fire damage." compset="Weapon">
     <fieldval field="gSizeCost" value=".01"/>
     <fieldval field="gWeight" value="1"/>
     <usesource source="s20PFCamp"/>
@@ -316,11 +317,12 @@
     <tag group="wClass" tag="Light"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wType" tag="B"/>
+    <tag group="Helper" tag="Improvised"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~ Show text for the fire damage
       #extradamage[this," +1d4 fire",field[name].text]]]></eval>
     </thing>
-  <thing id="wRock2" name="Rock" description="This is a generic &quot;Rock Weapon&quot; that can be used for many different monsters like giants." compset="Weapon">
+  <thing id="wRock2" name="Rock" description="This is a generic &quot;Rock Weapon&quot; that can be used for many different monsters like giants.\n\n{B}Note:{/b} To change the damage die size go to the &quot;Adjust&quot; tab, then &quot;Other Adjustments&quot; and add &quot;Weapon Size&quot;." compset="Weapon">
     <usesource source="s20PFCamp"/>
     <tag group="wCritMult" tag="2"/>
     <tag group="wType" tag="B"/>
@@ -337,16 +339,17 @@
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wMain" tag="1d4_4"/>
     <tag group="wCritMin" tag="20"/>
+    <tag group="Helper" tag="Improvised"/>
     </thing>
   <thing id="wS2AoE" name="AoE" description="This is helper object for the - Custom Spell Weapon - adjustment. It is hidden and can not be selected." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="PackHelper" tag="Touch"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="NoSelect"/>
+    <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="wS2SpelWep" name="Spell Weapon" description="Spell weapon helper to allow rolling of spell damage on the iPad." compset="Weapon">
     <usesource source="s20PFCamp"/>
@@ -358,5 +361,66 @@
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wClass" tag="OneHanded"/>
+    </thing>
+  <thing id="gS2FormB" name="Formula book" description="A formula book has 100 pages of parchment, and each alchemical extract formula takes up one page per extract level. A newly purchased formula book contains no extract formulas. An alchemist character begins play with a formula book containing the extract formulae he knows. This is the alchemist equivalent of a spellbook for wizards (a spellbook and a formula book are essentially the same item).\n\n{B}Note:{/b} This gear item will calculate its gp value and number of pages based on the selected class. You should still purchase a Formula book to account for weight and cost. This is very useful for GM with a NPC with a Formula book to quickly calculate the pages and book cost." compset="Gear">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="gType" tag="Tomes"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="fShowWhat" tag="Classes"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      var Cost   as number
+      var Pages  as number
+      var Weight as number
+      var Books  as number
+
+      Call CalcSpBook
+
+      ~ Set the live name to include the cost and number of pages
+      field[livename].text = field[thingname].text & " " & digitgroup(Cost) & "gp " & Pages & " pages"]]></eval>
+    </thing>
+  <thing id="gS2FormB2" name="Formula books" description="A formula book has 100 pages of parchment, and each alchemical extract formula takes up one page per extract level. A newly purchased formula book contains no extract formulas. An alchemist character begins play with a formula book containing the extract formulae he knows. This is the alchemist equivalent of a spellbook for wizards (a spellbook and a formula book are essentially the same item).\n\n{B}Note:{/b} This gear item calculates the number of pages and books required to store your spells. It then increments the weight based on the number of books you must carry to store your spells." compset="Gear">
+    <fieldval field="gWeight" value="3"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="fShowWhat" tag="Classes"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Tomes"/>
+    <tag group="Value" tag="100"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10500"><![CDATA[
+      var Cost   as number
+      var Pages  as number
+      var Weight as number
+      var Books  as number
+
+      Call CalcSpBook
+
+      ~ Set the live name to include the Number of Books
+      field[livename].text = field[thingname].text & ", " & Books & " Books"]]></eval>
+    </thing>
+  <thing id="gS2FormTra" name="Traveling formula book" description="A traveling forumla book is lighter and less cumbersome than its full-size counterpart. It has 50 pages. \n\n{B}Note:{/b} This gear item calculates the number of pages and books required to store your spells. It then increments the weight based on the number of books you must carry to store your spells." compset="Gear">
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="PCAdvArm"/>
+    <usesource source="UltEquip"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Value" tag="50"/>
+    <tag group="gType" tag="Tomes"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="fShowWhat" tag="Classes"/>
+    <eval phase="PreLevel" priority="10500"><![CDATA[
+      var Cost   as number
+      var Pages  as number
+      var Weight as number
+      var Books  as number
+
+      Call CalcSpBook
+
+      ~ Set the live name to include the Number of Books
+      field[livename].text = field[thingname].text & ", " & Books & " Books"]]></eval>
     </thing>
   </document>
