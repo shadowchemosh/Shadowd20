@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <fileinfo>
     <info_author>Tim Shadow
@@ -697,7 +697,7 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
     <tag group="ProductId" tag="FrogGod"/>
     </thing>
-  <thing id="spFGAugur2" name="Augury" description="An augury can tell you whether a particular action will bring good or bad results for you in the immediate future. The base chance for receiving a meaningful reply is 70% + 1% per caster level, to a maximum of 90%; this roll is made secretly. A question may be so straightforward that a successful result is automatic, or so vague as to have no chance of success. If the augury succeeds, you get one of four results:\n\n&#149; Weal (if the action will probably bring good results). \n&#149; Woe (for bad results). \n&#149; Weal and woe (for both). \n&#149; Nothing (for actions that don&apos;t have especially good or bad results). \n\nIf the spell fails, you get the &quot;nothing&quot; result. A cleric who gets the &quot;nothing&quot; result has no way to tell whether it was the consequence of a failed or successful augury.\n\nThe augury can see into the future only about half an hour, so anything that might happen after that does not affect the result. Thus, the result might not take into account the long-term consequences of a contemplated action. All auguries cast by the same person about the same topic use the same die result as the first casting." compset="Spell" summary="Learns whether an action will be good or bad.">
+  <thing id="spFGAugur2" name="Augury" description="An augury can tell you whether a particular action will bring good or bad results for you in the immediate future. The base chance for receiving a meaningful reply is 70% + 1% per caster level, to a maximum of 90%; this roll is made secretly. A question may be so straightforward that a successful result is automatic, or so vague as to have no chance of success. If the augury succeeds, you get one of four results:\n\n• Weal (if the action will probably bring good results). \n• Woe (for bad results). \n• Weal and woe (for both). \n• Nothing (for actions that don&apos;t have especially good or bad results). \n\nIf the spell fails, you get the &quot;nothing&quot; result. A cleric who gets the &quot;nothing&quot; result has no way to tell whether it was the consequence of a failed or successful augury.\n\nThe augury can see into the future only about half an hour, so anything that might happen after that does not affect the result. Thus, the result might not take into account the long-term consequences of a contemplated action. All auguries cast by the same person about the same topic use the same die result as the first casting." compset="Spell" summary="Learns whether an action will be good or bad.">
     <fieldval field="sFocusDesc" value="incense worth at least 25 gp, a set of marked sticks or bones"/>
     <fieldval field="sFocusCost" value="25"/>
     <fieldval field="sTarget" value="You"/>
@@ -2436,7 +2436,7 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <tag group="sClass" tag="cHelpDiD"/>
     <tag group="sClass" tag="arDCWitDoc"/>
     </thing>
-  <thing id="spFGBesCu3" name="Bestow Curse" description="You place a curse on the subject. Choose one of the following.\n\n&#149; - 6 decrease to an ability score (minimum 1). \n&#149; - 4 penalty on attack rolls, saves, ability checks, and skill checks. \n&#149; Each turn, the target has a 50% chance to act normally; otherwise, it takes no action.\n\nYou may also invent your own curse, but it should be no more powerful than those described above. The curse bestowed by this spell cannot be dispelled, but it can be removed with a break enchantment, limited wish, miracle, remove curse, or wish spell.\n\nBestow curse counters remove curse." compset="Spell" summary="-6 to an ability score; -4 on attack rolls, saves, and checks; or 50% chance of losing each action.">
+  <thing id="spFGBesCu3" name="Bestow Curse" description="You place a curse on the subject. Choose one of the following.\n\n• - 6 decrease to an ability score (minimum 1). \n• - 4 penalty on attack rolls, saves, ability checks, and skill checks. \n• Each turn, the target has a 50% chance to act normally; otherwise, it takes no action.\n\nYou may also invent your own curse, but it should be no more powerful than those described above. The curse bestowed by this spell cannot be dispelled, but it can be removed with a break enchantment, limited wish, miracle, remove curse, or wish spell.\n\nBestow curse counters remove curse." compset="Spell" summary="-6 to an ability score; -4 on attack rolls, saves, and checks; or 50% chance of losing each action.">
     <fieldval field="sTarget" value="Creature touched"/>
     <fieldval field="sDuration" value="Permanent"/>
     <fieldval field="sSave" value="Will negates"/>
@@ -4955,7 +4955,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="none; see text (harmless)"/>
     <fieldval field="sResist" value="yes"/>
     <usesource source="CampRazorC"/>
-
     <tag group="Helper" tag="SplMatAtLe"/>
     <tag group="sRange" tag="Touch"/>
     <tag group="sCastTime" tag="Action1"/>
@@ -4981,7 +4980,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="Will negates (harmless)"/>
     <fieldval field="sResist" value="yes (harmless)"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sLevel" tag="3"/>
     <tag group="sCastTime" tag="Action1"/>
     <tag group="sDuration" tag="Round"/>
@@ -5005,7 +5003,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="Reflex partial (see text)"/>
     <fieldval field="sResist" value="Yes"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sComp" tag="S"/>
     <tag group="sComp" tag="M"/>
     <tag group="sRange" tag="Medium"/>
@@ -5028,7 +5025,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sArea" value="water in a volume of 5 ft./level x 5 ft./level x 1ft./level "/>
     <fieldval field="sSave" value="Reflex partial (see text)"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sClass" tag="cHelpDrd"/>
     <tag group="sComp" tag="V"/>
     <tag group="sComp" tag="S"/>
@@ -5048,7 +5044,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sArea" value="water in a volume of 5 ft./level x 5 ft./level x 1ft./level "/>
     <fieldval field="sSave" value="Reflex partial (see text)"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sComp" tag="S"/>
     <tag group="sRange" tag="Medium"/>
     <tag group="sLevel" tag="3"/>
@@ -5070,7 +5065,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="Will negates (harmless)"/>
     <fieldval field="sResist" value="yes (harmless)"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sComp" tag="V"/>
     <tag group="sRange" tag="Touch"/>
     <tag group="sSchool" tag="Divination"/>
@@ -5096,7 +5090,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sTarget" value="creature touched"/>
     <fieldval field="sRange" value="touch"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sClass" tag="cHelpSum"/>
     <tag group="sClass" tag="cHelpWit"/>
     <tag group="sComp" tag="V"/>
@@ -5121,7 +5114,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sTarget" value="one living creature"/>
     <fieldval field="sDuration" value="1 round/level"/>
     <usesource source="CampRazorC"/>
-
     <tag group="SpellEff" tag="NegConfuse"/>
     <tag group="SpellEff" tag="NegFear"/>
     <tag group="SpellEff" tag="NegNausea"/>
@@ -5147,7 +5139,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="see text"/>
     <fieldval field="sResist" value="no"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sComp" tag="S"/>
     <tag group="sRange" tag="Medium"/>
     <tag group="sLevel" tag="4"/>
@@ -5167,7 +5158,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="Will negates (object)"/>
     <fieldval field="sResist" value="no"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sClass" tag="cHelpSor"/>
     <tag group="sClass" tag="cHelpWiz"/>
     <tag group="sClass" tag="cHelpSum"/>
@@ -5196,7 +5186,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sFocusDesc" value="A small, water-stained, salt-encrusted jade statuette of a hideous fishlike, humanoid being [often thought to be Dagon] worth no less than 500 gp that must be immersed in salt water when casting"/>
     <fieldval field="sDuration" value="1 hour/level (D) "/>
     <usesource source="CampRazorC"/>
-
     <tag group="sLevel" tag="5"/>
     <tag group="sCastTime" tag="Action1"/>
     <tag group="sSave" tag="None"/>
@@ -5218,7 +5207,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sFocusDesc" value="A small, water-stained, salt-encrusted jade statuette of a hideous fishlike, humanoid being [often thought to be Dagon] worth no less than 500 gp that must be immersed in salt water when casting"/>
     <fieldval field="sDuration" value="1 day (D) "/>
     <usesource source="CampRazorC"/>
-
     <tag group="sCastTime" tag="Action1"/>
     <tag group="sSave" tag="None"/>
     <tag group="sResist" tag="No"/>
@@ -5238,7 +5226,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="Will negates"/>
     <fieldval field="sResist" value="Yes"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sSubschool" tag="Compulsion"/>
     <tag group="sDescript" tag="MindAffect"/>
     <tag group="sDescript" tag="LangDepend"/>
@@ -5260,7 +5247,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     </thing>
   <thing id="cdFGHunger" name="Hunger" description="{b}Granted Power:{/b} Once per day you may eat the flesh of a slain foe as a ritual, and recover a spell slot of up to the foe&apos;s hit dice in level. You also gain the Chosen of the Shark God feat as a bonus feat." compset="ClerDomain">
     <usesource source="CampRazorC"/>
-
     <tag group="ProductId" tag="FrogGod"/>
     <bootstrap thing="cFGEyeShar">
       <autotag group="ClSpecWhen" tag="8"/>
@@ -5279,7 +5265,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sSave" value="Fortitude negates (harmless)"/>
     <fieldval field="sResist" value="yes (harmless)"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sRange" tag="Touch"/>
     <tag group="sSchool" tag="Transmutat"/>
     <tag group="sClass" tag="cHelpSor"/>
@@ -6104,7 +6089,7 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <tag group="sClass" tag="cHelpYhg"/>
     <tag group="ProductId" tag="FrogGod"/>
     </thing>
-  <thing id="spFGBesCu4" name="Bestow Curse" description="You place a curse on the subject. Choose one of the following.\n\n&#149; - 6 decrease to an ability score (minimum 1). \n&#149; - 4 penalty on attack rolls, saves, ability checks, and skill checks. \n&#149; Each turn, the target has a 50% chance to act normally; otherwise, it takes no action.\n\nYou may also invent your own curse, but it should be no more powerful than those described above. The curse bestowed by this spell cannot be dispelled, but it can be removed with a break enchantment, limited wish, miracle, remove curse, or wish spell.\n\nBestow curse counters remove curse." compset="Spell" summary="-6 to an ability score; -4 on attack rolls, saves, and checks; or 50% chance of losing each action.">
+  <thing id="spFGBesCu4" name="Bestow Curse" description="You place a curse on the subject. Choose one of the following.\n\n• - 6 decrease to an ability score (minimum 1). \n• - 4 penalty on attack rolls, saves, ability checks, and skill checks. \n• Each turn, the target has a 50% chance to act normally; otherwise, it takes no action.\n\nYou may also invent your own curse, but it should be no more powerful than those described above. The curse bestowed by this spell cannot be dispelled, but it can be removed with a break enchantment, limited wish, miracle, remove curse, or wish spell.\n\nBestow curse counters remove curse." compset="Spell" summary="-6 to an ability score; -4 on attack rolls, saves, and checks; or 50% chance of losing each action.">
     <fieldval field="sTarget" value="Creature touched"/>
     <fieldval field="sDuration" value="Permanent"/>
     <fieldval field="sSave" value="Will negates"/>
@@ -6718,7 +6703,7 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <tag group="sClass" tag="cHelpYhg"/>
     <tag group="ProductId" tag="FrogGod"/>
     </thing>
-  <thing id="spFGConWi5" name="Control Winds" description="You alter wind force in the area surrounding you. You can make the wind blow in a certain direction or manner, increase its strength, or decrease its strength. The new wind direction and strength persist until the spell ends or until you choose to alter your handiwork, which requires concentration. You may create an &quot;eye&quot; of calm air up to 80 feet in diameter at the center of the area if you so desire, and you may choose to limit the area to any cylindrical area less than your full limit.{br}{br}Wind Direction: You may choose one of four basic wind patterns to function over the spell&apos;s area.{br}{br}&#149; A downdraft blows from the center outward in equal strength in all directions.{br}{br}&#149; An updraft blows from the outer edges in toward the center in equal strength from all directions, veering upward before impinging on the eye in the center.{br}{br}&#149; Rotation causes the winds to circle the center in clockwise or counterclockwise fashion.{br}{br}&#149; A blast simply causes the winds to blow in one direction across the entire area from one side to the other.{br}{br}Wind Strength: For every three caster levels, you can increase or decrease wind strength by one level. Each round on your turn, a creature in the wind must make a Fortitude save or suffer the effect of being in the windy area. See Chapter 13 for more details. Strong winds (21+ mph) make sailing difficult. A severe wind (31+ mph) causes minor ship and building damage. A windstorm (51+ mph) drives most flying creatures from the skies, uproots small trees, knocks down light wooden structures, tears off roofs, and endangers ships. Hurricane force winds (75+ mph) destroy wooden buildings, uproot large trees, and cause most ships to founder. A tornado (175+ mph) destroys all nonfortified buildings and often uproots large trees." compset="Spell" summary="Changes wind direction and speed.">
+  <thing id="spFGConWi5" name="Control Winds" description="You alter wind force in the area surrounding you. You can make the wind blow in a certain direction or manner, increase its strength, or decrease its strength. The new wind direction and strength persist until the spell ends or until you choose to alter your handiwork, which requires concentration. You may create an &quot;eye&quot; of calm air up to 80 feet in diameter at the center of the area if you so desire, and you may choose to limit the area to any cylindrical area less than your full limit.{br}{br}Wind Direction: You may choose one of four basic wind patterns to function over the spell&apos;s area.{br}{br}• A downdraft blows from the center outward in equal strength in all directions.{br}{br}• An updraft blows from the outer edges in toward the center in equal strength from all directions, veering upward before impinging on the eye in the center.{br}{br}• Rotation causes the winds to circle the center in clockwise or counterclockwise fashion.{br}{br}• A blast simply causes the winds to blow in one direction across the entire area from one side to the other.{br}{br}Wind Strength: For every three caster levels, you can increase or decrease wind strength by one level. Each round on your turn, a creature in the wind must make a Fortitude save or suffer the effect of being in the windy area. See Chapter 13 for more details. Strong winds (21+ mph) make sailing difficult. A severe wind (31+ mph) causes minor ship and building damage. A windstorm (51+ mph) drives most flying creatures from the skies, uproots small trees, knocks down light wooden structures, tears off roofs, and endangers ships. Hurricane force winds (75+ mph) destroy wooden buildings, uproot large trees, and cause most ships to founder. A tornado (175+ mph) destroys all nonfortified buildings and often uproots large trees." compset="Spell" summary="Changes wind direction and speed.">
     <fieldval field="sRange" value="40 ft./level"/>
     <fieldval field="sArea" value="40 ft./level radius cylinder 40 ft. high"/>
     <fieldval field="sDuration" value="10 min./level"/>
@@ -9185,7 +9170,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <fieldval field="sTarget" value="you"/>
     <fieldval field="sDuration" value="10 minutes/level"/>
     <usesource source="UltMagic" parent="UMHeader" name="Ultimate Magic"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
     <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
@@ -9199,7 +9183,6 @@ Email: ShadowChemosh@yahoo.com</info_author>
     </thing>
   <thing id="cdFGCreati" name="Creation" description="{b}Granted Power:{/b} You gain a +2 bonus to all checks related to the Craft skill." compset="ClerDomain">
     <usesource source="CampRazorC"/>
-
     <tag group="ProductId" tag="FrogGod"/>
     <bootstrap thing="cFGTouMake">
       <autotag group="ClSpecWhen" tag="1"/>
@@ -9536,7 +9519,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sEffect" value="creates ghostly crew"/>
     <fieldval field="sDuration" value="1 hour/level"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sComp" tag="S"/>
     <tag group="sComp" tag="M"/>
     <tag group="sRange" tag="Close"/>
@@ -9559,7 +9541,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sEffect" value="Changes water to glass in a 150 foot radius"/>
     <fieldval field="sArea" value="150 foot radius"/>
     <fieldval field="sDuration" value="1 minute/level"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sComp" tag="S"/>
     <tag group="sComp" tag="M"/>
@@ -9577,12 +9558,11 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <tag group="sClass" tag="cHelpWiz"/>
     <tag group="sComp" tag="V"/>
     </thing>
-  <thing id="spFGHelOa5" name="Hell&apos;s Oarsmen" description="Your ship sprouts banks of ghostly grey oars, which propel it forward. The ship gains one bank of oars for every three caster levels, adding +1 to your ship&#146;s Speed for each bank. These oars row themselves without crew, but are damaged as normal if the Hull Location they are attached to takes damage. {i}Hell&#146;s oarsmen{/i} add to your ship&#146;s Speed even if you have sails or an engine, unlike normal oars." compset="Spell" summary="Your ship sprouts banks of ghostly grey oars, which propel it forward.">
+  <thing id="spFGHelOa5" name="Hell&apos;s Oarsmen" description="Your ship sprouts banks of ghostly grey oars, which propel it forward. The ship gains one bank of oars for every three caster levels, adding +1 to your ship’s Speed for each bank. These oars row themselves without crew, but are damaged as normal if the Hull Location they are attached to takes damage. {i}Hell’s oarsmen{/i} add to your ship’s Speed even if you have sails or an engine, unlike normal oars." compset="Spell" summary="Your ship sprouts banks of ghostly grey oars, which propel it forward.">
     <fieldval field="sTarget" value="your ship"/>
     <fieldval field="sFocusDesc" value="bloodied splinter"/>
     <fieldval field="sDuration" value="10 min/level"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sDuration" tag="PerLevel"/>
     <tag group="sRange" tag="Touch"/>
     <tag group="sLevel" tag="5"/>
@@ -9597,12 +9577,11 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <tag group="sResist" tag="No"/>
     <tag group="sDuration" tag="10Minute"/>
     </thing>
-  <thing id="spFGHelOa4" name="Hell&apos;s Oarsmen" description="Your ship sprouts banks of ghostly grey oars, which propel it forward. The ship gains one bank of oars for every three caster levels, adding +1 to your ship&#146;s Speed for each bank. These oars row themselves without crew, but are damaged as normal if the Hull Location they are attached to takes damage. {i}Hell&#146;s oarsmen{/i} add to your ship&#146;s Speed even if you have sails or an engine, unlike normal oars." compset="Spell" summary="Your ship sprouts banks of ghostly grey oars, which propel it forward.">
+  <thing id="spFGHelOa4" name="Hell&apos;s Oarsmen" description="Your ship sprouts banks of ghostly grey oars, which propel it forward. The ship gains one bank of oars for every three caster levels, adding +1 to your ship’s Speed for each bank. These oars row themselves without crew, but are damaged as normal if the Hull Location they are attached to takes damage. {i}Hell’s oarsmen{/i} add to your ship’s Speed even if you have sails or an engine, unlike normal oars." compset="Spell" summary="Your ship sprouts banks of ghostly grey oars, which propel it forward.">
     <fieldval field="sTarget" value="your ship"/>
     <fieldval field="sFocusDesc" value="bloodied splinter"/>
     <fieldval field="sDuration" value="10 min./level"/>
     <usesource source="CampRazorC"/>
-
     <tag group="sDuration" tag="PerLevel"/>
     <tag group="sRange" tag="Touch"/>
     <tag group="sLevel" tag="4"/>
@@ -9618,19 +9597,16 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <tag group="sResist" tag="No"/>
     <tag group="sDuration" tag="10Minute"/>
     </thing>
-  <thing id="spFGImmAn5" name="Immediate Anchor" description="You bring into existence a massive 100 ton anchor and supernaturally attach it to a ship. This ship immediately halts and, if it was moving, a DC 20 Acrobatics check is required to avoid everyone onboard being thrown prone. A moving ship takes 10d10 points of damage to the Location to which the anchor is attached. The chain itself has hardness 8, AC 5 and 100 hit points." compset="Spell" summary="You bring a massive  anchor into existence.">
+  <thing id="spFGImmAn5" name="Immediate Anchor" description="You bring into existence a massive 100 ton anchor and supernaturally attach it to a ship. This has one of the following affects chosen by the caster. Reduces the speed of the ship the anchor is attached to by 4 or the attached hull section and base hull sections take 10d10 damage. The chain itself has hardness 8, AC 5 and 100 hit points." compset="Spell" summary="You bring a massive anchor into existence.">
     <fieldval field="sCompDesc" value="length of iron chain"/>
     <fieldval field="sEffect" value="creates one anchor"/>
-
+    <fieldval field="sDuration" value="10 min/level"/>
     <usesource source="CampRazorC"/>
-    <tag group="sSubschool" tag="Creation"/>
     <tag group="sComp" tag="V"/>
     <tag group="sComp" tag="S"/>
     <tag group="sComp" tag="M"/>
     <tag group="sRange" tag="Long"/>
     <tag group="sLevel" tag="5"/>
-    <tag group="sDuration" tag="Permanent"/>
-    <tag group="sSave" tag="None"/>
     <tag group="sResist" tag="Yes"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="FrogGod"/>
@@ -9638,11 +9614,14 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <tag group="sSchool" tag="Conjur"/>
     <tag group="sClass" tag="cHelpSor"/>
     <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sSubschool" tag="Creation"/>
+    <tag group="sDuration" tag="10Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
     </thing>
   <thing id="spFGImmAn4" name="Immediate Anchor" description="You bring into existence a massive 100 ton anchor and supernaturally attach it to a ship. This ship immediately halts and, if it was moving, a DC 20 Acrobatics check is required to avoid everyone onboard being thrown prone. A moving ship takes 10d10 points of damage to the Location to which the anchor is attached. The chain itself has hardness 8, AC 5 and 100 hit points." compset="Spell" summary="You bring a massive  anchor into existence.">
     <fieldval field="sCompDesc" value="length of iron chain"/>
     <fieldval field="sEffect" value="creates one anchor"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sComp" tag="V"/>
     <tag group="sComp" tag="S"/>
@@ -9659,12 +9638,11 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <tag group="sSubschool" tag="Creation"/>
     <tag group="sClass" tag="cHelpSum"/>
     </thing>
-  <thing id="spFGProAr7" name="Protection from Artillery" description="The target is encased in a faintly glowing sphere of floating runes. The sphere protects one ship Location from attacks by siege weapons, including cannon, catapults, ballistae, or rocks thrown by giants. Against these attacks, the target receives DR 10/&#151;. The spell can absorb up to 100 points of damage per caster level before being discharged.\n\nThe spell has no effect upon normal missile weapons, melee attacks, or spells." compset="Spell" summary="The target is encased in a faintly glowing protective sphere.">
+  <thing id="spFGProAr7" name="Protection from Artillery" description="The target is encased in a faintly glowing sphere of floating runes. The sphere protects one ship Location from attacks by siege weapons, including cannon, catapults, ballistae, or rocks thrown by giants. Against these attacks, the target receives DR 10/—. The spell can absorb up to 100 points of damage per caster level before being discharged.\n\nThe spell has no effect upon normal missile weapons, melee attacks, or spells." compset="Spell" summary="The target is encased in a faintly glowing protective sphere.">
     <fieldval field="sCompDesc" value="a brick"/>
     <fieldval field="sTarget" value="a ship"/>
     <fieldval field="sDuration" value="1 min/level (see below)"/>
     <fieldval field="sSave" value="Fortitude negates (harmless)"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sComp" tag="S"/>
     <tag group="sComp" tag="M"/>
@@ -9688,7 +9666,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sEffect" value="rots wood in a 20-foot cube"/>
     <fieldval field="sDuration" value="10 min/level"/>
     <fieldval field="sSave" value="Fortitude negates (object)"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sComp" tag="M"/>
     <tag group="sRange" tag="Long"/>
@@ -9711,7 +9688,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sEffect" value="rots wood in a 20-foot cube"/>
     <fieldval field="sDuration" value="10 min/level"/>
     <fieldval field="sSave" value="Fortitude negates (object)"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sComp" tag="M"/>
     <tag group="sRange" tag="Long"/>
@@ -9734,7 +9710,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sTarget" value="a ship"/>
     <fieldval field="sDuration" value="1 min/level"/>
     <fieldval field="sSave" value="Fortitude negates (harmless)"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sComp" tag="M"/>
     <tag group="sClass" tag="cHelpSor"/>
@@ -9758,7 +9733,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sCompCost" value="50"/>
     <fieldval field="sCompDesc" value="a silver cube worth 50 gp"/>
     <fieldval field="sEffect" value="creates one 50 ft. cube iceberg, reef or other nautical"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sSchool" tag="Conjur"/>
     <tag group="sSubschool" tag="Creation"/>
@@ -9783,7 +9757,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sFocusDesc" value="fine golden sieve"/>
     <fieldval field="sFocusCost" value="100"/>
     <fieldval field="sSave" value="Fortitude negates (see below)"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sDuration" tag="Instant"/>
     <tag group="sSave" tag="FortNeg"/>
@@ -9805,7 +9778,6 @@ hero.child[AllCraft].field[Bonus].value += 2</eval>
     <fieldval field="sFocusDesc" value="fine golden sieve"/>
     <fieldval field="sFocusCost" value="100"/>
     <fieldval field="sSave" value="Fortitude negates (see below)"/>
-
     <usesource source="CampRazorC"/>
     <tag group="sDuration" tag="Instant"/>
     <tag group="sSave" tag="FortNeg"/>
