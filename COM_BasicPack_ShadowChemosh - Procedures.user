@@ -353,6 +353,79 @@
     ]]>
   </procedure>
 
+<!-- =================================================================== -->
+   <!-- 
+   Calculate the Caster Level vs Spell Resistance.
+   Timing: Final/50000
+   -->
+<!-- =================================================================== -->
+  <procedure id="S2CalcClSr" context="pick"><![CDATA[
+    ~ We are not a real skill so we don't want to have an ability
+    ~ linked to us.
+    perform delete[SkillAbil.?] 
+
+    ~ --------------------------------------------
+    ~ Situational Racial Specials
+    ~ --------------------------------------------
+
+    ~ --------------------------------------------
+    ~ Situational Feats
+    ~ --------------------------------------------
+    ~ If we have the Allied Spellcaster feat add a situational note
+    If (hero.tagcountstr["HasFeat.fAllSpellc"] <> 0) Then
+      #situational[this,"+4 bonus whenever you are adjacent to an ally who also has this feat.","Allied Spellcaster"]    
+    Endif
+    ~ If we have the Ancient Draconic feat add a situational note
+    If (hero.tagcountstr["HasFeat.fAncientDr"] <> 0) Then
+      #situational[this,"+1 bonus when casting arcane spells that have a verbal component.","Ancient Draconic"]    
+    Endif
+    ~ If we have the Demon Hunter feat add a situational note
+    If (hero.tagcountstr["HasFeat.fDemonHunt"] <> 0) Then
+      #situational[this,"+2 morale bonus against creatures with the demon subtype you recognize as demons.","Demon Hunter"]    
+    Endif
+    ~ If we have the Diviner's Delving feat add a situational note
+    If (hero.tagcountstr["HasFeat.fDivDelve"] <> 0) Then
+      #situational[this,"+2 bonus with divinations to overcome SR or effects that impede divination (for example {i}nondetection{/i}).","Diviner's Delving"]    
+    Endif
+    ~ If we have the Giant-Bane Caster feat add a situational note
+    If (hero.tagcountstr["HasFeat.fGiantBane"] <> 0) Then
+      #situational[this,"+1/2 favored enemy bonus against giants.","Giant-Bane Caster"]    
+    Endif
+
+    ~ --------------------------------------------
+    ~ Situational Traits
+    ~ --------------------------------------------
+    ~ If we have the Dedicated Defender trait add a situational note
+    If (hero.tagcountstr["HasTrait.trDediDefe"] <> 0) Then
+      #situational[this,"+1 trait bonus while you are adjacent to a dying or disabled ally.","Dedicated Defender"]    
+    Endif
+    ~ If we have the Earthbound trait add a situational note
+    If (hero.tagcountstr["HasTrait.trDediDefe"] <> 0) Then
+      #situational[this,"+2 trait bonus vs creatures with the air subtype.","Earthbound"]    
+    Endif
+    ~ If we have the Insistent Benefactor trait add a situational note
+    If (hero.tagcountstr["HasTrait.trInsisBen"] <> 0) Then
+      #situational[this,"+2 trait bonus when you cast a harmless spell..","Insistent Benefactor"]    
+    Endif
+    ~ If we have the Magic's Might trait give a +1 trait bonus
+    If (hero.tagcountstr["HasTrait.trMagMight"] <> 0) Then
+      #applybonus[BonTrait,this,1]    
+    Endif
+    ~ If we have the Riftwarden Orphan trait add a situational note
+    If (hero.tagcountstr["HasTrait.trRiftMage"] <> 0) Then
+      #situational[this,"+4 trait bonus to penetrate a demon's spell resistance.","Riftwarden Orphan"]    
+    Endif
+    ~ If we have the Triaxian Dragonslayer trait add a situational note
+    If (hero.tagcountstr["HasTrait.trTriaxDra"] <> 0) Then
+      #situational[this,"+1 trait bonus vs dragon's spell resistance.","Triaxian Dragonslayer"]    
+    Endif
+
+    ~ -----------------------------------------------------
+    ~ Add in all the different "bonus" and "penalty" fields
+    ~ -----------------------------------------------------
+    field[skTotal].value += field[Bonus].value + field[Penalty].value + field[BonAlch].value + field[ModCirc].value + field[BonComp].value + field[PenComp].value + field[BonEnhance].value + field[BonInsight].value + field[BonLuck].value + field[PenLuck].value + field[BonMorale].value + field[PenMorale].value + field[BonProfane].value + field[PenProfane].value + field[BonSacred].value + field[PenSacred].value + field[BonTrait].value + field[PenTrait].value    
+    ]]>
+  </procedure>
 
 
 <!-- =================================================================================== -->

@@ -467,4 +467,30 @@
       ~ Error out the skills panel
       hero.panelvalid[skills] = 0</evalrule>
     </thing>
+  <thing id="skS2ClSr" name="CL vs SR" description="Caster level modifier added to a d20 to overcome Spell Resistance.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    <tag group="Helper"     tag="ExtraSkill"/>
+    <tag group="Helper"     tag="ClassSkill"/>
+    <tag group="AdjSkill"   tag="CLvsSR"/>
+    <link linkage="skillattr" thing="aINT"/>
+    <eval phase="First" priority="10000" index="1"><![CDATA[
+      ~ We are not a real skill so we don't want to have an ability
+      ~ linked to us.
+      perform delete[SkillAbil.?]
+      ]]></eval>
+    <eval phase="Render" priority="10" index="2"><![CDATA[
+      ~ Total any SR bonuses with Max Caster Level to set the sub-skills
+      ~ total bonus
+      field[skTotal].value += herofield[tOverSplRs].value + herofield[tMaxCaster].value
+
+      ~ Calculte External Skill Total from Parent skill
+      call S2CalcClSr
+      ]]></eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can&apos;t have ranks."><![CDATA[
+      ~ Error if user put any ranks into this skill.
+      validif (field[skRanks].value = 0)
+
+      hero.panelvalid[skills] = 0]]></evalrule>
+    </thing>
   </document>

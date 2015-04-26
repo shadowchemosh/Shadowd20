@@ -325,24 +325,6 @@ herofield[tOverSplRs].value += field[abValue].value
 ~ Tell Spellcraft about the situational modifier
 #situational[hero.childfound[skSpellcr],"+2 bonus to id magic items",field[name].text]]]></eval>
     </thing>
-  <thing id="skS2ClSr" name="CL vs SR" description="Caster level modifier added to a d20 to overcome Spell Resistance.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
-    <tag group="Helper" tag="ExtraSkill"/>
-    <tag group="Helper" tag="ClassSkill"/>
-    <tag group="SubSkill" tag="skS2ClSr" name="Caster Level vs SR Sub-skill"/>
-    <link linkage="skillattr" thing="aINT"/>
-    <eval phase="Final" priority="50000">~ Total any SR bonuses with Max Caster Level to set the sub-skills
-~ total bonus
-field[skTotal].value = herofield[tOverSplRs].value + herofield[tMaxCaster].value
-
-~ Calculte External Skill Total from Parent skill
-call CalcSubSk</eval>
-    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
-call SetupSubSk</eval>
-    <evalrule phase="Validation" priority="5000" message="Sub-skills can&apos;t have ranks.">~Error if user put any ranks into this skill.
-validif (field[skRanks].value = 0)
-
-hero.panelvalid[skills] = 0</evalrule>
-    </thing>
   <thing id="skS2PercSt" name="Perception (Stone)" description="Add this skill if you have any specific bonuses when using perception against stonework.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
     <tag group="Helper" tag="ExtraSkill"/>
     <tag group="SubSkill" tag="skPercep" name="Perception Sub-skill"/>
