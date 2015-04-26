@@ -1159,8 +1159,7 @@ hero.child[Attack].field[Penalty].value += 2</eval>
       <autotag group="ClSpecWhen" tag="5"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpWit"/>
-    <eval phase="PostLevel" priority="20000">
-     ~ Add witch levels to concenentrtion check 
+    <eval phase="PostLevel" priority="20000">~ Add witch levels to concenentrtion check 
      linkage[varies].field[cConcCheck].value += #levelcount[Witch]
 
      ~ Set the caster flag
@@ -2026,6 +2025,83 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       foreach pick in hero from BaseWep where "wGroup.Natural & Shadowd20.FeralWep"
          eachpick.field[Bonus].value += field[abValue2].value
       nexteach]]></eval>
+    </thing>
+  <thing id="arS2BatMed" name="Battle Medic" description="The battle medic gains the increased ability to heal his allies." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="1"/>
+    <fieldval field="srcBookInf" value="Shadow d20"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="AbReplace" tag="cWaPChan"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <bootstrap thing="cWaPS2Chan">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpWaP"/>
+    </thing>
+  <thing id="cWaPS2Chan" name="Channel Energy" description="Regardless of alignment, any battle medic can release a wave of energy by channeling the power of her faith through her holy (or unholy) symbol. This positive energy can only used to heal damage and can never be used to harm undead.\n\nA battle medic channels positive energy and can only heal living creatures. An evil battle medic (or a neutral battle medic who worships an evil deity) also channels positive energy and can only heal living creatures. This has no affect or determines whether the battle medic can cast spontaneous cure or inflict spells (see spontaneous casting).\n\nChanneling energy causes a burst that affects all creatures of one type (either undead or living) in a 30-foot radius centered on the battle medic. The amount of damage dealt or healed is equal to 1d6 points of damage plus 1d6 points of damage for every two battle medic levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the battle medic&apos;s level + the battle medic&apos;s Wisdom modifier. Creatures healed by channel energy cannot exceed their maximum hit point total—all excess healing is lost. A battle medic may channel energy a number of times per day equal to 1 + her Wisdom modifier. This is a standard action that does not provoke an attack of opportunity. A battle medic can choose whether or not to include herself in this effect. A battle medic must be able to present her holy/unholy symbol to use this ability." compset="ClSpecial" summary="A battle medic can channel positive energy only to heal living targets.">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="ClExLose" name="ClExLose" abbrev="ClExLose"/>
+    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <bootstrap thing="xChannel">
+      <autotag group="SpecialTab" tag="SQClsAbil"/>
+      <autotag group="Helper" tag="ChannelPos"/>
+      <autotag group="StandardDC" tag="aWIS"/>
+      </bootstrap>
+    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[
+      ~only perform the calculations for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~we can turn undead 3 + CHA mod / day
+      ~ We need to add to our channeling only, since we no longer stack.
+      var tagexpr as string
+      tagexpr = tagids[SpecSource.?]
+      call ChanEnFind
+      doneif (state.isfocus = 0)
+
+      focus.field[trkMax].value += 1 + hero.child[aWIS].field[aModBonus].value]]></eval>
+    <eval phase="PostLevel" priority="1000"><![CDATA[
+      ~only perform the calculations for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~ Set our name properly
+      var v_turnname as string
+      call cClrTurnNm
+      field[livename].text = v_turnname
+
+      ~ Add our cleric level to our turning level.
+
+      ~ We need to add to our channeling only, since we no longer stack.
+      var tagexpr as string
+      tagexpr = tagids[SpecSource.?]
+      call ChanEnFind
+      doneif (state.isfocus = 0)
+
+      focus.field[abValue].value += field[xAllLev].value
+
+      ~ We also need to add a Helper.ChannelPos or ChannelNeg depending on what
+      ~ our alignment or the gods alignment. The cClrTurnNm assigned the
+      ~ appropriate tag to this class special when it set the livename variable,
+      ~ so forward that to the correct xChannel.
+      perform focus.pushtags[Helper.Channel?]]]></eval>
+    <eval phase="Final" priority="50000" index="3"><![CDATA[
+      ~only perform the calculations for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      #appenddesc[xChannel,"{b}Battle Medic:{/b} A battle medic can channel positive energy only to heal living targets."]]]></eval>
     </thing>
   <hidden id="arRgrSpell"/>
   </document>

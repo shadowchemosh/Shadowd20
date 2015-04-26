@@ -318,19 +318,11 @@ version 1.40 - Released May 12, 2013
     <bootstrap thing="s20Rogue2"></bootstrap>
     <bootstrap thing="S20Teamwor"></bootstrap>
     <bootstrap thing="s20NoXP"></bootstrap>
-    <eval phase="First" priority="10000"><![CDATA[
-      ~ If not human get out now
+    <eval phase="First" priority="10000">~ If not human get out now
       ~#hasrace[rHuman] + #hasrace[rElf] + #hasrace[rDwarf] +
       doneif (#hasrace[rHalfling] = 0)
 
-      ~set our focus to the hero's race
-      perform hero.findchild[BaseRace].setfocus
-      doneif (state.isfocus = 0)
-      ~ Give one Ethnicity
-      focus.field[rGiveSpec].value = 1
-      perform focus.assign[Helper.OptCustom]
-      focus.field[rSpecName].text = "Ethnicities"
-      ~focus.field[rSpecSing].text = "Ethnicity"]]></eval>
+      Call GiveEthnic</eval>
     </thing>
   <thing id="s20Potions" name="Shadow d20 Potions, Scrolls, and Wands" description="Change all potions, scrolls, and Wand on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
     <usesource source="srcPotID"/>
@@ -752,18 +744,15 @@ version 1.40 - Released May 12, 2013
     </thing>
   <thing id="s20NoXP" name="Shadow d20 No XP" description="This helper script prevents the need of using XP on level up." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <eval phase="PostAttr" priority="5000">
-      ~ This tag tells HL to not use XP!
+    <eval phase="PostAttr" priority="5000">~ This tag tells HL to not use XP!
       perform hero.assign[Hero.NoAdvance]</eval>
     </thing>
-  <hidden id="cRslAddAC"/>
-  <hidden id="fKQDeadAcc"/>
   <hidden id="fKQImpDA"/>
   <hidden id="mSpellMA"/>
   <hidden id="fKQAddFavE"/>
   <hidden id="fKQAddFavT"/>
-  <preclude id="raS2CatCur" source="ARG"/>
-  <preclude id="raS2CatFal" source="ARG"/>
+  <hidden id="cRslAddAC"/>
+  <hidden id="fKQDeadAcc"/>
   <preclude id="raS2CatSce" source="ARG"/>
   <preclude id="raS2CatCle" source="ARG"/>
   <preclude id="raS2CatCli" source="ARG"/>
@@ -781,4 +770,6 @@ version 1.40 - Released May 12, 2013
   <preclude id="rCatfolk" source="srcNoRaces"/>
   <preclude id="rRatfolk" source="srcNoRaces"/>
   <preclude id="rAasimar" source="srcNoRaces"/>
+  <preclude id="raS2CatCur" source="ARG"/>
+  <preclude id="raS2CatFal" source="ARG"/>
   </document>
