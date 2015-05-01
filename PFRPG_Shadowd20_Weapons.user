@@ -899,35 +899,35 @@ Hidden]]></comment>
   <thing id="wS2BrKnuck" name="Brass knuckles" description="These weapons fit snugly around the knuckles and allow you to deal lethal damage with an unarmed strike. You may hold, but not wield, a weapon or other object in a hand wearing brass knuckles. You may cast a spell with a somatic component while wearing brass knuckles if you make a successful concentration check (DC 10 + the level of the spell you&apos;re casting). Monks are proficient with brass knuckles. Brass knuckles can&apos;t be disarmed.\n\n{b}Shadow d20:{/b} Brass knuckles will always do your unarmed strike damage. This damage then can only be done with a characters fists and does not allow one to make unarmed strikes with legs, knees, or other parts of the characters body." compset="Weapon" replaces="wBrKnuckle">
     <fieldval field="gWeight" value="1"/>
     <fieldval field="gSizeCost" value="1"/>
-    <usesource source="APG" parent="APGHeader" name="Advanced Player&apos;s Guide"/>
-    <usesource source="PCAdvArm" parent="PCHeader" name="Adventurer&apos;s Armory"/>
-    <usesource source="UltEquip" parent="UEHeader" name="Ultimate Equipment"/>
-    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
-    <tag group="wFtrGroup" tag="Close" name="Close" abbrev="Close"/>
-    <tag group="wFtrGroup" tag="Monk" name="Monk" abbrev="Monk"/>
-    <tag group="wMain" tag="1d3_3" name="1d3" abbrev="1d3"/>
-    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
-    <tag group="wSpecial" tag="Monk" name="Monk" abbrev="Monk"/>
-    <tag group="wType" tag="B" name="Bludgeoning" abbrev="B"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
-    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
-    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
-    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
-    <eval phase="Final" priority="10000"><![CDATA[
-perform delete[wMain.?]
-perform hero.child[wUnarmed].pulltags[wMain.?]
-field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
-field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
+    <usesource source="APG"/>
+    <usesource source="PCAdvArm"/>
+    <usesource source="UltEquip"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wFtrGroup" tag="Close"/>
+    <tag group="wFtrGroup" tag="Monk"/>
+    <tag group="wMain" tag="1d3_3"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wSpecial" tag="Monk"/>
+    <tag group="wType" tag="B"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCritMin" tag="20"/>
+    <eval phase="Final" priority="1000"><![CDATA[
+      perform delete[wMain.?]
+      perform hero.child[wUnarmed].pulltags[wMain.?]
+      field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
+      field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
 
-~if we're a custom/magic weapon, we need to alter our parent, too
-if (container.ishero = 0) then
-   container.parent.field[wAttBonus].value -= 2
-   container.parent.field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
-   container.parent.field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
-   perform container.parent.delete[wMain.?]
-   perform container.parent.pushtags[wMain.?]
-endif]]></eval>
+      ~if we're a custom/magic weapon, we need to alter our parent, too
+      if (container.ishero = 0) then
+         container.parent.field[wAttBonus].value -= 2
+         container.parent.field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
+         container.parent.field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
+         perform container.parent.delete[wMain.?]
+         perform container.parent.pushtags[wMain.?]
+      endif]]></eval>
     </thing>
   <thing id="iS2Bane" name="Bane" description="A bane weapon excels at attacking one type or subtype of creature. Against its designated foe, its effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2d6 points of damage against the foe. Bows, crossbows, and slings so crafted bestow the bane quality upon their ammunition.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}summon monster I{/i}; {b}Cost{/b} +1 Bonus" compset="ItemPower" summary="+2 &amp; +2d6 damage vs chosen type" replaces="iBane" uniqueness="useronce">
     <comment>Modified to be able to turn on/off the extra damage. This is needed for the iPad app.</comment>
