@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_PFUnchainedPack - Archetypes Monk"/>
+  <thing id="arS2Mnk4Wi" name="Monk of the Four Winds" description="The monk of the four winds is connected to the natural world in a way few other creatures—even other monks—can hope to match. He can call upon the elements and the spirits of the world in times of need, and as he nears his goal of perfection, he gains the ability to slow down time and even defeat death itself. A monk of the four winds has the following class features.\n\n{b}Unchained:{/b} At level 12 we lose a Ki Power instead of Abundant Step." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="20"/>
+    <fieldval field="srcBookInf" value="Advanced Player&apos;s Guide"/>
+    <fieldval field="cvSpec5thS" value="Aspect"/>
+    <arrayval field="cvCust5Tot" index="16" value="1"/>
+    <arrayval field="cvCustTot" index="11" value="-1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="ClassVary" tag="arMnkFourW"/>
+    <tag group="AllowC5th" tag="arMnkFourW"/>
+    <tag group="AbReplace" tag="cMnkStunFi"/>
+    <tag group="AbReplace" tag="cMnkPeSeUn"/>
+    <tag group="AbReplace" tag="cMnkTime"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="fElemFist">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="cMnkElemFi">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cMnkElemFi">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cMnkElemFi">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cMnkSlowTi">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cMnkElemFi">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cMnkAspMas">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cMnkElemFi">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="cMnkImmort">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpMnkUn"/>
+    <eval phase="Final" priority="99999999"><![CDATA[
+      ~ Re-write 5th custom ability expression to allow for the Primary
+      ~ abilities of the Monk of the Four Winds archetype
+      linkage[varies].field[cCstS5Expr].text = "(SpecSource.arMnkFourW) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & !Helper.Quintenary & !Helper.Obsolete"]]></eval>
+    </thing>
+  </document>

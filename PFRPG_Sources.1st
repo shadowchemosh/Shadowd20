@@ -39,7 +39,7 @@ v1.11 1/14/2012
 <!-- Shadow d20 Pathfinder -->
   <source
     id="pShadowd20"
-    name="Shadow d20 Pathfinder v1.69"
+    name="Shadow d20 Pathfinder v1.71"
     selectable="no"
     parent="UserParent"
     sortorder="0"

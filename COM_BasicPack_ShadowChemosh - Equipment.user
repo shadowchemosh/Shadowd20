@@ -242,6 +242,7 @@
   <thing id="wTouchAtta" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
     <usesource source="s20PFCamp"/>
+    
     <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
     <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
     <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
@@ -261,6 +262,7 @@
     <fieldval field="wFixDamage" value="As Spell"/>
     <fieldval field="wFixRanDam" value="As Spell"/>
     <usesource source="s20PFCamp"/>
+    
     <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
     <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
     <tag group="wMain" tag="1_1" name="1" abbrev="1"/>
@@ -343,6 +345,7 @@
     </thing>
   <thing id="wS2AoE" name="AoE" description="This is helper object for the - Custom Spell Weapon - adjustment. It is hidden and can not be selected." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
+    
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="PackHelper" tag="Touch"/>
@@ -352,7 +355,7 @@
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="wS2SpelWep" name="Spell Weapon" description="Spell weapon helper to allow rolling of spell damage on the iPad." compset="Weapon">
-    <usesource source="s20PFCamp"/>
+    
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="NoSelect"/>

@@ -8,6 +8,74 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.10 May 3, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Module Tears at Bitter Manor (ShadowChemosh) - Fixed some of the magic item costs.</li>
+<li>Module Tears at Bitter Manor (ShadowChemosh) - Fixes to the Gorget of Living Whispers.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed where ShadowChemosh Spellbooks where displaying in the list of gear.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Changed "Save" adjustments to be in the "Save" section on the Adjust tab.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fix bug for "- Spell Weapon -" where the 2nd selection was not working if "ShadowChemosh Equipment" source was not turned on.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added Helper.Improvised to the Torch weapon so that it can be treated by feats and classes as a Improvised weapon.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed issue #22 "Custom Name: Race" and "Custom Text: Race" adjustments have been fixed to once again change or append your races name including Animal Companions.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Removed the counter from the "Equipment, Notes" adjustment as it didn't do anything.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added a "Formula Book" and "Traveling Formula Book" that will auto-calculate its values for Alchemists.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added the new "Wondrous Item: Candle of Invocation" adjustment for easily applying the affects of the "Candle of Invocation".</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Drawbacks Allowed" to adjust up/down the number of drawbacks your character can have.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added eight new adjustments (under Misc) that allow for a configurable values to be adjusted.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added adjustment "Character Sheet: Item Spells" causes all item spells (ie staff spells) to print to the character sheet.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new "CL vs SR" sub-skill. This auto-calculates your caster level vs spell resistance bonus. It will also display many situational notes from feats and traits.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added "Generic, Tracker" that allows a gamer to add a customizable tracker to the In-Play tab.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Procedures (ShadowChemosh) - The "GiveEthnic" procedure changed to make sure it never gives more than one Ethnicity. This procedure timing should be adjusted where used to be First/15000 up from First/10000. Eberron campaign setting has been adjusted to this timing value.</li>
+</ul>
+
+
+<strong>v3.9 March 29, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Thing 'xxVulLight' - Contains duplicates of tag 'Shadow' in group 'Helper' - Emergency Fix!</li>
+<li>ShadowChemosh Equipment - Touch Attack and Ranged Touch attacked now allowed for CORE PFS games.</li>
+<li>ShadowChemosh Adjustments -"Skill Bonus, All of Type" - Fixed issue where the adjustment was not able to be turned off.</li>
+<li>ShadowChemosh Things - Fixed incorrect PFS sources.</li>
+<li>ShadowChemosh Classes - Fixed Superstition to pick up any bonuses given to the normal Superstition rage power. This fixes issue #1.</li>
+<li>ShadowChemosh Classes - Source marked Superstition to ShadowChemosh Classes.</li>
+<li>Changed "ShadowChemosh - Archetypes" to "ShadowChemosh - Archetypes & Classes".</li>
+<li>ShadowChemosh Adjustments - Made "Equipment, Add Trackable" have a minimum value of zero instead of one. This way it can be used with stacks of Oils and other equipment effectively.</li>
+<li>ShadowChemosh Adjustments - Changed adjustment "Ability: Restore" to "Class Ability, Restore" to cause any class ability to be enabled.</li>
+<li>ShadowChemosh Equipment - Fixed the Improved Weapon to work with special classes like Monk that can flurry improvised weapons.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>New "XP Advancement" option added called "No XP Required for Advancement". Many home gaming groups do not use XP when running Adventure Paths. This option supports this by allowing a character to advance without any warning/error messages about not enough XP.</li>
+<li>ShadowChemosh Feats - I have deprecated my Vital Strike feat now that the Official version of Vital Strike can be activated on the In-Play tab.</li>
+<li>ShadowChemosh Adjustments - Added new skill "Concentration: Racial" that allows an easy way to display a creatures racial concentration for spells or spell-like abilities.</li>
+<li>ShadowChemosh Adjustments - Added missing skill "Concentration: Hunter".</li>
+<li>ShadowChemosh Adjustments - New adjustment "Equipment, Nights Rest" to force equipment to be reset on a nights rest.</li>
+<li>ShadowChemosh Adjustments - New adjustment "Equipment, No Nights Rest" to force equipment to NOT be reset on a nights rest.</li>
+<li>ShadowChemosh Adjustments - New adjustment "Racial Ability, Restore" to cause a racial ability be enabled.</li>
+<li>ShadowChemosh Adjustments - New adjustment "Weapon Flurry of Blows" to cause a selected weapon to display its Flurry of Blow attack values.</li>
+<li>ShadowChemosh Adjustments - The "- Custom Spell Weapon -" adjustment can now set itself to be a AoE, Touch, or Ranged Touch attack type spell.</li>
+<li>ShadowChemosh Adjustments - New adjustments that allow for having the Celestial or Fiendish templates to display on an animal companion.</li>
+<li>ShadowChemosh Adjustments - Added new "Class: Range" adjustment that allows for adjusting the range value of class abilities.</li>
+<li>ShadowChemosh Concentration Skill - Now sets many more situational notes about different feats and triats that give a bonus to concentration.</li>
+<li>Paizo Module - "Tears at Bitter Manor" all Player items and equipment added. This is helpful for those playing through this module.</li>
+<li>Unlinked the basic pack from requiring the Occult Adventures Playtest package.</li>
+<li></li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Universal Things - Racial Specials (ShadowChemosh) Fixed xCBBleed to format itself correctly in the Extra Damage section. Also added logic stop script logic. Also changed multTarget slightly to format output better.</li>
+<li>Universal Things - Hazards (ShadowChemosh) Added thingid.hzCBPoiInj which is a generic Injury poison. It has almost no settings setup. Instead you set the settings at the time you bootstrap. This should mean we need "ONE" poison not 500. Please see the Deadfall Dweller for an example of it in use.</li>
+</ul>
+
 <strong>v3.8 February 27, 2015</strong>
 
 <strong>Bug Fixes</strong>

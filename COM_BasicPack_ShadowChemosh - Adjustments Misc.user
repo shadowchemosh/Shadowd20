@@ -4287,14 +4287,15 @@ call S2SetName]]></eval>
       perform field[pChosen].chosen.delete[Helper.NoPathSoc]]]></eval>
     </thing>
   <thing id="pS2RaChang" name="Custom Name: Race" description="Overwrite the name of your race using the (Source) or (Duration) field. Use this to force your race to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
+    <comment>This must run at First/600 to work.</comment>
     <fieldval field="pCandExpr" value="component.BaseRace"/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="AdjShadow" tag="Name"/>
     <tag group="OthAdjCat" tag="Race"/>
-    <eval phase="Render" priority="99999999"><![CDATA[
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="First" priority="600"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
       ~if nothing's been chosen, get out now
@@ -4307,14 +4308,15 @@ call S2SetName]]></eval>
       call S2SetName]]></eval>
     </thing>
   <thing id="pS2RaCusto" name="Custom Text: Race" description="Append text to the name of your race using the (Source) or (Duration) field. Use this to add any other related info you would like to see with when you print a character or use on the iPad." compset="InPlay">
+    <comment>This must run at Render/999 to work.</comment>
     <fieldval field="pCandExpr" value="component.BaseRace"/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="AdjShadow" tag="Text"/>
     <tag group="OthAdjCat" tag="Race"/>
-    <eval phase="Render" priority="99999999"><![CDATA[
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="Render" priority="999"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
       ~if nothing's been chosen, get out now
@@ -4681,6 +4683,7 @@ call S2SetName]]></eval>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
+    <tag group="Helper" tag="NoIncr"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
@@ -5072,17 +5075,198 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cMagicLev].value += field[abValue].value
       field[pChosen].chosen.field[cCasterLev].value += field[abValue].value]]></eval>
     </thing>
-  <hidden id="pS2wViciou"/>
-  <hidden id="pS2DRall"/>
-  <hidden id="pS2DRbludg"/>
-  <hidden id="pS2DRevil"/>
-  <hidden id="pS2DRgood"/>
-  <hidden id="pS2DRmagic"/>
-  <hidden id="pS2DRpierc"/>
-  <hidden id="pS2DRsilve"/>
-  <hidden id="pS2DRslash"/>
-  <hidden id="pS2SaveAlc"/>
-  <hidden id="pS2SaveCir"/>
+  <thing id="pS2Drawbck" name="Drawbacks Allowed" description="Select this adjustment to add or subtract the number of drawbacks your character is allowed." compset="InPlay">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="OthAdjCat" tag="FeatTrait"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      field[abValue].value += field[pAdjust].value
+
+      ~ Add to traits allowed
+      #resmax[resDrawbac] += field[abValue].value]]></eval>
+    </thing>
+  <thing id="pS2CnfgFe1" name="Configurable: Feats One" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMaxF1].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2CnfgFe2" name="Configurable: Feats Two" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMaxF2].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2CnfgFe3" name="Configurable: Feats Three" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMaxF3].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2CfgMax1" name="Configurable: Table One" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMax1].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2CfgMax2" name="Configurable: Table Two" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMax2].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2CfgMax3" name="Configurable: Table Three" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMax3].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2CfgMax4" name="Configurable: Table Four" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMax4].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="ppS2CfgMax" name="Configurable: Table Five" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.Companion"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Configruable Feat total
+      field[pChosen].chosen.field[cfgMax5].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2SheetSp" name="Character Sheet: Item Spells" description="Select this adjustment to cause spells on magic items (ie Magic Staffs) to print to your character sheet." compset="InPlay">
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ We need to make sure we are caster
+      perform hero.assign[Hero.Caster]
+
+      ~ If we're not in output mode, don't do anything
+      doneif (state.isoutput = 0)
+
+      ~ Make all "item" spells print to character sheet
+      foreach pick in hero from BaseSpell where "Helper.ItemSpell"      
+        perform eachpick.delete[Helper.?]
+      nexteach]]></eval>
+    </thing>
+  <thing id="pS2GenTrac" name="Generic, Tracker" description="This adjustment allows you to add a generic/customizable Tracker to your character that will display on the In-Play tab. This allows you to set the tracker name and the number of usages it allows.\n\n{B}Note:{/b} Add this adjustment and then select &quot;Tracker 1&quot; from the drop down box and then change the name of the tracker from &quot;Tracker 1&quot; to whatever you wish.  Finally set the counter to the number of &quot;uses&quot; this should allow." compset="InPlay">
+    <fieldval field="pSource" value="Tracker 1"/>
+    <fieldval field="pUsePicks" value="1"/>
+    <fieldval field="pCandExpr" value="component.Tracker &amp; thingid.trkS2?"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="AdjInfo"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <bootstrap thing="trkS2Trck1">
+      <containerreq phase="First" priority="457"><![CDATA[                
+                 fieldval:pIsOn <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="Final" priority="5000" index="2"><![CDATA[     
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+     
+      ~ Set the custom Tracker name
+      field[pChosen].chosen.field[livename].text = field[pSource].text
+      ~ Set Tracker duration
+      field[pChosen].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="trkS2Trck1" name="Tracker 1" description="This is a generic tracker." compset="Tracker">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Usage" tag="UsedUp"/>
+    <tag group="User" tag="Tracker"/>
+    </thing>
   <hidden id="pS2AttrDra"/>
   <hidden id="pS2ClsAbDC"/>
   <hidden id="pS2ClsAbTr"/>
@@ -5126,4 +5310,15 @@ call S2SetName]]></eval>
   <hidden id="yACNatural"/>
   <hidden id="yACShield"/>
   <hidden id="yACtouch"/>
+  <hidden id="pS2wViciou"/>
+  <hidden id="pS2DRall"/>
+  <hidden id="pS2DRbludg"/>
+  <hidden id="pS2DRevil"/>
+  <hidden id="pS2DRgood"/>
+  <hidden id="pS2DRmagic"/>
+  <hidden id="pS2DRpierc"/>
+  <hidden id="pS2DRsilve"/>
+  <hidden id="pS2DRslash"/>
+  <hidden id="pS2SaveAlc"/>
+  <hidden id="pS2SaveCir"/>
   </document>

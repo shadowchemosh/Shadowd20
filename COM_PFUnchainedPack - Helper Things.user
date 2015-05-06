@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+
+  <!-- ============================================================================================ -->
+  <!-- New Base Class Headers                                                                       -->
+  <!-- ============================================================================================ -->
+
+  <thing id="arHdS2MnkU" name="Monk (Unchained)" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Monk (Unchained)" class header.]]></comment>
+    <link linkage="varies" thing="cHelpMnkUn"/>
+  </thing>
+
+
+  </document>
