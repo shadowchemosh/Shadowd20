@@ -1770,6 +1770,7 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
     <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
     <tag group="SneakDmg" tag="1d6_5"/>
     <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="aaSneakAtt"></bootstrap>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       var listSA  as string
@@ -2026,7 +2027,7 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
          eachpick.field[Bonus].value += field[abValue2].value
       nexteach]]></eval>
     </thing>
-  <thing id="arS2BatMed" name="Battle Medic" description="The battle medic gains the increased ability to heal his allies." compset="ClassVary" uniqueness="unique">
+  <thing id="arS2BatMed" name="Battle Medic" description="The battle medic gains the increased ability to heal his allies but at the cost of never using Channel Energy to cause harm." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="1"/>
     <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="s20PFCamp"/>
@@ -2102,6 +2103,57 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       doneif (tagis[Helper.ShowSpec] = 0)
 
       #appenddesc[xChannel,"{b}Battle Medic:{/b} A battle medic can channel positive energy only to heal living targets."]]]></eval>
+    </thing>
+  <thing id="cS2SneakUn" name="Sneak Attack (Unchained)" description="If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.{br}{br}The rogue’s attack deals extra damage anytime her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and increases by 1d6 every 2 rogue levels thereafter. Ranged attacks can count as sneak attacks only if the target is within 30 feet. This additional damage is precision damage and is not multiplied on a critical hit.{br}{br}With a weapon that deals nonlethal damage (such as a sap, unarmed strike, or whip), a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack—not even with the usual –4 penalty.{br}{br}The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with total concealment." compset="ClSpecial" summary="Attacks deal extra dam if flank foe or if foe is flat-footed." replaces="cSneakUnc">
+    <tag group="Helper" tag="UseOwnLev" name="UseOwnLev" abbrev="UseOwnLev"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="SneakDmg" tag="1d6_5"/>
+    <bootstrap thing="aaSneakAtt"></bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      var listSA  as string
+      var liveSA  as string
+      var sSearch as string
+
+      listSA = "+"
+      listSA &= tagnames[SneakDmg.?,"/+"]
+      listSA = replace(listSA,"1d",field[xIndex].value & "d",0)
+
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " " & listSA
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      liveSA = "+"
+      liveSA &= tagnames[SneakDmg.?,"/+"]
+      liveSA = replace(liveSA,"1d",field[abValue].value & "d",0)
+
+      field[livename].text = field[thingname].text & " " & liveSA
+      field[abSumm].text = liveSA & " damage if you flank your target or your target is flat-footed."
+
+      ~ If we are NOT active get out now
+      doneif (field[abilActive].value <> 1)
+
+      sSearch = "!" & tagids[SneakWep.?,"& !"]
+      ~ Change SneakWep to thinig which is actually on a weapon
+      sSearch = replace(sSearch,"SneakWep","thingid",0)
+      ~ Check to see if any specific weapons are being excluded
+      If (tagcount[SneakWep.?] <> 0) Then
+        ~ Loop through all weapons except some
+        foreach pick in hero from BaseWep where sSearch
+           #extradamage[eachpick,liveSA,field[name].text]
+        nexteach
+      Else
+        ~ Loop through all weapons
+        foreach pick in hero from BaseWep
+           #extradamage[eachpick,liveSA,field[name].text]
+        nexteach
+      Endif]]></eval>
     </thing>
   <hidden id="arRgrSpell"/>
   </document>

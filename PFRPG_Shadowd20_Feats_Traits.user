@@ -188,8 +188,7 @@ hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <usesource source="s20PFCamp"/>
     <tag group="Race" tag="Rd20Mino"/>
     <tag group="trCategory" tag="Racial"/>
-    <eval phase="PreAttr" priority="5000">
-      #applybonus[BonTrait,hero.childfound[skStealth],2]
+    <eval phase="PreAttr" priority="5000">#applybonus[BonTrait,hero.childfound[skStealth],2]
       #makeclassskill[skStealth]</eval>
     </thing>
   <thing id="trS2MazHun" name="Maze Hunters" description="You can draw on your ancestors ability of mazes. This gives you immunity to {i}maze{/i} spells and provides a +2 trait bonus against any effect that causes the {i}Confused{/i} condition." compset="Trait" uniqueness="useronce">
@@ -788,14 +787,17 @@ field[abValue].value += 2]]></eval>
       doneif (tagis[Helper.FtDisable] <> 0)
 
       perform hero.assign[Hero.Finesse]]]></eval>
-    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[~ If Shadow d20 not activated, don't do anything
-doneif (hero.tagis[source.srcDex2Dmg] = 0)
+    <eval phase="PreAttr" priority="10000" index="2"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If Shadow d20 not activated, don't do anything
+      doneif (hero.tagis[source.srcDex2Dmg] = 0)
 
-#appenddesc[fS2WepFin,"{b}Shadow d20:{/b} Now adds Dex to damage for finesse and light weapons but not natural attacks."]
+      #appenddesc[fS2WepFin,"{b}Shadow d20:{/b} Now adds Dex to damage for finesse and light weapons but not natural attacks."]
 
-foreach pick in hero from BaseWep where "Helper.Finesse | wClass.Light & !wGroup.Natural"
-  eachpick.field[wDamBonus].value += #attrmod[aDEX]
-nexteach]]></eval>
+      foreach pick in hero from BaseWep where "(Helper.Finesse | wClass.Light) & !wGroup.Natural"
+        perform eachpick.assign[DamageOver.aDEX]
+      nexteach]]></eval>
     </thing>
   <thing id="fS2ComCast" name="Combat Casting (DEPRECATED)" description="If you have this feat on your character please REMOVE it and re-add back &quot;Combat Casting&quot;. This custom version of the feat from Shadow d20 has been deprecated.\n\nThanks!" compset="Feat" summary="+4 to Concentration checks to cast while on the defensive." uniqueness="useronce">
     <comment>Deprecated this feat!
@@ -1540,14 +1542,14 @@ endif]]></eval>
     <tag group="fShowWhat" tag="Skills"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="trCategory" tag="Training"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[
+    <eval phase="PreLevel" priority="10000">
       ~ Set bonus to +1
       field[abValue].value += 1
 
       ~ Make the skill a class skill
       perform field[usrChosen1].chosen.assign[Helper.ClassSkill]
       ~ Give Trait bonus to chosen skill
-      #applybonus[BonTrait,field[usrChosen1].chosen,field[abValue].value]]]></eval>
+      #applybonus[BonTrait,field[usrChosen1].chosen,field[abValue].value]</eval>
     </thing>
   <thing id="fS2InsiStr" name="Insightful Strike" description="Your knowledge guides your hand when you use weapons.\n\n{b}Benefit{/b}: You can use your Intelligence modifier instead of your Strength modifier when using melee weapons. This bonus applies to both attack and damage.\n\n{b}Special{/b}: This feat counts as &quot;Weapon Finesse&quot; for the purposes of prerequisites." compset="Feat" summary="Use Int instead of Str for all purposes when using melee weapons." uniqueness="useronce">
     <usesource source="s20PFCamp"/>

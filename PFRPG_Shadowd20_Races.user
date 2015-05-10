@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <fileinfo>
     <info_history><![CDATA[
@@ -44,7 +44,7 @@ July 29, 2012
     <tag group="Helper" tag="ShowSpec"/>
     <bootstrap thing="xScent"></bootstrap>
     </thing>
-  <thing id="rS2Changel" name="Changeling" description="{b}Shapechanger Subtype:{/b} Changelings are humanoids with the shapechanger subtype.\n\nChangelings are subtle shapeshifters capable of disguising their appearance. They evolved through the union of doppelgangers and humans, eventually becoming a separate race distinct from either ancestral tree. They do not possess the full shapechanging ability of a doppelganger, but they can create effective disguises at will. This ability makes them consummate spies and criminals, and many changelings live up to that potential.\n\n{b}Personality:{/b} In general, changelings are prudent and cautious, preferring to take risks only when they feel that their chances of success are good or the payoff is worth it. They appreciate the fi ner things in life and take great pleasure in the comforts of a wealthy lifestyle when they can obtain it. They avoid direct confrontation, preferring stealthy s trikes and h asty retreats whenev er possible. In conversation, they are soft-spoken but have a gift for drawing out more information than the other party intends to reveal.\n\n{b}Physical Description:{/b} Changelings strongly resemble their doppelganger lineage, with only a passing nod to their human heritage. All changelings fall within the boundaries of Medium size, usually standing between 5 and 6 feet tall. Unlike true doppelgangers, changelings do have gender in their natural form, although they can adopt any shape they like. Changelings have pale gray skin, and their hair is thin and fair. Their limbs are long and slightly out of proportion compared to other humanoids. Their faces have slightly more distinct features than a doppelganger&#146;s, including a hint of nose and lips, though their eyes remain blank white and the rest of their facial features don&#146;t look quite as fi nished as those on a human.\n\n{b}Alignment:{/b} Changelings of all alignments exist, but most gravitate toward the neutral alignment. They focus on their own concerns without any meaningful regard for laws or morals. Many have their own code of honor but are also fi ercely independent. Some refuse to engage in assassination, while others embrace that path as the most perfect form of the changeling art of deception.\n\n{b}Natural Linguist:{/b} Changelings add Linguistics to their list of class skills for any class they adopt." compset="Race">
+  <thing id="rS2Changel" name="Changeling" description="{b}Shapechanger Subtype:{/b} Changelings are humanoids with the shapechanger subtype.\n\nChangelings are subtle shapeshifters capable of disguising their appearance. They evolved through the union of doppelgangers and humans, eventually becoming a separate race distinct from either ancestral tree. They do not possess the full shapechanging ability of a doppelganger, but they can create effective disguises at will. This ability makes them consummate spies and criminals, and many changelings live up to that potential.\n\n{b}Personality:{/b} In general, changelings are prudent and cautious, preferring to take risks only when they feel that their chances of success are good or the payoff is worth it. They appreciate the fi ner things in life and take great pleasure in the comforts of a wealthy lifestyle when they can obtain it. They avoid direct confrontation, preferring stealthy s trikes and h asty retreats whenev er possible. In conversation, they are soft-spoken but have a gift for drawing out more information than the other party intends to reveal.\n\n{b}Physical Description:{/b} Changelings strongly resemble their doppelganger lineage, with only a passing nod to their human heritage. All changelings fall within the boundaries of Medium size, usually standing between 5 and 6 feet tall. Unlike true doppelgangers, changelings do have gender in their natural form, although they can adopt any shape they like. Changelings have pale gray skin, and their hair is thin and fair. Their limbs are long and slightly out of proportion compared to other humanoids. Their faces have slightly more distinct features than a doppelganger’s, including a hint of nose and lips, though their eyes remain blank white and the rest of their facial features don’t look quite as fi nished as those on a human.\n\n{b}Alignment:{/b} Changelings of all alignments exist, but most gravitate toward the neutral alignment. They focus on their own concerns without any meaningful regard for laws or morals. Many have their own code of honor but are also fi ercely independent. Some refuse to engage in assassination, while others embrace that path as the most perfect form of the changeling art of deception.\n\n{b}Natural Linguist:{/b} Changelings add Linguistics to their list of class skills for any class they adopt." compset="Race">
     <usesource source="srcChangel"/>
     <tag group="ClassSkill" tag="skLinguist"/>
     <tag group="Language" tag="lAuran"/>
@@ -109,7 +109,7 @@ July 29, 2012
       ~ +2 to Sense Motive
       #skillbonus[skSenseMot] += 2</eval>
     </thing>
-  <thing id="raCHGmcsha" name="Minor Change Shape" description="Changelings have the super natural ability to alter their appearance as though using a {i}disguise self{/i} or {i}alter self{/i} spell that affects their bodies but not their possessions. This ability is not an illusory effect, but a minor physical alteration of a changeling&#146;s facial features, skin color and texture, and size, within the limits described for the spells. A changeling can use this ability at will, and the alteration lasts until she changes shape again. A changeling reverts to her natural form when killed. A true seeing spell reveals her natural form. When using this ability to create a disguise, a changeling receives a +10 circumstance bonus on Disguise checks. Using this ability is a full-round action." compset="RaceSpec">
+  <thing id="raCHGmcsha" name="Minor Change Shape" description="Changelings have the super natural ability to alter their appearance as though using a {i}disguise self{/i} or {i}alter self{/i} spell that affects their bodies but not their possessions. This ability is not an illusory effect, but a minor physical alteration of a changeling’s facial features, skin color and texture, and size, within the limits described for the spells. A changeling can use this ability at will, and the alteration lasts until she changes shape again. A changeling reverts to her natural form when killed. A true seeing spell reveals her natural form. When using this ability to create a disguise, a changeling receives a +10 circumstance bonus on Disguise checks. Using this ability is a full-round action." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
     </thing>
@@ -281,7 +281,7 @@ field[abValue].value += 4 + #totallevelcount[]
     <tag group="Helper" tag="SpecUp"/>
     <bootstrap thing="xAllAround"></bootstrap>
     </thing>
-  <thing id="rcPtOutTou" name="Outsider Toughness" description="You do not lose consciousness until you reach &#150;5 hit points." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcPtOutTou" name="Outsider Toughness" description="You do not lose consciousness until you reach –5 hit points." compset="RaceCustom" uniqueness="useronce">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="AbilType" tag="Extra"/>
     </thing>
@@ -367,7 +367,7 @@ endif
     <usesource source="s20PFCamp"/>
     <tag group="NeedType" tag="tpHumanoid"/>
     </thing>
-  <thing id="rcPtAsura" name="Asura-Spawn Tiefling" description="+2 Dexterity, +2 Wisdom, &#150;2 Intelligence. The scions of the exotic and mysterious asuras are swift and wise, but often favor traditional ways over cunning." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtAsura" name="Asura-Spawn Tiefling" description="+2 Dexterity, +2 Wisdom, –2 Intelligence. The scions of the exotic and mysterious asuras are swift and wise, but often favor traditional ways over cunning." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="rcPTrace"/>
@@ -451,7 +451,7 @@ perform hero.pushtags[Custom.?]
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rcPtDemon" name="Demon-Spawn Tiefling" description="+2 Strength, +2 Charisma, &#150;2 Intelligence. Savage and monstrous, the terrifying spawn of demons know the chaotic fury of their Abyssal ancestors." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtDemon" name="Demon-Spawn Tiefling" description="+2 Strength, +2 Charisma, –2 Intelligence. Savage and monstrous, the terrifying spawn of demons know the chaotic fury of their Abyssal ancestors." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="rcPTrace"/>
@@ -473,7 +473,7 @@ perform hero.pushtags[Custom.?]
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rcPtDevil" name="Devil-Spawn Tiefling" description="+2 Constitution, +2 Wisdom, &#150;2 Charisma. Stalwart and conniving, diabolical tieflings know the discipline and might of Hell&#146;s legions." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtDevil" name="Devil-Spawn Tiefling" description="+2 Constitution, +2 Wisdom, –2 Charisma. Stalwart and conniving, diabolical tieflings know the discipline and might of Hell’s legions." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="Holder"/>
@@ -495,7 +495,7 @@ perform hero.pushtags[Custom.?]
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rcPtDiv" name="Div-Spawn Tiefling" description="+2 Dexterity, +2 Charisma, &#150;2 Intelligence. Scouring life like a desert wind, these tieflings possess the precision and exoticism of their div ancestors." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtDiv" name="Div-Spawn Tiefling" description="+2 Dexterity, +2 Charisma, –2 Intelligence. Scouring life like a desert wind, these tieflings possess the precision and exoticism of their div ancestors." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="rcPTrace"/>
@@ -517,7 +517,7 @@ perform hero.pushtags[Custom.?]
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rcPtKyton" name="Kyton-Spawn Tiefling" description="+2 Constitution, +2 Charisma, &#150;2 Wisdom. The black-hearted spawn of shadow and pain know the sadistic vices of their suffering-obsessed forebearers." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtKyton" name="Kyton-Spawn Tiefling" description="+2 Constitution, +2 Charisma, –2 Wisdom. The black-hearted spawn of shadow and pain know the sadistic vices of their suffering-obsessed forebearers." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="rcPTrace"/>
@@ -539,7 +539,7 @@ perform hero.pushtags[Custom.?]
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rcPtOni" name="Oni-Spawn Tiefling" description="+2 Strength, +2 Wisdom, &#150;2 Charisma. The spawn of oni know the ways of their ancestral fiends and master the arts of trickery and cruelty." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtOni" name="Oni-Spawn Tiefling" description="+2 Strength, +2 Wisdom, –2 Charisma. The spawn of oni know the ways of their ancestral fiends and master the arts of trickery and cruelty." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="rcPTrace"/>
@@ -561,7 +561,7 @@ perform hero.pushtags[Custom.?]
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rcPtQlippo" name="Qlippoth-Spawn Tiefling" description="+2 Strength, +2 Wisdom, &#150;2 Intelligence. Rare in the extreme, the warped scions of the eldritch qlippoths retain the tenacity and insidiousness of their horrific forbearers." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtQlippo" name="Qlippoth-Spawn Tiefling" description="+2 Strength, +2 Wisdom, –2 Intelligence. Rare in the extreme, the warped scions of the eldritch qlippoths retain the tenacity and insidiousness of their horrific forbearers." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="rcPTrace"/>
@@ -583,7 +583,7 @@ perform hero.pushtags[Custom.?]
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rcPtRaksha" name="Rakshasa-Spawn Tiefling" description="+2 Dexterity, +2 Charisma, &#150;2 Wisdom. Deft and charming, these bestial tieflings inherit much of the subtlety and guile of their proud rakshasa progenitors." compset="RaceCustom" uniqueness="unique">
+  <thing id="rcPtRaksha" name="Rakshasa-Spawn Tiefling" description="+2 Dexterity, +2 Charisma, –2 Wisdom. Deft and charming, these bestial tieflings inherit much of the subtlety and guile of their proud rakshasa progenitors." compset="RaceCustom" uniqueness="unique">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="Custom" tag="rcPTrace"/>
@@ -955,7 +955,7 @@ doneif (tagis[Helper.SpcReplace] <> 0)
 #value[pstChargin] += field[abValue].value
 #value[pstWithdr] += field[abValue].value]]></eval>
     </thing>
-  <thing id="rDragBorn" name="Dragonborn" description="{b}Humanoid (dragonblood):{/b} Dragonborn are humanoids with the dragonblood subtype. For all effects related to race, a dragonborn is considered a dragon and a humanoid.\n\nDragonborn fit well in Golarion with just a few small adjustments. The conflict central to the dragonborn&#146;s existence is still present, but the dragons are known as Apsu (Waybringer) and Dahak (The False Worm), rather than Bahamut and Tiamat. The dragon clans constantly clash on Golarion and recently the Spawn of Dahak (aka Spawn of Tiamat) have plagued many. In response to this Apsu called forth many of pure heart and made these, first ones as they are now known by dragonborn, undertake the Rite of Rebirth and were reborn as the first dragonborn. While some very rarely still undertake this ancient rite most dragonborn of today are from natural births between pairs of loving dragonborn parents. Most dragonborn live and die in the battle between the dragon clans, but some make their way into the larger world to fight evil wherever they find it.\n\n{b}Shadow d20 Notes:{/b} This version of Dragonborn does not require the Dragonborn ritual listed in the Races of the Dragon. For background and roleplaying information see Dragonborn in Races of the Dragon. Also in Races of the Dragon are some good feats that can be used to customize a dragonborn including getting a tail attack, more uses of the breath weapon, or special uses of the breath weapon. These feats from Races of the Dragon are all considered racial feats and only allowed for dragonborn." compset="Race" uniqueness="unique">
+  <thing id="rDragBorn" name="Dragonborn" description="{b}Humanoid (dragonblood):{/b} Dragonborn are humanoids with the dragonblood subtype. For all effects related to race, a dragonborn is considered a dragon and a humanoid.\n\nDragonborn fit well in Golarion with just a few small adjustments. The conflict central to the dragonborn’s existence is still present, but the dragons are known as Apsu (Waybringer) and Dahak (The False Worm), rather than Bahamut and Tiamat. The dragon clans constantly clash on Golarion and recently the Spawn of Dahak (aka Spawn of Tiamat) have plagued many. In response to this Apsu called forth many of pure heart and made these, first ones as they are now known by dragonborn, undertake the Rite of Rebirth and were reborn as the first dragonborn. While some very rarely still undertake this ancient rite most dragonborn of today are from natural births between pairs of loving dragonborn parents. Most dragonborn live and die in the battle between the dragon clans, but some make their way into the larger world to fight evil wherever they find it.\n\n{b}Shadow d20 Notes:{/b} This version of Dragonborn does not require the Dragonborn ritual listed in the Races of the Dragon. For background and roleplaying information see Dragonborn in Races of the Dragon. Also in Races of the Dragon are some good feats that can be used to customize a dragonborn including getting a tail attack, more uses of the breath weapon, or special uses of the breath weapon. These feats from Races of the Dragon are all considered racial feats and only allowed for dragonborn." compset="Race" uniqueness="unique">
     <comment>This version of Dragonborn does not require the Dragonborn ritual listed in the Races of the Dragon. For background and roleplaying information see Dragonborn in Races of the Dragon. Also in Races of the Dragon are some good feats that can be used to customize a dragonborn including getting a tail attack, more uses of the breath weapon, or special uses of the breath weapon. These feats from Races of the Dragon are all considered racial feats and only allowed for dragonborn.</comment>
     <fieldval field="rCHA" value="2"/>
     <fieldval field="rCON" value="2"/>
@@ -1102,7 +1102,7 @@ Endif]]></eval>
       ~ +2 to Swim
       #skillbonus[skSwim] += 2</eval>
     </thing>
-  <thing id="raIgnNatAt" name="Tail Swipe" description="{b}Natural Attack:{/b} For 1d4 nonlethal damage and free trip attack (10ft range). You are not knocked prone even if your trip attack fails by 10 or more. A Tail Swipe is nonlethal damage and it deals no damage to any creature with an armor bonus of +1 or higher or a natural armor bonus of +3 or higher. A Tail Swipe is treated as a melee weapon with 10-foot reach, though you don&#146;t threaten the area into which you can make an attack. In addition, unlike most other weapons with reach, you can use it against foes anywhere within your reach (including adjacent foes). All other normal rules for Natural Attacks work per core rules." compset="RaceSpec">
+  <thing id="raIgnNatAt" name="Tail Swipe" description="{b}Natural Attack:{/b} For 1d4 nonlethal damage and free trip attack (10ft range). You are not knocked prone even if your trip attack fails by 10 or more. A Tail Swipe is nonlethal damage and it deals no damage to any creature with an armor bonus of +1 or higher or a natural armor bonus of +3 or higher. A Tail Swipe is treated as a melee weapon with 10-foot reach, though you don’t threaten the area into which you can make an attack. In addition, unlike most other weapons with reach, you can use it against foes anywhere within your reach (including adjacent foes). All other normal rules for Natural Attacks work per core rules." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Attack"/>
     </thing>
@@ -1315,14 +1315,14 @@ hero.child[Maneuver].field[tCMD].value += 1</eval>
       </bootstrap>
     <exprreq message="A Natural attack was already added.">#hasability[rcPtBite] = 0</exprreq>
     </thing>
-  <thing id="cRogS2DeSc" name="Deadly Scratch" description="A catfolk rogue with this talent can apply poison to her claws without accidentally poisoning herself. A catfolk rogue must have the cat&#146;s claws racial trait and the poison use class feature before taking this talent." compset="CustomSpec" uniqueness="unique">
+  <thing id="cRogS2DeSc" name="Deadly Scratch" description="A catfolk rogue with this talent can apply poison to her claws without accidentally poisoning herself. A catfolk rogue must have the cat’s claws racial trait and the poison use class feature before taking this talent." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcCatFolk"/>
     <tag group="SpecSource" tag="cHelpRog"/>
     <tag group="AbilType" tag="Extra"/>
     <exprreq message="Poison use class feature required."><![CDATA[#hasability[cAsnPoison] <> 0]]></exprreq>
     <exprreq message="Mwangi Catfolk race required."><![CDATA[#hasrace[rS2CatFolk] <> 0]]></exprreq>
     </thing>
-  <thing id="cRogS2DiLu" name="Disarming Luck" description="Once per day, when a catfolk rogue attempts to disable a device and fails by 5 or more, she can reroll the check as a free action. She must take the result of the reroll, even if it&#146;s worse than the original roll." compset="CustomSpec" uniqueness="unique">
+  <thing id="cRogS2DiLu" name="Disarming Luck" description="Once per day, when a catfolk rogue attempts to disable a device and fails by 5 or more, she can reroll the check as a free action. She must take the result of the reroll, even if it’s worse than the original roll." compset="CustomSpec" uniqueness="unique">
     <fieldval field="trkMax" value="1"/>
     <usesource source="srcCatFolk"/>
     <tag group="AbilType" tag="Extra"/>
@@ -1490,7 +1490,7 @@ perform assignstr["RaReplace.raRatSwarm"]]]></eval>
         field[fcName].text &= ": " & field[actUser].value
         endif]]></evalrule>
     </thing>
-  <thing id="fcPalDragB" name="Dragonborn Paladin" description="+1 point of damage when using Smite Evil. This additional damage is the same kind as the dragonborn&#146;s breath weapon energy type." compset="FavClass" uniqueness="unique">
+  <thing id="fcPalDragB" name="Dragonborn Paladin" description="+1 point of damage when using Smite Evil. This additional damage is the same kind as the dragonborn’s breath weapon energy type." compset="FavClass" uniqueness="unique">
     <fieldval field="fcName" value="+1 Smite Energy Dmg"/>
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -1498,7 +1498,7 @@ perform assignstr["RaReplace.raRatSwarm"]]]></eval>
     <tag group="IsRace" tag="rDragBorn"/>
     </thing>
   <thing id="fcClrDragB" name="Dragonborn Cleric" description="Select one domain power granted at 1st level that is normally usable for a number of times per day equal to 3 + the cleric&apos;s Wisdom modifier. The cleric adds 1/2 to the number of uses per day of that domain power." compset="FavClass">
-    <fieldval field="fcName" value="+&#189;  use/day"/>
+    <fieldval field="fcName" value="+½  use/day"/>
     <fieldval field="usrCandid1" value="component.BaseClSpec &amp; ClSpecWhen.1 &amp; SpecSource.cHelpClr &amp; Custom.AttrUses3"/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cCleric" name="Cleric" abbrev="Cleric"/>
@@ -1513,7 +1513,7 @@ perform assignstr["RaReplace.raRatSwarm"]]]></eval>
       field[usrChosen1].chosen.field[trkMax].value += field[abValue].value]]></eval>
     </thing>
   <thing id="fcWizPlane" name="Planetouched Wizard" description="Select one arcane school power at 1st level that is normally usable a number of times per day equal to 3 + the wizard&apos;s Intelligence modifier. The wizard adds +1/2 to the number of uses per day of that arcane school power." compset="FavClass">
-    <fieldval field="fcName" value="+&#189;  use/day"/>
+    <fieldval field="fcName" value="+½  use/day"/>
     <fieldval field="usrCandid1" value="component.BaseClSpec &amp; ClSpecWhen.1 &amp; SpecSource.cHelpWiz &amp; Custom.AttrUses3"/>
     <usesource source="srcPlanTou"/>
     <tag group="IsRace" tag="rS2Planeto"/>
@@ -1528,7 +1528,7 @@ perform assignstr["RaReplace.raRatSwarm"]]]></eval>
       field[usrChosen1].chosen.field[trkMax].value += field[abValue].value]]></eval>
     </thing>
   <thing id="fcSorDragB" name="Dragonborn Sorcerer" description="Add +1/2 to spell damage that matches the energy type of your breath weapon." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189;  Energy Spell Damage"/>
+    <fieldval field="fcName" value="+½  Energy Spell Damage"/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cSorcerer" name="Sorcerer" abbrev="Sorcerer"/>
     <tag group="IsRace" tag="rDragBorn"/>
@@ -1568,7 +1568,7 @@ doneif (hero.hasminion[AnimComp] = 0)
 hero.minion[AnimComp].child[resSkill].field[resMax].value += field[abValue].value]]></eval>
     </thing>
   <thing id="fcDrd2SMin" name="Ulfen Minotaur Druid" description="Select one cleric domain power at 1st level that is normally usable a number of times per day equal to 3 + the druid&apos;s Wisdom modifier. The druid adds 1/2 to the number of uses per day of that domain power." compset="FavClass">
-    <fieldval field="fcName" value="+&#189;  use/day"/>
+    <fieldval field="fcName" value="+½  use/day"/>
     <fieldval field="usrCandid1" value="component.BaseClSpec &amp; ClSpecWhen.1 &amp; SpecSource.cHelpDrd &amp; Custom.AttrUses3"/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cDruid" name="Druid" abbrev="Druid"/>
@@ -1591,7 +1591,7 @@ hero.minion[AnimComp].child[resSkill].field[resMax].value += field[abValue].valu
 #trkmax[cBbnRage] += field[abValue].value</eval>
     </thing>
   <thing id="fcRgrShift" name="Shifter Ranger" description="Add a +1/2 bonus on wild empathy checks to influence animals and magical beasts." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Wild Empathy"/>
+    <fieldval field="fcName" value="+½ Wild Empathy"/>
     <usesource source="s20PFCamp"/>
     <tag group="IsRace" tag="rShifters"/>
     <tag group="FavClass" tag="cRanger" name="Ranger" abbrev="Ranger"/>
@@ -1617,7 +1617,7 @@ field[abValue].value += field[fcCount].value
 #trkmax[cBbnRage] += field[abValue].value</eval>
     </thing>
   <thing id="fcRgrSMino" name="Ulfen Minotaur Ranger" description="Add a +1/2 bonus on Survival checks to keep from getting lost and Knowledge(Nature) checks to Identify natural hazards." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; to Survival &amp; Nature"/>
+    <fieldval field="fcName" value="+½ to Survival &amp; Nature"/>
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
     <tag group="FavClass" tag="cRanger"/>
@@ -1686,7 +1686,7 @@ focus.field[rCHA].value += 2
 focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rShifters" name="Shoanti Shifter" description="Shoanti Shifters, sometimes called &quot;the weretouched,&quot; are descended from humans and natural lycanthropes. Shifters cannot fully change shape but can take on animalistic features&apos;a state they call shifting. Shifters have evolved into a unique race that breeds true. They have a distinct culture with its own traditions and identity.\n\nKnown for their warlike nature and proud traditions, the Shoanti are a disparate people, bound together by honor and tradition. Shoanti history is steeped in conflict, from their brutally heroic legends to the defeats of the recent past and the harshness of their modern lives.\n\nShaped by strife, the Shoanti are stalwart, tenacious, and suspicious people, oath-sworn to regain all that was once theirs and honor-bound to avenge themselves against all schemers who would dare call them barbarians.\n\nWhen Shoanti youths reach majority, they must undergo a rite of passage to become adults. Upon completing this rite of passage, they receive their first tattoo. These tattoos are an important part of Shoanti life, and can be quite extensive and beautiful. Hundreds of different tattoo designs exist; each is chosen and traced by a tribe&apos;s shaman, drawn from an expansive traditional assortment of symbols with their own varied meanings and implications.\n\nThe Shoanti are given a birth name when born, but once they becomes adults, they are also given a full name - it is generally by this honorific (which is always a short phrase) that they are called in everyday life. These full names can change several times during a Shoanti&apos;s life. Birth names are generally used only by close family or lovers. Shoanti who abandon their clan to live among others typically revert to using their birth names as their standard name - a practice that many traditional Shoanti find shameful.\n\nThe Shoanti are not one people but rather many {i}quahs{/i} (&quot;clans&quot;) united by heritage, tradition, and lifestyle. These various quahs largely respect one another and their lands, making disagreements over resources, territory, and politics - widely held to be distasteful and duplicitous - few. When conf licts do arise, small skirmishes and individual battles between the quahs&apos; champions quickly determine whom the spirits favor. The current seven quahs are summarized below.\n\n{b}Lyrune-Quah (Moon Clan){/b}: Expert archers and hunters, these Shoanti hunt by dusk and travel by the light of the moon. They dwell in the Cinderlands of Varisia, and revere creatures that hunt by moonlight, such as bats and owls.\n\n{b}Shadde-Quah (Axe Clan){/b}: The Shadde-Quah are expert divers and fishermen, and prefer to dwell in the coastal regions along northern Varisia or the southern Lands of the Linnorm Kings. They revere creatures that rely upon the sea for their livelihood, such as fish or sea birds.\n\n{b}Shriikirri-Quah (Hawk Clan){/b}: This clan, more than any other, regards animals as holy and mystic. Few rival their skill as animal trainers. They revere all animals, but particularly favor the hawk. They range far in their travels, but can usually be found in north-central Varisia.\n\n{b}Shundar-Quah (Spire Clan){/b}: The Shundar-Quah see themselves as diplomats and storytellers - it is in large part thanks to their efforts that the seven quahs have enjoyed what peace they have with each other. Members of the Spire Clan revere the ancient Thassilonian monoliths that can be found throughout their preferred territories on the Storval Plateau or western Belkzen.\n\n{b}Sklar-Quah (Sun Clan){/b}: The most warlike of the quahs, the Sun Clan are the most intolerant of outsiders and the most likely to wage war against non-Shoanti. Their greatest warriors are the burn-riders - elite mounted cavalry who excel at using fire to win battles. They dwell in the southern Cinderlands, and revere the horse above all other animals.\n\n{b}Skoan-Quah (Skull Clan){/b}: The Skoan-Quah are the most sinister of the clans, for they associate with the dead and guard the many Shoanti burial grounds in the eastern Cinderlands and among the Mindspin Mountains. They venerate the spirits of animals and favor those associated with death, such as vultures or beetles.\n\n{b}Tamiir-Quah (Wind Clan){/b}: The Wind Clan are perhaps the most secluded of the quahs, venturing out of the mountains of northwestern Varisia or the southern Lands of the Linnorm Kings only to raid lowlanders for valuable resources. They venerate flying animals above all others.\n\n{b}Physical Description:{/b} Shoanti Shifters are basically humanoid in shape, but their bodies are exceptionally lithe. They often move in a crouched posture, springing and leaping while their companions walk normally alongside. Their faces have a bestial cast, with wide, fl at noses, large eyes and heavy eyebrows, pointed ears, and long sideburns (in both sexes). Their forearms and lower legs grow long hair, and the hair of their heads is thick and worn long.\n\n{b}Relations:{/b} Many races feel uncomfortable around Shoanti Shifters, the same way they feel around any large predator. Of course, some grow to appreciate individual shifters despite their natural aversion, and halflings in general get along well with them. For their part, shifters are accustomed to distrust and don&#146;t expect better treatment from members of the other races, although some shifters try to earn respect and companionship through acts and deeds.\n\n{b}Alignment:{/b} Shoanti Shifters are usually neutral, viewing the struggle to survive as more important than moral or ethical concerns about how survival is maintained." compset="Race">
+  <thing id="rShifters" name="Shoanti Shifter" description="Shoanti Shifters, sometimes called &quot;the weretouched,&quot; are descended from humans and natural lycanthropes. Shifters cannot fully change shape but can take on animalistic features&apos;a state they call shifting. Shifters have evolved into a unique race that breeds true. They have a distinct culture with its own traditions and identity.\n\nKnown for their warlike nature and proud traditions, the Shoanti are a disparate people, bound together by honor and tradition. Shoanti history is steeped in conflict, from their brutally heroic legends to the defeats of the recent past and the harshness of their modern lives.\n\nShaped by strife, the Shoanti are stalwart, tenacious, and suspicious people, oath-sworn to regain all that was once theirs and honor-bound to avenge themselves against all schemers who would dare call them barbarians.\n\nWhen Shoanti youths reach majority, they must undergo a rite of passage to become adults. Upon completing this rite of passage, they receive their first tattoo. These tattoos are an important part of Shoanti life, and can be quite extensive and beautiful. Hundreds of different tattoo designs exist; each is chosen and traced by a tribe&apos;s shaman, drawn from an expansive traditional assortment of symbols with their own varied meanings and implications.\n\nThe Shoanti are given a birth name when born, but once they becomes adults, they are also given a full name - it is generally by this honorific (which is always a short phrase) that they are called in everyday life. These full names can change several times during a Shoanti&apos;s life. Birth names are generally used only by close family or lovers. Shoanti who abandon their clan to live among others typically revert to using their birth names as their standard name - a practice that many traditional Shoanti find shameful.\n\nThe Shoanti are not one people but rather many {i}quahs{/i} (&quot;clans&quot;) united by heritage, tradition, and lifestyle. These various quahs largely respect one another and their lands, making disagreements over resources, territory, and politics - widely held to be distasteful and duplicitous - few. When conf licts do arise, small skirmishes and individual battles between the quahs&apos; champions quickly determine whom the spirits favor. The current seven quahs are summarized below.\n\n{b}Lyrune-Quah (Moon Clan){/b}: Expert archers and hunters, these Shoanti hunt by dusk and travel by the light of the moon. They dwell in the Cinderlands of Varisia, and revere creatures that hunt by moonlight, such as bats and owls.\n\n{b}Shadde-Quah (Axe Clan){/b}: The Shadde-Quah are expert divers and fishermen, and prefer to dwell in the coastal regions along northern Varisia or the southern Lands of the Linnorm Kings. They revere creatures that rely upon the sea for their livelihood, such as fish or sea birds.\n\n{b}Shriikirri-Quah (Hawk Clan){/b}: This clan, more than any other, regards animals as holy and mystic. Few rival their skill as animal trainers. They revere all animals, but particularly favor the hawk. They range far in their travels, but can usually be found in north-central Varisia.\n\n{b}Shundar-Quah (Spire Clan){/b}: The Shundar-Quah see themselves as diplomats and storytellers - it is in large part thanks to their efforts that the seven quahs have enjoyed what peace they have with each other. Members of the Spire Clan revere the ancient Thassilonian monoliths that can be found throughout their preferred territories on the Storval Plateau or western Belkzen.\n\n{b}Sklar-Quah (Sun Clan){/b}: The most warlike of the quahs, the Sun Clan are the most intolerant of outsiders and the most likely to wage war against non-Shoanti. Their greatest warriors are the burn-riders - elite mounted cavalry who excel at using fire to win battles. They dwell in the southern Cinderlands, and revere the horse above all other animals.\n\n{b}Skoan-Quah (Skull Clan){/b}: The Skoan-Quah are the most sinister of the clans, for they associate with the dead and guard the many Shoanti burial grounds in the eastern Cinderlands and among the Mindspin Mountains. They venerate the spirits of animals and favor those associated with death, such as vultures or beetles.\n\n{b}Tamiir-Quah (Wind Clan){/b}: The Wind Clan are perhaps the most secluded of the quahs, venturing out of the mountains of northwestern Varisia or the southern Lands of the Linnorm Kings only to raid lowlanders for valuable resources. They venerate flying animals above all others.\n\n{b}Physical Description:{/b} Shoanti Shifters are basically humanoid in shape, but their bodies are exceptionally lithe. They often move in a crouched posture, springing and leaping while their companions walk normally alongside. Their faces have a bestial cast, with wide, fl at noses, large eyes and heavy eyebrows, pointed ears, and long sideburns (in both sexes). Their forearms and lower legs grow long hair, and the hair of their heads is thick and worn long.\n\n{b}Relations:{/b} Many races feel uncomfortable around Shoanti Shifters, the same way they feel around any large predator. Of course, some grow to appreciate individual shifters despite their natural aversion, and halflings in general get along well with them. For their part, shifters are accustomed to distrust and don’t expect better treatment from members of the other races, although some shifters try to earn respect and companionship through acts and deeds.\n\n{b}Alignment:{/b} Shoanti Shifters are usually neutral, viewing the struggle to survive as more important than moral or ethical concerns about how survival is maintained." compset="Race">
     <fieldval field="rDEX" value="2"/>
     <fieldval field="rINT" value="-2"/>
     <fieldval field="rWIS" value="2"/>
@@ -1743,7 +1743,7 @@ endif]]></eval>
 #trkmax[cMagArPool] += field[abValue].value</eval>
     </thing>
   <thing id="fcRogPlane" name="Planetouched Rogue" description="Add +1/2 to sneak attack damage dealt to creatures with the outsider type." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Sneak Att dam vs Outsiders"/>
+    <fieldval field="fcName" value="+½ Sneak Att dam vs Outsiders"/>
     <usesource source="srcPlanTou"/>
     <tag group="FavClass" tag="cRogue" name="Rogue" abbrev="Rogue"/>
     <tag group="IsRace" tag="rS2Planeto"/>
@@ -1758,7 +1758,7 @@ perform assign[Helper.ShowSpec]
 field[livename].text = signed(field[abValue].value) & " to sneak attack damage dealt to creatures with the outsider type."]]></eval>
     </thing>
   <thing id="fcInqPlane" name="Planetouched Inquisitor" description="Add a +1/2 bonus on Intimidate checks and Knowledge checks to identify creatures." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Intimidate and Identify"/>
+    <fieldval field="fcName" value="+½ Intimidate and Identify"/>
     <usesource source="srcPlanTou"/>
     <tag group="FavClass" tag="cInquisito" name="Inquisitor" abbrev="Inquisitor"/>
     <tag group="IsRace" tag="rS2Planeto"/>
@@ -1949,7 +1949,7 @@ hero.child[manTrip].field[manCMD].value += 1</eval>
     <bootstrap thing="xScent"></bootstrap>
     </thing>
   <thing id="fcRogS2Cat" name="Mwangi Catfolk Rogue" description="Add a +1/2 bonus on Bluff checks to feint and Sleight of Hands checks to pickpocket." compset="FavClass" summary="+1/2 bonus on feint and pickpocket checks." uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Feint and Pickpocket"/>
+    <fieldval field="fcName" value="+½ Feint and Pickpocket"/>
     <usesource source="srcCatFolk"/>
     <tag group="FavClass" tag="cRogue" name="Rogue" abbrev="Rogue"/>
     <tag group="FavClass" tag="cNinja"/>
@@ -2468,8 +2468,8 @@ doneIf (hero.tagis[source.ARG] <> 1)
 ~ This allows us to be replaced
 perform assignstr["RaReplace.raKitsMagi"]]]></eval>
     </thing>
-  <thing id="fcBarS2Cat" name="Mwangi Catfolk Bard" description="Add +1/2 to the bard&#146;s bardic knowledge bonus." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Bardic Knowledge"/>
+  <thing id="fcBarS2Cat" name="Mwangi Catfolk Bard" description="Add +1/2 to the bard’s bardic knowledge bonus." compset="FavClass" uniqueness="unique">
+    <fieldval field="fcName" value="+½ Bardic Knowledge"/>
     <usesource source="srcCatFolk"/>
     <tag group="IsRace" tag="rS2CatFolk"/>
     <tag group="FavClass" tag="cBard" name="Bard" abbrev="Bard"/>
@@ -2477,8 +2477,8 @@ perform assignstr["RaReplace.raKitsMagi"]]]></eval>
 
       #value[cBrdKnow] += field[abValue].value</eval>
     </thing>
-  <thing id="fcCavS2Cat" name="Mwangi Catfolk Cavalier" description="Add +1/4 to the cavalier&#146;s banner bonus." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#188; Banner Bonus"/>
+  <thing id="fcCavS2Cat" name="Mwangi Catfolk Cavalier" description="Add +1/4 to the cavalier’s banner bonus." compset="FavClass" uniqueness="unique">
+    <fieldval field="fcName" value="+¼ Banner Bonus"/>
     <usesource source="srcCatFolk"/>
     <tag group="FavClass" tag="cCavalier" name="Cavalier" abbrev="Cavalier"/>
     <tag group="IsRace" tag="rCatfolk" name="Catfolk" abbrev="Catfolk"/>
@@ -2487,7 +2487,7 @@ perform assignstr["RaReplace.raKitsMagi"]]]></eval>
       #value[cCavBanner] += field[abValue].value
       #value2[cCavBanner] += field[abValue].value</eval>
     </thing>
-  <thing id="fcDrdS2Cat" name="Mwangi Catfolk Druid" description="Add +1 hit points to the druid&#146;s animal companion. If the druid ever replaces her animal companion, the new animal companion gains these bonus hit points." compset="FavClass" uniqueness="unique">
+  <thing id="fcDrdS2Cat" name="Mwangi Catfolk Druid" description="Add +1 hit points to the druid’s animal companion. If the druid ever replaces her animal companion, the new animal companion gains these bonus hit points." compset="FavClass" uniqueness="unique">
     <fieldval field="fcName" value="+1 Animal Companion HP"/>
     <usesource source="srcCatFolk"/>
     <tag group="FavClass" tag="cDruid" name="Druid" abbrev="Druid"/>
@@ -2535,7 +2535,7 @@ perform assignstr["RaReplace.raKitsMagi"]]]></eval>
       validif (field[fcCount].value <= 1)]]></evalrule>
     </thing>
   <thing id="fcRgrS2Cat" name="Mwangi Catfolk Ranger" description="Choose a weapon from the following list: claws, kukri, longbow, longsword, short spear, or shortbow. Add +1/2 on critical hit confirmation rolls made while using that weapon (maximum bonus of +4). This bonus does not stack with Critical Focus." compset="FavClass" summary="+1/2 to critical confirmation rolls with chosen weapon to a max of +4.">
-    <fieldval field="fcName" value="+&#189; Critical Confirmation"/>
+    <fieldval field="fcName" value="+½ Critical Confirmation"/>
     <fieldval field="usrCandid1" value="component.BaseWep &amp; (thingid.wClaw | thingid.wKukri | thingid.wLongbow | thingid.wLongsword | thingid.wShortspr | thingid.wShortbow)"/>
     <usesource source="srcCatFolk"/>
     <tag group="IsRace" tag="rCatfolk" name="Catfolk" abbrev="Catfolk"/>
@@ -2555,8 +2555,8 @@ perform assignstr["RaReplace.raKitsMagi"]]]></eval>
 
       field[livename].text = "+" & field[abValue].value & " to critical confirmations"]]></evalrule>
     </thing>
-  <thing id="fcSorS2Cat" name="Mwangi Catfolk Sorcerer" description="Select one bloodline power at 1st level that is normally usable a number of times equal to 3 + the sorcerer&#146;s Charisma modifier. The sorcerer adds + 1/2 to the number of uses per day of that bloodline power." compset="FavClass">
-    <fieldval field="fcName" value="+&#189; Bloodline Power use/day"/>
+  <thing id="fcSorS2Cat" name="Mwangi Catfolk Sorcerer" description="Select one bloodline power at 1st level that is normally usable a number of times equal to 3 + the sorcerer’s Charisma modifier. The sorcerer adds + 1/2 to the number of uses per day of that bloodline power." compset="FavClass">
+    <fieldval field="fcName" value="+½ Bloodline Power use/day"/>
     <fieldval field="usrCandid1" value="component.BaseClSpec &amp; ClSpecWhen.1 &amp; SpecSource.cHelpSor &amp; Custom.AttrUses3"/>
     <usesource source="srcCatFolk"/>
     <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
@@ -2571,7 +2571,7 @@ perform assignstr["RaReplace.raKitsMagi"]]]></eval>
       field[usrChosen1].chosen.field[trkMax].value += field[abValue].value]]></eval>
     </thing>
   <thing id="fcBarS2Kit" name="Kitsune Bard S2" description="Add a +1/2 bonus on Bluff checks to lie and a +1/2 bonus on Diplomacy checks to gather information." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; to Bluff for Secrets &amp; Lies"/>
+    <fieldval field="fcName" value="+½ to Bluff for Secrets &amp; Lies"/>
     <usesource source="srcDragonb"/>
     <tag group="IsRace" tag="rKitsune" name="Kitsune" abbrev="Kitsune"/>
     <tag group="FavClass" tag="cBard" name="Bard" abbrev="Bard"/>
@@ -2587,7 +2587,7 @@ perform assignstr["RaReplace.raKitsMagi"]]]></eval>
       field[livename].text = "+" & field[abValue].value & " Bluff (lies), Diplomacy (gather information)"]]></eval>
     </thing>
   <thing id="fcDrdS2Kit" name="Kitsune Druid S2" description="Add a +1/2 bonus on Diplomacy and Intimidate checks to change a creature&apos;s attitude." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Change Attitudes"/>
+    <fieldval field="fcName" value="+½ Change Attitudes"/>
     <usesource source="srcDragEmp"/>
     <tag group="IsRace" tag="rKitsune" name="Kitsune" abbrev="Kitsune"/>
     <tag group="FavClass" tag="cDruid" name="Druid" abbrev="Druid"/>
@@ -2697,7 +2697,7 @@ perform assignstr["RaReplace.raKitsMagi"]]]></eval>
       hero.child[manTrip].field[manCMD].value += field[abValue].value</eval>
     </thing>
   <thing id="fcMnkS2Nag" name="Nagaji Monk S2" description="Add +1/4 to the monk&apos;s ki pool." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#188; Ki Pool"/>
+    <fieldval field="fcName" value="+¼ Ki Pool"/>
     <usesource source="srcDragEmp"/>
     <tag group="FavClass" tag="cMonk" name="Monk" abbrev="Monk"/>
     <tag group="IsRace" tag="rNagaji" name="Nagaji" abbrev="Nagaji"/>
@@ -2770,7 +2770,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
       hero.childfound[cHelpAlc].field[cGiveSpec].value += field[abValue].value</eval>
     </thing>
   <thing id="fcBbnS2Rat" name="Ratfolk Barbarian" description="When raging, add +1/4 to the barbarian&apos;s swarming trait&apos;s flanking bonus on attack rolls." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#188; Swarming Flank Bonus"/>
+    <fieldval field="fcName" value="+¼ Swarming Flank Bonus"/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cBarbarian" name="Barbarian" abbrev="Barbarian"/>
     <tag group="IsRace" tag="rRatfolk" name="Ratfolk" abbrev="Ratfolk"/>
@@ -2805,7 +2805,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
       hero.child[manTrip].field[manCMD].value += field[abValue].value</eval>
     </thing>
   <thing id="fcGunS2Rat" name="Ratfolk Gunslinger" description="Add a +1/2 bonus on initiative checks when the gunslinger has at least 1 grit point." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Initiative with Grit."/>
+    <fieldval field="fcName" value="+½ Initiative with Grit."/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cGunsling" name="Gunslinger" abbrev="Gunslinger"/>
     <tag group="IsRace" tag="rRatfolk" name="Ratfolk" abbrev="Ratfolk"/>
@@ -2864,7 +2864,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
       hero.minion[AnimComp].child[Maneuver].field[tCMD].value += field[abValue].value]]></eval>
     </thing>
   <thing id="fcRogS2Rat" name="Ratfolk Rogue" description="Add a +1/2 bonus on Escape Artist checks." compset="FavClass" uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Escape Artist"/>
+    <fieldval field="fcName" value="+½ Escape Artist"/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cRogue" name="Rogue" abbrev="Rogue"/>
     <tag group="IsRace" tag="rRatfolk" name="Ratfolk" abbrev="Ratfolk"/>
@@ -3343,7 +3343,7 @@ foreach pick in hero from BaseSkill
 nexteach]]></eval>
     </thing>
   <thing id="fcInqS2Min" name="Ulfen Minotaur Inquisitor" description="+1/2 on Sense Motive and Survival checks." compset="FavClass" summary="+1/2 on Sense Motive and Survival checks." uniqueness="unique">
-    <fieldval field="fcName" value="+&#189; Sense and Survival"/>
+    <fieldval field="fcName" value="+½ Sense and Survival"/>
     <usesource source="srcShaMino"/>
     <tag group="FavClass" tag="cInquisito"/>
     <tag group="IsRace" tag="Rd20Mino"/>
@@ -3431,7 +3431,7 @@ perform hero.assignstr["Race.rDhampir"]
 perform hero.assignstr["IsRace.rDhampir"]
 perform hero.assignstr["RaceEquip.rDhampir"]]]></eval>
     </thing>
-  <thing id="raShifting" name="Shifting" description="A shifter can tap into her lycanthropic heritage to gain short bursts of physical power. A shifter can enter a state that is superficially similar to a barbarian&#146;s rage. Each shifter has one of six shifter traits-characteristics that manifest themselves when a character is shifting. Each shifter trait provides a +2 bonus to one of the character&#146;s physical ability scores (Strength, Dexterity, or Constitution) and grants some other advantage as well. Shifter traits are described in the following section.\n\nA shifter can shift for a number of rounds per day equal to 3 + Constitution modifier + half her character level. Starting a shift or ending is a free action that can only happen on a characters turn. Every shifter feat a character takes allows her to shift for 1 additional round per day.  For every two shifter feats a character takes, the shifter gains a bonus 1 round per day on top of the one gained for the shifter feat itself. In example if a shifter has two shifter feats they can shift for 3 additional rounds per day not 2." compset="RaceSpec">
+  <thing id="raShifting" name="Shifting" description="A shifter can tap into her lycanthropic heritage to gain short bursts of physical power. A shifter can enter a state that is superficially similar to a barbarian’s rage. Each shifter has one of six shifter traits-characteristics that manifest themselves when a character is shifting. Each shifter trait provides a +2 bonus to one of the character’s physical ability scores (Strength, Dexterity, or Constitution) and grants some other advantage as well. Shifter traits are described in the following section.\n\nA shifter can shift for a number of rounds per day equal to 3 + Constitution modifier + half her character level. Starting a shift or ending is a free action that can only happen on a characters turn. Every shifter feat a character takes allows her to shift for 1 additional round per day.  For every two shifter feats a character takes, the shifter gains a bonus 1 round per day on top of the one gained for the shifter feat itself. In example if a shifter has two shifter feats they can shift for 3 additional rounds per day not 2." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="User" tag="Activation"/>
     <tag group="AbilType" tag="Super"/>
@@ -3448,7 +3448,7 @@ perform hero.assignstr["RaceEquip.rDhampir"]]]></eval>
       ~ Set the shifting tag on to the hero
       perform hero.assign[Shifter.Shifting]</eval>
     </thing>
-  <thing id="raShftAgil" name="Shifter Agility" description="A shifter&#146;s animalistic heritage enhances many of her physical skills. Shifters gain a +2 racial bonus on Acrobatics, Climb, and Swim checks." compset="RaceSpec">
+  <thing id="raShftAgil" name="Shifter Agility" description="A shifter’s animalistic heritage enhances many of her physical skills. Shifters gain a +2 racial bonus on Acrobatics, Climb, and Swim checks." compset="RaceSpec">
     <fieldval field="abValue" value="2"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Skill"/>
@@ -3582,7 +3582,7 @@ abValue4 = Not Used</comment>
       hero.child[aDEX].field[Bonus].value += field[abValue].value
       hero.child[Speed].field[Bonus].value += field[abValue2].value]]></eval>
     </thing>
-  <thing id="rcS2wildhu" name="Wildhunt" description="While shifting, a wildhunt shifter gains a +2 bonus to Constitution and the scent ability. This ability allows the shifter to detect approaching enemies, sniff out hidden foes, and track by sense of smell. A wildhunt shifter can identify familiar odors just as a human does familiar sights.\n\nA wildhunt shifter can detect opponents within 30 feet by sense of smell. If the opponent is upwind, the range increases to 60 feet; if downwind, it drops to 15 feet. Strong scents, such as smoke or rotting garbage, can be detected at twice the ranges noted above. Overpowering scents, such as skunk musk or troglodyte stench, can be detected at triple normal range. These stronger scents block other scents, so they can sometimes be used to confuse or hamper this shifter trait.\n\nWhen a wildhunt shifter detects a scent, the exact location of the source isn&#146;t revealed - only its presence somewhere within range. The shifter can take a move action to note the direction of the scent. Whenever the shifter comes within 5 feet of the source, she pinpoints the source&#146;s location.\n\nEven when not shifting, a wildhunt shifter gains a +2 bonus on Survival checks due to the lingering effects of the scent ability\n\nWhile shifting, a wildhunt shifter can follow tracks by smell, making Survival checks to find or follow a trail. The typical DC for a fresh trail is 10 (regardless of the surface that holds the scent). This DC increases or decreases depending on how strong the quarry&#146;s odor is, the number of creatures producing the odor, and the age of the trail. For each hour that the trail grows cold, the DC increases by 2. This ability otherwise follows the rules for the Tracking with Survival skill. Shifters tracking by scent ignore the effects of surface conditions and poor visibility." compset="RaceCustom" summary="+2 Con and the scent ability when shifting." uniqueness="useronce">
+  <thing id="rcS2wildhu" name="Wildhunt" description="While shifting, a wildhunt shifter gains a +2 bonus to Constitution and the scent ability. This ability allows the shifter to detect approaching enemies, sniff out hidden foes, and track by sense of smell. A wildhunt shifter can identify familiar odors just as a human does familiar sights.\n\nA wildhunt shifter can detect opponents within 30 feet by sense of smell. If the opponent is upwind, the range increases to 60 feet; if downwind, it drops to 15 feet. Strong scents, such as smoke or rotting garbage, can be detected at twice the ranges noted above. Overpowering scents, such as skunk musk or troglodyte stench, can be detected at triple normal range. These stronger scents block other scents, so they can sometimes be used to confuse or hamper this shifter trait.\n\nWhen a wildhunt shifter detects a scent, the exact location of the source isn’t revealed - only its presence somewhere within range. The shifter can take a move action to note the direction of the scent. Whenever the shifter comes within 5 feet of the source, she pinpoints the source’s location.\n\nEven when not shifting, a wildhunt shifter gains a +2 bonus on Survival checks due to the lingering effects of the scent ability\n\nWhile shifting, a wildhunt shifter can follow tracks by smell, making Survival checks to find or follow a trail. The typical DC for a fresh trail is 10 (regardless of the surface that holds the scent). This DC increases or decreases depending on how strong the quarry’s odor is, the number of creatures producing the odor, and the age of the trail. For each hour that the trail grows cold, the DC increases by 2. This ability otherwise follows the rules for the Tracking with Survival skill. Shifters tracking by scent ignore the effects of surface conditions and poor visibility." compset="RaceCustom" summary="+2 Con and the scent ability when shifting." uniqueness="useronce">
     <comment>abValue = Ability Score bonus
 abValue2 = Misc ability bonus
 abValue3 = Natural Attack dmg bonus
@@ -3608,7 +3608,7 @@ abValue4 = Not Used</comment>
       ~ Give shifting bonus
       hero.child[aCON].field[Bonus].value += field[abValue].value]]></eval>
     </thing>
-  <thing id="rcS2dreams" name="Dreamsight" description="The dreamsight trait is the rarest of all shifter traits, and many dreamsight shifters become druids within shifter communities. Unlike other shifter traits, which increase a shifter&#146;s physical abilities, the dreamsight trait sharpens a shifter&#146;s instincts and awareness. While shifting, a dreamsight shifter temporarily gains a +2 bonus to Wisdom and gains the ability to communicate with animals as if under the effect of a {i}speak with animals{/i} spell. In addition, the shifter gains a +2 bonus on Handle Animal and wild empathy checks, even while not shifting." compset="RaceCustom" summary="+2 Wis and can {i}speak with animals{/I} when shifting." uniqueness="useronce">
+  <thing id="rcS2dreams" name="Dreamsight" description="The dreamsight trait is the rarest of all shifter traits, and many dreamsight shifters become druids within shifter communities. Unlike other shifter traits, which increase a shifter’s physical abilities, the dreamsight trait sharpens a shifter’s instincts and awareness. While shifting, a dreamsight shifter temporarily gains a +2 bonus to Wisdom and gains the ability to communicate with animals as if under the effect of a {i}speak with animals{/i} spell. In addition, the shifter gains a +2 bonus on Handle Animal and wild empathy checks, even while not shifting." compset="RaceCustom" summary="+2 Wis and can {i}speak with animals{/I} when shifting." uniqueness="useronce">
     <comment>abValue = Ability Score bonus
 abValue2 = Misc ability bonus
 abValue3 = Natural Attack dmg bonus
@@ -3637,7 +3637,7 @@ abValue4 = Not Used</comment>
       ~ Give shifting bonus
       hero.child[aWIS].field[Bonus].value += field[abValue].value]]></eval>
     </thing>
-  <thing id="rcS2gorebu" name="Gorebrute" description="While shifting, a gorebrute shifter temporarily gains a +2 bonus to Strength and manifests powerful horns that can be used as a natural weapon, but only during a charge attack. (The horns are too awkward to use as a natural weapon in any circumstance other than a charge.) If a gorebrute shifter uses his horns in a charge attack, the horns function as a natural weapon, dealing 2d6 points of damage (plus an extra 1 point for every four character levels he has). A gorebrute shifter can&#146;t combine a charge attack with his horns with any other attack, even if he has the ability to make more than one attack as part of a charge (such as from the pounce ability)." compset="RaceCustom" summary="+2 Str and 2d6 Horn attack when charging and shifting." uniqueness="useronce">
+  <thing id="rcS2gorebu" name="Gorebrute" description="While shifting, a gorebrute shifter temporarily gains a +2 bonus to Strength and manifests powerful horns that can be used as a natural weapon, but only during a charge attack. (The horns are too awkward to use as a natural weapon in any circumstance other than a charge.) If a gorebrute shifter uses his horns in a charge attack, the horns function as a natural weapon, dealing 2d6 points of damage (plus an extra 1 point for every four character levels he has). A gorebrute shifter can’t combine a charge attack with his horns with any other attack, even if he has the ability to make more than one attack as part of a charge (such as from the pounce ability)." compset="RaceCustom" summary="+2 Str and 2d6 Horn attack when charging and shifting." uniqueness="useronce">
     <comment>abValue = Ability Score bonus
 abValue2 = Misc ability bonus
 abValue3 = Natural Attack dmg bonus
@@ -3667,7 +3667,7 @@ abValue4 = Not Used</comment>
       ~ Give a bonus to all our Gorebrute natural damage
       Call ShifterDmg]]></eval>
     </thing>
-  <thing id="rcS2swiftw" name="Swiftwing" description="While shifting, a swiftwing shifter temporarily gains a +2 bonus to Dexterity. His arms grow leathery flaps of skin or black feathers, which grant him a fly speed of 20 feet (average maneuverability). While airborne, the shifter can&#146;t use his hands for anything other than flying, though he can still hold or carry objects. A shifter can&#146;t fly while carrying a medium or heavy load or while wearing medium or heavy armor. A swiftwing shifter gains the Fly skill as a class skill." compset="RaceCustom" summary="+2 Dex and 20ft fly speed when shifting." uniqueness="useronce">
+  <thing id="rcS2swiftw" name="Swiftwing" description="While shifting, a swiftwing shifter temporarily gains a +2 bonus to Dexterity. His arms grow leathery flaps of skin or black feathers, which grant him a fly speed of 20 feet (average maneuverability). While airborne, the shifter can’t use his hands for anything other than flying, though he can still hold or carry objects. A shifter can’t fly while carrying a medium or heavy load or while wearing medium or heavy armor. A swiftwing shifter gains the Fly skill as a class skill." compset="RaceCustom" summary="+2 Dex and 20ft fly speed when shifting." uniqueness="useronce">
     <comment>abValue = Ability Score bonus
 abValue2 = Misc ability bonus
 abValue3 = Natural Attack dmg bonus
@@ -3691,7 +3691,7 @@ abValue4 = Not Used</comment>
     <eval phase="First" priority="1000">~ Make Fly into a class skill
     #makeclassskill[skFly]</eval>
     </thing>
-  <thing id="rcS2truedi" name="Truedive" description="While shifting, a truedive shifter temporarily gains a +2 bonus to Constitution and a swim speed of 30 feet. Gaining a swim speed grants him a +8 racial bonus on Swim checks. In addition, the shifter can hold his breath for a number of rounds equal to 5 x his Constitution score before he risks drowning. A truedive shifter gains this benefit even when he isn&#146;t shifting. A truedive shifter gains the Swim skill as a class skill." compset="RaceCustom" summary="+2 Con and 30ft swim speed when shifting." uniqueness="useronce">
+  <thing id="rcS2truedi" name="Truedive" description="While shifting, a truedive shifter temporarily gains a +2 bonus to Constitution and a swim speed of 30 feet. Gaining a swim speed grants him a +8 racial bonus on Swim checks. In addition, the shifter can hold his breath for a number of rounds equal to 5 x his Constitution score before he risks drowning. A truedive shifter gains this benefit even when he isn’t shifting. A truedive shifter gains the Swim skill as a class skill." compset="RaceCustom" summary="+2 Con and 30ft swim speed when shifting." uniqueness="useronce">
     <comment>abValue = Ability Score bonus
 abValue2 = Misc ability bonus
 abValue3 = Natural Attack dmg bonus
@@ -3721,5 +3721,71 @@ abValue4 = Not Used</comment>
     <tag group="FavClass" tag="cAlchemist"/>
     <eval phase="PreLevel" priority="10000">field[abValue].value += field[fcCount].value * 2
 hero.childfound[cAlcMutage].field[abDuration].value += field[abValue].value</eval>
+    </thing>
+  <thing id="raS2DwAnEn" name="Ancient Enmity" description="Dwarves have long been in conflict with elves, especially the hated drow. Dwarves with this racial trait receive a +1 racial bonus on attack rolls against humanoid creatures of the elf subtype. This racial trait replaces hatred." compset="AltRaceTrt" summary="Gain a racial bonus to attacks vs Elves." replaces="raDwAnEnmi" uniqueness="unique">
+    <comment>This ability can now be activated.</comment>
+    <fieldval field="actName" value="vs Elf"/>
+    <fieldval field="abValue" value="1"/>
+    <usesource source="APG" parent="APGHeader" name="Advanced Player&apos;s Guide"/>
+    <usesource source="ARG" parent="ARGHeader" name="Advanced Race Guide"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="RaReplace" tag="raDwHatred" name="Hatred" abbrev="Hatred"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="rDwarf" name="Dwarf" abbrev="Dwarf"/>
+    <eval phase="Render" priority="1000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+
+      ~ If we're activated don't set the situational note
+      if (field[abilActive].value = 1) then
+        #situational[hero.childfound[Attack],signed(field[abValue].value) & " bonus vs. humanoids with the elf subtype",field[thingname].text]
+      endif]]></eval>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not activated get out now!
+      doneif (field[abilActive].value = 0)
+
+      #applybonus[Racial, hero.child[Attack], field[abValue].value]]]></eval>
+    </thing>
+  <thing id="raS2DwDeWa" name="Deep Warrior" description="Dwarves with this racial trait grew up facing the abominations that live deep beneath the surface. They receive a +2 dodge bonus to AC against monsters of the aberration type and a +2 racial bonus on combat maneuver checks made to grapple such creatures (or to continue a grapple). This racial trait replaces defensive training." compset="AltRaceTrt" summary="Gain a bonus to AC and grapple vs. Aberrations." replaces="raDwDeepWa" uniqueness="unique">
+    <fieldval field="actName" value="vs Aberrations"/>
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="abValue2" value="2"/>
+    <usesource source="APG" parent="APGHeader" name="Advanced Player&apos;s Guide"/>
+    <usesource source="ARG" parent="ARGHeader" name="Advanced Race Guide"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AllowRCust" tag="rDwarf" name="Dwarf" abbrev="Dwarf"/>
+    <tag group="RaReplace" tag="raVsGiants" name="Defensive Training" abbrev="Defensive Training"/>
+    <tag group="SpecType" tag="Defense" name="Defense" abbrev="Defense"/>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not activated get out now!
+      doneif (field[abilActive].value = 0)
+
+      ~ Give bonus to AC and CMB Grapple
+      hero.child[ArmorClass].field[tACDodge].value += field[abValue].value
+      #applybonus[cmbRacial, hero.childfound[manGrapple], field[abValue2].value]]]></eval>
+    <eval phase="Render" priority="1000"><![CDATA[
+      ~ We need to set the name. If value 1 and 2 are the same then only list bonus.
+      if (field[abValue].value = field[abValue2].value) then
+        field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      ~ Otherwise split it up
+      else
+        field[livename].text = field[thingname].text & " " & signed(field[abValue].value) & " to AC/" & signed(field[abValue2].value) & " to Grapple"
+        endif
+
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're activated get out now!
+      doneif (field[abilActive].value = 1)
+
+      #situational[hero.childfound[ArmorClass],signed(field[abValue].value) & " Dodge bonus vs. aberrations",field[thingname].text]
+      #situational[hero.childfound[manGrapple],signed(field[abValue2].value) & " bonus to CMB vs. aberrations",field[thingname].text]]]></eval>
     </thing>
   </document>

@@ -96,8 +96,7 @@ This file is a central place to hold all the weapons as I am starting to need to
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="wCritMult" tag="3"/>
     <tag group="IsWeapon" tag="wHarpoon"/>
-    <eval phase="First" priority="1000">
-      if (tagis[Helper.ExoticProf] = 0) then
+    <eval phase="First" priority="1000">if (tagis[Helper.ExoticProf] = 0) then
         perform delete[wSpecial.Grapple]
         perform assign[wSpecial.Brace]
         perform assign[IsWeapon.wSpear]
@@ -914,15 +913,15 @@ Hidden]]></comment>
     <tag group="wCategory" tag="Melee"/>
     <tag group="wClass" tag="Light"/>
     <tag group="wCritMin" tag="20"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Final" priority="1000"><![CDATA[
       perform delete[wMain.?]
       perform hero.child[wUnarmed].pulltags[wMain.?]
       field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
       field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
 
-      ~if we're a custom/magic weapon, we need to alter our parent, too
+      ~ If we're a custom/magic weapon, we need to alter our parent too
       if (container.ishero = 0) then
-         container.parent.field[wAttBonus].value -= 2
          container.parent.field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
          container.parent.field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
          perform container.parent.delete[wMain.?]
