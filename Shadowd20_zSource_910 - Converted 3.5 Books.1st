@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="Shadowd20_zSource_910 - Converted 3.5 Books.1st"/>
+
+  <!--
+  -->
+
+  <!-- ============================================== -->
+  <!-- CONVERTED 3.5 SOURCES                          -->
+  <!-- ============================================== -->
+
+  <source
+    id="srcRoS"
+    name="Races of Stone"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Races of Stone converted to pathfinder rules.">
+    </source>
+  <source
+    id="Book9Sword"
+    name="Tome of Battle: Book of 9 Swords"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Tome of Battle: Book of 9 Swords converted to pathfinder rules.">
+    </source>
+  <source
+    id="srcSpellCo"
+    name="Spell Compendium"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Spell Compendium converted to pathfinder rules.">
+    </source>
+  <source
+    id="srcPHB2"
+    name="Players Handbook 2"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Players Handbook 2 converted to pathfinder rules.">
+    </source>
+  <source
+    id="srcMIC"
+    name="Magic Item Compendium"
+    selectable="yes"
+    parent="p35"
+    sortorder="0"
+    description="Magic Item Compendium converted to pathfinder rules.">
+    </source>
+    
+</document>

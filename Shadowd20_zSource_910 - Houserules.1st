@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="Shadowd20_zSource_910 - Houserules.1st"/>
+
+  <!--
+  -->
+
+  <!-- ============================================== -->
+  <!-- HOUSERULES CHILD SOURCES                       -->
+  <!-- ============================================== -->
+
+  <source
+    id="srcDex2Dmg"
+    name="Weapon Finesse applies Dex to Dmg"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="When you take the Weapon Finesse feat you gain your dex bonus to hit and to damage.">
+    </source>
+  <source
+    id="srcTWF"
+    name="Two-Weapon Fighting takes less penalties"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="Two-Weapon Fighting now takes less penalties as it only applies a negative when wielding two weapons when your off-hand has more than one attack.">
+    </source>
+  <source
+    id="srcTHW"
+    name="Two-Handed Weapons receive 1.0x Str dmg"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="Two-Handed weapons will no longer get to apply the one-half strength damage bonus and power attack will no longer provide a +3 bonus to damage.">
+    </source>
+  <source
+    id="srcSpelDmg"
+    name="Spells get bonus dmg equal to your CL"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="All hit point dealing spells will now get a bonus on damage equal to your caster level.">
+    </source>
+  <source
+    id="srcNo1Rnd"
+    name="No 1 round casting spells"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="All 1 round casting time spells have will be changed to 1 full-round action instead.">
+    </source>
+    
+</document>

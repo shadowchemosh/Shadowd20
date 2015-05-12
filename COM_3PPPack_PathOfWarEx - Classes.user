@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_3PPPack_PathOfWarEx - Classes"/>
+  <fileinfo>
+    <info_author>TheIronGolem
+      Email: mail@theirongolem.com</info_author>
+    <info_history>March 6, 2015 - TheIronGolem
+      -Created New
+    -Added the Harbinger class</info_history>
+    </fileinfo>
+  <thing id="cHelpPW4" name="Harbinger" compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="8"/>
+    <fieldval field="cAbbr" value="Hrb"/>
+    <fieldval field="cSkills" value="4"/>
+    <fieldval field="srcBookInf" value=" [PoWEx]"/>
+    <fieldval field="cSpecSing" value="Grim News Movement Mode"/>
+    <arrayval field="cCustTot" index="8" value="1"/>
+    <arrayval field="cCustTot" index="14" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="cFort" tag="Good"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="cAttack" tag="Medium"/>
+    <tag group="AgeColumn" tag="3"/>
+    <tag group="Classes" tag="PWHarbngr" name="Harbinger"/>
+    <tag group="ClassSkill" tag="skAcrobat"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="ClassSkill" tag="skBluff"/>
+    <tag group="ClassSkill" tag="skDiplo"/>
+    <tag group="ClassSkill" tag="skFly"/>
+    <tag group="ClassSkill" tag="skHeal"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="ClassSkill" tag="skKnowArca"/>
+    <tag group="ClassSkill" tag="skKnowLoc"/>
+    <tag group="ClassSkill" tag="skPWKnowMa"/>
+    <tag group="ClassSkill" tag="skKnowNobl"/>
+    <tag group="ClassSkill" tag="skKnowRel"/>
+    <tag group="ClassSkill" tag="skLinguist"/>
+    <tag group="ClassSkill" tag="skSenseMot"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="ClassSkill" tag="skStealth"/>
+    <tag group="ClassSkill" tag="skSurvival"/>
+    <tag group="cRef" tag="Poor"/>
+    <tag group="PathOfWar" tag="Class"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassSkill" tag="Profession"/>
+    <tag group="ClassSkill" tag="skClimb"/>
+    <bootstrap thing="cCfgPW4"></bootstrap>
+    <bootstrap thing="cPW4DrkClm">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW4AcWil1">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW4AcWil4">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cPW4IllTid">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW4DkFoc1">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPW4DkFoc1">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cPW4DkFoc2">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPW4DkFoc3">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cPW4DkFoc4">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="cPW4GrmNws">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="PWDisLevel"></bootstrap>
+    <bootstrap thing="fWepMart"></bootstrap>
+    <bootstrap thing="fArmShield"></bootstrap>
+    <bootstrap thing="cPW4Masscr">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cPW4EluShd">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPW4SrcDec">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPW4IllInt">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cPW4BlkOmn">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cPW4BlkPr">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cPW4TenRch">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cPW4RmrWar">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cPW4VoxDrk">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <bootstrap thing="cPW4WhsAtr">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="fArmLight"></bootstrap>
+    <bootstrap thing="fSimple"></bootstrap>
+    </thing>
+  <thing id="cPWHarbngr" name="Harbinger" description="Like rumors of war or plague-ridden winds, Harbingers move through battlefields and leave only ruin and sorrow in their wake. Empowered from within by a deep connection to sorrow, grief, and wrath, Harbingers channel their negative emotions into a supernatural fighting style that is strange and terrifying to behold. Some accept the darker urges within themselves but leash them, making their wrath serve as a hound might - and others embrace the violence within, becoming killers without restraint or pity." compset="ClassLevel" maxlimit="20">
+    <usesource source="srcPOWEx"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassType" tag="Normal"/>
+    <bootstrap thing="cHelpPW4"></bootstrap>
+    <link linkage="helper" thing="cHelpPW4"/>
+    </thing>
+  <thing id="cCfgPW4" name="Harbinger Maneuvers" compset="Configure" uniqueness="unique">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Config"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClsCountAs" tag="cHelpPW4"/>
+    <tag group="Discipline" tag="PrimalFury"/>
+    <tag group="Discipline" tag="VeiledMoon"/>
+    <tag group="Discipline" tag="ShaMirror"/>
+    <tag group="Discipline" tag="CurseRazor"/>
+    <bootstrap thing="mHelpPW4"></bootstrap>
+    <prereq message="You have too many Manuevers Readied.">
+      <validate>var ValidManOn as number
+        Call ValidManOn
+        @valid = ValidManOn</validate>
+      </prereq>
+    <prereq message="You have activated more stances than allowed.">
+      <validate>var ValidStaOn as number
+        Call ValidStaOn
+        @valid = ValidStaOn</validate>
+      </prereq>
+    </thing>
+  <thing id="mHelpPW4" name="Harbinger Manuevers" compset="PWManList">
+    <arrayval field="cManKnown" index="0" value="5"/>
+    <arrayval field="cManKnown" index="1" value="6"/>
+    <arrayval field="cManKnown" index="2" value="7"/>
+    <arrayval field="cManKnown" index="3" value="7"/>
+    <arrayval field="cManKnown" index="4" value="8"/>
+    <arrayval field="cManKnown" index="5" value="8"/>
+    <arrayval field="cManKnown" index="6" value="9"/>
+    <arrayval field="cManKnown" index="7" value="9"/>
+    <arrayval field="cManKnown" index="8" value="10"/>
+    <arrayval field="cManKnown" index="9" value="10"/>
+    <arrayval field="cManKnown" index="10" value="11"/>
+    <arrayval field="cManKnown" index="11" value="11"/>
+    <arrayval field="cManKnown" index="12" value="12"/>
+    <arrayval field="cManKnown" index="13" value="12"/>
+    <arrayval field="cManKnown" index="14" value="13"/>
+    <arrayval field="cManKnown" index="15" value="13"/>
+    <arrayval field="cManKnown" index="16" value="14"/>
+    <arrayval field="cManKnown" index="17" value="14"/>
+    <arrayval field="cManKnown" index="18" value="15"/>
+    <arrayval field="cManKnown" index="19" value="16"/>
+    <arrayval field="cManReady" index="0" value="3"/>
+    <arrayval field="cManReady" index="1" value="4"/>
+    <arrayval field="cManReady" index="2" value="4"/>
+    <arrayval field="cManReady" index="3" value="4"/>
+    <arrayval field="cManReady" index="4" value="5"/>
+    <arrayval field="cManReady" index="5" value="5"/>
+    <arrayval field="cManReady" index="6" value="5"/>
+    <arrayval field="cManReady" index="7" value="6"/>
+    <arrayval field="cManReady" index="8" value="6"/>
+    <arrayval field="cManReady" index="9" value="6"/>
+    <arrayval field="cManReady" index="10" value="7"/>
+    <arrayval field="cManReady" index="11" value="7"/>
+    <arrayval field="cManReady" index="12" value="7"/>
+    <arrayval field="cManReady" index="13" value="8"/>
+    <arrayval field="cManReady" index="14" value="8"/>
+    <arrayval field="cManReady" index="15" value="8"/>
+    <arrayval field="cManReady" index="16" value="9"/>
+    <arrayval field="cManReady" index="17" value="9"/>
+    <arrayval field="cManReady" index="18" value="9"/>
+    <arrayval field="cManReady" index="19" value="10"/>
+    <arrayval field="cStances" index="0" value="1"/>
+    <arrayval field="cStances" index="1" value="2"/>
+    <arrayval field="cStances" index="2" value="2"/>
+    <arrayval field="cStances" index="3" value="2"/>
+    <arrayval field="cStances" index="4" value="3"/>
+    <arrayval field="cStances" index="5" value="3"/>
+    <arrayval field="cStances" index="6" value="3"/>
+    <arrayval field="cStances" index="7" value="3"/>
+    <arrayval field="cStances" index="8" value="4"/>
+    <arrayval field="cStances" index="9" value="4"/>
+    <arrayval field="cStances" index="10" value="4"/>
+    <arrayval field="cStances" index="11" value="4"/>
+    <arrayval field="cStances" index="12" value="4"/>
+    <arrayval field="cStances" index="13" value="5"/>
+    <arrayval field="cStances" index="14" value="5"/>
+    <arrayval field="cStances" index="15" value="5"/>
+    <arrayval field="cStances" index="16" value="5"/>
+    <arrayval field="cStances" index="17" value="5"/>
+    <arrayval field="cStances" index="18" value="5"/>
+    <arrayval field="cStances" index="19" value="6"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="PrimalFury" name="Primal Fury"/>
+    <tag group="Discipline" tag="CurseRazor"/>
+    <tag group="Discipline" tag="VeiledMoon" name="Veiled Moon"/>
+    <tag group="UseAttr" tag="aINT"/>
+    <tag group="Discipline" tag="ShaMirror"/>
+    <link linkage="powClass" thing="cHelpPW4"/>
+    <link linkage="powCfg" thing="cCfgPW4"/>
+    </thing>
+  <thing id="cPW4DrkClm" name="Dark Claim" description="The harbinger reaches out with her sorcerous malice, marking foes as her own. As a swift action, the harbinger may Claim an enemy that she can see (including with special senses such as blindsense or tremorsense) within close range (25 feet plus 5 ft. per 2 levels) for a number of rounds equal to ½ her class level (minimum 1). Additionally, Claimed creatures using the withdraw action to leave a square threatened by the harbinger provoke attacks of opportunity from her. The harbinger may only have a number of Claimed creatures equal to or less than her Intelligence modifier at any given time. The harbinger automatically knows the position of creatures she has Claimed. Any opponent the harbinger cannot see has total concealment (50% miss chance) against her, and the harbinger still has the normal miss chance when attacking foes that have concealment. The harbinger is still denied her Dexterity bonus to Armor Class against attacks from Claimed creatures she cannot see." compset="ClSpecial" summary="Claim a creature to know its position and use other Harbinger abilities against it">
+    <fieldval field="abRange" value="25"/>
+    <fieldval field="actUserMin" value="0"/>
+    <fieldval field="actIncrNam" value="Creatures claimed"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abRange" tag="Feet"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="abAction" tag="Swift"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      var halfLev as number
+      halfLev = round(field[xTotalLev].value/2,0,-1)
+
+      ~ Add range from class levels
+      field[abRange].value += halfLev * 5
+
+      ~ Set duration (1/2 level, minimum 1)
+      field[abDuration].value = maximum(halfLev,1)
+
+      ~ Max targets = INT mod
+      field[abValue].value = maximum(1,#attrmod[aINT])
+      field[actUserMax].value = field[abValue].value]]></eval>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[      field[livename].text &= " (" & field[abValue].value & " creatures, " & field[abDuration].value & " rounds, " & field[abRange].value & " " & tagnames[abRange.?] & ")"]]></eval>
+    </thing>
+  <thing id="cPW4AcWil1" name="Accursed Will (Attack Rolls)" description="The harbinger is not an entirely physical being; her comprehension of and attunement to the darkness within her supplements her body, impelling her to acts of stunning violence and preternatural resilience. At 1st level, the harbinger adds ½ her Intelligence modifier  (minimum +0) as an insight bonus to attack rolls. At 10th level, the harbinger gains an insight bonus to damage rolls equal to her Intelligence modifier (minimum +0)." compset="ClSpecial" summary="Add 1/2 your INT bonus to attack rolls as an insight bonus.">
+    <tag group="abAction" tag="None"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Get 1/2 INT mod
+      field[abValue].value = maximum(0,round(#attrmod[aINT]/2, 0, -1))
+
+      ~ Add to attack
+      #applybonus[BonInsight, hero.child[Attack], field[abValue].value]]]></eval>
+    </thing>
+  <thing id="cPW4AcWil4" name="Accursed Will (Damage Rolls)" description="The harbinger is not an entirely physical being; her comprehension of and attunement to the darkness within her supplements her body, impelling her to acts of stunning violence and preternatural resilience. At 1st level, the harbinger adds ½ her Intelligence modifier  (minimum +0) as an insight bonus to attack rolls. At 10th level, the harbinger gains an insight bonus to damage rolls equal to her Intelligence modifier (minimum +0)." compset="ClSpecial" summary="Add your INT bonus to damage rolls as an insight bonus.">
+    <tag group="abAction" tag="None"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Get INT mod (min 0)
+      field[abValue].value = maximum(0,#attrmod[aINT])
+
+      ~ Add to attack
+      #applybonus[BonInsight, hero.child[Damage], field[abValue].value]]]></eval>
+    </thing>
+  <thing id="cPW4IllTid" name="Ill Tidings" description="Like unwanted news, the harbinger travels swiftly. The harbinger gains a 10 foot competence bonus to her movement speeds. This bonus increases by 10 feet at 10th level." compset="ClSpecial" summary="+10 ft to speed, additional +10 ft at 10th level">
+    <fieldval field="abValue" value="10"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="LvNamePar" tag="AppText"/>
+    <tag group="abAction" tag="None"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="UseOwnLev"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Increase bonus at 10th level
+      if (field[xTotalLev].value >= 10) then
+        field[abValue].value += 10
+      endif
+
+      ~ Apply movement speed bonus
+      #applybonus[BonComp, hero.child[Speed], field[abValue].value]]]></eval>
+    </thing>
+  <thing id="cPW4DkFoc1" name="Dark Focus" description="Though all harbingers tap into violence and sorrow, they inevitably specialize in a method of combat that calls to them deep within themselves. At 2nd level, the harbinger may select one discipline she has access to from her class as her Dark Focus. She gains a +1 competence bonus to attack rolls when initiating strikes and counters from her Dark Focus (this increases by 1 at 5th level and again every four levels thereafter) and gains a +1 competence bonus to the save DCs of her Dark Focus’ maneuvers.\n\nAt 10th level, the Harbinger may select a second discipline as her Dark Focus in addition to her original Dark Focus." compset="ClSpecial" summary="Bonus to attack rolls and manuever DC&apos;s for chosen discipline">
+    <fieldval field="abValue" value="1"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="abAction" tag="None"/>
+    <tag group="LvNamePar" tag="AppValue"/>
+    <tag group="LvNamePar" tag="SignAppVal"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="1==00" index="2"><![CDATA[      ~ Restrict selection to disciplines available to the Harbinger
+      field[usrCandid1].text = "PathOfWar.Discipline & (" & hero.childfound[mHelpPW4].tagids[Discipline.?, " | "] & ")"]]></eval>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ Calculate bonus from level
+      if (field[xTotalLev].value >= 5) then
+        field[abValue].value += 1
+      endif
+      if (field[xTotalLev].value >= 10) then
+        field[abValue].value += 1
+      endif
+      if (field[xTotalLev].value >= 15) then
+        field[abValue].value += 1
+      endif
+      if (field[xTotalLev].value >= 20) then
+        field[abValue].value += 1
+      endif
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Stop now if no discipline chosen
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Add bonus to maneuver DC's for chosen discipline
+      var dTag as string
+      dTag = field[usrChosen1].chosen.tagids[Discipline.?]
+      hero.findchild[PWManuever, dTag].field[mDC].value += field[abValue].value
+
+      ~ Tag the hero so other class specials know which disciplines we picked
+      perform field[usrChosen1].chosen.pulltags[Discipline.?,DarkFocus]
+      perform hero.pushtags[DarkFocus.?]]]></eval>
+    </thing>
+  <thing id="cPW4DkFoc2" name="Dark Focus (Bonus Feat)" description="At 6th level, the harbinger gains her choice of Advanced Study, or Discipline Focus in her Dark Focus (in the case of Advanced Study, both maneuvers selected must be from her Dark Focus) as a bonus feat. She need not meet the prerequisites for the chosen feat.\n\n{b}NOTE:{/b} Hero Lab does not enforce the discipline restriction on the bonus feat; you must make sure to select the correct disciplines yourself." compset="ClSpecial" summary="Gain Advanced Study or Discipline Focus as a bonus feat">
+    <arrayval field="usrArray" index="0" value="Advanced Study"/>
+    <arrayval field="usrArray" index="1" value="Discipline Focus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="fPWAdvStud">
+      <containerreq phase="First" priority="100">fieldVal:usrIndex = 0</containerreq>
+      </bootstrap>
+    <bootstrap thing="fPWDiscFoc">
+      <containerreq phase="First" priority="100">fieldVal:usrIndex = 1</containerreq>
+      </bootstrap>
+    </thing>
+  <thing id="cPW4DkFoc3" name="Dark Focus (Adaptation)" description="At 14th level the harbinger’s dedication bears violent fruit. She may choose and expend a maneuver she has readied and spontaneously initiate any maneuver she knows from her Dark Focus that is one or more levels lower than the expended maneuver, regardless of if she has the Dark Focus maneuver readied. The initiation action of the spontaneously initiated maneuver is unchanged." compset="ClSpecial" summary="Spontaneously initiate maneuvers from your Dark Focus">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPW4DkFoc4" name="Dark Focus (Supremacy)" description="At 20th level the harbinger treats all maneuvers from her Dark Focus as being readied at the beginning of each encounter in addition to her normal pool of readied maneuvers." compset="ClSpecial" summary="Ready all your Dark Focus maneuvers in addition to your usual maneuvers">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Get our maneuver list
+      perform hero.childfound[mHelpPW4].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Find our Dark Focus disciplines, and tag those disciplines as being able to ready maneuvers for free
+      perform hero.pulltags[DarkFocus.?,Discipline]
+      perform focus.linkage[powCfg].pushtags[Discipline.?,PoWFreeMan]
+
+      ~ We don't actually do anything with these tags yet, just putting them here for future use]]></eval>
+    </thing>
+  <thing id="cPW4GrmNws" name="Grim News" description="Like a ghost or a rumor, the harbinger moves with supernatural acumen. Starting at 3rd level, the harbinger may move up to her speed as a swift action once per encounter. This increases to twice per encounter at 9th level and three times per encounter at 15th level." compset="ClSpecial" summary="Move up to 2x your speed as a swift action">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Usage" tag="PWEncounte"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Extra use at 9th level, and another at 15th
+      if (field[xAllLev].value >= 9) then
+        field[trkMax].value += 1
+      endif
+      if (field[xAllLev].value >= 15) then
+        field[trkMax].value += 1
+      endif]]></eval>
+    </thing>
+  <thing id="cPW4DrkWng" name="Dark Wings" description="The Harbinger gains a fly speed equal to her base land speed at Good maneuverability. This flight is supernatural in nature; though the Harbinger may develop wings or another form of evident propulsion, she flies through supernatural acumen alone." compset="CustomSpec" summary="Gain supernatural flight at your normal speed" uniqueness="unique">
+    <usesource source="srcPOWEx"/>
+    <tag group="SpecSource" tag="cHelpPW4"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abCategory" tag="HrbGNMove" name="Harbinger Grim News Movement Mode" abbrev="GrimNewsMove"/>
+    <eval phase="PostAttr" priority="10000">~ Set fly speed to base speed
+      #value[xFly] += hero.child[Speed].field[tSpeed].value
+      
+      ~ Set maneuverability to Good
+      perform hero.childfound[xFly].assign[Maneuver.Good]
+      perform hero.childfound[xFly].assign[Helper.NotNatural]</eval>
+    </thing>
+  <thing id="cPW4WtrDwl" name="Water Dweller" description="The Harbinger gains a swim speed equal to her base land speed. Additionally, the Harbinger no longer needs to breathe and is immune to inhaled poisons." compset="CustomSpec" summary="Gain swim speed at your normal speed, and you don&apos;t need to breathe" uniqueness="unique">
+    <usesource source="srcPOWEx"/>
+    <tag group="SpecSource" tag="cHelpPW4"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abCategory" tag="HrbGNMove" name="Harbinger Grim News Movement Mode" abbrev="GrimNewsMove"/>
+    <bootstrap thing="xImmInhPoi"></bootstrap>
+    <eval phase="PostAttr" priority="10000">~ Set fly speed to base speed
+      #value[xSwim] += hero.child[Speed].field[tSpeed].value</eval>
+    </thing>
+  <thing id="cPW4SpdBn" name="Spider&apos;s Boon" description="The Harbinger gains a climb speed equal to her base land speed. Additionally, she develops a sticky grip that aids her in battle; she gains a +4 racial bonus on grapple checks, as well as to her CMD." compset="CustomSpec" summary="Gain climb speed at your normal speed, and +4 to grapple and CMD" uniqueness="unique">
+    <fieldval field="abValue" value="4"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abCategory" tag="HrbGNMove" name="Harbinger Grim News Movement Mode" abbrev="GrimNewsMove"/>
+    <tag group="SpecSource" tag="cHelpPW4"/>
+    <eval phase="PostAttr" priority="10000">~ Set climb speed to base speed
+      #value[xClimb] += hero.child[Speed].field[tSpeed].value
+
+      ~ Add grapple/CMD bonus
+      #applybonus[Racial, hero.childfound[manGrapple], field[abValue].value]
+      #applybonus[Racial, hero.childfound[pCMD], field[abValue].value]</eval>
+    </thing>
+  <thing id="cPW4Omnwlk" name="Omenwalk" description="The Harbinger gains the ability to teleport up to her speed as a move action. The Harbinger does not need line of effect or line of sight to her destination, though she still provokes attacks of opportunity for leaving a threatened square in this fashion." compset="CustomSpec" summary="Teleport up to your normal speed as a move action" uniqueness="unique">
+    <fieldval field="abValue" value="4"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abCategory" tag="HrbGNMove" name="Harbinger Grim News Movement Mode" abbrev="GrimNewsMove"/>
+    <tag group="SpecSource" tag="cHelpPW4"/>
+    <tag group="abAction" tag="Move"/>
+    </thing>
+  <thing id="cPW4Masscr" name="Massacre" description="The scent of blood in the air and the gentle throb of fading life force impel the harbinger to further heights of violence. Starting at 4th level, the harbinger may initiate one of her readied strikes (targeting an adjacent creature) as an immediate action once per encounter whenever she reduces an opponent to 0 or fewer hit points. Strikes initiated with Massacre must have an initiation action of one standard action. The harbinger gains an additional use per encounter of Massacre at 10th level, and again at 16th level." compset="ClSpecial" summary="Initiate a strike as an immediate action when you kill a foe">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="abAction" tag="Immediate"/>
+    <tag group="Usage" tag="PWEncounte"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Extra use at 10th level, and another at 16th
+      if (field[xAllLev].value >= 10) then
+        field[trkMax].value += 1
+      endif
+      if (field[xAllLev].value >= 16) then
+        field[trkMax].value += 1
+      endif]]></eval>
+    </thing>
+  <thing id="cPW4EluShd" name="Elusive Shadow" description="The harbinger’s unnatural alacrity protects her from harm as she shies away from whirling blades and streaking spells alike. Starting at 5th level, the harbinger gains a +2 dodge bonus to armor class and Reflex saves during any round in which she has moved at least 10 feet." compset="ClSpecial" summary="+2 to AC and Ref saves when you move 10 feet or more">
+    <fieldval field="abValue" value="2"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If not activated, get out now
+      doneif (field[abilActive].value = 0)
+
+      ~ Add dodge bonus to AC
+      hero.child[ArmorClass].field[tACDodge].value += field[abValue].value
+
+      ~ Add bonus to Ref save
+      hero.child[svRef].field[Bonus].value += field[abValue].value]]></eval>
+    </thing>
+  <thing id="cPW4SrcDec" name="Sorcerous Deception" description="Through her contemplations on the nature of deceit, the harbinger develops the ability to allay the suspicions of those who investigate her with magic. Starting at 7th level, the harbinger may use {i}magic aura{/i} as a spell-like ability at will. She may only target items and objects she is attending, carrying, wearing, or wielding." compset="ClSpecial" summary="Use {i}magic aura{/i} at will">
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="spMagiAur1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    </thing>
+  <thing id="cPW4IllInt" name="Ill Intentions" description="Those cornered by the harbinger and her allies feel the weight of her malice pressing down agains them. Starting at 8th level, whenever the harbinger and one or more of her allies flank a creature, that creature suffers a -2 penalty to saving throws and skill checks." compset="ClSpecial" summary="Foes get -2 to skills and saving throws when you flank them">
+    <fieldval field="abValue" value="2"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abAction" tag="None"/>
+    </thing>
+  <thing id="cPW4BlkOmn" name="Black Omen" description="Like misfortune, the harbinger does not seem to move so much as simply arrive. Starting at 11th level, the harbinger may move up to 1/2 her speed as an immediate action once per encounter." compset="ClSpecial" summary="Move up to 1/2 speed as an immediate action 1/encounter">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Usage" tag="PWEncounte"/>
+    <tag group="abAction" tag="Immediate"/>
+    </thing>
+  <thing id="cPW4BlkPr" name="Bleak Prophecy" description="Those claimed by the harbinger are filled with dreadful visions of their own demise; starting at 12th level, creatures Claimed by the harbinger are also shaken while the Claim persists." compset="ClSpecial" summary="Your Claimed foes are shaken">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="None"/>
+    </thing>
+  <thing id="cPW4TenRch" name="Tenebrous Reach" description="Malice reaches forth, looking for others to vent itself onto, and the harbinger projects her dark power in imitation of it. Starting at 13th level, the harbinger may activate her Tenebrous Reach as a swift action once per encounter. For a number of rounds equal to her Intelligence modifier she may treat close range (25 feet + 5 feet per two levels) as her melee reach for the purpose of initiating strikes (this does not increase the area the harbinger threatens)." compset="ClSpecial" summary="Initiate strikes at range">
+    <fieldval field="abRange" value="25"/>
+    <fieldval field="trkMax" value="1"/>
+    <tag group="abAction" tag="Swift"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abRange" tag="Feet"/>
+    <tag group="abDuration" tag="Round"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Usage" tag="PWEncounte"/>
+    <tag group="LvNamePar" tag="IncDurati"/>
+    <tag group="LvNamePar" tag="IncRange"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Add range from levels
+      field[abRange].value += round(field[xTotalLev].value/2,0,-1) * 5
+
+      ~ Duration = INT mod
+      field[abDuration].value = #attrmod[aINT]]]></eval>
+    </thing>
+  <thing id="cPW4RmrWar" name="Rumors of War" description="The harbinger sweeps through her enemies, spreading pain and woe wherever she steps. Starting at 17th level, as a full-round action the harbinger may move up to her speed and initiate a single strike at any point in the movement." compset="ClSpecial" summary="Initiate a martial strike on the move">
+    <tag group="abDuration" tag="Round"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="FullRd"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cPW4VoxDrk" name="Voices in the Dark" description="Like a dark voice on the edge of hearing, the harbinger persecutes her enemies. Starting at 18th level, the harbinger may initiate a strike whenever she would normally be able to make an attack of opportunity (she still expends the attack of opportunity). Strikes initiated in place of an attack of opportunity must have an initiation action of one standard action." compset="ClSpecial" summary="Use a martial strike as an attack of opportunity">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Extra"/>
+    </thing>
+  <thing id="cPW4WhsAtr" name="Whispers of Atrocity" description="There is no resisting the harbinger’s malice. Starting at 19th level, maneuvers initiated by the harbinger ignore any and all immunities possessed by their victims." compset="ClSpecial" summary="Your maneuvers ignore all immunities">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="None"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="arPWCrCoun" name="Crimson Countess" description="All harbingers draw power from their understanding of their negative emotions and the tragedies and evil that afflict all people. Those who become crimson countesses have a different emphasis: rage. These harbingers, consumed by wrath, revenge, frustration, or simple malicious fury, crimson countesses mark their opponents for bloody vengeance and then wreak devastation upon them. While not all permit their rage to consume them, enough do that these blood-splattered warriors have a dark and dangerous reputation that follows them wherever they go." compset="ClassVary" uniqueness="unique">
+    <arrayval field="cvCustTot" index="8" value="-1"/>
+    <arrayval field="cvCustTot" index="14" value="-2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="AbReplace" tag="cPW4DkFoc1"/>
+    <tag group="AbReplace" tag="cPW4DkFoc3"/>
+    <tag group="AbReplace" tag="cPW4DkFoc2"/>
+    <tag group="AbReplace" tag="cPW4DkFoc4"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbModify" tag="cPW4GrmNws"/>
+    <tag group="AbReplace" tag="cPW4IllTid"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cPW4CrmClm">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW4SngEmp">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPW4"/>
+    </thing>
+  <thing id="cPW4CrmClm" name="Crimson Claim" description="Each round, at the beginning of her turn, the Crimson Countess deals 1d4 points of damage to creatures she has Claimed. This increases to 2d4 at 6th level, 3d4 at 10th level, 4d4 at 14th level, and a maximum of 5d4 at 18th level. This replaces Ill Tidings." compset="ClSpecial" summary="Claimed creatures take damage each round">
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue2" value="4"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="LvNameApp" tag="DieCntVal"/>
+    <tag group="LvNameApp" tag="DieSizVal2"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="None"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Add additional damage dice if we are high enough level
+      if (field[xAllLev].value >= 6) then
+        field[abValue].value += 1
+      endif
+      if (field[xAllLev].value >= 10) then
+        field[abValue].value += 1
+      endif
+      if (field[xAllLev].value >= 14) then
+        field[abValue].value += 1
+      endif
+      if (field[xAllLev].value >= 18) then
+        field[abValue].value += 1
+      endif]]></eval>
+    </thing>
+  <thing id="cPW4SngEmp" name="Sanguine Empowerment" description="At 2nd level, the Crimson Countess develops the ability to gain and store Vitae. Whenever the Crimson Countess Claims an enemy, and again each round at the beginning of her turn, she gains Vitae points equal to the number of creatures she has Claimed. She may store a number of Vitae points equal to her class level. The Crimson Countess’s Vitae pool resets to 0 after she has spent 1 minute out of combat.\n\nThe Crimson Countess gains a morale bonus equal to ½ her current number of Vitae points on attack and damage rolls made as part of maneuvers (this bonus increases by 2 when initiating maneuvers against Claimed creatures). Furthermore, she gains a number of other abilities as her Vitae points increase:\n\n{I}Drain{/I} - If she has at least 1 Vitae, the Crimson Countess may spend a move action to deal untyped damage equal to her class level to all creatures she has Claimed. If she has at least 2 Vitae then she also heals 1d6 hp per creature she has Claimed.\n\n{I}Recover{/I} - At 6th level, if she has at least 4 Vitae, the Crimson Countess may spend a move action to recover one of her expended boosts or counters.\n\n{I}Sacrifice{/I} – At 10th level, if she has at least 6 Vitae, the Crimson Countess may activate this ability as an immediate action up to once per encounter when she is dealt ability damage or damage to her hit points. If she does, she chooses a creature she has Claimed; that creature suffers the damage instead of the Crimson Countess. If the target succeeds on a Fortitude save (DC 10 + ½ the Crimson Countess’s class level + her Intelligence modifier) then it instead takes half damage, with the rest being inflicted to the Countess as normal.\n\n{I}Sovereignty{/I} – At 14th level, if she has at least 8 Vitae, the Crimson Countess may activate this ability as a standard action. When she does, creatures she has Claimed must succeed at a Fortitude save (DC 10 + ½ the Crimson Countess’s class level + her Intelligence modifier) or be teleported to a space of the Countess’s choice within 60 feet of the Countess (each must be teleported to a different space, even if they are capable of sharing spaces with one another). Spaces that are intrinsically dangerous (such as those filled with lava, or spaces in the air if the creature does not fly) may not be chosen.\n\n{I}Exsanguinate{/I} – At 20th level, if she has at least 10 Vitae, the Crimson Countess may choose a creature she has Claimed as a standard action up to once per encounter. That creature must succeed at a Fortitude save (DC 10 + ½ the Crimson Countess’s class level + her Intelligence modifier) or die; success on this save indicates that the creature instead suffers 13d6 points of untyped damage. This is a death effect. If the victim of this ability dies, the Crimson Countess heals a number of hp equal to ½ its full maximum total.\n\nThis ability replaces Dark Focus." compset="ClSpecial" summary="You gain a pool of Vitae, and several abilities that use it">
+    <comment>abValue stores the regular bonus
+abValue2 stores the extra bonus vs Claimed targets</comment>
+    <fieldval field="actName" value="Using maneuver"/>
+    <fieldval field="actName2" value="Target is Claimed"/>
+    <fieldval field="abValue2" value="2"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="trkPW4Vit"></bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Stop now if we don't have the Vitae tracker
+      perform hero.childfound[trkPW4Vit].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Max Vitae pool = class level
+      focus.field[trkMax].value += field[xAllLev].value
+
+      ~ Gain attack bonus of 1/2 Vitae on maneuvers, with +2 against Claimed creatures
+      field[abValue].value = round(focus.field[trkUser].value/2,0,-1)
+      doneif (field[abValue].value < 1)
+      if (field[abilAct2].value = 1) then
+        field[abValue].value += field[abValue2].value
+      endif
+
+      ~ Stop now if we aren't using a maneuver
+      doneif (field[abilActive].value = 0)
+      
+      ~ Add morale bonus to attack and damage
+      #applybonus[BonMorale,hero.child[Attack],field[abValue].value]
+      #applybonus[BonMorale,hero.child[Damage],field[abValue].value]]]></eval>
+    </thing>
+  <thing id="trkPW4Vit" name="Vitae Pool" compset="Tracker" uniqueness="unique">
+    <usesource source="srcPOWEx"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      var finalname as string
+
+      
+
+      if (empty(finalname) = 0) then
+        finalname = splice(finalname, "Pool", " ")
+        field[livename].text = finalname
+        endif
+
+      if (field[trkMax].value = 0) then
+        perform delete[Helper.ShowCharge]
+        endif]]></eval>
+    </thing>
+  <thing id="cPW4GNwsCC" name="Grim News (Blood Pool Form)" description="At 9th level, the Crimson Countess may transform herself and all of her worn and carried items into a (5 ft. per class level) radius pool of blood or back to her natural form as a swift action. When the Countess reverts to her natural form from her pool form, she may appear in any space that her pool form occupied (this is not a teleportation effect; she re-forms in the chosen space). While in pool form, she gains a number of benefits and drawbacks:\n\n- Immune to bludgeoning, piercing, and slashing damage\n- 10 ft. climb speed\n- May pour herself through any opening that is not watertight\n- Creatures may share the Crimson Countess’s space while she is in pool form. Neither the Countess nor these creatures gain any benefit or penalty from sharing the same space.\n- Does not threaten an area and cannot make attacks of opportunity.\n- Cannot make melee or ranged attacks (and cannot initiate maneuvers that require them).\n- Does not gain Vitae.\n\nAt 15th level, the Crimson Countess gains fast healing equal to her Intelligence modifier while in pool form.\n\nThis ability modifies Grim News." compset="ClSpecial" summary="Turn into a pool of blood, gain several abilities">
+    <fieldval field="actName" value="Blood Pool Form"/>
+    <fieldval field="abValue" value="10"/>
+    <fieldval field="abValue2" value="5"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abRange" tag="Feet"/>
+    <tag group="LvNamePar" tag="IncRange"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="xFastHeal">
+      <containerreq phase="First" priority="1000"><![CDATA[fieldVal:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Set radius (5' per class level)
+      field[abRange].value = field[xAllLev].value * field[abValue2].value
+
+      ~ Stop now if we're not activated
+      doneif (field[abilActive].value = 0)
+
+      ~ Set climb speed
+      #value[xClimb] = field[abValue].value
+
+      if (field[xAllLev].value >= 15) then
+        perform hero.childfound[xFastHeal].assignstr["Value." & #attrmod[aINT]]
+      endif]]></eval>
+    </thing>
+  <thing id="arPWRvnlrd" name="Ravenlord" description="Everyone reacts to negativity differently, including harbingers. Ravenlords are a curious but not uncommon phenomenon amongst those grim warriors; unable to fully cope with whatever sorrows fuel their power, ravenlords splinter off a fraction of their soul into a bird-like servant that contains their sorrow for them. From then on, the two are inseparable. This bird, this Dark Messenger, serves the ravenlord and does his bidding, but the more the ravenlord pours his own misery into the Dark Messenger, the more it acts on that misery unless the ravenlord is wise or cunning enough to control it. More than one ravenlord has woken up in the morning to find his servant slathered in gore that he cannot account for." compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvAnimStar" value="1"/>
+    <arrayval field="cvCustTot" index="14" value="-2"/>
+    <arrayval field="cvCustTot" index="8" value="-1"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="CompList" tag="arPWRvnlrd"/>
+    <tag group="AbModify" tag="cPW4DkFoc1"/>
+    <tag group="AbReplace" tag="cPW4GrmNws"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbReplace" tag="cPW4IllTid"/>
+    <tag group="AbReplace" tag="cPW4Masscr"/>
+    <tag group="AbReplace" tag="cPW4BlkOmn"/>
+    <tag group="AbReplace" tag="cPW4RmrWar"/>
+    <tag group="AbReplace" tag="cPW4TenRch"/>
+    <tag group="AbModify" tag="cPW4WhsAtr"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <bootstrap thing="cPW4ChnWoe">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPWMemLoss">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cPW4DrkMgr">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW4SrwShd">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cAnimClass"></bootstrap>
+    <bootstrap thing="cPWUnwMssv">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPW4"/>
+    <eval phase="Final" priority="10000">~ Modification for Dark Focus
+      #appenddesc[cPW4DkFoc1,&quot;{b}Addition from Ravenlord{/b}: At 2nd level, the Ravenlord’s Dark Messenger also enjoys the benefits of his Dark Focus ability (in the disciplines he has chosen), with the exception of the bonus feat gained at 6th level.&quot;]
+
+      ~ Modification for Whispers of Atrocity
+      #appenddesc[cPW4WhsAtr,&quot;{b}Addition from Ravenlord{/b}: Maneuvers initiated by the Ravenlord or his Dark Messenger ignore any and all immunities possessed by their victims.&quot;]</eval>
+    </thing>
+  <thing id="cPW4DrkMgr" name="Dark Messenger" description="The Ravenlord is served by a raven-like bird which obeys him, known as his Dark Messenger. The Ravenlord treats his Dark Messenger as a bird animal companion (the Ravenlord’s effective druid level is equal to his class level for the purposes of advancing the Dark Messenger), with the following exceptions:\n\n- The Dark Messenger’s Intelligence score is equal to its master’s.\n- The Dark Messenger always acts on the same initiative count as its master.\n- The Ravenlord may communicate telepathically with his Dark Messenger, provided the two are within one mile of each other. The Dark Messenger always obeys the Ravenlord’s orders to the best of its ability and will exercise its own initiative to promote the Ravenlord’s interests and safety.\n- When slain, the Dark Messenger deals 1d6 points of Constitution damage to the Ravenlord, then re-forms 24 hours later, reappearing on its master’s shoulder at full hit points.\n- The Dark Messenger does not gain bonus tricks or the benefits of the Share Spells ability. \n\nThis ability replaces Ill Tidings.\n\nAt 2nd level, the Ravenlord’s Dark Messenger also enjoys the benefits of his Dark Focus ability (in the disciplines he has chosen), with the exception of the bonus feat gained at 6th level." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="abAction" tag="None"/>
+    <bootstrap thing="cAnimClass"></bootstrap>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[      ~ If we're not shown, just get out now
+      ~doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      perform hero.childfound[cAnimComp].minion.child[aINT].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Copy all INT bonuses and penalties from the hero
+      focus.field[Bonus].value = hero.child[aINT].field[Bonus].value
+      focus.field[Penalty].value = hero.child[aINT].field[Penalty].value
+      focus.field[Racial].value = hero.child[aINT].field[Racial].value
+      focus.field[BonAlch].value = hero.child[aINT].field[BonAlch].value
+      focus.field[ModCirc].value = hero.child[aINT].field[ModCirc].value
+      focus.field[BonComp].value = hero.child[aINT].field[BonComp].value
+      focus.field[PenComp].value = hero.child[aINT].field[PenComp].value
+      focus.field[BonEnhance].value = hero.child[aINT].field[BonEnhance].value
+      focus.field[BonInsight].value = hero.child[aINT].field[BonInsight].value
+      focus.field[BonLuck].value = hero.child[aINT].field[BonLuck].value
+      focus.field[PenLuck].value = hero.child[aINT].field[PenLuck].value
+      focus.field[BonMorale].value = hero.child[aINT].field[BonMorale].value
+      focus.field[PenMorale].value = hero.child[aINT].field[PenMorale].value
+      focus.field[BonProfane].value = hero.child[aINT].field[BonProfane].value
+      focus.field[PenProfane].value = hero.child[aINT].field[PenProfane].value
+      focus.field[BonSacred].value = hero.child[aINT].field[BonSacred].value
+      focus.field[PenSacred].value = hero.child[aINT].field[PenSacred].value
+      focus.field[BonTrait].value = hero.child[aINT].field[BonTrait].value
+      focus.field[PenTrait].value = hero.child[aINT].field[PenTrait].value]]></eval>
+    <eval phase="First" priority="500"><![CDATA[      ~we're earlier than the normal test for whether we've reached the correct level, so we'll recreate that test here
+      doneif (root.linkage[varies].field[cTotalLev].value + field[xExtraLev].value + field[xEffectLev].value < tagvalue[ClSpecWhen.?]) 
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Set the raven's INT score to be the same as the hero's INT score
+      hero.childfound[cAnimComp].minion.childfound[anPWRaven].field[anINT].arrayvalue[0] = hero.child[aINT].field[aUser].value - 10]]></eval>
+    </thing>
+  <thing id="anPWRaven" name="Raven" description="The raven is an omnivorous scavenger that eats carrion, insects, food waste, berries, and even small animals." compset="AnimalComp">
+    <fieldval field="rNumHands" value="0"/>
+    <arrayval field="anSTR" index="0" value="-8"/>
+    <arrayval field="anDEX" index="0" value="5"/>
+    <arrayval field="anCON" index="0" value="-2"/>
+    <arrayval field="anWIS" index="0" value="5"/>
+    <arrayval field="anCHA" index="0" value="-3"/>
+    <arrayval field="anSpeed" index="0" value="10"/>
+    <arrayval field="anINT" index="0" value="-8"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="RaceSize" tag="Tiny12"/>
+    <tag group="SlotSet" tag="selMISAvia" name="Avian" abbrev="Avian"/>
+    <tag group="Alignment" tag="NeutralGE" name="Neutral" abbrev="N"/>
+    <tag group="CompList" tag="arPWRvnlrd" name="Ravenlord"/>
+    <tag group="Helper" tag="NotHum" name="NotHum" abbrev="NotHum"/>
+    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
+    <tag group="HasType" tag="tpAnimal" name="Animal" abbrev="Animal"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="fWepFin">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="fToughness">
+      <containerreq phase="First" priority="1000"><![CDATA[PathOfWar.DarkMessgr <> 0]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d3"/>
+      </bootstrap>
+    </thing>
+  <thing id="cPW4ChnWoe" name="Channel of Woe" description="At 3rd level, the Ravenlord’s Dark Messenger gains the ability to initiate counters and strikes that the Ravenlord has readied. The Dark Messenger’s initiator level is equal to the Ravenlord’s; its initiation modifier is Intelligence. Only either the Ravenlord or the Dark Messenger may initiate a strike in the same round (that is, if the Dark Messenger initiates a strike, the Ravenlord may not initiate a strike in the same round, and vice versa). When either the Ravenlord or his Dark Messenger initiates a strike, the other being generates a 10 ft. radius sphere known as a Gloom around themselves (the Gloom is generated after the strike is resolved); this Gloom is stationary, lasts for 1 round, and grants concealment to the creature that generated it so long as that creature is within its area.\n\nAt 3rd level, hostile creatures within the Gloom are cursed and suffer a -2 penalty on skill checks and Reflex saves.\n\nAt 9th level, hostile creatures within the Gloom also suffer a -4 penalty to AC, attack rolls, and damage rolls.\n\nAt 15th level, hostile creatures within the Gloom also suffer a -2 penalty to Fortitude and Will saves, and may not make attacks of opportunity while within the Gloom.\n\nThese are energy drain effects (which means, among other things, that undead and constructs are not subject to them).\n\nThis ability replaces Grim News." compset="ClSpecial" summary="Dark Messenger can initiate maneuvers, creating an area of Gloom">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="None"/>
+    </thing>
+  <thing id="cPW4SrwShd" name="Sorrow&apos;s Shadow" description="At 4th level, the Dark Messenger’s type changes to magical beast and it gains Toughness as a bonus feat. Do not recalculate its base attack bonus, hit points (except those granted by Toughness), saving throws, or skills. Once per turn, as a free action, the Dark Messenger may increase its size to Medium or revert to its natural size. This increases to Large at 10th level, and Huge at 16th level.\n\nThis ability replaces Massacre." compset="ClSpecial" summary="Dark Messenger gains Toughness, can become larger">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="First" priority="500"><![CDATA[      ~ If we're not shown, just get out now
+      ~doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Change the animal companion's type to Magical Beast
+      perform hero.childfound[cAnimComp].minion.delete[TypeAndAug.tpAnimal]
+      perform hero.childfound[cAnimComp].minion.assign[TypeAndAug.tpMagBeast]
+
+      ~ Add the Dark Messenger tag, which will allow the animal to bootstrap the Toughness feat
+      perform hero.childfound[cAnimComp].minion.assign[PathOfWar.DarkMessgr]]]></eval>
+    </thing>
+  <thing id="cPWUnwMssv" name="Unwanted Missive" description="At 11th level, once per encounter as an immediate action, the Ravenlord may exchange places with its Dark Messenger, provided both are within long (400 ft. plus 40 ft. per initiator level) range of each other. If this is used in response to one or more abilities or attacks that target the Ravenlord or the Dark Messenger or include them in an area of effect, each becomes the potential target or victim of the abilities or attacks that targeted the other (for example, the Ravenlord is targeted by a charge attack. The Ravenlord activates this ability and exchanges places with his Dark Messenger. The Dark Messenger is now the target of the charge attack). This is a teleportation effect, and if either the Ravenlord or the Dark Messenger are prevented from teleporting for any reason the ability fails and its use for the encounter is expended. At 17th level, the Ravenlord may use this ability twice per encounter.\n\nThis ability replaces Black Omen and Rumors of War." compset="ClSpecial" summary="As an immediate action, trade places with your Dark Messenger">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Usage" tag="PWEncounte"/>
+    <tag group="User" tag="Tracker"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Extra use at 17th level
+      if (field[xAllLev].value >= 17) then
+        field[trkMax].value += 1
+      endif]]></eval>
+    </thing>
+  <thing id="cPWMemLoss" name="Memories of Loss" description="At 13th level, the Gloom generated by the Ravenlord’s Channel of Woe ability lasts for a number of rounds equal to his Intelligence modifier. Additionally, hostile creatures within the Gloom become incapable of benefiting from insight or morale bonuses.\n\nThis ability replaces Tenebrous Reach." compset="ClSpecial" summary="Gloom lasts longer and denies insight and morale bonuses">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="arPWViglnt" name="Vigilante" description="Vigilantes are warriors who use fear and darkness to their advantage.  They rely on keen insight and inspiration to aid them where others would seek to use magic or the supernatural." compset="ClassVary" uniqueness="unique">
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="ClassSkill" tag="skKnowDun"/>
+    <tag group="ClassSkill" tag="skKnowGeog"/>
+    <tag group="ClassSkill" tag="skKnowHist"/>
+    <tag group="ClassSkill" tag="skKnowNobl"/>
+    <tag group="ClassSkill" tag="skSleight"/>
+    <tag group="AbReplace" tag="cPW2KiPool"/>
+    <tag group="AbReplace" tag="cPW2KiSavF"/>
+    <tag group="AbReplace" tag="cPW2KiMnRp"/>
+    <tag group="AbReplace" tag="cPW2KiPerc"/>
+    <tag group="AbReplace" tag="cPW2KiSavR"/>
+    <tag group="AbReplace" tag="cPW2KSeeAl"/>
+    <tag group="AbReplace" tag="cPW2KiSens"/>
+    <tag group="AbReplace" tag="cPW2KiSavW"/>
+    <tag group="AbReplace" tag="cPW2DeadSt"/>
+    <tag group="AbReplace" tag="cPW2RetKi"/>
+    <tag group="AbReplace" tag="cPW2ManRec"/>
+    <tag group="Helper" tag="Playtest"/>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="cRogTrapfn">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW2Inspir">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW2VgManR">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPW2InsVen">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPW2"/>
+    <eval phase="Final" priority="5000" index="2"><![CDATA[      ~ Grant access to Tempest Gale discipline
+      perform hero.child[mHelpPW2].assign[Discipline.TmpGale]
+      ~ Grant access to Scarlet Throne discipline
+      perform hero.child[mHelpPW2].assign[Discipline.ScarletThr]
+
+      ~ Remove access to Solar Wind discipline (unless it came from more than one source, such as multiclassing into another class that grants it)
+      var SWcount as number
+      SWcount = hero.tagcount[Discipline.SolarWind]
+      if (SWcount < 2) then
+        perform hero.child[mHelpPW2].delete[Discipline.SolarWind]
+      endif
+
+      ~ Remove access to Veiled Moon discipline (unless it came from more than one source, such as multiclassing into another class that grants it)
+      var VMcount as number
+      VMcount = hero.tagcount[Discipline.VeiledMoon]
+      if (VMcount < 2) then
+        perform hero.child[mHelpPW2].delete[Discipline.VeiledMoon]
+      endif]]></eval>
+    <eval phase="First" priority="1000"><![CDATA[      ~ Switch initiating attribute to INT
+      perform hero.childfound[mHelpPW2].delete[UseAttr.aWIS]
+      perform hero.childfound[mHelpPW2].assign[UseAttr.aINT]
+      perform hero.childfound[cCfgPW2].delete[UseAttr.aWIS]
+      perform hero.childfound[cCfgPW2].assign[UseAttr.aINT]
+
+      perform hero.childfound[cHelpPW2].assign[AllowC4th.cHelpInv]
+      hero.child[cHelpPW2].field[cSpec4thSi].text = "Investigator Talent"]]></eval>
+    </thing>
+  <thing id="cPW2VgManR" name="Vigilante Maneuver Recovery" description="Vigilantes may recover their maneuvers in one of two ways. The vigilante may either center his awareness of the combat momentarily as a standard action and recover a single expended maneuver of his choice.\n\nAlternately, he may recover his initiation modifier in expended maneuvers (min of 2) as a full round action that does not provoke attacks of opportunity, opening his mind to the flow of battle and the inherent patterns therein. When recovering his maneuvers as a full round action, he may move up to his base speed and adds a +4 insight bonus to his Armor Class as his mind opens to anticipate any incoming attack his enemies might bring to bear. The next attack or martial strike he attempts after recovering his maneuvers adds his sneak attack&apos;s damage to the attack if successful.\n\nThis alters the Stalker’s Maneuvers Known, Maneuvers Readied and Stances.\n\n{b}NOTE:{/b}  When using the full-round recovery, check &quot;Full-round recovery&quot; on the In-Play tab to gain the AC bonus." compset="ClSpecial">
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="abValue2" value="4"/>
+    <fieldval field="actName" value="Full-round recovery"/>
+    <tag group="abAction" tag="Standard" name="Standard" abbrev="Stand"/>
+    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
+    <tag group="User" tag="Activation" name="Activation" abbrev="Activation"/>
+    <tag group="abAction" tag="FullRd" name="Full rd" abbrev="Full"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ If initiating modifer is higher than 2, replace number of maneuvers recovered
+      perform hero.childfound[mHelpPW2].pulltags[UseAttr.?]
+      var initMod as number
+      foreach pick in hero from BaseAttr where tagids[UseAttr.?]
+        initMod = eachpick.field[aModBonus].value
+      nexteach
+      field[abValue].value = maximum(field[abValue].value, initMod)
+
+      ~ Stop now if we're not activated
+      doneif (field[abilActive].value = 0)
+
+      ~ Add insight bonus to AC
+      #applybonus[BonInsight, hero.child[ArmorClass], field[abValue2].value]]]></eval>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[      this.field[actName].text &= " (" & field[abValue].value & " maneuvers)"]]></eval>
+    </thing>
+  <thing id="cPW2Inspir" name="Inspiration" description="The Vigilante relies on his insight to aid him in his mission, this takes the form of a pool of Inspiration which can be used to augment his skill checks and ability checks. The vigilante has an inspiration pool equal to 1/2 his class level + his Intelligence modifier (minimum 1). A Vigilante&apos;s inspiration pool refreshes each day, typically after he gets a restful night&apos;s sleep. As a free action, he can expend one use of inspiration from his pool to add 1d6 to the result of that check, including any on which he takes 10 or 20. This choice is made after the check is rolled and before the results are revealed. A vigilante can only use inspiration once per check or roll. The vigilante can use inspiration on any Knowledge, Perception, or Sense Motive skill checks without expending a use of inspiration, provided he&apos;s trained in the skill.\n\nInspiration can also be used on attack rolls and saving throws, at the cost of expending two uses of inspiration each time from the vigilante&apos;s pool. In the case of saving throws, using inspiration is an immediate action rather than a free action.\n\nInspiration replaces the Stalker’s Ki Pool." compset="ClSpecial" summary="Use 1 point, +1d6 to trained skill or ability check. Use 2 points, to add to attack or save.">
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue2" value="6"/>
+    <tag group="abAction" tag="Free"/>
+    <tag group="abRange" tag="Personal"/>
+    <tag group="LvNamePar" tag="DieCntVal"/>
+    <tag group="LvNamePar" tag="AppValue3"/>
+    <tag group="LvNamePar" tag="SignAppVal"/>
+    <tag group="LvNamePar" tag="SignDieCnt"/>
+    <tag group="LvNamePar" tag="DieSizVal2"/>
+    <tag group="SbNamePar" tag="IncUses"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ChargeCalc" tag="LevelHalf"/>
+    <tag group="ChargeCalc" tag="FinalMin1"/>
+    <tag group="ChargeAttr" tag="aINT"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPW2InvTal" name="Investigator Talent" description="Instead of selecting a Stalker Art at the appropriate level, the vigilante can select an investigator talent instead.  He must meet the prerequisites for this Investigator Talent as normal.  The vigilante cannot select Investigator Talents which augment Alchemy, nor can he select Stalker Arts which require a Ki Pool to function.  Any investigator talent which augments Studied Strike instead affects the Vigilante’s Sneak Attacks." compset="CustomSpec" summary="Gain an investigator talent" uniqueness="unique">
+    <usesource source="srcPOWEx"/>
+    <tag group="abCategory" tag="StalkerArt" name="Stalker Art" abbrev="Stalker Art"/>
+    <tag group="SpecSource" tag="arPWViglnt"/>
+    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      linkage[table].field[cGiveSp4th].value += 1]]></eval>
+    <eval phase="Final" priority="99999999" index="2"><![CDATA[
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Allow Investigator Talents (except for the ones that are also Rogue Talents or Alchemist Discoveries)
+      hero.child[cHelpPW2].field[cCstS4Expr].text = "(SpecSource.cHelpInv & !SpecSource.cHelpRog & !SpecSource.cHelpAlc)"]]></eval>
+    </thing>
+  <thing id="cPW2InsVen" name="Inspired Vengeance" description="At 20th level, the vigilante has mastered inspiration to such an extent that he can instinctively use with every attack.  The Vigilante can use inspiration as a free action on any attack roll he makes without spending inspiration.  In addition, the vigilante can spend one point of inspiration to add the result of the inspiration roll to the DC of one maneuver he initiates this round as a free action." compset="ClSpecial" summary="Use Inspiration for free on attacks">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="abAction" tag="Free"/>
+    </thing>
+  <thing id="arPWDsprdo" name="Desperado" description="Some warlords take to the way of the gun, and find that their daring personalities and devil-may-care attitude to danger is well suited to the black smoke and thunderous crack of the gun fight." compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSpec5thS" value="Gunslinger Deed"/>
+    <arrayval field="cvBonFtMod" index="13" value="-1"/>
+    <arrayval field="cvBonFtMod" index="17" value="-1"/>
+    <arrayval field="cvBonFtMod" index="0" value="-1"/>
+    <arrayval field="cvBonFtMod" index="5" value="-1"/>
+    <arrayval field="cvCust5Tot" index="4" value="1"/>
+    <arrayval field="cvCust5Tot" index="6" value="2"/>
+    <arrayval field="cvCust5Tot" index="8" value="3"/>
+    <arrayval field="cvCust5Tot" index="10" value="4"/>
+    <arrayval field="cvCust5Tot" index="12" value="5"/>
+    <arrayval field="cvCust5Tot" index="14" value="6"/>
+    <arrayval field="cvBonFtMod" index="9" value="-1"/>
+    <tag group="fDisable" tag="fArmShield"/>
+    <tag group="ClassSkill" tag="skSleight"/>
+    <tag group="Helper" tag="Playtest"/>
+    <tag group="AbReplace" tag="cPW1BatPro"/>
+    <tag group="AbReplace" tag="cPW1DulBoo"/>
+    <tag group="AbReplace" tag="cPW1DuaPre"/>
+    <tag group="AllowC5th" tag="arPalHoGun"/>
+    <tag group="CSCountAdj" tag="NegLev4"/>
+    <tag group="AbReplace" tag="cPW1IndPre"/>
+    <tag group="AbReplace" tag="cPW1Presen"/>
+    <tag group="AbReplace" tag="cPW1WarPre"/>
+    <tag group="AbReplace" tag="cPW1RalPre"/>
+    <tag group="AbReplace" tag="cPW1VicPre"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="PreReqCaP1" tag="GunDare"/>
+    <tag group="PreReqCaP1" tag="GunDeed"/>
+    <bootstrap thing="cPW1DrGrit">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPW1Gunftr">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="fArmBuckl"></bootstrap>
+    <bootstrap thing="fExoticGun"></bootstrap>
+    <bootstrap thing="cPWRapReld">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPW1BPProw">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPW1BPProw">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cPW1BPProw">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="cPW1GunGam">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPW1GunGam">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cPW1GunGam">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPW1"/>
+    <eval phase="First" priority="1000"><![CDATA[     ~ Grant access to Tempest Gale discipline
+     perform hero.child[mHelpPW1].assign[Discipline.TmpGale]
+
+     ~ Remove access to Veiled Moon discipline (unless it came from more than one source, such as multiclassing into another class that grants it)
+     var PFcount as number
+     PFcount = hero.tagcount[Discipline.PrimalFury]
+     if (PFcount < 2) then
+       perform hero.child[mHelpPW1].delete[Discipline.PrimalFury]
+     endif
+
+      #appenddesc[cGunGrit, "{b}Addition from Desperado:{/b} Instead of using her Wisdom to determine the number of grit points she gains at the start of each day, a desperado uses Charisma."]]]></eval>
+    <eval phase="PostLevel" priority="10000" index="2">perform hero.childfound[trkGrit].assign[Helper.GritUseCHA]</eval>
+    </thing>
+  <thing id="cPW1Gunftr" name="Gunfighter" description="At 1st level, the desperado gains the Amateur Gunslinger feat and Gunsmithing as bonus feats. The Amateur Gunslinger feat is modified in that it uses the character’s Charisma in place of Wisdom as per the normal rules for this feat. They also gain a battered gun identical to the one gained by the Gunslinger. This replaces the bonus feat gained at 1st level." compset="ClSpecial" summary="Gain Gunsmithing and Amateur Gunslinger, use CHA for grit">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <bootstrap thing="fGunsmithi"></bootstrap>
+    <bootstrap thing="fAmateuGun">
+      <containerreq phase="First" priority="490"><![CDATA[!hero#Classes.Gunsling & count:hero#Classes.PWWarlord < 5]]></containerreq>
+      </bootstrap>
+    </thing>
+  <thing id="cPWRapReld" name="Rapid Reload" description="The desperado’s hands are lightning quick, gaining Rapid Reload as a bonus feat at 2nd level, even if the desperado does not meet the requirements for this feat. This replaces the tactical presence (indomitable presence) class feature." compset="ClSpecial" summary="Gain Rapid Reload as a bonus feat">
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="fRapidRel">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    </thing>
+  <thing id="cPW1DrGrit" name="Daring Grit" description="Starting at 5th level, at the start of each day, the desperado gains a number of grit points equal to their Charisma modifier (minimum 1). Their grit goes up or down throughout the day, but usually cannot go higher than their Charisma modifier (minimum 1), though some feats and magic items may affect this maximum (as normal, the Amateur Gunslinger feat is immediately traded for the Extra Grit feat) and gains the use of a single Gunslinger deed. She can select any deed (or dare) that a Gunslinger of their warlord level –4 could use. At 7th level, and again at 9th, 11th, 13th, and 15th level, the desperado gains another Gunslinger dare or deed that a Gunslinger of their level –4 could use. The desperado may treat his class level -4 as a his gunslinger level to determine his overall gunslinger level for feat purposes.\n\nIf the desperado already has levels in Gunslinger, they gain a bonus to the maximum amount of grit they can have each day, equal to their Charisma bonus (if any) but gains no extra grit at the start of each day. This replaces the warlord’s remaining tactical presences, dual tactical presence, and warlord’s presence class features." compset="ClSpecial" summary="Gain a pool of points that are spent to fuel deeds, regained on firearm crit/killing blow.">
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+    <tag group="HasAbility" tag="cGunGrit"/>
+    <bootstrap thing="trkGrit">
+      <autotag group="Helper" tag="Grit"/>
+      <autotag group="Helper" tag="GritUseCHA"/>
+      </bootstrap>
+    <bootstrap thing="fExtraGrit"></bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~if we're on a planned class level, then we need to undo the setting of
+      ~our grit tracker as a Grit ability - that will keep it from generating
+      ~a pool value, which means it's hidden until we're turned into a real
+      ~level
+      if (tagis[Helper.ShowSpec] = 0) then
+        perform hero.child[trkGrit].delete[Helper.Grit]
+        endif]]></eval>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[
+      field[sbName].text = lowercase(field[thingname].text) & " (" & hero.childfound[trkGrit].field[trkMax].value & ")"]]></eval>
+    </thing>
+  <thing id="cPW1BPProw" name="Blackpowder Prowess" description="The desperado is a skilled warrior with his chosen firearms and is capable of using them with incredible proficiency. At 5th level, while in a Tempest Gale or Solar Wind stance, the character gains a +1 competence bonus to attack and damage rolls and to his CMB checks while using firearms. This bonus improves to +2 at 12th level and +3 at 19th level. This replaces the battle prowess class feature." compset="ClSpecial" summary="Bonus with firearms while in Solar Wind or Tempest Gale stance">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~Set the list name
+      field[listname].text = field[thingname].text & " " & signed(field[xIndex].value)
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+
+      ~ Stop if we're not in a Solar Wind or Tempest Gale stance
+      var IsInStance as number
+      var targetDisc as string
+      var staTotal as number
+      staTotal = 0
+      targetDisc = "SolarWind"
+      call PWinDSta
+      staTotal += IsInStance
+      targetDisc = "TmpGale"
+      call PWinDSta
+      staTotal += IsInStance
+      doneif (staTotal < 1)
+
+      ~ Add to-hit and damage bonus to firearms. If a firearm is equipped, add to CMB as well.
+      var eqGuns as number
+      eqGuns = 0
+      foreach pick in hero from BaseWep where "wCategory.Firearm"
+        #applybonus[BonComp,eachpick,field[abValue].value]
+        eqGuns += eachpick.tagcount[Hero.MainHand]
+      nexteach
+      if (eqGuns > 0) then
+        #applybonus[BonComp,hero.childfound[ManeuvBon],field[abValue].value]
+      endif]]></eval>
+    </thing>
+  <thing id="cPW1GunGam" name="Gunpowder Gambits" description="At 6th level, the desperado’s combination of dynamic verve and strange good fortune embody the concept that sometimes, it’s better to be lucky than good. Once per day, you may spend a point of grit to reroll a gambit attempt and take the higher of two results. You may do this twice per day at 12th level, and three times per day at 18th level. This replaces the dual boost class feature." compset="ClSpecial" summary="Spend grit to reroll a gambit attempt">
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~Set the list name
+      field[listname].text = field[thingname].text & " " & field[xIndex].value & tagnames[Usage.?]
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[trkMax].value += field[abValue].value]]></eval>
+    </thing>
+  </document>

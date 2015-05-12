@@ -119,7 +119,7 @@
     </thing>
   <thing id="arS2BoltAc" name="Bolt Ace" description="While gunslingers are full of sound and fury, there is a class of gunslingers that never soil their hands with powder or feel the sting of gun smoke. They commit their deeds in a more hushed manner, but with just as much flair.\n\n{B}ShadowChemosh:{/b} This version of the Bolt Ace loses all access to guns and gains access to all crossbows.  In addition the bolt ace loses Gunsmithing and gains Rapid Reload at first level." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="94"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Arche"/>
     <usesource source="ACG"/>
     <tag group="AbReplace" tag="cGunExpLoa"/>
     <tag group="AbReplace" tag="cGunGTrain"/>
@@ -197,7 +197,7 @@
     </thing>
   <thing id="cS2BbnSupe" name="Superstition" description="The barbarian gains a +2 morale bonus on saving throws made to resist spells, supernatural abilities, and spell-like abilities. This bonus increases by +1 for every 4 levels the barbarian has attained. While raging, the barbarian cannot be a willing target of any spell and must make saving throws to resist all spells, even those cast by allies.\n\n{B}ShadowChemosh:{/b} This version of Superstition can be activated on the In-Play tab allowing for an easier tracking of stacking and non-stacking morale bonsues." compset="CustomSpec" summary="While raging, gain bonus to save vs magic, but must resist all spells, even allies&apos;." uniqueness="unique">
     <comment><![CDATA[Added "activated Logic"]]></comment>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Arche"/>
     <tag group="User" tag="Activation"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="thingid" tag="cBbnSupers"/>

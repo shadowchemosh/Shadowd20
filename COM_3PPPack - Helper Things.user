@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_3PPPack - Helper Things"/>
+  <thing id="mecCGTags" name="RGG Tags Mechanics" description="This thing is designed to hold tags at the highest level so that they are loaded first. This prevents the need from having to define tags at the individual Thing Level." compset="Mechanics">
+    <usesource source="pSGG"/>
+    <tag group="wSpecial"  tag="RGTalMnkAB" name="Specialty Attack Bonus"/>
+    <tag group="fCategory" tag="CGSinful"   name="Sinful"/>
+    </thing>
+  </document>

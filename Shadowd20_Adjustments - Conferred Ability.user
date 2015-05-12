@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>
+      Author:  Tim Shadow
+      Email: shadowchemosh@yahoo.com</info_author>
+    <info_history><![CDATA[
+    ]]></info_history>
+    </fileinfo>
+  <thing id="pS2FreBane" name="Ranger: Freebooter&apos;s Bane" description="At 1st level, the freebooter can, as a move action, indicate an enemy in combat and rally her allies to focus on that target. The freebooter and her allies gain a +1 bonus on weapon attack and damage rolls against the target. This ability applies only to allies who can see or hear the freebooter and who are within 30 feet of the freebooter at the time she activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The freebooter’s bane lasts until the target dies or the freebooter selects a new target." compset="InPlay">
+    <comment><![CDATA[-HIDDEN if "Pirates of the Inner Sea" is turned on.]]></comment>
+    <fieldval field="pMaximum" value="5"/>
+    <fieldval field="pMinimum" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="AdjInfo" name="AdjInfo" abbrev="AdjInfo"/>
+    <tag group="Helper" tag="AdjConfer" name="Conferred Ability Adjustment" abbrev="Conferred Ability Adjustment"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value <> 1)
+
+      ~ Add to our attack bonus
+      hero.child[Attack].field[Bonus].value += field[pAdjust].value
+      ~ Add to our damage bonus
+      hero.child[Damage].field[tDamBonus].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2FreBond" name="Ranger: Freebooter&apos;s Bond" description="At 4th level, a freebooter forms a bond with her crewmates. This bond allows her to spend a move action to grant her allies extra combat prowess when they work as a team. All allies within 30 feet who can see or hear the freebooter gain an additional +2 bonus on attack rolls when flanking with the freebooter or with another ally affected by this ability." compset="InPlay">
+    <comment><![CDATA[-HIDDEN if "Pirates of the Inner Sea" is turned on.]]></comment>
+    <fieldval field="pMaximum" value="2"/>
+    <fieldval field="pMinimum" value="2"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="AdjInfo" name="AdjInfo" abbrev="AdjInfo"/>
+    <tag group="Helper" tag="AdjConfer" name="Conferred Ability Adjustment" abbrev="Conferred Ability Adjustment"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value <> 1)
+
+      ~ Add to our attack bonus
+      hero.child[Attack].field[Bonus].value += field[pAdjust].value]]></eval>
+    </thing>
+
+  <preclude id="pS2FreBond" source="PCPirates"/>
+  <preclude id="pS2FreBane" source="PCPirates"/>
+  </document>

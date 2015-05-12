@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="Shadowd20_zSource_910 - Deprecated.1st"/>
+
+  <!--
+  -->
+
+  <!-- ============================================== -->
+  <!-- DEPRECATED SOURCES                             -->
+  <!-- ============================================== -->
+  <source
+    id="srcJaiGods"
+    name="Shadow d20 Umarian Deities"
+    selectable="yes"
+    parent="pS2Deprec"
+    sortorder="1"
+    description="Jai&apos;s Umarian Deities converted to Pathfinder.">
+    </source>
+
+</document>

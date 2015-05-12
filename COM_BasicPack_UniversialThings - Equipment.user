@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_BasicPack_UniversialThings - Equipment"/>
+  <fileinfo>
+    <info_author><![CDATA[
+      Feburary 22, 2015 - Tim Shadow
+      -For now this is holding old deprecated Things instead. I have moved the equipment that is useful over to the "ShadowChemosh - Equipment" as that is what everything is source marked to.
+      -Yes this contradicts the below comment but things changed. =)
+
+      Tim Shadow
+      January 24, 2015
+      This file is designed to hold all those "Global" Equipment things like suits of armor, weapons, or gear that are needed for any gamer running in any game. I think for now these things will NOT be source linked to any source.]]></info_author>
+    </fileinfo>
+  <thing id="aruElvenCh" name="DEPRECATED" description="{b}Note{/b} If you see this on your character please remove it and re-add &quot;Elven Chain&quot; to your character." compset="Armor">
+    <comment>HIDDEN!</comment>
+    <fieldval field="gSizeCost" value="150"/>
+    <fieldval field="gCost" value="5000"/>
+    <fieldval field="gWeight" value="20"/>
+    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
+    <tag group="ArmorMaxDx" tag="4" name="4" abbrev="4"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="AlwaysMast" name="AlwaysMast" abbrev="AlwaysMast"/>
+    <tag group="PieceArcFl" tag="10" name="10" abbrev="10"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ArmorAC" tag="6" name="6" abbrev="6"/>
+    <tag group="ArmorArcFl" tag="20" name="20" abbrev="20"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="ArmorCheck" tag="2" name="2" abbrev="2"/>
+    <eval phase="PreLevel" priority="10000">~ We no longer Slow
+      var result as number
+      result = gizmo.delete[ArmorCateg.Slows]</eval>
+    <child entity="mSpecMagic">
+      <bootstrap thing="arChain"></bootstrap>
+      </child>
+    </thing>
+  <thing id="muElvenCha" name="Elven Chain" description="This extremely light chainmail is made of very fine mithral links. This armor is treated, in all ways, like light armor, including when determining proficiency. The armor has an arcane spell failure chance of 20%, a maximum Dexterity bonus of +4, and an armor check penalty of –2." compset="Armor">
+    <comment>This version of elven chain is for adding armor bonus and abilities to the armor.</comment>
+    <fieldval field="gWeight" value="20"/>
+    <fieldval field="gSizeCost" value="150"/>
+    <fieldval field="gCost" value="5000"/>
+    <usesource source="srcS2Gear"/>
+    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
+    <tag group="ArmorMaxDx" tag="4" name="4" abbrev="4"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="AlwaysMast" name="AlwaysMast" abbrev="AlwaysMast"/>
+    <tag group="PieceArcFl" tag="10" name="10" abbrev="10"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ArmorAC" tag="6" name="6" abbrev="6"/>
+    <tag group="ArmorArcFl" tag="20" name="20" abbrev="20"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="ArmorCheck" tag="2" name="2" abbrev="2"/>
+    <eval phase="PreLevel" priority="10000">~ We no longer Slow
+      perform gizmo.delete[ArmorCateg.Slows]</eval>
+    <child entity="mSpecMagic">
+      <bootstrap thing="arChain"></bootstrap>
+      </child>
+    </thing>
+  <thing id="muDwPlate" name="Dwarven Plate" description="This full plate is made of adamantine, giving its wearer damage reduction of 3/-." compset="Armor">
+    <fieldval field="gWeight" value="50"/>
+    <fieldval field="gSizeCost" value="16500"/>
+    <usesource source="srcS2Gear"/>
+    <tag group="ArmorCheck" tag="5"/>
+    <tag group="ArmorClass" tag="Heavy" name="Heavy Armor" abbrev="Heavy"/>
+    <tag group="ArmorMaxDx" tag="1" name="1" abbrev="1"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ArmorAC" tag="9" name="9" abbrev="9"/>
+    <tag group="ArmorArcFl" tag="35" name="35" abbrev="35"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="RaceEquip" tag="rDwarf"/>
+    <tag group="SpecSource" tag="DwarfPlate"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="HasAbility" tag="eAdamant"/>
+    <tag group="Ability" tag="eAdamant"/>
+    <tag group="ArmorCateg" tag="Slows" name="Slows" abbrev="Slows"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value <> 1)
+      #applydr[xDamRd, 3]]]></eval>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="muDrPlate" name="Dragonhide Plate" description="This suit of full plate is made of dragonhide, rather than metal, so druids can wear it. It is otherwise identical to masterwork full plate.\n\nThe wearer of dragonhide plate tends to draw the ire of dragons of the same type as that used in the armor&apos;s creation." compset="Armor">
+    <fieldval field="gWeight" value="50"/>
+    <fieldval field="gSizeCost" value="3300"/>
+    <usesource source="srcS2Gear"/>
+    <tag group="ArmorCheck" tag="5"/>
+    <tag group="ArmorClass" tag="Heavy" name="Heavy Armor" abbrev="Heavy"/>
+    <tag group="ArmorMaxDx" tag="1" name="1" abbrev="1"/>
+    <tag group="EquipType" tag="Hide" name="Hide" abbrev="Hide"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ArmorAC" tag="9" name="9" abbrev="9"/>
+    <tag group="ArmorArcFl" tag="35" name="35" abbrev="35"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="SpecSource" tag="DwarfPlate"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="HasAbility" tag="eDragon"/>
+    <tag group="Ability" tag="eDragon"/>
+    <tag group="ArmorCateg" tag="Slows" name="Slows" abbrev="Slows"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="muMithShi" name="Mithral Shirt" description="This extremely light chain shirt is made of very fine mithral links. The armor has an arcane spell failure chance of 10%, a maximum Dexterity bonus of +6, and no armor check penalty. It is considered light armor." compset="Armor">
+    <fieldval field="gWeight" value="10"/>
+    <fieldval field="gSizeCost" value="1100"/>
+    <usesource source="srcS2Gear"/>
+    <tag group="ArmorMaxDx" tag="6"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="PieceArcFl" tag="0"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ArmorAC" tag="4" name="4" abbrev="4"/>
+    <tag group="ArmorArcFl" tag="10"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="ArmorCheck" tag="0"/>
+    <tag group="Ability" tag="eMithral"/>
+    <tag group="HasAbility" tag="eMithral"/>
+    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mS2ElvChai" name="DEPRECATED - Elven Chain" description="{b}Note{/b} If you see this on your character please remove it and re-add &quot;Elven Chain&quot; to your character." compset="Armor">
+    <comment>HIDDEN!</comment>
+    <fieldval field="gSizeCost" value="5150"/>
+    <fieldval field="gWeight" value="20"/>
+    <tag group="PieceArcFl" tag="10"/>
+    <tag group="ArmorAC" tag="6"/>
+    <tag group="ArmorMaxDx" tag="4"/>
+    <tag group="ArmorCheck" tag="2"/>
+    <tag group="ArmorArcFl" tag="20"/>
+    <tag group="ArmorClass" tag="Light"/>
+    <tag group="RaceEquip" tag="rElf"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="ArmorCateg" tag="Gauntlets"/>
+    <tag group="Ability" tag="eMithral"/>
+    <tag group="HasAbility" tag="eMithral"/>
+    <tag group="EquipType" tag="Metal"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mS2DwPlate" name="DEPRECATED - Dwarven Plate" description="{b}Note{/b} If you see this on your character please remove it and re-add &quot;Dwarven Plate&quot; to your character." compset="Armor">
+    <comment>HIDDEN!</comment>
+    <fieldval field="gWeight" value="50"/>
+    <fieldval field="gSizeCost" value="16500"/>
+    <tag group="ArmorClass" tag="Heavy" name="Heavy Armor" abbrev="Heavy"/>
+    <tag group="ArmorMaxDx" tag="1" name="1" abbrev="1"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="ArmorAC" tag="9" name="9" abbrev="9"/>
+    <tag group="ArmorArcFl" tag="35" name="35" abbrev="35"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="RaceEquip" tag="rDwarf"/>
+    <tag group="SpecSource" tag="DwarfPlate"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="HasAbility" tag="eAdamant"/>
+    <tag group="Ability" tag="eAdamant"/>
+    <tag group="ArmorCateg" tag="Slows" name="Slows" abbrev="Slows"/>
+    <tag group="ArmorCheck" tag="5"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If equipped, add our damage reduction
+      if (field[gIsEquip].value <> 0) then
+         #applydr[xDamRd, 3]
+      endif]]></eval>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mS2DrPlate" name="DEPRECATED - Dragonhide Plate" description="{b}Note{/b} If you see this on your character please remove it and re-add &quot;Dragonhide Plate&quot; to your character." compset="Armor">
+    <comment>HIDDEN!</comment>
+    <fieldval field="gWeight" value="50"/>
+    <fieldval field="gSizeCost" value="3300"/>
+    <tag group="ArmorClass" tag="Heavy" name="Heavy Armor" abbrev="Heavy"/>
+    <tag group="ArmorMaxDx" tag="1" name="1" abbrev="1"/>
+    <tag group="ArmorAC" tag="9" name="9" abbrev="9"/>
+    <tag group="ArmorArcFl" tag="35" name="35" abbrev="35"/>
+    <tag group="ArmorCateg" tag="Gauntlets" name="Includes Gauntlets" abbrev="Gauntlets"/>
+    <tag group="SpecSource" tag="DwarfPlate"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="HasAbility" tag="eDragon"/>
+    <tag group="Ability" tag="eDragon"/>
+    <tag group="ArmorCateg" tag="Slows" name="Slows" abbrev="Slows"/>
+    <tag group="ArmorCheck" tag="5"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="mS2MithShi" name="DEPRECATED - Mithral Shirt" description="{b}Note{/b} If you see this on your character please remove it and re-add &quot;Mithral Shirt&quot; to your character." compset="Armor">
+    <comment>HIDDEN!</comment>
+    <fieldval field="gWeight" value="10"/>
+    <fieldval field="gSizeCost" value="1100"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="PieceArcFl" tag="0"/>
+    <tag group="ArmorAC" tag="4" name="4" abbrev="4"/>
+    <tag group="ArmorArcFl" tag="10"/>
+    <tag group="Helper" tag="AlwaysMast"/>
+    <tag group="ArmorCheck" tag="0"/>
+    <tag group="Ability" tag="eMithral"/>
+    <tag group="HasAbility" tag="eMithral"/>
+    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
+    <tag group="ArmorMaxDx" tag="6"/>
+    <prereq message="This armor is already made out of a special material and can&apos;t add another.">
+      <validate><![CDATA[
+        ~ If not a pick then we are valid
+        validif (@ispick <> 1)
+        ~ If we are a not a custom armor we are valid
+        validif (tagis[portal.mMagChoose] <> 1)
+        ~ We can't have any other special material
+        validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="ioCBGoodbe" name="DEPRECATED - Goodberry" description="{b}Note{/b} If you see this on your character please remove it and re-add &quot;Goodberry&quot; to your character." compset="Wondrous">
+    <usesource source="srcS2Gear"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="Helper" tag="UsesQty"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="gType" tag="Wonder"/>
+    </thing>
+  <hidden id="aruElvenCh"/>
+  <hidden id="mS2MithShi"/>
+  <hidden id="mS2DrPlate"/>
+  <hidden id="mS2DwPlate"/>
+  <hidden id="mS2ElvChai"/>
+  <hidden id="ioCBGoodbe"/>
+  </document>

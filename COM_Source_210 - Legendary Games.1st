@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="COM_Source_210 - Legendary Games"/>
+
+  <!--
+  December 23, 2014 Tim Shadow
+  -Created New.
+
+  -->
+
+  <!-- ============================================== -->
+  <!-- New Parent Sources                             -->
+  <!-- ============================================== -->
+  <source
+    id="pLegeGames"
+    name="Legendary Games"
+    selectable="no"
+    parent="p3PPPack"
+    sortorder="10"
+    description="Legendary Games Pathfinder Compatible Books.">
+    </source>
+
+  <!-- ============================================== -->
+  <!-- New Child Sources                              -->
+  <!-- ============================================== -->
+  <source
+    id="UmTotM"
+    name="LG - Treasury of the Macabre"
+    selectable="yes"
+    parent="pLegeGames"
+    sortorder="10"
+    description="Treasury of the Macabre for pathfinder. Copyright XML and HL Scripts 2014.">
+    </source>
+
+  </document>

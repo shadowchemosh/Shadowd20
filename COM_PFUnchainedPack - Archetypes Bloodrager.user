@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <loadonce key="COM_PFUnchainedPack - Archetypes Bloodrager"/>
-  <thing id="arS2BlrUnc" name="Unchained" description="You are an unchained Bloodrager and use the Unchained Rage mechanics instead of the normal Blood Rage. You will still count as having the Bloodrage class ability." compset="ClassVary" uniqueness="unique">
+  <thing id="arP6BlrUnc" name="Unchained" description="You are an unchained Bloodrager and use the Unchained Rage mechanics instead of the normal Blood Rage. You will still count as having the Bloodrage class ability." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="1"/>
     <fieldval field="srcBookInf" value="Community Created"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcUnBlrAr"/>
     <tag group="AbReplace" tag="cBlrRage"/>
     <tag group="AbReplace" tag="cBlrRageGt"/>
     <tag group="AbReplace" tag="cBlrRageMt"/>
@@ -30,11 +30,11 @@
       perform hero.assign[HasAbility.cBlrRage]
       ]]></eval>
     </thing>
-  <thing id="arS2PrimUn" name="Primalist Unchained" description="While bloodrage powers come from the very essence of a bloodrager&apos;s being and are often strict and immutable, some bloodragers tap into ancient traditions and primitive wisdom to enhance their rages with something more primal. The primalist mixes his bloodline with more traditional rage powers.\n\n{b}Unchained:{/b} You can select if the rage powers you have access too are Unchained Rage Powers or both Unchained and Core Rage powers." compset="ClassVary" uniqueness="unique">
+  <thing id="arP6PrimUn" name="Primalist Unchained" description="While bloodrage powers come from the very essence of a bloodrager&apos;s being and are often strict and immutable, some bloodragers tap into ancient traditions and primitive wisdom to enhance their rages with something more primal. The primalist mixes his bloodline with more traditional rage powers.\n\n{b}Unchained:{/b} You can select if the rage powers you have access too are Unchained Rage Powers or both Unchained and Core Rage powers." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="84"/>
     <fieldval field="srcBookInf" value="Advanced Class Guide"/>
     <fieldval field="cvSpec2ndS" value="Rage Power"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcUnBlrAr"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="ClVaryName" tag="AppParen"/>
@@ -50,7 +50,7 @@
     <bootstrap thing="cBlrPriCho">
       <autotag group="ClSpecWhen" tag="12"/>
       </bootstrap>
-    <bootstrap thing="cBlrS2RPwr">
+    <bootstrap thing="cBlrP6RPwr">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
     <bootstrap thing="cBlrPriCho">
@@ -80,7 +80,7 @@
           endif
         nexteach]]></eval>
     </thing>
-  <thing id="cBlrS2RPwr" name="Rage Powers" description="Please select the type of Rage Powers you should have access too.  \n\nEither only Unchained Rage powers, only Core Rage powers, or both Unchained and Core Rage powers." compset="ClSpecial">
+  <thing id="cBlrP6RPwr" name="Rage Powers" description="Please select the type of Rage Powers you should have access too.  \n\nEither only Unchained Rage powers, only Core Rage powers, or both Unchained and Core Rage powers." compset="ClSpecial">
     <arrayval field="usrArray" index="0" value="Core"/>
     <arrayval field="usrArray" index="1" value="Unchained"/>
     <arrayval field="usrArray" index="2" value="Both"/>

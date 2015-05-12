@@ -42,6 +42,38 @@
     ]]>
   </procedure>
 
+  <!-- =================================================================== -->
+  <!--                          Remove Armor                               -->
+  <!-- =================================================================== -->
+  <procedure id="RmvArmor" context="pick"><![CDATA[
+    ~ Procedure is used to disable all armor on a character
+    ~ Loop through each armor on the character
+    foreach pick in hero from BaseArmor where "!thingid.mNatural & EquipType.Armor"
+        perform eachpick.assign[Helper.NoArmor]
+        perform eachpick.delete[ArmorCateg.Slows]
+        eachpick.field[arMaxDex].value = 999
+        eachpick.field[arArcFail].value = 0
+        eachpick.field[arArmorChk].value = 0
+    nexteach
+    ]]>
+  </procedure>
+
+  <!-- =================================================================== -->
+  <!--                          Remove Shield                              -->
+  <!-- =================================================================== -->
+  <procedure id="RmvShield" context="pick"><![CDATA[
+    ~ Procedure is used to disable just shields on a character
+    ~ Find the currently equipped shields on the character and remove it
+    foreach pick in hero from BaseArmor where "EquipType.Shield"
+        perform eachpick.assign[Helper.NoArmor]
+        eachpick.field[arMaxDex].value = 999
+        eachpick.field[arArcFail].value = 0
+        eachpick.field[arArmorChk].value = 0
+    nexteach
+    ]]>
+  </procedure>
+
+
   <procedure id="IncSwarm" context="pick"><![CDATA[
     ~ this increases the number of dice damage in a swarm attack by one.
     ~ a proceedure is needed since swarm attack now takes damage tag as

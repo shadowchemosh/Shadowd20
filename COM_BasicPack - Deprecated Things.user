@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_BasicPack - Deprecated Things"/>
+  <fileinfo>
+    <info_author>
+      Author:  Tim Shadow
+      Email: shadowchemosh@yahoo.com</info_author>
+    <info_history><![CDATA[
+      March 28, 2015 Tim Shadow
+      -Created new to hold Drepcated Things using the "Hidden" feature of HL.]]></info_history>
+    </fileinfo>
+  <thing id="fS2VitStr" name="Deprecated - Vital Strike" description="Please note the official feat from Lone Wolf now allows an activation. So I have deprecated this feat. Please remove and re-add the normal Vital Strike feat.\n\nYou make a single attack that deals significantly more damage than normal.\n\n{b}Prerequisites{/b}: Base attack bonus +6.\n\n{b}Benefit{/b}: When you use the attack action, you can make one attack at your highest base attack bonus that deals additional damage. Roll the weapon&apos;s damage dice for the attack twice and add the results together before adding bonuses from Strength, weapon abilities (such as flaming), precision-based damage, and other damage bonuses. These extra weapon damage dice are not multiplied on a critical hit, but are added to the total.\n\n{B}Note:{/b} This version of the feat allows you to &quot;activate&quot; it on the In-Play tab." compset="Feat" summary="Standard action: x2 weapon damage dice." uniqueness="useronce">
+    <comment>Make Vital Strike Actually Work. abValue = Number of additional dice. abValue2 = Plus Bonus to increase</comment>
+    <usesource source="srcS2Feat"/>
+    <tag group="fCategory"  tag="Combat"/>
+    <tag group="User"       tag="Activation"/>
+    <tag group="Helper"     tag="ShowSpec"/>
+    <tag group="HasFeat"    tag="fVitStr"/>
+    <tag group="Helper"     tag="CoreCampOK"/>
+    <tag group="Helper"     tag="Obsolete"/>
+    <eval phase="Final" priority="9999999999"><![CDATA[
+      ~ If not active get out now!
+      doneif (field[abilActive].value <> 1)
+
+      ~ Set amount to increase dice by 2
+      field[abValue].value += 2
+      ~ If we have improved vital strike increase dice by additional 1
+      If (#hasfeat[fImpVitStr] <> 0) Then
+         field[abValue].value += 1
+      Endif
+      ~ If we have Greater vital strike increase dice by additional 1
+      If (#hasfeat[fGrtVitStr] <> 0) Then
+         field[abValue].value += 1
+      Endif
+      ~ Default the amount the Plus Damage should be increased by
+      field[abValue2].value += 1
+      ~ If we have Mythic Vital Strike double plus damage. Here we use a string value
+      ~ instead of hard-coded Tag because we don't know if where this script runs
+      ~ will have the Mythic Adventure addon.
+      If (hero.tagcountstr["HasFeat.fPTVitStri"] + hero.tagcountstr["HasFeat.fMyVitStri"] <> 0) Then
+         field[abValue2].value = field[abValue].value
+      Endif
+
+      var sDice as String
+      var nDice as number
+      var nDieSize as number
+      var nPlus as number
+      var iX    as number
+      iX = 1
+
+      ~ Loop through all weapons on the hero except Touch Attacks
+      ~ and any Ammunition.
+      foreach pick in hero from BaseWep where "!(thingid.wRay|wCategory.Ammunition|thingid.wTouch|wCategory.AmmoCart)"
+        ~ Assume one handed damage
+        iX = 0
+        ~ If two handed weapon set to two-handed damage
+        If (eachpick.tagis[wClass.TwoHanded] <> 0) Then
+          iX = 1
+        ~ If one handed and used in two hands then damage is two-handed
+        ElseIf (eachpick.tagis[wClass.OneHanded] + eachpick.tagis[Hero.MainHand] + eachpick.tagis[Hero.OffHand] = 3) Then
+          iX = 1
+        ~ If used in off-hand
+        ElseIf (eachpick.tagis[Hero.OffHand] - eachpick.tagis[Hero.MainHand] = 1) Then
+          iX = 4
+        Endif
+
+        ~ We have a Melee damage table and a Ranged damage table to deal with now.
+        ~ So if we are ranged process HERE
+        ~ ------------------------------------------------------------------------
+        if (eachpick.tagis[wCategory.RangeProj] = 1) then
+          ~ Pull out the number of dice
+          nDice = mid(eachpick.field[wRanDamTbl].arraytext[iX],0,1)
+          ~ Pull out damage bonus after the plus sign if the plus sign exists
+          If (pos(eachpick.field[wRanDamTbl].arraytext[iX],"+") <> -1) Then
+            nPlus = mid(eachpick.field[wRanDamTbl].arraytext[iX],pos(eachpick.field[wRanDamTbl].arraytext[iX],"+")+1,2)
+          Endif
+          ~ Pull out the die size
+          nDieSize = mid(eachpick.field[wRanDamTbl].arraytext[iX],2,2)
+
+        ~..We ar a melee weapon so process HERE
+        ~ -------------------------------------
+        else
+          ~ Pull out the number of dice
+          nDice = mid(eachpick.field[wDamageTbl].arraytext[iX],0,1)
+          ~ Pull out damage bonus after the plus sign if the plus sign exists
+          If (pos(eachpick.field[wDamageTbl].arraytext[iX],"+") <> -1) Then
+            nPlus = mid(eachpick.field[wDamageTbl].arraytext[iX],pos(eachpick.field[wDamageTbl].arraytext[iX],"+")+1,2)
+          Endif
+          ~ Pull out the die size
+          nDieSize = mid(eachpick.field[wDamageTbl].arraytext[iX],2,2)
+        endif
+
+        ~ Double the number of dice
+        nDice *= field[abValue].value
+
+        ~ If we have devastating strike then increase plus damage
+        If (hero.tagcountstr["HasFeat.fDevasStri"] <> 0) Then
+          ~ Based on how many extra dice we get extra plus damage
+          If (field[abValue].value = 2) Then
+            nPlus += 2
+          ElseIf (field[abValue].value = 3) Then
+            nPlus += 4
+          ElseIf (field[abValue].value >= 4) Then
+            nPlus += 6
+          Endif
+        Endif    
+
+        ~ Increase the plus damage if mythic
+        nPlus *= field[abValue2].value 
+
+        ~ If we have no "dice" then do NOT display 0d0+0 for the weapon.
+        if (nDice <> 0) then
+          ~ Set new custom damage dice onto the weapon 
+          eachpick.field[wFixDamage].text = nDice & "d" & nDieSize
+          ~ If we have a bonus value other than zero then append it otherwise leave off +0
+          If (nPlus <> 0) Then
+            eachpick.field[wFixDamage].text &= signed(nPlus)
+          Endif
+          ~ Set new custom damage dice onto the weapon 
+          eachpick.field[wFixRanDam].text = eachpick.field[wFixDamage].text
+        endif
+        
+        ~ Force each weapon to only have a single attack now that Vital strike is active
+        perform eachpick.assign[Helper.SingleAtt]
+        ~ Remove any "Extra High" tags as we need only a single attack
+        perform eachpick.delete[Helper.ExtraHigh]
+      nexteach]]></eval>
+    <exprreq message="Base attack bonus +6 required." iserror="no"><![CDATA[#BAB[] >= 6]]></exprreq>
+    </thing>
+
+
+
+
+
+  <hidden id="fS2VitStr"/>
+  </document>

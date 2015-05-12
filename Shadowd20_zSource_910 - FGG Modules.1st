@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+<!-- 
+v1.0 November 25, 2012 - Jai
+-Added child source for General (FGGGenera), child source for Modules (FGGModul).
+-Added children under General: FGG_Deity, FGGClass, FGG_Feats, FGG_Spell, FGG_Blood.
+-Added children under Modules: FGGSlTsar, FGGWizAmu, FGGCruFre, FGGTomAby.
+
+     Created On: November 25, 2012
+     Created By: Jai
+    Description: This is used for the Community created FGG Data Set only.
+-->
+
+
+  <!-- New child source of FGG for General  -->
+  <source
+    id="FGGGenera"
+    name="FGG - Player General"
+    selectable="yes"
+    parent="pFGG1"
+    sortorder="10"
+    description="Player options for Frog God Games products.">
+    </source>
+     
+  <!-- New child source of FGG Modules -->
+  <source
+    id="FGGModul"
+    name="FGG - Modules"
+    selectable="no"
+    parent="pFGG1"
+    sortorder="20"
+    description="Child source for Frog God Games products.">
+    </source>
+  <source
+    id="FGGSlTsar"
+    name="FGG - Slumbering Tsar"
+    selectable="yes"
+    parent="FGGModul"
+    sortorder="10"
+    description="Frog God Games - Slumbering Tsar">
+    </source>
+  <source
+    id="FGGWizAmu"
+    name="FGG - The Wizard's Amulet"
+    selectable="yes"
+    parent="FGGModul"
+    sortorder="10"
+    description="FGG W0 The Wizard's Amulet">
+    </source>
+  <source
+    id="FGGCruFre"
+    name="FGG - The Crucible of Freya"
+    selectable="yes"
+    parent="FGGModul"
+    sortorder="10"
+    description="FGG W1 The Crucible of Freya.">
+    </source>
+  <source
+    id="FGGTomAby"
+    name="FGG - The Tomb of Abysthor"
+    selectable="yes"
+    parent="FGGModul"
+    sortorder="10"
+    description="FGG D1 The Tomb of Abysthor">
+    </source>
+
+  </document>

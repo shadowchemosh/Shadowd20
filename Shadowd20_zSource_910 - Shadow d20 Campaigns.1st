@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="Shadowd20_zSource_910 - Shadow d20 Campaigns.1st"/>
+
+  <!--
+  -->
+
+  <!-- ============================================== -->
+  <!-- SHADOW D20 CAMPAIGN CHILD SOURCES              -->
+  <!-- ============================================== -->
+
+  <source
+    id="CampRazorC"
+    name="The Razor Coast"
+    selectable="yes"
+    parent="pS20Camp"
+    sortorder="10"
+    description="The Razor Coast Campaign module.">
+    </source>
+  <source
+    id="srcAoW"
+    name="Age of Worms"
+    selectable="yes"
+    parent="pS20Camp"
+    sortorder="10"
+    description="Shadow d20 Age of Worms Mythic Campaign.">
+    </source>
+  <source
+    id="srcUndDark"
+    name="Underdark"
+    selectable="yes"
+    parent="pS20Camp"
+    sortorder="10"
+    description="Brians Underdark/Drow campaign.">
+    </source>
+    
+</document>

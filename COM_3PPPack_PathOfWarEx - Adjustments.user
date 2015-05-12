@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_3PPPack_PathOfWarEx - Adjustments"/>
+  <fileinfo>
+    <info_author>TheIronGolem
+March 6, 2015</info_author>
+    <info_history>March 6, 2015 - TheIronGolem
+      -Created New
+    -Added "Shattered Mirror: Obsidian Reflection Stance"</info_history>
+    </fileinfo>
+  <thing id="pPWObRefSt" name="Shattered Mirror: Obsidian Reflection Stance" description="You gain a circumstance bonus or penalty to attack and damage as an effect of another character&apos;s Obsidian Reflection Stance." compset="InPlay">
+    <fieldval field="pMinimum" value="-10"/>
+    <fieldval field="pDuration" value="Stance"/>
+    <fieldval field="pMaximum" value="10"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="Helper" tag="AdjConfer" name="Conferred Ability Adjustment" abbrev="Conferred Ability Adjustment"/>
+    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
+    <tag group="OthAdjCat" tag="AttDam"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ Don't do anything if not active
+      doneif (field[pIsOn].value = 0)
+      ~ Stop now if we don't have an actual bonus or penalty to apply
+      doneif (field[pAdjust].value = 0)
+
+      ~ Apply modifier to attack and damage
+      if (field[pAdjust].value < 0) then
+        #applypenalty[ModCirc, hero.child[Attack], field[pAdjust].value]
+        #applypenalty[ModCirc, hero.child[Damage], field[pAdjust].value]
+      else
+        #applybonus[ModCirc, hero.child[Attack], field[pAdjust].value]
+        #applybonus[ModCirc, hero.child[Damage], field[pAdjust].value]
+      endif]]></eval>
+    </thing>
+  </document>

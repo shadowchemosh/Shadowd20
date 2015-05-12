@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <loadonce key="COM_PFUnchainedPack - Domains"/>
-  <thing id="cdS2Rage" name="Rage (Unchained)" description="{b}Unchained{/b}: This version of the Rage domain gives access to the Unchained version of Rage." compset="ClerDomain" uniqueness="useronce">
-    <usesource source="s20PFCamp"/>
+  <thing id="cdP6Rage" name="Rage (Unchained)" description="{b}Unchained{/b}: This version of the Rage domain gives access to the Unchained version of Rage." compset="ClerDomain" uniqueness="useronce">
+    <usesource source="srcUnDom"/>
     <tag group="SpecSource" tag="arDrdApSha"/>
     <tag group="SpecSource" tag="arDrdBligh"/>
     <tag group="SpecSource" tag="arDrdBoSha"/>

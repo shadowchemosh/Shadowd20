@@ -1,0 +1,1733 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author><![CDATA[Note: This user file requires the community file "PFRPG_3PP_Sources.1st" file.
+
+This is a compilation of Dieties that I have been able to find for Frog God Games.  This information has been pulled from several of Frog God Games products including Bard's Gate, Rappan Athuk and Slumbering Tsar.  There are a couple Dieties that I find references to that I am unable to locate information for.]]></info_author>
+    </fileinfo>
+  <thing id="deiUmHel" name="Hel" description="{b}Symbol:{/b} A face, black on one side and white on the other\n{b}Garb:{/b} Druidic garb of midnight black and snow white.\n{b}Favored Weapons:{/b} Poisoned Dagger or Sword \n{b}Form of Worship and Holidays:{/b} Rites to Hel are practiced by her worshippers during blights and plagues, likewise sacrifices are made to her by fearful non worshippers to stave off plagues and illness.\n{b}Typical Worshippers:{/b} Diseased and diseasecausing creatures, evil humanoids, evil druids, women, bards\n\nHel is known to spread disease, pestilence and plague with the wave of her hand. Any living thing in her presence withers and dies. She appears as a strange gaunt woman of both jet black and blankest white.  Diseased creatures worship her. It is said a strange cult of druidic ghouls and mummies worship her in a secret temple hidden from the knowledge of mortals, spreading their foul diseases in secrecy. Several sects of evil druids dedicated to Hel plague the land, summoning swarms of vermin and causing disease in living things. She cares for nothing other than the spread of death. Oddly, some evil bards worship her. She resides on a plague ridden plane in Hades." compset="Deity" uniqueness="unique">
+    <fieldval field="deiEpithet" value="Lady of Pestilence"/>
+    <fieldval field="deiPortfol" value="Goddess of Death"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="AllowDom" tag="cdAir"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdFire"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <eval phase="First" priority="20000"><![CDATA[~Must have Cleric Favored Weapon class ability to receive this.
+Doneif (hero.tagis[Ability.cClrDeiWep] <> 1)
+
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      foreach thing in BaseWep where "wFtrGroup.BladeLight | wFtrGroup.BladeHeavy"
+        perform eachthing.pulltags[WepProf.?]
+        nexteach
+
+      perform hero.pushtags[WepProf.?]
+      
+      ~ Cycle through and apply the Helper.ExoticProf tag to all examples of 
+      ~ the chosen weapon on the hero. This is important for the Aldori Dueling
+      ~ Sword specifically, and possibly others.
+      var searchexpr as string
+
+      searchexpr = tagids[WepProf.?,"|"]
+
+      foreach pick in hero from BaseWep where searchexpr
+        perform eachpick.assign[Helper.ExoticProf]
+        nexteach]]></eval>
+    </thing>
+  <thing id="deiUmMocca" name="Moccavallo" description="{b}Symbol:{/b} Mask of a blank face.\n{b}Garb:{/b} Complex masks and disguises\n{b}Form of Worship and Holidays:{/b} Actors and performers pray to Mocavallo before shows.  Worshippers give her offerings when they have successfully disguised themselves or avoided detection.\n{b}Typical Worshippers:{/b} Doppelgangers, shapechangers, bards, actors, thieves and spies.\n\nMoccavallo is the god of actors and spies, and those who seek to keep their identities hidden. Moccavallo&apos;s true face is unknown even to the gods themselves. A capricious deity, Moccavallo is arrogant and untrustworthy, known to play gods against one another as it serves his needs. Moccavallo has been known on one hand to steal the treasures of evil deities and the hearts of good ones, leaving both with nothing. Although not specifically evil, Moccavallo&apos;s cult has a penchant for cruel jokes, yet actors who venerate him are known for their fantastic performances and ability to completely &quot;become&quot; their characters." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Disguise and Treachery"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="WepProf" tag="wShortswd"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdUmDiplom"/>
+    <tag group="AlignTemp" tag="ChaotNeut"/>
+    </thing>
+  <thing id="deiUmYenom" name="Yenomesh" description="{b}Symbol:{/b} A gleaming silver scroll\n{b}Garb:{/b} Grey scribes&apos; robes\n{b}Form of Worship and Holidays:{/b} Yenomesh is worshipped through study, teaching and learning. The last day of the week is given over to quiet contemplation, and his holy ceremonies often take place in total silence.\n{b}Typical Worshippers:{/b} Loremasters, wizards, scribes, and sages, authors and historians.\n\nYenomesh is the aged sage of the gods. He is said to have been the first to gain knowledge of the sacred runes which brought the light of knowledge to the world. He is likewise credited with being the inventor of language, and his priests are often fluent in many different tongues. Libraries and archives are often dedicated to this god, and many have at least one small shrine to Yenomesh." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Glyphs and Writing"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    </thing>
+  <thing id="deiUmBacDi" name="Bacchus-Dionysus" description="{b}Symbol:{/b} A stylized wine cup\n{b}Garb:{/b} Robes of maroon and gold denoting red and white wines\n{b}Form of Worship and Holidays:{/b} Indulgence and excess are sacred activities to the worshippers of Bacchus-Dionysus. The wildest celebration of the year takes place during grape harvest, in both the early spring and late fall. These affairs last up to three full days, and are usually followed by long periods of inactivity, in which worshippers lie about and moan pathetically.\n{b}Typical Worshippers:{/b} Drunkards, alcoholics, libertines, nobles, young people, satyrs, some fey creatures and the Baccae, the chosen race of Bacchus- Dionysus.\n\nBacchus-Dionysus appears as a youthful well built man with curly brown hair. Rams horns spring from his brow and he is frequently dressed in a wine- (or blood-) stained toga.  Bacchus-Dionysus is the god of revels and debauchery and the overindulgence in alcoholic beverages. The god&apos;s priestesses, the Baccae, epitomize the rage and mindless violence that often comes of overindulgence. These priestesses, once believed to have been mortal women, take on beastlike visages and tear their lovers limb from limb in orgiastic frenzies of wine and death." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Wine and Madness"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotNeut"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="WepProf" tag="wGreatclub"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmBowbe" name="Bowbe" description="{b}Symbol:{/b} Crossed Sword and Hammer of Bowbe\n{b}Garb:{/b} Furs, skins and pelts over battle armor\n{b}Form of Worship and Holidays:{/b} Great feasts and blood sacrifice precede battles. After battle, the treasures, arms and armor of defeated foes are offered to the god. Those that he doesn&apos;t keep belong to the victors. His priests specialize in wild cursing and imaginative insults.\n{b}Typical Worshippers:{/b} Barbarians, raiders, reavers and plunderers.\n\nBowbe is the embodiment of barbarian wrath and frenzy. He appears as a mighty barbarian dressed in the pelt of Urson the Great Bear, whom he can summon to his side by tossing the pelt to the ground and calling its name. Bowbe carries the greatsword {i}Bm&apos;fob{/i} in one hand and warhammer {i}Wytch-Killer{/i} in the other.\n\nBowbe revels in war and the slaughter of his foes. His battles against giants are legendary, as is his hatred for the undead, arcanists, lawyers, guardsmen, and most other civilized authority figures.\n\nUnlike other gods, Bowbe aids only those who take his name in vain. Thus it is not uncommon to hear berserkers cursing their god for his indifference as readily as they curse their foes. Bowbe only grants the raising of one of his followers if that follower immediately seeks blood vengeance against his killers. Bowbe grants no healing spells higher than 4th level.\n\n{b}Note:{/b} The loss of healing spells is not coded." compset="Deity" uniqueness="unique">
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotNeut"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdStrength"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wGreatswd"/>
+    <tag group="WepProf" tag="wWarhammer"/>
+    <tag group="AllowDom" tag="cdUmVengea"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmDreua" name="Dre&apos;uain The Lame" description="{b}Symbol:{/b} Three interlocking cog wheels which can be separated or connected by those worshippers who know the trick of the blessing\n{b}Garb:{/b} Crafters outfit\n{b}Form of Worship and Holidays:{/b} Worshippers sacrifice one masterwork  per year. Late summer crafts festivals, earth-quakes and volcanic eruptions also spur additional sacrifices to Dre&apos;uain\n{b}Typical Worshippers:{/b} Humans, dwarves, gnomes, halflings\n\nDre&apos;uain appears as a clubfooted gnome with strong but fine-fingered hands. His flame-red hair and beard always appear singed. He has a long nose and piercingly curious eyes, and wears a black soot covered apron. Considered by many to be one of the first deities, Dre&apos;uain embodies the creative mind and its ability to fashion unique objects and devices. Dre&apos;uain is honored by creators, inventors, smiths, architects and other craftsfolk of all races." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Craft and Smiths"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdFire"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="WepProf" tag="wWarhammer"/>
+    <tag group="AllowDom" tag="cdUmCreati"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmFreya" name="Freya" description="{b}Symbol:{/b} Falcon \n{b}Garb:{/b} Robes and cloaks of white, trimmed with white fur\n{b}Form of Worship and Holidays:{/b} Harvest moon feast and before large hunts\n{b}Typical Worshippers:{/b} Human females\n\nFreya is a lesser goddess of love and fertility. She is also the leader of a great band of women warriors known on some planes of existence as Valkyries. Freya represents fertility in all its forms. On this plane, Freya represents the cycle of death and rebirth. She is a goddess of the coming harvest as well as a goddess of sexuality and procreation.  Her beast is the falcon, though she is fond of the winter wolf and the stag. She appears most frequently to her worshipers as a beautiful human woman dressed in robes and a cloak of winter wolf fur, though she occasionally appears as a huntress in leather armor with sword and bow, or as a warrior in shining mail and glowing sword.  She can take the form of a falcon - or any other bird - at will, as well as the form of a huge winter wolf." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Love and Fertility"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wLongbow"/>
+    <tag group="WepProf" tag="wLongsword"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmGromm" name="Gromm the Thunderer" description="{b}Symbol:{/b} Lightning Bolt \n{b}Garb:{/b} Metal armor\n{b}Form of Worship and Holidays:{/b} Violent thunderstorms herald holy days for this wild deity. Worshippers pound drums and make violent noises in imitation of their god&apos;s thunderbolts.\n{b}Typical Worshippers:{/b} Barbarians, bards, cloud and storm giants, those who live in regions with harsh or unpredictable weather.\n\nGromm is a barbarian god, worshipped by those who both fear and respect the fury of nature. He also counts mercenaries and adventurers among his followers, for these are also often at the mercy of the weather.\n\nGromm is powerfully guilt, his eyes crackle with electricity and his golden beard and hair glow and spark. He bears a great two-handed mace called Thunderstroke.  His traditional enemies are the fire and frost giants, with whom his most fanatical worshippers - the cloud and storm giants - war incessantly. Gromm&apos;s fortress is guarded by a band of 50 celestial storm giants, and it is said that he actually created the storm giant race." compset="Deity" uniqueness="unique">
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    <tag group="AllowDom" tag="cdAir"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="WepProf" tag="wMaceHeavy"/>
+    <tag group="WepProf" tag="wMaceLight"/>
+    <tag group="WepProf" tag="wWarhammer"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmHecat" name="Hecate" description="{b}Symbol:{/b} A half silver disk representing the setting full moon \n{b}Garb:{/b} Fashionable togas of the most expensive cut and material, generally in black.\n{b}Favored Weapons:{/b} None \n{b}Form of Worship and Holidays:{/b} Priests and Wizards who venerate Hecate do so beneath the full moon with sacrifices of blood and magical items as the moon sets.\n{b}Typical Worshippers:{/b} Wizards, Women, Wali Hecate Assassins, Lawful evil hags, witches, and crones.\n\nHecate is the goddess of evil magic. She appears as a beautiful woman flanked by numerous hell hounds, her favored creature. The setting moon is her symbol. She requires sacrifices on the full moon.  Her priests are normally accompanied by hell hounds sent by their goddess to guard her temples. Clerics of Hecate have a special rapport with the beasts, allowing a chance to control them as they would undead. Hecate is a jealous goddess, capricious and quick to anger.  One of her greatest priestesses, Akbeth, is imprisoned in the {b}Frog God Games{/b} dungeon module {b}Rappan Athuk{/b}. Hecate resides in a floating castle in the Nine Hells." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Evil magic"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AlignTemp" tag="LawEvil"/>
+    </thing>
+  <thing id="deiUmKamie" name="Kamien" description="{b}Symbol:{/b} A fish riding upon three wavy lines upon a green copper amulet.\n{b}Garb:{/b} Clerics of Kamien dress in robes of turquoise, brown and azure with bracelets and anklets of blue.\n{b}Form of Worship and Holidays:{/b} Spring and fall floods bring sacrifices to Kamien to ensure that rivers to not rise too high. At midsummer, Kamien&apos;s followers gather at rivers to appeal to her to keep them flowing.\n{b}Typical Worshippers:{/b} Women, nymphs, sprites and other water creatures, boatmen, bargemen and fishermen.\n\nKamien is the embodiment of springs, streams and rivers, appearing as a woman with skin like silvery rippling water, or as a great silvery scaled fish. Bargemen and fishermen who ply her waterways toss coins into streams, fountains and brooks to ensure safe passage and plentiful catches. She is considered to be the mother of nymphs and sprites and is a member of the Court of Fey." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Rivers, Streams and Springs"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="WepProf" tag="wJavelin"/>
+    <tag group="WepProf" tag="wShortspr"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmMirke" name="Mirkeer" description="{b}Symbol:{/b} A black glove \n{b}Garb:{/b} Anything black \n{b}Form of Worship and Holidays:{/b} Mirkeer&apos;s worshippers pray to her in dark rooms while masked and blindfolded. Her altars are carved of black stone, and nights with a new moon are considered her sacred time.\n{b}Typical Worshippers:{/b} Thieves, assassins, evil wizards and sorcerers, those who make their living in darkness.\n\nMirkeer is the daughter of Hecate and serves as her mother&apos;s messenger and personal assassin.  As beautiful as her mother and equally cruel, Mirkeer is the mistress of shadows and can control shadows with a thought. Venerated by assassins, evil rogues, and dark magicians, her cults are always secretive and well-hidden." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Shadows and the Night"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="WepProf" tag="wDagger"/>
+    <tag group="AllowDom" tag="cdUmShadow"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmMuir" name="Muir" description="{b}Symbol:{/b} Blood-red upraised sword on a white background \n{b}Garb:{/b} White wool robes with a upraised sword and hand in red\n{b}Form of Worship and Holidays:{/b} Regular worship and fasting on the eve before known battle or before confirmation or promotion of the ranks of the faithful.\n{b}Typical Worshippers:{/b} Humans and paladins\n\nMuir is the sister of Thyr. While he represents law and peace, she represents the martial valor necessary to make that peace a reality. As such, she is the goddess of paladins. She is often depicted as a dark-tressed maiden warrior in shining mail with an upraised (often bloodstained) sword. She is noble and single-minded of purpose. The tenets of her worship include honor, truth and courage. A great order of paladins known as the Justicars are sworn to her service. Muir expects self-sacrifice, humility and charity as well as unswerving loyalty. Her standards are extreme and she quickly turns her back on any who fail to live up to them. Those who maintain her standards, however, may become Justicars, a prestige class of paladins imbued with even greater holiness. Her symbol is a blood red uplifted sword on a white background, symbolizing her endless fight against evil. Her worshipers must be lawful good, and only clerics of Muir may ordain Justicars.  The falcon is her sacred animal. She is the tireless foe of all evil creatures and undead, demons and devils in particular are her sworn enemy." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Virtue and Paladins"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawGood"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wSwordBast"/>
+    <tag group="WepProf" tag="wLongsword"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmNote" name="Note" description="{b}Symbol:{/b} A tiny amulet carved in the shape of a harp \n{b}Garb:{/b} Travelers Clothes\n{b}Form of Worship and Holidays:{/b} Note is worshipped in association with his companion, Oghma.\n{b}Typical Worshippers:{/b} Halfling, gnome and dwarven bards.\n\nNote, God of the Harp, is a diminutive deity who serves as the bodyguard and herald of Oghma. Frequently he appears in the guise of a magical talking harp, while at other times he appears as a handsome halfling or gnome clad in traveling clothes. Note frequently serves as a comedic foil in Saga&apos;s but also has a serious side, especially when it comes to defending Oghma or the world&apos;s halflings, gnomes and dwarves." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of the Harp"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="WepProf" tag="wDart"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmOghma" name="Oghma" description="{b}Symbol:{/b} Harp \n{b}Garb:{/b} Priests of Oghma dress in performer&apos;s garb.\n{b}Form of Worship and Holidays:{/b} Musical concerts and public performances before audiences. New Year&apos;s Eve, Midsummer, Midwinter.\n{b}Typical Worshippers:{/b} Musicians, composers, dancers and poets, humans, elves, halflings.\n\nOghma, the God of Song and Bards is an ancient deity, credited with shaping the first sounds into song, recording of the earliest sagas of gods and mortals, and giving dance and music to mortals. Oghma appears to his followers in the guise of a handsome traveling minstrel, bearing a finely-crafted harp (a demigod in its own right known as Note) and attended by a beautiful flute player, his handmaiden, Dame Torren of the Four Winds. Oghma frequently finds himself at odds with Moccavallo and Sefagreth, both of whom compete with him for followers. Oghma seldom enters battle, except to defend himself with his mighty singing and dancing longsword {i}Tune{/i}, preferring to pelt foes with thathlen balls hurled from the sling {i}Harmony{/i}." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Song and Bards"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="WepProf" tag="wLongsword"/>
+    <tag group="WepProf" tag="wSling"/>
+    <tag group="AllowDom" tag="cdUmCreati"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="cdUmDiplom" name="Diplomacy" description="{b}Granted Powers:{/b} Priests with the Diplomacy Domain gain +2 to Diplomacy checks." compset="ClerDomain" uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    <eval phase="UserPreLv" priority="10000">~Add bonus to Diplomacy
+#skillbonus[skDiplo] += 2</eval>
+    </thing>
+  <thing id="cdUmVengea" name="Vengeance" description="{b}Granted Powers:{/b} Once per four levels starting at level 1, clerics with the Vengeance domain may select a foe or group of foes (be it by race, nationality, character class or monster type) which are forevermore their sworn enemies. When encountering these sworn enemies the Cleric of the Vengeance Domain may enter a rage similar to that of a Barbarian and gaining all of the same bonuses and penalties when combating this foe. The cleric may enter this rage once per day but only when faced with a sworn enemy." compset="ClerDomain" uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    </thing>
+  <thing id="cdUmCreati" name="Creation" description="{b}Granted Powers:{/b} Clerics with the Creation Domain gain a +2 to all checks related to the Craft Skill. Clerics of the creation domain pay half of any XP costs when casting {i}fabricate{/i} or {i}permanency{/i}." compset="ClerDomain" uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    </thing>
+  <thing id="cdUmShadow" name="Shadow" description="{b}Granted Powers:{/b} Clerics with the Shadow Domain gain a +2 to all checks related to the Hide Skill and gain the Hide Skill as a Class Skill." compset="ClerDomain" uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    <eval phase="UserPreLv" priority="10000">#skillbonus[skStealth] += 2
+
+#makeclassskill[skStealth]</eval>
+    </thing>
+  <thing id="cdUmVermin" name="Vermin" description="{b}Granted Powers:{/b} Clerics with the Vermin Domain gain a +4 to saves vs poisons and diseases. They may detect poison or diseases twice per day." compset="ClerDomain" uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    </thing>
+  <thing id="cdUmClCold" name="Cold" description="{b}Granted Powers:{/b} Clerics of the Cold Domain cast Cold based spells at +1 caster level." compset="ClerDomain" uniqueness="useronce">
+    <usesource source="FGGGenera"/>
+    </thing>
+  <thing id="spUmChaPer" name="Charm Person" description="This charm makes a humanoid creature regard you as its trusted friend and ally (treat the target&apos;s attitude as friendly). If the creature is currently being threatened or attacked by you or your allies, however, it receives a +5 bonus on its saving throw.\n\nThe spell does not enable you to control the charmed person as if it were an automaton, but it perceives your words and actions in the most favorable way. You can try to give the subject orders, but you must win an opposed Charisma check to convince it to do anything it wouldn&apos;t ordinarily do. (Retries are not allowed.) An affected creature never obeys suicidal or obviously harmful orders, but it might be convinced that something very dangerous is worth doing. Any act by you or your apparent allies that threatens the charmed person breaks the spell. You must speak the person&apos;s language to communicate your commands, or else be good at pantomiming." compset="Spell" summary="Makes one person your friend.">
+    <fieldval field="sTarget" value="One humanoid creature"/>
+    <fieldval field="sDuration" value="1 hour/level"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    <tag group="sDuration" tag="Hour" name="1+ Hours" abbrev="1+ Hours"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSchool" tag="Wood" name="Wood Elemental" abbrev="Wood Elemental"/>
+    <tag group="sSubschool" tag="Charm" name="Charm" abbrev="Charm"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    </thing>
+  <thing id="spUmCalEmo" name="Calm Emotions" description="This spell calms agitated creatures. You have no control over the affected creatures, but calm emotions can stop raging creatures from fighting or joyous ones from reveling. Creatures so affected cannot take violent actions (although they can defend themselves) or do anything destructive. Any aggressive action against or damage dealt to a calmed creature immediately breaks the spell on all calmed creatures. This spell automatically suppresses (but does not dispel) any morale bonuses granted by spells such as bless, good hope, and rage, and also negates a bard&apos;s ability to inspire courage or a barbarian&apos;s rage ability. It also suppresses any fear effects and removes the confused condition from all targets. While the spell lasts, a suppressed spell, condition, or effect has no effect. When the calm emotions spell ends, the original spell or effect takes hold of the creature again, provided that its duration has not expired in the meantime." compset="Spell" summary="Calms creatures, negating emotion effects.">
+    <fieldval field="sArea" value="Creatures in a 20-ft.-radius spread"/>
+    <fieldval field="sDuration" value="Concentration, up to 1 round/level (D)"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    <tag group="sRange" tag="Medium" name="Medium (100 + 10 ft./level)" abbrev="{ref s_Medium}Med{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSubschool" tag="Compulsion" name="Compulsion" abbrev="Compulsion"/>
+    <tag group="SpellEff" tag="HealCond" name="Heal Condition" abbrev="Heal Condition"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    </thing>
+  <thing id="spUmTongue" name="Tongues" description="This spell grants the creature touched the ability to speak and understand the language of any intelligent creature, whether it is a racial tongue or a regional dialect. The subject can speak only one language at a time, although it may be able to understand several languages. Tongues does not enable the subject to speak with creatures who don&apos;t speak. The subject can make itself understood as far as its voice carries. This spell does not predispose any creature addressed toward the subject in any way.{br}{br}Tongues can be made permanent with a permanency spell." compset="Spell" summary="Speak and understand any language.">
+    <fieldval field="sCompDesc" value="a clay model of a ziggurat"/>
+    <fieldval field="sTarget" value="Creature touched"/>
+    <fieldval field="sDuration" value="10 min./level"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="sSchool" tag="Wood" name="Wood Elemental" abbrev="Wood Elemental"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    </thing>
+  <thing id="spUmChaMon" name="Charm Monster" description="This spell functions like charm person, except that the effect is not restricted by creature type or size." compset="Spell" summary="Makes monster believe it is your ally.">
+    <fieldval field="sTarget" value="One living creature"/>
+    <fieldval field="sDuration" value="1 day/level"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    <tag group="sDuration" tag="Day" name="1+ Days" abbrev="1+ Days"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSchool" tag="Wood" name="Wood Elemental" abbrev="Wood Elemental"/>
+    <tag group="sSubschool" tag="Charm" name="Charm" abbrev="Charm"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    </thing>
+  <thing id="spUmDomPer" name="Dominate Person" description="You can control the actions of any humanoid creature through a telepathic link that you establish with the subject&apos;s mind. If you and the subject have a common language, you can generally force the subject to perform as you desire, within the limits of its abilities. If no common language exists, you can communicate only basic commands, such as &quot;Come here,&quot; &quot;Go there,&quot; &quot;Fight,&quot; and &quot;Stand still.&quot; You know what the subject is experiencing, but you do not receive direct sensory input from it, nor can it communicate with you telepathically. Once you have given a dominated creature a command, it continues to attempt to carry out that command to the exclusion of all other activities except those necessary for day-to-day survival (such as sleeping, eating, and so forth). Because of this limited range of activity, a Sense Motive check against DC 15 (rather than DC 25) can determine that the subject&apos;s behavior is being influenced by an enchantment effect (see the Sense Motive skill description). Changing your orders or giving a dominated creature a new command is a move action. By concentrating fully on the spell (a standard action), you can receive full sensory input as interpreted by the mind of the subject, though it still can&apos;t communicate with you. You can&apos;t actually see through the subject&apos;s eyes, so it&apos;s not as good as being there yourself, but you still get a good idea of what&apos;s going on. Subjects resist this control, and any subject forced to take actions against its nature receives a new saving throw with a +2 bonus. Obviously self-destructive orders are not carried out. Once control is established, the range at which it can be exercised is unlimited, as long as you and the subject are on the same plane. You need not see the subject to control it. If you don&apos;t spend at least 1 round concentrating on the spell each day, the subject receives a new saving throw to throw off the domination.{br}{br}Protection from evil or a similar spell can prevent you from exercising control or using the telepathic link while the subject is so warded, but such an effect does not automatically dispel it." compset="Spell" summary="Controls humanoid telepathically.">
+    <fieldval field="sTarget" value="One humanoid"/>
+    <fieldval field="sDuration" value="1 day/level"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Day" name="1+ Days" abbrev="1+ Days"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSubschool" tag="Compulsion" name="Compulsion" abbrev="Compulsion"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    </thing>
+  <thing id="spUmSymPer" name="Symbol of Persuasion" description="This spell functions like symbol of death, except that all creatures within the radius of a symbol of persuasion instead become charmed by the caster (as the charm monster spell) for 1 hour per caster level. Unlike symbol of death, symbol of persuasion has no hit point limit; once triggered, a symbol of persuasion simply remains active for 10 minutes per caster level.{br}{br}Note: Magic traps such as symbol of persuasion are hard to detect and disable. A rogue (only) can use the Perception skill to find a symbol of persuasion and Disable Device to thwart it. The DC in each case is 25 + spell level, or 31 for symbol of persuasion." compset="Spell" summary="Triggered rune charms creatures.">
+    <fieldval field="sCompDesc" value="mercury and phosphorus, plus powdered diamond and opal"/>
+    <fieldval field="sCompCost" value="a total of 5000"/>
+    <fieldval field="sRange" value="0 ft.; see text"/>
+    <fieldval field="sEffect" value="One symbol"/>
+    <fieldval field="sDuration" value="See text"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="6" name="6" abbrev="6"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSubschool" tag="Charm" name="Charm" abbrev="Charm"/>
+    <tag group="SpellEff" tag="MiscWrite" name="Uses Glyph/Symbol/Writing" abbrev="Uses Glyph/Symbol/Writing"/>
+    <tag group="sCastTime" tag="Minute10" name="10 minutes" abbrev="10 minutes"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    </thing>
+  <thing id="spUmVeil7" name="Veil" description="You instantly change the appearance of the subjects and then maintain that appearance for the spell&apos;s duration. You can make the subjects appear to be anything you wish. The subjects look, feel, and smell just like the creatures the spell makes them resemble. Affected creatures resume their normal appearances if slain. You must succeed on a Disguise check to duplicate the appearance of a specific individual. This spell gives you a +10 bonus on the check.{br}{br}Unwilling targets can negate the spell&apos;s effect on them by making Will saves or with spell resistance. Those who interact with the subjects can attempt Will disbelief saves to see through the glamer, but spell resistance doesn&apos;t help." compset="Spell" summary="Changes appearance of a group of creatures.">
+    <fieldval field="sTarget" value="One or more creatures, no two of which can be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="Concentration + 1 hour/level (D)"/>
+    <fieldval field="sSave" value="Will negates; see text"/>
+    <fieldval field="sResist" value="Yes; see text"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="7"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="sSubschool" tag="Glamer" name="Glamer" abbrev="Glamer"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sDuration" tag="Hour" name="1+ Hours" abbrev="1+ Hours"/>
+    </thing>
+  <thing id="spUmChMoMa" name="Charm Monster, Mass" description="This spell functions like charm monster, except that mass charm monster affects a number of creatures whose combined HD do not exceed twice your level, or at least one creature regardless of HD. If there are more potential targets than you can affect, you choose them one at a time until you must choose a creature with too many HD to affect." compset="Spell" summary="As charm monster, but all within 30 ft.">
+    <fieldval field="sTarget" value="One or more creatures, no two of which can be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="1 day/level"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    <tag group="sDuration" tag="Day" name="1+ Days" abbrev="1+ Days"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="8" name="8" abbrev="8"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSchool" tag="Wood" name="Wood Elemental" abbrev="Wood Elemental"/>
+    <tag group="sSubschool" tag="Charm" name="Charm" abbrev="Charm"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    </thing>
+  <thing id="spUmDomMon" name="Dominate Monster" description="This spell functions like dominate person, except that the spell is not restricted by creature type." compset="Spell" summary="As dominate person, but any creature.">
+    <fieldval field="sTarget" value="One creature"/>
+    <fieldval field="sDuration" value="1 day/level"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    <tag group="sDuration" tag="Day" name="1+ Days" abbrev="1+ Days"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="9" name="9" abbrev="9"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSubschool" tag="Compulsion" name="Compulsion" abbrev="Compulsion"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sClass" tag="cdUmDiplom"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    </thing>
+  <thing id="spUmTruStr" name="True Strike" description="You gain temporary, intuitive insight into the immediate future during your next attack. Your next single attack roll (if it is made before the end of the next round) gains a +20 insight bonus. Additionally, you are not affected by the miss chance that applies to attackers trying to strike a concealed target." compset="Spell" summary="+20 on your next attack roll.">
+    <fieldval field="sFocusDesc" value="small wooden replica of an archery target"/>
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sDuration" value="See text"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    <tag group="sRange" tag="Personal" name="Personal" abbrev="{ref s_Pers}Pers{ref}"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="sSchool" tag="Void" name="Void Elemental" abbrev="Void Elemental"/>
+    <tag group="SpellEff" tag="BuffAtk" name="Increase Attack/Damage Bonus" abbrev="Increase Attack/Damage Bonus"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sComp" tag="F" name="Focus" abbrev="{ref s_F}F{ref}"/>
+    </thing>
+  <thing id="spUmClRage" name="Rage" description="Each affected creature gains a +2 morale bonus to Strength and Constitution, a +1 morale bonus on Will saves, and a -2 penalty to AC. The effect is otherwise identical with a barbarian&apos;s rage except that the subjects aren&apos;t fatigued at the end of the rage." compset="Spell" summary="Gives +2 to Str and Con, +1 on Will saves, -2 to AC.">
+    <fieldval field="sTarget" value="One willing living creature per three levels, no two of which may be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="Concentration + 1 round/level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="MindAffect" name="Mind-Affecting" abbrev="Mind-Affecting"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    <tag group="sRange" tag="Medium" name="Medium (100 + 10 ft./level)" abbrev="{ref s_Medium}Med{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Enchant" name="Enchantment" abbrev="Ench"/>
+    <tag group="sSubschool" tag="Compulsion" name="Compulsion" abbrev="Compulsion"/>
+    <tag group="SpellEff" tag="BuffAttr" name="Increase Attribute" abbrev="Increase Attribute"/>
+    <tag group="SpellEff" tag="BuffWill" name="Increase Will Save Bonus" abbrev="Increase Will Save Bonus"/>
+    <tag group="SpellEff" tag="NegAC" name="Decrease Armor Class" abbrev="Decrease Armor Class"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    </thing>
+  <thing id="spUmLocCre" name="Locate Creature" description="This spell functions like locate object, except this spell locates a known creature. You slowly turn and sense when you are facing in the direction of the creature to be located, provided it is within range. You also know in which direction the creature is moving, if any. The spell can locate a creature of a specific kind or a specific creature known to you. It cannot find a creature of a certain type. To find a kind of creature, you must have seen such a creature up close (within 30 feet) at least once. Running water blocks the spell. It cannot detect objects. It can be fooled by mislead, nondetection, and polymorph spells." compset="Spell" summary="Indicates direction to familiar creature.">
+    <fieldval field="sCompDesc" value="fur from a bloodhound"/>
+    <fieldval field="sArea" value="Circle, centered on you, with a radius of 400 ft. + 40 ft./level"/>
+    <fieldval field="sDuration" value="10 min./level"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    </thing>
+  <thing id="spUmClShou" name="Shout" description="You emit an ear-splitting yell that deafens and damages creatures in its path. Any creature within the area is deafened for 2d6 rounds and takes 5d6 points of sonic damage. A successful save negates the deafness and reduces the damage by half. Any exposed brittle or crystalline object or crystalline creature takes 1d6 points of sonic damage per caster level (maximum 15d6). An affected creature is allowed a Fortitude save to reduce the damage by half, and a creature holding fragile objects can negate damage to them with a successful Reflex save. A shout spell cannot penetrate a silence spell." compset="Spell" summary="Deafens all within cone and deals 5d6 sonic damage.">
+    <fieldval field="sRange" value="30 ft."/>
+    <fieldval field="sArea" value="Cone-shaped burst"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Fortitude partial or Reflex negates (object); see text;"/>
+    <fieldval field="sResist" value="Yes (object)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Air" name="Air Elemental" abbrev="Air Elemental"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sSchool" tag="Metal" name="Metal Elemental" abbrev="Metal Elemental"/>
+    <tag group="SpellEff" tag="DamSonic" name="Damage (Sonic)" abbrev="Damage (Sonic)"/>
+    <tag group="SpellEff" tag="NegDeafen" name="Inflict Deafness" abbrev="Inflict Deafness"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Sonic" name="Sonic" abbrev="Sonic"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spUmFinDea" name="Finger of Death" description="This spell instantly delivers 10 points of damage per caster level. If the target&apos;s Fortitude saving throw succeeds, it instead takes 3d6 points of damage + 1 point per caster level. The subject might die from damage even if it succeeds on its saving throw." compset="Spell" summary="Deals 10 damage/level to one subject.">
+    <fieldval field="sTarget" value="One creature"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Fortitude partial"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="FortPart" name="Fortitude Partial" abbrev="Fortitude Partial"/>
+    <tag group="sSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <tag group="SpellEff" tag="DamUntyped" name="Damage (Untyped)" abbrev="Damage (Untyped)"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sDescript" tag="Death" name="Death" abbrev="Death"/>
+    </thing>
+  <thing id="spUmDisint" name="Disintegrate" description="A thin, green ray springs from your pointing finger. You must make a successful ranged touch attack to hit. Any creature struck by the ray takes 2d6 points of damage per caster level (to a maximum of 40d6). Any creature reduced to 0 or fewer hit points by this spell is entirely disintegrated, leaving behind only a trace of fine dust. A disintegrated creature&apos;s equipment is unaffected. When used against an object, the ray simply disintegrates as much as a 10-foot cube of nonliving matter. Thus, the spell disintegrates only part of any very large object or structure targeted. The ray affects even objects constructed entirely of force, such as forceful hand or a wall of force, but not magical effects such as a globe of invulnerability or an antimagic field.{br}{br}A creature or object that makes a successful Fortitude save is partially affected, taking only 5d6 points of damage. If this damage reduces the creature or object to 0 or fewer hit points, it is entirely disintegrated. Only the first creature or object struck can be affected; that is, the ray affects only one target per casting." compset="Spell" summary="Reduces one creature or object to dust.">
+    <fieldval field="sCompDesc" value="a lodestone and a pinch of dust"/>
+    <fieldval field="sEffect" value="Ray"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Fortitude partial (object)"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="6" name="6" abbrev="6"/>
+    <tag group="sRange" tag="Medium" name="Medium (100 + 10 ft./level)" abbrev="{ref s_Medium}Med{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="FortPart" name="Fortitude Partial" abbrev="Fortitude Partial"/>
+    <tag group="sSchool" tag="Metal" name="Metal Elemental" abbrev="Metal Elemental"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="SpellEff" tag="DamUntyped" name="Damage (Untyped)" abbrev="Damage (Untyped)"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spUmDestru" name="Destruction" description="This spell instantly delivers 10 points of damage per caster level. If the spell slays the target, it consumes the remains utterly in holy (or unholy) fire (but not its equipment or possessions). If the target&apos;s Fortitude saving throw succeeds, it instead takes 10d6 points of damage. The only way to restore life to a character who has failed to save against this spell (and was slain) is to use true resurrection, a carefully worded wish spell followed by resurrection, or miracle." compset="Spell" summary="Kills subject and destroys remains.">
+    <fieldval field="sFocusDesc" value="holy or unholy symbol costing 500 gp"/>
+    <fieldval field="sTarget" value="One creature"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Fortitude partial"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sLevel" tag="7" name="7" abbrev="7"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="FortPart" name="Fortitude Partial" abbrev="Fortitude Partial"/>
+    <tag group="sSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <tag group="SpellEff" tag="DamUntyped" name="Damage (Untyped)" abbrev="Damage (Untyped)"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="F" name="Focus" abbrev="{ref s_F}F{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sDescript" tag="Death" name="Death" abbrev="Death"/>
+    </thing>
+  <thing id="spUmDisLoc" name="Discern Location" description="A discern location spell is among the most powerful means of locating creatures or objects. Nothing short of a mind blank spell or the direct intervention of a deity keeps you from learning the exact location of a single individual or object. Discern location circumvents normal means of protection from scrying or location. The spell reveals the name of the creature or object&apos;s location (place, name, business name, building name, or the like), community, county (or similar political division), country, continent, and the plane of existence where the target lies. To find a creature with the spell, you must have seen the creature or have some item that once belonged to it. To find an object, you must have touched it at least once." compset="Spell" summary="Reveals exact location of creature or object.">
+    <fieldval field="sRange" value="Unlimited"/>
+    <fieldval field="sTarget" value="One creature or object"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="sCastTime" tag="Minute10" name="10 minutes" abbrev="10 minutes"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sLevel" tag="8" name="8" abbrev="8"/>
+    </thing>
+  <thing id="spUmSouBin" name="Soul Bind" description="You draw the soul from a newly dead body and imprison it in a black sapphire gem. The subject must have been dead no more than 1 round per caster level. The soul, once trapped in the gem, cannot be returned through clone, raise dead, reincarnation, resurrection, true resurrection, or even a miracle or a wish. Only by destroying the gem or dispelling the spell on the gem can one free the soul (which is then still dead). The focus for this spell is a black sapphire of at least 1,000 gp value for every HD possessed by the creature whose soul is to be bound. If the gem is not valuable enough, it shatters when the binding is attempted. (While creatures have no concept of level or HD as such, the value of the gem needed to trap an individual can be researched.)" compset="Spell" summary="Traps newly dead soul to prevent resurrection.">
+    <fieldval field="sTarget" value="Corpse"/>
+    <fieldval field="sDuration" value="Permanent"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Permanent" name="Permanent" abbrev="Permanent"/>
+    <tag group="sLevel" tag="9" name="9" abbrev="9"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="F" name="Focus" abbrev="{ref s_F}F{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="Special" name="Special" abbrev="Special"/>
+    <tag group="sClass" tag="cdUmVengea"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    </thing>
+  <thing id="spUmBleWat" name="Bless Water" description="This transmutation imbues a flask (1 pint) of water with positive energy, turning it into holy water (see page 160)." compset="Spell" summary="Makes holy water.">
+    <fieldval field="sCompDesc" value="5 pounds of powdered silver"/>
+    <fieldval field="sCompCost" value="25"/>
+    <fieldval field="sTarget" value="Flask of water touched"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will negates (object)"/>
+    <fieldval field="sResist" value="Yes (object)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sCastTime" tag="Minute1" name="1 minute" abbrev="1 minute"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Good" name="Good" abbrev="Good"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    </thing>
+  <thing id="spUmCurWat" name="Curse Water" description="This spell imbues a flask (1 pint) of water with negative energy, turning it into unholy water (see Chapter 6). Unholy water damages good outsiders the way holy water damages undead and evil outsiders." compset="Spell" summary="Makes unholy water.">
+    <fieldval field="sCompDesc" value="5 lbs. of powdered silver"/>
+    <fieldval field="sCompCost" value="25"/>
+    <fieldval field="sTarget" value="flask of water touched"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will negates (object)"/>
+    <fieldval field="sResist" value="Yes (object)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <tag group="sCastTime" tag="Minute1" name="1 minute" abbrev="1 minute"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Evil" name="Evil" abbrev="Evil"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    </thing>
+  <thing id="spUmMakWho" name="Make Whole" description="This spell functions as mending, except that it repairs 1d6 points of damage per level when cast on a construct creature (maximum 5d6).{br}{br}Make whole can fix destroyed magic items (at 0 hit points or less), and restores the magic properties of the item if your caster level is at least twice that of the item. Items with charges (such as wands) and single-use items (such as potions and scrolls) cannot be repaired in this way. When make whole is used on a construct creature, the spell bypasses any immunity to magic as if the spell did not allow spell resistance." compset="Spell" summary="Repairs an object.">
+    <fieldval field="sRange" value="10 ft."/>
+    <fieldval field="sTarget" value="One object of up to 10 cu. ft./level or one construct creature of any size"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Will negates (harmless, object)"/>
+    <fieldval field="sResist" value="Yes (harmless, object)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sResist" tag="Object" name="Object" abbrev="Object"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="Object" name="Object" abbrev="Object"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Metal" name="Metal Elemental" abbrev="Metal Elemental"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="SpellEff" tag="HealDam" name="Heal Damage" abbrev="Heal Damage"/>
+    <tag group="sCastTime" tag="Minute10" name="10 minutes" abbrev="10 minutes"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    </thing>
+  <thing id="spUmStoSha" name="Stone Shape" description="You can form an existing piece of stone into any shape that suits your purpose. While it&apos;s possible to make crude coffers, doors, and so forth with stone shape, fine detail isn&apos;t possible. There is a 30% chance that any shape including moving parts simply doesn&apos;t work." compset="Spell" summary="Sculpts stone into any shape.">
+    <fieldval field="sCompDesc" value="soft clay"/>
+    <fieldval field="sTarget" value="Stone or stone object touched, up to 10 cu. ft. + 1 cu. ft./level"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Earth" name="Earth Elemental" abbrev="Earth Elemental"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Earth" name="Earth" abbrev="Earth"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spUmPolymo" name="Polymorph" description="This spell transforms a willing creature into an animal, humanoid or elemental of your choosing; the spell has no effect on unwilling creatures, nor can the creature being targeted by this spell influence the new form assumed (apart from conveying its wishes, if any, to you verbally). If you use this spell to cause the target to take on the form of an animal or magical beast, the spell functions as beast shape II. If the form is that of an elemental, the spell functions as elemental body I. If the form is that of a humanoid, the spell functions as alter self. The subject may choose to resume its normal form as a full-round action; doing so ends the spell for that subject." compset="Spell" summary="Gives one willing subject a new form.">
+    <fieldval field="sCompDesc" value="a piece of the creature whose form you choose"/>
+    <fieldval field="sTarget" value="Living creature touched"/>
+    <fieldval field="sDuration" value="1 min/level (D)"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sSubschool" tag="Polymorph" name="Polymorph" abbrev="Polymorph"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    </thing>
+  <thing id="spUmFabric" name="Fabricate" description="You convert material of one sort into a product that is of the same material. Creatures or magic items cannot be created or transmuted by the fabricate spell. The quality of items made by this spell is commensurate with the quality of material used as the basis for the new fabrication. If you work with a mineral, the target is reduced to 1 cubic foot per level instead of 10 cubic feet. You must make an appropriate Craft check to fabricate articles requiring a high degree of craftsmanship. Casting requires 1 round per 10 cubic feet of material to be affected by the spell." compset="Spell" summary="Transforms raw materials into finished items.">
+    <fieldval field="sCompDesc" value="the original material, which costs the same amount as the raw materials required to craft the item to be created"/>
+    <fieldval field="sTarget" value="Up to 10 cu. ft./level; see text"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sSchool" tag="Void" name="Void Elemental" abbrev="Void Elemental"/>
+    <tag group="sSchool" tag="Wood" name="Wood Elemental" abbrev="Wood Elemental"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sLevel" tag="5" name="5" abbrev="5"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    </thing>
+  <thing id="spUmPerma6" name="Permanency" description="This spell makes the duration of certain other spells permanent. You first cast the desired spell and then follow it with the {i}permanency{/i} spell.\n\nDepending on the spell, you must be of a minimum caster level and must expend a specific gp value of diamond dust as a material component.\n\nYou can make the following spells permanent in regard to yourself.\n\n{b}Spell - Minimum Caster Level - GP Cost{/b}\nArcane sight - 11th - 7,500 gp\nComprehend languages - 9th - 2,500 gp\nDarkvision - 10th - 5,000 gp\nDetect magic - 9th - 2,500 gp\nRead magic - 9th - 2,500 gp\nSee invisibility - 10th - 5,000 gp\nTongues - 11th - 7,500 gp\n\nYou cannot cast these spells on other creatures. This application of {i}permanency{/i} can be dispelled only by a caster of higher level than you were when you cast the spell.{br}{br}In addition to personal use, {i}permanency{/i} can be used to make the following spells permanent on yourself, another creature, or an object (as appropriate).\n\n{b}Spell - Minimum Caster Level - GP Cost{/b}\nEnlarge person - 9th - 2,500 gp\nMagic fang - 9th - 2,500 gp\nMagic fang, greater - 11th - 7,500 gp\nReduce person - 9th - 2,500 gp\nResistance - 9th - 2,500 gp\nTelepathic bond* - 13th - 12,500 gp\n*Only bonds two creatures per casting of permanency.\n\nAdditionally, the following spells can be cast upon objects or areas only and rendered permanent.\n\n{b}Spell - Minimum Caster Level - GP Cost{/b}\nAlarm - 9th - 2,500 gp\nAnimate objects - 14th - 15,000 gp\nDancing lights - 9th - 2,500 gp\nGhost sound - 9th - 2,500 gp\nGust of wind - 11th - 7,500 gp\nInvisibility - 10th - 5,000 gp\nMage&apos;s private sanctum - 13th - 12,500 gp\nMagic mouth - 10th - 5,000 gp\nPhase door - 15th - 17,500 gp\nPrismatic sphere - 17th - 22,500 gp\nPrismatic wall - 16th - 20,000 gp\nShrink item - 11th - 7,500 gp\nSolid fog - 12th - 10,000 gp\nStinking cloud - 11th - 7,500 gp\nSymbol of death - 16th - 20,000 gp\nSymbol of fear - 14th - 15,000 gp\nSymbol of insanity - 16th - 20,000 gp\nSymbol of pain - 13th - 12,500 gp\nSymbol of persuasion - 14th - 15,000 gp\nSymbol of sleep - 16th - 20,000 gp\nSymbol of stunning - 15th - 17,500 gp\nSymbol of weakness - 15th - 17,500 gp\nTeleportation circle - 17th - 22,500 gp\nWall of fire - 12th - 10,000 gp\nWall of force - 13th - 12,500 gp\nWeb - 10th - 5,000 gp\n\nSpells cast on other targets are vulnerable to {i}dispel magic{/i} as normal. The GM may allow other spells to be made permanent." compset="Spell" summary="Makes certain spells permanent.">
+    <fieldval field="sCompDesc" value="see tables below"/>
+    <fieldval field="sRange" value="See text"/>
+    <fieldval field="sTarget" value="See text"/>
+    <fieldval field="sDuration" value="Permanent; see text"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="6"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Universal" name="Universal" abbrev="Univ"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="sCastTime" tag="Round2" name="2 Round(s)" abbrev="Round2"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Permanent" name="Permanent" abbrev="Permanent"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    </thing>
+  <thing id="spUmConWea" name="Control Weather" description="You change the weather in the local area. It takes 10 minutes to cast the spell and an additional 10 minutes for the effects to manifest. You can call forth weather appropriate to the climate and season of the area you are in. You can also use this spell to cause the weather in the area to become calm and normal for the season.{br}{br}Season - Possible Weather{br}Spring - Tornado, thunderstorm, sleet storm, or hot weather{br}Summer - Torrential rain, heat wave, or hailstorm{br}Autumn - Hot or cold weather, fog, or sleet{br}Winter -  Frigid cold, blizzard, or thaw{br}Late winter or early spring - Hurricane-force winds{br}{br}You control the general tendencies of the weather, such as the direction and intensity of the wind. You cannot control specific applications of the weather - where lightning strikes, for example, or the exact path of a tornado. The weather continues as you left it for the duration, or until you use a standard action to designate a new kind of weather (which fully manifests itself 10 minutes later). Contradictory conditions are not possible simultaneously.{br}{br}Control weather can do away with atmospheric phenomena (naturally occurring or otherwise) as well as create them. A druid casting this spell doubles the duration and affects a circle with a 3-mile radius." compset="Spell" summary="Changes weather in local area.">
+    <fieldval field="sRange" value="2 miles"/>
+    <fieldval field="sArea" value="2-mile-radius circle, centered on you; see text"/>
+    <fieldval field="sDuration" value="4d12 hours; see text"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Air" name="Air Elemental" abbrev="Air Elemental"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sSchool" tag="Water" name="Water Elemental" abbrev="Water Elemental"/>
+    <tag group="sSchool" tag="Wood" name="Wood Elemental" abbrev="Wood Elemental"/>
+    <tag group="sCastTime" tag="Minute10" name="10 minutes" abbrev="10 minutes"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Hour" name="1+ Hours" abbrev="1+ Hours"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sLevel" tag="7" name="7" abbrev="7"/>
+    </thing>
+  <thing id="spUmPolyAn" name="Polymorph Any Object" description="This spell functions like greater polymorph, except that it changes one object or creature into another. You can use this spell to transform all manner of objects and creatures into new forms - you aren&apos;t limited to transforming a living creature into another living form. The duration of the spell depends on how radical a change is made from the original state to its transmuted state. The duration is determined by using the following guidelines.{br}{br}Changed Subject Is... Increase to Duration Factor*{br}{br}Same kingdom (animal, vegetable, mineral) - +5{br}Same class (mammals, fungi, metals, etc.) - +2{br}Same size - +2{br}Related (twig is to tree, wolf fur is to wolf, etc.) - +2{br}Same or lower Intelligence - +2{br}*Add all that apply. Look up the total on the next table.{br}{br}Total Factor - Duration - Example{br}0 - 20 minutes - Pebble to human{br}2 - 1 hour - Marionette to human{br}4 - 3 hours - Human to marionette{br}5 - 12 hours - Lizard to manticore{br}6 - 2 days - Sheep to wool coat{br}7 - 1 week - Shrew to manticore{br}9+ - Permanent - Manticore to shrew{br}{br}If the target of the spell does not have physical ability scores (Strength, Dexterity, or Constitution), this spell grants a base score of 10 to each missing ability score. If the target of the spell does not have mental ability scores (Intelligence, Wisdom, or Charisma), this spell grants a score of 5 to such scores. Damage taken by the new form can result in the injury or death of the polymorphed creature. In general, damage occurs when the new form is changed through physical force. A nonmagical object cannot be made into a magic item with this spell. Magic items aren&apos;t affected by this spell. This spell cannot create material of great intrinsic value, such as copper, silver, gems, silk, gold, platinum, mithral, or adamantine. It also cannot reproduce the special properties of cold iron in order to overcome the damage reduction of certain creatures. This spell can also be used to duplicate the effects of baleful polymorph, greater polymorph, flesh to stone, stone to flesh, transmute mud to rock, transmute metal to wood, or transmute rock to mud." compset="Spell" summary="Changes a subject into anything else.">
+    <fieldval field="sCompDesc" value="mercury, gum arabic, and smoke"/>
+    <fieldval field="sTarget" value="One creature, or one nonmagical object of up to 100 cu. ft./level"/>
+    <fieldval field="sDuration" value="See text"/>
+    <fieldval field="sSave" value="Fortitude negates (object); see text"/>
+    <fieldval field="sResist" value="Yes (object)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="FortNeg" name="Fortitude Negates" abbrev="Fortitude Negates"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sSubschool" tag="Polymorph" name="Polymorph" abbrev="Polymorph"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sLevel" tag="8" name="8" abbrev="8"/>
+    </thing>
+  <thing id="spUmTimSto" name="Time Stop" description="This spell seems to make time cease to flow for everyone but you. In fact, you speed up so greatly that all other creatures seem frozen, though they are actually still moving at their normal speeds. You are free to act for 1d4+1 rounds of apparent time. Normal and magical fire, cold, gas, and the like can still harm you. While the time stop is in effect, other creatures are invulnerable to your attacks and spells; you cannot target such creatures with any attack or spell. A spell that affects an area and has a duration longer than the remaining duration of the time stop have their normal effects on other creatures once the time stop ends. Most spellcasters use the additional time to improve their defenses, summon allies, or flee from combat. You cannot move or harm items held, carried, or worn by a creature stuck in normal time, but you can affect any item that is not in another creature&apos;s possession. You are undetectable while time stop lasts. You cannot enter an area protected by an antimagic field while under the effect of time stop." compset="Spell" summary="You act freely for 1d4+1 rounds.">
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sDuration" value="1d4+1 rounds (apparent time); see text"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="9" name="9" abbrev="9"/>
+    <tag group="sRange" tag="Personal" name="Personal" abbrev="{ref s_Pers}Pers{ref}"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sSchool" tag="Void" name="Void Elemental" abbrev="Void Elemental"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmCreati"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    </thing>
+  <thing id="spUmPasTra" name="Pass without Trace" description="The subject or subjects of this spell do not leave footprints or a scent trail while moving. Tracking the subjects is impossible by nonmagical means." compset="Spell" summary="One subject/level leaves no tracks.">
+    <fieldval field="sTarget" value="One creature/level touched"/>
+    <fieldval field="sDuration" value="1 hour/level (D)"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Hour" name="1+ Hours" abbrev="1+ Hours"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    </thing>
+  <thing id="spUmDarkne" name="Darkness" description="This spell causes an object to radiate darkness out to a 20-foot radius. This darkness causes the illumination level in the area to drop one step, from bright light to normal light, from normal light to dim light, or from dim light to darkness. This spell has no effect in an area that is already dark. Creatures with light vulnerability or sensitivity take no penalties in normal light. All creatures gain concealment (20% miss chance) in dim light. All creatures gain total concealment (50% miss chance) in darkness. Creatures with darkvision can see in an area of dim light or darkness without penalty. Nonmagical sources of light, such as torches and lanterns, do not increase the light level in an area of darkness. Magical light sources only increase the light level in an area if they are of a higher spell level than darkness. If darkness is cast on a small object that is then placed inside or under a lightproof covering, the spell&apos;s effect is blocked until the covering is removed. This spell does not stack with itself. Darkness can be used to counter or dispel any light spell of equal or lower spell level." compset="Spell" summary="20-ft. radius of supernatural shadow.">
+    <fieldval field="sCompDesc" value="bat fur and a piece of coal"/>
+    <fieldval field="sTarget" value="Object touched"/>
+    <fieldval field="sDuration" value="1 min./level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Darkness" name="Darkness" abbrev="Darkness"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    </thing>
+  <thing id="spUmDeeDar" name="Deeper Darkness" description="This spell functions as darkness, except that objects radiate darkness in a 60-foot radius and the light level is lowered by two steps. Bright light becomes dim light and normal light becomes darkness. Areas of dim light and darkness become supernaturally dark. This functions like darkness, but even creatures with darkvision cannot see within the spell&apos;s confines. This spell does not stack with itself. Deeper darkness can be used to counter or dispel any light spell of equal or lower spell level." compset="Spell" summary="Object sheds supernatural shadow in 60-ft. radius.">
+    <fieldval field="sCompDesc" value="bat fur and a piece of coal"/>
+    <fieldval field="sTarget" value="Object touched"/>
+    <fieldval field="sDuration" value="10 min./level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Darkness" name="Darkness" abbrev="Darkness"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    </thing>
+  <thing id="spUmShaCon" name="Shadow Conjuration" description="You use material from the Plane of Shadow to shape quasi-real illusions of one or more creatures, objects, or forces. Shadow conjuration can mimic any sorcerer or wizard conjuration (summoning) or conjuration (creation) spell of 3rd level or lower.{br}{br}Shadow conjurations are only one-fifth (20%) as strong as the real things, though creatures who believe the shadow conjurations to be real are affected by them at full strength. Any creature that interacts with the spell can make a Will save to recognize its true nature. Spells that deal damage have normal effects unless the affected creature succeeds on a Will save. Each disbelieving creature takes only one-fifth (20%) damage from the attack. If the disbelieved attack has a special effect other than damage, that effect is only 20% likely to occur. Regardless of the result of the save to disbelieve, an affected creature is also allowed any save that the spell being simulated allows, but the save DC is set according to shadow conjuration&apos;s level (4th) rather than the spell&apos;s normal level. In addition, any effect created by shadow conjuration allows spell resistance, even if the spell it is simulating does not. Shadow objects or substances have normal effects except against those who disbelieve them. Against disbelievers, they are 20% likely to work. A shadow creature has one-fifth the hit points of a normal creature of its kind (regardless of whether it&apos;s recognized as shadowy). It deals normal damage and has all normal abilities and weaknesses. Against a creature that recognizes it as a shadow creature, however, the shadow creature&apos;s damage is one-fifth (20%) normal, and all special abilities that do not deal lethal damage are only 20% likely to work. (Roll for each use and each affected character separately.) Furthermore, the shadow creature&apos;s AC bonuses are just one-fifth as large. A creature that succeeds on its save sees the shadow conjurations as transparent images superimposed on vague, shadowy forms. Objects automatically succeed on their Will saves against this spell." compset="Spell" summary="Mimics conjuration below 4th level, but only 20% real.">
+    <fieldval field="sRange" value="See text"/>
+    <fieldval field="sEffect" value="See text"/>
+    <fieldval field="sDuration" value="See text"/>
+    <fieldval field="sSave" value="Will disbelief (if interacted with); varies; see text;"/>
+    <fieldval field="sResist" value="Yes; see text"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="sSubschool" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    </thing>
+  <thing id="spUmShaEvo" name="Shadow Evocation" description="You tap energy from the Plane of Shadow to cast a quasi-real, illusory version of a sorcerer or wizard evocation spell of 4th level or lower. Spells that deal damage have normal effects unless an affected creature succeeds on a Will save. Each disbelieving creature takes only one-fifth damage from the attack. If the disbelieved attack has a special effect other than damage, that effect is one-fifth as strong (if applicable) or only 20% likely to occur. If recognized as a shadow evocation, a damaging spell deals only one-fifth (20%) damage. Regardless of the result of the save to disbelieve, an affected creature is also allowed any save (or spell resistance) that the spell being simulated allows, but the save DC is set according to shadow evocation&apos;s level (5th) rather than the spell&apos;s normal level. Nondamaging effects have normal effects except against those who disbelieve them. Against disbelievers, they have no effect. Objects automatically succeed on their Will saves against this spell." compset="Spell" summary="Mimics evocation below 5th level, but only 20% real.">
+    <fieldval field="sRange" value="See text"/>
+    <fieldval field="sEffect" value="See text"/>
+    <fieldval field="sDuration" value="See text"/>
+    <fieldval field="sSave" value="Will disbelief (if interacted with)"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSave" tag="WillDis" name="Will Disbelief" abbrev="Will Disbelief"/>
+    <tag group="sSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="sSubschool" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="5" name="5" abbrev="5"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    </thing>
+  <thing id="spUmShaWal" name="Shadow Walk" description="To use the {i}shadow walk{/i} spell, you must be in an area of dim light. You and any creature you touch are then transported along a coiling path of shadowstuff to the edge of the Material Plane where it borders the Plane of Shadow. The effect is largely illusory, but the path is quasi-real. You can take more than one creature along with you (subject to your level limit), but all must be touching each other.\n\nIn the region of shadow, you move at a rate of 50 miles per hour, moving normally on the borders of the Plane of Shadow but much more rapidly relative to the Material Plane. Thus, you can use this spell to travel rapidly by stepping onto the Plane of Shadow, moving the desired distance, and then stepping back onto the Material Plane.\n\nBecause of the blurring of reality between the Plane of Shadow and the Material Plane, you can&apos;t make out details of the terrain or areas you pass over during transit, nor can you predict perfectly where your travel will end. It&apos;s impossible to judge distances accurately, making the spell virtually useless for scouting or spying. Furthermore, when the spell effect ends, you are shunted 1d10 x 100 feet in a random horizontal direction from your desired endpoint. If this would place you within a solid object, you are shunted 1d10 x 1,000 feet in the same direction. If this would still place you within a solid object, you (and any creatures with you) are shunted to the nearest empty space available, but the strain of this activity renders each creature fatigued (no save).\n\n{i}Shadow walk{/i} can also be used to travel to other planes that border on the Plane of Shadow, but this usage requires the transit of the Plane of Shadow to arrive at a border with another plane of reality. The transit of the Plane of Shadow requires 1d4 hours.\n\nAny creatures touched by you when {i}shadow walk{/i} is cast also make the transition to the borders of the Plane of Shadow.\n\nThey may opt to follow you, wander off through the plane, or stumble back into the Material Plane (50% chance for either of the latter results if they are lost or abandoned by you). Creatures unwilling to accompany you into the Plane of Shadow receive a Will saving throw, negating the effect if successful." compset="Spell" summary="Step into shadow to travel rapidly.">
+    <fieldval field="sTarget" value="Up to one touched creature/level"/>
+    <fieldval field="sDuration" value="1 hour/level (D)"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="6" name="6" abbrev="6"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="sSubschool" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sDuration" tag="Hour" name="1+ Hours" abbrev="1+ Hours"/>
+    </thing>
+  <thing id="spUmShaCoG" name="Shadow Conjuration, Greater" description="This spell functions like shadow conjuration, except that it duplicates any sorcerer or wizard conjuration (summoning) or conjuration (creation) spell of 6th level or lower. The illusory conjurations created deal three-fifths (60%) damage to nonbelievers, and nondamaging effects are 60% likely to work against nonbelievers." compset="Spell" summary="As shadow conjuration, but up to 6th level and 60% real.">
+    <fieldval field="sRange" value="See text"/>
+    <fieldval field="sEffect" value="See text"/>
+    <fieldval field="sDuration" value="See text"/>
+    <fieldval field="sSave" value="Will disbelief (if interacted with); varies; see text;"/>
+    <fieldval field="sResist" value="Yes; see text"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="sSubschool" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="7" name="7" abbrev="7"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    </thing>
+  <thing id="spUmShaEvG" name="Shadow Evocation, Greater" description="This spell functions like shadow evocation, except that it enables you to create partially real, illusory versions of sorcerer or wizard evocation spells of 7th level or lower. If recognized as a greater shadow evocation, a damaging spell deals only three-fifths (60%) damage." compset="Spell" summary="As shadow evocation, but up to 7th level and 60% real.">
+    <fieldval field="sRange" value="See text"/>
+    <fieldval field="sEffect" value="See text"/>
+    <fieldval field="sDuration" value="See text"/>
+    <fieldval field="sSave" value="Will disbelief (if interacted with)"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSave" tag="WillDis" name="Will Disbelief" abbrev="Will Disbelief"/>
+    <tag group="sSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="sSubschool" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="8" name="8" abbrev="8"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    </thing>
+  <thing id="spUmShades" name="Shades" description="This spell functions like shadow conjuration, except that it mimics conjuration spells of 8th level or lower. The illusory conjurations created deal four-fifths (80%) damage to nonbelievers, and nondamaging effects are 80% likely to work against nonbelievers." compset="Spell" summary="As shadow conjuration, but up to 8th level and 80% real.">
+    <fieldval field="sRange" value="See text"/>
+    <fieldval field="sEffect" value="See text"/>
+    <fieldval field="sDuration" value="See text"/>
+    <fieldval field="sSave" value="Will disbelief (if interacted with); varies; see text;"/>
+    <fieldval field="sResist" value="Yes; see text"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="sSubschool" tag="Shadow" name="Shadow" abbrev="Shadow"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="9" name="9" abbrev="9"/>
+    <tag group="sClass" tag="cdUmShadow"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    </thing>
+  <thing id="spUmSpeVer" name="Speak with Vermin" description="You can ask questions of and receive answers from Vermin, but the spell doesn&apos;t make them any more friendly than normal. Wary and cunning vermin are likely to be terse and evasive, while the more stupid ones make inane comments. If an vermin is friendly toward you, it may do some favor or service for you." compset="Spell" summary="You can communicate with Vermin.">
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sDuration" value="1 min./level"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    <tag group="sRange" tag="Personal" name="Personal" abbrev="{ref s_Pers}Pers{ref}"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    </thing>
+  <thing id="spUmSpiCl1" name="Spider Climb" description="The subject can climb and travel on vertical surfaces or even traverse ceilings as well as a spider does. The affected creature must have its hands free to climb in this manner. The subject gains a climb speed of 20 feet and a +8 racial bonus on Climb skill checks; furthermore, it need not make Climb checks to traverse a vertical or horizontal surface (even upside down). A spider climbing creature retains its Dexterity bonus to Armor Class (if any) while climbing, and opponents get no special bonus to their attacks against it. It cannot, however, use the run action while climbing." compset="Spell" summary="Grants ability to walk on walls and ceilings.">
+    <fieldval field="sCompDesc" value="a live spider"/>
+    <fieldval field="sTarget" value="Creature touched"/>
+    <fieldval field="sDuration" value="10 min./level"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    </thing>
+  <thing id="spUmSumSwa" name="Summon Swarm" description="You summon a swarm of bats, rats, or spiders (your choice), which attacks all other creatures within its area. (You may summon the swarm so that it shares the area of other creatures.) If no living creatures are within its area, the swarm attacks or pursues the nearest creature as best it can. The caster has no control over its target or direction of travel." compset="Spell" summary="Summons swarm of bats, rats, or spiders.">
+    <fieldval field="sCompDesc" value="a square of red cloth"/>
+    <fieldval field="sEffect" value="One swarm of bats, rats, or spiders"/>
+    <fieldval field="sDuration" value="Concentration + 2 rounds"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Summoning" name="Summoning" abbrev="Summoning"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    </thing>
+  <thing id="spUmContag" name="Contagion" description="The subject contracts one of the following diseases: blinding sickness, bubonic plague, cackle fever, filth fever, leprosy, mindfire, red ache, shakes, or slimy doom. The disease is contracted immediately (the onset period does not apply). Use the disease&apos;s listed frequency and save DC to determine further effects. For more information on these diseases, see page 557." compset="Spell" summary="Infects subject with chosen disease.">
+    <fieldval field="sTarget" value="Living creature touched"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Fortitude negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="FortNeg" name="Fortitude Negates" abbrev="Fortitude Negates"/>
+    <tag group="sSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Evil" name="Evil" abbrev="Evil"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spUmPoison" name="Poison" description="Calling upon the venomous powers of natural predators, you infect the subject with a horrible poison by making a successful melee touch attack. This poison deals 1d3 Constitution damage per round for 6 rounds. Poisoned creatures can make a Fortitude save each round to negate the damage and end the affliction." compset="Spell" summary="Touch deals 1d3 Con damage 1/round for 6 rounds.">
+    <fieldval field="sTarget" value="Living creature touched"/>
+    <fieldval field="sDuration" value="Instantaneous; see text"/>
+    <fieldval field="sSave" value="Fortitude negates; see text"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="FortNeg" name="Fortitude Negates" abbrev="Fortitude Negates"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
+    <tag group="SpellEff" tag="DamAttr" name="Damage (Attributes)" abbrev="Damage (Attributes)"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    </thing>
+  <thing id="spUmGiaVer" name="Giant Vermin" description="You turn a number of normal-sized centipedes, scorpions, or spiders into their giant counterparts (see the Pathfinder RPG Bestiary). Only one type of vermin can be transmuted (so a single casting cannot affect both a centipede and a spider). The number of vermin which can be affected by this spell depends on your caster level, as noted on the table below. Giant vermin created by this spell do not attempt to harm you, but your control of such creatures is limited to simple commands (&quot;Attack,&quot; &quot;Defend,&quot; &quot;Stop,&quot; and so forth). Orders to attack a certain creature when it appears or guard against a particular occurrence are too complex for the vermin to understand. Unless commanded to do otherwise, the giant vermin attack whomever or whatever is near them.{br}{br}Caster Level - Centipedes - Scorpions - Spiders{br}9th or lower - 3 - 1 - 2{br}10th-13th - 4 - 2 - 3{br}14th-17th - 6 - 3 - 4{br}18th-19th - 8 - 4 - 5{br}20th or higher - 12 - 6 - 8" compset="Spell" summary="Turns centipedes, scorpions, or spiders into giant vermin.">
+    <fieldval field="sTarget" value="1 or more vermin, no two of which can be more than 30 ft. apart"/>
+    <fieldval field="sDuration" value="1 min./level"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    </thing>
+  <thing id="spUmAniGro" name="Animal Growth" description="The target animal grows to twice its normal size and eight times its normal weight. This alteration changes the animal&apos;s size category to the next largest, grants it a +8 size bonus to Strength and a +4 size bonus to Constitution (and thus an extra 2 hit points per HD), and imposes a -2 size penalty to Dexterity.{br}{br}The creature&apos;s existing natural armor bonus increases by 2. The size change also affects the animal&apos;s modifier to AC, attack rolls, and its base damage. The animal&apos;s space and reach change as appropriate to the new size, but its speed does not change. If insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it - the spell cannot be used to crush a creature by increasing its size. All equipment worn or carried by the animal is similarly enlarged by the spell, though this change has no effect on the magical properties of any such equipment. Any enlarged item that leaves the enlarged creature&apos;s possession instantly returns to its normal size. The spell gives no means of command over an enlarged animal. Multiple magical effects that increase size do not stack." compset="Spell" summary="One animal doubles in size.">
+    <fieldval field="sTarget" value="One animal (Gargantuan or smaller)"/>
+    <fieldval field="sDuration" value="1 min./level"/>
+    <fieldval field="sSave" value="Fortitude negates"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="5" name="5" abbrev="5"/>
+    <tag group="sRange" tag="Medium" name="Medium (100 + 10 ft./level)" abbrev="{ref s_Medium}Med{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="FortNeg" name="Fortitude Negates" abbrev="Fortitude Negates"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="SpellEff" tag="BuffAttr" name="Increase Attribute" abbrev="Increase Attribute"/>
+    <tag group="SpellEff" tag="BuffNatAC" name="Increase Natural Armor Bonus" abbrev="Increase Natural Armor Bonus"/>
+    <tag group="SpellEff" tag="NegAttr" name="Decrease Attribute" abbrev="Decrease Attribute"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    </thing>
+  <thing id="spUmInsPla" name="Insect Plague" description="You summon a number of swarms of wasps (one per three levels, to a maximum of six swarms at 18th level, see the Pathfinder RPG Bestiary). The swarms must be summoned so that each one is adjacent to at least one other swarm (that is, the swarms must fill one contiguous area). You may summon the wasp swarms so that they share the area of other creatures. Each swarm attacks any creatures occupying its area. The swarms are stationary after being summoned, and won&apos;t pursue creatures that flee." compset="Spell" summary="Wasp swarms attack creatures.">
+    <fieldval field="sEffect" value="One swarm of wasps per three levels, each of which must be adjacent to at least one other swarm"/>
+    <fieldval field="sDuration" value="1 min./level"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="5" name="5" abbrev="5"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Summoning" name="Summoning" abbrev="Summoning"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    </thing>
+  <thing id="spUmClWeb6" name="Web" description="Web creates a many-layered mass of strong, sticky strands. These strands trap those caught in them. The strands are similar to spiderwebs but far larger and tougher. These masses must be anchored to two or more solid and diametrically opposed points or else the web collapses upon itself and disappears. Creatures caught within a web become grappled by the sticky fibers. Attacking a creature in a web doesn&apos;t cause you to become grappled. Anyone in the effect&apos;s area when the spell is cast must make a Reflex save. If this save succeeds, the creature is inside the web but is otherwise unaffected. If the save fails, the creature gains the grappled condition, but can break free by making a combat maneuver check or Escape Artist check as a standard action against the DC of this spell. The entire area of the web is considered difficult terrain. Anyone moving through the webs must make a combat maneuver check or Escape Artist check as part of their move action, with a DC equal to the spell&apos;s DC. Creatures that fail lose their movement and become grappled in the first square of webbing that they enter. If you have at least 5 feet of web between you and an opponent, it provides cover. If you have at least 20 feet of web between you, it provides total cover. The strands of a web spell are flammable. A flaming weapon can slash them away as easily as a hand brushes away cobwebs. Any fire can set the webs alight and burn away one 5-foot square in 1 round. All creatures within flaming webs take 2d4 points of fire damage from the flames.{br}{br}Web can be made permanent with a permanency spell. A permanent web that is damaged (but not destroyed) regrows in 10 minutes." compset="Spell" summary="Fills 20-ft.-radius spread with sticky spiderwebs that can grapple foes and impair movement.">
+    <fieldval field="sCompDesc" value="spider web"/>
+    <fieldval field="sEffect" value="Webs in a 20-ft.-radius spread"/>
+    <fieldval field="sDuration" value="10 min./level (D)"/>
+    <fieldval field="sSave" value="Reflex negates; see text"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="6"/>
+    <tag group="sRange" tag="Medium" name="Medium (100 + 10 ft./level)" abbrev="{ref s_Medium}Med{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="RefNeg" name="Reflex Negates" abbrev="Reflex Negates"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSchool" tag="Wood" name="Wood Elemental" abbrev="Wood Elemental"/>
+    <tag group="sSubschool" tag="Creation" name="Creation" abbrev="Creation"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    </thing>
+  <thing id="spUmCreDoo" name="Creeping Doom" description="This spell summons four massive swarms of biting and stinging insects. These swarms appear adjacent to one another, but can be directed to move independently. Treat these swarms as centipede swarms (see the Pathfinder RPG Bestiary) with the following adjustments. The swarms have 60 hit points each and deal 4d6 points of damage with their swarm attack. The save to resist their poison and distraction effects is equal to the save DC of this spell. Creatures caught in multiple swarms only take damage and make saves once. You may summon the swarms so that they share the area of other creatures. As a standard action, you can command any number of the swarms to move toward any target within 100 feet of you. You cannot command any swarm to move more than 100 feet away from you, and if you move more than 100 feet from any swarm, that swarm remains stationary, attacking any creatures in its area (but can be commanded again if you move within 100 feet)." compset="Spell" summary="Swarms of centipedes attack at your command.">
+    <fieldval field="sEffect" value="Four swarms of insects"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <fieldval field="sSave" value="Fortitude partial, see text"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="7" name="7" abbrev="7"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="FortPart" name="Fortitude Partial" abbrev="Fortitude Partial"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Summoning" name="Summoning" abbrev="Summoning"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    </thing>
+  <thing id="spUmSumMon" name="Summon Monster VIII" description="(monstrous abyssal or fiendish vermin demon/devil only)\n\nThis spell functions like summon monster I, except that you can summon one creature from the 8th-level list, 1d3 creatures of the same kind from the 7th-level list, or 1d4+1 creatures of the same kind from a lower-level list." compset="Spell" summary="Summons extraplanar creature to fight for you.">
+    <fieldval field="sCompDesc" value="a tiny bag and a small candle"/>
+    <fieldval field="sEffect" value="One summoned creature"/>
+    <fieldval field="sDuration" value="1 round/level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="8" name="8" abbrev="8"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSchool" tag="Elemental" name="All Elements" abbrev="Elem"/>
+    <tag group="sSubschool" tag="Summoning" name="Summoning" abbrev="Summoning"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sComp" tag="ForDF" name="Focus or Divine Focus" abbrev="{ref s_F}F{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    </thing>
+  <thing id="spUmSuMoIX" name="Summon Monster IX" description="(monstrous abyssal or fiendish vermin or demon/devil only)\n\nThis spell functions like summon monster I, except that you can summon one creature from the 9th-level list, 1d3 creatures of the same kind from the 8th-level list, or 1d4+1 creatures of the same kind from a lower-level list." compset="Spell" summary="Summons extraplanar creature to fight for you.">
+    <fieldval field="sCompDesc" value="a tiny bag and a small candle"/>
+    <fieldval field="sEffect" value="One summoned creature"/>
+    <fieldval field="sDuration" value="1 round/level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="9" name="9" abbrev="9"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Summoning" name="Summoning" abbrev="Summoning"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sComp" tag="ForDF" name="Focus or Divine Focus" abbrev="{ref s_F}F{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sClass" tag="cdUmVermin"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    </thing>
+  <thing id="spUmObsMis" name="Obscuring Mist" description="A misty vapor arises around you. It is stationary. The vapor obscures all sight, including darkvision, beyond 5 feet. A creature 5 feet away has concealment (attacks have a 20% miss chance). Creatures farther away have total concealment (50% miss chance, and the attacker cannot use sight to locate the target). A moderate wind (11+ mph), such as from a gust of wind spell, disperses the fog in 4 rounds. A strong wind (21+ mph) disperses the fog in 1 round. A fireball, flame strike, or similar spell burns away the fog in the explosive or fiery spell&apos;s area. A wall of fire burns away the fog in the area into which it deals damage. This spell does not function underwater." compset="Spell" summary="Fog surrounds you.">
+    <fieldval field="sRange" value="20 ft."/>
+    <fieldval field="sEffect" value="Cloud spreads in 20-ft. radius from you, 20 ft. high"/>
+    <fieldval field="sDuration" value="1 min./level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSchool" tag="Water" name="Water Elemental" abbrev="Water Elemental"/>
+    <tag group="sSubschool" tag="Creation" name="Creation" abbrev="Creation"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    </thing>
+  <thing id="spUmChiMet" name="Chill Metal" description="Chill metal makes metal extremely cold. Unattended, nonmagical metal gets no saving throw. Magical metal is allowed a saving throw against the spell. An item in a creature&apos;s possession uses the creature&apos;s saving throw bonus unless its own is higher. A creature takes cold damage if its equipment is chilled. It takes full damage if its armor, shield, or weapon is affected. The creature takes minimum damage (1 point or 2 points; see the table) if it&apos;s not wearing or wielding such an item. On the first round of the spell, the metal becomes chilly and uncomfortable to touch but deals no damage. The same effect also occurs on the last round of the spell&apos;s duration. During the second (and also the next-to-last) round, icy coldness causes pain and damage. In the third, fourth, and fifth rounds, the metal is freezing cold, and causes more damage, as shown on the table below.{br}{br}Round - Metal Temperature - Damage{br}1 - Cold - None{br}2 - Icy - 1d4 points{br}3-5 - Freezing - 2d4 points{br}6 - Icy - 1d4 points{br}7 - Cold - None{br}{br}Any heat intense enough to damage the creature negates cold damage from the spell (and vice versa) on a point-for-point basis. Underwater, chill metal deals no damage, but ice immediately forms around the affected metal, making it float if unattended.{br}{br}Chill metal counters and dispels heat metal." compset="Spell" summary="Cold metal damages those who touch it.">
+    <fieldval field="sTarget" value="Metal equipment of one creature per two levels, no two of which can be more than 30 ft. apart; or 25 lbs. of metal/level, none of which can be more than 30 ft. away from any of the rest"/>
+    <fieldval field="sDuration" value="7 rounds"/>
+    <fieldval field="sSave" value="Will negates (object)"/>
+    <fieldval field="sResist" value="Yes (object)"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDescript" tag="Cold" name="Cold" abbrev="Cold"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sLevel" tag="2" name="2" abbrev="2"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Metal" name="Metal Elemental" abbrev="Metal Elemental"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="SpellEff" tag="DamCold" name="Damage (Cold)" abbrev="Damage (Cold)"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    </thing>
+  <thing id="spUmSleSto" name="Sleet Storm" description="Driving sleet blocks all sight (even darkvision) within it and causes the ground in the area to be icy. A creature can walk within or through the area of sleet at half normal speed with a DC 10 Acrobatics check. Failure means it can&apos;t move in that round, while failure by 5 or more means it falls (see the Acrobatics skill for details). The sleet extinguishes torches and small fires." compset="Spell" summary="Hampers vision and movement.">
+    <fieldval field="sCompDesc" value="dust and water"/>
+    <fieldval field="sArea" value="Cylinder (40-ft. radius, 20 ft. high)"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSchool" tag="Water" name="Water Elemental" abbrev="Water Elemental"/>
+    <tag group="sSubschool" tag="Creation" name="Creation" abbrev="Creation"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Cold" name="Cold" abbrev="Cold"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    </thing>
+  <thing id="spUmIceSto" name="Ice Storm" description="Great magical hailstones pound down upon casting this spell, dealing 3d6 points of bludgeoning damage and 2d6 points of cold damage to every creature in the area. This damage only occurs once, when the spell is cast. For the remaining duration of the spell, heavy snow and sleet rains down in the area. Creatures inside this area take a -4 penalty on Perception skill checks and the entire area is treated as difficult terrain. At the end of the duration, the snow and hail disappear, leaving no aftereffects (other than the damage dealt)." compset="Spell" summary="Hail deals 5d6 damage in cylinder 40 ft. across.">
+    <fieldval field="sCompDesc" value="dust and water"/>
+    <fieldval field="sArea" value="Cylinder (20-ft. radius, 40 ft. high)"/>
+    <fieldval field="sDuration" value="1 round/level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Cold" name="Cold" abbrev="Cold"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sSchool" tag="Water" name="Water Elemental" abbrev="Water Elemental"/>
+    <tag group="SpellEff" tag="DamBlud" name="Damage (Bludgeoning)" abbrev="Damage (Bludgeoning)"/>
+    <tag group="SpellEff" tag="DamCold" name="Damage (Cold)" abbrev="Damage (Cold)"/>
+    <tag group="SpellEff" tag="NegSkill" name="Decrease Skill Bonus" abbrev="Decrease Skill Bonus"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="MorDF" name="Material or Divine Focus" abbrev="{ref s_M}M{ref}/{ref s_DF}DF{ref}"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    </thing>
+  <thing id="spUmConCol" name="Cone of Cold" description="Cone of cold creates an area of extreme cold, originating at your hand and extending outward in a cone. It drains heat, dealing 1d6 points of cold damage per caster level (maximum 15d6)." compset="Spell" summary="1d6/level cold damage.">
+    <fieldval field="sCompDesc" value="a small crystal or glass cone"/>
+    <fieldval field="sRange" value="60 ft."/>
+    <fieldval field="sArea" value="Cone-shaped burst"/>
+    <fieldval field="sDuration" value="Instantaneous"/>
+    <fieldval field="sSave" value="Reflex half"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sLevel" tag="5" name="5" abbrev="5"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="RefHalf" name="Reflex Half" abbrev="Reflex Half"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sSchool" tag="Water" name="Water Elemental" abbrev="Water Elemental"/>
+    <tag group="SpellEff" tag="DamCold" name="Damage (Cold)" abbrev="Damage (Cold)"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="{ref s_M}M{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Cold" name="Cold" abbrev="Cold"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spUmFreSph" name="Freezing Sphere" description="Freezing sphere creates a frigid globe of cold energy that streaks from your fingertips to the location you select, where it explodes in a 40-foot-radius burst, dealing 1d6 points of cold damage per caster level (maximum 15d6) to each creature in the area. A creature of the water subtype instead takes 1d8 points of cold damage per caster level (maximum 15d8) and is staggered for 1d4 rounds. If the freezing sphere strikes a body of water or a liquid that is principally water (not including water-based creatures), it freezes the liquid to a depth of 6 inches in a 40-foot radius. This ice lasts for 1 round per caster level. Creatures that were swimming on the surface of a targeted body of water become trapped in the ice. Attempting to break free is a full-round action. A trapped creature must make a DC 25 Strength check or a DC 25 Escape Artist check to do so. You can refrain from firing the globe after completing the spell, if you wish. Treat this as a touch spell for which you are holding the charge. You can hold the charge for as long as 1 round per level, at the end of which time the freezing sphere bursts centered on you (and you receive no saving throw to resist its effect). Firing the globe in a later round is a standard action." compset="Spell" summary="Freezes water or deals cold damage.">
+    <fieldval field="sFocusDesc" value="a small crystal sphere"/>
+    <fieldval field="sTarget" value="See text"/>
+    <fieldval field="sEffect" value="See text"/>
+    <fieldval field="sArea" value="See text"/>
+    <fieldval field="sDuration" value="Instantaneous or 1 round/level; see text"/>
+    <fieldval field="sSave" value="Reflex half; see text"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sDuration" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sLevel" tag="6" name="6" abbrev="6"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="RefHalf" name="Reflex Half" abbrev="Reflex Half"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sSchool" tag="Water" name="Water Elemental" abbrev="Water Elemental"/>
+    <tag group="SpellEff" tag="DamCold" name="Damage (Cold)" abbrev="Damage (Cold)"/>
+    <tag group="SpellEff" tag="NegStagger" name="Inflict Stagger" abbrev="Inflict Stagger"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="F" name="Focus" abbrev="{ref s_F}F{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDescript" tag="Cold" name="Cold" abbrev="Cold"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spUmWhirlw" name="Whirlwind" description="This spell creates a powerful cyclone of raging wind that moves through the air, along the ground, or over water at a speed of 60 feet per round. You can concentrate on controlling the cyclone&apos;s every movement or specify a simple program. Directing the cyclone&apos;s movement or changing its programmed movement is a standard action for you. The cyclone always moves during your turn. If the cyclone exceeds the spell&apos;s range, it moves in a random, uncontrolled fashion for 1d3 rounds and then dissipates. (You can&apos;t regain control of the cyclone, even if it comes back within range.) Any Large or smaller creature that comes in contact with the spell effect must succeed on a Reflex save or take 3d6 points of damage. A Medium or smaller creature that fails its first save must succeed on a second one or be picked up bodily by the cyclone and held suspended in its powerful winds, taking 1d8 points of damage each round on your turn with no save allowed. You may direct the cyclone to eject any carried creatures whenever you wish, depositing the hapless souls wherever the cyclone happens to be when they are released." compset="Spell" summary="Cyclone deals damage and can pick up creatures.">
+    <fieldval field="sEffect" value="Cyclone 10 ft. wide at base, 30 ft. wide at top, and 30 ft. tall"/>
+    <fieldval field="sDuration" value="1 round/level (D)"/>
+    <fieldval field="sSave" value="Reflex negates; see text"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sDescript" tag="Air" name="Air" abbrev="Air"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sLevel" tag="8" name="8" abbrev="8"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="RefNeg" name="Reflex Negates" abbrev="Reflex Negates"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="sSchool" tag="Void" name="Void Elemental" abbrev="Void Elemental"/>
+    <tag group="SpellEff" tag="DamUntyped" name="Damage (Untyped)" abbrev="Damage (Untyped)"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="DF" name="Divine Focus" abbrev="{ref s_DF}DF{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    </thing>
+  <thing id="spUmStoVen" name="Storm of Vengeance" description="You create a huge black storm cloud in the air. Each creature under the cloud must succeed on a Fortitude save or be deafened for 1d4 x 10 minutes. Each round you continue to concentrate, the spell generates additional effects as noted below. Each effect occurs on your turn.{br}{br}2nd Round: Acid rains down in the area, dealing 1d6 points of acid damage (no save).{br}{br}3rd Round: You call six bolts of lightning down from the cloud. You decide where the bolts strike. No two bolts may be directed at the same target. Each bolt deals 10d6 points of electricity damage. A creature struck can attempt a Reflex save for half damage.{br}{br}4th Round: Hailstones rain down in the area, dealing 5d6 points of bludgeoning damage (no save).{br}{br}5th through 10th Rounds: Violent rain and wind gusts reduce visibility. The rain obscures all sight, including darkvision, beyond 5 feet. A creature 5 feet away has concealment (attacks have a 20% miss chance). Creatures farther away have total concealment (50% miss chance, and the attacker cannot use sight to locate the target). Speed is reduced by three-quarters. Ranged attacks within the area of the storm are impossible. Spells cast within the area are disrupted unless the caster succeeds on a Concentration check against a DC equal to the storm of vengeance&apos;s save DC + the level of the spell the caster is trying to cast." compset="Spell" summary="Storm rains acid, lightning, and hail.">
+    <fieldval field="sEffect" value="360-ft.-radius storm cloud"/>
+    <fieldval field="sDuration" value="Concentration (maximum 10 rounds) (D)"/>
+    <fieldval field="sSave" value="See text"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="FGGGenera"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Concent" name="Concentration" abbrev="Concentration"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sLevel" tag="9" name="9" abbrev="9"/>
+    <tag group="sRange" tag="Long" name="Long (400 + 40 ft./level)" abbrev="{ref s_Long}Long{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Summoning" name="Summoning" abbrev="Summoning"/>
+    <tag group="SpellEff" tag="DamAcid" name="Damage (Acid)" abbrev="Damage (Acid)"/>
+    <tag group="SpellEff" tag="DamBlud" name="Damage (Bludgeoning)" abbrev="Damage (Bludgeoning)"/>
+    <tag group="SpellEff" tag="DamElec" name="Damage (Electricity)" abbrev="Damage (Electricity)"/>
+    <tag group="SpellEff" tag="NegDeafen" name="Inflict Deafness" abbrev="Inflict Deafness"/>
+    <tag group="sClass" tag="cdUmClCold"/>
+    <tag group="SpellEff" tag="NegSpeed" name="Decrease Speed" abbrev="Decrease Speed"/>
+    </thing>
+  <thing id="deiUmOrcus" name="Orcus" description="{b}Symbol:{/b} Wand of Orcus \n{b}Garb:{/b} Black cowl and robe ensemble\n{b}Form of Worship and Holidays:{/b} Day of the Dead (Late Fall), Nights of blood red and horned moons. Worship usually involves grave robbery and the animation and conscription of the newly dead to the forces of evil.\n{b}Typical Worshippers:{/b} Monsters, Undead and Evil Humanoids\n\nOrcus is a demon prince with - surprisingly enough - many human worshipers. He has a strange fascination with humans and their desire for power, possibly because it is this very flaw that causes them so frequently to seek that which he controls: power over death. Orcus is the lord of all undead and he resides in the Abyss in his Palace of Bones surrounded by a legion of vampires and liches.\n\nEvil, ruination and wanton destruction are his only goals. He is most often depicted as a bloated ram-headed, bat-winged monstrosity with cloven-hoofed goat legs. He wields the &quot;Wand of Orcus,&quot; a legendary skull-tipped obsidian rod that is rumored to slay any living thing it touches. Though mostly worshiped by the monstrous races, the ranks of Orcus&apos; human worshipers are swelling, as Orcus grants his followers power in large, liberal doses. It is not uncommon for Orcus to give relatively low-level priests command of vast numbers of undead to do his bidding. His symbol is either a demonic ramheaded skull (the most common), a representation of himself seated on his throne, or a depiction of his skull-tipped wand. His priests favor heavy, dark hooded robes and ornamental maces stylized to represent his skull-tipped wand." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Demon Lord of the Undead"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotEvil"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="WepProf" tag="wMaceHeavy"/>
+    <tag group="DeityCat" tag="Demon"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmSefag" name="Sefagreth" description="{b}Symbol:{/b} Compass rose \n{b}Garb:{/b} Elaborate robes of blue, a color often associated with diplomats.\n{b}Form of Worship and Holidays:{/b} The founding days of cities are considered holy days to Sefagreth, regardless of when they occur.\n{b}Typical Worshippers:{/b} Aristocrats, merchants, seafarers and caravan masters.\n\nSefagreth is a handsome deity popular among aristocrats, diplomats, tradesmen and courtiers. The father of cities and founder of trade, Sephagreth is a deity whose primary concern is the creation and maintenance of wealth and good relations between cities. Sefagreth is therefore considered a neutral party who aids in disputes among the gods, and counts diplomats among his followers.\n\nHe disdains combat, preferring to use argument and rhetoric, and allowing others to do the fighting." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Commerce, Trade and Cities"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdUmDiplom"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    <tag group="WepProf" tag="wRapier"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmSet" name="Set" description="{b}Symbol:{/b} Black Ankh of Set \n{b}Garb:{/b} Kilt, sandals, and ceremonial head-dress (beast mask), Black Ankh of Set \n{b}Favored Weapon:{/b} Quarterstaff, spear, poisoned weapons \n{b}Typical Worshippers:{/b} Evil power-seeking humanoids, evil monks, assassins\n\nSet is a greater god, worshiped on many planes in many forms. He most often appears as a scaled humanoid with the head of a jackal. He is utterly dedicated to the orderly spread of evil and oppression. His symbol is the coiled cobra, though any snake can be used to represent his power. His temples are filled with enormous serpents, always poisonous. His skin is poisonous to the touch. He makes his home in the Nine Hells.\n\nOrganized groups of assassins are known to be dedicated to his worship. His priests carry staves worked on one end into the head of a cobra. The cobra head is often tipped with steel fangs coated with poison. His clerics often carry a stylized black spear, representing the {i}Spear of Darkness{/i} he carries.  Many of his worshippers tattoo themselves with serpents or cobras. An evil sect of monks dedicated to Set and led by a vampire is detailed in the {b}Necromancer Games{/b} module {b}{i}L2: Vampires and Liches{/b}{/i}." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Evil and the Night"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="WepProf" tag="wSpear"/>
+    <tag group="AlignTemp" tag="LawEvil"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmThurs" name="Thursis" description="{b}Symbol:{/b} Four envenomed arrows arranged in an &quot;X&quot; \n{b}Garb:{/b} Armor anointed in the blood of enemies.\n{b}Form of Worship and Holidays:{/b} Beheading of prisoners upon the eve of battle and the ceremonial cremation of the fallen afterwards. Thursis&apos; most holy day falls in early June, the traditional start of the military campaign season.\n{b}Typical Worshippers:{/b} Warriors, mercenaries and warlords.\n\nThursis as a powerfully-built red haired man driving an iron chariot drawn by a team of four fiendish warhorses.  His chariot glows with hellfire and is adorned with the animated heads of his fallen enemies which moan incessantly. Thursis wear spiked plate armor of archaic design which glows a sickly green. His cursed arrows are said to afflict his enemies with a variety of infections and demonic fevers which render them unable to defend themselves. Thursis is not so much worshipped as respected and feared, for he has been known to abandon faithless followers in the midst of battle, even going so far as to aid their enemies." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Battle"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wBattleaxe"/>
+    <tag group="WepProf" tag="wCompLong"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmThyr" name="Thyr" description="{b}Symbol:{/b} Silver cross on a white field\n{b}Garb:{/b} White robes trimmed with silver, purple or gold - the colors of kingship\n{b}Form of Worship and Holidays:{/b} Last day of every month, on the last holy day of every year is set-aside for non-royalty to have their grievances heard.\n{b}Typical Worshippers:{/b} Humans, Royalty\n\nThyr is the god of wise and just rule. He is normally depicted as a wizened king seated on a great throne holding a rod of kingship in one hand and a chalice of peace in the other. His principles are justice, order and peace. He represents proper and traditional rule and as such was once worshiped (at least in name) by all human royalty. He is the embodiment of the enlightened human caste system where each person has a fairlydetermined role in a lawful society intended to create the greatest good for the greatest number.\n\nHis symbol is a silver cross on a white field, symbolizing the upturned cross-haft of his sister&apos;s sword, which he thrust into the earth to end the gods&apos; war. Upon seeing the blood of so many gods shed, Thyr foreswore the use of swords and his priests, for this reason, may not use bladed weapons. Many favor reinforced rods, similar to light maces, modeled after Thyr&apos;s own rod of kingship. The noble eagle and lion are his sacred creatures." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Law and Justice"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="WepProf" tag="wMaceHeavy"/>
+    <tag group="WepProf" tag="wMaceLight"/>
+    <tag group="AlignTemp" tag="LawGood"/>
+    </thing>
+  <thing id="deiUmTsath" name="Tsathogga" description="{b}Symbol:{/b} Likeness of the Frog God, carved in soapstone \n{b}Garb:{/b} Green and violet robes, if any \n{b}Favored Weapon:{/b} Any that slash, cut, and are wickedly curved, as well as, ropes or nets \n{b}Form of Worship and Holidays:{/b} Too gruesome and perverse to describe even by {b}Necromancer Games{/b} standards \n{b}Typical Worshippers:{/b} Aberrations, tsathar, sentient frogs, evil water monsters, The Violet Brotherhood\n\nThis foul frog-demon cares less about the machinations of men and power than he does about obliterating light and life with slow, oozing sickness and decay. He is the vicious dark evil bubbling up from beneath the surface, the foul corruption at the heart of the earth. Making his home on the plane of Tarterus at the mouth of the vast swamp of filth deposited by the River Styx as it flows out of the Abyss, Tsathogga&apos;s main form is a colossally bloated humanoid frog with spindly, elongated limbs and fingers. His corpulent body exudes all manner of foul humors and fluids that leak into the vile swamp in which he lies. He has positioned himself so that all of the slime and filth from the River Styx feeds into his gaping, toothy maw. He never moves and rarely speaks other than to emit an unintelligible shrieking.\n\nTsathogga commands a host of evil creatures - notably evil aberrations and his own vile frog race, the tsathar (detailed in the {b}Necromancer Games{/b} module {b}{i}D1: The Tomb of Abysthor{/b}{/i}).  Thousands of fawning tsathar servants continuously bathe his body in fetid slime from the evil swamp, awaiting the divine bliss of being randomly devoured by him. His hatred of light and lack of human worshippers (though there are a few notable exceptions) mean that he is little known to surface races. He has had few organized centers of worship and no standardized holy symbol - each worshipper choosing its own way to best depict his deific vileness. Occasionally, tsathar priests of Tsathogga on Tarterus sculpt a small likeness of him out of foul chunks of solid waste from the Styx that harden into a vile green substance similar to soapstone when taken from that plane. Such items are prized as holy relics." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Demon Frog God"/>
+    <usesource source="FGGGenera"/>
+    <tag group="DeityCat" tag="Demon"/>
+    <tag group="AlignTemp" tag="ChaotEvil"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="First" priority="20000"><![CDATA[~Must have Cleric Favored Weapon class ability to receive this.
+Doneif (hero.tagis[Ability.cClrDeiWep] <> 1)
+
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      foreach thing in BaseWep where "wType.S | IsWeapon.wNet"
+        perform eachthing.pulltags[WepProf.?]
+        nexteach
+
+      perform hero.pushtags[WepProf.?]
+      
+      ~ Cycle through and apply the Helper.ExoticProf tag to all examples of 
+      ~ the chosen weapon on the hero. This is important for the Aldori Dueling
+      ~ Sword specifically, and possibly others.
+      var searchexpr as string
+
+      searchexpr = tagids[WepProf.?,"|"]
+
+      foreach pick in hero from BaseWep where searchexpr
+        perform eachpick.assign[Helper.ExoticProf]
+        nexteach]]></eval>
+    </thing>
+  <thing id="deiUmTykee" name="Tykee" description="{b}Symbol:{/b} A Wheel of Fortune \n{b}Garb:{/b} Golden robes and courtiers attire, symbolizing good fortune and success.\n{b}Form of Worship and Holidays:{/b} Gamblers call upon Tykee constantly, and any day when someone wins big is considered a holy day for this goddess. Her worshippers make sure to donate a portion of all winnings to the Church of Tykee.\n{b}Typical Worshippers:{/b} Gamblers, rogues, bards, and all those who live risky lives revere this deity.\n\nLady Luck wears many guises. She embodies good fortune, and is praised during winning streaks and big wagers. She is also appealed to by losing gamblers, in the hope that she will eventually favor them. Other strokes of good fortune such as good harvests, unexpected pregnancies, financial windfalls and similar events are also sacred events to Tykee and her followers. Her temples are usually quite prosperous, as especially lucky gamblers often give part of their winnings to the goddess." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Luck and Good Fortune"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="WepProf" tag="wWhip"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmVanit" name="Vanitthu" description="{b}Symbol:{/b} A gray shield emblazoned with a stylized black fortress tower \n{b}Garb:{/b} A gray tabard with a black tower sigil\n{b}Form of Worship and Holidays:{/b} Prayers are often said to Vanitthu at the start of sieges or by guardsmen prior to heading out on the beat.\n{b}Typical Worshippers:{/b} Barristers, judges, guards, professional soldiers, military officers and nobles.\n\nSome claim that Vanitthu is the son of the great god Anumon; others go so far as to say that Vanitthu is yet another aspect of the great god (this schism has caused considerable conflict within the faith). In either case, Vanitthu is the embodiment of martial perfection, law, the strength of the state, and the punishment of the guilty. A grim and resolute deity, Vanitthu is always shown bearing a spear made of lightning, and a polished mithral shield. He often appears to his followers on the field of battle, especially to those engaged in or defending against sieges." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of the Steadfast Guard"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawNeut"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wSpear"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmZadat" name="Zadastha" description="{b}Symbol:{/b} A wreath of pink and red roses \n{b}Garb:{/b} Gowns and courtiers&apos; outfits\n{b}Form of Worship and Holidays:{/b} The expression of love in all its forms is considered one of the most faithful things that worshippers can do; many of Zadastha&apos;s followers tend to be overly exuberant in their declarations, often to the embarrassment of their would-be lovers. The faith&apos;s most holy time is Lovers&apos; Day, the first bloom of early spring.\n{b}Typical Worshippers:{/b} Poets, romantic authors, chivalrous knights, bards who perform songs of love and hopeless romantics of all stripes. This faith is particularly popular among lovelorn students and teenagers.\n\nZadastha the Beautiful is the goddess of true love. Her gaze is said to bring forth love even in the cruelest of hearts and her perfume to cause lustful thoughts to fill the mind of any being." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Love"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdUmDiplom"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="WepProf" tag="wLongbow"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    </thing>
+  <thing id="deiUmArden" name="Arden" description="{b}Symbol:{/b} Sun staff (staff with a bronze sphere containing an ankh) \n{b}Garb:{/b} Ivory tunics and tabards, emblazoned with sun shaped embroidered gold \n{b}Form of Worship and Holidays:{/b} The holiest of celebrations occur during lunar eclipses, followed by high noon on the summer solstice. High noon marks a regular prayer time for most followers \n{b}Typical Worshippers:{/b} Of old he was worshiped by humans, though Arden is not currently worshipped on this plane\n\nArden is a lesser avatar of the sun god Ra. He is depicted as a hawk-headed, muscular man wearing a short kilt of precious metals and jewels. His eyes have the power to shoot searing beams of sunlight. He carries a staff tipped on one end with a bronze sphere representing the sun containing an ankh and on the other end with a bronze hawk head. \n\nThis staff is known as a sun staff and is carried by his worshipers. They are treated as quarterstaves.  He also wields a bronze short sword. His worshipers who select the War domain are proficient with the short sword in addition to their normal proficiencies. Arden was long ago destroyed by evil deities, including Tsathogga, the frogdemon.  His remains were gathered and treasured by his worshipers as relics. \n\nHowever, it has been ages since Arden has been worshiped on this plane by any save beggars and the slightly mad who still speak prophecies of his rebirth." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of the Sun"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="AllowDom" tag="cdAir"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdSun"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="WepProf" tag="wShortswd"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmArn" name="Arn" description="{b}Symbol:{/b} Radiant half circle of bronze, representing the sun \n{b}Garb:{/b} Yellow and white robes\n{b}Form of Worship and Holidays:{/b} Disrobing at sunrise before the rising sun. The summer solstice.\n{b}Typical Worshippers:{/b} Good-aligned arcanists and celestials.\n\nKnown to be the son of Vionir and commonly believed to be the son of Arden, Vionir is referred to as the herald of light. He serves as Vionir&apos;s messenger and has had many cults throughout the ages who worship him as their chief deity. His followers constantly seek to recover the remains of Arden, hoping to fully restore his godhood and re-establish the triumvirate of light and cast down the shadows of evil forever." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Lesser God of the Sun"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdSun"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmBelWi" name="Belon the Wise" description="{b}Symbol:{/b} Clear quartz crystal or flawless diamond \n{b}Garb:{/b} Travelers clothes and long white traveling cloaks\n{b}Form of Worship and Holidays:{/b} Offerings of silver given at the beginning and end of long journeys.\n{b}Typical Worshippers:{/b} Rangers, bards, wandering wizards those who make their living traveling.\n\nBelon appears to his worshippers as an elderly man wearing flowing white robes and carrying a walking staff.  Belon is the embodiment of things learned upon the road be they magical or mundane knowledge. Priests of Belon often serve as guides, educating themselves in local customs in order to afford better traveling conditions for those in their care." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Travel"/>
+    <fieldval field="deiEpithet" value="Wanderer in White"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="NeutGood"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdTravel"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmHorgi" name="Horgrim" description="{b}Symbol:{/b} A black spearhead covering a golden disk representing an eclipse \n{b}Garb:{/b} Black robes\n{b}Form of Worship and Holidays:{/b} Casting of spells and the sacrifice of enemies on the field of battle.\n{b}Typical Worshippers:{/b} Evil monks, warriors, wizards and nobles.\n\nHorgrim is commonly depicted as a handsome male figure in black robes wielding a shortspear. A nearly forgotten god, Horgrim was popular thousands of years ago. Infighting between sects of his monks and priests led to the decline of his worship, however some monks and seekers of lost arcana still venerate him. There are no known temples to Horgrim, but a few monasteries of monks still hold scraps of his treatises on the art of war as their holiest of holies.  War wizards who have learned to master some of Horgrim&apos;s most devastating spells hold closely the secrets of their eldritch powers." compset="Deity" uniqueness="unique">
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawEvil"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wShortspr"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmPekko" name="Pekko" description="{b}Symbol:{/b} Beer barrel suspended from a pole \n{b}Garb:{/b} Brewer&apos;s apron\n{b}Form of Worship and Holidays:{/b} Harvest Festival, Feast of Fools, Brewers&apos; Fest.\n{b}Typical Worshippers:{/b} Most often revered by gnomes, halflings, dwarves and humans.\n\nPekko takes many guises among his worshippers often appearing as a gnome, human or dwarf of portly girth, wearing a leather apron and carrying a beaker for measuring and sampling ale. In all guises he carries a staff in one hand and a barrel of ale over his shoulder. Pekko may be boisterous and emotional, laughing one minute, or brooding and tearful the next but always quick to recover and share his good mood once again." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Ale and Spirits"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="WepProf" tag="wQtrstaff"/>
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    </thing>
+  <thing id="deiUmTelop" name="Telophus" description="{b}Symbol:{/b} Raining cloud partially obscuring a radiant sun \n{b}Garb:{/b} Green and earth tone woolen robes and vestments\n{b}Form of Worship and Holidays:{/b} Telophus is worshiped by harvest and planting celebrations as well as the first frost and first thaw.\n{b}Typical Worshippers:{/b} Farmers and halflings, some druids revering his natural cycle aspect.\n\nThis god is the embodiment of the uncaring changing seasons. He is prayed to not so much to bring good crops, but to be convinced to hold off the early frost or bring the spring thaw. He requires appeasement and devoted following, being known to test his followers&apos; faithfulness and resolve when it suits him" compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Lord of Crops and the Seasons"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawNeut"/>
+    <tag group="AllowDom" tag="cdAir"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="WepProf" tag="wSickle"/>
+    <tag group="AllowDom" tag="cdFire"/>
+    <tag group="AllowDom" tag="cdWater"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmVioni" name="Vionir" description="{b}Symbol:{/b} Stylized solar disk with wavy arms.\n{b}Garb:{/b} White satin robes\n{b}Form of Worship and Holidays:{/b} Worshippers fast during every new moon and offer gifts to the temple on both solstices.\n{b}Typical Worshippers:{/b} Good-aligned arcanists and celestials\n\nMother of Arn the Sun Lord, Vionir is popular among commoners and farmers. As with her son she is considered the successor to Arden, whom some believe was her husband before his destruction by Tsathogga.  Vionir&apos;s priesthood is vehemently opposed to the Violet Brotherhood whom they seek to expose at every opportunity.  Worshippers also loathe undead and destroy them whenever possible." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Light"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawGood"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdSun"/>
+    <tag group="WepProf" tag="wSpear"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmZors" name="Zors" description="{b}Symbol:{/b} The figure of a man tied upside down to a gallows or tree, or a noose.\n{b}Garb:{/b} Peasants clothes\n{b}Form of Worship and Holidays:{/b} Worshippers celebrate after winning or losing great fortunes gambling, upon great lottery payouts, and actively protest at public executions\n{b}Typical Worshippers:{/b} Gamblers, beggars, slaves, travelers, the poor, and prisoners awaiting execution.\n\nZorz is the demigod of last chances and is commonly depicted hanging upside down from the tree of life, where he waits to be devoured by Nidhogg the eternal dragon.  Those who pray to Zors do so when no other god will answer them or when all other hope is lost. By the same token he is also the deity of great luck, as he escaped the bonds of the tree of life so too have his followers found themselves escaping fates worse than death. In reverence to his luck aspect the Zorsans hold a great weekly lottery collecting huge sums of money which are always paid to the lucky number holder lest the demigod exact some vengeance of unluckiness upon those who would corrupt the purpose of the game.\n\nProphets of Zors openly oppose ritual executions in ordered societies as cruel and unusual punishment.  They frequently are found performing the ceremony of the hanged man near gallows or other places of public execution. In this ritual one of their number is paraded before the jeering throngs by a noose, only to have the noose slip free, and the &quot;prisoner&quot; escape, symbolizing a second chance to do better in this life, lest one pay the ultimate price in the next." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Demigod of Luck, the Hanged Man"/>
+    <fieldval field="deiEpithet" value="The Fortunes Fool"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotNeut"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdLuck"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="WepProf" tag="wDagger"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmCrocu" name="Crocutus" description="{b}Symbol:{/b} Painted gnoll or hyena skull \n{b}Garb:{/b} Spotted or striped hyena skins. Clerics of Crocutus sometimes shave their own pelts into wild hair tattoos.\n{b}Form of Worship and Holidays:{/b} Blood sacrifices and flaying of living foes, especially on nights with a full or new moon.\n{b}Typical Worshippers:{/b} Gnolls and gnoll-kin.\n\nCrocutus is a powerfully-built creature resembling a large ogre with a gnoll&apos;s head. His fur has been shaved into chaotic patterns and runes of death and destruction.  A wily demon-lord, Crocutus carved his way to rulership of the gnoll pantheon through murder and treachery, deposing his predecessor and taking up his dreaded flail. Crocutus favors the most bloodthirsty, ruthless and treacherous of his worshippers, and ignores the prayers of the weak and helpless." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Demon Lord of Gnolls"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotEvil"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdChaos"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="WepProf" tag="wGlaive"/>
+    <tag group="WepProf" tag="wFlailHvy"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmDarAl" name="Darach-Albith" description="{b}Symbol:{/b} A bow and sword hanging from the eternal oak\n{b}Garb:{/b} Shades of grey, green, hazel, chestnut and sable\n{b}Form of Worship and Holidays:{/b} Eve of every midmonth during the summer\n{b}Typical Worshippers:{/b} High and wood elves, warriors, wizards and rangers of the elven race.\n\nThe father of all elves and firstborn of the race, Darach- Abith is portrayed as a handsome elven man draped in a cloak of forest leaves. His skin may appear as gleaming white as birch bark, or any of the varying shades of brown and green found in primeval woodlands. Darach has keen golden eyes like those of an owl. His sword {i}Tian Tu Lan{/i} and his bow {i}Fayar Nocht{/i} are said to never miss a target and slay those of evil intent instantly." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="High God of Elves"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotGood"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdPlant"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wLongbow"/>
+    <tag group="WepProf" tag="wLongsword"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="Elf"/>
+    </thing>
+  <thing id="deiUmDwerf" name="Dwerfater" description="{b}Symbol:{/b} Hammer and anvil \n{b}Garb:{/b} Armor of mithril or steel\n{b}Form of Worship and Holidays:{/b} Priests worship at the forge, crafting items of steel and mithril.  The most sacred steel is tempered in virgin snow on Orenday, the first full moon after midwinter.\n{b}Typical Worshippers:{/b} Dwarves\n\nDwerfater appears as an ancient dwarf, whose beard is the color of mithril and touches the ground at his feet. He always wears a blackened leather apron over a coat of mithril mail and always carries his mighty warhammer {i}Noolhamr{/i}." compset="Deity" uniqueness="unique">
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawGood"/>
+    <tag group="AllowDom" tag="cdUmCreati"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdStrength"/>
+    <tag group="WepProf" tag="wWarhammer"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="Dwarf"/>
+    </thing>
+  <thing id="deiUmGrota" name="Grotaag" description="{b}Symbol:{/b} Rotting severed head \n{b}Garb:{/b} Usually skins, hides and crude metal armor\n{b}Form of Worship and Holidays:{/b} Blood sacrifice of captured foes or ceremonial victims from the priest&apos;s own tribes, performed under the waxing and waning crescent moon.\n{b}Typical Worshippers:{/b} Orcs, half-orcs, some goblins\n\nGrotaag is the personification of orcish might and brutality.  Appearing as a huge, powerful orc, Grotaag towers over battlefields, crushing friend and foe alike beneath his black hobnailed boots. He often responds to blood sacrifice by sending evil creatures, or even personally manifesting himself.  His howls of barbaric rage rumble like thunder across the battlefield causing the earth to shake. In battle, Grotaag disdains the use of missile weapons, calling them the weapons of weaklings or - worse - elves." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Orcs"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="ChaotEvil"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wGreataxe"/>
+    <tag group="DeityCat" tag="Orc"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="deiUmKalAy" name="Kal&apos;Ay-Mah" description="{b}Symbol:{/b} A blood-covered woman with four arms wearing a necklace of skulls \n{b}Garb:{/b} Blood-stained robes adorned with skulls and the severed limbs of enemies \n{b}Typical Worshipers:{/b} Assassins, religious scholars\n\nThe goddess Kal&apos;Ay-Mah, the Black Mother, is the bringer of destruction and preserver of order. She is called patron to both assassins and those seeking greater understanding, an often-confusing set of extremes to those who fail to truly grasp Kal&apos;Ay-Mah&apos;s divine role. The Black Mother is described as a truly fearsome creature by those who have claimed contact with her avatar - a black face wetted with blood, the heads of those she has slain hanging about her neck and their severed arms as a girdle about her waist. Four great arms stretch from her body, a bloody sword gripped in her upper left hand and the head of a demon gripped by the lower left. If these grotesque features alone had failed to capture attention, the eyes surely would - dark, ruinous and raging." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="The Black One"/>
+    <fieldval field="deiEpithet" value="The Black Mother"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawEvil"/>
+    <tag group="WepProf" tag="wLongsword"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdKnow"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    </thing>
+  <thing id="deiUmKel" name="Kel" description="{b}Symbol:{/b} Kite shield of purest white\n{b}Garb:{/b} White robes trimmed in blood red\n{b}Favored Weapon:{/b} Shields of all types for shield bash\n{b}Form of Worship and Holidays:{/b} Evening prayers for protection and health at vespers. Special holy days on the eve of the solstices and equinoxes for the coming season.\n{b}Typical Worshippers:{/b} Humans, Guardians, Paladins, though not currently worshipped.\n\nKel is the sister of Thyr and Muir, triplet siblings known as the Three Gods. She was popular among humans until around 10,000 years ago when she gave up her life to prevent Orcus from conquering the Material Plane. She was normally depicted as an armored woman holding a kite shield with a benevolent but sad expression on her face. It was said she carried the sorrows of the world on her shoulders and later stated that she must have seen the fate that would befall her. Her principles were the protection and safety of civilized societies where individuals could grow and achieve their destinies without fear of sudden calamity or destruction. When she sacrificed herself, her siblings assumed her spheres of influence and incorporated her goals into their own. It is rumored, however, that a portion of her essence was released upon her death and became twisted with hate and vengeance for the end that she met and coalesced into a new deity that was the very antithesis of all she had stood for - Hel, Lady of Death and Pestilence. If Kel&apos;s church were somehow revived, it is certain that they would make eradication of that apostate faith as one of its top priorities. Her sacred animal is the lowly hedgehog for his innate protective abilities, and her faithful often repeat the ancient axiom, &quot;The fox knows many tricks; the hedgehog one good one.&quot;" compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddess of Self-Sacrifice"/>
+    <fieldval field="deiEpithet" value="Lady of Protection"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AlignTemp" tag="LawGood"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="First" priority="20000"><![CDATA[~Must have Cleric Favored Weapon class ability to receive this.
+Doneif (hero.tagis[Ability.cClrDeiWep] <> 1)
+
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      foreach thing in BaseWep where "wCategory.ShieldBash"
+        perform eachthing.pulltags[WepProf.?]
+        nexteach
+
+      perform hero.pushtags[WepProf.?]
+      
+      ~ Cycle through and apply the Helper.ExoticProf tag to all examples of 
+      ~ the chosen weapon on the hero. This is important for the Aldori Dueling
+      ~ Sword specifically, and possibly others.
+      var searchexpr as string
+
+      searchexpr = tagids[WepProf.?,"|"]
+
+      foreach pick in hero from BaseWep where searchexpr
+        perform eachpick.assign[Helper.ExoticProf]
+        nexteach]]></eval>
+    </thing>
+  <thing id="deiUmMitra" name="Mitra" description="{b}Symbol:{/b} Scales bearing twin flames \n{b}Garb:{/b} White and copper robes trimmed with gold\n{b}Form of Worship and Holidays:{/b} Last day of every week, families gather to feast and commune.\n{b}Typical Worshippers:{/b} Paladins, fighters, monks, farmers\n\nMitra is the god of the sun, as well as law and justice. Mitra gained the domains of Muir and Thyr in the ages of their decline, and has maintained prominence with the common folk. His clergy is widespread, and temples and shrine may be found in all lands. Mitra requires just and fair treatment of all good beings from his followers, as well as piety and charity. He is often depicted as a noble, strong man of middle years, wearing a pale copper robe and wielding a longsword. Warriors and knights venerate Mitra through great deeds and heroic quests in his name. Commoners show kindness to strangers and help their fellows in times of need. His symbol of a sunburst behind the scales of justice notes his former domain incorporated with his new influences. The noble lion is his sacred creature." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="God of Law, Justice and the Sun"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdGood"/>
+    <tag group="AllowDom" tag="cdHealing"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdProtect"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="WepProf" tag="wLongsword"/>
+    <tag group="AlignTemp" tag="LawGood"/>
+    </thing>
+  <thing id="deiUmSnuur" name="Snuurge" description="{b}Symbol:{/b} A crooked-hafted war pick \n{b}Garb:{/b} Greasy leather clothing with golden necklaces\n{b}Form of Worship and Holidays:{/b} Snuurge&apos;s followers revel in blood sacrifice, and also fling gold into forge fires as a tribute to their god. His rites are held on the Night of Goblins (Midsummer), and on moonless nights. Feasts and overeating are also common forms of worship.\n{b}Typical Worshippers:{/b} Goblins, hobgoblins, bugbears\n\nCompletely hairless, this god manifests as a grossly fat, horned goblin.  He wields a great double-handed warpick, and is also known for his stealth and deceptiveness. A master of disguise, it is said that Snuurge once lay down and impersonated a mountain in order to avoid the wrath of Bowbe, whom he had defeated in a drinking match. Snuurge is also said to have fathered the goblin pantheon and is held first above all other goblin gods. Even the hobgoblins who hold his son Kakobovia as most revered still offer sacrifices to Snuurge for fear of his wicked wrath.  Snuurge is mortal enemy of all dwarves and gnomes. He wears a necklace made from the skulls of dwarven kings, and earrings crafted from the skeletons of gnomes. In battle, Snuurge dresses in a filthy coat of scale mail in battle which barely covers his immense gut." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Father of Goblins"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="Goblin"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="WepProf" tag="wPfPickaxe"/>
+    <tag group="AllowDom" tag="cdEarth"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdMagic"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    </thing>
+  <thing id="deiUmDamTo" name="Dame Torren" description="{b}Symbol:{/b} A wavy line symbolizing the blowing wind\n{b}Garb:{/b} A feathered cape.\n{b}Form of Worship and Holidays:{/b} Holidays celebrated by followers of Oghma are also sacred to Dame Torren.\n{b}Typical Worshippers:{/b} Sailors, bards who play wind instruments, millers and those whose livelihood depends on the winds.\n\nThis goddess is credited with carrying the music to the ears of the faithful. She is considered Oghma&apos;s handmaiden and is always worshipped in association with him." compset="Deity" summary="This goddess is credited with carrying the music to the ears of the faithful. She is considered Oghma&apos;s handmaiden and is always worshipped in association with him." uniqueness="unique">
+    <fieldval field="deiPortfol" value="Goddes of the Four Winds"/>
+    <usesource source="FGGGenera"/>
+    <tag group="AllowDom" tag="cdAir"/>
+    <tag group="AllowDom" tag="cdAnimal"/>
+    <tag group="WepProf" tag="wScimitar"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AlignTemp" tag="NeutNeut"/>
+    </thing>
+  <thing id="deiUmNerga" name="Nergal" description="Precious little is known of the infernal duke Nergal" compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Atrocity, Pestilence and Wave"/>
+    <usesource source="FGGGenera"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AllowDom" tag="cdLaw"/>
+    <tag group="AllowDom" tag="cdWar"/>
+    <tag group="AlignTemp" tag="LawEvil"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="WepProf" tag="wScythe"/>
+    </thing>
+  </document>

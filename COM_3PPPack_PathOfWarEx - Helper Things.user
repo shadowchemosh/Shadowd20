@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_3PPPack_PathOfWarEx - Helper Things"/>
+  <fileinfo>
+    <info_author>TheIronGolem
+      Email: mail@theirongolem.com</info_author>
+    <info_history>March 6, 2015 - TheIronGolem
+      -Created New
+    -Added the Cursed Razor Discipline
+    -Added the Shattered Mirror Discipline</info_history>
+    </fileinfo>
+  <thing id="zPWCrsRazr" name="Cursed Razor" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="CurseRazor"/>
+    <tag group="HasMan" tag="CurseRazor"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wFtrGroup" tag="Spears"/>
+    <tag group="wFtrGroup" tag="BladeLight"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  <thing id="dPWCrsRazr" name="Cursed Razor Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="CurseRazor"/>
+    </thing>
+  <thing id="zPWShaMirr" name="Shattered Mirror" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="ShaMirror"/>
+    <tag group="HasMan" tag="ShaMirror"/>
+    <tag group="ClassSkill" tag="skCrafScul"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wFtrGroup" tag="Close"/>
+    <tag group="wFtrGroup" tag="BladeLight"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassSkill" tag="skCrafGlas"/>
+    <tag group="ClassSkill" tag="skCrafPain"/>
+    <eval phase="First" priority="50"><![CDATA[~ Setup the Discipline Class Skill
+      ~Unlike most disciplines, this one has multiple class skills, so we won't use the PWsetupDSk procedure as it can only handle one and we don't want to rewrite it to use a foreach
+      perform hero.childfound[skCrafScul].assign[Discipline.ShaMirror]
+      perform hero.childfound[skCrafGlas].assign[Discipline.ShaMirror]
+      perform hero.childfound[skCrafPain].assign[Discipline.ShaMirror]]]></eval>
+    </thing>
+  <thing id="dPWShaMirr" name="Shattered Mirror Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="ShaMirror"/>
+    </thing>
+  <thing id="arHdPWHarb" name="Harbinger" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Harbinger" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPW4"/>
+    </thing>
+  <thing id="zPWEtnGrdn" name="Eternal Guardian" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="EternGuard"/>
+    <tag group="HasMan" tag="EternGuard"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wFtrGroup" tag="Polearm"/>
+    <tag group="wFtrGroup" tag="Hammer"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  <thing id="dPWEtnGrdn" name="Eternal Guardian Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="EternGuard"/>
+    </thing>
+  <thing id="zPWMithCur" name="Mithral Current" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="HasMan" tag="MithCurr"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  <thing id="dPWMithCur" name="Mithral Current Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    </thing>
+  <thing id="zPWRvnHgls" name="Riven Hourglass" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="RivnHglass"/>
+    <tag group="HasMan" tag="RivnHglass"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  <thing id="zPWSlpGods" name="Sleeping Goddess" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="SlpGoddess"/>
+    <tag group="HasMan" tag="SlpGoddess"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassSkill" tag="skPUAhypno"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wFtrGroup" tag="Monk"/>
+    <tag group="wFtrGroup" tag="Spears"/>
+    <tag group="wFtrGroup" tag="Flails"/>
+    <tag group="wFtrGroup" tag="WPMndBld"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  <thing id="dPWSlpGods" name="Sleeping Goddess Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="SlpGoddess"/>
+    </thing>
+  <thing id="dPWRvnHgls" name="Riven Hourglass Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="RivnHglass"/>
+    </thing>
+  <thing id="zPWElmFlux" name="Elemental Flux" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="ElemFlux"/>
+    <tag group="HasMan" tag="ElemFlux"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="wFtrGroup" tag="BladeLight"/>
+    <tag group="wFtrGroup" tag="Monk"/>
+    <tag group="wFtrGroup" tag="Thrown"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  <thing id="dPWElmFlux" name="Elemental Flux Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="ElemFlux"/>
+    </thing>
+  <thing id="mechPoWEx" name="Path of War Expanded Mechanic" description="This bootstraps the martial disciplines from Path of War Expanded" compset="Mechanics">
+    <bootstrap thing="zPWCrsRazr"></bootstrap>
+    <bootstrap thing="zPWElmFlux"></bootstrap>
+    <bootstrap thing="zPWEtnGrdn"></bootstrap>
+    <bootstrap thing="zPWMithCur"></bootstrap>
+    <bootstrap thing="zPWRvnHgls"></bootstrap>
+    <bootstrap thing="zPWShaMirr"></bootstrap>
+    <bootstrap thing="zPWSlpGods"></bootstrap>
+    </thing>
+  <thing id="zPWTmpGale" name="Tempest Gale" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="TmpGale"/>
+    <tag group="HasMan" tag="TmpGale"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassSkill" tag="skSleight"/>
+    <tag group="wFtrGroup" tag="Firearms"/>
+    <tag group="wFtrGroup" tag="Bows"/>
+    <tag group="wFtrGroup" tag="Crossbows"/>
+    <tag group="wFtrGroup" tag="Thrown"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  <thing id="dPWTmpGale" name="Tempest Gale Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="TmpGale"/>
+    </thing>
+  <thing id="pcnPWCurse" name="Cursed" description="Many techniques of Cursed Razor cause a creature to gain the cursed condition; cursed creatures suffer the influence of dark magics, becoming more vulnerable to some maneuvers. By itself the cursed condition has no further effects, but cursed creatures take additional damage from some maneuvers, or are vulnerable to maneuvers that cannot be used on creatures that are not cursed (see maneuver descriptions for additional information on how they interact with the cursed condition). In addition to the maneuvers and stances that render a creature cursed, any creature laboring under the effects of a spell with the [Curse] descriptor (such as bestow curse) is treated as cursed. Multiple applications of the cursed condition do not overlap; instead the duration of each new application of the condition (such as 1d4 rounds from the bad karma counter) is added to the remaining duration of the previous application. The cursed condition may be removed by the remove curse or break enchantment spells or similar effects." compset="Condition">
+    <usesource source="srcPOWEx"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="UserPostAt" priority="10000"><![CDATA[
+      ~ If we're in output mode, don't do anything
+      doneif (state.isoutput <> 0)
+
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value + hero.isidentity[Condition] = 0)]]></eval>
+    </thing>
+  <thing id="dPWPrcThun" name="Piercing Thunder Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="PrcThun"/>
+    </thing>
+  <thing id="zPWPrcThun" name="Piercing Thunder" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="selDisc"/>
+    <tag group="Discipline" tag="PrcThun"/>
+    <tag group="HasMan" tag="PrcThun"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassSkill" tag="skAcrobat"/>
+    <tag group="wFtrGroup" tag="Polearms"/>
+    <tag group="wFtrGroup" tag="Spears"/>
+    <eval phase="First" priority="50">~ Setup the Discipline Class Skill
+      Call PWsetupDSk</eval>
+    </thing>
+  </document>

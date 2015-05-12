@@ -28,7 +28,7 @@
     </fileinfo>
   <thing id="wS2ClaBlad" name="Claw Blades" description="These subtle blades can only be used by catfolk with the cat’s claws racial trait. Bought in a set of five, they fit over the wearer’s claws on one hand. The blades grant the wearer a +1 enhancement bonus on claw attack rolls with that hand and change the weapon type from a natural weapon to a light slashing weapon. Catfolk with the cat’s claws racial trait are proficient with this weapon. The claw blades can be enhanced like a masterwork weapon for the normal costs. The listed cost of the item is for one set of five claws for one hand." compset="Weapon">
     <usesource source="ARG"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="NoOutGear"/>
@@ -52,7 +52,7 @@
   <thing id="iS2ClaBlad" name="Claw Blades" description="These subtle blades can only be used by catfolk with the cat’s claws racial trait. Bought in a set of five, they fit over the wearer’s claws on one hand. The blades grant the wearer a +1 enhancement bonus on claw attack rolls with that hand and change the weapon type from a natural weapon to a light slashing weapon. Catfolk with the cat’s claws racial trait are proficient with this weapon. The claw blades can be enhanced like a masterwork weapon for the normal costs. The listed cost of the item is for one set of five claws for one hand." compset="MagicWep" buytemplate="BuyMoney" xactspecial="2">
     <comment>Copying this item to make anything other than the weapon stats for a Claw Blade is not recommended. There are settings that cannot be changed in the editor, which will be carried along with your copy.</comment>
     <usesource source="ARG"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="Helper" tag="NoSelect" name="NoSelect" abbrev="NoSelect"/>
     <tag group="Helper" tag="Shadow" name="Shadow" abbrev="Shadow"/>
     <tag group="Helper" tag="CustomItem" name="CustomItem" abbrev="CustomItem"/>
@@ -82,7 +82,7 @@
     <fieldval field="gCost" value="305"/>
     <fieldval field="gWeight" value="2"/>
     <usesource source="ARG"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="Hero" tag="EqpHand"/>
     <tag group="RaceEquip" tag="rCatfolk"/>
     <tag group="gType" tag="Clothing"/>
@@ -126,7 +126,7 @@
     </thing>
   <thing id="ipS2ArmRaz" name="Armor Razors" description="Armor razors deal extra slashing damage (see &quot;spiked armor&quot; on Table: Weapons) on a successful grapple attack. The razors count as a martial weapon. If you are not proficient with them, you take a -4 penalty on grapple checks when you try to use them. You can also make a regular melee attack (or off-hand attack) with the razors, and they count as a light weapon in this case. (You can&apos;t also make an attack with armor razors if you have already made an attack with another off-hand weapon, and vice versa.) An enhancement bonus to a suit of armor does not improve the razors&apos; effectiveness, but the razors can be made into magic weapons in their own right.\n\n{B}Note:{/b} To customize your armor razors equip your armor and then go to the &quot;Weapon&quot; tab and edit your armor razors." compset="ItemPower" summary="Goto &quot;Weapon&quot; tab to customize after equipping your armor.">
     <fieldval field="iPriceCash" value="50"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="Helper" tag="NotMagicPw"/>
     <tag group="PowerType" tag="Armor"/>
     <tag group="Helper" tag="NoPathSoc"/>
@@ -137,7 +137,7 @@
       </bootstrap>
     </thing>
   <thing id="gS2SpellB" name="Spellbook" description="A spellbook has 100 pages of parchment, and each spell takes up one page per spell level (one page each for 0-level spells).\n\n{B}Note:{/b} This gear item will calculate its gp value and number of pages based on the selected class. You should still purchase a spellbook to account for weight and cost. This is very useful for GM with a NPC with spellbook to quickly calculate the pages and book cost." compset="Gear">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="fShowWhat" tag="Classes"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Tomes"/>
@@ -156,7 +156,7 @@
     </thing>
   <thing id="gS2SpellB2" name="Spellbooks" description="A spellbook has 100 pages of parchment, and each spell takes up one page per spell level (one page each for 0-level spells). \n\n{B}Note:{/b} This gear item calculates the number of pages and books required to store your spells. It then increments the weight based on the number of books you must carry to store your spells." compset="Gear">
     <fieldval field="gWeight" value="3"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="fShowWhat" tag="Classes"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -177,7 +177,7 @@
     </thing>
   <thing id="gS2BookTra" name="Traveling Spellbooks" description="A traveling spellbook is lighter and less cumbersome than its full-size counterpart. It has 50 pages. \n\n{B}Note:{/b} This gear item calculates the number of pages and books required to store your spells. It then increments the weight based on the number of books you must carry to store your spells." compset="Gear">
     <fieldval field="gWeight" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <usesource source="PCAdvArm"/>
     <usesource source="UltEquip"/>
     <tag group="Helper" tag="GearNoSize"/>
@@ -200,7 +200,7 @@
     </thing>
   <thing id="gS2BookCom" name="Compact Spellbooks" description="The need to be able to record and travel with dozens or even hundreds of spells often forces elven wizards to seek lighter spellbooks. Compact spellbooks hold only 70 pages of spells, but they weigh significantly less than an ordinary spellbook.\n\n{B}Note:{/b}  This gear item calculates the number of pages and books required to store your spells. It then increments the weight based on the number of books you must carry to store your spells." compset="Gear">
     <fieldval field="gWeight" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <usesource source="ARG"/>
     <tag group="fShowWhat" tag="Classes"/>
     <tag group="Helper" tag="GearNoSize"/>
@@ -222,7 +222,7 @@
       field[livename].text = field[thingname].text & ", " & Books & " Books"]]></eval>
     </thing>
   <thing id="ioS2Custom" name="- Custom Magic Item -" description="Add this to have a customizable magic item where you can set the name, weight and value yourself." compset="Wondrous">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="Custom"/>
@@ -231,7 +231,7 @@
     <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioGoodberr" name="Goodberry" description="Thus transmuted berry provides nourishment as if it were a normal meal for a Medium creature. The berry also cures 1 point of damage when eaten, subject to a maximum of 8 points of such curing in any 24-hour period." compset="Wondrous">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="AlwaysAvl"/>
     <tag group="Helper" tag="UsesQty"/>
@@ -241,8 +241,8 @@
     </thing>
   <thing id="wTouchAtta" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
-    <usesource source="s20PFCamp"/>
-    
+    <usesource source="srcS2Gear"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
     <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
     <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
@@ -261,8 +261,8 @@
   <thing id="wRangedTou" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
     <fieldval field="wFixRanDam" value="As Spell"/>
-    <usesource source="s20PFCamp"/>
-    
+    <usesource source="srcS2Gear"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
     <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
     <tag group="wMain" tag="1_1" name="1" abbrev="1"/>
@@ -277,7 +277,7 @@
     <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
     </thing>
   <thing id="wImp1d4" name="Improvised Weapon" description="This is a generic &quot;improvised Weapon&quot; that can be used to represent anything from a broken bottle to a chair leg.\n\n{B}Note:{/b} To change the damage die size go to the &quot;Adjust&quot; tab, then &quot;Other Adjustments&quot; and add &quot;Weapon Size&quot;.\n\n{B}Note2:{/b} To turn any normal weapon into a Improvised Weapon you can make a custom weapon and add the &quot;Improvised&quot; item power." compset="Weapon">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="wSpecial" tag="Improvised"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCritMult" tag="2"/>
@@ -298,7 +298,7 @@
   <thing id="guUnhlyWat" name="Unholy Water Flask" description="Unholy water damages good outsiders almost as if it were acid. A flask of unholy water can be thrown as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A flask breaks if thrown against the body of a corporeal creature, but to use it against an incorporeal creature, you must open the flask and pour the unholy water out onto the target. Thus, you can douse an incorporeal creature with unholy water only if you are adjacent to it. Doing so is a ranged touch attack that does not provoke attacks of opportunity.\n\nA direct hit by a flask of unholy water deals 2d4 points of damage to an undead creature or an evil outsider. Each such creature within 5 feet of the point where the flask hits takes 1 point of damage from the splash.\n\nTemples to evil deities sell unholy water at cost (making no profit). Unholy water is made using the {i}curse water{/i} spell." compset="Gear" stacking="merge">
     <fieldval field="gWeight" value="1"/>
     <fieldval field="gCost" value="25"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="gType" tag="SpecSubs"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="UsesQty"/>
@@ -307,7 +307,7 @@
   <thing id="wuTorch" name="Torch" description="A torch can be used as improvised weapon that does additional fire damage." compset="Weapon">
     <fieldval field="gSizeCost" value=".01"/>
     <fieldval field="gWeight" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCritMult" tag="2"/>
     <tag group="wSpecial" tag="Improvised"/>
@@ -325,7 +325,7 @@
       #extradamage[this," +1d4 fire",field[name].text]]]></eval>
     </thing>
   <thing id="wRock2" name="Rock" description="This is a generic &quot;Rock Weapon&quot; that can be used for many different monsters like giants.\n\n{B}Note:{/b} To change the damage die size go to the &quot;Adjust&quot; tab, then &quot;Other Adjustments&quot; and add &quot;Weapon Size&quot;." compset="Weapon">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="wCritMult" tag="2"/>
     <tag group="wType" tag="B"/>
     <tag group="wSpecial" tag="Improvised"/>
@@ -345,8 +345,8 @@
     </thing>
   <thing id="wS2AoE" name="AoE" description="This is helper object for the - Custom Spell Weapon - adjustment. It is hidden and can not be selected." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
-    
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
+    <usesource source="srcS2Gear"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="PackHelper" tag="Touch"/>
     <tag group="Helper" tag="Helper"/>
@@ -355,7 +355,7 @@
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="wS2SpelWep" name="Spell Weapon" description="Spell weapon helper to allow rolling of spell damage on the iPad." compset="Weapon">
-    
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="NoSelect"/>
@@ -366,7 +366,7 @@
     <tag group="wClass" tag="OneHanded"/>
     </thing>
   <thing id="gS2FormB" name="Formula book" description="A formula book has 100 pages of parchment, and each alchemical extract formula takes up one page per extract level. A newly purchased formula book contains no extract formulas. An alchemist character begins play with a formula book containing the extract formulae he knows. This is the alchemist equivalent of a spellbook for wizards (a spellbook and a formula book are essentially the same item).\n\n{B}Note:{/b} This gear item will calculate its gp value and number of pages based on the selected class. You should still purchase a Formula book to account for weight and cost. This is very useful for GM with a NPC with a Formula book to quickly calculate the pages and book cost." compset="Gear">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="gType" tag="Tomes"/>
     <tag group="Helper" tag="GearNoSize"/>
@@ -384,7 +384,7 @@
     </thing>
   <thing id="gS2FormB2" name="Formula books" description="A formula book has 100 pages of parchment, and each alchemical extract formula takes up one page per extract level. A newly purchased formula book contains no extract formulas. An alchemist character begins play with a formula book containing the extract formulae he knows. This is the alchemist equivalent of a spellbook for wizards (a spellbook and a formula book are essentially the same item).\n\n{B}Note:{/b} This gear item calculates the number of pages and books required to store your spells. It then increments the weight based on the number of books you must carry to store your spells." compset="Gear">
     <fieldval field="gWeight" value="3"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <tag group="fShowWhat" tag="Classes"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -405,7 +405,7 @@
     </thing>
   <thing id="gS2FormTra" name="Traveling formula book" description="A traveling forumla book is lighter and less cumbersome than its full-size counterpart. It has 50 pages. \n\n{B}Note:{/b} This gear item calculates the number of pages and books required to store your spells. It then increments the weight based on the number of books you must carry to store your spells." compset="Gear">
     <fieldval field="gWeight" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Gear"/>
     <usesource source="PCAdvArm"/>
     <usesource source="UltEquip"/>
     <tag group="Helper" tag="GearNoSize"/>

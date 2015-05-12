@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow</info_author>
+    <info_history><![CDATA[
+12/29/2013
+-Deprecated duplicate spell adjustments that where added officially.
+
+9/13/2013
+-Added "Haste, Mythic Augmented" and "Haste, Mythic" spell adjustments.
+
+4/8/2012
+-Fixed "Discovery Torch" spell adjustment to add to Monster Lore.
+
+4/7/2012
+-Added "Discovery Torch" spell adjustment.
+
+3/26/2012
+-Created New
+-Added "Honeyed Tongue" spell adjustment.]]></info_history>
+    </fileinfo>
+  <thing id="pS2HonTong" name="Honeyed Tongue" description="This spell augments your diplomacies. While under the effects of spell, you roll two dice each time you make a Diplomacy check to change a creature&apos;s attitude, taking the highest roll.{br}{br}If this results in a roll low enough to reduce the creature&apos;s attitude by a step, that creature gets some clue that you are manipulating it with a spell. Alternatively you can cast this spell before making a Diplomacy check to gather information, gaining a +5 competence bonus on the check." compset="InPlay" replaces="pHoneyTong">
+    <comment>Replaced as this sets values on to Sub-skills</comment>
+    <fieldval field="pDuration" value="10 minutes/level"/>
+    <usesource source="APG"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value <> 1)
+
+      #situational[hero.child[skDiplo],"Roll twice when changing a creature's attitude",field[name].text]
+      #situational[hero.child[skDiplo],"+5 compentence bonus to Gather Information",field[name].text]
+
+      ~ If Subskill Gather Info not live then get out now
+      doneif (hero.childlives[skS2DiplGa] = 0)
+      ~ Give a competence bonus to SubSkill - Gather Info
+      #applybonus[BonComp,hero.childfound[skS2DiplGa],5]]]></eval>
+    </thing>
+  <thing id="pS2DiscTor" name="Discovery Torch" description="An object you touch emanates bright light within the spell’s area. The effect looks like a regular flame but creates no heat and uses no oxygen. Allies within the area of this light gain a +2 enhancement bonus on Perception and Sense Motive checks, as well as on Knowledge checks to identify monsters that are also within the area and their special powers and vulnerabilities.\n\nWhen an inquisitor casts this spell, the light emanation doubles (40-ft.-radius emanation) while that inquisitor has a judgment active.\n\nLight spells counter and dispel darkness spells of an equal or lower level." compset="InPlay" replaces="pDiscTorch">
+    <comment>Replaced as this sets values on to Sub-skills</comment>
+    <fieldval field="pMaximum" value="2"/>
+    <fieldval field="pMinimum" value="2"/>
+    <fieldval field="pDuration" value="10 minutes/level"/>
+    <usesource source="UltCombat"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give a enhancement bonus to perception
+      #applybonus[BonEnhance,hero.child[skPercep],field[pAdjust].value]
+      ~ Give a enhancement bonus to sense motive
+      #applybonus[BonEnhance,hero.child[skSenseMot],field[pAdjust].value]
+
+      ~ +2 bonus to all Knowledge skills
+      foreach pick in hero from BaseSkill where "Helper.SkCatKnow"
+        #situational[eachpick,signed(field[pAdjust].value) & " enhancement bonus to identify monsters and their special powers",field[name].text]
+      nexteach
+
+      ~ If Subskill Monster Lore not live then get out now
+      doneif (hero.childlives[skS2MonLor] = 0)
+      ~ Give a enhancement bonus to Monster Lore
+      #applybonus[BonEnhance,hero.child[skS2MonLor],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2LongsGr" name="Longstrider, Greater" description="This functions as {i}longstrider{/i}, except it gives you a +20-foot enhancement bonus to your base speed and a +10-foot enhancement bonus to your other modes of movement (burrow, climb, fly, swim, and so on). It does not affect movement modes you do not actually have—for example, if you do not have a swim speed, this spell does not grant you a swim speed." compset="InPlay">
+    <fieldval field="pDuration" value="1 hour/level (D)"/>
+    <fieldval field="abValue" value="20"/>
+    <fieldval field="abValue2" value="10"/>
+    <fieldval field="pMinimum" value="20"/>
+    <fieldval field="pMaximum" value="20"/>
+    <usesource source="ACG"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Add +20 to speed
+      #applybonus[BonEnhance, hero.child[Speed], field[pAdjust].value]
+
+      ~ Improve the speed of Burrow, Climb, Fly and Swim by 10
+      hero.child[xBurrow].field[abImprove].value += field[abValue2].value
+      hero.child[xClimb].field[abImprove].value += field[abValue2].value
+      hero.child[xFly].field[abImprove].value += field[abValue2].value
+      hero.child[xSwim].field[abImprove].value += field[abValue2].value]]></eval>
+    </thing>
+  <thing id="pS2ProtEne" name="Protection from Energy" description="Protection from energy grants temporary immunity to the type of energy you specify when you cast it (acid, cold, electricity, fire, or sonic). When the spell absorbs 12 points per caster level of energy damage (to a maximum of 120 points at 10th level), it is discharged.\n\nProtection from energy overlaps (and does not stack with) resist energy. If a character is warded by protection from energy and resist energy, the protection spell absorbs damage until its power is exhausted.{br}{br}{b}Note:{/b} The counter is used to set your Caster Level. Then the total protection value will (12 x CL) will be calculated for you on a tracker that will display on the {b}In-Play{/b} tab. Go to the In-Play tab and press Reset and it will be set the maximum value. This way as you take damage you can lower the amount." compset="InPlay">
+    <fieldval field="pDuration" value="1 hour/level (D)"/>
+    <fieldval field="abValue" value="20"/>
+    <fieldval field="abValue2" value="10"/>
+    <fieldval field="pMinimum" value="0"/>
+    <fieldval field="pCandExpr" value="component.SelectHelp &amp; Selection.Energy"/>
+    <fieldval field="pCandExpr2" value="component.Tracker &amp; thingid.trkS2ProtE"/>
+    <fieldval field="pUsePicks2" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Adjust2nd" tag="S2Custom"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <bootstrap thing="trkS2ProtE"></bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen + field[pChosen2].ischosen <> 2)
+
+      ~ Set the energy type on to the tracker
+      perform field[pChosen].chosen.pulltags[BloodEner.?]
+      perform field[pChosen2].chosen.pushtags[BloodEner.?]
+
+      ~ Set livename
+      field[livename].text = field[name].text & " (" & tagnames[BloodEner.?]  & ")"
+
+      ~ Set the tracker counter
+      field[pChosen2].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="trkS2ProtE" name="Protection from Energy" description="." compset="Tracker" uniqueness="useronce">
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="SpInfo" tag="spProtfro3"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If no energy tag we are done
+      doneif (tagis[BloodEner.?] = 0)
+
+      ~ Set livename
+      field[livename].text = field[name].text & " (" & tagnames[BloodEner.?]  & ")"]]></eval>
+    </thing>
+  <thing id="pS2DeadLor" name="Deadeye&apos;s Lore" description="While subject to this spell, you take upon yourself the mantle of the hunter, channeling the insights of the spirits of the wild. You gain a +4 sacred bonus on all Survival checks for the duration of the spell, and you do not have to move at half your speed while traveling through the wilderness or while tracking." compset="InPlay">
+    <fieldval field="pDuration" value="1 hour/level"/>
+    <fieldval field="pMinimum" value="4"/>
+    <fieldval field="pMaximum" value="4"/>
+    <usesource source="UltCombat"/>
+    <usesource source="PCFaithPur"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      #situational[hero.childfound[skSurvival],"You do not have to move at half your speed while tracking.",field[name].text]
+      #situational[hero.childfound[Speed],"You do not have to move at half your speed while traveling through the wilderness.",field[name].text]]]></eval>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Set bonus
+      field[abValue].value += field[pAdjust].value
+
+      ~ Sacred bonus to Survival
+      #applybonus[BonSacred,hero.childfound[skSurvival],field[abValue].value]]]></eval>
+    </thing>
+  <thing id="pS2Ironsid" name="Ironsides" description="{i}Ironsides{/i} gives the wooden hull of a ship some characteristics of iron. For the duration of the spell, the hull&apos;s hardness doubles. Further, it becomes resistant to fire and susceptible to acid as if made of iron instead of wood." compset="InPlay">
+    <fieldval field="pDuration" value="10 min./level"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="pKPDeepMag"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value <> 1)
+
+      ~ Find each Fire as she Bears hull section and double its
+      ~ Hardness value.
+      foreach pick in hero from RaceCustom where "FaSB.Hull"
+        eachpick.field[abValue].value *= 2
+      nexteach]]></eval>
+    </thing>
+  <thing id="pS2FireClw" name="Fire Claws" description="Your hands and/or melee weapon become wreathed in searing flames. Your unarmed, touch, or melee attacks (Claws) made gain 1d6 fire damage for every 3 caster levels (maximum 5d6) for the duration of the spell. You can also set flammable objects alight with a touch. Cold, electricity, and acid variants of this spell are common among some dragon mages and even esoteric orders of druids." compset="InPlay">
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="5"/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="pKPDeepMag"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value <> 1)
+
+      field[abValue].value += field[pAdjust].value
+
+      field[abText].text &= "+" & field[abValue].value & "d6 fire"
+
+      ~ Give fire damage to all melee and Claw attacks
+      foreach pick in hero from BaseWep where "wCategory.Melee & !wGroup.Natural | IsWeapon.wClaw"
+        #extradamage[eachpick,field[abText].text,field[name].text]
+      nexteach]]></eval>
+    </thing>
+  </document>

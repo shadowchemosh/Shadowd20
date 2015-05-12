@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="Shadowd20_zSource_910 - Races.1st"/>
+
+  <!--
+  -->
+
+  <!-- ============================================== -->
+  <!-- SHADOW d20 RACE SOURCES                        -->
+  <!-- ============================================== -->
+
+  <source
+    id="srcWarforg"
+    name="Shadow d20 Runeforged Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Eberron's Runeforged race converted to Pathfinder with the name changed to Runeforged.">
+    </source>
+  <source
+    id="srcShifter"
+    name="Shadow d20 Shoanti Shifter Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Eberron's shifter race converted to Pathfinder.">
+    </source>
+  <source
+    id="srcDragonb"
+    name="Shadow d20 Dragonborn Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="3.5's Dragonborn race converted to Pathfinder.">
+    </source>
+  <source
+    id="srcChangel"
+    name="Shadow d20 Changeling Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Eberron's Changeling race converted to Pathfinder.">
+    </source>
+  <source
+    id="srcShaMino"
+    name="Shadow d20 Ulfen Minotaur Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="New Shadow d20 race for Pathfinder.">
+    </source>
+  <source
+    id="srcPlanTou"
+    name="Shadow d20 Planetouched Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="New Shadow d20 race for Pathfinder.">
+    </source>
+  <source
+    id="srcCatFolk"
+    name="Shadow d20 Catfolk Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Shadow d20 version of the Pathfinder race.">
+    </source>
+  <source
+    id="srcIguania"
+    name="Shadow d20 Iguanian Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="New Shadow d20 race for Pathfinder.">
+    </source>
+  <source
+    id="srcRatfolk"
+    name="Shadow d20 Ratfolk Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Shadow d20 version of the Pathfinder race.">
+    </source>
+  <source
+    id="srcDragEmp"
+    name="Shadow d20 Dragon Empire Races"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Dragon Empire Gazetteer Races.">
+    </source>
+  <source
+    id="srcDhampir"
+    name="Shadow d20 Dhampir Race"
+    selectable="yes"
+    parent="pS20Races"
+    sortorder="1"
+    description="Shadow d20 version of the Pathfinder race.">
+    </source>
+
+  <!-- Races To Show -->
+  <source
+    id="srcNoRaces"
+    name="No duplicate Shadow d20 races"
+    selectable="yes"
+    parent="OptRaces"
+    sortorder="0"
+    description="Hide races not allowed in Shadow d20 or that where already re-done in shadow d20 like Catfolk.">
+    </source>
+ 
+</document>

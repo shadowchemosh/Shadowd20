@@ -236,7 +236,7 @@ Added new natural weapon adjustments:
 -Created New]]></info_history>
     </fileinfo>
   <thing id="pS2wFire" name="Weapon Elemental Dmg, Fire" description="Select this adjustment to show &quot;+1d6 Fire&quot; damage next to your weapon name." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -251,7 +251,7 @@ Added new natural weapon adjustments:
       #extradamage[field[pChosen].chosen,"+1d6 Fire",field[name].text]]]></eval>
     </thing>
   <thing id="pS2wCold" name="Weapon Elemental Dmg, Cold" description="Select this adjustment to show &quot;+1d6 Cold&quot; damage next to your weapon name." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -267,7 +267,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wAcid" name="Weapon Elemental Dmg, Acid" description="Select this adjustment to show &quot;+1d6 Acid&quot; damage next to your weapon name." compset="InPlay">
     <fieldval field="pSource" value="+1d6 Acid"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -282,7 +282,7 @@ Added new natural weapon adjustments:
       #extradamage[field[pChosen].chosen,"+1d6 Acid",field[name].text]]]></eval>
     </thing>
   <thing id="pS2wElectr" name="Weapon Elemental Dmg, Electricity" description="Select this adjustment to show &quot;+1d6 Electricity&quot; damage next to your weapon name." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -299,7 +299,7 @@ Added new natural weapon adjustments:
   <thing id="pS2wCritRa" name="Weapon: Crit Range" description="Select this adjustment to adjust the Critical range of a specific weapon yourself.  So if you set the counter to 2 then the critical range will be 18-20.  If set to 6 it will be 14-20.  This adjustment also will override other critical range changing feats and abilities(ie Keen &amp; Improved Critical Feat) and lets you manually set the critical range value." compset="InPlay">
     <fieldval field="pMaximum" value="10"/>
     <fieldval field="pMinimum" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -323,7 +323,7 @@ Added new natural weapon adjustments:
       perform field[pChosen].chosen.assignstr[sCrit]]]></eval>
     </thing>
   <thing id="pS2wSonic" name="Weapon Elemental Dmg, Sonic" description="Select this adjustment to show &quot;+1d6 Sonic&quot; damage next to your weapon name." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -340,7 +340,7 @@ Added new natural weapon adjustments:
   <thing id="pSwCritMul" name="Weapon: Crit Multiplier" description="Select this adjustment to adjust the Critical Multiplier of a specific weapon yourself.  So if you set the counter to 2 then the critical multiplier will be x2 or 3 will be x3. This adjustment also overrides other critical changing feats and abilities which allows for manually setting the critical multiplier value yourself." compset="InPlay">
     <fieldval field="pMaximum" value="4"/>
     <fieldval field="pMinimum" value="2"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -361,7 +361,7 @@ Added new natural weapon adjustments:
       perform field[pChosen].chosen.assignstr[sCrit]]]></eval>
     </thing>
   <thing id="pS2wCMB" name="Weapon CMB" description="Select this adjustment to show additional CMB text next to your weapon. In example a Sai gets a +2 bonus to Sunder on its CMB.  So add this adjustment, select the Sai from your current weapons, and set the counter to +2 to your have your new calculated bonus show next to your weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -378,7 +378,7 @@ Added new natural weapon adjustments:
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " CMB" & signed(field[abValue].value)]]></eval>
     </thing>
   <thing id="pS2CMBsund" name="Weapon CMB, Sunder" description="Select this adjustment to show additional combat manuever bonus for trip attacks on a single specific weapon. When a weapon is selected the phrase &quot;Sunder-CMB&quot; plus your base CMB will show next to the weapon name. You can use the counter to up or down the value shown." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -395,7 +395,7 @@ Added new natural weapon adjustments:
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " Sunder-CMB" & signed(field[abValue].value)]]></eval>
     </thing>
   <thing id="pS2CMBdisa" name="Weapon CMB, Disarm" description="Select this adjustment to show additional combat manuever bonus for trip attacks on a single specific weapon. When a weapon is selected the phrase &quot;Disarm-CMB&quot; plus your base CMB will show next to the weapon name. You can use the counter to up or down the value shown." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -412,7 +412,7 @@ Added new natural weapon adjustments:
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " Disarm-CMB" & signed(field[abValue].value)]]></eval>
     </thing>
   <thing id="pS2CMBtrip" name="Weapon CMB, Trip" description="Select this adjustment to show additional combat manuever bonus for trip attacks on a single specific weapon. When a weapon is selected the phrase &quot;Trip-CMB&quot; plus your base CMB will show next to the weapon name. You can use the counter to up or down the value shown." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -429,7 +429,7 @@ Added new natural weapon adjustments:
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " Trip-CMB" & signed(field[abValue].value)]]></eval>
     </thing>
   <thing id="pS2wCMD" name="Weapon CMD" description="Select this adjustment to show additional CMD text next to your weapon.  In example a Elven Curve Blade gets a +2 bonus to prevent from being Sundered. So add this adjustment, select the Curve Blade from your current weapons, and set the counter to +2 to your have your new calculated bonus show next to your weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -446,7 +446,7 @@ Added new natural weapon adjustments:
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " CMD " & field[abValue].value]]></eval>
     </thing>
   <thing id="pS2CMDdisa" name="Weapon CMD, Disarm" description="Select this adjustment to show additional text.  When a weapon is selected the phrase &quot;Disarm-CMD&quot; plus your base CMD and the counter from this adjustment will show next to the weapon name." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -463,7 +463,7 @@ Added new natural weapon adjustments:
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " Disarm-CMD " & field[abValue].value]]></eval>
     </thing>
   <thing id="pS2CMDsund" name="Weapon CMD, Sunder" description="Select this adjustment to show additional text.  When a weapon is selected the phrase &quot;Sunder-CMD&quot; plus your base CMD and the counter from this adjustment will show next to the weapon name." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -480,7 +480,7 @@ Added new natural weapon adjustments:
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " Sunder-CMD " & field[abValue].value]]></eval>
     </thing>
   <thing id="pS2CMDtrip" name="Weapon CMD, Trip" description="Select this adjustment to show additional text.  When a weapon is selected the phrase Trip-CMD&quot; plus your base CMD and the counter from this adjustment will show next to the weapon name." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -500,7 +500,7 @@ Added new natural weapon adjustments:
     <fieldval field="pDuration" value="Bite"/>
     <fieldval field="pMinimum" value="-4"/>
     <fieldval field="pMaximum" value="4"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -527,7 +527,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wGrab" name="Natural Weapon: Grab" description="Select this adjustment to have a Grab racial ability added to your character.  Then from the drop down box you can select the natural attack this grab is associated to and the extra wording &quot;plus grab&quot; will be added to the natural attack selected.  You can also change the wording using the text box." compset="InPlay">
     <fieldval field="pDuration" value=" plus grab"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -546,7 +546,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wClaw" name="Natural Weapon: Claw" description="Select this adjustment to have a 2x Claw natural attacks added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Claw x2"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -573,7 +573,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wGore" name="Natural Weapon: Gore" description="Select this adjustment to have a Gore natural attack added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Gore"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -600,7 +600,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wWing" name="Natural Weapon: Wing" description="Select this adjustment to have a Wing natural attack added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Wing"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -627,7 +627,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wTailSl" name="Natural Weapon: Tail Slap" description="Select this adjustment to have a Tail Slap natural attack added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Tail Slap"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -654,7 +654,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wSlam" name="Natural Weapon: Slam" description="Select this adjustment to have a Slam natural attack added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Slam"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -681,7 +681,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wSting" name="Natural Weapon: Sting" description="Select this adjustment to have a Sting natural attack added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Sting"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -708,7 +708,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wTalons" name="Natural Weapon: Talons" description="Select this adjustment to have a 2x Talon natural attacks added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Talons x2"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -735,7 +735,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wOthMel" name="Natural Weapon: Other Melee" description="Select this adjustment to have a Other Melee natural attack added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Other Melee"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -761,7 +761,7 @@ Added new natural weapon adjustments:
     </thing>
   <thing id="pS2wOthRng" name="Natural Weapon: Other Ranged" description="Select this adjustment to have a Other Ranged natural attack added to your character.  Then from the drop down box you can select the natural attack to change the following:\n\n{B}Duration:{/b} Used to set the name of the natural attack by typing into the duration text box area.\n{b}Counter:{/b} Used to Up/Down the damage of the natural attack based on the Bestiary &quot;Table: Natural Attacks by Size&quot;.\n{b}Source:{/b} Can be used to set the exact Weapon Damage tag.  In example typing &quot;1d12_404&quot; would force the damage die to be 1d12. This means the counter value will get ignored." compset="InPlay">
     <fieldval field="pDuration" value="Other Melee"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -788,7 +788,7 @@ Added new natural weapon adjustments:
   <thing id="pS2wPoiCON" name="Natural Weapon: Poison, CON" description="Select this adjustment to add a CON based poison attack on to a specific natural weapon.  Use the drop down box to select the natural weapon this is to apply to.  Then use the following fields to set the poison attributes:\n\nDrop down box selects the natural attack the wording (Plus Poison) is to be added to.\n\nThe counter is used to set the die size of the CON damage dice. So if set to 4 it will show 1d4 CON damage.\n\nThe duration, default value of 1 round, is used to set the number of rounds the poison lasts.\n\nThe (source) section is used to set the number of additional cures the poison takes to remove.  The default for poison is 1 round so if you change the (source) text to be 1 then it will take 2 cures to save from this poison." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
     <fieldval field="pDuration" value="1 round"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -818,7 +818,7 @@ Added new natural weapon adjustments:
   <thing id="pS2wPoiCHA" name="Natural Weapon: Poison, CHA" description="Select this adjustment to add a CHA based poison attack on to a specific natural weapon.  Use the drop down box to select the natural weapon this is to apply to.  Then use the following fields to set the poison attributes:\n\nDrop down box selects the natural attack the wording (Plus Poison) is to be added to.\n\nThe counter is used to set the die size of the CHA damage dice. So if set to 4 it will show 1d4 CHA damage.\n\nThe duration, default value of 1 round, is used to set the number of rounds the poison lasts.\n\nThe (source) section is used to set the number of additional cures the poison takes to remove.  The default for poison is 1 round so if you change the (source) text to be 1 then it will take 2 cures to save from this poison." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
     <fieldval field="pDuration" value="1 round"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -848,7 +848,7 @@ Added new natural weapon adjustments:
   <thing id="pS2wPoiDEX" name="Natural Weapon: Poison, DEX" description="Select this adjustment to add a DEX based poison attack on to a specific natural weapon.  Use the drop down box to select the natural weapon this is to apply to.  Then use the following fields to set the poison attributes:\n\nDrop down box selects the natural attack the wording (Plus Poison) is to be added to.\n\nThe counter is used to set the die size of the DEX damage dice. So if set to 4 it will show 1d4 DEX damage.\n\nThe duration, default value of 1 round, is used to set the number of rounds the poison lasts.\n\nThe (source) section is used to set the number of additional cures the poison takes to remove.  The default for poison is 1 round so if you change the (source) text to be 1 then it will take 2 cures to save from this poison." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
     <fieldval field="pDuration" value="1 round"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -876,7 +876,7 @@ hero.child[raPoiDEX].field[abDuration].value += field[pDuration].text]]></eval>
   <thing id="pS2wPoiSTR" name="Natural Weapon: Poison, STR" description="Select this adjustment to add a STR based poison attack on to a specific natural weapon.  Use the drop down box to select the natural weapon this is to apply to.  Then use the following fields to set the poison attributes:\n\nDrop down box selects the natural attack the wording (Plus Poison) is to be added to.\n\nThe counter is used to set the die size of the STR damage dice. So if set to 4 it will show 1d4 STR damage.\n\nThe duration, default value of 1 round, is used to set the number of rounds the poison lasts.\n\nThe (source) section is used to set the number of additional cures the poison takes to remove.  The default for poison is 1 round so if you change the (source) text to be 1 then it will take 2 cures to save from this poison." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
     <fieldval field="pDuration" value="1 round"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -902,7 +902,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[raPoiSTR].field[abDuration].value += field[pDuration].text]]></eval>
     </thing>
   <thing id="pS2wCustom" name="Custom Text: Weapon" description="Append text to the name of your weapon using the (Source) or (Duration) field. Use this to add any other related info you would like to see with when you print a character or use on the iPad. Use this to add info about Rapid Shot, Vital Strike or any other combat related info you would like to see with your weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -922,7 +922,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2wBane" name="Weapon Bane Dmg" description="Select this adjustment to apply the Bane weapon +2 bonus on to hit and damage and +2d6 vs text next to the weapon. Enter in the creature type into the &quot;(Source)&quot; section.  If your using a paper sheet then add your bane weapon twice to your character purchasing it for free.  Then click the BAG icon and drop the item to the ground so your not affected by the weight.  Then only apply this adjustment to this new weapon so that you have the stats for your Bane weapon normal and when fighting against the weapons bane type.\n\nThis is useful for Inquisitors when they bane their weapons." compset="InPlay">
     <fieldval field="pSource" value="Bane"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -940,7 +940,7 @@ field[pChosen].chosen.field[Bonus].value += 2
     </thing>
   <thing id="pS2wBonus" name="Weapon Bonus" description="Select this adjustment to change the attack and damage bonus of the selected weapon." compset="InPlay">
     <fieldval field="pWhat" value="Attack &amp; Dmg"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep" name="Current Weapons" abbrev="Current Weapons"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -951,7 +951,7 @@ doneif (field[pIsOn].value = 0)
 field[pChosen].chosen.field[Bonus].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2SheetDM" name="Character Sheet: DM" description="Select this adjustment to cause ALL abilities to print to your character sheet.  This is very handy when sending your DM a pdf copy of your sheet so that EVERYTHING is shown." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Misc"/>
@@ -969,7 +969,7 @@ foreach pick in hero where "!thingid.xDamRd? & !thingid.xDamRs? & !thingid.wMain
 nexteach]]></eval>
     </thing>
   <thing id="pS2ImpFa01" name="Feat: Improved Familiar - Agathion, Silvanshee" description="This ability when added makes the Lay on Hands ability of the Agathion, Silvanshee equal to hits master&apos;s hit dice.\n\nThis is based on the Familiar rules section as follows:\n\n{b}Hit Dice:{/b} For the purpose of effects related to number of Hit Dice, use the master&apos;s character level or the familiar&apos;s normal HD total, whichever is higher." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="FeatTrait"/>
@@ -981,7 +981,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[raLayHnd].field[abValue3].value = herofield[tCompLevel].value]]></eval>
     </thing>
   <thing id="pS2CMB" name="Weapon Combat Maneuvers" description="{b}Disarm{/b}, {b}sunder{/b}, and {b}trip{/b} are normally the only kinds of combat maneuvers in which you&apos;re actually using a weapon (natural weapons and unarmed strikes are considered weapons for this purpose) to perform the maneuver, and therefore the weapon&apos;s bonuses (enhancement bonuses, feats such as Weapon Focus, fighter weapon training, and so on) apply to the roll.\n\nFor other maneuvers, either you&apos;re not using a weapon at all, or the weapon is incidental to making the maneuver and its bonuses shouldn&apos;t make you better at attempting the maneuver. \n\nThere is a special exception to the above rules. If you&apos;re using a weapon with the {b}trip{/b} special feature, and you&apos;re attempting a {b}drag{/b} or {b}reposition{/b} combat maneuver (Advanced Player&apos;s Guide 321-322), you may apply the weapon&apos;s bonuses to the roll because trip weapons are also suitable for dragging and repositioning (this also means we don&apos;t have to add &quot;drag&quot; and &quot;reposition&quot; weapon properties to existing weapons)." compset="InPlay" summary="Adjust certain CMB checks based on Bonuses on Weapon." uniqueness="useronce">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="CMDCMB"/>
@@ -1130,7 +1130,7 @@ hero.child[raLayHnd].field[abValue3].value = herofield[tCompLevel].value]]></eva
       endif]]></eval>
     </thing>
   <thing id="pS2fPowerA" name="Feat: Power Attack" description="Add this adjustment to allow you to add the Power Attack information to a specific weapon so on a printed character sheet it will display stats for your weapon with and without Power Attack.\n\n{b}How to Use:{/b} After adding this adjustment you select the weapon you would like to have the Power Attack values display on.  Then on the &quot;In-Play&quot; tab you want to turn Power Attack off.  Then your weapon will correctly display both your normal Attack values and your Power Attack values.\n\n{B}Note:{/b} You will need the Power Attack feat on your character for this adjustment to work correctly." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -1197,7 +1197,7 @@ debug sText
 field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & sText]]></eval>
     </thing>
   <thing id="pS2wFoBRan" name="Weapon Flurry: Ranged Attack Bonus" description="Select this adjustment to change the flurry ranged attack bonus of the selected weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep" name="Current Weapons" abbrev="Current Weapons"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -1208,7 +1208,7 @@ doneif (field[pIsOn].value = 0)
 field[pChosen].chosen.field[wRanFlurry].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2wFoBMel" name="Weapon Flurry: Melee Attack Bonus" description="Select this adjustment to change the flurry melee attack bonus of the selected weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep" name="Current Weapons" abbrev="Current Weapons"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -1219,7 +1219,7 @@ doneif (field[pIsOn].value = 0)
 field[pChosen].chosen.field[wMelFlurry].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2wSize" name="Natural Weapon: Size" description="Select this adjustment to be able to adjust the size up/down of your natural attack." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -1234,7 +1234,7 @@ field[pChosen].chosen.field[wDamage].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2wOrder" name="Weapon Order" description="Select this adjustment to change the order of your weapons as they get displayed in HL and on an outputted character sheet.\n\nThe counter (ie Number) sets the Priority of the weapon in the list.  The larger the number the {B}HIGHER{/B} priority in the list the weapon has and will result in the weapon being displayed higher in the list.  By default weapons have a priority of zero so a weapon set with a Priority of one will be first.  This also means two weapons set to priority one will sort themselves alphabetically by name at the top of the list of weapons.\n\nIf you simply had a +2 Longsword you always wanted to be first simply select &quot;+2 Longsword&quot; and leave the counter set to one.  \n\nIn example if you had three weapons {B}WeaponA, WeaponB, and WeaponC{/b} and you wanted WeaponC 1st, WeaponB 2nd, WeaponA 3rd you would set the weapons with following values:\nWeaponC: {B}Priority 3{/B}\nWeaponB: {B}Priority 2{/B}\nWeaponA: {B}Priority 1{/B}" compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep" name="Current Weapons" abbrev="Current Weapons"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -1259,7 +1259,7 @@ Else
 Endif]]></eval>
     </thing>
   <thing id="pS2raSpeDi" name="Racial Ability, Disable" description="Select this adjustment to be able to disable a single racial special from your race." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -1280,7 +1280,7 @@ field[pCandExpr].text = "component.RaceAbil & !thingid.raS2Disabl"]]></eval>
     </thing>
   <thing id="raS2Disabl" name="~Racial Ability, Disable" description="This was added by the {b}Racial Ability, Disable{/b} adjustment and allows for selecting a racial ability to disable." compset="RaceSpec">
     <fieldval field="usrCandid1" value="component.RaceAbil &amp; !thingid.raS2Disabl"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <eval phase="First" priority="20000"><![CDATA[
@@ -1293,7 +1293,7 @@ perform field[usrChosen1].chosen.assign[Helper.SpcDisable]
 perform field[usrChosen1].chosen.delete[Helper.ShowSpec]]]></eval>
     </thing>
   <thing id="pS2wHide" name="Weapon Hide on Print out" description="Select this adjustment to be able to have a weapon not be output to a character sheet.  \n\nAfter adding the adjustment simply select the weapon from the drop down menu.  Once selected this weapon will no longer be ouputed to any character sheet." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep" name="Current Weapons" abbrev="Current Weapons"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -1310,7 +1310,7 @@ Endif]]></eval>
     </thing>
   <thing id="pS2wElemen" name="Weapon Elemental Dmg, Custom" description="Select this adjustment to add custom text damage next to your weapon name. &quot;(Duration)&quot; is the type of damage (ie +1d6 Fire) and &quot;(Source)&quot; is the name of the ability giving this to you (ie Flaming).\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
     <fieldval field="pDuration" value="+1d6 Elemental"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -1326,7 +1326,7 @@ doneif (field[pChosen].ischosen = 0)
 #extradamage[field[pChosen].chosen,field[pDuration].text,field[name].text]]]></eval>
     </thing>
   <thing id="pS2SaveSit" name="Saving Throw, Situational" description="Select this adjustment to give your character a situation modifier that you can customize the text for.\n\n1st - Select the saving throw this modifier is meant for.\n2nd - In the {b}(Source){/b} field is where you type in what is giving you this modifier. In example for Fighter&apos;s Bravery class ability type in &quot;Bravery&quot;.\n3rd - In the {B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Fear&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -1339,7 +1339,7 @@ doneif (field[pIsOn].value = 0)
 #situational[field[pChosen].chosen,field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2SkilSit" name="Skill Bonus, Situational" description="Select this adjustment to add a situational bonus to one of your skill totals. Use source for the name and duration for the situational bonus text.\n\n1st - Select the skill this modifier is meant for.\n2nd - In the {b}(Source){/b} field is where you type in what is giving you this modifier. In example for Fighter&apos;s Bravery class ability type in &quot;Bravery&quot;.\n3rd - In the {B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Fear&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Skill" name="Skills" abbrev="Skills"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -1352,7 +1352,7 @@ doneif (field[pIsOn].value = 0)
 #situational[field[pChosen].chosen,field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2wUAS" name="Weapon Unarmed Strike" description="This adjustment will add a 2nd unarmed strike to your character.  This is helpful if you want to setup two-weapon fighting with unarmed strikes." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Race"/>
@@ -1361,7 +1361,7 @@ doneif (field[pIsOn].value = 0)
       </bootstrap>
     </thing>
   <thing id="pS2AttRest" name="Ability Score (Restore)" description="Select this adjustment to restore an attribute that has been removed. This happens with some race types like undead or constructs." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Attribute" name="Attributes" abbrev="Attributes"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -1374,7 +1374,7 @@ doneif (field[pIsOn].value = 0)
       perform field[pChosen].chosen.delete[Helper.NoScore]]]></eval>
     </thing>
   <thing id="pS2wHide2" name="Weapon Hide" description="Select this adjustment to be able to have a weapon not be shown. This is helpful if you have a natural attack or other bootstraped weapon you no longer want shown." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep" name="Current Weapons" abbrev="Current Weapons"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -1389,7 +1389,7 @@ doneif (field[pIsOn].value = 0)
       perform field[pChosen].chosen.assign[Hide.Weapon]]]></eval>
     </thing>
   <thing id="pS2fRapidS" name="Feat: Rapid Shot" description="Add this adjustment to allow you to add the Rapid Shot information to a specific weapon so on a printed character sheet it will display stats for your weapon with and without Rapid Shot.\n\n{b}How to Use:{/b} After adding this adjustment you select the ranged weapon you would like to have the Rapid Shot values display on.  Then on the &quot;In-Play&quot; tab you want to turn Rapid Shot off.  Then your weapon will correctly display both your normal Attack values and your Rapid Shot values.\n\n{B}Note:{/b} You will need the Rapid Shot feat on your character for this adjustment to work correctly." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -1432,7 +1432,7 @@ field[pChosen].chosen.field[livename].text &= sText]]></eval>
     </thing>
   <thing id="pS2DR" name="Damage Reduction, Set" description="Select this adjustment to set the amount and type of DR on a character. This is different from the official adjustment as the selected value will override what ever value is also already set for this DR allowing you to change monsters hardcoded values.\n\n{B}Note:{/B} The list of DR&apos;s avaible only include &quot;or&quot; ones and no &quot;and&quot;.  To have DR 5/Magic and Slashing you would add two adjustments with one for Slashing and one for Magic and set the counter to 5 for both." compset="InPlay">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="DamReduce"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -1451,7 +1451,7 @@ perform field[pChosen].chosen.delete[Value.?]
 field[pChosen].chosen.field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ArmorCl" name="Armor Class, Type" description="Select this adjustment to adjust your Armor Class by a specific type of bonus that you select from a drop down list. This adjustment follows the normal Pathfinder stacking rules regarding typed bonuses. So Bonus, Circumstance, Dodge and Natural Armor types will stack with themselves but all others will only apply the greatest value." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="AC"/>
@@ -1516,7 +1516,7 @@ field[pUsePicks].value = 1
 field[pCandExpr].text = "component.SelectHelp & (AdjustBon.Selector|AdjustAC.Selector) & !AdjustBon.Resist"]]></eval>
     </thing>
   <thing id="pS2svRefTy" name="Saving Throw (Reflex), Type" description="Select this adjustment to give a specific bonus/penalty type to your Reflex saves. This adjustment follows the normal Pathfinder stacking rules regarding typed bonuses. So Bonus and Circumstance types will stack with themselves but all others will only apply the greatest value." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Saves"/>
@@ -1566,7 +1566,7 @@ ElseIf (field[pChosen].chosen.tagis[AdjustBon.Bonus] <> 0) Then
 Endif]]></eval>
     </thing>
   <thing id="pS2svForTy" name="Saving Throw (Fort), Type" description="Select this adjustment to give a specific bonus/penalty type to your Fortitude saves. This adjustment follows the normal Pathfinder stacking rules regarding typed bonuses. So Bonus and Circumstance types will stack with themselves but all others will only apply the greatest value." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Saves"/>
@@ -1616,7 +1616,7 @@ ElseIf (field[pChosen].chosen.tagis[AdjustBon.Bonus] <> 0) Then
 Endif]]></eval>
     </thing>
   <thing id="pS2svWilTy" name="Saving Throw (Will), Type" description="Select this adjustment to give a specific bonus/penalty type to your Will saves. This adjustment follows the normal Pathfinder stacking rules regarding typed bonuses. So Bonus and Circumstance types will stack with themselves but all others will only apply the greatest value." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Saves"/>
@@ -1667,7 +1667,7 @@ Endif]]></eval>
       Endif]]></eval>
     </thing>
   <thing id="pS2svAllTy" name="Saving Throw (All), Type" description="Select this adjustment to give a specific bonus/penalty type to All your saves. This adjustment follows the normal Pathfinder stacking rules regarding typed bonuses. So Bonus and Circumstance types will stack with themselves but all others will only apply the greatest value." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Saves"/>
@@ -1718,7 +1718,7 @@ Endif]]></eval>
       Endif]]></eval>
     </thing>
   <thing id="pS2ClsAbV1" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value one, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a rogues Sneak Attack and increase/decrease the number of d6 dice the ability gives." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <eval phase="First" priority="20000" index="2"><![CDATA[
@@ -1741,7 +1741,7 @@ Endif]]></eval>
       field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
     </thing>
   <thing id="pS2ClsAbV2" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value two, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a barbarins Rage ability and increase/decrease the penalty to Will bonus when raging." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <eval phase="First" priority="20000" index="2"><![CDATA[
@@ -1764,7 +1764,7 @@ Endif]]></eval>
       field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
     </thing>
   <thing id="pS2ClsAbV3" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value three, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a barbarains Rage ability and increase/decrease the bonus to Con when raging." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <eval phase="First" priority="20000" index="2"><![CDATA[
@@ -1787,7 +1787,7 @@ Endif]]></eval>
       field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
     </thing>
   <thing id="pS2ClsAbV4" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value four, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a barbarains Rage ability and increase/decrease the bonus to Con when raging." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <eval phase="First" priority="20000" index="2"><![CDATA[
@@ -1811,7 +1811,7 @@ Endif]]></eval>
     </thing>
   <thing id="pS2ClsSkRe" name="Skill, Class Remove" description="Select this adjustment to make a class skill no longer be a class skill." compset="InPlay">
     <fieldval field="pWhat" value="Skill"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Skill"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -1825,7 +1825,7 @@ Endif]]></eval>
       perform field[pChosen].chosen.delete[Helper.ClassSkill]]]></eval>
     </thing>
   <thing id="pB1EqChang" name="Custom Name: Equipment" description="Overwrite the name of your equipment using the (Source) or (Duration) field. Use this to force an item to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjNoPlus" name="AdjNoPlus" abbrev="AdjNoPlus"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
@@ -1846,7 +1846,7 @@ Endif]]></eval>
       call S2SetName]]></eval>
     </thing>
   <thing id="pB1ArChang" name="Custom Name: Armor" description="Overwrite the name of your armor using the (Source) or (Duration) field. Use this to force an item to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjNoPlus" name="AdjNoPlus" abbrev="AdjNoPlus"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
@@ -1867,7 +1867,7 @@ Endif]]></eval>
       call S2SetName]]></eval>
     </thing>
   <thing id="pB1ArCusto" name="Custom Text: Armor" description="Append text to the name of your armor using the (Source) or (Duration) field. Use this to add any other related info you would like to see with when you print a character or use on the iPad." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
     <tag group="Adjustment" tag="YourArmor"/>
@@ -1887,7 +1887,7 @@ Endif]]></eval>
       call S2SetName]]></eval>
     </thing>
   <thing id="pB1EqCusto" name="Custom Text: Equipment" description="Append text to the name of your equipment using the (Source) or (Duration) field. Use this to add any other related info you would like to see with when you print a character or use on the iPad." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
     <tag group="Adjustment" tag="YourGear"/>
@@ -1907,7 +1907,7 @@ Endif]]></eval>
       call S2SetName]]></eval>
     </thing>
   <thing id="pS2ClsHDSz" name="Class, Die Size" description="Select this adjustment to be able to adjust the die size of a selected class up or down.  In example you change a fighter to get d12 instead of d10." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -1921,7 +1921,7 @@ Endif]]></eval>
       field[pChosen].chosen.field[cHDSides].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2SpeedBa" name="Speed, Base" description="Select this adjustment to change the base speed of your character." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Race"/>
     <eval phase="PreLevel" priority="1000"><![CDATA[
@@ -1931,7 +1931,7 @@ Endif]]></eval>
       hero.child[Speed].field[tSpeed].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2SkAllTy" name="Skill Bonus, All of Type" description="Select this adjustment to add a bonus to all skills of a specif type (Craft, Knowledge, Perform, or Profession).  After adding this adjustment select the type from the drop down list and set the counter to the amount of bonus or penalty to give to all skills of that type." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="SkillProf"/>
@@ -1956,7 +1956,7 @@ field[pCandExpr].text = "component.Modifiers & thingid.All? & !thingid.AllSkills
     </thing>
   <thing id="pS2DRadama" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/Adamantine on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdAdam"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -1970,7 +1970,7 @@ hero.child[xDamRdAdam].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRall" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/- on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRd"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -1983,7 +1983,7 @@ perform hero.child[xDamRd].delete[Value.?]
 hero.child[xDamRd].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2SaveRes" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Resistance{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -1994,7 +1994,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[svResist,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveAlc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Alchemical{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2005,7 +2005,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonAlch,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveCir" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Circumstance{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2016,7 +2016,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonComp,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveEnh" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Enhancement{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2027,7 +2027,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonEnhance,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveIns" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Insight{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2038,7 +2038,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonInsight,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveLuc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Luck{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2049,7 +2049,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonLuck,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveMor" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Morale{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2060,7 +2060,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonMorale,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SavePro" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Profane{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2071,7 +2071,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonProfane,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveSac" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Sacred{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2082,7 +2082,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonSacred,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2SaveTra" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Trait{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2093,7 +2093,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonTrait,field[pChosen].chosen,field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2CL" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Caster Level&quot;.{/I}{/b}\n\nSelect this adjustment to increase or decrease the Caster Level of the selected class." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <eval phase="PreLevel" priority="20000"><![CDATA[
@@ -2103,7 +2103,7 @@ doneif (field[pIsOn].value = 0)
 field[pChosen].chosen.field[cCasterLev].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2svAlAlc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Alchemical{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2113,7 +2113,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonAlch,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlCir" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Circumstance{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2123,7 +2123,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonComp,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlEnh" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Enhancement{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2133,7 +2133,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonEnhance,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlIns" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Insight{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2143,7 +2143,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonInsight,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlLuc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Luck{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2154,7 +2154,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonLuck,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlMor" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Morale{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2165,7 +2165,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonMorale,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlPro" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Profane{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2176,7 +2176,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonProfane,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlRes" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Resistance{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2187,7 +2187,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[svResist,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlSac" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Sacred{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2198,7 +2198,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonSacred,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2svAlTra" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Trait{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -2209,7 +2209,7 @@ doneif (field[pIsOn].value = 0)
 #applybonus[BonTrait,hero.child[svAll],field[pAdjust].value]]]></eval>
     </thing>
   <thing id="pS2wViciou" name="Deprecated" description="This is the old &quot;Weapon: Vicious Dmg&quot; adjustment that has been deprecated with the new changes done in Pathfinder v7.0.  You should remove from your character as this adjustment will be removed in a future update." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -2222,7 +2222,7 @@ doneif (field[pChosen].ischosen = 0)
 field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " +2d6 target, 1d6 wielder"]]></eval>
     </thing>
   <thing id="pS2SkGrCHA" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Charisma." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2256,7 +2256,7 @@ foreach pick in hero from BaseSkill
 nexteach]]></eval>
     </thing>
   <thing id="pS2SkGrSTR" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Strength." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2290,7 +2290,7 @@ foreach pick in hero from BaseSkill
 nexteach]]></eval>
     </thing>
   <thing id="pS2SkGrDEX" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Dexterity." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2324,7 +2324,7 @@ foreach pick in hero from BaseSkill
 nexteach]]></eval>
     </thing>
   <thing id="pS2SkGrCON" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill Bonus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Constitution." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2358,7 +2358,7 @@ foreach pick in hero from BaseSkill
 nexteach]]></eval>
     </thing>
   <thing id="pS2SkGrINT" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Intelligence." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2392,7 +2392,7 @@ foreach pick in hero from BaseSkill
 nexteach]]></eval>
     </thing>
   <thing id="pS2SkGrWIS" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Wisdom." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2427,7 +2427,7 @@ nexteach]]></eval>
     </thing>
   <thing id="pS2AttrDra" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Ability Score Drain&quot;.{/I}{/b}\n\nUse this adjustment when your character has received &quot;Drain&quot; damage to one of your ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom or Charisma).\n\n{B}Ability Drain{/b} Ability drain actually reduces the relevant ability score. Modify all skills and statistics related to that ability. This might cause you to lose skill points, hit points, and other bonuses. Ability drain can be healed through the use of spells such as restoration." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Attribute" name="Attributes" abbrev="Attributes"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -2439,7 +2439,7 @@ doneif (field[pIsOn].value = 0)
 field[pChosen].chosen.field[Penalty].value -= field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ClsAbDC" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Ability: DC&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the DC value of any of your class abilities." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <eval phase="First" priority="20000" index="2"><![CDATA[
@@ -2461,7 +2461,7 @@ field[pUsePicks].value = 1
 field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
     </thing>
   <thing id="pS2ClsAbTr" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Ability: Uses&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the number of uses of any of your class abilities." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <eval phase="First" priority="20000" index="2"><![CDATA[
@@ -2483,7 +2483,7 @@ field[pUsePicks].value = 1
 field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
     </thing>
   <thing id="pS2SKGrALL" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill Bonus, All Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all your skills." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2493,7 +2493,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[AllSkills].field[Bonus].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2Hero000" name="Hero, Ability Score Increase" description="Use this adjustment to give a add or remove the number of Ability Score Increases your character has. In example lets say you want to get two ability score increases at level 4 instead of one. In such a case at level 4 you would select +1 then you will be able to add two &quot;Ability Score Increases&quot; instead of just one." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <eval phase="Level"><![CDATA[
@@ -2504,7 +2504,7 @@ doneif (field[pIsOn].value = 0)
 herofield[tAttrEvol].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="yACarmor" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Armor{/b} Bonus to armor class.\n\n{b}Note{/b}: Only the highest armor bonus applies." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2514,7 +2514,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[ArmorClass].field[tACArmor].value = maximum(field[pAdjust].value,hero.child[ArmorClass].field[tACArmor].value)]]></eval>
     </thing>
   <thing id="yACShield" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Shield{/b} bonus to armor class.\n\n{b}Note{/b}: Only the highest shield bonus applies." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2524,7 +2524,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[ArmorClass].field[tACShield].value = maximum(field[pAdjust].value,hero.child[ArmorClass].field[tACShield].value)]]></eval>
     </thing>
   <thing id="yACNatural" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Natural{/b} bonus to armor class.\n\n{b}Note{/b}: Natural Armor stacks with itself." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2534,7 +2534,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[ArmorClass].field[tACNatural].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="yACdodge" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Dodge{/b} bonus to armor class.\n\n{b}Note{/b}: Like most modifiers to Armor Class, this modifier is also applied to your Combat Maneuver Defense.  A separate CMD adjustment can be used to cancel this out." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2544,7 +2544,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[ArmorClass].field[tACDodge].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="yACdeflect" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Deflection{/b} bonus to armor class.\n\n{b}Note{/b}: Only the highest deflection bonus applies." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[~Pre-Levels 10,000
       ~ If we're not enabled, get out now
@@ -2555,7 +2555,7 @@ hero.child[ArmorClass].field[tACDodge].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRevil" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/evil on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdEvil"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -2568,7 +2568,7 @@ perform hero.child[xDamRdEvil].delete[Value.?]
 hero.child[xDamRdEvil].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="yACtouch" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Touch{/b} armor class.\n\n{b}Note{/b}: This is not a specific type so it always stacks." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2579,7 +2579,7 @@ hero.child[ArmorClass].field[tACTouch].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRgood" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/good on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdGood"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -2593,7 +2593,7 @@ hero.child[xDamRdGood].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRmagic" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/magic on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdMag"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -2607,7 +2607,7 @@ hero.child[xDamRdMag].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRpierc" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/piercing  on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdP"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -2621,7 +2621,7 @@ hero.child[xDamRdP].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRsilve" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/silver  on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdSil"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -2635,7 +2635,7 @@ hero.child[xDamRdSil].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRslash" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/slashing  on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdS"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -2649,7 +2649,7 @@ hero.child[xDamRdSil].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DRbludg" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/bludgeoning on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="xDamRdB"></bootstrap>
     <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
@@ -2662,7 +2662,7 @@ perform hero.child[xDamRdB].delete[Value.?]
 hero.child[xDamRdB].field[abValue].value = field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2SplRs" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Spell Resistance&quot;.{/I}{/b}\n\nSelect this adjustment to be able to increase/decrease the amount of spell resistance you have." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Final" priority="19000" index="2"><![CDATA[~ If we're not enabled, get out now
 doneif (field[pIsOn].value = 0)
@@ -2670,7 +2670,7 @@ doneif (field[pIsOn].value = 0)
 #value[xSplRs] += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ALSchDC" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Spell DC, All Spells&quot;.{/I}{/b}\n\nSelect this adjustment to add a bonus/penalty to all your spell DCs regardless of school of magic." compset="InPlay" isprivate="yes">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
@@ -2686,7 +2686,7 @@ nexteach]]></eval>
 field[pUsePicks].value = 1
 ~ Set search expression
 field[pCandExpr].text = "component.BaseSpell & !portal.ClsBook & portal.?"]]></comment>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
@@ -2702,7 +2702,7 @@ field[pCandExpr].text = "component.SplSchool & !sDescript.? & !sWordCat.? & !sSu
     </thing>
   <thing id="pS2wGrBane" name="Weapon Bane Greater Dmg" description="Select this adjustment to apply the Bane weapon +2 bonus on to hit and damage and the +4d6 extra damage. Enter in the creature type into the &quot;(Source)&quot; section.\n\nThis is useful for Inquisitors when they bane their weapons." compset="InPlay">
     <fieldval field="pSource" value="Bane"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2719,7 +2719,7 @@ field[pChosen].chosen.field[Bonus].value += 2
 #extradamage[field[pChosen].chosen,"+4d6 vs. " & field[pSource].text,field[name].text]]]></eval>
     </thing>
   <thing id="pS2BAB" name="Attack Bonus, BAB" description="Select this adjustment to change your Base Attack Bonus (BAB) up or down." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="AttDam"/>
     <eval phase="First" priority="1000"><![CDATA[
@@ -2730,7 +2730,7 @@ doneif (field[pIsOn].value = 0)
 hero.child[Attack].field[tAtkBase].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2wTypeS" name="Weapon Damage Type, Slashing" description="Select this adjustment to change the damage type of the selected weapon to Slashing. This means that the regardless of the orginial damage type the weapon will now be Slashing. If you wish to only ADD a new type please use the &quot;Weapon Damage Type Add, xxxx&quot; adjustment instead." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2763,7 +2763,7 @@ perform field[pChosen].chosen.pushtags[wType.?]]]></eval>
     <tag group="wType" tag="B" name="Bludgeoning"/>
     </thing>
   <thing id="pS2wTypeP" name="Weapon Damage Type, Piercing" description="Select this adjustment to change the damage type of the selected weapon to Piercing.  This means that the regardless of the orginial damage type the weapon will now be Piercing. If you wish to only ADD a new type please use the &quot;Weapon Damage Type Add, xxxx&quot; adjustment instead." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2781,7 +2781,7 @@ perform field[pChosen].chosen.delete[wType.?]
 perform field[pChosen].chosen.pushtags[wType.?]]]></eval>
     </thing>
   <thing id="pS2wTypeB" name="Weapon Damage Type, Bludgeoning" description="Select this adjustment to change the damage type of the selected weapon to Bludgeoning. This means that the regardless of the orginial damage type the weapon will now be Bludgeoning. If you wish to only ADD a new type please use the &quot;Weapon Damage Type Add, xxxx&quot; adjustment instead." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2799,7 +2799,7 @@ perform field[pChosen].chosen.delete[wType.?]
 perform field[pChosen].chosen.pushtags[wType.?]]]></eval>
     </thing>
   <thing id="pS2wDmgDex" name="Weapon Damage Attribute, Dexterity" description="Select this adjustment to change the attributed used to calculate damage to be Dexterity instead of strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2815,7 +2815,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[DamageOver.?]]]></eval>
     </thing>
   <thing id="pS2wDmgCon" name="Weapon Damage Attribute, Constitution" description="Select this adjustment to change the attributed used to calculate damage to be Constitution instead of strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2831,7 +2831,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[DamageOver.?]]]></eval>
     </thing>
   <thing id="pS2wTyAddB" name="Weapon Damage Type Add, Bludgeoning" description="Select this adjustment to add the damage type Bludgeoning to the selected weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2847,7 +2847,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[wType.?]]]></eval>
     </thing>
   <thing id="pS2wTyAddS" name="Weapon Damage Type Add, Slashing" description="Select this adjustment to add the damage type Slashing to the selected weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2863,7 +2863,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[wType.?]]]></eval>
     </thing>
   <thing id="pS2wTyAddP" name="Weapon Damage Type Add, Piercing" description="Select this adjustment to add the damage type Piercing to the selected weapon." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2879,7 +2879,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[wType.?]]]></eval>
     </thing>
   <thing id="pS2wDmgInt" name="Weapon Damage Attribute, Intelligence" description="Select this adjustment to change the attributed used to calculate damage to be Intelligence instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2895,7 +2895,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[DamageOver.?]]]></eval>
     </thing>
   <thing id="pS2wDmgWis" name="Weapon Damage Attribute, Wisdom" description="Select this adjustment to change the attributed used to calculate damage to be Wisdome instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2911,7 +2911,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[DamageOver.?]]]></eval>
     </thing>
   <thing id="pS2wDmgCha" name="Weapon Damage Attribute, Charisma" description="Select this adjustment to change the attributed used to calculate damage to be Charisma instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2927,7 +2927,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[DamageOver.?]]]></eval>
     </thing>
   <thing id="pS2wNot2HH" name="Weapon Damage NOT +50%" description="Select this adjustment to prevent a two-handed weapon weilded in one hand from getting the two-handed damage output (+50%) from the Power Attack feat." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -2944,7 +2944,7 @@ perform field[pChosen].chosen.delete[Helper.PowTwoHand]]]></eval>
   <thing id="pS2AbiRest" name="Class Ability, Restore" description="Select this adjustment to restore a class or racial ability that has been disabled. This can be used to restore a class ability that an archetype disabled." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.Ability &amp; (component.BaseClSpec | component.BaseCustSp)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -2961,7 +2961,7 @@ perform field[pChosen].chosen.delete[Helper.SpcDisable]
 perform field[pChosen].chosen.delete[Helper.SpcReplace]]]></eval>
     </thing>
   <thing id="pS2SpellDC" name="Spell DC, Specific Spell" description="Select this adjustment to add a bonus/penalty to the selected spell DC." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu" abbrev="Custom Menu"/>
     <tag group="OthAdjCat" tag="Spell"/>
@@ -2978,7 +2978,7 @@ field[pUsePicks].value = 1
 field[pCandExpr].text = "component.BaseSpell & !portal.ClsBook & CasterType.?"]]></eval>
     </thing>
   <thing id="pS2AttaSit" name="Attack Bonus, Situational" description="Select this adjustment to add a situational bonus to your attacks.  This is like a Dwarves &quot;Hatred&quot; ability.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example for dwarves it would be &quot;Hatred&quot;.\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="AttDam"/>
@@ -2990,7 +2990,7 @@ doneif (field[pIsOn].value = 0)
 #situational[hero.child[Attack],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2ACSit" name="Armor Class, Situational" description="Select this adjustment to add a situational bonus to your armor class. This is like a Dwarves &quot;Defensive Training&quot; ability.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example for dwarves it would be &quot;Defensive Training&quot;.\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+1 vs Orcs&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="AC"/>
@@ -3002,7 +3002,7 @@ doneif (field[pIsOn].value = 0)
 #situational[hero.child[ArmorClass],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2JourSho" name="Journal, Display" description="This adjustments forces the {b}Journal{/b} tab to appear which is useful on NPC&apos;s which has the tab hidden." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Misc"/>
@@ -3016,7 +3016,7 @@ perform hero.delete[Hero.NoAdvance]
 perform hero.delete[Hero.ClsErLev?]]]></eval>
     </thing>
   <thing id="pS2wPrimar" name="Natural Attack: Primary" description="Select this adjustment to force the selected natural attack to be a Primary natural attack." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3029,7 +3029,7 @@ doneif (field[pChosen].ischosen = 0)
 perform field[pChosen].chosen.assign[Helper.NatPrimary]]]></eval>
     </thing>
   <thing id="pS2wSecond" name="Natural Attack: Secondary" description="Select this adjustment to force the selected natural attack to be a Secondary natural attack." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3043,7 +3043,7 @@ perform field[pChosen].chosen.assign[Helper.NatOverSec]
 perform field[pChosen].chosen.delete[Helper.NatPrimary]]]></eval>
     </thing>
   <thing id="pS2w2xDmg" name="Natural Attack: Two-Handed Damage" description="Select this adjustment to force the selected natural attack to be treated as a two-handed weapon and gain 1.5x Str damage." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3056,7 +3056,7 @@ doneif (field[pChosen].ischosen = 0)
 perform field[pChosen].chosen.assign[Helper.NatTwoHand]]]></eval>
     </thing>
   <thing id="pS2wAttCha" name="Weapon Attack Melee Attribute, Cha" description="Select this adjustment to change the attributed used to calculate attack bonus to be Charisma instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3072,7 +3072,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[MelAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wAttDex" name="Weapon Attack Melee Attribute, Dex" description="Select this adjustment to change the attributed used to calculate attack bonus to be Dexterity instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3088,7 +3088,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[MelAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wAttCon" name="Weapon Attack Melee Attribute, Con" description="Select this adjustment to change the attributed used to calculate attack bonus to be Constitution instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3104,7 +3104,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[MelAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wAttInt" name="Weapon Attack Melee Attribute, Int" description="Select this adjustment to change the attributed used to calculate attack bonus to be Intelligence instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3120,7 +3120,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[MelAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wAttWis" name="Weapon Attack Melee Attribute, Wis" description="Select this adjustment to change the attributed used to calculate attack bonus to be Wisdom instead of Strength." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3136,7 +3136,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[MelAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wRngStr" name="Weapon Attack Ranged Attribute, Str" description="Select this adjustment to change the attributed used to calculate attack bonus to be Strength instead of Dexterity." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3152,7 +3152,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[RanAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wRngCon" name="Weapon Attack Ranged Attribute, Con" description="Select this adjustment to change the attributed used to calculate attack bonus to be Constitution instead of Dexterity." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3168,7 +3168,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[RanAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wRngInt" name="Weapon Attack Ranged Attribute, Int" description="Select this adjustment to change the attributed used to calculate attack bonus to be Intelligence instead of Dexterity." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3184,7 +3184,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[RanAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wRngWis" name="Weapon Attack Ranged Attribute, Wis" description="Select this adjustment to change the attributed used to calculate attack bonus to be Wisdom instead of Dexterity." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3200,7 +3200,7 @@ doneif (field[pChosen].ischosen <> 1)
 perform field[pChosen].chosen.pushtags[RanAttOver.?]]]></eval>
     </thing>
   <thing id="pS2wRngCha" name="Weapon Attack Ranged Attribute, Cha" description="Select this adjustment to change the attributed used to calculate attack bonus to be Charisma instead of Dexterity." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3217,7 +3217,7 @@ perform field[pChosen].chosen.pushtags[RanAttOver.?]]]></eval>
     </thing>
   <thing id="pS2raDarkV" name="Racial Ability, Darkvision" description="Use this adjustment to add darkvision to your character.  You can use the counter to set the distance of the darkvision." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjNoPlus" name="AdjNoPlus" abbrev="AdjNoPlus"/>
     <tag group="OthAdjCat" tag="Race"/>
@@ -3231,7 +3231,7 @@ doneif (field[pIsOn].value = 0)
 #value[raDarkVis] += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2raLowLi" name="Racial Ability, Low-Light Vision" description="Use this adjustment to add low-light vision to your character." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Race"/>
@@ -3240,7 +3240,7 @@ doneif (field[pIsOn].value = 0)
       </bootstrap>
     </thing>
   <thing id="pS2raScent" name="Racial Ability, Scent" description="Use this adjustment to add the Scent special ability to your character." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Race"/>
@@ -3250,7 +3250,7 @@ doneif (field[pIsOn].value = 0)
     </thing>
   <thing id="pS2CmbSit" name="Combat Maneuver Bonus, Situational" description="{B}As of Pathfinder v7.16 the text does not display yet on the character or print to the sheet. This may change in a future version so I am adding this adjustment now.{/b}\n\nSelect this adjustment to add a situational bonus to your Combat Maneuver Bonus.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example you could type in &quot;Grapple&quot;\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
     <comment>Does not currently display in Pathfinder v7.16.</comment>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="CMDCMB"/>
@@ -3263,7 +3263,7 @@ doneif (field[pIsOn].value = 0)
     </thing>
   <thing id="pS2CmdSit" name="Combat Maneuver Defense, Situational" description="{B}As of Pathfinder v7.16 the text does not display yet on the character or print to the sheet. This may change in a future version so I am adding this adjustment now.{/b}\n\nSelect this adjustment to add a situational bonus to your Combat Maneuver Defense.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example you could type in &quot;Grapple&quot;\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
     <comment>Does not currently display in Pathfinder v7.16.</comment>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="CMDCMB"/>
@@ -3275,7 +3275,7 @@ doneif (field[pIsOn].value = 0)
 #situational[hero.child[ManeuvDef],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2CmSit" name="Combat Maneuver, Situational" description="Select this adjustment to add a situational bonus to your Combat Maneuver for both Bonus/Defense.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example you could type in &quot;Grapple&quot;\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="CMDCMB"/>
@@ -3287,7 +3287,7 @@ doneif (field[pIsOn].value = 0)
 #situational[hero.child[Maneuver],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2CustSpe" name="- Custom Spell Text -" description="Add this adjustment to be able to track an active spell that is not currently availble to be added. Once added type into the (Source) section with the name of the spell and the name will change to match.\n\nThis is most useful when you want to track an active spell or affect that is NOT available in Hero Lab (ie a 3PP spell or effect that is unqiue to a Campaign/Adventure)." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjSpell"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -3301,7 +3301,7 @@ doneif (field[pIsOn].value = 0)
       Endif]]></eval>
     </thing>
   <thing id="pS2CustSp2" name="- Custom Spell Selection -" description="Add this adjustment to be able to track an active spell that is not currently availble to be added. Once added select the spell from the drop down list and this adjustment&apos;s name of name will change to match. Plus the spell information will be added to the adjustment.\n\nThis is most useful when you want to track an active spell that is available in Hero Lab." compset="InPlay" summary="Add Spell Text to Spell Adjustments section">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
@@ -3328,7 +3328,7 @@ doneif (field[pIsOn].value = 0)
     </thing>
   <thing id="pS2SpChang" name="Custom Name: Spell" description="Overwrite the name of your spell using the (Source) or (Duration) field. Use this to force a spell to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
     <fieldval field="pCandExpr" value="component.BaseSpell"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3348,7 +3348,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2SpCusto" name="Custom Text: Spell" description="Append text to the name of your spell using the (Source) or (Duration) field. Use this to add any other related info you would like to see with when you print a character or use on the iPad." compset="InPlay">
     <fieldval field="pCandExpr" value="component.BaseSpell"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3367,7 +3367,7 @@ doneif (field[pChosen].ischosen <> 1)
 call S2SetName]]></eval>
     </thing>
   <thing id="pS2CarrCap" name="Encumbrance, Carrying Capacity" description="Use this adjustment to change your your Strength score to be treated as higher/lower value than normal when calculating your carrying capacity.  In example if you have a 10 Str and set this counter to +1 you will be treated as if you had a 11 Strength for purposes of carrying capacity." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Equipment"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
@@ -3378,7 +3378,7 @@ call S2SetName]]></eval>
       herofield[tEncumSTR].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2wChange" name="Custom Name: Weapon" description="Overwrite the name of your weapon using the (Source) or (Duration) field. Use this to force a weapon to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -3399,7 +3399,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2wValue" name="Natural Weapon: Number of Attacks" description="For natural attacks you can adjust the number of attacks. In example often a creature has 2x Claw attacks. If you wanted the creature to have 4x claw attacks you would select Claws from the drop down and set the counter to 4." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -3419,7 +3419,7 @@ call S2SetName]]></eval>
       perform field[pChosen].chosen.assignstr[sValue]]]></eval>
     </thing>
   <thing id="pS2ArmSlow" name="Equipment, Armor No Longer Slows" description="Use this adjustment to remove the &quot;slow&quot; land speed that medium and heavy armor causes." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourArmor"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3438,7 +3438,7 @@ call S2SetName]]></eval>
       perform field[pChosen].chosen.delete[ArmorCateg.SlowsEx]]]></eval>
     </thing>
   <thing id="pS2ClsDC" name="Class Ability: DC" description="Select this adjustment to be able to adjust the DC of the selected class ability." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3462,7 +3462,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[abDC].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2EqInPla" name="Equipment, Remove Tracker" description="Select this adjustment to have one of your pieces of equipment no longer display on the &quot;{b}In-Play{/b}&quot; tab. This can be useful for higher level when you don&apos;t want/need Trail Rations, Sunrods, or Daggers cluttering up the display." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3486,7 +3486,7 @@ call S2SetName]]></eval>
       perform field[pChosen].chosen.delete[User.Tracker]]]></eval>
     </thing>
   <thing id="pS2CLschoo" name="Caster Level, School" description="Select this adjustment to add a bonus/penalty to all your spells caster levels of a specific school of magic." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu" abbrev="Custom Menu"/>
     <tag group="OthAdjCat" tag="Spell"/>
@@ -3503,7 +3503,7 @@ call S2SetName]]></eval>
       field[pCandExpr].text = "component.SplSchool & !sDescript.? & !sWordCat.? & !sSubschool.?"]]></eval>
     </thing>
   <thing id="pS2CLspell" name="Caster Level, Spell" description="Select this adjustment to add a bonus/penalty to the selected spells caster level." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu" abbrev="Custom Menu"/>
     <tag group="OthAdjCat" tag="Spell"/>
@@ -3520,7 +3520,7 @@ call S2SetName]]></eval>
       field[pCandExpr].text = "component.BaseSpell & !portal.ClsBook & CasterType.?"]]></eval>
     </thing>
   <thing id="pS2ClsCst1" name="Class Ability Custom: Primary" description="Select this adjustment to be able to adjust the number of custom abilities you get. A custom ability are things like barbarian rage powers, cleric domains or rogue talents as the Hero Lab software considers those to be Custom Abilities.  If you are not sure which adjustment to use then simply do a little trial and error to figure out which one you need." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3534,7 +3534,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cGiveSpec].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ClsCst2" name="Class Ability Custom: Secondary" description="Select this adjustment to be able to adjust the number of custom abilities you get. A custom ability are things like barbarian rage powers, cleric domains or rogue talents as the Hero Lab software considers those to be Custom Abilities.  If you are not sure which adjustment to use then simply do a little trial and error to figure out which one you need." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3548,7 +3548,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cGiveSp2nd].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ClsCst3" name="Class Ability Custom: Tertiary" description="Select this adjustment to be able to adjust the number of custom abilities you get. A custom ability are things like barbarian rage powers, cleric domains or rogue talents as the Hero Lab software considers those to be Custom Abilities.  If you are not sure which adjustment to use then simply do a little trial and error to figure out which one you need." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3562,7 +3562,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cGiveSp3rd].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ClsCst4" name="Class Ability Custom: Quaternary" description="Select this adjustment to be able to adjust the number of custom abilities you get. A custom ability are things like barbarian rage powers, cleric domains or rogue talents as the Hero Lab software considers those to be Custom Abilities.  If you are not sure which adjustment to use then simply do a little trial and error to figure out which one you need.\n\n{b}Note:{/b} Use this adjustment to remove the cleric classes &quot;Optional Variant Channeling&quot; by selecting cleric and placing a -1 into the counter." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3576,7 +3576,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cGiveSp4th].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ClsCst5" name="Class Ability Custom: Quintenary" description="Select this adjustment to be able to adjust the number of custom abilities you get. A custom ability are things like barbarian rage powers, cleric domains or rogue talents as the Hero Lab software considers those to be Custom Abilities.  If you are not sure which adjustment to use then simply do a little trial and error to figure out which one you need." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3590,7 +3590,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cGiveSp5th].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ClsBFt1" name="Class, Bonus Feats" description="Select this adjustment to be able to increase/decrease the number of bonus feats the selected class gets." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3604,7 +3604,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cBonFtMax].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2ClsBFt2" name="Class, Bonus Feats Secondary" description="Select this adjustment to be able to increase/decrease the number of secondary bonus feats the selected class gets." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -3618,7 +3618,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cSBonFtMax].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2MyPoint" name="Mythic Power Points" description="Use this adjustment to increase/decrease the number of mythic points you have." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Mythic"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -3631,7 +3631,7 @@ call S2SetName]]></eval>
   <thing id="pS2EqInPl2" name="Equipment, Add Trackable" description="Select this adjustment to have one of your pieces of equipment display on the &quot;In-Play&quot; tab with a number of uses. This can be useful for making scrolls be trackable on the In-Play tab." compset="InPlay">
     <fieldval field="pMinimum" value="0"/>
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -3656,7 +3656,7 @@ call S2SetName]]></eval>
   <thing id="pS2MyDieSz" name="Mythic Surge Die Size" description="Use this adjustment to increase/decrease the die size of your mythic surge ability to a maximum of 1d12 and a minimum value of 1d6." compset="InPlay">
     <fieldval field="pMinimum" value="-3"/>
     <fieldval field="pMaximum" value="3"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Mythic"/>
     <eval phase="Final" priority="10000" index="2"><![CDATA[
@@ -3680,7 +3680,7 @@ call S2SetName]]></eval>
       Endif]]></eval>
     </thing>
   <thing id="pS2ActPoin" name="Action Points" description="Use this adjustment to increase/decrease the number of action points your character has." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <usesource source="OptAction"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Misc"/>
@@ -3692,7 +3692,7 @@ call S2SetName]]></eval>
       #trkmax[hActionPts] += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2MyTierA" name="Mythic Tier Abilities" description="You can use this adjustment to affect the number of {i}Mythic Ability Score Increases, Mythic Feats, Mythic Other Abilities, Mythic Path Abilities, and Mythic Spells{/i} that your mythic tier gives.  Mythic Other Abilities is the unique tier ability each tier gets. In example an Archmage gets &quot;Archmage Arcana&quot;." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Mythic"/>
@@ -3710,7 +3710,7 @@ call S2SetName]]></eval>
       field[pCandExpr].text = "component.Resource & thingid.resMy?"]]></eval>
     </thing>
   <thing id="pS2CLSubSc" name="Caster Level, Subschool" description="Select this adjustment to add a bonus/penalty to all your spells caster levels of a specific subschool of magic." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu" abbrev="Custom Menu"/>
     <tag group="OthAdjCat" tag="Spell"/>
@@ -3727,7 +3727,7 @@ call S2SetName]]></eval>
       field[pCandExpr].text = "component.SplSchool & sDescript.? & !sWordCat.? & sSubschool.?"]]></eval>
     </thing>
   <thing id="pS2SubscDC" name="Spell DC, Specific Subschool" description="Select this adjustment to add a bonus/penalty to all your spell DCs of a specific subschool of magic." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu" abbrev="Custom Menu"/>
     <tag group="OthAdjCat" tag="Spell"/>
@@ -3749,7 +3749,7 @@ call S2SetName]]></eval>
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.BaseWep &amp; AdjShadow.SpWeapon"/>
     <fieldval field="pCandExpr2" value="component.BaseWep &amp; PackHelper.Touch"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Adjust2nd" tag="S2Custom"/>
@@ -3799,7 +3799,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[livename].text = field[pDuration].text]]></eval>
     </thing>
   <thing id="pS2RceHDSz" name="Race, Die Size" description="Select this adjustment to be able to adjust the die size of the race up or down.  In example you change a Bear&apos;s default d8 to be d10 or d6 instead." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Race"/>
     <eval phase="First" priority="10000" index="2"><![CDATA[
@@ -3814,7 +3814,7 @@ call S2SetName]]></eval>
       focus.field[rHDSides].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2PFSrace" name="PFS, Race Boon" description="Adding this adjustment will make your race legal for Pathfinder Society Characters.\n\n{B}Note:{/b} This will not work on all races. Specifically the &quot;Uncommon&quot; races can&apos;t at this time have their warning message prevented as its hard-coded into the system files that can not be adjusted.\n\n{b}Note:{/b} If you enter text into the &quot;Source&quot; below then it will be appended to the race name. This allows you to easily note which boon is making this race as valid." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="PFS"/>
@@ -3859,7 +3859,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2PFSgear" name="PFS, Equipment Boon" description="Adding this adjustment will allow you to select a single piece of equipment (gear, magic items, weapons or armor) and make it legal for Pathfinder Society Characters.\n\n{b}Note:{/b} If you enter text into the &quot;Source&quot; below then it will be appended to the equipment name. This allows you to easily note which boon is making this equipment as valid." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(thingid.wUnarmed|thingid.mNatural|thingid.mArmor|thingid.mShield|thingid.wTouch|thingid.wRay|thingid.gClothes|thingid.gGround)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3894,7 +3894,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2EqInPl3" name="Equipment, Remove Activation" description="Select this adjustment to have one of your pieces of equipment no longer display on the &quot;{b}In-Play{/b}&quot; activation tab. This can be useful for higher level when you don&apos;t want/need Trail Rations, Sunrods, or Daggers cluttering up the display." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -3910,7 +3910,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2EqInPl4" name="Equipment, Add Activation" description="Select this adjustment to have one of your pieces of equipment no longer display on the &quot;{b}In-Play{/b}&quot; activation tab. This can be useful for higher level when you don&apos;t want/need Trail Rations, Sunrods, or Daggers cluttering up the display." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -3927,7 +3927,7 @@ call S2SetName]]></eval>
   <thing id="pS2EqArmEn" name="Equipment, Armor Enhancement" description="Use this adjustment to increase/decrease the magical enhancement bonus of armor/shields. As this is an Enhancment bonus it does not &quot;stack&quot; with an existing enhancment bonus." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.BaseArmor &amp; !(Helper.Natural|Helper.Static)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -3955,7 +3955,7 @@ call S2SetName]]></eval>
   <thing id="pS2EqWepEn" name="Equipment, Weapon Enhancement" description="Use this adjustment to increase/decrease the magical enhancement bonus of specific magical weapon.  As this is an enhancment bonus being applied only the highest bonus will apply.  So if you have a Adamatine Battleaxe that already has a +1 Enhancement bonus to attack and set the counter here to +1 then you will only get a bonus to damage." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.BaseWep"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -3982,7 +3982,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2wFullA1" name="Weapon Attacks: Full Attack - Select" description="Use this adjustment to make your selected ranged attack weapon get its full number of attacks. In example many firearms like Pistols won&apos;t display multiple attacks without this adjustment." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3998,7 +3998,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2wFullA2" name="Weapon Attacks: Full Attack - ALL" description="Use this adjustment to make ALL your ranged weapons get their full number of attacks. In example many firearms like Pistols won&apos;t display multiple attacks without this adjustment." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -4013,7 +4013,7 @@ call S2SetName]]></eval>
       nexteach]]></eval>
     </thing>
   <thing id="pS2ClsSvRe" name="Class, Ref Save" description="Select this adjustment to be able to change the save progression of a classes Reflex Saves from Slow, Medium, or Fast progression.  After adding the adjustment select the class you which to change and then from the 2nd dropdown select the save progression (Slow, Medium, or Fast)." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="MythAdjAvl" tag="Mythic"/>
@@ -4051,7 +4051,7 @@ call S2SetName]]></eval>
       Endif]]></eval>
     </thing>
   <thing id="pS2ClsSvFo" name="Class, Fort Save" description="Select this adjustment to be able to change the save progression of a classes Fortitude Saves from Slow, Medium, or Fast progression.  After adding the adjustment select the class you which to change and then from the 2nd dropdown select the save progression (Slow, Medium, or Fast)." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="MythAdjAvl" tag="Mythic"/>
@@ -4089,7 +4089,7 @@ call S2SetName]]></eval>
       Endif]]></eval>
     </thing>
   <thing id="pS2ClsSvWi" name="Class, Will Save" description="Select this adjustment to be able to change the save progression of a classes Will Saves from Slow, Medium, or Fast progression.  After adding the adjustment select the class you which to change and then from the 2nd dropdown select the save progression (Slow, Medium, or Fast)." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="MythAdjAvl" tag="Mythic"/>
@@ -4127,7 +4127,7 @@ call S2SetName]]></eval>
       Endif]]></eval>
     </thing>
   <thing id="pS2ClsBAB" name="Class, Base Attack Bonus" description="Select this adjustment to be able to change the base attack bonus (BAB) progression of a selected class Slow, Medium, or Fast progression.  After adding the adjustment select the class you which to change and then from the 2nd dropdown select the base attack bonus progression (Slow, Medium, or Fast)." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Class"/>
     <tag group="MythAdjAvl" tag="Mythic"/>
@@ -4167,7 +4167,7 @@ call S2SetName]]></eval>
   <thing id="pS2RaceHD" name="Race, Hit Dice Remove" description="Select this adjustment to be able to remove hit dice from a race.\n\n{b}Note:{/b} At this time you have to adjust the skill points manually and you can&apos;t remove any extra feats individually.  What you can do is check mark the &quot;Customize&quot; option next to the Race on the &quot;Background&quot; tab.  To be able to see &quot;Customize&quot; option you must change the character to be a NPC through the &quot;Configure Hero Window&quot; (ie press CTRL-K)." compset="InPlay">
     <fieldval field="pMinimum" value="-99"/>
     <fieldval field="pMaximum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Race"/>
     <eval phase="First" index="2"><![CDATA[
@@ -4187,7 +4187,7 @@ call S2SetName]]></eval>
     <comment>v1.1: Risner</comment>
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.BaseFeat | component.BaseTrait"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu" abbrev="Custom Menu"/>
@@ -4222,7 +4222,7 @@ call S2SetName]]></eval>
   <thing id="pS2EqConWt" name="Equipment, Container Weight" description="Use this adjustment to increase/decrease the maximum weight that a container (ie bag of holding) can carry.  You can also use this adjustment to set the max weight for Backpacks that normally do not have a max weight." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.BaseEquip &amp; thing.holder"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -4237,7 +4237,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2WepPrSp" name="Weapon Proficiency, Specific" description="Select this adjustment to add proficiency with a single specific weapon on your character. This adjustment only lets you select from weapons on your character and only that one single specific weapon will you be proficient with." compset="InPlay">
     <fieldval field="pWhat" value="Proficiency"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
@@ -4254,7 +4254,7 @@ call S2SetName]]></eval>
   <thing id="pS2PFSarch" name="PFS, Archetype" description="Adding this adjustment will allow you to select a Archetype and make it legal for Pathfinder Society Characters.\n\n{b}Note:{/b} If you enter text into the &quot;Source&quot; below then it will be appended to the Archetype name. This allows you to easily note which boon is making this Archetype as valid." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.BaseVary"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom" name="Custom Menu" abbrev="Custom Menu"/>
@@ -4289,7 +4289,7 @@ call S2SetName]]></eval>
   <thing id="pS2RaChang" name="Custom Name: Race" description="Overwrite the name of your race using the (Source) or (Duration) field. Use this to force your race to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
     <comment>This must run at First/600 to work.</comment>
     <fieldval field="pCandExpr" value="component.BaseRace"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="AdjShadow" tag="Name"/>
@@ -4310,7 +4310,7 @@ call S2SetName]]></eval>
   <thing id="pS2RaCusto" name="Custom Text: Race" description="Append text to the name of your race using the (Source) or (Duration) field. Use this to add any other related info you would like to see with when you print a character or use on the iPad." compset="InPlay">
     <comment>This must run at Render/999 to work.</comment>
     <fieldval field="pCandExpr" value="component.BaseRace"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="AdjShadow" tag="Text"/>
@@ -4331,7 +4331,7 @@ call S2SetName]]></eval>
   <thing id="pS2EqItmSl" name="Equipment, Item Slot" description="Select this adjustment to change the item slot used by one your magic items." compset="InPlay">
     <fieldval field="pCandExpr" value="component.BaseEquip &amp; Helper.EquipMag"/>
     <fieldval field="pCandExpr2" value="component.ItemSlot"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Adjust2nd" tag="S2Custom"/>
@@ -4357,7 +4357,7 @@ call S2SetName]]></eval>
       perform field[pChosen].chosen.pushtags[Hero.Eqp?]]]></eval>
     </thing>
   <thing id="pS2wRngInc" name="Weapon Range Increment" description="Select this adjustment to be able to adjusts a weapons range increment value. So in example a dagger has a 10ft range increment. Using this adjustment you could change that to 5ft or 15ft..." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep" name="Current Weapons" abbrev="Current Weapons"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -4371,7 +4371,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[wRangeInc].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DmgSitu" name="Damage Bonus, Situational" description="Select this adjustment to add a situational bonus to your attacks.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example for dwarves it would be &quot;Hatred&quot;.\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="AttDam"/>
@@ -4388,7 +4388,7 @@ call S2SetName]]></eval>
       nexteach]]></eval>
     </thing>
   <thing id="pS2FAQ1" name="Spell-Like Abilities Prerequisites" description="Adding this adjustment lets your character count as a Divine/Arcane caster allowing you to meet the Prerequisites of feats like &quot;Arcane Strike&quot; when you have a Spell-like ability.\n\nFAQ:\n{b}Spell-Like Abilities, Casting, and Prerequisites: Does a creature with a spell-like ability count as being able to cast that spell for the purpose of prerequisites or requirements?{/B}\nYes.\nFor example, the Dimensional Agility feat (Ultimate Combat) has &quot;ability to use the abundant step class feature or cast dimension door&quot; as a prerequisite; a barghest has dimension door as a spell-like ability, so the barghest meets the &quot;able to cast dimension door prerequisite for that feat.\n\nEdit 7/12/13: The design team is aware that the above answer means that certain races can gain access to some spellcaster prestige classes earlier than the default minimum (character level 6). Given that prestige classes are usually a sub-optimal character choice (especially for spellcasters), the design team is allowing this FAQ ruling for prestige classes. If there is in-play evidence that this ruling is creating characters that are too powerful, the design team may revisit whether or not to allow spell-like abilities to count for prestige class requirements." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Spell"/>
@@ -4400,7 +4400,7 @@ call S2SetName]]></eval>
       perform hero.assign[Hero.Divine]]]></eval>
     </thing>
   <thing id="pS2AttrHP" name="Ability Score (Hit Points)" description="Select this adjustment to change the ability score you use to gain bonus hit points from Constitution to a different ability score." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Attribute" name="Attributes" abbrev="Attributes"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -4418,7 +4418,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2UnderWa" name="Swimming/Underwater" description="{B}Hold Breath: {/b} Any character can hold her breath for a number of rounds equal to twice her Constitution score.  While in combat this drops to a number of rounds equal to your Constituion score. After this period of time, the character must make a DC 10 Constitution check every round in order to continue holding her breath. Each round, the DC increases by 1.\n\n{b}Ranged Attacks Underwater:{/b} Thrown weapons are ineffective underwater, even when launched from land. Attacks with other ranged weapons take a -2 penalty on attack rolls for every 5 feet of water they pass through, in addition to the normal penalties for range.\n\n{b}Attacks from Land:{/b} Characters swimming, floating, or treading water on the surface, or wading in water at least chest deep, have improved cover (+8 bonus to AC, +4 bonus on Reflex saves) from opponents on land. Land-bound opponents who have freedom of movement effects ignore this cover when making melee attacks against targets in the water. A completely submerged creature has total cover against opponents on land unless those opponents have freedom of movement effects. Magical effects are unaffected except for those that require attack rolls (which are treated like any other effects) and fire effects.\n\n{b}Fire:{/b} Nonmagical fire (including alchemist&apos;s fire) does not burn underwater. Spells or spell-like effects with the fire descriptor are ineffective underwater unless the caster makes a caster level check (DC 20 + spell level). If the check succeeds, the spell creates a bubble of steam instead of its usual fiery effect, but otherwise the spell works as described. A supernatural fire effect is ineffective underwater unless its description states otherwise. The surface of a body of water blocks line of effect for any fire spell. If the caster has made the caster level check to make the fire spell usable underwater, the surface still blocks the spell&apos;s line of effect.\n\n{b}Spellcasting Underwater:{/b} Casting spells while submerged can be difficult for those who cannot breathe underwater. A creature that cannot breathe water must make a concentration check (DC 15 + spell level) to cast a spell underwater (this is in addition to the caster level check to successfully cast a fire spell underwater). Creatures that can breathe water are unaffected and can cast spells normally. Some spells might function differently underwater, subject to GM discretion." compset="InPlay">
     <fieldval field="abValue" value="-2"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjState"/>
     <eval phase="PreLevel" priority="20000"><![CDATA[
@@ -4463,7 +4463,7 @@ call S2SetName]]></eval>
       nexteach]]></eval>
     </thing>
   <thing id="pS2Climbin" name="Climbing" description="{B}Climbing Speeds:{/b}\n40ft = 10ft climb per move action or 20ft for full round.\n30ft = 5ft climb per move action or 15ft for full round.\n20ft = 5ft climb per move action or 10ft for full round.\n\nWith a successful Climb check, you can advance up, down, or across a slope, wall, or other steep incline (or even across a ceiling, provided it has handholds) at one-quarter your normal speed. A slope is considered to be any incline at an angle measuring less than 60 degrees; a wall is any incline at an angle measuring 60 degrees or more. A Climb check that fails by 4 or less means that you make no progress, and one that fails by 5 or more means that you fall from whatever height you have already attained. The DC of the check depends on the conditions of the climb. Compare the task with those on the following table to determine an appropriate DC.\n\nYou need both hands free to climb, but you may cling to a wall with one hand while you cast a spell or take some other action that requires only one hand. While climbing, you can’t move to avoid a blow, so you lose your Dexterity bonus to AC (if any). You also can’t use a shield while climbing. Anytime you take damage while climbing, make a Climb check against the DC of the slope or wall. Failure means you fall from your current height and sustain the appropriate falling damage.\n\n{B}Note:{/b} This condition gives you the flat-footed condition and remvoes any shields you currently have equipped." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjState"/>
     <eval phase="PreLevel" priority="10000" index="2">~ If not activated get out now
@@ -4479,7 +4479,7 @@ call S2SetName]]></eval>
   <thing id="pS2FeatVal" name="Feat: Values" description="Select this adjustment to be able to adjust the values (one, two, three, or four) which can represent many things (ie dice, damage bonus, etc...) of any of your feats on your character.\n\n{b}Example:{/b} This adjustment could be used to select a Arcane Strike feat, then select Value 1, and then increase/decrease the bonus to damage the feat gives. Or you could select Power Attack feat and select Value 2 which only adjusts power attack damage bonus value up/down." compset="InPlay">
     <fieldval field="pCandExpr" value="component.BaseFeat"/>
     <fieldval field="pCandExpr2" value="component.SelectHelp &amp; Selection.S2abValue"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Adjust2nd" tag="S2Custom"/>
@@ -4491,7 +4491,7 @@ call S2SetName]]></eval>
       Call S2AbValues]]></eval>
     </thing>
   <thing id="pS2RaceHan" name="Race, Number of Hands" description="Select this adjustment to be able to adjust the number of hands/arms that a creature has.  By default a race has two hands." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Race"/>
     <eval phase="First" priority="99"><![CDATA[
@@ -4508,7 +4508,7 @@ call S2SetName]]></eval>
   <thing id="pS2EqValue" name="Equipment, Values" description="Select this adjustment to be able to adjust the values (one, two, three, four, or five) which can represent many things (ie dice, damage bonus, etc...) of any of your equipment on your character." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
     <fieldval field="pCandExpr2" value="component.SelectHelp &amp; Selection.S2abValue"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Adjust2nd" tag="S2Custom"/>
@@ -4522,7 +4522,7 @@ call S2SetName]]></eval>
   <thing id="pS2ClsAbV" name="Class Ability: Values" description="Select this adjustment to be able to adjust the values (1,2,3,4 or 5), which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a rogues Sneak Attack and increase/decrease the number of d6 dice the ability gives." compset="InPlay">
     <fieldval field="pCandExpr2" value="component.SelectHelp &amp; Selection.S2abValue"/>
     <fieldval field="pCandExpr" value="component.Ability &amp; SpecSource.cHelp? &amp; !component.BaseFeat &amp; Helper.ShowSpec"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Adjust2nd" tag="S2Custom"/>
@@ -4536,7 +4536,7 @@ call S2SetName]]></eval>
   <thing id="pS2ClsAdTr" name="Class Ability, Add Trackable" description="Select this adjustment to have one of your class abilities display on the &quot;In-Play&quot; tab with a number of uses. This can be useful for making a class ability have a tracker that does not currently have a tracker." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Ability &amp; SpecSource.cHelp? &amp; !component.BaseFeat &amp; Helper.ShowSpec"/>
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -4557,7 +4557,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2ClsDltT" name="Class Ability, Remove Tracker" description="Select this adjustment to have one of your class abilities no longer display on the &quot;{b}In-Play{/b}&quot; tab with a number of uses. This can be useful for an ability that you never use and reducing the number of things to track on the &quot;In-Play&quot; tab." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Ability &amp; SpecSource.cHelp? &amp; !component.BaseFeat &amp; Helper.ShowSpec"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -4573,7 +4573,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2AbChang" name="Custom Name: Ability" description="Overwrite the name of an ability (Race or Class) using the (Source) or (Duration) field. Use this to force an ability to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Ability &amp; !component.BaseFeat"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -4595,7 +4595,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2AbCusto" name="Custom Text: Ability" description="Append text to the name of your ability (Race or Class) using the (Source) or (Duration) field. Use this to add any other related info you would like to see with when you print a character or use on the iPad." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Ability &amp; !component.BaseFeat"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="AdjInfo" name="AdjInfo" abbrev="AdjInfo"/>
@@ -4615,7 +4615,7 @@ call S2SetName]]></eval>
       call S2SetName]]></eval>
     </thing>
   <thing id="pS2wOneAtt" name="Weapon Attacks: Force Single" description="Select this adjustment to force the selected weapon to only have a single attack display. This can be useful when building a multi-arm creature." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -4640,7 +4640,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2wExtAtt" name="Weapon Attacks: Force Extra High" description="Select this adjustment to force the selected weapon to display two attacks at its highest base attack value. This is similiar to when a creature is effected by Haste or Speed weapon property. The counter can be used to increase the number of extra attacks the weapon gets." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="YourWep"/>
@@ -4660,7 +4660,7 @@ call S2SetName]]></eval>
         loop]]></eval>
     </thing>
   <thing id="pS2SkilSiA" name="Skill Bonus, Situational-All Ability Score" description="Select this adjustment to add a situational bonus to all skills of the selected ability score. Use source for the name and duration for the situational bonus text.\n\n1st - Select the skill this modifier is meant for.\n2nd - In the {b}(Source){/b} field is where you type in what is giving you this modifier. In example for Fighter&apos;s Bravery class ability type in &quot;Bravery&quot;.\n3rd - In the {B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Fear&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Attribute"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -4679,7 +4679,7 @@ call S2SetName]]></eval>
   <thing id="pS2EqText" name="Equipment, Notes" description="Select this adjustment to have a input box appear next to the selected piece of gear. This allows you to type in some &quot;notes&quot; (up to 100 characters) that will display as part of the equipments description text." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
     <fieldval field="pSource" value="Notes"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -4694,7 +4694,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[DescAppend].text &= field[pSource].text]]></eval>
     </thing>
   <thing id="pS2RceUnde" name="Race, Undersized Weapons" description="Select this adjustment to force your race to use undersized weapons (ie a Centaur like race would have this)." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Race"/>
@@ -4706,7 +4706,7 @@ call S2SetName]]></eval>
       perform hero.findchild[BaseRace].assign[Helper.Undersized]]]></eval>
     </thing>
   <thing id="pS2RceOver" name="Race, Oversized Weapons" description="Select this adjustment to allow your race to use oversized weapons. This would allow a human to wield a Large Longsword without penalty." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Race"/>
@@ -4719,7 +4719,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2SkBonTy" name="Skill Bonus, Type" description="Select this adjustment to give a bonus/penalty to a skill with a specific bonus type. Untyped Bonuses stack with all other bonuses. Circumstance bonuses will stack with themseleves as its assumed they are coming from different things." compset="InPlay">
     <fieldval field="pCandExpr2" value="component.SelectHelp &amp; AdjustBon.Selector"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Skill"/>
     <tag group="Adjust2nd" tag="S2Custom"/>
@@ -4760,7 +4760,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2MyAbRTr" name="Mythic Ability, Remove Tracker" description="Select this adjustment to have one of your class abilities no longer display on the &quot;{b}In-Play{/b}&quot; tab with a number of uses. This can be useful for an ability that you never use and reducing the number of things to track on the &quot;In-Play&quot; tab." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Ability &amp; Helper.Mythic &amp; !component.BaseFeat &amp; Helper.ShowSpec"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -4777,7 +4777,7 @@ call S2SetName]]></eval>
   <thing id="pS2MyAdTr" name="Mythic Ability, Add Trackable" description="Select this adjustment to have one of your class abilities display on the &quot;In-Play&quot; tab with a number of uses. This can be useful for making a class ability have a tracker that does not currently have a tracker." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Ability &amp; Helper.Mythic &amp; !component.BaseFeat &amp; Helper.ShowSpec"/>
     <fieldval field="pMinimum" value="0"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="AdjNoPlus"/>
@@ -4798,7 +4798,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pstS2NonL2" name="Deal Nonlethal Dmg (-4H)" description="Certain attacks deal nonlethal damage. Other effects, such as heat or being exhausted, also deal nonlethal damage. When you take nonlethal damage, keep a running total of how much you&apos;ve accumulated. Do not deduct the nonlethal damage number from your current hit points. It is not &quot;real&quot; damage. Instead, when your nonlethal damage equals your current hit points, you&apos;re staggered (see below), and when it exceeds your current hit points, you fall unconscious.\n\n{b}Nonlethal Damage with a Weapon that Deals Lethal Damage{/b}\nYou can use a melee weapon that deals lethal damage to deal nonlethal damage instead, but you take a –4 penalty on your attack roll.\n\n{b}Lethal Damage with a Weapon that Deals Nonlethal Damage{/b}\nYou can use a weapon that deals nonlethal damage, including an unarmed strike, to deal lethal damage instead, but you take a –4 penalty on your attack roll." compset="ComState">
     <fieldval field="abValue" value="-4"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -4815,7 +4815,7 @@ call S2SetName]]></eval>
       nexteach]]></eval>
     </thing>
   <thing id="pS2FlankBo" name="Combat: Flanking Bonus" description="Add this adjustment so that you can increase/decrease the amount of flanking bonus you get when flanking.  This is very useful if you have the Outflank feat or the Menacing weapon property. This adjustment does not actually change your attack bonus instead it changes the amount of bonus the &quot;Flanking&quot; combat action has on the &quot;Condition&quot; tab.  So if you set the counter to +2 then when you activate the flanking condition a +4 bonus will be applied to your attacks.\n\n{b}Note:{/b} You can type a note to yourself in the (source) text box that will appear on the Flanking condition." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="AdjConfer"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -4832,7 +4832,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="p1wTouch2" name="Weapon: Touch, Ranged" description="Use this adjustment to select your &quot;Ranged Touch Attack&quot; weapon and whatever you type into the (source) section will get displayed instead of &quot;As Spell&quot; for damage. This allows you to setup a Ranged Touch Attack that matches to a domain power or other class ability." compset="InPlay">
     <fieldval field="pCandExpr" value="thingid.wRangedTou"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -4847,7 +4847,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="p1wTouch1" name="Weapon: Touch" description="Use this adjustment to select your &quot;Touch Attack&quot; weapon and whatever you type into the (source) section will get displayed instead of &quot;As Spell&quot; for damage. This allows you to setup a Touch Attack that matches to a domain power or other class ability." compset="InPlay">
     <fieldval field="pCandExpr" value="thingid.wTouchAtta"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -4862,7 +4862,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2SecSpel" name="Spells Per Day, Secondary" description="Select this adjustment to add to the number of secondary spells (ie Domain spells) of a certain spell level a class can cast per day." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Class | (component.BaseRace &amp; SplLookup.?)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="SpellLevel" name="Also Spell Levels" abbrev="Also Spell Levels"/>
     <tag group="OthAdjCat" tag="Class" name="Class" abbrev="Class"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -4880,7 +4880,7 @@ call S2SetName]]></eval>
   <thing id="pS2MyRanks" name="Mythic Ranks" description="You can use this adjustment to set the total mythic ranks of your monsters. This means if your monster is MR2 and you want it to be MR1 you set the counter to &quot;1&quot;.  If you want the monster to be MR5 you set the counter to &quot;5&quot;.  This sets the ranks it does not adjust the value up/down." compset="InPlay">
     <fieldval field="pMinimum" value="0"/>
     <fieldval field="pMaximum" value="10"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjNoPlus"/>
     <tag group="OthAdjCat" tag="Mythic"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -4901,7 +4901,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2PFSncSp" name="PFS, Non-Core Spell" description="Adding this adjustment will allow you to make a spell on your character legal in a PFS Core Campaign.\n\n{B}Note:{/b} Add the spell you wish to make legal first and then use this adjustment to select the spell." compset="InPlay">
     <fieldval field="pCandExpr" value="component.BaseSpell"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="PFS"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -4921,7 +4921,7 @@ call S2SetName]]></eval>
       nexteach]]></eval>
     </thing>
   <thing id="pS2EqUses" name="Equipment, Uses/Period" description="Select thsi adjustment to be able to adjus the numbe of uses/period of a specific piece of equipment." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="YourGear"/>
     <tag group="OthAdjCat" tag="Equipment"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -4938,7 +4938,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2EqNoNiR" name="Equipment, No Nights Rest" description="Select this adjustment to force a piece of equipment to not have its tracker/counter get reset when you do a &quot;Nights Rest&quot;." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -4954,7 +4954,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2EqNigRe" name="Equipment, Nights Rest" description="Select this adjustment to force a piece of equipment to have its tracker/counter to get reset when you do a &quot;Nights Rest&quot;." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
@@ -4971,7 +4971,7 @@ call S2SetName]]></eval>
   <thing id="pS2RacRest" name="Racial Ability, Restore" description="Select this adjustment to restore a racial ability that has been disabled. This can be used to restore a racial ability that an alternate racial trait disabled." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.Ability &amp; component.RaceAbil"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
     <tag group="OthAdjCat" tag="Race"/>
@@ -4988,7 +4988,7 @@ call S2SetName]]></eval>
       perform field[pChosen].chosen.delete[Helper.SpcReplace]]]></eval>
     </thing>
   <thing id="pS2ACFiend" name="Animal Companion: Fiendish Template" description="Select this adjustment to add the Fiendish template to your animal companion.  You must use this on the Animal Companion itself not your character." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Race"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -4999,7 +4999,7 @@ call S2SetName]]></eval>
       perform hero.assign[CompPower.tmFiendish]]]></eval>
     </thing>
   <thing id="pS2ACCeles" name="Animal Companion: Celestial Template" description="Select this adjustment to add the celestial template to your animal companion.  You must use this on the Animal Companion itself not your character." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="OthAdjCat" tag="Race"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -5010,7 +5010,7 @@ call S2SetName]]></eval>
       perform hero.assign[CompPower.tmCelest]]]></eval>
     </thing>
   <thing id="pS2ClsRng" name="Class Ability: Range" description="Select this adjustment to adjust class ability range value up or down." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="ClassAbil"/>
     <tag group="OthAdjCat" tag="Class"/>
@@ -5025,7 +5025,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[abRange].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2wFlurry" name="Weapon Flurry of Blows" description="Select this adjustment to force the selected weapon to show Flurry of Blow values." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -5044,7 +5044,7 @@ call S2SetName]]></eval>
     <fieldval field="pMinimum" value="2"/>
     <fieldval field="pMaximum" value="2"/>
     <fieldval field="pDuration" value="4 hours"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjConfer"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -5076,7 +5076,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cCasterLev].value += field[abValue].value]]></eval>
     </thing>
   <thing id="pS2Drawbck" name="Drawbacks Allowed" description="Select this adjustment to add or subtract the number of drawbacks your character is allowed." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="OthAdjCat" tag="FeatTrait"/>
     <eval phase="First" priority="1000"><![CDATA[
@@ -5090,7 +5090,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2CnfgFe1" name="Configurable: Feats One" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5106,7 +5106,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2CnfgFe2" name="Configurable: Feats Two" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5122,7 +5122,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2CnfgFe3" name="Configurable: Feats Three" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5138,7 +5138,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2CfgMax1" name="Configurable: Table One" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5154,7 +5154,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2CfgMax2" name="Configurable: Table Two" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5170,7 +5170,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2CfgMax3" name="Configurable: Table Three" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5186,7 +5186,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="pS2CfgMax4" name="Configurable: Table Four" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5202,7 +5202,7 @@ call S2SetName]]></eval>
     </thing>
   <thing id="ppS2CfgMax" name="Configurable: Table Five" description="Select this adjustment to be able to adjust the number of bonus feats a configurable gives. \n\nA &quot;configurable&quot; is special tab that can often display for feats, classes, or other unique races." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Companion"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5217,7 +5217,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cfgMax5].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2SheetSp" name="Character Sheet: Item Spells" description="Select this adjustment to cause spells on magic items (ie Magic Staffs) to print to your character sheet." compset="InPlay">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Misc"/>
@@ -5241,7 +5241,7 @@ call S2SetName]]></eval>
     <fieldval field="pSource" value="Tracker 1"/>
     <fieldval field="pUsePicks" value="1"/>
     <fieldval field="pCandExpr" value="component.Tracker &amp; thingid.trkS2?"/>
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -5262,7 +5262,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="trkS2Trck1" name="Tracker 1" description="This is a generic tracker." compset="Tracker">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Usage" tag="UsedUp"/>
     <tag group="User" tag="Tracker"/>

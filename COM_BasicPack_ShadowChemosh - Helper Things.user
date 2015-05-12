@@ -31,34 +31,43 @@
     <tag group="wCritMin" tag="10" name="10" abbrev="10"/>
 
     </thing>
-   
+
+  <!-- This Mechanic allows for setting a new "No XP Required for Advancement". -->
+  <thing id="XPShadow" name="No XP - ShadowChemosh" compset="Mechanics">
+    <usesource source="XPShadow"/>
+    <tag group="Mechanics" tag="XP"/>
+    <eval phase="PostAttr" priority="5000">
+      ~ This tag tells HL to not use XP!
+      perform hero.assign[Hero.NoAdvance]</eval>
+    </thing>
+    
   <!-- ============================================================================================ -->
   <!-- Selection Helpers                                                                            -->
   <!-- ============================================================================================ -->
 
   <!-- Value Selections Helpers -->
   <thing id="selS2Valu1" name="Value 1" description="Field abValue 1" compset="SelectHelp">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Selection" tag="S2abValue"/>
     <tag group="Value" tag="1"/>
     </thing>
   <thing id="selS2Valu2" name="Value 2" description="Field abValue 2" compset="SelectHelp">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Selection" tag="S2abValue"/>
     <tag group="Value" tag="2"/>
     </thing>
   <thing id="selS2Valu3" name="Value 3" description="Field abValue 3" compset="SelectHelp">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Selection" tag="S2abValue"/>
     <tag group="Value" tag="3"/>
     </thing>
   <thing id="selS2Valu4" name="Value 4" description="Field abValue 4" compset="SelectHelp">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Selection" tag="S2abValue"/>
     <tag group="Value" tag="4"/>
     </thing>
   <thing id="selS2Valu5" name="Value 5" description="Field abValue 5" compset="SelectHelp">
-    <usesource source="s20PFCamp"/>
+    <usesource source="srcS2Adjus"/>
     <tag group="Selection" tag="S2abValue"/>
     <tag group="Value" tag="5"/>
     </thing>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>
+      Author:  Tim Shadow
+      Email: shadowchemosh@yahoo.com</info_author>
+    <info_history><![CDATA[
+    ]]></info_history>
+    </fileinfo>
+  <thing id="pS2ProneAt" name="Prone, Attacking (+4 Melee, -4 Ranged)" description="Attacking a prone target provides a +4 bonus to hit with melee weapons, but a -4 to hit with Ranged weapons." compset="ComState">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If user checked option to output to sheet don't check
+      if (hero.tagis[source.s2OutSheet] = 0) then
+            ~ If we're in output mode, don't do anything
+            doneif (state.isoutput <> 0)
+      Endif
+
+      ~ Modify all melee attacks
+      hero.child[Attack].field[tAtkMelee].value += 4
+      ~ Modify all ranged attacks
+      hero.child[Attack].field[tAtkRanged].value -= 4
+      ]]></eval>
+    </thing>
+  <thing id="pstS2Kneel" name="Kneeling/Sitting, Attacking" description="Attacking a prone target provides a +2 bonus to hit with melee weapons, but a -2 to hit with Ranged weapons." compset="ComState">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="Final" priority="20000" index="2"><![CDATA[
+      ~ If user checked option to output to sheet don't check
+      if (hero.tagis[source.s2OutSheet] = 0) then
+          ~ If we're in output mode, don't do anything
+          doneif (state.isoutput <> 0)
+      endif
+
+      field[livename].text = field[thingname].text & " (" & signed(field[abValue].value) & " Melee, " & signed(field[abValue2].value) & " Ranged)"
+      ]]></eval>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+      ~ If user checked option to output to sheet don't check
+      if (hero.tagis[source.s2OutSheet] = 0) then
+        ~ If we're in output mode, don't do anything
+        doneif (state.isoutput <> 0)
+      endif
+
+      ~melee
+      field[abValue].value += 2
+      ~ranged
+      field[abValue2].value -= 2
+
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      hero.child[Attack].field[tAtkMelee].value += field[abValue].value
+      hero.child[Attack].field[tAtkRanged].value += field[abValue2].value
+      ]]></eval>
+    </thing>
+  <thing id="pstS2YKnee" name="Kneeling/Sitting, Your" description="-2 AC vs Melee Attack, +2 AC vs Ranged Attack.\n\n{B}Note:{/b} This is info only no adjustment to your character is happening." compset="ComState">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="pcnS2NonL1" name="Deal Nonlethal Dmg (Die Size)" description="Certain attacks deal nonlethal damage. Other effects, such as heat or being exhausted, also deal nonlethal damage. When you take nonlethal damage, keep a running total of how much you&apos;ve accumulated. Do not deduct the nonlethal damage number from your current hit points. It is not &quot;real&quot; damage. Instead, when your nonlethal damage equals your current hit points, you&apos;re staggered (see below), and when it exceeds your current hit points, you fall unconscious.\n\n{b}Nonlethal Damage with a Weapon that Deals Lethal Damage{/b}\n{b}Shadow d20:{/b} You can use a melee weapon that deals lethal damage to deal nonlethal damage instead, but your weapon damage is one size smaller. So in example if you are medium sized and wielding a longsword for 1d8 then instead it would do 1d6.\n\n{b}Lethal Damage with a Weapon that Deals Nonlethal Damage{/b}\nYou can use a weapon that deals nonlethal damage, including an unarmed strike, to deal lethal damage instead, but you take a –4 penalty on your attack roll." compset="ComState">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ All weapons on the hero
+      foreach pick in hero from BaseWep where "!wSpecial.Nonlethal"
+         ~ Now are non-lethal weapon
+         perform eachpick.assign[wSpecial.Nonlethal]
+         ~ Damage die size down one
+         perform eachpick.assign[Helper.DamageDown]
+      nexteach]]></eval>
+    </thing>
+  </document>

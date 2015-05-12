@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="Shadowd20_zSource_900 - Shadow d20 Parent.1st"/>
+
+  <!--
+    5/12/2015
+    -Changed name and re-did Shadow d20 to more easily merge in with the Community Stuff.
+
+    4/12/2014
+    -Broke tags off to their own file.
+
+    10/13/2013
+    -Added new FeralWep tag to help identify which natural attacks came from the Feral druid archetype.
+
+    Feb 3, 2013
+    -Added Dragonborn Racial tags for breath weapon.
+
+    v1.31 10/28/2012
+    -Added new sources "No duplicate Shadow d20 races" and "Ouput Combat Actions to sheet"
+
+    v1.24 7/16/2012
+    -Added "Hide duplicate Shadow d20 races".
+
+    v1.23 6/10/2012
+    -Added better comments.
+    -Added in some House Rules for TWF, THF, and Weapon Finesse.
+    -Created new Parent Shadow d20 Campaigns.
+    -Moved Razor Coast out of the AP section to Shadow d20 Campaigns.
+
+    v1.18 3/25/2012
+    -Added Sub Skill tag group.
+
+    v1.11 1/14/2012
+    -Removed the 3PP sources (ie pSGG) and used the community supplied ones. Should prevent duplicate things erros.
+    -Rearragned the sources again to be better sorted.
+    -Moved the potion note to be under Shadow d20.
+    -Moved all races to be under there own headers.
+  -->
+
+  <!-- ============================================== -->
+  <!-- NEW SHADOW d20 SOURCES                         -->
+  <!-- ============================================== -->
+
+  <!-- Shadow d20 Parent -->
+  <source
+    id="pShadowd20"
+    name="Shadow d20 Pathfinder (v2.0)"
+    selectable="no"
+    parent="UserParent"
+    sortorder="0"
+    description="http://shadowd20.pbworks.com/ - Shadow d20 wiki house rules for Pathfinder.">
+    </source>
+
+  <!-- Shadow d20 Child Parents -->
+  <source
+    id="s20PFCamp"
+    name="Shadow d20 Campaign Rules"
+    selectable="yes"
+    parent="pShadowd20"
+    sortorder="5"
+    description="Shadow d20 Pathfinder campaign by Tim Shadow.">
+    </source>
+  <source
+    id="srcPotID"
+    name="Potions, Scrolls and Wands require ID"
+    selectable="yes"
+    parent="pShadowd20"
+    sortorder="6"
+    description="After selecting this option all Scrolls, Potions and Wands will require you to enter the Index Card ID.">
+    </source>
+
+  <!-- Shadow d20 Pathfinder - Races -->
+  <source
+    id="pS20Races"
+    name="Shadow d20 - Races"
+    selectable="no"
+    parent="pShadowd20"
+    sortorder="7"
+    description="http://shadowd20.pbworks.com/ - Shadow d20 wiki house rules for Pathfinder.">
+    </source>
+
+  <!-- Shadow d20 Pathfinder - Campaigns -->
+  <source
+    id="pS20Camp"
+    name="Shadow d20 - Campaigns"
+    selectable="no"
+    parent="pShadowd20"
+    sortorder="8"
+    description="Campaigns">
+    </source>
+
+  <!-- Converted 3.5 Books Parent -->
+  <source
+    id="p35"
+    name="Shadow d20 - 3.5 Books"
+    selectable="no"
+    parent="pShadowd20"
+    sortorder="9"
+    description="This is converted DnD 3.5 rules converted to pathfinder.">
+    </source> 
+
+  <!-- Shadow d20 Depreciated Sources -->
+  <source
+    id="pS2Deprec"
+    name="Deprecated"
+    selectable="no"
+    parent="pShadowd20"
+    sortorder="50"
+    description="These are no longer working">
+    </source>
+   
+</document>

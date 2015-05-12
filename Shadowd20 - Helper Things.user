@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Tim Shadow
+      Email: ShadowChemosh@yahoo.com
+
+      This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
+    <info_history><![CDATA[
+version 1.68 - Released 1/10/2015
+-Added new feat "Slice and Dice" which is similar to Clustered Shots but for those using two-weapon fighting instead.
+-Added new house rule note to the 'two-weapon fighting' feat.
+-Fixed Underdark campaign source so that when checked you can add a ethnic dwarf for the Underdark campaign.
+-Fixed trait "Collegiate Wizard" to work for any class with a spellbook not just wizards.
+-Fixed trait "Trap Finder" to not be a campaign trait anymore but instead a "training" trait.
+-Merged in the Community Basic Pack into Shadow d20. This makes it easier for me to keep things up to date.
+
+version 1.67 - Released 12/26/2014
+-Added "Deal Nonlethal Dmg (Die Size)" and "Deal Nonlethal Dmg (-4H)" combat condition that will let you easily do nonlethal damage in combat.
+-Fixed wayfinders to work with out needing Seeker of Secreats active.
+-Added "Deadeye Lore" spell adjustment.
+-Misc script fixes.
+    
+version 1.66 - Released 12/12/2014
+-Updated description on Elven Chain.
+-Druid now has access to Cure spells at the same levels as Cleric. You will need to actually add the spells manually. I didn't change the orginial spells. So to get Cure Moderate at level 2 you need to remove it at level 3 and add it at level 2.
+-Added "Mythic Ability, Add Trackable"
+-Added "Mythic Ability, Remove Tracker"
+-Misc Fixes to many adjustments.
+-Fixed "Weapon Order" fixed to work with Magic Shield Attacks.
+-Added "Feat: Values" adjustment for adjusting the Values of a feat up or down.
+-Added "Equipment: Values" adjustment for adjusting the Values of a selected piece of gear up or down.
+-Added "Race, Number of Hands" to adjust the number of hands/arms a creature has.
+-Added "Class Ability: Values" to adjust Value 1, 2, 3, 4, or 5 fields. This new adjustment makes use of the new 2nd selector so I have deprecated the old "Class Ability: Value1" through 4 adjustments.
+-Added "Class Ability, Remove Tracker" that allows for making a class ability no longer be tracked on the In-Play tab.
+-Added "Class Ability, Add Tracker" that allows for making a class ability be trackable on the In-Play tab.
+-Added "Custom Text: Ability" and "Custom Name: Ability" for changing the names of a Race or Class ability.
+-Added "Skill Bonus, Situational-All Ability Score" for setting a situational note on all skills of the selected ability score.
+-Added "Weapon Attacks: Force Extra High" for forcing a weapon to display a 2nd attack at the characters highest base attack bonus.
+-Added "Weapon Attacks: Force Single Attack" for forcing a weapon to having only a single attack display.
+-Added "Equipment, Notes" that allows you to append up to 100 characters to a selected piece of gear description text.
+-Added "Race, Over/Under sized Weapons" adjustments that changes the sized weapons your race can wield. So if you are size medium then undersized weapons means you can only use size Small weapons. If you apply Oversized weapons then you can use medium or large sized weapons.
+-Added "Skill Bonus, Type" adjustment that allows for adjusting a skill bonus by the selected bonus type.
+
+version 1.65 - Released 10/18/2014
+-Fixed Action Point tracker to be adding in 1/2 level bonus again.
+-Added tag to the Action Point tracker so its NOT reset in the new "Nights Rest" button.
+-Fixed some class issues with the Warlock scripts.
+-Fixed load error for those missing the "Sargava, the Lost Colony".
+
+version 1.64 - Released 9/20/2014
+-The Action Point tracker has been changed to have additional text and display the number of dice that are rolled. In example at level 8 it will say "Action Points 2d6" to help remind players when they can roll more dice.
+-Made fixes to the Bolt Ace archetype for the Gunslinger class. The archetype was changed to have it also cause the Gunslinger to lose its Gunsmithing feat, free gun, and proficiency to guns.  In its place they get proficiency in all crossbows including Exotic.  They also gain Rapid Reload feat at level 1.  This gives them the ability with a light crossbow to be as good as a character with a longbow.
+
+version 1.63 - Released 9/6/2014
+-Changed the behavoir of all Counters back to normal.
+-Jalhazar's wheel text updated to FasB rules text.
+-Added "Weapon Range Increment" adjustment for changing a ranged weapons Range Increment.
+-Added "Damage Bonus, Situational" adjustment for setting situational text on to your weapons.
+-Tested with Pathfinder v10.1
+
+version 1.62 - Released 8/23/2014
+-SAP (Standard Adventuring Pack) finally fixed to add its items but allow you to remove individual items! Yea Auto-Adds, happy happy dance! So feel free to use this for making future characters.
+-Tested with Pathfinder v10
+-Added more animals for Beast Shape spell adjustment.
+-Fixes to the Beast Shape spell adjustment.
+--Natural Attacks always get damage now.
+--We remove armor/shields when we polymorph except Wild armor.
+-Added Advance Class Guide class concentration skills (ie Bloodrager, Shaman).
+-Added section seperators in the Editor for Beast Shape setup.
+-Added spell adjustment "Longstrider, Greater".
+-Added spell adjustment "Protection from Energy".
+-Updated the Feral druid archtype to the latest errata changes. Well at least up to level 8.
+-Added Shadow d20 note about the "Cape of Feinting" usuable only 3/day.
+-Changed the behavoir of all Counters. On reset are reset back to the "max" value not zero. This means players should now count down instead of up.  So you add a Wand you can reset it 50/50 and then as you use charges you can remove. This should now work for all class abilities including Action Points.  So if I see action points of 5/12 this means you have 5 of 12 remaining. Not 7 left!
+
+version 1.61 - Released 7/26/2014
+-Fixed Sub-skills that where throwing errors in new Pathfinder v9.5.
+-Adjustments fixed including Custom Name.
+-New adjustment "Equipment, Container Weight" that lets you increase/decrease the amount of weight a container can now carry.
+-New "Weapon Proficiency, Specific" adjustment lets you select a specific weapon on your character to become proficient with.
+-New "Custom Name: Race" and "Custom Text: Race" adjustments added that allow for overwriting or appending to the name of your race.
+-All Custom "Custom Name: " and "Custom Text:" adjustments have been enhanced to allow using either the "(Source)" or "(Duration)" fields. This allows these adjustments to work correctly on the "Personal" tab now.
+-Concentration skill script logic enhanced to take into account more Situational Bonus values from Feats like Combat Casting.
+-Added new "Trap Finder" trait that gives +1 to Disable Device and allows for disarming magic traps like a rogue.
+
+version 1.60 - Released 6/14/2014
+-Rogue talents usable 1/day are changed to 1/encounter. Final say of a encounter definition is left in the hands of the DM. It takes 1 minute after the encounter to recover a talent.
+-Harpoon, Steel changed to be 50ft range increment. Lowered weight to not include the hemp rope so that you can more easily use silk or something else.
+-Added more rogue skill tricks.
+-Fixed MW/Magical catapults not picking up weight and not becoming equipable.
+-New Adjustments for affecting all hardness for rigging and all HP.
+
+version 1.59 - Released 5/27/2014
+-Added "Eldritch Dispelling" hex for warlocks.
+-Changed "Patron Magic" to now set the "Caster Level" of the spell like abilities.
+-Added new feat "Extra Patron Magic" for warlocks.
+-Fixes to "Vital Strike" to work again fully due to changes in HL.
+-"Vital Strike" now correctly works with the Devastating Strike feat to increase damage.
+-Changed Mythic Vital Strike to increase the dice damage NOT the static bonus damage. This should help balance out this feat again.
+-Added new traits and feats for Shifters.
+-Fixed allot of small issues with the shifter race.
+
+version 1.58 - Released 4/12/2014
+-Feral Druid forms will now disable magic rings and wonderous items when shape changed.
+-Wave Sandles now correctly cost 5,000gp not 5gp.
+-Fixed Ram for ships to not display extra damage unless its equipped.
+-Beta release of new Polymorph adjustments Beast Shape 1 and 3.
+--Their is now a new "Tab" in the editor called "Adjustment, Polymorph" which allows for easily setting up custom Animals, Magical Beasts, Elementals, and plants. This will allow the new polymorph adjustments to function correctly.
+
+version 1.57 - Released 3/29/2014
+-Added the "Pirate Charge" army ability.
+-Misc Fixes.
+-Adjustment that allows for displaying Army stats on the iPad. Sort of works.
+-Added Summon Monster Stock files 3-9.
+-Added Summon Nature's Ally stock files 1-9.
+
+version 1.56 - Released 3/15/2014
+-Made "Naval Gunnery" work with the new "Fire As She Bears" mechanics.
+-Fixed "Speed" to display half knots so that small speed difference between ships is shown.
+-Added a "Fire as She Bears" activation for "Getting the Guage" and "Aboard a moving Ship". When Razor Coast is active all characters will now have two new activations they can turn on.
+--Getting the Guage: Gives a bonus to any Siege engines on a character. Gives a situational note that your Naval Initiative check is two higher.
+--Aboard a moving Ship: Gives a -4 to hit with ranged attacks or -2 if you have Navel Gunnary feat.
+-Fixed all Cannons again.
+-Siege engines will now be equipable on the iPad so that players can actually use the ipad to roll attacks.
+-Siege Engine (Catapults) will not correctly use your Knowledge (Engineering) skill total to calculate the attack roll.
+-Added the "Infamy and Disrepute" reputation that allows for tracking and spendy Infamy. This will only display/work if you have the Ultimate Campaign package.
+
+version 1.55 - Released 2/28/2014
+-Quick fix to ship mechanics.
+
+version 1.54 - Released 2/28/2014
+-Lots and lots of fixes to the Fire as She Bears ship building mechanics.
+-Lots of new Ship Gear and weapons added for blinging out your ride!
+-Fixes to the Live Name issues broke in v8.8 of Pathfinder.
+
+version 1.53 - Released 2/15/2014
+-Added first version of Fire as She Bears ship building mechanics. You can now build a ship using the Fire as She Bears rules inside of HL.
+-"Demon Hunter" feat now shows bonus on CL vs SR sub-skill.  It also increases the value on activation.
+-Fixed all the Razor Coast Cannons/Ship Weapons. Many where not even close to the Values in books.
+-Fixed Underwater condition to ignore the Touch Weapons like Eldritch Blast.
+-"Ranged Touch Attack" is once again a Ranged Weapon.
+
+version 1.52 - Released 2/1/2014
+-Fixed the Wondrous Items script so that you need to add "ID" codes to these magic items again. Should have been this way all along.
+-Fixed the "Pouwhenua (Carved Staff)" weapon as it was never to be two weapons.  Its a double weapon acting as a staff/spear weaon.
+-"Pouwhenua (staff)" weapon has been hidden as it never should have existed.
+-Fixed "Eldritch Blast" again to be really fixed this time. Had to add new "Ranged" fields to get the totals to work and feats like Point-Blank Shot.  Hopefully this is the last fix needed.
+-Added "Equipment, Remove Activation" which will make a piece of equipment no longer show its activation check mark on the In-Play tab.
+-Added "PFS, Equipment Valid" and "PFS, Race Valid" that allows for making a piece of equipment or your race to be valid for PFS play. This can happen when you have a boon to play a specific race.
+-Name change "Equipment, Remove from In-Play" to "Equipment, Remove Trackable".
+-Name change "Equipment, Make Trackable on In-Play" to "Equipment, Add Tracable".
+-Added "Equipment, Add Activation" adjustment that will make a piece of equipment have a activation option on the "In-Play" tab.
+-Added "Equipment, Remove Activation" adjustment that removes a equipment's activation option from the "In-Play" tab.
+-Added "Equipment, Weapon Enhancement" and "Equipment, Armor Enhancement" which allows for increasing the magical bonus of a specific suite of armor or weapon.
+
+version 1.51 - Released 1/4/2014
+-Added new adjustment "Campaign: Rum Ration" on the Conferred Ability Adjustments.
+-Fixed Fatigue condition to not stack with Exhausted condition. This way you can correctly turn on Fatigue and Exhausted together if you wish.
+-Deprecated some Spell Adjustments now that they where officially added.
+-Removed the UE version of the Sextant, when RC is turned on, and for now we will play with the version from RC.
+-Made "Terendelev's scales (Disguise)" have an activated ability.
+
+version 1.50 - Released 12/7/2013
+-Added the new expanded spell-less ranger and archetypes.
+-Fixed all the broken Global Attack bonus scripts. This includes Fighting Defensivly.
+-Added "Ranger: Freebooter's Bane" adjustment found under the Conferred Ability Adjustments section.
+-Added "Ranger: Freebooter's Bond" adjustment found under the Conferred Ability Adjustments section.
+-Changed "Aquatic Adaptation" to be an activated ability instead of just showing situational text.
+-Added new traits "Exotic Weapon Training" and "Skill Training".
+-Added new feat "Insightful Strike" that allows using Intelligence in place of Strength for melee attacks.
+-Fixed Two-handed weapon house rule to take into account 1.5x from attributes other than Strength.
+
+version 1.49 - Released 11/17/2013
+-Fixed the new "Spell Weapon" adjustment to display on the iPad correctly.
+-Fixed "Dex to damage" houserule to not be auto turned on for Skull and Shackles and Razor Coast anymore.
+-Fixed Dragonborn "Wings" ART to only give the +10 bonus on Acrobatic (Jump) checks not all Acrobatic checks.
+-Fixed all Razor Coast traits to no longer be "Campaign" traits.
+-Fixed "Monster Lore" sub-skill to disable itself if the Monster Lore class ability is disabled.
+-Added "Firearm Bullet & Powder, Crafted" that combines the gun Bullet and Black Powder into a single piece of ammoo to buy. It also has the correct price of 1gp 1sp for a crafted version using the gunsmithing feat.
+-Fixed the hidden "Firearm Bullet, Crafted" item.
+-Added "Race, Die Size" which allows for adjusting the die size of a race up or down. In example change a d8 to d10.
+
+version 1.48 - Released 11/9/2013
+-Tested against Pathfinder v8.0.
+-Fixed 1/4 bonus to Feral forum natural attacks.
+-Moved some races to Featured and Uncommon to better fit the world view.
+-Fixed Feral forms so that it will also remove any equipped shields.
+-Changed "Close-Quarters Fighting" so that it does not have a non-working activate ability on the In-Play tab.
+-Fixes to the Runeforged Body Armors.
+-Enhanced the "Undead Anatomy" spell adjustments to include a new Undead Anatomy tab that allows you to select a set number of undead abilities. This should help speed up combat as instead of trying to locate a "Specific" undead creature simply add the abilities you wish. As I get time I will get to the other Polymorph spell adjustments.
+-Turned off the Special Bonuses for the Razor Coast campaign.
+-You can now take Rich Parents for Skull and Shackles campaign again.
+-Fixed "Touch & Range Touch" weapons that broke in v8.0. I have reported the bug to LW.
+-Temp fix for "Eldritch Blast" that was broken in v8.0 it will display as a melee attack currently. I have reported the bug to LW.
+-Added "Mythic Tier Abilities" that lets you adjust the count of Mythic Ability Score Increases, Mythic Feats, Mythic Other Abilities, Mythic Path Abilities, and Mythic Spells.
+-Added "Caster Level, Elemental Spells" 
+-Added "Spell DC, Specific Subschool" and "Caster Level, Subschool"
+-Added "- Custom Spell Weapon -"
+
+version 1.47 - Released 10/8/2013
+-Claw Blade weapon fix so that the Advanced Race Guide official package is not required to load.
+
+version 1.46 - Released 10/6/2013
+-Added "Haste, Mythic Augmented" and "Haste, Mythic" spell adjustments.  Then deprecated these as they where added officially.
+-Fixes for the "Feral" archtype.
+-Fixed the "RemoveArmor" procedure to not affect Natural armor.
+-Fixes for the "Vital Strike" feat.
+-Fixes for the Razor Coast campaign data.
+--A special ability now will display with RC's special house rules information. Plus to help out it will show the calculated values it adds to things like AC, saves, and attacks/damage.
+-Added Claw Blades for Catfolk that can actually be used.
+-Changed some logic so that the Skill Bonus adjustment will work with Shadow d20 Sub-Skills.
+-General renaming of some adjustments to standardize the list.
+-Added - Custom Spell Selection - spell adjustment which allows selection of a custom spell and changes the adjustments name to match. This is useful to track buff spells that do not yet have an official adjustment.
+-Added - Custom Spell Text - spell adjustment that allows you to type the name of any spell into the (Source) section and the adjustment name changes to match. This is useful to track buff spells that maybe from a 3PP source and are not currently in Hero Lab.
+-Added Custom Name: XXXX (Armor, Equipment, Spell, Weapon) which allows for changing the displayed name to something else.
+-Added Custom Text: XXXX (Armor, Equipment, Spell, Weapon) which allows for appending additional text to the name.
+-Added Natural Weapon: Number of Attacks to adjust the number of natural attacks a creature has. So if normally it has Claws x2 you can change it to Claws x4 or Claws x1.
+-Enhanced all Natural Weapon: XXXX adjustments with an advanced feature. You can set the damage dice of the added natural attack exactly by typing in the die tag into the Source section of the adjustment. In example typing "1d12_404" would force the damage die to be 1d12. This means the counter value will get ignored. Obviously this assumes you are familiar with the weapon tags that the Editor Uses. If you are not don't type anything in.
+-Added Equipment, Armor No Longer Slows which allows for removing the armor slow tags.
+-Added Equipment, Remove from In-Play this allows to remove the Tracker that gets added for Weapons, Magic Items, and Gear items.
+-Added Equipment, Make Trackable on In-Play which allows for forcing a item to appear on the In-Play tab. This includes scrolls.
+-Added Caster Level, School adds a bonus/penalty to all your spells caster levels of a specific school of magic. In example select Evocation with +1 and spells like Burning Hands will be have its CL increased by 1.
+-Added Caster Level, Spell adds a bonus/penalty to the selected spell's caster level.
+-Added Class Ability: DC which allows for adjusting a class ability DC value up or down. Lets say you get a magic item that increases the DC of your Channel Energy by 2. Simply select Channel Energy from the drop down list and set the counter to +2.
+-Added Class Ability Custom: (Primary, Secondary, Tertiary, Quaternary, Quintenary) allows for adjusting a classes Custom Ability count. In example you could use Quaternary on the cleric class with a -1 counter to remove the "Optional Variant Channeling Option".
+-Added Class, Bonus Feats Secondary to adjust the number of secondary bonus feats a class gets.
+-Added Class, Bonus Feats to adjust the number of bonus feats a class gets.
+-Added Mythic Power Points to adjust the number of mythic points a character has.
+-Added Mythic Surge Die Size to adjust the die size of your mythic surge ability to a maximum of 1d12 and a minimum value of 1d6.
+-Added Hero, Ability Score Increase to adjust the number of Ability Score Increases that a character gets. In example lets say you want to get two ability score increases at level 4 instead of one. In such a case at level 4 you would select +1 then you will be able to add two "Ability Score Increases" instead of just one.
+-Added Action Points adjustment to increase/decrease the amount of action points a character gets.
+-Added Encumbrance, Carrying Capacity Use this adjustment to change your your Strength score to be treated as higher/lower value than normal when calculating your carrying capacity.
+
+version 1.45 - Released 9/14/2013
+-Fixed "Eldritch Blast" timing a little so that Vitrilic Blast can adjust the die size now on iPads.
+-Added "Haste, Mythic Augmented"; "Haste, Mythic"; "Ablative Barrier"; "Mirror Image" spell adjustments.
+-Made "Vital Strike" something that can be activated on iPads now. It correctly works with all versions of Vital Strike including Mythic.  It also only display the first attack when activated.
+-Added "Custom Name: Spell" and "Custom Text: Spell" adjustment which allow for changing the name of a Spell or appending additional text to the Spells name.
+-Changed name of "Weapon: Custom Text" to be "Custom Text: Weapon" to match all the other adjustments.
+-Added "Custom Name: Weapon" adjustment to allow for setting a whole new name on the weapon.
+-Added "Natural Weapon: Number of Attacks" adjustment to adjust the number of natural attacks a creature has. So if normally it has Claws x2 you can change it to Claws x4.
+-Added "Armor No Longer Slows" adjustment which allows for removing the armor slow tags.
+-Added "Class Ability: DC" adjustment which allows for adjusting a class ability DC value up or down.
+-Added "Equipment, Remove from In-Play" adjustment this allows to remove the Tracker that gets added for Weapons, Magic Items, and Gear items. This will help as characters increase in level have dozens of trackers on the In-Play tab.
+
+version 1.44 - Released 8/24/2013
+-Added the "Vitriolic Blast" warlock hex.
+-Added/fixed some of the Age of Worms magic items found at the end of the last game.
+
+version 1.43 - Released 7/28/2013
+-Added "- Custom Spell Selection -" spell adjustment which allows selection of a custom spell and changes the adjustments name to match.
+-Added "- Custom Spell Text -" spell adjustment that allows you to type the name of any spell into the (Source) section and the adjustment name changes to match.
+-Added new "Wolf Fang Strike" barbarian totem rage powers that are for two-weapon fighting Barbarian builds.
+-Added new "Oversized Two-Weapon Fighting" rage power that allows the use of one-handed weapons to be treated as light weapons when two-weapon fighting.
+-Added new "Improved Two-Weapon Defense" feat that increases the defense by +2 shield bonus.
+-Added new "Close-Quarters Fighting" feat from 3.5 Complete Warrior. This allows for making an AoO vs a grapple/grab attempt and adding the damage as a bonus to your CMD vs that grab.
+-Fixed "Armor Mastery" mythic ability to remove the ACP now also.
+-Fixed "Sacred Boons" mythic ability to correctly calculate its bonus as 2x Mthyic Tier and it now correctly affects domain powers.
+-Fixed "Two-Weapon Fighting" again as it was allowing for One-handed weapons in the off-hand without penalty.
+-Fixed "Teamwork" feat text as it was only showing the "Shadow d20" change note.
+-Fixed text on "Aquatic Born" Razor Coast trait.
+
+version 1.42 - Released June 30, 2013
+-Changed Iaijutsu Strike to better work on the iPad by having the extra damage display on weapons when its activated.
+-Changed Sneak Attack to be activate capable so the extra dice will be rolled on the iPad.
+-Bestiary 2 package no longer required to run Shadow d20.
+-Campaign Setting#5 package no longer required to run Shadow d20.
+-Companion Races #2 package no longer required to run Shadow d20.
+-Companion Regions #2 package no longer required to run Shadow d20.
+-Removed some of the DM only user files that got sent out to the players by mistake. Opps. No peaking at the monsters!
+
+version 1.41 - Released June 26, 2013
+-Fixed "Earplugs" to correctly update the sub-skill Perception (Hearing) when worn.
+-Fixed Dragonrider class dragon AC bonus.
+-Fixed the sub-skills mechanics so that the skills calculate correctly again.
+--Fixed Sub-skills as HL timing for totals in skills was moved up.
+--Fixed Sub-skills double penalty when the AllSkills Thing was used for giving a bonus/penalty to all skills.
+--Fixed the Caster Level vs Spell resistance Sub-skill so that it works again for the Warlock.
+-Merged in the Razor Coast campaign stuff.
+-Added new Mounts for the Cavilier: Gila Monster, Giant; Eagle, Riding; Elk; Darkling Beetle, Giant; Cave Salamander; Ant, Riding.
+-Added more special magic items for Age of Worms.
+-Added "Weapon Bane Greater Dmg" adjustment to have +4d6 damage display.
+-Added "Attack, Base Attack Bonus" adjustment that lets one adjust the BAB of their character.
+-Added "Weapon Damage Type, Bludgeoning" to change the selected weapon to Bludgeoning type.
+-Added "Weapon Damage Type, Slashing" to change the selected weapon to Slashing type.
+-Added "Weapon Damage Type, Piercing" to change the selected weapon to Piercing type.
+
+version 1.40 - Released May 12, 2013
+-Added more magic items for AoW.
+-Fixes to the Mino race now that its being used on the iPad app.
+-Added some Alternate Racial Traits for the Ulfin Minotaur.
+--Tough Hides, Natural Sailors, Endurance, and Cunning.
+--Two new favored class options for Mino Monks and Inquisitor.
+-Latest version of the Mythic Rules.
+-Misc fixes.]]></info_history>
+    </fileinfo>
+  <thing id="mecS20" name="Shadow d20 Mechanic" description="Shadow d20 Potions &amp; Scrolls\nShadow d20 Wondrous Items\nShadow d20 Rods\nShadow d20 Rogue Skill Tricks\nShadow d20 Teamwork feats\nShadow d20 Fix X-bows\nShadow d20 Two-Handed Weapons\nShadow d20 Casting Time change\nShadow d20 Spell bonus damage\nShadow d20 Mythic Text Changes\n\n--Tags--\nwRangeInc.250 - 250ft range increment tag" compset="Mechanics">
+    <usesource source="pShadowd20"/>
+    <tag group="wRangeInc" tag="250"/>
+    <tag group="ProductId" tag="Shadowd20" name="Shadow d20"/>
+    <tag group="Usage" tag="S2Encount" name="/encounter"/>
+    <tag group="abCategory" tag="S2Warlock" name="Warlock Hex" abbrev="Hex"/>
+    <tag group="abCategory" tag="S2WolfFaSt" name="Barbarian(Wolf Fang Strike Totem)" abbrev="Wolf Fang Strike"/>
+    <tag group="abCategory" tag="S2RogSkTr" name="Rogue Skill Trick"/>
+    <bootstrap thing="S2TwoHand"></bootstrap>
+    <bootstrap thing="s20ActPoin"></bootstrap>
+    <bootstrap thing="s20SpellCo"></bootstrap>
+    <bootstrap thing="s20TWF"></bootstrap>
+    <bootstrap thing="s20Potions"></bootstrap>
+    <bootstrap thing="s20CastTim"></bootstrap>
+    <bootstrap thing="s20SpelDmg"></bootstrap>
+    <bootstrap thing="s20SkillPo"></bootstrap>
+    <bootstrap thing="s20Wondrou"></bootstrap>
+    <bootstrap thing="s20MiscTxt"></bootstrap>
+    <bootstrap thing="s20Rogue"></bootstrap>
+    <bootstrap thing="s20MythTxt"></bootstrap>
+    <bootstrap thing="s20Rods"></bootstrap>
+    <bootstrap thing="s20Rogue2"></bootstrap>
+    <bootstrap thing="S20Teamwor"></bootstrap>
+    <bootstrap thing="s20NoXP"></bootstrap>
+    <eval phase="First" priority="10000">~ If not human get out now
+      ~#hasrace[rHuman] + #hasrace[rElf] + #hasrace[rDwarf] +
+      doneif (#hasrace[rHalfling] = 0)
+
+      Call GiveEthnic</eval>
+    </thing>
+  <thing id="s20Potions" name="Shadow d20 Potions, Scrolls, and Wands" description="Change all potions, scrolls, and Wand on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
+    <usesource source="srcPotID"/>
+    <eval phase="First"><![CDATA[
+      foreach pick in hero from MyGear where "gType.OilPotion|gType.Scroll|gType.Wand"
+         perform eachpick.assign[User.NeedDomain]
+      nexteach]]></eval>
+    </thing>
+  <thing id="s20Wondrou" name="Shadow d20 Wondrous Items" description="Change all wondrous items on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="Final"><![CDATA[
+      ~ If we are a NPC then don't require ID for magic items
+      doneif (hero.tagis[CharType.typNPC] = 1) 
+
+      ~ All Wondrous items EXCEPT for the Shadow d20 -Custom Magic Item-
+      foreach pick in hero from MyGear where "(gType.Wonder|gType.Ring) & !thingid.ioS2Custom"
+         perform eachpick.assign[User.NeedDomain]
+      nexteach]]></eval>
+    </thing>
+  <thing id="s20Rogue" name="Shadow d20 Rogue Skill Tricks" description="Give rogue Skill Tricks starting at level 1. Also change any rogue talents from 1/day to 1/encounter" compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Done if no rogue class found
+      doneif (hero.childlives[cHelpRog] = 0)
+      var tricks as number
+      tricks = maximum(round(#levelcount[Rogue]/2,0,1),1)
+
+      ~ Give 1 point to the Secondary Class Abilities total
+      hero.child[cHelpRog].field[cGiveSp2nd].value += tricks
+
+      ~ Change all the rogue talents to per encounter instead per day
+      foreach pick in hero from BaseCustSp where "Usage.Day & CustTaken.cHelpRog"
+        perform eachpick.delete[Usage.?]
+        perform eachpick.assign[Usage.S2Encount]
+      nexteach]]></eval>
+    <eval phase="Render" priority="100000" index="2"><![CDATA[
+      ~ Done if no rogue class found
+      doneif (hero.childlives[cHelpRog] = 0)
+
+      ~ Give name of Skill Tricks
+      hero.child[cHelpRog].field[cSpec2ndNm].text = "Skill Tricks"
+      hero.child[cHelpRog].field[cSpec2ndSi].text = "Skill Trick"]]></eval>
+    </thing>
+  <thing id="s20Rods" name="Shadow d20 Rods" description="Change all rod items on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="First"><![CDATA[
+      ~ All Rods
+      foreach pick in hero from MyGear where "gType.Rod"
+         perform eachpick.assign[User.NeedDomain]
+      nexteach]]></eval>
+    </thing>
+  <thing id="S20Teamwor" name="Shadow d20 Teamwork Feats" description="Add extra house rules text to all teamwork feats.  Most of the teamwork feats we are allowing them to be used within 30ft of each other." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="Render" priority="200"><![CDATA[
+      ~ Set text fields
+      var sTxt30 as string
+      var sTxt10 as string
+      var sText  as string
+
+      sTxt30 = "{b}Shadow d20:{/b} This teamwork feat can be used within 30ft now."
+      sTxt10 = "{b}Shadow d20:{/b} This Teamwork feat can be used within 10ft now."
+
+      foreach thing in BaseFeat where "fCategory.Teamwork"
+        ~ For some team work the distance is 10ft not 30ft
+        If (eachthing.tagsearch["thingid.fAmpRage|thingid.fDuckCover|thingid.fShakeIt"] <> 0) Then
+          sText = eachthing.field[descript].text & "{br}{br}" & sTxt10
+        ~.. otherwise assume we need the 30ft text
+        Else 
+          sText = eachthing.field[descript].text & "{br}{br}" & sTxt30
+        Endif
+        ~ Set message
+        perform eachthing.amendthing[description,sText]  
+      nexteach]]></eval>
+    </thing>
+  <thing id="S2TwoHand" name="Shadow d20 Two-Handed Weapons" compset="Simple" uniqueness="useronce">
+    <usesource source="srcTHW"/>
+    <eval phase="PostAttr" priority="200000"><![CDATA[
+      ~ If level is 6 or greater then get out now
+      doneif (#totallevelcount[] >= 6)
+      var penalty as number
+      var nPower  as number
+
+      ~ Set houserule text on Power Attack
+      #appenddesc[fPowerAtt,"{b}Shadow d20:{/b} Two-handed weapons will NO longer get 1.5x Strength damage or get +50% bonus when using Power Attack until your character is level 6."]
+
+      ~ If we have power attack feat then process here
+      If (hero.childlives[fPowerAtt] <> 0) Then
+        ~ If Power Attack is turned on then we need to off-set +50%
+        ~ bonus PA applies.
+        If (hero.child[fPowerAtt].field[abilActive].value <> 0) Then
+            nPower = #value[fPowerAtt]
+        Endif
+      Endif
+
+      ~ Loop through only the melee weapons
+      foreach pick in hero from BaseWep where "wCategory.Melee"
+        ~ Calculate the Bonus of 1.5
+        penalty = round(eachpick.field[wMeleeAttr].value/2,0,-1) + nPower
+        ~ make our value negative
+        penalty *= -1
+
+        ~ Are we a natural attack
+        If (eachpick.tagis[wGroup.Natural] <> 0) Then
+        ~ And we are a PC then remove the two-handed tag
+        If (hero.tagis[CharType.typHero] <> 0) Then
+          perform eachpick.delete[Helper.NatTwoHand]
+        Endif
+
+        ~...we are a one handed weapon equipped in two hands
+        ElseIf (eachpick.tagis[wClass.OneHanded] + eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value = 3) Then
+          ~ Give a penalty
+          eachpick.field[wDamBonus].value += penalty
+
+        ~...we are a Double weapon
+        ElseIf (eachpick.tagis[wCategory.Double] <> 0) Then
+          ~ If we are double weapon and we are equipped in double mode
+          ~ then do NOT give penalty as we are treated as a one-handed weapon
+          If (eachpick.field[wIsDouble].value <> 1) Then
+            eachpick.field[wDamBonus].value += penalty
+          Endif
+
+          ~...we are a two-handed weapon
+          ElseIf (eachpick.tagis[wClass.TwoHanded] <> 0) Then
+            ~ Give a penalty to offset the 1.5 Str damage
+            eachpick.field[wDamBonus].value += penalty
+          Endif
+
+      nexteach]]></eval>
+    </thing>
+  <thing id="s20ActPoin" name="Shadow d20 Action Points" description="This sets the action points for NPCs to be zero." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="PostLevel" priority="10010"><![CDATA[
+      ~ If we are not a NPC then get out now
+      doneif (hero.tagis[CharType.typNPC] = 0)
+      ~ If action points tracker not live get out now
+      doneif (hero.childlives[hActionPts] <> 1)
+
+      ~ Set action points to zero if we are a NPC
+      #trkmax[hActionPts] = 0
+
+      #appenddesc[hActionPts,"{b}Shadow d20:{/b} NPCs do not gain any APs unless they take the Heroic Spirit feat"]]]></eval>
+    </thing>
+  <thing id="s20SpellCo" name="Shadow d20 Magus Spell-Combat" description="Correctly has HL calculate the TWF values of a Magus with a weapon and &quot;Touch Attack&quot;." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ If Magus Spell-Combat not live
+      doneif (hero.childlives[cMagSplCom] <> 1)
+      ~ Make sure we have not been replaced first
+      doneif (hero.child[cMagSplCom].tagis[Helper.SpcReplace] <> 0)
+
+      ~ If we're in output mode, don't do anything
+      ~doneif (state.isoutput <> 0)
+
+      var Hands as number
+      var Touch as number
+      Hands = 0
+      Touch = 0
+
+      foreach pick in hero from BaseWep
+        If (eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value <> 0) Then
+           Hands += 1
+        Endif 
+        ~ If touch attack weapon set flag
+        If (eachpick.tagis[Shadowd20.TouchWep] = 1) Then
+           Touch = 1
+        Endif
+      nexteach
+
+      If (Hands = 2) Then
+        if (Touch = 1) Then
+          foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
+             If (eachpick.tagis[Hero.MainHand] <> 0) Then
+                 eachpick.field[wAttMelee].value += 2
+             Endif
+             If (eachpick.tagis[Hero.OffHand] <> 0) Then
+                 eachpick.field[wAttMelee].value += 6
+                 eachpick.field[wAttRanged].value += 6
+             Endif
+          nexteach
+        Endif
+      Endif]]></eval>
+    </thing>
+  <thing id="s20TWF" name="Shadow d20 Two-Weapon Fighting" compset="Simple" uniqueness="useronce">
+    <usesource source="srcTWF"/>
+    <eval phase="PreLevel" priority="11000"><![CDATA[
+      ~ If we don't have Shadow d20 Two-Weapon Fighting get out now
+      doneif (hero.tagis[Shadowd20.TwoWep] <> 1)
+      ~remove the attack penalties (This allows for one-handed weapons in the off-hand)
+      ~perform hero.assign[Hero.TwoWepSup]
+
+      var Hands as number
+      var Bonus as number
+      Bonus = 2
+      Hands = 0
+
+      ~ Count the number of hands in use
+      foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
+        If (eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value <> 0) Then
+          ~ If we are a Two-handed weapon then we don't count for the bonus
+          If (eachpick.tagis[wClass.TwoHanded] <> 1) Then
+             Hands += 1
+          Endif
+        Endif 
+      nexteach
+
+      ~ Only give a bonus if we have a weapon in main and off hand
+      If (Hands = 2) Then
+        ~ Loop through all the weapons in main and off hand but ignore double weapons
+        foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand & !wCategory.Double"
+           eachpick.field[wAttMelee].value += Bonus
+        nexteach
+      Endif
+
+      ~ Loop through all double weapons
+      foreach pick in hero from BaseWep where "Hero.MainHand & Hero.OffHand & wCategory.Double"
+         ~ Only if in Double weapon mode should we give the bonus
+         if (eachpick.field[wIsDouble].value <> 0) Then     
+            eachpick.field[wAttMelee].value += Bonus
+         Endif
+      nexteach]]></eval>
+    <eval phase="PreLevel" priority="10050" index="2"><![CDATA[
+      ~ Give note on the feat
+      #appenddesc[fTwoWep,"{b}Shadow d20:{/b} TWF now offsets the penalty down to zero instead of -2 but you lose this bonus if you take the Improved Two-Weapon fighting feat or TWF with a two-handed weapon."]
+
+      ~ If we don't have the Two-Weapon Fighting get out now
+      doneif (hero.tagis[Hero.TwoWep] <> 1)
+      ~ If we have Improved Two-Weapon Fighting get out now
+      doneif (#hasfeat[fImpTwoWep] <> 0)
+      ~ If we have a two-handed weapon then we don't get the bonus
+      doneif (hero.tagcount[Hero.EquipOff] >= 2)
+
+      ~ If we passed the above tests set the Shadow d20 Two-Weapon Fighting Tag
+      perform hero.assign[Shadowd20.TwoWep]]]></eval>
+    </thing>
+  <thing id="s20CastTim" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters." compset="Simple" uniqueness="useronce">
+    <usesource source="srcNo1Rnd"/>
+    <bootstrap thing="s2Info1Rou"></bootstrap>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ Change all 1 round casting to 1 Full-Round casting time
+      foreach pick in hero from BaseSpell where "sCastTime.Round1"
+        perform eachpick.tagreplace[sCastTime.Round1,sCastTime.FullAction]
+      nexteach]]></eval>
+    </thing>
+  <thing id="s2Info1Rou" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before." compset="Ability" summary="1 round casting time spells are now 1 Full-Round action instead.">
+    <usesource source="srcNo1Rnd"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ Only show us if we are a spellcaster
+      If (hero.tagis[Hero.Caster] <> 0) Then
+         perform assign[Helper.ShowSpec]
+      Endif]]></eval>
+    </thing>
+  <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a bonus on damage equal to your caster level. This should help some with how little damage spellcasters do vs melee characters." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a bonus on damage.">
+    <usesource source="srcSpelDmg"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="Final" priority="10000">~ Only show us if we are a spellcaster
+      doneif (hero.tagis[Hero.Caster] = 0)
+
+      ~ Show us
+      perform assign[Helper.ShowSpec]</eval>
+    </thing>
+  <thing id="s20SpelDmg" name="Shadow d20 Spell Damage" description="Just show a info about spell damage bonus if your arcane or divine caster." compset="Simple" uniqueness="useronce">
+    <usesource source="srcSpelDmg"/>
+    <bootstrap thing="s2InfoSpDm"></bootstrap>
+    <eval phase="PostLevel" priority="15000"><![CDATA[
+      ~ Finished if not a Arcane or Divine caster
+      doneif (hero.tagis[Hero.Caster] <> 1)
+
+      var sTag as string
+      var nCL as number
+      var sName as string
+      var iX as number
+      iX = 0
+      sName = " ("
+
+      ~ Loop through all Divine/Arcane caster classes
+      foreach pick in hero from Class where "CasterSrc.Arcane|CasterSrc.Divine"
+          ~ Build all spec source tags
+        sTag = eachpick.tagids[SpecSource.?,"|"]
+          ~ Add spell-like ability tag
+          sTag &= " & AbilType.SpellLike"
+          ~ capture the caster level
+          nCL = eachpick.field[cCasterLev].value
+          If (iX > 0) Then
+             sName &= ", " & eachpick.field[cAbbr].text & " +" & nCL
+          Else
+             sName &= eachpick.field[cAbbr].text & " +" & nCL
+          Endif
+          ~ loop through all Class Specials where we have the correct
+          ~ tags
+          foreach pick in hero from BaseClSpec where sTag
+             ~ Increase damage by the CL
+             ~eachpick.field[abValue3].value += nCL
+             eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell-like ability does hit point damage it gains a bonus equal to your caster level (" & signed(nCL) & ")."  
+          nexteach
+          ~ increase count
+          iX += 1
+      nexteach
+      sName &= ")"
+      ~ Update live name of the Special Ability
+      hero.childfound[s2InfoSpDm].field[livename].text = hero.childfound[s2InfoSpDm].field[name].text & sName
+      
+      ~ Find all touch attack weapons and show Extra Damage
+      foreach pick in hero from BaseWep where "Shadowd20.TouchWep"
+         #extradamage[eachpick,sName,field[name].text]
+      nexteach]]></eval>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      ~ Finished if not a Arcane or Divine caster
+      doneif (hero.tagis[Hero.Caster] <> 1)    
+      
+      ~ Give damage CL text on to all spells on character
+      foreach pick in hero from BaseSpell
+        eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell does hit point damage it gains a bonus equal to your caster level (" & signed(eachpick.field[sCL].value) & ")."  
+      nexteach]]></eval>
+    </thing>
+  <thing id="s20SkillPo" name="Shadow d20 Increase Class Skill Points" description="Give an increase to some class skill points.\n\n-Clerics increased by 2 per level." compset="Simple">
+    <usesource source="pShadowd20"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ Check to see if we have the cleric class
+      If (hero.childlives[cHelpClr] <> 0) Then
+         ~ Clerics skill points increased by 2 per level
+         hero.child[cHelpClr].field[cSkills].value += 2
+      Endif]]></eval>
+    </thing>
+  <thing id="creaMedium" name="Medium Fantasy" compset="Creation">
+    <fieldval field="creaName" value="Point Buy: Shadow d20, 22"/>
+    <fieldval field="creaAttPts" value="22"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="explicit" tag="70" name="70" abbrev="70"/>
+    </thing>
+  <thing id="s20MiscTxt" name="Shadow d20 Misc Text Changes" description="This Thing sets the text desc on Things with house rules text." compset="Simple">
+    <usesource source="s20PFCamp"/>
+    <eval phase="Render" priority="200"><![CDATA[
+      ~ This has to be added this way as they are doing strange things
+      ~ with this items Desc in the "totals" component.
+      #appenddesc[wRcHarpoon,"{b}Shadow d20:{/b} Removed the weight of the rope as most times it will not be used that way. Increased the range increment to 50ft to make having the exotic weapon harpoon feet more worth while."]
+
+      ~ Add extra text to the Scimitar
+      #appenddesc[wScimitar,"{b}Shadow d20:{/b} A scimitar is treated as a light weapon when used as the off-hand weapon when two-weapon fighting, but only for the purpose of two-weapon fighting. A scimitar used as a off-hand weapon can not be weapon finessed even though its considered a light weapon."]
+
+      ~ Boar Style feat
+      #appenddesc[fBoarStyl,"{B}Shadow d20:{/b} The bleed damage on this feat is changed to rend damage which makes allot more sense."]
+
+      ~ TWF and DR
+      #appenddesc[fTwoWep,"{b}Shadow d20:{/b} When you fight with two weapons (not including a two-handed weapon) you may add the damage of your primary attack and off-hand attack together vs DR. This allows a more balanced approach vs two-handed weapons."]
+
+      var sText   as string
+
+      ~ Fix Elephant Stomp Feat
+      foreach thing in BaseFeat where "thingid.fElepStomp"
+        If (eachthing.tagcountstr["thingid.fElepStomp"] <> 0) Then
+          perform eachthing.amendthing[description,"{b}Prerequisites:{/b} Str 13, Power Attack, Improved Overrun, base attack bonus +1.\n\n{b}Benefit:{/b} When you overrun an opponent and your maneuver check exceeds your opponent&#146;s CMD by 5 or more you can make one attack with an unarmed strike or a natural weapon against that opponent as a swift action.\n\n{b}Normal:{/b} When your overrun maneuver check exceeds your opponent's CMD by 5 or more, you move through the target's space and she is knocked prone.{br}{br}{B}Shadow d20:{/b} Changed wording to try and make this feat usuable."]
+        Endif
+      nexteach
+
+      ~ Fix Cape of Feinting
+      foreach thing in BaseEquip where "thingid.ioCapeFein"
+        If (eachthing.tagcountstr["thingid.ioCapeFein"] <> 0) Then
+          ~ Build text string
+          sText = eachthing.field[descript].text & "{br}{br}{b}Shadow d20:{/b} This cloak was not meant to have a unlimited daze ability. The ability to daze a target can only be done 3/day."
+          ~ Set message
+          perform eachthing.amendthing[description,sText]
+        Endif
+      nexteach]]></eval>
+    </thing>
+  <thing id="s20Rogue2" name="Shadow d20 Rogue 1/day to 1/Encounter TEXT addition" description="All one time a day rogue abilities are being changed to 1/day." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="Render" priority="200"><![CDATA[
+      ~ Set text fields
+      var sText   as string
+      var sChange as string
+
+      sChange = "{b}Shadow d20:{/b} Rogue talents usable 1/day are changed to 1/encounter. Final say of a encounter definition is left in the hands of the DM. It takes 1 minute after the encounter to recover this talent."
+
+      foreach thing in BaseCustSp where "Usage.Day & SpecSource.cHelpRog"
+        ~ Build text string
+        sText = eachthing.field[descript].text & "{br}{br}" & sChange
+        ~ Set message
+        perform eachthing.amendthing[description,sText]  
+      nexteach]]></eval>
+    </thing>
+  <thing id="s20Tracker" name="Shadow d20 Tracker Reset to Max" description="Set all trackers and action points to reset to Max instead of 0. This way a wand will be 50/50 instead of 50/50." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      
+      foreach pick in hero from Tracker where "User.Tracker|thingid.hActionPts"
+        perform eachpick.assign[Helper.ResetMax]
+      nexteach]]></eval>
+    </thing>
+  <thing id="trkS2APs" name=" Action Points" description="A beginning (1st-level) character starts the game with 5 action points. A character above 1st level starts the game with a number of action points equal to 5 + 1/2 his current character level. Every time a character advances, he gains a number of action points equal to 5 + 1/2 his new character level.\n\nWhen you spend 1 action point to improve a d20 roll, you add the result of a 1d6 to your d20 roll (including attack rolls, saves, checks, or any other roll of a d20) to help you meet or exceed the target number. You can declare the use of 1 action point to alter a d20 roll after the roll is made, but only before the GM reveals the result of that roll. You can’t use an action point to alter the result of a d20 roll when you are taking 10 or taking 20.\n\nDepending on character level, a character might be able to roll more than one d6 when he spends an action point. If so, apply the highest result and disregard the other rolls. A 15th-level character, for instance, gets to roll 3d6 and take the best result of the three. So, if he rolled a 1, 2, and 4, he would apply the 4 to his d20 roll. \n\n{B}1st-7th{/b} 1d6\n{B}8th-14th{/b} 2d6\n{B}15th-20th{/b} 3d6" compset="Tracker" replaces="hActionPts" uniqueness="useronce">
+    <fieldval field="trkMax" value="5"/>
+    <usesource source="OptAction"/>
+    <tag group="Usage" tag="S2Level" name="/level"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ChargeCalc" tag="HitDieHalf"/>
+    <tag group="ChargeCalc" tag="LevelX1"/>
+    <tag group="Helper" tag="NoNightRes"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      var dice as number
+      ~ Default is 1d6
+      dice = 1
+
+      ~ Calcaulte the number of dice to roll
+      If (herofield[tLevel].value >= 8) Then
+        dice += 1
+      Endif
+      If (herofield[tLevel].value >= 15) Then
+        dice += 1
+      Endif
+
+      ~ Set livename
+      field[livename].text = field[name].text & " " & dice & "d6"]]></eval>
+    </thing>
+  <thing id="trS2Traini" name="Training" compset="Trait" isshowonly="yes">
+    <usesource source="s20PFCamp"/>
+    <tag group="trCategory" tag="Training"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="s20NoXP" name="Shadow d20 No XP" description="This helper script prevents the need of using XP on level up." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="PostAttr" priority="5000">~ This tag tells HL to not use XP!
+      perform hero.assign[Hero.NoAdvance]</eval>
+    </thing>
+  <hidden id="fKQImpDA"/>
+  <hidden id="fKQAddFavE"/>
+  <hidden id="fKQAddFavT"/>
+  <hidden id="cRslAddAC"/>
+  <hidden id="fKQDeadAcc"/>
+  <preclude id="raS2CatSce" source="ARG"/>
+  <preclude id="raS2CatCle" source="ARG"/>
+  <preclude id="raS2CatCli" source="ARG"/>
+  <preclude id="rDhampir" source="srcNoRaces"/>
+  <preclude id="rKitsune" source="srcNoRaces"/>
+  <preclude id="rTengu" source="srcNoRaces"/>
+  <preclude id="rcMwangi" source="srcCatFolk"/>
+  <preclude id="fLeader" source="s20PFCamp"/>
+  <preclude id="iElvenChn" source="s20PFCamp"/>
+  <preclude id="iDwarfPlt" source="s20PFCamp"/>
+  <preclude id="rcShoanti" source="srcShifter"/>
+  <preclude id="rcUlfen" source="srcShaMino"/>
+  <preclude id="spCorrTou1" source="s20PFCamp"/>
+  <preclude id="rTiefling" source="srcNoRaces"/>
+  <preclude id="rCatfolk" source="srcNoRaces"/>
+  <preclude id="rRatfolk" source="srcNoRaces"/>
+  <preclude id="rAasimar" source="srcNoRaces"/>
+  <preclude id="raS2CatCur" source="ARG"/>
+  <preclude id="raS2CatFal" source="ARG"/>
+  </document>
