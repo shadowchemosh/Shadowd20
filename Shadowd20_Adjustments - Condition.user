@@ -13,12 +13,9 @@
     <tag group="Helper" tag="AdjCond"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="First"><![CDATA[
-      ~ If user checked option to output to sheet don't check
-      if (hero.tagis[source.s2OutSheet] = 0) then
-         ~ If we're in output mode, don't do anything
-         doneif (state.isoutput <> 0)
-      endif
-
+      ~ If we're in output mode, don't do anything
+      doneif (state.isoutput <> 0)
+      ~ If we're not on then get out now!
       doneif (field[pIsOn].value <> 1)
 
       ~ Set Flat Footed on
