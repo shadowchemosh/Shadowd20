@@ -3,38 +3,9 @@
   <loadonce key="Shadowd20_zSource_900 - Shadow d20 Parent.1st"/>
 
   <!--
-    5/12/2015
+    5/16/2015
     -Changed name and re-did Shadow d20 to more easily merge in with the Community Stuff.
-
-    4/12/2014
-    -Broke tags off to their own file.
-
-    10/13/2013
-    -Added new FeralWep tag to help identify which natural attacks came from the Feral druid archetype.
-
-    Feb 3, 2013
-    -Added Dragonborn Racial tags for breath weapon.
-
-    v1.31 10/28/2012
-    -Added new sources "No duplicate Shadow d20 races" and "Ouput Combat Actions to sheet"
-
-    v1.24 7/16/2012
-    -Added "Hide duplicate Shadow d20 races".
-
-    v1.23 6/10/2012
-    -Added better comments.
-    -Added in some House Rules for TWF, THF, and Weapon Finesse.
-    -Created new Parent Shadow d20 Campaigns.
-    -Moved Razor Coast out of the AP section to Shadow d20 Campaigns.
-
-    v1.18 3/25/2012
-    -Added Sub Skill tag group.
-
-    v1.11 1/14/2012
-    -Removed the 3PP sources (ie pSGG) and used the community supplied ones. Should prevent duplicate things erros.
-    -Rearragned the sources again to be better sorted.
-    -Moved the potion note to be under Shadow d20.
-    -Moved all races to be under there own headers.
+    -This starts the new v2.0 of Shadow d20!
   -->
 
   <!-- ============================================== -->
@@ -89,7 +60,7 @@
     description="Campaigns">
     </source>
 
-  <!-- Converted 3.5 Books Parent -->
+  <!-- Shadow d20 Pathfinder -Converted 3.5 Books Parent -->
   <source
     id="p35"
     name="Shadow d20 - 3.5 Books"
@@ -102,11 +73,11 @@
   <!-- Shadow d20 Depreciated Sources -->
   <source
     id="pS2Deprec"
-    name="Deprecated"
+    name="Shadow d20 - Deprecated"
     selectable="no"
     parent="pShadowd20"
     sortorder="50"
-    description="These are no longer working">
+    description="These are no longer used but are left in for backwards compatibility.">
     </source>
    
 </document>

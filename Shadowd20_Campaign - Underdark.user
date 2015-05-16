@@ -147,8 +147,7 @@
     </thing>
   <thing id="S2DwarfEth" name="Shadow d20 Dwarven Ethnicities" description="Give all dwarves a single Ethnicities." compset="Simple">
     <usesource source="srcUndDark"/>
-    <eval phase="PreLevel" priority="10000">      
-      ~ If not dwarf get out now
+    <eval phase="PreLevel" priority="10000">~ If not dwarf get out now
       doneif (#hasrace[rDwarf] = 0)
 
       call GiveEthnic</eval>
@@ -156,5 +155,58 @@
   <thing id="mecUnderDa" name="Underdark Mechanic" compset="Mechanics">
     <usesource source="srcUndDark"/>
     <bootstrap thing="S2DwarfEth"></bootstrap>
+    </thing>
+  <thing id="pS2Darklan" name="Shadow d20 Campaign - Darklands" compset="InPlay">
+    <usesource source="s20PFCamp"/>
+    <usesource source="srcUndDark"/>
+    <usesource source="srcS2Adjus"/>
+    <usesource source="srcS2Arche"/>
+    <usesource source="srcS2Gear"/>
+    <usesource source="srcS2Feat"/>
+    <usesource source="srcUnMnkAr"/>
+    <usesource source="src7CLWFea"/>
+    <usesource source="SGGBfirbll"/>
+    <usesource source="ACG"/>
+    <usesource source="APG"/>
+    <usesource source="APGFamil"/>
+    <usesource source="APGTrait"/>
+    <usesource source="APGManeuv"/>
+    <usesource source="APGHero"/>
+    <usesource source="ARG"/>
+    <usesource source="PUClasses"/>
+    <usesource source="PUBackSkil"/>
+    <usesource source="PUPoiDis"/>
+    <usesource source="UltCombat"/>
+    <usesource source="UltEquip"/>
+    <usesource source="UltMagic"/>
+    <usesource source="UMFamil"/>
+    <usesource source="BestFamil"/>
+    <usesource source="Best1Free"/>
+    <usesource source="PCAdvArm"/>
+    <usesource source="PCDungHand"/>
+    <usesource source="PCDwarvGol"/>
+    <usesource source="PCInSeaPri"/>
+    <usesource source="CSWorldGui"/>
+    <usesource source="CSPathPres"/>
+    <usesource source="XPShadow"/>
+    <usesource source="srcNo1Rnd"/>
+    <usesource source="srcSpelDmg"/>
+    <usesource source="srcTHW"/>
+    <usesource source="srcTWF"/>
+    <usesource source="HouUnLang"/>
+    <usesource source="OptBody"/>
+    <usesource source="OptNoCoinW"/>
+    <usesource source="OptVariant"/>
+    <usesource source="OptNoNPC"/>
+    <usesource source="OptNoTempl"/>
+    <usesource source="srcNoRaces"/>
+    <usesource source="OptNoAniRa"/>
+    <usesource source="OptNoNPCRa"/>
+    <usesource source="OutTwoWep"/>
+    <usesource source="OutShldBas"/>
+    <usesource source="OutSpecDsc"/>
+    <usesource source="OutImage"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="OthAdjCat" tag="Campaign"/>
     </thing>
   </document>
