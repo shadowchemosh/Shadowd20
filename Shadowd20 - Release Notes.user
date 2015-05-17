@@ -6,6 +6,35 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.0 May 17, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fix Brass Knuckles to correctly pull its damage from Unarmed Strike</li>
+<li>Brass Knuckles no longer get a -2 penalty when masterwork.</li>
+<li>Fixed the Weapon Finesse Shadow d20 option of giving Dex to Damage.</li>
+</ul>
+
+<strong>New Features</strong>
+<ul>
+<li>Shadow d20 Warpriest archetype "Battle Medic" that gives Channel Energy at level 1 but only to heal.</li>
+<li>Merge in latest Basic Pack v3.10 https://github.com/shadowchemosh/HL-Pack-Basic/releases/tag/v3.10</li>
+<li>Merged in new Unchained Pack v1.0</li>
+<li>Dwarven ART's Deep Warrior and Ancient Enmity can now be activated on the In-Play tab.</li>
+<li>Make new "Sneak Attack (Unchained)" be activated on the In-Play tab.</li>
+<li>Append Lore skill Shadow d20 changes note.</li>
+<li>Monk Unchained Archetype "Monk of the Four Winds" added that works with the unchained monk.</li>
+<li>Monk Unchained Archetype "Zen Archer" added that works with the unchained monk.</li>
+</ul>
+
+<strong>Data File Authoring</strong>
+<ul>
+<li>Created new "S2CalcClSr" procedure that sets situational notes or typed bonus to CL vs SR.</li>
+<li>Major changes to files. Renamed files into a new standard and merged in Basic Pack, 3PP Pack, and Unchained.</li>
+<li>Removed the Summoning Stock files as they are useless to those using an iPad.</li>
+<li>New layout of the source options.</li>
+</ul>
+
 
 version 1.68 - Released 1/10/2015
 -Added new feat "Slice and Dice" which is similar to Clustered Shots but for those using two-weapon fighting instead.
