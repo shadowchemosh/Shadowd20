@@ -669,6 +669,10 @@ version 1.40 - Released May 12, 2013
       ~ TWF and DR
       #appenddesc[fTwoWep,"{b}Shadow d20:{/b} When you fight with two weapons (not including a two-handed weapon) you may add the damage of your primary attack and off-hand attack together vs DR. This allows a more balanced approach vs two-handed weapons."]
 
+      ~ Lore Skill from Unchained not as specific.
+      #appenddesc[skLorOther,"{b}Shadow d20:{/b} Lore is changed to only be a little specific but NOT as restrictive as the book. Listed below are some new valid examples for what you could pick with Lore.{br}{br}-For gods list up to three gods.{br}-Any City, Town, Village regardless of size and know all areas of that location.{br}-Elves, Dwarves, Orcs, Half-Orcs, Goblins, or other specific race. But you can't say 'Humanoids'.{br}-Undead, Dragons, Aberrations, Devils, Demons, Lycanthrops, or other broad single Creature Type. So again you can't say 'Outsider (Evil)' but can list Devil or Demon."]
+
+
       var sText   as string
 
       ~ Fix Elephant Stomp Feat
