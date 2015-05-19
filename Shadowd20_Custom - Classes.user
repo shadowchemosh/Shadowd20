@@ -2155,5 +2155,28 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
         nexteach
       Endif]]></eval>
     </thing>
+  <thing id="cWaPS2HoSt" name="Holy Strike" description="At 1st level, you can touch one weapon and bless it with the power of purity and goodness. For 1 minute, this weapon glows green, white, or yellow-gold and deals an additional 1d6 points of damage against evil creatures. During this time, it’s treated as good for the purposes of overcoming damage reduction. This additional damage doesn’t stack with the additional damage from the {i}holy{/i} weapon special ability." compset="ClSpecial" summary="Touched weapon deals +1d6 dam vs. evil foes for 1 min." replaces="cWaPHolStr">
+    <fieldval field="abDuration" value="1"/>
+    <fieldval field="actName" value="vs Evil"/>
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue2" value="6"/>
+    <fieldval field="usrCandid1" value="component.BaseWep &amp; !Helper.Helper"/>
+    <tag group="abRange" tag="Touch"/>
+    <tag group="abAction" tag="Standard"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="ActivMenu"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abCategory" tag="WaPBlMiPow"/>
+    <tag group="abDuration" tag="Minute"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If not active get out now!
+      doneif (field[abilActive].value = 0)
+      ~if we haven't chosen anything, there's nothing else we can do
+      doneif (field[usrChosen1].ischosen = 0)
+
+      #extradamage[field[usrChosen1].chosen,"+" & field[abValue].value & "d" & field[abValue2].value & " vs Evil",field[name].text]]]></eval>
+    </thing>
   <hidden id="arRgrSpell"/>
   </document>
