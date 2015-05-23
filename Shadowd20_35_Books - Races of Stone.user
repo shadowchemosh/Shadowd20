@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
-  <thing id="mS2ShldGau" name="Shield, Gauntlet" description="A favorite of divine spellcasters, this exotic shield is a heavy steel shield built with a special bracing gauntlet.  The special gauntlet allows you to carry other items in your shield hand (such as material spell components), although you cannot use weapons with it.  You can cast a spell with somatic components using your shield gauntlet but you lose the shield&#146;s AC bonus until your next turn." compset="Armor">
+  <thing id="mS2ShldGau" name="Shield, Gauntlet" description="A favorite of divine spellcasters, this exotic shield is a heavy steel shield built with a special bracing gauntlet.  The special gauntlet allows you to carry other items in your shield hand (such as material spell components), although you cannot use weapons with it.  You can cast a spell with somatic components using your shield gauntlet but you lose the shield’s AC bonus until your next turn.\n\n{i}Shield Bash Attacks{/i}: You can bash an opponent with a heavy shield. See &quot;heavy shield&quot; on Table 1-5: Martial Weapons for the damage dealt by a shield bash with a heavy shield. Used this way, a heavy shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a heavy shield as a one-handed weapon. If you use your shield as a weapon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." compset="Armor">
     <fieldval field="gSizeCost" value="50"/>
     <fieldval field="gWeight" value="20"/>
-    <usesource source="s20PFCamp"/>
     <usesource source="srcRoS"/>
     <tag group="ArmorClass" tag="Shield"/>
     <tag group="EquipType" tag="Metal"/>
@@ -12,9 +11,9 @@
     <tag group="ArmorAC" tag="2"/>
     <tag group="ArmorMaxDx" tag="1000"/>
     <tag group="ArmorArcFl" tag="35"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <bootstrap thing="wShHvSteel">
+      <autotag group="Helper" tag="Displace"/>
+      </bootstrap>
     </thing>
-
-
-
-
-</document>
+  </document>

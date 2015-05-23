@@ -601,7 +601,7 @@ version 1.40 - Released May 12, 2013
       ~ Loop through all Divine/Arcane caster classes
       foreach pick in hero from Class where "CasterSrc.Arcane|CasterSrc.Divine"
           ~ Build all spec source tags
-        sTag = eachpick.tagids[SpecSource.?,"|"]
+          sTag = eachpick.tagids[SpecSource.?,"|"]
           ~ Add spell-like ability tag
           sTag &= " & AbilType.SpellLike"
           ~ capture the caster level
@@ -690,7 +690,16 @@ version 1.40 - Released May 12, 2013
           ~ Set message
           perform eachthing.amendthing[description,sText]
         Endif
-      nexteach]]></eval>
+      nexteach
+      
+      ~ Add note about easy spellcasting with all shields
+      foreach thing in BaseArmor where "ArmorClass.Shield"
+        ~ Build text string
+        sText = eachthing.field[descript].text & "{br}{br}{b}Shadow d20:{/b} Casting spells can be done with all types of shields. This requires no extra action and does not cause you to lose your shield bonus for the round."
+        ~ Set message
+        perform eachthing.amendthing[description,sText]
+      nexteach            
+      ]]></eval>
     </thing>
   <thing id="s20Rogue2" name="Shadow d20 Rogue 1/day to 1/Encounter TEXT addition" description="All one time a day rogue abilities are being changed to 1/day." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
