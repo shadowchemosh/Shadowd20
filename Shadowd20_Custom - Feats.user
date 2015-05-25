@@ -252,8 +252,7 @@ nexteach]]></eval>
     </thing>
   <thing id="fS2ExNinja" name="Extra Ninja Trick" description="Through constant practice, you have learned how to perform a special trick.\n\n{b}Prerequisites{/b}: Ninja trick class feature.\n\n{b}Benefit{/b}: You gain one additional ninja trick.  You must meet all of the prerequisites for this ninja trick.\n\n{b}Special{/b}: You can gain Extra Ninja Trick multiple times." compset="Feat" summary="Choose an additional Ninja Trick." uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ Increase Ninja Tricks by 1
+    <eval phase="PreLevel" priority="10000">~ Increase Ninja Tricks by 1
       hero.childfound[cHelpNin].field[cGiveSpec].value += 1</eval>
     <exprreq message="Ninja Trick class feature required."><![CDATA[hero.childfound[cHelpNin].field[cGiveSpec].value - #hasfeat[fS2ExNinja] > 0]]></exprreq>
     </thing>
@@ -1477,8 +1476,7 @@ endif]]></eval>
     <tag group="fShowWhat" tag="Skills"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="trCategory" tag="Training"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ Set bonus to +1
+    <eval phase="PreLevel" priority="10000">~ Set bonus to +1
       field[abValue].value += 1
 
       ~ Make the skill a class skill
@@ -1715,6 +1713,69 @@ perform hero.assign[Shifter.Feat]]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Two-Weapon Fighting feat required."><![CDATA[#hasfeat[fTwoWep] <> 0]]></exprreq>
     <exprreq message="Base Attack Bonus +6 required."><![CDATA[#BAB[] >= 6]]></exprreq>
+    </thing>
+  <thing id="fS2EleFist" name="Elemental Fist" description="You empower your strike with elemental energy.\n\n{b}Prerequisites{/b}: Con 13, Wis 13, Improved Unarmed Strike, base attack bonus +8.\n\n{b}Benefit{/b}: When you use Elemental Strike pick one of the following energy types: acid, cold, electricity, or fire. On a successful hit, the attack deals damage normally plus 1d6 points of damage of the chosen type. You must declare that you are using this feat before you make your attack roll (thus a failed attack roll ruins the attempt). You may attempt an elemental fist attack once per day for every four levels you have attained (see Special), and no more than once per round.\n\n{b}Special{/b}: A monk of the four winds receives Elemental Fist as a bonus feat at 1st level, even if he does not meet the prerequisites. A monk may attempt an Elemental Fist attack a number of times per day equal to his monk level, plus one more time per day for every four levels he has in classes other than monk." compset="Feat" summary="You can add 1d6 energy damage to an attack." replaces="fElemFist" uniqueness="useronce">
+    <comment>If the pre-requisites for this get changed, we need to make the appropriate changes in the Dragon Ferocity feat</comment>
+    <fieldval field="abValue"   value="1"/>
+    <fieldval field="abValue2"  value="6"/>
+    <fieldval field="actName"   value="Activate"/>
+    <usesource source="APG"/>
+    <tag group="Helper"     tag="ShowSpec"/>
+    <tag group="Usage"      tag="Day"/>
+    <tag group="fCategory"  tag="Combat"/>
+    <tag group="fShowWhat"  tag="EnergyBase"/>
+    <tag group="Helper"     tag="ActivMenu"/>
+    <tag group="User"       tag="Activation"/>
+    <tag group="User"       tag="Tracker"/>
+    <tag group="abAction"   tag="None"/>
+    <tag group="abRange"    tag="Personal"/>
+    <tag group="abDuration" tag="Attack"/>
+    <tag group="LvNamePar"  tag="DieSizVal2"/>
+    <tag group="LvNamePar"  tag="DieCntVal"/>
+    <bootstrap thing="ctElemFist">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="PostAttr" priority="5000" name="Elemental Fist damage"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] = 1)
+
+      var levels as number
+      levels = (#totallevelcount[]) - (#levelcount[Monk]) - (#levelcount[Brawler])
+
+      field[trkMax].value += #levelcount[Monk] + #levelcount[Brawler] + round(levels/4,0,-1)
+      ]]></eval>
+    <eval phase="Final" index="2"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] = 1)
+      ~ If we're not activated get out now!
+      doneif (field[abilActive].value = 0) 
+
+      #extradamage[hero.childfound[wUnarmed], "+" & field[abValue].value & "d" & field[abValue2].value & " " & field[usrChosen1].chosen.tagnames[BloodEner.?] ,field[name].text]
+      ]]></eval>
+    <prereq message="Constitution 13 required." iserror="no">
+      <validate><![CDATA[
+        validif (#attrvalue[aCON] >= 13)
+        ~we're also valid if we have the Dragon Ferocity feat
+        validif (#hasfeat[fDragoFero] <> 0)]]></validate>
+      </prereq>
+    <prereq message="Base attack bonus +8 required." iserror="no">
+      <validate><![CDATA[
+        validif (#BAB[] >= 8)
+        ~we're also valid if we have the Dragon Ferocity feat
+        validif (#hasfeat[fDragoFero] <> 0)]]></validate>
+      </prereq>
+    <prereq message="Improved Unarmed Strike required." iserror="no">
+      <validate><![CDATA[
+        validif (#hasfeat[fImpUnarm] <> 0)
+        ~we're also valid if we have the Dragon Ferocity feat
+        validif (#hasfeat[fDragoFero] <> 0)]]></validate>
+      </prereq>
+    <prereq message="Wisdom 13 required." iserror="no">
+      <validate><![CDATA[
+        validif (#attrvalue[aWIS] >= 13)
+        ~we're also valid if we have the Dragon Ferocity feat
+        validif (#hasfeat[fDragoFero] <> 0)]]></validate>
+      </prereq>
     </thing>
   <hidden id="fS2ComCast"/>
   </document>

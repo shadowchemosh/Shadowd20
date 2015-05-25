@@ -1077,13 +1077,11 @@ hero.child[Attack].field[Penalty].value += 2</eval>
     </thing>
   <thing id="arWitWarlo" name="Warlock" description="Born of a supernatural bloodline, a warlock seeks to master the perilous magic that suffuses his soul. Unlike sorcerers or wizards, who approach arcane magic through the medium of spells, a warlock invokes powerful magic through a mysterious patron. By harnessing this innate magical gift through fearsome determination and force of will, a warlock can perform feats of supernatural effects, beguile the weak-minded, or scour his foes with blasts of eldritch power." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcBookInf" value="Shadow d20"/>
+    <fieldval field="srcPageNum" value="1"/>
     <usesource source="s20PFCamp"/>
-    <tag group="ClVaryName" tag="AppParen"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Helper" tag="RemoveCast"/>
-    <bootstrap thing="cWitS2ElBl">
-      <autotag group="ClSpecWhen" tag="7"/>
-      </bootstrap>
+    <tag group="ClVaryName" tag="AppParen"/>
     <bootstrap thing="cWitS2ElBl">
       <autotag group="ClSpecWhen" tag="9"/>
       </bootstrap>
@@ -1158,6 +1156,9 @@ hero.child[Attack].field[Penalty].value += 2</eval>
     <bootstrap thing="cWitS2ElBl">
       <autotag group="ClSpecWhen" tag="5"/>
       </bootstrap>
+    <bootstrap thing="cWitS2ElBl">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpWit"/>
     <eval phase="PostLevel" priority="20000">~ Add witch levels to concenentrtion check 
      linkage[varies].field[cConcCheck].value += #levelcount[Witch]
@@ -1192,10 +1193,11 @@ hero.child[Attack].field[Penalty].value += 2</eval>
     </thing>
   <thing id="arNinTraFi" name="Trap Finding" description="Trap finding Ninjas are about getting into places they should not be and living to tell the tell.  They practice so often with traps and locks that little time is left for learning the use of poisons." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcBookInf" value="Shadow d20"/>
+    <fieldval field="srcPageNum" value="1"/>
     <usesource source="s20PFCamp"/>
-    <tag group="AbReplace" tag="cAsnPoison"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cAsnPoison"/>
     <bootstrap thing="cRogTrapfn">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
@@ -2027,13 +2029,14 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
          eachpick.field[Bonus].value += field[abValue2].value
       nexteach]]></eval>
     </thing>
-  <thing id="arS2BatMed" name="Battle Medic" description="The battle medic gains the increased ability to heal his allies but at the cost of never using Channel Energy to cause harm." compset="ClassVary" uniqueness="unique">
+  <thing id="arS2BatMed" name="Battle Medic" description="The battle medic gains the increased ability to heal his allies but at the cost of never using Channel Energy to cause harm. In addition to help his companions the Battle Medic receives 4 skill points per level instead of 2.\n\n{b}Shadow d20:{/b} This archetype was added to allow a alternative cleric builds that help heal the party.  It is up the DM to decide if you are playing a Battle Medic as a support class or not and can revoke access to this archetype." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="1"/>
     <fieldval field="srcBookInf" value="Shadow d20"/>
+    <fieldval field="cvSkillPts" value="4"/>
     <usesource source="s20PFCamp"/>
-    <tag group="AbReplace" tag="cWaPChan"/>
     <tag group="ClVaryName" tag="AppParen"/>
     <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AbReplace" tag="cWaPChan"/>
     <bootstrap thing="cWaPS2Chan">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
