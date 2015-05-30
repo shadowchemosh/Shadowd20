@@ -6,6 +6,26 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.1 May 30, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>File rename fixes.</li>
+<li>None</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Warpriest - Good domain minor power can now be activated on the In-Play tab.</li>
+<li>Equipment Shields - Added Shadow d20 note that casting with shields does not cause a person to lose the shield bonus. Added shield bash logic to the Shield Gauntlet and removed the Shadow d20 source.</li>
+<li>Battle Medic archetype now gets 4+Int skill points per level</li>
+<li>Elemental fist feat can now be activated and apply its damage to the Unarmed Strike weapon.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+
 <strong>v2.0 May 17, 2015</strong>
 
 <strong>Bug Fixes</strong>
