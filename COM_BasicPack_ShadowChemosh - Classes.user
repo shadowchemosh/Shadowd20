@@ -244,8 +244,94 @@
       ~ Set summary fields and situational text
       field[abSumm].text = signed(field[abValue].value) & " save vs. magic while raging, but resist all spells, even allies'."
       #situational[hero.child[svAll],signed(field[abValue].value) & " save vs. magic while raging.",field[name].text]]]></eval>
-    <eval phase="First" priority="10">
-      ~ We need to mimic the base Superstition rage power
+    <eval phase="First" priority="10">~ We need to mimic the base Superstition rage power
       perform hero.assign[Ability.cBbnSupers]</eval>
+    </thing>
+  <thing id="rS2Shadow" name="Shadow" description="Shadowdancers companion." compset="Race">
+    <fieldval field="rHitDice" value="3"/>
+    <fieldval field="rDEX" value="4"/>
+    <fieldval field="rINT" value="-4"/>
+    <fieldval field="rWIS" value="2"/>
+    <fieldval field="rCHA" value="5"/>
+    <fieldval field="rFeat" value="-2"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rHPStart" value="13"/>
+    <fieldval field="rSpeed" value="0"/>
+    <usesource source="srcS2Arche"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceRole" tag="Any"/>
+    <tag group="Race" tag="rShadow"/>
+    <bootstrap thing="stIncorpor"></bootstrap>
+    <bootstrap thing="fDodge">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="thing" tag="skipprereq"/>
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="wOtherMel">
+      <autotag group="IsWeapon" tag="wTouch"/>
+      <assignval field="wFixDamage" value="1d6 Strength damage"/>
+      <assignval field="livename" value="Incorporeal Touch"/>
+      <assignval field="sbName" value="Incorporeal Touch"/>
+      </bootstrap>
+    <bootstrap thing="raShaStreD"></bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Good"/>
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <eval phase="First" priority="1000">~ Set our alignment to be the same as the master
+      if (master.tagis[Alignment.Good] = 1) Then
+        perform assign[Alignment.Good]
+      endif
+      if (master.tagis[Alignment.Evil] = 1) Then
+        perform assign[Alignment.Evil]
+      endif
+      if (master.tagis[Alignment.Lawful] = 1) Then
+        perform assign[Alignment.Lawful]
+      endif
+      if (master.tagis[Alignment.Chaotic] = 1) Then
+        perform assign[Alignment.Chaotic]
+      endif
+      if (master.tagis[Alignment.NeutralGE] = 1) Then
+        perform assign[Alignment.NeutralGE]
+      endif
+      if (master.tagis[Alignment.NeutralLC] = 1) Then
+        perform assign[Alignment.NeutralLC]
+      endif</eval>
+    <eval phase="PreLevel" priority="4000" index="2"><![CDATA[
+      #skillinnate[skFly] += 2
+      #skillinnate[skPercep] += 1
+      #skillinnate[skStealth] += 3
+
+      #racialsituational[hero.child[skStealth],"+4 in dim light",field[name].text]
+      #racialsituational[hero.child[skStealth],"-4 in bright light",field[name].text]
+      #situational[hero.child[svWill],"+4 bonus to halve damage from positive channeled energy",field[name].text]]]></eval>
+    <eval phase="Level" priority="21000" index="3">~ Adjust the base saving throws and base attack bonus to 
+      ~ be the same as the master.
+      hero.child[svFort].field[svBase].value = master.child[svFort].field[svBase].value
+      hero.child[svRef].field[svBase].value = master.child[svRef].field[svBase].value
+      hero.child[svWill].field[svBase].value = master.child[svWill].field[svBase].value
+      hero.child[Attack].field[tAtkBase].value = master.child[Attack].field[tAtkBase].value</eval>
+    <eval phase="Final" priority="8500" index="4">~ Adjust Hit Points to be half of the master
+      herofield[tHP].value = round(master.child[Totals].field[tHP].value/2,0,-1)
+      herofield[tBonusHP].value = 0</eval>
+    <exprreq message="This is a companion to the Shadowdancer PrC class and must be added on the &quot;Other&quot; tab.">@ispick = 1</exprreq>
+    </thing>
+  <thing id="minS2Shado" name="Shadow" description="At 3rd level, a shadowdancer can summon a shadow, an undead shade. Unlike a normal shadow, this shadow&apos;s alignment matches that of the shadowdancer, and the creature cannot create spawn. The summoned shadow receives a +4 bonus on Will saves made to halve the damage from positive channeled energy and the shadow cannot be turned or commanded. This shadow serves as a companion to the shadowdancer and can communicate intelligibly with the shadowdancer. This shadow has a number of hit points equal to half the shadowdancer&apos;s total. The shadow uses the shadowdancer&apos;s base attack bonus and base save bonuses." compset="Minion" stacking="never" uniqueness="useronce">
+    <usesource source="srcS2Arche"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="gType" tag="Pets"/>
+    <exprreq message="Shadowdancer Level 3 required."><![CDATA[#levelcount[Shadowdanc] >= 3]]></exprreq>
+    <minion id="Mount">
+      <tag group="Hero" tag="FixedRace"/>
+      <bootstrap thing="rS2Shadow">
+        <autotag group="Helper" tag="CoreCampOK"/>
+        </bootstrap>
+      </minion>
     </thing>
   </document>

@@ -127,10 +127,903 @@
       nexteach]]></eval>
     <exprreq message="Base attack bonus +6 required." iserror="no"><![CDATA[#BAB[] >= 6]]></exprreq>
     </thing>
+  <thing id="pS2ClsAbV1" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value one, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a rogues Sneak Attack and increase/decrease the number of d6 dice the ability gives." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="ClassAbil"/>
+    <eval phase="First" priority="20000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Value 1 field up or down
+      field[pChosen].chosen.field[abValue].value += field[pAdjust].value]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[
+      ~NOTE: This custom menu is needed as the built in "Class Abilities"
+      ~      option does not allow for selecting class abilities like 
+      ~      Channel Energy (thingid.xChannel). The below does allow this 
+      ~      to be selected and adjusted.
+
+      ~ Picks on Hero
+      field[pUsePicks].value = 1
+      ~ Set search expression for Ability Picks
+      field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
+    </thing>
+  <thing id="pS2ClsAbV2" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value two, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a barbarins Rage ability and increase/decrease the penalty to Will bonus when raging." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="ClassAbil"/>
+    <eval phase="First" priority="20000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Value 2 field up or down
+      field[pChosen].chosen.field[abValue2].value += field[pAdjust].value]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[
+      ~NOTE: This custom menu is needed as the built in "Class Abilities"
+      ~      option does not allow for selecting class abilities like 
+      ~      Channel Energy (thingid.xChannel). The below does allow this 
+      ~      to be selected and adjusted.
+
+      ~ Picks on Hero
+      field[pUsePicks].value = 1
+      ~ Set search expression for Ability Picks
+      field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
+    </thing>
+  <thing id="pS2ClsAbV3" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value three, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a barbarains Rage ability and increase/decrease the bonus to Con when raging." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="ClassAbil"/>
+    <eval phase="First" priority="20000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Value 3 field up or down
+      field[pChosen].chosen.field[abValue3].value += field[pAdjust].value]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[
+      ~NOTE: This custom menu is needed as the built in "Class Abilities"
+      ~      option does not allow for selecting class abilities like 
+      ~      Channel Energy (thingid.xChannel). The below does allow this 
+      ~      to be selected and adjusted.
+
+      ~ Picks on Hero
+      field[pUsePicks].value = 1
+      ~ Set search expression for Ability Picks
+      field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
+    </thing>
+  <thing id="pS2ClsAbV4" name="Deprecated" description="{B}{I}This adjustment has been deprecated for a new better version. Please remove this adjustment and add &quot;Class Ability: Values&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the value four, which can represent many things (ie dice, damage bonus, etc...) of any of your class abilities.\n\n{b}Example:{/b} This adjustment could be used to select a barbarains Rage ability and increase/decrease the bonus to Con when raging." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="ClassAbil"/>
+    <eval phase="First" priority="20000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Adjust the Value 4 field up or down
+      field[pChosen].chosen.field[abValue4].value += field[pAdjust].value]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[
+      ~NOTE: This custom menu is needed as the built in "Class Abilities"
+      ~      option does not allow for selecting class abilities like 
+      ~      Channel Energy (thingid.xChannel). The below does allow this 
+      ~      to be selected and adjusted.
+
+      ~ Picks on Hero
+      field[pUsePicks].value = 1
+      ~ Set search expression for Ability Picks
+      field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
+    </thing>
+  <thing id="pS2DRadama" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/Adamantine on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdAdam"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdAdam].delete[Value.?]
+
+~ Increase/Decrease DR
+hero.child[xDamRdAdam].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2DRall" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/- on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRd"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRd].delete[Value.?]
+
+~ Increase/Decrease DR
+hero.child[xDamRd].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2SaveRes" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Resistance{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Resistance Bonus to our chosen saving throw
+#applybonus[svResist,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveAlc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Alchemical{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Alchemical Bonus to our chosen saving throw
+#applybonus[BonAlch,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveCir" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Circumstance{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Alchemical Bonus to our chosen saving throw
+#applybonus[BonComp,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveEnh" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Enhancement{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Enhancement Bonus to our chosen saving throw
+#applybonus[BonEnhance,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveIns" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Insight{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Insight Bonus to our chosen saving throw
+#applybonus[BonInsight,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveLuc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Luck{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Bonus to our chosen saving throw
+#applybonus[BonLuck,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveMor" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Morale{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Morale to our chosen saving throw
+#applybonus[BonMorale,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SavePro" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Profane{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Profane to our chosen saving throw
+#applybonus[BonProfane,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveSac" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Sacred{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Sacred to our chosen saving throw
+#applybonus[BonSacred,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2SaveTra" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Trait{/i} bonus to your Reflex, Fortitude or Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Trait to our chosen saving throw
+#applybonus[BonTrait,field[pChosen].chosen,field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2CL" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Caster Level&quot;.{/I}{/b}\n\nSelect this adjustment to increase or decrease the Caster Level of the selected class." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Class"/>
+    <eval phase="PreLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+~ increase/decrease caster level
+field[pChosen].chosen.field[cCasterLev].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2svAlAlc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Alchemical{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Alchemical Bonus to all our saving throws
+#applybonus[BonAlch,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlCir" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Circumstance{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Alchemical Bonus to all our saving throws
+#applybonus[BonComp,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlEnh" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Enhancement{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Enhancement Bonus to our chosen saving throw
+#applybonus[BonEnhance,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlIns" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Insight{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Insight Bonus to our chosen saving throw
+#applybonus[BonInsight,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlLuc" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Luck{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Bonus to our chosen saving throw
+#applybonus[BonLuck,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlMor" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Morale{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Morale to our chosen saving throw
+#applybonus[BonMorale,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlPro" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Profane{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Profane to our chosen saving throw
+#applybonus[BonProfane,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlRes" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Resistance{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Resistance Bonus to our chosen saving throw
+#applybonus[svResist,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlSac" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Sacred{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Sacred to our chosen saving throw
+#applybonus[BonSacred,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2svAlTra" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Saving Throw, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to give a {i}Trait{/i} bonus to your Reflex, Fortitude and Will save." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add Luck Trait to our chosen saving throw
+#applybonus[BonTrait,hero.child[svAll],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pS2wViciou" name="Deprecated" description="This is the old &quot;Weapon: Vicious Dmg&quot; adjustment that has been deprecated with the new changes done in Pathfinder v7.0.  You should remove from your character as this adjustment will be removed in a future update." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="AdjInfo"/>
+    <tag group="Adjustment" tag="YourWep"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="Final" priority="20500"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+~if nothing's been chosen, get out now
+doneif (field[pChosen].ischosen = 0)
+
+field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & " +2d6 target, 1d6 wielder"]]></eval>
+    </thing>
+  <thing id="pS2SkGrCHA" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Charisma." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+var nValid as number
+
+~ Give penalty to Cha based skills
+foreach pick in hero from BaseSkill
+  nValid = 0
+  ~ If we have a skill override then process here
+  if (eachpick.tagcount[SkillOver.?] <> 0) then
+     ~ Check Skill Overrides
+     if (eachpick.tagis[SkillOver.aCHA] <> 0) then
+        nValid += 1
+     endif
+  ~ if we don't have a skill override then process here
+  else
+     ~ Check normal skill attributes
+     if (eachpick.islinkage[skillattr] <> 0) then
+        if (eachpick.linkage[skillattr].tagis[thingid.aCHA] <> 0) then
+           nValid += 1
+        endif
+     endif
+  endif
+
+  ~ If nValid skill then apply the penalty
+  if (nValid <> 0) then
+     eachpick.field[Bonus].value += field[pAdjust].value
+  endif
+nexteach]]></eval>
+    </thing>
+  <thing id="pS2SkGrSTR" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Strength." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+var nValid as number
+
+~ Give penalty to Str based skills
+foreach pick in hero from BaseSkill
+  nValid = 0
+  ~ If we have a skill override then process here
+  if (eachpick.tagcount[SkillOver.?] <> 0) then
+     ~ Check Skill Overrides
+     if (eachpick.tagis[SkillOver.aSTR] <> 0) then
+        nValid += 1
+     endif
+  ~ if we don't have a skill override then process here
+  else
+     ~ Check normal skill attributes
+     if (eachpick.islinkage[skillattr] <> 0) then
+        if (eachpick.linkage[skillattr].tagis[thingid.aSTR] <> 0) then
+           nValid += 1
+        endif
+     endif
+  endif
+
+  ~ If nValid skill then apply the penalty
+  if (nValid <> 0) then
+     eachpick.field[Bonus].value += field[pAdjust].value
+  endif
+nexteach]]></eval>
+    </thing>
+  <thing id="pS2SkGrDEX" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Dexterity." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+var nValid as number
+
+~ Give penalty to Dex based skills
+foreach pick in hero from BaseSkill
+  nValid = 0
+  ~ If we have a skill override then process here
+  if (eachpick.tagcount[SkillOver.?] <> 0) then
+     ~ Check Skill Overrides
+     if (eachpick.tagis[SkillOver.aDEX] <> 0) then
+        nValid += 1
+     endif
+  ~ if we don't have a skill override then process here
+  else
+     ~ Check normal skill attributes
+     if (eachpick.islinkage[skillattr] <> 0) then
+        if (eachpick.linkage[skillattr].tagis[thingid.aDEX] <> 0) then
+           nValid += 1
+        endif
+     endif
+  endif
+
+  ~ If nValid skill then apply the penalty
+  if (nValid <> 0) then
+     eachpick.field[Bonus].value += field[pAdjust].value
+  endif
+nexteach]]></eval>
+    </thing>
+  <thing id="pS2SkGrCON" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill Bonus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Constitution." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+var nValid as number
+
+~ Give penalty to Con based skills
+foreach pick in hero from BaseSkill
+  nValid = 0
+  ~ If we have a skill override then process here
+  if (eachpick.tagcount[SkillOver.?] <> 0) then
+     ~ Check Skill Overrides
+     if (eachpick.tagis[SkillOver.aCON] <> 0) then
+        nValid += 1
+     endif
+  ~ if we don't have a skill override then process here
+  else
+     ~ Check normal skill attributes
+     if (eachpick.islinkage[skillattr] <> 0) then
+        if (eachpick.linkage[skillattr].tagis[thingid.aCON] <> 0) then
+           nValid += 1
+        endif
+     endif
+  endif
+
+  ~ If nValid skill then apply the penalty
+  if (nValid <> 0) then
+     eachpick.field[Bonus].value += field[pAdjust].value
+  endif
+nexteach]]></eval>
+    </thing>
+  <thing id="pS2SkGrINT" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Intelligence." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+var nValid as number
+
+~ Give penalty to Int based skills
+foreach pick in hero from BaseSkill
+  nValid = 0
+  ~ If we have a skill override then process here
+  if (eachpick.tagcount[SkillOver.?] <> 0) then
+     ~ Check Skill Overrides
+     if (eachpick.tagis[SkillOver.aINT] <> 0) then
+        nValid += 1
+     endif
+  ~ if we don't have a skill override then process here
+  else
+     ~ Check normal skill attributes
+     if (eachpick.islinkage[skillattr] <> 0) then
+        if (eachpick.linkage[skillattr].tagis[thingid.aINT] <> 0) then
+           nValid += 1
+        endif
+     endif
+  endif
+
+  ~ If nValid skill then apply the penalty
+  if (nValid <> 0) then
+     eachpick.field[Bonus].value += field[pAdjust].value
+  endif
+nexteach]]></eval>
+    </thing>
+  <thing id="pS2SkGrWIS" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill BOnus, All [Ability Score] Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all skills associated to Wisdom." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+var nValid as number
+
+~ Give penalty to Wis based skills
+foreach pick in hero from BaseSkill
+  nValid = 0
+  ~ If we have a skill override then process here
+  if (eachpick.tagcount[SkillOver.?] <> 0) then
+     ~ Check Skill Overrides
+     if (eachpick.tagis[SkillOver.aWIS] <> 0) then
+        nValid += 1
+     endif
+  ~ if we don't have a skill override then process here
+  else
+     ~ Check normal skill attributes
+     if (eachpick.islinkage[skillattr] <> 0) then
+        if (eachpick.linkage[skillattr].tagis[thingid.aWIS] <> 0) then
+           nValid += 1
+        endif
+     endif
+  endif
+
+  ~ If nValid skill then apply the penalty
+  if (nValid <> 0) then
+     eachpick.field[Bonus].value += field[pAdjust].value
+  endif
+nexteach]]></eval>
+    </thing>
+  <thing id="pS2AttrDra" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Ability Score Drain&quot;.{/I}{/b}\n\nUse this adjustment when your character has received &quot;Drain&quot; damage to one of your ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom or Charisma).\n\n{B}Ability Drain{/b} Ability drain actually reduces the relevant ability score. Modify all skills and statistics related to that ability. This might cause you to lose skill points, hit points, and other bonuses. Ability drain can be healed through the use of spells such as restoration." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="Attribute" name="Attributes" abbrev="Attributes"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add to our chosen attribute
+field[pChosen].chosen.field[Penalty].value -= field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2ClsAbDC" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Ability: DC&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the DC value of any of your class abilities." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="ClassAbil"/>
+    <eval phase="First" priority="20000" index="2"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+~ If nothing chosen, get out now
+doneif (field[pChosen].ischosen <> 1)
+
+~ Adjust the DC up or down
+field[pChosen].chosen.field[abDC].value += field[pAdjust].value]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[~NOTE: This custom menu is needed as the built in "Class Abilities"
+~      option does not allow for selecting class abilities like 
+~      Channel Energy (thingid.xChannel). The below does allow this 
+~      to be selected and adjusted.
+
+~ Picks on Hero
+field[pUsePicks].value = 1
+~ Set search expression for Ability Picks
+field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
+    </thing>
+  <thing id="pS2ClsAbTr" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Ability: Uses&quot;.{/I}{/b}\n\nSelect this adjustment to be able to adjust the number of uses of any of your class abilities." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="ClassAbil"/>
+    <eval phase="First" priority="20000" index="2"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+~ If nothing chosen, get out now
+doneif (field[pChosen].ischosen <> 1)
+
+~ Adjust the tracker Max Value up or down
+field[pChosen].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[~NOTE: This custom menu is needed as the built in "Class Abilities"
+~      option does not allow for selecting class abilities like 
+~      Channel Energy (thingid.xChannel). The below does allow this 
+~      to be selected and adjusted.
+
+~ Picks on Hero
+field[pUsePicks].value = 1
+~ Set search expression for Ability Picks
+field[pCandExpr].text = "component.Ability & SpecSource.cHelp? & !component.BaseFeat & Helper.ShowSpec"]]></eval>
+    </thing>
+  <thing id="pS2SKGrALL" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Skill Bonus, All Skills&quot;.{/I}{/b}\n\nSelect this adjustment to add or subtract a bonus from all your skills." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Give a bonus/penalty to ALL skills
+hero.child[AllSkills].field[Bonus].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2Hero000" name="Hero, Ability Score Increase" description="Use this adjustment to give a add or remove the number of Ability Score Increases your character has. In example lets say you want to get two ability score increases at level 4 instead of one. In such a case at level 4 you would select +1 then you will be able to add two &quot;Ability Score Increases&quot; instead of just one." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <eval phase="Level"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Give an additional Ability Score Increase
+herofield[tAttrEvol].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="yACarmor" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Armor{/b} Bonus to armor class.\n\n{b}Note{/b}: Only the highest armor bonus applies." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add to our armor class
+hero.child[ArmorClass].field[tACArmor].value = maximum(field[pAdjust].value,hero.child[ArmorClass].field[tACArmor].value)]]></eval>
+    </thing>
+  <thing id="yACShield" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Shield{/b} bonus to armor class.\n\n{b}Note{/b}: Only the highest shield bonus applies." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add to our shield armor class
+hero.child[ArmorClass].field[tACShield].value = maximum(field[pAdjust].value,hero.child[ArmorClass].field[tACShield].value)]]></eval>
+    </thing>
+  <thing id="yACNatural" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Natural{/b} bonus to armor class.\n\n{b}Note{/b}: Natural Armor stacks with itself." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add to our armor class
+hero.child[ArmorClass].field[tACNatural].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="yACdodge" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Dodge{/b} bonus to armor class.\n\n{b}Note{/b}: Like most modifiers to Armor Class, this modifier is also applied to your Combat Maneuver Defense.  A separate CMD adjustment can be used to cancel this out." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add to our armor class
+hero.child[ArmorClass].field[tACDodge].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="yACdeflect" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Deflection{/b} bonus to armor class.\n\n{b}Note{/b}: Only the highest deflection bonus applies." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~Pre-Levels 10,000
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Add to our armor class
+      hero.child[ArmorClass].field[tACDeflect].value = maximum(field[pAdjust].value,hero.child[ArmorClass].field[tACDeflect].value)]]></eval>
+    </thing>
+  <thing id="pS2DRevil" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/evil on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdEvil"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdEvil].delete[Value.?]
+
+~ Set DR value
+hero.child[xDamRdEvil].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="yACtouch" name="Deprecated" description="{B}{I}This adjustment has been deprecated. Please use the more advanced &quot;Armor Class, Type&quot; adjustment instead that allows for a larger selection of options.{/I}{/b}\n\nSelect this adjustment to adjust your {b}Touch{/b} armor class.\n\n{b}Note{/b}: This is not a specific type so it always stacks." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Add to our TOUCH armor class only
+hero.child[ArmorClass].field[tACTouch].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2DRgood" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/good on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdGood"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdGood].delete[Value.?]
+
+~ Set DR value
+hero.child[xDamRdGood].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2DRmagic" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/magic on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdMag"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdMag].delete[Value.?]
+
+~ Set DR value
+hero.child[xDamRdMag].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2DRpierc" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/piercing  on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdP"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdP].delete[Value.?]
+
+~ Set DR value
+hero.child[xDamRdP].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2DRsilve" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/silver  on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdSil"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdSil].delete[Value.?]
+
+~ Set DR value
+hero.child[xDamRdSil].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2DRslash" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to change the amount of DR/slashing  on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdS"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdSil].delete[Value.?]
+
+~ Set DR value
+hero.child[xDamRdSil].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2DRbludg" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Damage Reduction&quot; or &quot;Damage Reduction, Set&quot;.  The Set version allows you to exactly set the value of DR where the non-set version lets you adjust the value up/down{/I}{/b}\n\nSelect this adjustment to set the amount of DR/bludgeoning on a character. Note this will override what ever value is also already set for this DR on a character." compset="InPlay" isprivate="yes">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <bootstrap thing="xDamRdB"></bootstrap>
+    <eval phase="Final" priority="9000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Remove all hardcoded Value. tags
+perform hero.child[xDamRdB].delete[Value.?]
+
+~ Set new DR
+hero.child[xDamRdB].field[abValue].value = field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2SplRs" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Spell Resistance&quot;.{/I}{/b}\n\nSelect this adjustment to be able to increase/decrease the amount of spell resistance you have." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="Final" priority="19000" index="2"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+#value[xSplRs] += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pS2ALSchDC" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Spell DC, All Spells&quot;.{/I}{/b}\n\nSelect this adjustment to add a bonus/penalty to all your spell DCs regardless of school of magic." compset="InPlay" isprivate="yes">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Adjust the DC to all CORE schools of magic
+foreach pick in hero from SplSchool where "!sDescript.? & !sWordCat.? & !sSubschool.?"
+   eachpick.field[schDC].value += field[pAdjust].value
+nexteach]]></eval>
+    </thing>
+  <thing id="pS2SchDC" name="Deprecated" description="{B}{I}This adjustment has been deprecated as it was officially added to Hero Lab. Please remove this and add &quot;Spell DC, Specific School&quot;.{/I}{/b}\n\nSelect this adjustment to add a bonus/penalty to all your spell DCs of a specific school of magic." compset="InPlay" isprivate="yes">
+    <comment><![CDATA[~ Picks on Hero
+field[pUsePicks].value = 1
+~ Set search expression
+field[pCandExpr].text = "component.BaseSpell & !portal.ClsBook & portal.?"]]></comment>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="S2Custom" name="Custom Menu"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+~ Adjust the DC to choosen school of magic
+field[pChosen].chosen.field[schDC].value += field[pAdjust].value]]></eval>
+    <eval phase="PreLevel" priority="11000" index="2"><![CDATA[~ Picks on Hero
+field[pUsePicks].value = 1
+~ Set search expression for CORE spell school
+field[pCandExpr].text = "component.SplSchool & !sDescript.? & !sWordCat.? & !sSubschool.?"]]></eval>
+    </thing>
 
 
 
 
 
   <hidden id="fS2VitStr"/>
+  <hidden id="pS2ClsAbDC"/>
+  <hidden id="pS2ClsAbTr"/>
+  <hidden id="pS2CL"/>
+  <hidden id="pS2SKGrALL"/>
+  <hidden id="pS2SkGrCHA"/>
+  <hidden id="pS2SkGrCON"/>
+  <hidden id="pS2SkGrDEX"/>
+  <hidden id="pS2SkGrINT"/>
+  <hidden id="pS2SkGrSTR"/>
+  <hidden id="pS2SkGrWIS"/>
+  <hidden id="pS2DRadama"/>
+  <hidden id="pS2SchDC"/>
+  <hidden id="pS2ALSchDC"/>
+  <hidden id="pS2ClsAbV1"/>
+  <hidden id="pS2ClsAbV2"/>
+  <hidden id="pS2ClsAbV3"/>
+  <hidden id="pS2ClsAbV4"/>
+  <hidden id="pS2SplRs"/>
+  <hidden id="pS2SaveEnh"/>
+  <hidden id="pS2SaveIns"/>
+  <hidden id="pS2SaveLuc"/>
+  <hidden id="pS2SaveMor"/>
+  <hidden id="pS2SavePro"/>
+  <hidden id="pS2SaveRes"/>
+  <hidden id="pS2SaveSac"/>
+  <hidden id="pS2SaveTra"/>
+  <hidden id="pS2svAlAlc"/>
+  <hidden id="pS2svAlCir"/>
+  <hidden id="pS2svAlEnh"/>
+  <hidden id="pS2svAlIns"/>
+  <hidden id="pS2svAlLuc"/>
+  <hidden id="pS2svAlMor"/>
+  <hidden id="pS2svAlPro"/>
+  <hidden id="pS2svAlRes"/>
+  <hidden id="pS2svAlSac"/>
+  <hidden id="pS2svAlTra"/>
+  <hidden id="yACarmor"/>
+  <hidden id="yACdeflect"/>
+  <hidden id="yACdodge"/>
+  <hidden id="yACNatural"/>
+  <hidden id="yACShield"/>
+  <hidden id="yACtouch"/>
+  <hidden id="pS2wViciou"/>
+  <hidden id="pS2DRall"/>
+  <hidden id="pS2DRbludg"/>
+  <hidden id="pS2DRevil"/>
+  <hidden id="pS2DRgood"/>
+  <hidden id="pS2DRmagic"/>
+  <hidden id="pS2DRpierc"/>
+  <hidden id="pS2DRsilve"/>
+  <hidden id="pS2DRslash"/>
+  <hidden id="pS2SaveAlc"/>
+  <hidden id="pS2SaveCir"/>
+  <hidden id="pS2AttrDra"/>
+
   </document>

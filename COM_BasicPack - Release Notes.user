@@ -8,6 +8,27 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.11 June 7, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Adjustments & Equipment (ShadowChemosh) - Fixed issue #27. Added new Unarmed Strike weapon that can be be added on the "Weapons" tab.  This Unarmed Strike will inherit all its properties from the normal Unarmed Strike Weapon. Fixed adjustment "Weapon Unarmed Strike" to bootstrap the new custom Unarmed Strike weapon.</li>
+<li>PFS Boons (ShadowChemosh) - Fixed issue #20 "You Be Goblin!" to give bonus to sense motive. Lots of small misc script fixes to the PFS boons. Added the "Core PFS Campaign" tag all PFS Things.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Completed enhancement issue #25. Added two new favored enemy/terrain conferred adjustments that allow for turning on/off on the In-Play tab instead of the adjustments tab. This allows for a much better user interface of these class abilities especially for those on the iPad. This ability will not double print to a character sheet or statblock.</li>
+<li>ShadowChemosh Classes (ShadowChemosh) - Added the Shadow companion for the Shadowdancer PrC class. This can be added on the 'Other' tab. This shadow companion matches all the leveling logic from the Shadowdancer PrC class. Updated the text of the PrC so gamers know how to add this companion.</li>
+<li>Conferred Adjustments (ShadowChemosh) - Added "Combat: Sneak Attack" adjustment that shows up on the In-Play tab with an activation. This makes rolling Sneak Attack damage very easy on the iPad. This ability will not double print to a character sheet or statblock.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) Added "RmvArmor" Procedure that when called will remove all the armor a character is wearing.</li>
+<li>(ShadowChemosh) Added "RmvShield" Procedure that when called will remove all the shields a character is wearing.</li>
+<li>(ShadowChemosh) started to add Wiki pages to document the custom made procedures that are available. https://github.com/shadowchemosh/HL-Pack-Basic/wiki</li>
+</ul>
+
+
 <strong>v3.10 May 3, 2015</strong>
 
 <strong>Bug Fixes</strong>

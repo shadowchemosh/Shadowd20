@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <loadonce key="COM_BasicPack_PFS - Boons"/>
   <fileinfo>
@@ -259,6 +259,7 @@ v1.0: Risner</comment>
     <tag group="Hero" tag="EqpNeck"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Level" priority="15000" index="2"><![CDATA[doneif (field[gIsEquip].value = 0)
 
 ~ If we're a monk, our Fast Movement and unarmed damage abilities get
@@ -322,6 +323,7 @@ v1.0: Risner</comment>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="trkPFSAcVe">
       <containerreq phase="First" priority="500"><![CDATA[fieldval:gIsEquip <> 0]]></containerreq>
       <autotag group="User" tag="Tracker"/>
@@ -345,6 +347,7 @@ v1.0: Risner</comment>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioPFS406SV" name="Shambler Vine" description="A {i}shambler vine{/i} resembles a leafy green plant vine about 6 feet long, wrapped in a coil. If touched, it writhes as if alive. Up to three vines can be stored in a small sack, though the price is for one. When thrown at an opponent, a vine grows in midair, and acts as a rope of entanglement. It can reach 20 feet forward or 10 feet upward to entangle the target. The entangled target can break free with a DC 20 Strength check or DC 20 Escape Artist check.\n\nA {i}shambler vine{/i} has AC 22, 12 hit points, hardness 10, and damage reduction 10/slashing. It does not repair itself, and if it is severed (all 12 hit points lost to damage), it is destroyed. The vine lasts for a single use before withering away, and if left on a target that is unable to get free, the vine withers after 1 hour.\n\nALL: #4-06: The Green Market (5-9)" compset="Wondrous">
     <comment>v0.9: AndrewD2
@@ -357,6 +360,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioPFS408SB" name="Sihedron Brand (endurance)" description="This dark image of the Sihedron rune appears to writhe beneath the surface of the skin on which it is inscribed, as though a worm were crawling under the skin.\n\nA character marked with this arcane tattoo receives a +2 profane bonus on Fortitude saves. Once per day, the character may activate the tattoo to receive a number of temporary hit points equal to twice her character level. Displaying the arcane tattoo grants a +4 circumstance bonus on Bluff and Diplomacy checks against worshippers of Lissala.\n\n{b}Construction{/b}\n{b}Requirements{/b}:  Inscribe Magic Tattoo, {i}bear&apos;s endurance{/i}, {i}resistance{/i}, creator must be a cleric of Lissala; {b}Cost{/b} 2,414 gp\n\nALL: #4-08: The Cultist&apos;s Kiss (7-11)\nPlayers who accept it from the cultist get it at no cost (0 gp)" compset="Wondrous">
     <comment>v0.9: AndrewD2
@@ -372,6 +376,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="5000"><![CDATA[doneif (field[gIsEquip].value = 0)
 
 ~ Add a +2 profane bonus to our fortitude save
@@ -409,6 +414,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[      doneif (field[gIsEquip].value = 0)
 
       ~ If we haven't chosen anything, get out now
@@ -442,6 +448,7 @@ v1.0: Risner</comment>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="10000">doneif (field[gIsEquip].value = 0)
 
       ~ Add to feats allowed
@@ -457,6 +464,7 @@ v1.0: Risner</comment>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioPFS316SS" name="TODO Sword of Station 3-16 (3-7)" compset="Wondrous">
     <tag group="Helper" tag="EquipMag"/>
@@ -465,6 +473,7 @@ v1.0: Risner</comment>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioPFS419GM" name="TODO GAMIN THE MISFORGED 4-19 (1-5)" compset="Wondrous">
     <tag group="Helper" tag="EquipMag"/>
@@ -473,6 +482,7 @@ v1.0: Risner</comment>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioPFS420SB" name="TODO SIHEDRON BRAND (SERVICE) 4-20 (7-11)" compset="Wondrous">
     <tag group="Helper" tag="EquipMag"/>
@@ -481,10 +491,12 @@ v1.0: Risner</comment>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="trkPFSAcVe" name="Lesser Empower Metamagic Rod" description="From Acrimony Veil" compset="Tracker">
     <usesource source="PFS_Boons"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <tag group="User" tag="Tracker"/>
     </thing>
   <thing id="ioPFSTKAr1" name="Arcanolembic" description="This glass flask looks similar to the alembics used by alchemists to distill various liquids, but this one is framed in a delicate silver brace and the glass is etched with various arcane runes. The arcanolembic can be used to hold one potion. When a creature consumes a potion from the arcanolembic, the potion is treated as if its caster level were 2 higher than the usual minimum for a potion of its level. Placing a potion into the arcanolembic is a full-round action that provokes attacks of opportunity.\n\n{b}Construction{/b}\n{b}Requirements{/b} Brew Potion, Craft Wondrous Item, 5 ranks in Craft (alchemy); {b}Cost{/b} 1,000 gp\n\nModule: Thornkeep The Forgotten Laboratory (2-4)" compset="Wondrous" summary="Enhances potions by 2 caster levels.">
@@ -497,6 +509,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioPFSTKBG1" name="Bloodstone of Gultariix" description="When this dark crystal is dissolved into a potion, the potion is enhanced as if by the Extend Spell metamagic feat.\n\nSingle Use\n\n3-5: Module: Thornkeep The Enigma Vaults" compset="Wondrous" summary="Potion enhanced as if by Extend metamagic.">
     <comment>v1.0: Risner</comment>
@@ -505,6 +518,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ioPFSRRHD1" name="Hungry decapitant" description="The monkey head is called a {i}hungry decapitant{/i}. When the bellpull hanging from its open mouth is pulled, the head gives out a shrill simian shriek akin to an {i}alarm{/i} spell.\n\nlimit 1\n\n4-6: AP: Rise of the Runelords Anniversary Edition Chapter Two: The Skinsaw Murders" compset="Wondrous" summary="Sounds alarm when activated.">
     <comment>v1.0: Risner</comment>
@@ -516,6 +530,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="gPFSRREC1" name="Eternal candle" description="This candle will burn eternally without heat, similar to a {i}continual flame{/i} spell but shedding only shadowy light in a 5-foot radius.\n\nAP: Rise of the Runelords Anniversary Edition Chapter One: Burnt Offerings (3-5)" compset="Gear">
     <comment>v1.0: Risner</comment>
@@ -525,6 +540,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="gPFSFRTCS" name="Tax collector&apos;s signet ring" description="Grants a +2 bonus on Intimidate checks and imparts a -2 penalty on Diplomacy checks while in Varisia.\n\nModule: Feast of Ravenmoor" compset="Gear">
     <comment>v1.0: Risner</comment>
@@ -534,6 +550,7 @@ v1.0: Risner</comment>
     <tag group="gType" tag="Tools"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="4000"><![CDATA[~ +2 bonus on Intimidate checks while in Varisia
 ~ -2 penalty on Diplomacy checks while in Varisia
 #situational[hero.child[skIntim],"+2 bonus while in Varisia",field[name].text]
@@ -552,6 +569,7 @@ v1.0: Risner</comment>
     <tag group="iSchool" tag="Necromancy" name="Necromancy" abbrev="Necro"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <child entity="wSpecMagic">
       <bootstrap thing="wGreataxe"></bootstrap>
       <bootstrap thing="eColdIron"></bootstrap>
@@ -562,6 +580,7 @@ v1.0: Risner</comment>
     <usesource source="srcAcadSec"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[foreach pick in hero from BaseSkill where "Helper.SkCatKnow"
   #situational[eachpick,"+5 bonus when you have access to the Academae's resources",field[thingname].text]
 nexteach
@@ -576,6 +595,7 @@ nexteach
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFSCHPM1">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -594,6 +614,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gVioletVen">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -611,6 +632,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFSDCDDT">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -630,6 +652,7 @@ nexteach]]></eval>
     <tag group="User" tag="NoAutoName"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsFaKeHWD" name="PFS: Hobgoblin war draught" description="{b}You need this vanity to purchase Hobgoblin war draught with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Module: Fangwood Keep.{/b}\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="10"/>
@@ -638,6 +661,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFSHoWaDr">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -650,6 +674,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFSFettMa">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -667,15 +692,18 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsFaKeSIS" name="PFS: Study of Infinite Spells" description="Although you were unable to learn spells directly from the book of infinite spells, the Pathfinder Society rewarded you for the recovery of such a powerful artifact by allowing you access to its extensive spell libraries. Choose any number of spells of 1st, 2nd, 3rd, or 4th level so long as the total spell levels do not add up to more than eight. You may scribe these spells into a spellbook or formulae book by paying only the scribing costs (see page 219 of the Pathfinder RPG Core Rulebook), or you may teach them to your familiar as appropriate.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: Fangwood Keep with the Study of Infinite Spells available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="srcFangKe"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsFeRaSGK" name="PFS: Resisting the Gossamer King" description="Your body was subject to a barrage of poisons and diseases in Ravenmoor. You had to either fight through those debilitating effects coursing through your veins or die. As a result your body has toughened, and you have gained a measure of immunity to diseases and poisons. You receive a +1 bonus to your saves against poisons and diseases.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: Feast of Ravenmoor with the Resisting the Gossamer King available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="srcFeastRv"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[~ +1 bonus to your saves against poisons and diseases.
 #situational[hero.child[svAll],"+1 bonus against poisons and diseases",field[name].text]]]></eval>
     </thing>
@@ -683,6 +711,7 @@ nexteach]]></eval>
     <usesource source="srcFeastRv"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[~ +2 bonus to your Bluff, Diplomacy, and Intimidate checks in Magnimar and in the cities and towns allied with it.
 #situational[hero.child[skDiplo],"+2 bonus in Magnimar and in the cities and towns allied with it",field[name].text]
 #situational[hero.child[skIntim],"+2 bonus in Magnimar and in the cities and towns allied with it",field[name].text]
@@ -695,6 +724,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFSFRTCS">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -713,6 +743,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFShedro">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -730,19 +761,23 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="Render" priority="10000"><![CDATA[if (hero.childlives[iPFSMIL1] <> 0) then
-  perform hero.childfound[iPFSMIL1].delete[Helper.NoPathSoc]
-endif]]></eval>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="Render" priority="10000"><![CDATA[
+      if (hero.childlives[iPFSMIL1] <> 0) then
+        perform hero.childfound[iPFSMIL1].delete[Helper.NoPathSoc]
+      endif]]></eval>
     </thing>
   <thing id="pfsWBGYBG" name="PFS: You Be Goblin!" description="You have special insight into the distractible and sadistic mind of a goblin. You gain a +2 bonus on all Bluff, Diplomacy, Intimidate, and Sense Motive checks made against goblins.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: We Be Goblins! with the You Be Goblin! still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="srcWeGob"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PreLevel" priority="4000"><![CDATA[~ +2 bonus on all Bluff, Diplomacy, Intimidate, and Sense Motive checks made against goblins.
-
-#situational[hero.child[skBluff],"+2 bonus on checks made against goblins",field[thingname].text]
-#situational[hero.child[skDiplo],"+2 bonus on checks made against goblins",field[thingname].text]
-#situational[hero.child[skIntim],"+2 bonus on checks made against goblins",field[thingname].text]]]></eval>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="Final" priority="5000"><![CDATA[
+      ~ +2 bonus on all Bluff, Diplomacy, Intimidate, and Sense Motive checks made against goblins.
+      #situational[hero.child[skBluff],"+2 bonus on checks made against goblins",field[thingname].text]
+      #situational[hero.child[skDiplo],"+2 bonus on checks made against goblins",field[thingname].text]
+      #situational[hero.child[skIntim],"+2 bonus on checks made against goblins",field[thingname].text]
+      #situational[hero.child[skSenseMot],"+2 bonus on checks made against goblins",field[thingname].text]]]></eval>
     </thing>
   <thing id="pfsWBGCPR" name="PFS: Chief&apos;s Personal Very Useful Robe" description="This Robe of Useful Items only has 4 patches remaining:\nA ladder, a three- legged turtle, a horseshoe, and a bullhorn.\n\n{b}You need this vanity to purchase Chief&apos;s Personal Very Useful Robe with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Module: We Be Goblins!{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -752,17 +787,19 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioRbItems">
       <assignval field="gCost" value="0"/>
       <assignval field="livename" value="Chief&apos;s Personal Very Useful Robe"/>
       </bootstrap>
-    <eval phase="Render" priority="10000"><![CDATA[foreach pick in hero where "thingid.ioRbItems"
-  if (eachpick.isuser = 0) then
-    if (compare(this.idstring, eachpick.root.idstring) = 0) then
-      eachpick.field[CustDesc].text = "The wearer of the robe can see 4 patches, recognize them for what items they become, and detach them. One patch can be detached each round. Detaching a patch causes it to become an actual item, as indicated below. Once removed, a patch cannot be replaced.\n\nA ladder, a three- legged turtle, a horseshoe, and a bullhorn.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}fabricate{/i}; {b}Cost{/b} 1,167 gp\n\nModule: We be Goblins!\n"
-    endif
-  endif
-nexteach]]></eval>
+    <eval phase="Render" priority="10000"><![CDATA[
+      foreach pick in hero where "thingid.ioRbItems"
+        if (eachpick.isuser = 0) then
+          if (compare(this.idstring, eachpick.root.idstring) = 0) then
+            eachpick.field[CustDesc].text = "The wearer of the robe can see 4 patches, recognize them for what items they become, and detach them. One patch can be detached each round. Detaching a patch causes it to become an actual item, as indicated below. Once removed, a patch cannot be replaced.\n\nA ladder, a three- legged turtle, a horseshoe, and a bullhorn.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}fabricate{/i}; {b}Cost{/b} 1,167 gp\n\nModule: We be Goblins!\n"
+          endif
+        endif
+      nexteach]]></eval>
     </thing>
   <thing id="pfs034CSH" name="PFS: Crocodile Skull Headdress" description="{b}You need this vanity to purchase Crocodile Skull Headdress with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Scenario 34: The Encounter of Drowing Stones{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -771,35 +808,37 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioAmArmor1">
       <assignval field="livename" value="Crocodile Skull Headdress"/>
       <assignval field="gCost" value="0"/>
       </bootstrap>
-    <eval phase="First" priority="10000"><![CDATA[foreach pick in hero where "thingid.ioAmArmor1"
-  if (eachpick.isuser = 0) then
-    if (compare(this.idstring, eachpick.root.idstring) = 0) then
-      eachpick.field[CustDesc].text = "Crocodile Skull Headdress (as amulet of natural armor +1)\nToughens the wearer's body and flesh, giving him an enhancement bonus to his natural armor of +1.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}barkskin{/i}, creator's caster level must be at least three times the item's bonus; {b}Cost{/b} 1,000 gp"
-      perform eachpick.delete[Hero.EqpNeck]
-      perform eachpick.assign[Hero.EqpHead]
-    endif
-  endif
-nexteach
+    <eval phase="First" priority="10000"><![CDATA[
+      foreach pick in hero where "thingid.ioAmArmor1"
+        if (eachpick.isuser = 0) then
+          if (compare(this.idstring, eachpick.root.idstring) = 0) then
+            eachpick.field[CustDesc].text = "Crocodile Skull Headdress (as amulet of natural armor +1)\nToughens the wearer's body and flesh, giving him an enhancement bonus to his natural armor of +1.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}barkskin{/i}, creator's caster level must be at least three times the item's bonus; {b}Cost{/b} 1,000 gp"
+            perform eachpick.delete[Hero.EqpNeck]
+            perform eachpick.assign[Hero.EqpHead]
+          endif
+        endif
+      nexteach
 
-~ None of below works?
+      ~ None of below works?
 
-~ amendthing[targ,str]
-~ #appenddesc[#t,#d] is:
-~  perform state.thing[#t].amendthing[description, oldstuff & #d]
+      ~ amendthing[targ,str]
+      ~ #appenddesc[#t,#d] is:
+      ~  perform state.thing[#t].amendthing[description, oldstuff & #d]
 
-~perform gizmo.child[ioAmArmor1].setfocus
-~perform focus.delete[Hero.EqpNeck]
-~perform focus.assign[Hero.EqpHead]
+      ~perform gizmo.child[ioAmArmor1].setfocus
+      ~perform focus.delete[Hero.EqpNeck]
+      ~perform focus.assign[Hero.EqpHead]
 
-~perform state.thing[ioAmArmor1].amendthing[description,"YES"]
+      ~perform state.thing[ioAmArmor1].amendthing[description,"YES"]
 
-~perform gizmo.amendthing[description,"7-8: #34 The Encounter of Drowing Stones (7-11)"]
+      ~perform gizmo.amendthing[description,"7-8: #34 The Encounter of Drowing Stones (7-11)"]
 
-~ 7-8: #34 The Encounter of Drowing Stones (7-11)]]></eval>
+      ~ 7-8: #34 The Encounter of Drowing Stones (7-11)]]></eval>
     </thing>
   <thing id="iWBGGoG" name="Gorge of Gluttons" description="Gorge of Gluttons [+1 horse bane dogslicer]\n\nModule: We be Goblins!" compset="MagicWep">
     <fieldval field="gCost" value="2300"/>
@@ -807,10 +846,11 @@ nexteach
     <fieldval field="BonEnhance" value="1"/>
     <fieldval field="iCL" value="8"/>
     <usesource source="srcWeGob"/>
-    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="EquipType" tag="Metal"/>
     <tag group="iSchool" tag="Conjur"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <child entity="wSpecMagic">
       <bootstrap thing="wPFDogslic"></bootstrap>
       <bootstrap thing="iBane">
@@ -823,9 +863,11 @@ nexteach
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="Render" priority="10000"><![CDATA[if (hero.childlives[iWBGGoG] <> 0) then
-  perform hero.childfound[iWBGGoG].delete[Helper.NoPathSoc]
-endif]]></eval>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="Render" priority="10000"><![CDATA[
+      if (hero.childlives[iWBGGoG] <> 0) then
+        perform hero.childfound[iWBGGoG].delete[Helper.NoPathSoc]
+      endif]]></eval>
     </thing>
   <thing id="pfsWBGDBG" name="PFS: Dragon Breath Gourd" description="{b}You need this vanity to purchase Dragon Breath Gourd with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Module: We Be Goblins!{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -835,6 +877,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioElFire">
       <assignval field="livename" value="Dragon Breath Gourd"/>
       <assignval field="gCost" value="0"/>
@@ -847,6 +890,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Ring"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="irClimb">
       <assignval field="livename" value="Ring That Lets You Climb Real Good"/>
       <assignval field="gCost" value="0"/>
@@ -856,13 +900,16 @@ endif]]></eval>
     <usesource source="srcWeGob2"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsWBGTOwl" name="PFS: Owlbear Companion" description="You recovered a clutch of owlbear eggs and may raise one of the hatchlings as a pet. If you possess a class feature that permits you to take a bear as an animal companion or mount that progresses as an animal companion, you may instead gain the service of an owlbear. The owlbear companion uses the stats of a bear companion with the following modifications: all Handle Animal checks made to train or handle the owlbear suffer a -4 penalty; the bonus granted by the devotion ability increases to +5; the creature&apos;s starting Charisma score is 10; and the animal companion looks like an owlbear instead of a normal bear. This owlbear is considered an animal for all purposes.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: We Be Goblins Too! with the Owlbear Companion still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="srcWeGob2"/>
     <tag group="User" tag="NoAutoName"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="10001"><![CDATA[~ to train or handle the owlbear suffer a -4 penalty
-#situational[hero.child[skHandleAn], "-4 to train or handle the owlbear",field[name].text]]]></eval>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="First" priority="10001"><![CDATA[
+      ~ to train or handle the owlbear suffer a -4 penalty
+      #situational[hero.child[skHandleAn], "-4 to train or handle the owlbear",field[name].text]]]></eval>
     </thing>
   <thing id="anWBGTOwl" name="Owlbear" compset="AnimalComp">
     <fieldval field="rNumHands" value="0"/>
@@ -878,17 +925,16 @@ endif]]></eval>
     <arrayval field="anSTR" index="0" value="5"/>
     <arrayval field="anSTR" index="3" value="9"/>
     <usesource source="srcWeGob2"/>
-    <tag group="CompList" tag="arDrdBear" name="Bear Shaman" abbrev="Bear Shaman"/>
-    <tag group="Custom" tag="cLargeComp" name="Large Animal Companion" abbrev="Large Animal Companion"/>
-    <tag group="HasType" tag="tpAnimal" name="Animal" abbrev="Animal"/>
-    <tag group="Helper" tag="NotHum" name="NotHum" abbrev="NotHum"/>
-    <tag group="Helper" tag="Quadruped" name="Quadruped" abbrev="Quadruped"/>
-    <tag group="RaceSize" tag="Small11" name="Small" abbrev="Small"/>
-    <tag group="SlotSet" tag="selMISQuaC" name="Quadruped (claws/paws)" abbrev="Quadruped (claws/paws)"/>
-    <tag group="Alignment" tag="NeutralGE" name="Neutral" abbrev="N"/>
-    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
-    <tag group="CompList" tag="arCavBeRid" name="Beast Rider" abbrev="Beast Rider"/>
-    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="CompList" tag="arDrdBear"/>
+    <tag group="CompList" tag="arCavBeRid"/>
+    <tag group="Custom" tag="cLargeComp"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Helper" tag="Quadruped"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="SlotSet" tag="selMISQuaC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="Alignment" tag="NeutralLC"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="wBite">
       <autotag group="wMain" tag="1d4_4"/>
@@ -899,15 +945,16 @@ endif]]></eval>
       <autotag group="Value" tag="2"/>
       </bootstrap>
     <bootstrap thing="pfsWBGTOwl"></bootstrap>
-    <eval phase="First" priority="10000"><![CDATA[~Only do stuff if Devotion is live.
-if (hero.childlives[cAnimDevo] <> 0) then
-~ the bonus granted by the devotion ability increases to +5
-  hero.childfound[cAnimDevo].field[abValue].value += 5
-endif
+    <eval phase="First" priority="10000"><![CDATA[
+      ~Only do stuff if Devotion is live.
+      if (hero.childlives[cAnimDevo] <> 0) then
+      ~ the bonus granted by the devotion ability increases to +5
+        hero.childfound[cAnimDevo].field[abValue].value += 5
+      endif
 
-if (#hasvanity[pfsWBGTOwl] <> 0) then
-  perform this.delete[Helper.NoPathSoc]
-endif]]></eval>
+      if (#hasvanity[pfsWBGTOwl] <> 0) then
+        perform this.delete[Helper.NoPathSoc]
+      endif]]></eval>
     <prereq message="Cavalier (Beast Rider) level 7 required.">
       <validate><![CDATA[
       validif (isminion = 0)
@@ -918,26 +965,26 @@ endif]]></eval>
   <thing id="pfsWBGTGFB" name="PFS: Gourd of Fire Burping" description="This functions as an elixir of fire breath, but the imbiber may only breathe fire once in a 15 ft. cone that deals 2d6 fire damage [DC 12 Reflex save for half ]\n\n{b}You need this vanity to purchase Dragon Breath Gourd with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Module: We Be Goblins!{/b}\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="250"/>
     <usesource source="srcWeGob"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioElFire">
       <assignval field="livename" value="Gourd of Fire Burping"/>
       <assignval field="gCost" value="250"/>
       </bootstrap>
-    <eval phase="First"><![CDATA[foreach pick in hero where "thingid.ioElFire"
-  if (eachpick.isuser = 0) then
-    if (compare(this.idstring, eachpick.root.idstring) = 0) then
-      eachpick.field[CustDesc].text = "This strange bubbling elixir bestows upon the drinker the ability to spit gouts of flame. He can breathe fire once in a 15 ft. cone that deals 2d6 points of fire damage . The victim can attempt a DC 12 Reflex save for half damage.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}scorching ray{/i}; {b}Cost{/b} 125 gp\n\nModule: We be Goblins Too!\n"
-    endif
-  endif
-nexteach]]></eval>
+    <eval phase="First"><![CDATA[
+      foreach pick in hero where "thingid.ioElFire"
+        if (eachpick.isuser = 0) then
+          if (compare(this.idstring, eachpick.root.idstring) = 0) then
+            eachpick.field[CustDesc].text = "This strange bubbling elixir bestows upon the drinker the ability to spit gouts of flame. He can breathe fire once in a 15 ft. cone that deals 2d6 points of fire damage . The victim can attempt a DC 12 Reflex save for half damage.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}scorching ray{/i}; {b}Cost{/b} 125 gp\n\nModule: We be Goblins Too!\n"
+          endif
+        endif
+      nexteach]]></eval>
     </thing>
   <thing id="gPFSHoWaDr" name="Hobgoblin war draught" description="This drink is a foul-smelling alchemical blend of raw alcohol, mashed grubs, and medicinal mushrooms. A hobgoblin under the effects of hobgoblin war draught ignores all penalties resulting from the fatigued and shaken conditions for 10 minutes, after which he must succeed at a DC 15 Fortitude save or be sickened for 1 hour. Anyone lacking the goblinoid subtype who drinks hobgoblin war draught must immediately make a DC 15 Fortitude save or be sickened for 1 hour; success means the drinker ignores all penalties resulting from the fatigued and shaken conditions for 1 minute, after which he is sickened for 10 minutes. Hobgoblin war draught has no effect on creatures that are immune to poison.\n\nNote: The craft DC is 15 for hobgoblins." compset="Gear" summary="Ignore fatigued and shaken for 10 minutes, then DC 15 Fort save or sickend 1 hour.">
-    <comment>Private Copy from ARG, Hidden
-It is bootstapped from the Vanity,
-so it is listed PFS legal.</comment>
+    <comment>Private Copy from ARG, Hidden It is bootstapped from the Vanity, so it is listed PFS legal.</comment>
     <fieldval field="gCost" value="10"/>
     <fieldval field="gCraftDC" value="20"/>
     <fieldval field="gWeight" value="1"/>
@@ -949,11 +996,10 @@ so it is listed PFS legal.</comment>
     <tag group="Helper" tag="Helper"/>
     <tag group="CraftSkill" tag="skCrafAlch"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="gPFSFettMa" name="Fetters, masterwork" description="Fetters are manacles fitted around the ankles rather than the wrists, and use the same rules ({i}Core{/i} {i}Rulebook{/i} 156) for breaking, escape, and cost relative to size. A creature in fetters is entangled and can only move at half speed. In addition, a fettered creature must succeed at a DC 15 Acrobatics check to move more than its (reduced) speed in a round. If it fails the check by 5 or more, the creature falls prone." compset="Gear" holdable="no">
-    <comment>Private Copy from ARG, Hidden
-It is bootstapped from the Vanity,
-so it is listed PFS legal.</comment>
+    <comment>Private Copy from ARG, Hidden It is bootstapped from the Vanity, so it is listed PFS legal.</comment>
     <fieldval field="gCost" value="50"/>
     <fieldval field="gWeight" value="2"/>
     <usesource source="srcFangKe"/>
@@ -962,6 +1008,7 @@ so it is listed PFS legal.</comment>
     <tag group="RaceEquip" tag="rHobgoblin" name="Hobgoblin" abbrev="Hobgoblin"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="5000"><![CDATA[
       if (field[gSize].value = 1) then
         field[gCost].value = 500
@@ -975,35 +1022,40 @@ so it is listed PFS legal.</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFShedro">
       <assignval field="gCost" value="0"/>
       </bootstrap>
-    <eval phase="Render" priority="1000"><![CDATA[foreach pick in hero where "thingid.ioPFShedro"
-  if (eachpick.isuser = 0) then
-    if (compare(this.idstring, eachpick.root.idstring) = 0) then
-      perform eachpick.delete[Helper.NoPathSoc]
-    endif
-  endif
-nexteach]]></eval>
+    <eval phase="Render" priority="1000"><![CDATA[
+      foreach pick in hero where "thingid.ioPFShedro"
+        if (eachpick.isuser = 0) then
+          if (compare(this.idstring, eachpick.root.idstring) = 0) then
+            perform eachpick.delete[Helper.NoPathSoc]
+          endif
+        endif
+      nexteach]]></eval>
     </thing>
   <thing id="gPFSCHPM1" name="Pnakotic Manuscripts" description="The book itself is relatively large, weighing 10 pounds and consisting of about 500 pages of thin parchment. The cover bears a large inset crystal (said to aid in concentration during the casting of complex conjuration magic) and a series of metal insect-like clasps along the edges lock down and keep the book from being opened by anyone who can&apos;t make the DC 25 Intelligence or Disable Device check to do so.\n\nIn addition, the book functions as a spellbook and contains the following arcane spells: gate, greater teleport, greater planar binding, interplanetary teleport (see Pathfinder Adventure Path volume #14, page 54), lesser planar binding, planar binding, plane shift, teleport, teleport object, and teleportation circle.\n\nModule: Carrion Hill" compset="Gear" summary="Manuscript of Old Cults.">
     <comment>v1.0: Risner</comment>
     <fieldval field="gWeight" value="10"/>
     <usesource source="srcCarHill"/>
-    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="Helper" tag="GearNoSize"/>
     <tag group="User" tag="OptDomain"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PreLevel" priority="4000"><![CDATA[foreach pick in hero from BaseSkill where "Helper.SkCatKnow"
-  #situational[eachpick,"+4 bonus on all Knowledge checks made pertaining to conjuration magic or the gods and magic of the Old Cults",field[thingname].text]
-nexteach]]></eval>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="4000"><![CDATA[
+    foreach pick in hero from BaseSkill where "Helper.SkCatKnow"
+      #situational[eachpick,"+4 bonus on all Knowledge checks made pertaining to conjuration magic or the gods and magic of the Old Cults",field[thingname].text]
+    nexteach]]></eval>
     </thing>
   <thing id="pfsCaHiBTS" name="PFS: Fighting That Which Lies Between The Stars" description="You have faced the horrors of the Dark Tapestry and are one of the few who have survived the encounter with both mind and body mostly intact. As a result, you have developed greater mental fortitude against such cosmic horrors. You receive a +1 bonus on saves against fear and confusion effects.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: Carrion Hill with the Fighting That Which Lies Between The Stars still available to your character.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
     <usesource source="srcCarHill"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="9000"><![CDATA[#situational[hero.child[svAll],"+1 bonus on saves against fear and confusion effects",field[thingname].text]]]></eval>
     </thing>
   <thing id="pfsCaHiOoT" name="PFS: Oil of Taggit" description="{b}You need this vanity to purchase Oil of Taggit with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Module: Carrion Hill, AP Skull &amp; Shackles #55 The Wormwood Mutiny, or AP Reign of Winter #67 The Snows of Summer.{/b}\n\nThis item is limit 1 dose.\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
@@ -1015,6 +1067,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPOilTagg">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1031,16 +1084,19 @@ nexteach]]></eval>
     <usesource source="srcCarHill"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsDSSAbA" name="PFS: Antagonized by Avalexi" description="Though you foiled her plot, Avalexi is still at large and seeks revenge. Whenever you use a boon that would be crossed off after being used, there is a 25% chance that your contact is slain, waylaid, discredited, or otherwise neutralized by the fiend. Such a contact grants no benefit, and you must then cross both that boon and Antagonized by Avalexi off your Chronicle sheets. If you slay Avalexi, cross this boon off the Chronicle sheet immediately.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: Dawn of the Scarlet Sun with the Antagonized by Avalexi available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="srcDawnSS"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsDSSRoR" name="PFS: Resources of Redemption" description="For your aid, the Church of Sarenrae assists you in acquiring tools of the faith. Treat your Fame score as 2 higher to determine your maximum item cost when purchasing any of the following: weapons with the bane undead, flaming, or flaming burst special ability; shields with the blinding special ability; crowns of blasting, necklaces of fireballs, phylacteries of faithfulness, staves of healing, or staves of illumination.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: Dawn of the Scarlet Sun with the Resources of Redemption available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="srcDawnSS"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsDDSOoDW" name="PFS: Orb of a Distant World" description="You have recovered one of the spheres from the orrery of distant worlds. The sphere is a use-activated item that can expend a number of charges to cast a spell-like ability as a standard action (CL 11th). The sphere has 4 charges and cannot be recharged. Choose one of the following spheres when you gain this boon: Sun (searing light, 1 charge); Aballon (haste 2, charges); Castrovel (detect thoughts, 1 charge); Golarion (resilient sphere, 4 charges); Akiton (rage, 1 charge); Verces (align weapon, 1 charge); Eox (death ward, 2 charges); Triaxus (teleport, 4 charges); Liavara (dream, 4 charges); Bretheda (restoration, 2 charges); Apostae ( fly, 2 charges); or Aucturn (confusion, 2 charges).\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: Doom Comes to Dustpawn with the Orb of a Distant World available to your character.{/b}\n\n{b}Note{/b}: Choose Sphere in text box." compset="Vanity" holdable="no">
     <fieldval field="trkMax" value="4"/>
@@ -1050,6 +1106,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="CustomSpec"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsFoRBWP" name="PFS: Blue whinnis poison" description="{b}You need this vanity to purchase Blue Whinnis Poison with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Module: Feast of Ravenmoor{/b}\n\nThis item is limit 2 doses.\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="2500"/>
@@ -1057,6 +1114,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPBluWhin">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1072,6 +1130,7 @@ nexteach]]></eval>
     <usesource source="srcGodHer"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsMoonsLL" name="PFS: Lunar Liberator" description="The Moonscar held numerous insidiously influential and politically powerful prisoners, and freeing those held captive by the demons of Dominax Annuli has earned you a wealth of indebted contacts throughout the world. When you would spend Prestige Points, you may reduce the final cost of a single purchase by 8 PP. This cannot reduce the cost below 0 PP. When you use this boon, cross it off the Chronicle sheet.\n\n{b}This vanity represents a Chronicle Sheet for playing this Module: The Moonscar with the Lunar Liberator still available to your character.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -1079,39 +1138,46 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsPTBCAtC" name="PFS: Attuned to the Citysong" description="Every city has an underlying beat, and you are attuned to the musical cues that change subtly to reflect nearby events. At the start of an adventure, you may select a settlement that has at least 1,000 inhabitants. For the duration of the adventure, you gain a +1 bonus on initiative checks and Knowledge (local), Perception, Stealth, and Survival skill checks while within the limits of the selected settlement.  If your select Magnimar as your settlement of choice, increase this bonus to +2.  Once your have used this boon, cross it off the Chronicle sheet." compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsPTBCUrT" name="PFS: Urban Tenacity" description="Your work is never done, and a near-death experience is never enough to keep you down. As an immediate action when you are reduced to negative hit points and dying, you automatically stabilize.  If you use this ability while in the community you chose as part of the Attuned to Citysong boon, you also receive +1 moral bonus on attack rolls, saving throws, and skill checks for the remainder of the encounter.  Once you use this boon, cross it off the Chronicle sheet." compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsTKIoIO" name="PFS: Image of Imminent Opportunity" description="Your glance into the Pool of Seeing granted you a vision of another level of the dungeons beneath Thornkeep, giving you a unique insight into a future encounter. When adventuring in Thornkeep, you gain a +2 bonus on any single initiative check or attack roll, applied before the roll is made. You may use this boon once per dungeon level within the complex.\n\n{b}This vanity represents a Chronicle Sheet for playing this Pathfinder Online: Thornkeep - The Accursed Halls with the Image of Imminent Opportunity still available to your character.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
     <usesource source="PFS_Boons"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsTKPoFP" name="PFS: Prediction of Future Peril" description="Your glance into the Pool of Seeing granted you a vision of another level of the dungeons beneath Thornkeep, giving you a unique insight into a future encounter. When adventuring in Thornkeep, you may use this boon to gain the following bonuses, each applied before the associated die is rolled. You may use this boon once per dungeon level in Thornkeep, crossing the associated bonus off the Chronicle sheet once applied.\n* You gain +5 bonus on a Knowledge check to identify a creature.\n* You gain +2 bonus on any single saving throw.\n* You gain +5 bonus to AC against any single opponent.\n\n{b}This vanity represents a Chronicle Sheet for playing this Pathfinder Online: Thornkeep - The Accursed Halls with the Prediction of Future Peril still available to your character.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
     <usesource source="PFS_Boons"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsTKUnUng" name="PFS: Unidentified Unguent" description="You laid claim to one of the few intact flasks of mysterious alchemical origin in the laboratory. As a move action that does not provoke attacks of opportunity, you may apply or consume the substance to gain a random, short-lived mutation for 1d4+3 rounds.  All mutations are supernatural abiltiies.  Roll a d6 to determine the effects of the mutagen.\n\n* 1 or 2, you rage as per the spell {i}Rage{/i}, but are sickened for 1 round after the effect ends.\n* 3 or 4, your natural reach increases by 5 feet but you take 1d2 points of Dexterity damage when the effect ends.\n* 5 or 6, you gain the ability to, as a standard action, breath a single 15-foot line of acid dealing 4d6 points of acid damage (Reflex DC 15 for half damage) but dealing 2d6 points of acid damage to you when the effect ends.\n\nWhen you use this mutagen, cross the boon off the Chronicle sheet.\n\n{b}This vanity represents a Chronicle Sheet for playing this Pathfinder Online: Thornkeep - The Forgotten Laboratory with the Unidentified Unguent still available to your character.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
     <usesource source="PFS_Boons"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsTKNoqOr" name="PFS: Noqual Ore" description="Among the otherworldly treasures of the Enigma Vaults, you discovered a cache of rare Noqual Ore. You may purchase equipment made from this rare skymetal.\n\n{b}Note{/b}: you must purchase these items separately.\n\n{b}This vanity represents a Chronicle Sheet for playing this Pathfinder Online: Thornkeep - The Enigma Vaults with the Noqual Ore still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="gType" tag="TradeGood"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Render" priority="10000"><![CDATA[foreach pick in hero where "thingid.ePfNoqual"
   perform eachpick.delete[Helper.NoPathSoc]
 nexteach]]></eval>
@@ -1121,6 +1187,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[var s as string
 
 foreach pick in hero from BaseWep where "IsWeapon.wGauntSpik"
@@ -1142,6 +1209,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFSTKBG1">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1159,6 +1227,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPMSpider">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1176,6 +1245,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsTKWotA" name="PFS: Wealth of the Ages" description="In return for her freedom, Melabdara promised you a valuable magical item or other monetary boon.  You earn an additional 375 gp for completing this scenario.\n\n{b}This vanity represents a Chronicle Sheet for playing this Pathfinder Online: Thornkeep - The Dark Menagerie with the Wealth of the Ages still available to your character.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -1183,6 +1253,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsTKEcPa" name="PFS: Echoing Paradox" description="A trace of the magic of the Sanctum of Lost Ages clings to you, and against all odds and reason, a future or past version of you can appear to provide assistance in a time of need. Before you roll an attack roll, a skill check, or a saving throw, a copy of you appears either to flank with you or to grant you a +2 bonus as per the aid another action. If you have an ability that grants a higher bonus on aid another actions, you gain this as a bonus instead; the copy also shares all of your teamwork feats.  After the attack, skill check, or save is resolved, the copy fades away, and you are shaken until the end of your next turn by the unsettling paradox of being at two places at once. When you use this boon, cross it off the Chronicle sheet.  \n\n{b}This vanity represents a Chronicle Sheet for playing this Pathfinder Online: Thornkeep - Sanctum of a Lost Age with the Echoing Paradox still available to your character.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -1190,6 +1261,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsRotRECa" name="PFS: Eternal Candle" description="{b}You need this vanity to purchase Eternal Candle with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this AP: Rise of the Runelords: Burnt Offerings{/b}\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="3500"/>
@@ -1197,6 +1269,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Tools"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFSRREC1">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1214,6 +1287,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFStalkM">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1231,6 +1305,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFSRRHD1">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1248,6 +1323,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Ring"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioBtLevit">
       <assignval field="gCost" value="0"/>
       <assignval field="livename" value="Ring of levitation"/>
@@ -1267,6 +1343,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wDagger"
   if (eachpick.gizmo.childlives[iUnholy] <> 0) then
     doneif (eachpick.field[BonEnhance].value < 1)
@@ -1287,6 +1364,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="User" tag="NoAutoName"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioRotRRoAG">
       <containerreq phase="First" priority="99">fieldval:trkMin = 1</containerreq>
       <assignval field="gCost" value="0"/>
@@ -1327,6 +1405,7 @@ so it is listed PFS legal.</comment>
     <tag group="User" tag="NoAutoName"/>
     <tag group="Hero" tag="EqpBody" name="Body" abbrev="Body"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="5000"><![CDATA[      ~ Was at Pre-Levels 4000
       if (field[gIsEquip].value <> 0) then
         #enhancementbonus[hero.child[aINT], 4]
@@ -1383,6 +1462,7 @@ so it is listed PFS legal.</comment>
     <tag group="User" tag="NoAutoName"/>
     <tag group="Hero" tag="EqpBody" name="Body" abbrev="Body"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="5000"><![CDATA[      ~ Was at Pre-Levels 4000
       if (field[gIsEquip].value <> 0) then
         #enhancementbonus[hero.child[aINT], 4]
@@ -1429,6 +1509,7 @@ so it is listed PFS legal.</comment>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPBloodroo">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1447,6 +1528,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gShSFrosts">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1465,6 +1547,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsShSidmo" name="PFS: Id Moss" description="{b}You need this vanity to purchase Id Moss with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing AP Shattered Star #61 Shards of Sin.{/b}\n\nThis item is limit 5 dose.\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -1473,6 +1556,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPIdMoss">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1491,6 +1575,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPStripTds">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1509,6 +1594,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPUngolD">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1525,6 +1611,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wLongsword"
   if (eachpick.gizmo.childlives[mSiccatCol] <> 0) then
     doneif (eachpick.field[BonEnhance].value < 2)
@@ -1540,6 +1627,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wRapier"
   if (eachpick.gizmo.childlives[mHoracalcu] <> 0) then
     doneif (eachpick.field[BonEnhance].value < 1)
@@ -1556,6 +1644,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wRapier"
   if (eachpick.gizmo.childlives[mHoracalcu] <> 0) then
     if (eachpick.gizmo.childlives[iDancing] <> 0) then
@@ -1573,6 +1662,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wLongsword"
   if (eachpick.gizmo.childlives[mHoracalcu] <> 0) then
     doneif (eachpick.field[BonEnhance].value < 1)
@@ -1588,6 +1678,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wLongsword"
   if (eachpick.gizmo.childlives[mSiccatHot] <> 0) then
     if (eachpick.gizmo.childlives[iFlamBurst] <> 0) then
@@ -1607,6 +1698,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="iGhoIrScim">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1625,6 +1717,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioTomeLivi">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1643,6 +1736,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="iSpManHunt">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1662,6 +1756,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPGreenblo">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1678,6 +1773,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Render" priority="1000"><![CDATA[foreach pick in hero from BaseArmor where "thingid.iMagArmor"
   if (eachpick.gizmo.childlives[ePfNoqual] <> 0) then
     doneif (eachpick.tagis[IsArmor.arFullPl] = 0) 
@@ -1693,6 +1789,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear" name="Adventuring Gear" abbrev="Adventuring"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wFlailHvy"
   if (eachpick.gizmo.childlives[ePfNoqual] <> 0) then
     if (eachpick.gizmo.childlives[iAxiomatic] <> 0) then
@@ -1712,6 +1809,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioHyperRob">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1728,6 +1826,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Render" priority="10000"><![CDATA[if (hero.childlives[iEmberchil] <> 0) then
   perform hero.childfound[iEmberchil].delete[Helper.NoPathSoc]
 endif]]></eval>
@@ -1738,6 +1837,7 @@ endif]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFSBonRz">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1755,6 +1855,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPShadEss">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1771,6 +1872,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Render" priority="10000"><![CDATA[if (hero.childlives[iFroThuHam] <> 0) then
   perform hero.childfound[iFroThuHam].delete[Helper.NoPathSoc]
 endif]]></eval>
@@ -1780,6 +1882,7 @@ endif]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Render" priority="10000"><![CDATA[if (hero.childlives[iRimeblade] <> 0) then
   perform hero.childfound[iRimeblade].delete[Helper.NoPathSoc]
 endif]]></eval>
@@ -1793,6 +1896,7 @@ endif]]></eval>
     <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="4000"><![CDATA[~ +2 circumstance bonus on checks concerning devils. Using the treatise in this way takes 1 minute.
 if (hero.childlives[skKnowPlan] <> 0) then
   #situational[hero.childfound[skKnowPlan],"+2 circumstance bonus on checks concerning devils (1 min to use)",field[name].text]
@@ -1805,6 +1909,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFS001IFC">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1821,6 +1926,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs003MoSW" name="PFS: Map of the Silken Way" description="{b}You need this vanity to purchase Map of the Silken Way through the Zho Mountains with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario 03: The Sil Way{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="100"/>
@@ -1829,6 +1935,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Tools"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPFS003MSW">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1849,6 +1956,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="4000"><![CDATA[#situational[hero.child[skSurvival],"+2 circumstance bonus when in Zho Mountains or traveling the Silken Way (1 min to use)",field[name].text]]]></eval>
     </thing>
   <thing id="pfs004CAYF" name="PFS: Close Associate of Yagevna Family" description="The Yagevna family in Irrisen recognizes you as a close associate for freeing their daughter, Natalya, from her icy prison. When in Irrisen, you gain a +2 circumstance bonus on all diplomacy rolls when you mention the Yagevna family and how you assisted them.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario: 04: The Frozen Fingers of Midnight with the Outstanding Service to the Empire still available to your character.{/b}" compset="Vanity" holdable="no">
@@ -1856,6 +1964,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="4000"><![CDATA[#situational[hero.child[skDiplo],"+2 circumstance bonus when you mention the Yagevna family and how you assisted them",field[name].text]]]></eval>
     </thing>
   <thing id="pfs005JJc" name="PFS: Jambala Jaeg cloth" description="{b}You need this vanity to purchase Jambala Jaeg cloth with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario 05: Mists of Mwangi{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
@@ -1864,6 +1973,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Scroll"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="io005JJc">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1883,6 +1993,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="5000"></eval>
     </thing>
   <thing id="g013FFevTo" name="Filth Fever Tonic" description="This alchemical substance is a powerful treatment against the disease {i}filth fever{/i}.  When swallowed, the imbiber may make an immediate Fortitude save with a +5 alchemical bonus against the disease&apos;s DC to recover from the illness, with no penalty for failure. Filth fever fonic does not heal any ability damage already inflicted by the disease.\n\n#13: The Prince of Augustana" compset="Gear" stacking="merge">
@@ -1894,6 +2005,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs013FFT" name="PFS: Filth Fever Tonic" description="{b}You need this vanity to purchase Filth Fever Tonic with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario 13: The Prince of Augustana.{/b}\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -1902,6 +2014,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="SpecSubs"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g013FFevTo">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1918,6 +2031,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs016AoH" name="PFS: Amulet of Health" description="{b}You need this vanity to purchase Amulet of Health with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario 16: To Scale the Dragon{/b}\n\n{b}The item is added and renamed by this vanity.{/b}\n\n{b}Note{/b}: This item has a name change to Belt of Mighty Constitution +2" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="4000"/>
@@ -1926,6 +2040,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioBeltCon2">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1937,6 +2052,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioBeltDex2">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1948,6 +2064,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioHeadWis2">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1959,6 +2076,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioBeltStr2">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -1967,6 +2085,7 @@ nexteach]]></eval>
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ +1 circumstance bonus while dealing with native Gebbites.
 
 ~ Iterate through all our skills
@@ -1998,6 +2117,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ +1 circumstance bonus vs humanoids from Katheer
 #situational[hero.child[skDiplo],"+1 circumstance bonus vs humanoids from Katheer",field[thingname].text]]]></eval>
     </thing>
@@ -2008,6 +2128,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioHeadCha2">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2018,6 +2139,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Poison"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPMSpider">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2041,6 +2163,7 @@ nexteach]]></eval>
     <tag group="Hero" tag="EqpHead"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="10000"><![CDATA[doneif (field[gIsEquip].value = 0)
 #situational[hero.child[skIntim],"+2 circumstance bonus",field[thingname].text]]]></eval>
     </thing>
@@ -2051,6 +2174,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Tools"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g033MoTE">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2068,6 +2192,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs033ZSla" name="PFS: Zamir is slain" description="The Thakur of Jalmeray recognizes the great service you have done for his country and spreads the word of your deeds to the corners of the island. In any future encounter when dealing with a citizen of Jalmeray, you may gain a +1 circumstance bonus to any Diplomacy rolls made during that encounter. You may only use this bonus once per scenario.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario 33: Assault on the Kingdom of the Impossible where Zamir is slain.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -2075,6 +2200,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs034MTB" name="PFS: Monkey Tooth Bracelet" description="{b}You need this vanity to purchase Monkey Tooth Bracelet with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Scenario 34: The Encounter of Drowing Stones{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -2083,6 +2209,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="irClimb">
       <assignval field="livename" value="Monkey Tooth Bracelet"/>
       <assignval field="gCost" value="0"/>
@@ -2105,6 +2232,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="irSusten">
       <assignval field="livename" value="Monkey Tooth Bracelet"/>
       <assignval field="gCost" value="0"/>
@@ -2137,6 +2265,7 @@ nexteach]]></eval>
     <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs037IHSS" name="PFS: Ivory-Handled Short Sword" description="{b}You need this vanity to purchase Ivory-Handled Short Sword with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario 37: The Beggar&apos;s Pearl.{/b}\n\n{b}Note{/b}: you must purchase this item separately to obtain the correct size." compset="Vanity" holdable="no">
     <usesource source="PathRise"/>
@@ -2144,6 +2273,7 @@ nexteach]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[
       ~ Remove the not allowed for PFS tag
       perform hero.findchild[BaseWep,"IsWeapon.wIvShortSw"].delete[Helper.NoPathSoc]]]></eval>
@@ -2156,6 +2286,7 @@ nexteach]]></eval>
     <tag group="fShowWhat" tag="Freeform"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="10000"><![CDATA[      ~If they haven't selected anything, get out now
       doneif (field[usrChosen1].ischosen = 0)
 
@@ -2167,6 +2298,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ +2 circumstance bonus with dwarves from Five Kingdom Mountains
 
 ~ Iterate through all our skills
@@ -2208,6 +2340,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="spLight0">
       <containerreq phase="First" priority="2500">fieldval:gHeldCount = 0</containerreq>
       <autotag group="Helper" tag="ItemSpell"/>
@@ -2227,6 +2360,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFSTKAr1">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2244,6 +2378,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioWavGWayf">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2260,18 +2395,21 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs040HGoH" name="PFS: Honored Guests of the Hall" description="Should you rescue a cleric from the grasp of the demons plaguing Cayden&apos;s Hall, High Priestess Saphira declares you to be an honored guest and from this day forth all drinks beneath her roof are free for you. Additionally, all clerics of Cayden Cailean in Absalom give you a +1 circumstance bonus when asking them for information pertaining to any Knowledge skill check.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario 40: Hall of Drunken Heroes with the Honored Guests of the Hall still available to your character.{/b}\n\n{b}Note[/b}: The +1 bonus is not implemented, as it appears to be on the NPC Cleric&apos;s roll." compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs041BoSP" name="PFS: Bane of Swi! Prison" description="You attacked a prisoner or guard or committed a crime within the halls of Swi! Prison. Because of your actions, all future Charisma-based skill checks with Swi! Prison officials or prisoners suffer a -2 penalty.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario: 26: Lost at Bitter End with the Scion of Geb still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ -2 penalty Swift Prison officials or prisoners
 
 ~ Iterate through all our skills
@@ -2305,6 +2443,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPPurpVen">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2320,6 +2459,7 @@ nexteach]]></eval>
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ +1 circumstance bonus with any citizen of Andoran.
 
 ~ Iterate through all our skills
@@ -2350,6 +2490,7 @@ nexteach]]></eval>
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ -1 penalty when dealing with fey.
 
 ~ Iterate through all our skills
@@ -2381,17 +2522,20 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfsPFSFSoA" name="PFS: Failed Savior of Andoran" description="Your failure to prevent the spread of palepox among the citizens of Falcon&apos;s Hollow earns you the enmity of its citizens. You are unwelcome in the Darkmoon Vale region of Andoran, and all of the locals automatically view you as unfriendly during Diplomacy checks.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario: 43: The Pallid Plague with the Failed Savior of Andoran still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs044PoW" name="PFS: Protector of Whistledown" description="You have saved the gnome community of Whistledown in distant Varisia. News of your great dead travels far in the gnome community, and you gain a +1 bonus on all Charisma-based checks with gnomes.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario 44: Echoes of the Everwar, Part III: Terror at Whistledown with the Protector of Whistledown still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ +1 bonus on all Charisma-based checks with gnomes.
 
 ~ Iterate through all our skills
@@ -2422,6 +2566,7 @@ nexteach]]></eval>
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ -2 bonus on all Charisma-based checks with gnomes.
 
 ~ Iterate through all our skills
@@ -2452,6 +2597,7 @@ nexteach]]></eval>
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ +1 circumstance Intelligence or Charisma-based checks in Absalom.
 
 ~ Iterate through all our skills
@@ -2488,6 +2634,7 @@ nexteach]]></eval>
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ -1 circumstance Intelligence or Charisma-based checks in Absalom.
 
 ~ Iterate through all our skills
@@ -2525,6 +2672,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First"><![CDATA[~ -1 penalty when dealing with other Pathfinders.
 
 ~ Iterate through all our skills
@@ -2558,6 +2706,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPGiantWas">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2574,6 +2723,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs201LScV" name="PFS: Large Scorpion venom" description="{b}You need this vanity to purchase Large Scorpion Venon with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario #2-01: Before the Dawn, Part I: The Bloodcove Disguise or #2-20: Wrath of the Accursed.{/b}\n\nThis item is limit 1 dose in Scenario #2-01 and #2-20.\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="200"/>
@@ -2581,6 +2731,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPLgScorp">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2597,11 +2748,13 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs201TbAC" name="PFS: Tortured by the Aspis Consortium" description="You were captured in Bloodcove by the Aspis Consortium and subsequently tortured over the course of 2 weeks before being tossed on an Absalom- bound slave ship and returned to the Society. As a result, you lose 1 permanent point of Constitution to represent the hell the Aspis Consortium put your body through.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario #2-01: 1Before the Dawn, Part I: The Bloodcove Disguise with the Tortured by the Aspis Consortium still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="10000">~ perm -1 to CON
 hero.child[aCON].field[aNormMod].value -= 1</eval>
     </thing>
@@ -2612,6 +2765,7 @@ hero.child[aCON].field[aNormMod].value -= 1</eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="4000"><![CDATA[~situational bonus
 #situational[field[usrChosen1].chosen,"+2 circumstance",field[livename].text]]]></eval>
     </thing>
@@ -2620,6 +2774,7 @@ hero.child[aCON].field[aNormMod].value -= 1</eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs204BrRe" name="PFS: Broken Reputation" description="For killing a fellow Pathfinder on the Grand Lodge&apos;s grounds, you must either spend 2 PA or 750 gold pieces to clear your name, or suffer a -4 penalty on Bluff, Diplomacy, and Intimidate skill checks when dealing with other Pathfinders in Absalom or beyond.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario #2-04: Shadows Fall on Absalom with the Broken Reputation still available to your character.{/b}\n\n{b}Note{/b}: To repair your reputation, switch to Broken Reputations Repaired." compset="Vanity" holdable="no">
     <fieldval field="usrCandid1" value="component.BaseSkill &amp; Helper.SkCatKnow"/>
@@ -2628,6 +2783,7 @@ hero.child[aCON].field[aNormMod].value -= 1</eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="4000"><![CDATA[~ -4 penalty on Bluff, Diplomacy, and Intimidate when dealing with other Pathfinders in Absalom or beyond.
 #situational[hero.child[skIntim],"-4 penalty when dealing with other Pathfinders in Absalom or beyond",field[livename].text]
 #situational[hero.child[skDiplo],"-4 penalty when dealing with other Pathfinders in Absalom or beyond",field[livename].text]
@@ -2641,6 +2797,7 @@ hero.child[aCON].field[aNormMod].value -= 1</eval>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs204BrRP" name="PFS: Broken Reputation Repaired PP" description="For killing a fellow Pathfinder on the Grand Lodge&apos;s grounds, you must either spend 2 PA or 750 gold pieces to clear your name, or suffer a -4 penalty on Bluff, Diplomacy, and Intimidate skill checks when dealing with other Pathfinders in Absalom or beyond.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario #2-04: Shadows Fall on Absalom with the Broken Reputation still available to your character.{/b}" compset="Vanity" holdable="no">
     <fieldval field="usrCandid1" value="component.BaseSkill &amp; Helper.SkCatKnow"/>
@@ -2650,6 +2807,7 @@ hero.child[aCON].field[aNormMod].value -= 1</eval>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="iPFSStarSw" name="Starsword" description="This +1 mighty cleaving shock longsword is the legendary Starsword, forged of red- tinted Akitonian steel.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}enervation{/i}; {b}Cost{/b} 9,315 gp\n\nModule: The Moonscar" compset="MagicWep">
     <fieldval field="gSizeCost" value="15"/>
@@ -2662,6 +2820,7 @@ hero.child[aCON].field[aNormMod].value -= 1</eval>
     <tag group="iSchool" tag="Transmutat"/>
     <tag group="IsWeapon" tag="wLongsword"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <child entity="wSpecMagic">
       <bootstrap thing="wLongsword"></bootstrap>
       <bootstrap thing="iShock"></bootstrap>
@@ -2673,6 +2832,7 @@ hero.child[aCON].field[aNormMod].value -= 1</eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Render" priority="10000"><![CDATA[if (hero.childlives[iPFSStarSw] <> 0) then
   perform hero.childfound[iPFSStarSw].delete[Helper.NoPathSoc]
 endif]]></eval>
@@ -2684,6 +2844,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gWyvernP">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2706,6 +2867,7 @@ nexteach]]></eval>
     <tag group="iSchool" tag="Abjur" name="Abjuration" abbrev="Abjur"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="5000"><![CDATA[~ +1 resistance bonus on all saving throws vs spells, spell-like effects, and supernatural abilities from a divine spellcaster or source such as an outsider that serves a deity.
 
 if (field[gIsEquip].value <> 0) then
@@ -2719,6 +2881,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="io206RotPL">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2736,6 +2899,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioWayFStan">
       <assignval field="gCost" value="0"/>
       <assignval field="livename" value="Wayfinder with Decemvirate Seal"/>
@@ -2751,6 +2915,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="io209PipTe" name="Pipes of Terror" description="These iron panpipes are warm to the touch and emit a strangely hollow sound when played. When played by a person who succeeds on a DC 15 Perform (wind instruments) check, the pipes create an eerie, spellbinding tune. Those within 30 feet who hear the tune must succeed on a DC 16 Will save or become panicked for 7 rounds. Those who make their save are instead shaken for 1 round. While pipes of terror may be played as often as one chooses, their fear-inducing qualities may only be activated once per day.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}fear{/i}; {b}Cost{/b} 4,500 gp" compset="Wondrous">
     <fieldval field="iCL" value="7"/>
@@ -2762,6 +2927,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs209PiTe" name="PFS: Pipes of Terror" description="{b}You need this vanity to purchase Pipes of Terror with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing this Scenario #2-09: The Heresy of Man, Part III: Beneath Forgotten Sands.{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -2769,6 +2935,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="io209PipTe">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2788,6 +2955,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="ir309IRoWS" name="Intelligent Ring of Weary Sky" description="This scintillating ring glows softly, emitting alternating shades of red, green, blue, and white light. Once per day, the wearer of this ring may attempt to charm any creature with the elemental subtype (as charm monster, Will DC 15 negates).\n\nThis Ring of the Weary Sky possesses the remnants of its final wearer&apos;s spirit. Whenever facing a creature of the elemental subtype, the ring casts resist energy on the wearer attuned to the applicable energy type. If the wearer has charmed the elemental with the ring&apos;s charm monster ability, the ring does not abjure the wearer against that elemental&apos;s energy type.\n\n{b}Alignment{/b} neutral\n{b}Senses{/b} 30 ft. vision and hearing\n{b}Intelligence{/b} 12 {b}Wisdom{/b} 10 {b}Charisma{/b} 11\n{b}Ego{/b} 7\n{b}Communication{/b} empathy\n{b}Special purpose{/b} control or defeat elementals\n\n{b}Construction{/b}\n{b}Requirements{/b} Forge Ring, {i}charm monster{/i}; {b}Cost{/b} 5,600 gp" compset="Ring">
     <fieldval field="gCost" value="11200"/>
@@ -2798,6 +2966,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="Helper"/>
     <tag group="iSchool" tag="Abjur"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="spResiEne2">
       <autotag group="Helper" tag="ItemSpell"/>
       <autotag group="Usage" tag="Day"/>
@@ -2813,6 +2982,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ir209RoWS">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2832,6 +3002,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ir309IRoWS">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2852,6 +3023,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[~ +5 or +10 circumstance regarding Aroden and his faith
 if (hero.childlives[skKnowHist] <> 0) then
   #situational[hero.childfound[skKnowHist],"+" & field[actUser].value & " circumstance regarding Aroden and his faith",field[name].text]
@@ -2867,6 +3039,7 @@ endif]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g212ToMem">
       <assignval field="gCost" value="0"/>
       <assignval field="actUser" value="5"/>
@@ -2886,6 +3059,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g212ToMem">
       <assignval field="gCost" value="0"/>
       <assignval field="actUser" value="10"/>
@@ -2905,6 +3079,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPBella">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2925,6 +3100,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs213HUV" name="PFS: Hunter Urchin venom" description="{b}You need this vanity to purchase Hunter Urchin venom poison with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario #2-13: Murder on the Throaty Mermaid.{/b}\n\nThis item is limit 1 dose.\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -2933,6 +3109,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g213HUV">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2951,6 +3128,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g213SUV">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -2971,6 +3149,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="g214NiVaf" name="Nightmare Vapor flask" description="Nightmare vapor flasks are small vials filled with nightmare dust and combustible salts. When thrown, they shatter upon impact releasing a 10-ft.-radius and 10-ft.-high toxic cloud of nightmare vapor poison (Pathfinder RPG Core Rulebook 560). The cloud dissipates in 1d4 rounds. You can throw a nightmare vapor flask as ranged touch attack with a range increment of 10 feet.\n\n{b}Type{/b} inhaled; {b}Save{/b} Fortitude DC 20\n{b}Frequency{/b} 1/round for 6 rounds\n{b}Effect{/b} 1 Wis damage and confused for 1 round; {b}Cure{/b} 2 consecutive saves\n\n#2-14: The Chasm of Screams" compset="Gear" stacking="merge">
     <comment>v1.0: Risner</comment>
@@ -2981,6 +3160,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs214NVF" name="PFS: Nightmare Vapor flask" description="{b}You need this vanity to purchase Nightmare Vapor flask with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario #2-14: The Chasm of Screams.{/b}\n\nThis item is limit 1 dose.\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <comment>v1.0 Risner</comment>
@@ -2989,6 +3169,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="AlchWeapon"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g214NiVaf">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3005,6 +3186,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs218ZahT" name="PFS: Zahra&apos;s Tactics" description="In thanks for saving her from a fate of madness and servitude to the Mad Marid Moukadeem, Zahra grants you additional training in fighting genies in the future. You may, as a swift action, gain a +1 insight bonus on a single attack and damage roll against a genie. This ability may be used three times, each time crossing off one of the uses here. You may stack these uses on a single attack should you so choose, granting a +3 bonus on that attack and damage roll.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario #2-18: The Forbidden Furnace of Forgotten Koor with the Zahra&apos;s Tactics still available to your character.{/b}" compset="Vanity" holdable="no">
     <fieldval field="trkMax" value="3"/>
@@ -3013,18 +3195,21 @@ nexteach]]></eval>
     <tag group="Usage" tag="uses" name=" uses"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs219Snow" name="PFS: Snowmask Induction" description=" You allied with the Snowmask Clan and returned Jedrek&apos;s Shard to its place of honor beside Ranulf &apos;s body. In thanks, you are ritually inducted into the Snowmask Clan with the title Snowmask Brother or Snowmask Sister. As part of this mystic ceremony, you gain the permanent benefits of endure elements but only in cold and only to temperatures of 0 degrees F and above; you gain no bonuses in extreme heat. This is a supernatural ability.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario #2-18: The Forbidden Furnace of Forgotten Koor with the Zahra&apos;s Tactics still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs220Curs" name="PFS: Curse Removal" description="In thanks for retrieving the stolen cursed items from the Shadow Lodge, Venture-Captain Norden Balentiir authorizes a free casting of remove curse at Caster Level 12th at any point in your future career. This favor may only be used when in a settlement of at least 5,000 people and may only be used once. A&quot;er having this spell cast on you by a Pathfinder spellcaster, cross this reward off your Chronicle sheet.\n\n{b}This vanity represents a Chronicle Sheet for playing Scenario #2-20: Wrath of the Accursed with the Curse Removal still available to your character.{/b}" compset="Vanity" holdable="no">
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs220" name="PFS: Deathblade" description="{b}You need this vanity to purchase Large Scorpion Venon with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario #2-20: Wrath of the Accursed.{/b}\n\nThis item is limit 1 dose in Scenario #2-20.\n\n{b}The item is added and modified by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="1800"/>
@@ -3032,6 +3217,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPDeathbla">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3050,6 +3236,7 @@ nexteach]]></eval>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="User" tag="NoAutoName"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="10000"><![CDATA[doneif (field[usrChosen1].ischosen = 0)
 
 ~ If Qadira enable +2 bonus on all Day Job checks.
@@ -3066,6 +3253,7 @@ endif]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="4000"><![CDATA[~ +4 circumstance Disguise checks to masquerade as a member of the Shadow Lodge.
 #situational[hero.child[skDisguise],"+4 circumstance to masquerade as a member of the Shadow Lodge",field[name].text]]]></eval>
     </thing>
@@ -3076,6 +3264,7 @@ endif]]></eval>
     <tag group="gType" tag="AdventGear"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g221SLsig">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3094,6 +3283,7 @@ nexteach]]></eval>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="10000"><![CDATA[      ~If they haven't selected anything, get out now
       doneif (field[usrChosen1].ischosen = 0)
 
@@ -3104,6 +3294,7 @@ nexteach]]></eval>
     <usesource source="PFS_Boons"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[~ +5 bonus to influence government official within the nation of Andoran
 #situational[hero.child[skDiplo],"+5 bonus to influence government official within the nation of Andoran",field[name].text]]]></eval>
     </thing>
@@ -3112,6 +3303,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property" name="Property" abbrev="Property"/>
     <tag group="gType" tag="AdventGear"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreAttr" priority="1000"><![CDATA[foreach pick in hero from BaseWep where "IsWeapon.wScythe"
   if (eachpick.gizmo.childlives[iUnholy] <> 0) then
     doneif (eachpick.field[BonEnhance].value < 1)
@@ -3142,6 +3334,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="raDarkVis">
       <containerreq phase="First" priority="500"><![CDATA[fieldval:abilAct2 <> 0]]></containerreq>
       <autotag group="Value" tag="60"/>
@@ -3160,6 +3353,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="io226MotM">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3183,6 +3377,7 @@ so it is listed PFS legal.</comment>
     <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
     <tag group="User" tag="OptDomain"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[~ Bluff or Diplomacy
 ~ +2 circumstance when given to ative of the Lands of the Linnorm Kings with starting attitude of indifferent or better
 #situational[hero.child[skDiplo],"+2 circumstance when given to ative of the Lands of the Linnorm Kings with starting attitude of indifferent or better",field[thingname].text]
@@ -3204,6 +3399,7 @@ so it is listed PFS legal.</comment>
     <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
     <tag group="User" tag="OptDomain"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[~ Bluff or Diplomacy
 ~ +5 circumstance when given to ative of the Lands of the Linnorm Kings with starting attitude of indifferent or better
 #situational[hero.child[skDiplo],"+5 circumstance when given to ative of the Lands of the Linnorm Kings with starting attitude of indifferent or better",field[thingname].text]
@@ -3220,6 +3416,7 @@ so it is listed PFS legal.</comment>
     <tag group="gType" tag="Tools"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g301ExqSno">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3238,6 +3435,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Tools"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="g301AvgSno">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3254,6 +3452,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[~ +2 bonus on all Diplomacy checks made against centaurs.
 #situational[hero.child[skDiplo],"+2 bonus against centaurs",field[thingname].text]]]></eval>
     </thing>
@@ -3261,6 +3460,7 @@ nexteach]]></eval>
     <usesource source="srcAcadSec"/>
     <tag group="VanityCat" tag="Reputation"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[~ ~1 dodge bonus to AC vs spears weapon group
 #situational[hero.child[ArmorClass],"+1 dodge bonus vs Spears weapon group",field[name].text]]]></eval>
     </thing>
@@ -3273,6 +3473,7 @@ nexteach]]></eval>
     <tag group="fShowWhat" tag="Freeform"/>
     <tag group="User" tag="NoAutoName"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="lCelestial">
       <containerreq phase="First" priority="99">fieldval:trkMin = 1</containerreq>
       </bootstrap>
@@ -3307,6 +3508,7 @@ so it is listed PFS legal.</comment>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="pfs312CanC" name="PFS: Canid Carcanet" description="{b}You need this vanity to purchase Canid Carcanet with a Pathfinder Society (PFS) character. This vanity represents a Chronicle Sheet your character received for playing Scenario #3-12: Wonders in the Weave, Part I: The Dog Pharaoh&apos;s Tomb.{/b}\n\n{b}The item is added and renamed by this vanity.{/b}" compset="Vanity" holdable="no">
     <fieldval field="gCost" value="15000"/>
@@ -3315,6 +3517,7 @@ so it is listed PFS legal.</comment>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="io312CanCa">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3333,6 +3536,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFS313BM">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3348,6 +3552,7 @@ nexteach]]></eval>
     <usesource source="srcWeGob2"/>
     <tag group="User" tag="NoAutoName"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="Render" priority="10000"><![CDATA[~ If there's no animal companion, there's nothing we can do
 doneif (hero.hasminion[AnimComp] = 0)
 
@@ -3381,6 +3586,7 @@ nexteach]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPWolfsban">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3409,6 +3615,7 @@ nexteach
     <tag group="Helper" tag="Helper"/>
     <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     </thing>
   <thing id="io316SoS" name="Sword of Station" description="This ornate sword and belt impart uncanny confidence and insight while worn, granting a +2 competence bonus on Sense Motive checks. Three times per day, the wearer may draw the sword and deliver a single-word command, as per the spell. A sword of station is blunted and poorly balanced, intended as a showpiece rather than a weapon. If used in combat, treat it as an improvised club.\n\n{b}Construction\nRequirements{/b} Craft Wondrous Item, {i}command,{/i}, {i}remove fear{/i}, creator must have 2 ranks in the Sense Motive skill; {b}Cost{/b} 840 gp" compset="Wondrous">
     <fieldval field="gWeight" value="5"/>
@@ -3427,6 +3634,7 @@ nexteach
     <tag group="User" tag="Tracker"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="spCommand1">
       <autotag group="Helper" tag="ItemSpell"/>
       <autotag group="Usage" tag="Day"/>
@@ -3444,6 +3652,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="io316SoS">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3465,6 +3674,7 @@ endif]]></eval>
     <tag group="User" tag="Tracker"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="spCommand1">
       <autotag group="Helper" tag="ItemSpell"/>
       <autotag group="Usage" tag="Day"/>
@@ -3482,6 +3692,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="io316SoSG">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3492,6 +3703,7 @@ endif]]></eval>
     <tag group="VanityCat" tag="Property"/>
     <tag group="gType" tag="Poison"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="gPDrowPois">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3507,6 +3719,7 @@ nexteach]]></eval>
     <usesource source="srcWeGob2"/>
     <tag group="User" tag="NoAutoName"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <eval phase="First" priority="10000"><![CDATA[var t as string
 
 foreach pick in hero from BaseCompan where "CompIs.cArcF?"
@@ -3538,6 +3751,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFS325Di">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3549,6 +3763,7 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFS325Di">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3561,6 +3776,7 @@ nexteach]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="VanityCat" tag="Property"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="ioPFS402AV">
       <assignval field="gCost" value="0"/>
       </bootstrap>
@@ -3600,6 +3816,7 @@ nexteach]]></eval>
     <tag group="SaveGood" tag="svRef"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <bootstrap thing="spCompLan1">
       <autotag group="Helper" tag="SpellLike"/>
       <autotag group="Usage" tag="Constant"/>
@@ -3679,6 +3896,7 @@ nexteach]]></eval>
     <fieldval field="iCL" value="5"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="EquipMag"/>
@@ -3689,6 +3907,7 @@ nexteach]]></eval>
   <thing id="raPFSMasEy" name="Master&apos;s Eyes" description="A raktavarna can designate a single creature as its master as a standard action. If the raktavarna is a spellcaster&apos;s familiar, its master is automatically that spellcaster, and the raktavarna cannot change this. As a full-round action, a raktavarna&apos;s master can observe the world as if looking through the raktavarna&apos;s eyes. The master must concentrate to maintain this link each round. The master&apos;s visual senses are suppressed for this time, and he uses the raktavarna&apos;s darkvision, {i}detect magic{/i}, and regular eyesight to observe the world. This ability has no limit on range, and functions even across planar boundaries. If the raktavarna is slain while its master is using this ability, the master is stunned for 1d4 rounds (no save)." compset="RaceSpec" summary="Master can concentrate to see through your eyes, using your senses.">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <tag group="AbilType" tag="Super"/>
     </thing>
   <thing id="vanGC12B7" name="PFS: Sinscarred GenCon&apos;12 Boon #7" description="Sinscarred: Choose one school of magic. You gain a +1 bonus on saving throws against spells and spell-like abilities from this school, and you gain a +2 bonus to Spellcraft checks to identify spells of this school. If you have a familiar, animal companion, or eidolon, it also gains these benefits.\n\n{b}This vanity represents a Chronicle Sheet for Gen Con 2012 Boon #7 Sinscarred still available to your character.{/b}\n\n{b}Note{/b}: The familiar, animal companion, eidolon benefits are not implemented." compset="Vanity">
@@ -3840,6 +4059,7 @@ bodrinbarlow@gmail.com
     <usesource source="SocChar"/>
     <tag group="gType" tag="SpecSubs"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="ShowSpec"/>
     <bootstrap thing="tmAdvanced"></bootstrap>
     </thing>
@@ -4180,6 +4400,7 @@ bodrinbarlow@gmail.com
     <tag group="Helper" tag="NoSelect"/>
     <tag group="IsWeapon" tag="wArmorSpk"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
     <tag group="wType" tag="P"/>
     <tag group="wMain" tag="1d6_5"/>
     <tag group="wProfReq" tag="Martial"/>

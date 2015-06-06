@@ -426,4 +426,46 @@
       ~ Set the live name to include the Number of Books
       field[livename].text = field[thingname].text & ", " & Books & " Books"]]></eval>
     </thing>
+  <thing id="wS2Unarmed" name="Unarmed strike" description="An unarmed strike is an attack such as a punch or a kick where the attacker is not using a weapon to make the attack. A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes at his discretion. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls.\n\nAn unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike. Unarmed strikes do not count as natural weapons (Core Rulebook 182). An unarmed strike can&apos;t be disarmed.\n\n{b}Note:{/b} This has been added here for allowing players the ability to two-weapon fight with unarmed strikes." compset="Weapon">
+    <usesource source="srcS2Adjus"/>
+    <usesource source="srcS2Gear"/>
+    <tag group="Helper" tag="NoOutGear" name="NoOutGear" abbrev="NoOutGear"/>
+    <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="wCategory" tag="Unarmed" name="Unarmed Attack" abbrev="Unarmed"/>
+    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
+    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wFtrGroup" tag="Close" name="Close" abbrev="Close"/>
+    <tag group="wFtrGroup" tag="Monk" name="Monk" abbrev="Monk"/>
+    <tag group="wFtrGroup" tag="Natural" name="Natural" abbrev="Natural"/>
+    <tag group="wMain" tag="1d3" name="1d3" abbrev="1d3"/>
+    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
+    <tag group="wSpecial" tag="Nonlethal" name="Nonlethal" abbrev="Nonlethal"/>
+    <tag group="wType" tag="B" name="Bludgeoning" abbrev="B"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="IsWeapon" tag="wUnarmed"/>
+    <tag group="Helper" tag="NoSelect"/>
+    <eval phase="Final" priority="10010"><![CDATA[
+      ~ Try and find the base race
+      perform hero.findchild[BaseWep,"thingid.wUnarmed"].setfocus
+      ~ if can't find then get out now!
+      doneif (state.isfocus = 0)
+
+      ~ if wUnarmed does lethal damage than so do we
+      if (focus.tagis[wSpecial.Nonlethal] = 0) then
+        perform delete[wSpecial.Nonlethal]
+      endif
+
+      ~ Set damage
+      perform delete[wMain.?]
+      perform focus.pulltags[wMain.?]
+      perform focus.pulltags[Helper.DamageUp]
+      perform focus.pulltags[Helper.DamageDown]
+
+      ~ Set all the helper tags
+      perform focus.pulltags[Helper.?]]]></eval>
+    </thing>
   </document>

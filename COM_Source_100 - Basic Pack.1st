@@ -13,7 +13,7 @@ December 29, 2014 - Tim Shadow
   <!-- ============================================== -->
   <source
     id="pBasicPack"
-    name="Basic Pack (v3.10)"
+    name="Basic Pack (v3.11)"
     selectable="no"
     parent="pComPacks"
     sortorder="10"
