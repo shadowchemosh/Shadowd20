@@ -20,6 +20,7 @@
 <li>ShadowChemosh Adjustments (ShadowChemosh) - Completed enhancement issue #25. Added two new favored enemy/terrain conferred adjustments that allow for turning on/off on the In-Play tab instead of the adjustments tab. This allows for a much better user interface of these class abilities especially for those on the iPad. This ability will not double print to a character sheet or statblock.</li>
 <li>ShadowChemosh Classes (ShadowChemosh) - Added the Shadow companion for the Shadowdancer PrC class. This can be added on the 'Other' tab. This shadow companion matches all the leveling logic from the Shadowdancer PrC class. Updated the text of the PrC so gamers know how to add this companion.</li>
 <li>Conferred Adjustments (ShadowChemosh) - Added "Combat: Sneak Attack" adjustment that shows up on the In-Play tab with an activation. This makes rolling Sneak Attack damage very easy on the iPad. This ability will not double print to a character sheet or statblock.</li>
+<li>Adjustments (ShadowChemosh) - Added "Animal Companion, Allowed Class" adjustment that lets you make any animal companion valid for any class. This is used on the Animal Companion itself NOT the master.</li>
 </ul>
 <strong>Data File Authoring</strong>
 <ul>

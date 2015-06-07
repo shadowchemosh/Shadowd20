@@ -4205,4 +4205,28 @@ call S2SetName]]></eval>
     <tag group="Usage" tag="UsedUp"/>
     <tag group="User" tag="Tracker"/>
     </thing>
+  <thing id="pS2ACValid" name="Animal Companion, Allowed Class" description="Make any single animal companion valid for any class.\n\n{b}Note:{/b} This adjustment ONLY works on the Animal Companion itself.  Add your animal companion first then on the &quot;Personal&quot; tab add this adjustment.  From the drop down select the class that this animal companion should be valid for." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Adjustment" tag="Class"/>
+    <tag group="OthAdjCat" tag="Class"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="PostLevel" priority="10000">
+      ~ Select Class Things
+      field[pUsePicks].value = 0
+      ~ Select Animal Companion Picks
+      field[pUsePicks2].value = 1</eval>
+    <eval phase="First" priority="10000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ Check to see if a class was chosen
+      doneif (field[pChosen].ischosen = 0)
+
+      ~ Pull the Class Companion List
+      perform field[pChosen].chosen.pulltags[CompList.?]
+
+      ~ Push the Class Companion List to the animal companion
+      perform hero.findchild[BaseComp,"Race.AnimComp"].pushtags[CompList.?]]]></eval>
+    </thing>
   </document>
