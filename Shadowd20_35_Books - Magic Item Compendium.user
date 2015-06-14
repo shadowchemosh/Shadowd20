@@ -37,23 +37,24 @@
     <fieldval field="abValue5" value="4"/>
     <usesource source="srcMIC"/>
     <tag group="User" tag="Activation"/>
-    <tag group="Helper" tag="UserAdjust"/>
     <tag group="iSchool" tag="Necromancy"/>
     <tag group="Usage" tag="Day"/>
     <tag group="User" tag="Tracker"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="UserAdjust"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If no points then get out now
       doneif (field[trkMax].value = field[trkUser].value)
       ~ If not equipped get out now
       doneif (field[gIsEquip].value <> 1)
 
-      ~ +1 profane bonus to touch attack and eldritch blast
-      #applybonus[BonProfane,hero.childfound[wS2EldBlas],1]
-      #applybonus[BonProfane,hero.childfound[wS2RaTouch],1]
-      #applybonus[BonProfane,hero.childfound[wRay],1]]]></eval>
+      ~ +1 Ranged Attack Profane Bonus to Ray weapons
+      foreach pick in hero from BaseWep where "IsWeapon.wRay"
+        #applybonus[atrBonProf,eachpick,1]
+      nexteach
+      ]]></eval>
     <eval phase="Final" index="2"><![CDATA[
       ~ If not active get out now!
       doneif (field[abilActive].value <> 1)

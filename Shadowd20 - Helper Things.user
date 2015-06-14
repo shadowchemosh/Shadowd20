@@ -472,6 +472,8 @@ version 1.40 - Released May 12, 2013
       doneif (hero.childlives[cMagSplCom] <> 1)
       ~ Make sure we have not been replaced first
       doneif (hero.child[cMagSplCom].tagis[Helper.SpcReplace] <> 0)
+      ~ Make sure we don't have two-weapon fighting already
+      doneif (hero.tagis[Hero.TwoWep] = 1)
 
       ~ If we're in output mode, don't do anything
       ~doneif (state.isoutput <> 0)
@@ -486,7 +488,7 @@ version 1.40 - Released May 12, 2013
            Hands += 1
         Endif 
         ~ If touch attack weapon set flag
-        If (eachpick.tagis[Shadowd20.TouchWep] = 1) Then
+        If (eachpick.tagexpr[PackHelper.Touch & wCategory.Melee] = 1) Then
            Touch = 1
         Endif
       nexteach
@@ -578,7 +580,8 @@ version 1.40 - Released May 12, 2013
   <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a bonus on damage equal to your caster level. This should help some with how little damage spellcasters do vs melee characters." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a bonus on damage.">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="Final" priority="10000">~ Only show us if we are a spellcaster
+    <eval phase="Final" priority="10000">
+      ~ Only show us if we are a spellcaster
       doneif (hero.tagis[Hero.Caster] = 0)
 
       ~ Show us
@@ -611,11 +614,9 @@ version 1.40 - Released May 12, 2013
           Else
              sName &= eachpick.field[cAbbr].text & " +" & nCL
           Endif
-          ~ loop through all Class Specials where we have the correct
-          ~ tags
+          ~ loop through all Class Specials where we have the correct tags
           foreach pick in hero from BaseClSpec where sTag
              ~ Increase damage by the CL
-             ~eachpick.field[abValue3].value += nCL
              eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell-like ability does hit point damage it gains a bonus equal to your caster level (" & signed(nCL) & ")."  
           nexteach
           ~ increase count
@@ -626,7 +627,7 @@ version 1.40 - Released May 12, 2013
       hero.childfound[s2InfoSpDm].field[livename].text = hero.childfound[s2InfoSpDm].field[name].text & sName
       
       ~ Find all touch attack weapons and show Extra Damage
-      foreach pick in hero from BaseWep where "Shadowd20.TouchWep"
+      foreach pick in hero from BaseWep where "PackHelper.Touch"
          #extradamage[eachpick,sName,field[name].text]
       nexteach]]></eval>
     <eval phase="Final" priority="50000" index="2"><![CDATA[
@@ -673,13 +674,20 @@ version 1.40 - Released May 12, 2013
       #appenddesc[skLorOther,"{b}Shadow d20:{/b} Lore is changed to only be a little specific but NOT as restrictive as the book. Listed below are some new valid examples for what you could pick with Lore.{br}{br}-For gods list up to three gods.{br}-Any City, Town, Village regardless of size and know all areas of that location.{br}-Elves, Dwarves, Orcs, Half-Orcs, Goblins, or other specific race. But you can't say 'Humanoids'.{br}-Undead, Dragons, Aberrations, Devils, Demons, Lycanthrops, or other broad single Creature Type. So again you can't say 'Outsider (Evil)' but can list Devil or Demon."]
 
 
-      var sText   as string
+      var sText as string
 
-      ~ Fix Elephant Stomp Feat
-      foreach thing in BaseFeat where "thingid.fElepStomp"
-        If (eachthing.tagcountstr["thingid.fElepStomp"] <> 0) Then
+      ~ Change feat text
+      foreach thing in BaseFeat where "thingid.fElepStomp|thingid.fHeroicRec"
+        ~ Elephant Stomp 
+        If (eachthing.tagcountstr["thingid.fElepStomp"] = 1) Then
           perform eachthing.amendthing[description,"{b}Prerequisites:{/b} Str 13, Power Attack, Improved Overrun, base attack bonus +1.\n\n{b}Benefit:{/b} When you overrun an opponent and your maneuver check exceeds your opponent&#146;s CMD by 5 or more you can make one attack with an unarmed strike or a natural weapon against that opponent as a swift action.\n\n{b}Normal:{/b} When your overrun maneuver check exceeds your opponent's CMD by 5 or more, you move through the target's space and she is knocked prone.{br}{br}{B}Shadow d20:{/b} Changed wording to try and make this feat usuable."]
         Endif
+
+        ~ Heroic Recovery feat and Unchained Poison rules active
+        If (eachthing.tagcountstr["thingid.fHeroicRec"] + hero.tagis[source.PUPoiDis] = 2) Then
+          perform eachthing.amendthing[description,"You can throw off the effects of crippling conditions.{br}{br}{b}Prerequisites{/b}: Diehard, Endurance, base Fortitude save +4.{br}{br}{b}Benefit{/b}: Once per day as a standard action you may attempt a new saving throw against a harmful condition or affliction requiring a Fortitude save that is affecting you. If this save against the affliction fails, there is no additional effect, but a successful save moves you up on the afflication track towards cured. You cannot use this feat to recover from instantaneous effects, effects that do not allow a saving throw, or effects that do not require a Fortitude save.{br}{br}{b}Shadow d20:{/b} This feat adjusted for use with Unchained poison/disease rules."]
+        Endif
+
       nexteach
 
       ~ Fix Cape of Feinting
@@ -691,7 +699,7 @@ version 1.40 - Released May 12, 2013
           perform eachthing.amendthing[description,sText]
         Endif
       nexteach
-      
+
       ~ Add note about easy spellcasting with all shields
       foreach thing in BaseArmor where "ArmorClass.Shield"
         ~ Build text string

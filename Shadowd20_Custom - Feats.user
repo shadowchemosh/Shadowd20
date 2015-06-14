@@ -1716,22 +1716,22 @@ perform hero.assign[Shifter.Feat]]]></eval>
     </thing>
   <thing id="fS2EleFist" name="Elemental Fist" description="You empower your strike with elemental energy.\n\n{b}Prerequisites{/b}: Con 13, Wis 13, Improved Unarmed Strike, base attack bonus +8.\n\n{b}Benefit{/b}: When you use Elemental Strike pick one of the following energy types: acid, cold, electricity, or fire. On a successful hit, the attack deals damage normally plus 1d6 points of damage of the chosen type. You must declare that you are using this feat before you make your attack roll (thus a failed attack roll ruins the attempt). You may attempt an elemental fist attack once per day for every four levels you have attained (see Special), and no more than once per round.\n\n{b}Special{/b}: A monk of the four winds receives Elemental Fist as a bonus feat at 1st level, even if he does not meet the prerequisites. A monk may attempt an Elemental Fist attack a number of times per day equal to his monk level, plus one more time per day for every four levels he has in classes other than monk." compset="Feat" summary="You can add 1d6 energy damage to an attack." replaces="fElemFist" uniqueness="useronce">
     <comment>If the pre-requisites for this get changed, we need to make the appropriate changes in the Dragon Ferocity feat</comment>
-    <fieldval field="abValue"   value="1"/>
-    <fieldval field="abValue2"  value="6"/>
-    <fieldval field="actName"   value="Activate"/>
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue2" value="6"/>
+    <fieldval field="actName" value="Activate"/>
     <usesource source="APG"/>
-    <tag group="Helper"     tag="ShowSpec"/>
-    <tag group="Usage"      tag="Day"/>
-    <tag group="fCategory"  tag="Combat"/>
-    <tag group="fShowWhat"  tag="EnergyBase"/>
-    <tag group="Helper"     tag="ActivMenu"/>
-    <tag group="User"       tag="Activation"/>
-    <tag group="User"       tag="Tracker"/>
-    <tag group="abAction"   tag="None"/>
-    <tag group="abRange"    tag="Personal"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="fShowWhat" tag="EnergyBase"/>
+    <tag group="Helper" tag="ActivMenu"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="abAction" tag="None"/>
+    <tag group="abRange" tag="Personal"/>
     <tag group="abDuration" tag="Attack"/>
-    <tag group="LvNamePar"  tag="DieSizVal2"/>
-    <tag group="LvNamePar"  tag="DieCntVal"/>
+    <tag group="LvNamePar" tag="DieSizVal2"/>
+    <tag group="LvNamePar" tag="DieCntVal"/>
     <bootstrap thing="ctElemFist">
       <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
       </bootstrap>
@@ -1742,16 +1742,14 @@ perform hero.assign[Shifter.Feat]]]></eval>
       var levels as number
       levels = (#totallevelcount[]) - (#levelcount[Monk]) - (#levelcount[Brawler])
 
-      field[trkMax].value += #levelcount[Monk] + #levelcount[Brawler] + round(levels/4,0,-1)
-      ]]></eval>
+      field[trkMax].value += #levelcount[Monk] + #levelcount[Brawler] + round(levels/4,0,-1)]]></eval>
     <eval phase="Final" index="2"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] = 1)
       ~ If we're not activated get out now!
       doneif (field[abilActive].value = 0) 
 
-      #extradamage[hero.childfound[wUnarmed], "+" & field[abValue].value & "d" & field[abValue2].value & " " & field[usrChosen1].chosen.tagnames[BloodEner.?] ,field[name].text]
-      ]]></eval>
+      #extradamage[hero.childfound[wUnarmed], "+" & field[abValue].value & "d" & field[abValue2].value & " " & field[usrChosen1].chosen.tagnames[BloodEner.?] ,field[name].text]]]></eval>
     <prereq message="Constitution 13 required." iserror="no">
       <validate><![CDATA[
         validif (#attrvalue[aCON] >= 13)

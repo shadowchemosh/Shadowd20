@@ -239,43 +239,6 @@
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="CoreCampOK"/>
     </thing>
-  <thing id="wTouchAtta" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
-    <fieldval field="wFixDamage" value="As Spell"/>
-    <usesource source="srcS2Gear"/>
-    <usesource source="srcS2Adjus"/>
-    <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
-    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
-    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
-    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
-    <tag group="wMain" tag="1_1" name="1" abbrev="1"/>
-    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
-    <tag group="Helper" tag="Always2H" name="Always2H" abbrev="Always2H"/>
-    <tag group="Helper" tag="Finesse" name="Finesse" abbrev="Finesse"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="IsWeapon" tag="wTouch"/>
-    <tag group="Helper" tag="CoreCampOK"/>
-    <tag group="PackHelper" tag="Touch"/>
-    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
-    </thing>
-  <thing id="wRangedTou" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
-    <fieldval field="wFixDamage" value="As Spell"/>
-    <fieldval field="wFixRanDam" value="As Spell"/>
-    <usesource source="srcS2Gear"/>
-    <usesource source="srcS2Adjus"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
-    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
-    <tag group="wMain" tag="1_1" name="1" abbrev="1"/>
-    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
-    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
-    <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="wCategory" tag="RangeProj" name="Projectile Weapon" abbrev="Projectile"/>
-    <tag group="IsWeapon" tag="wRay"/>
-    <tag group="Helper" tag="CoreCampOK"/>
-    <tag group="PackHelper" tag="Touch"/>
-    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
-    </thing>
   <thing id="wImp1d4" name="Improvised Weapon" description="This is a generic &quot;improvised Weapon&quot; that can be used to represent anything from a broken bottle to a chair leg.\n\n{B}Note:{/b} To change the damage die size go to the &quot;Adjust&quot; tab, then &quot;Other Adjustments&quot; and add &quot;Weapon Size&quot;.\n\n{B}Note2:{/b} To turn any normal weapon into a Improvised Weapon you can make a custom weapon and add the &quot;Improvised&quot; item power." compset="Weapon">
     <usesource source="srcS2Gear"/>
     <tag group="wSpecial" tag="Improvised"/>

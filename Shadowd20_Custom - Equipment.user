@@ -381,37 +381,6 @@ endif]]></eval>
     <tag group="wClass" tag="TwoHanded"/>
     <tag group="wCritMin" tag="19"/>
     </thing>
-  <thing id="wS2RaTouch" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
-    <fieldval field="wFixRanDam" value="As Spell"/>
-    <usesource source="s20PFCamp"/>
-    <tag group="wCritMin" tag="20"/>
-    <tag group="wCritMult" tag="2"/>
-    <tag group="Helper" tag="Proficient"/>
-    <tag group="Helper" tag="NoDblStr"/>
-    <tag group="Helper" tag="FixSizeDmg"/>
-    <tag group="Helper" tag="NoOutGear"/>
-    <tag group="Helper" tag="GearNoSize"/>
-    <tag group="Shadowd20" tag="TouchWep"/>
-    <tag group="Helper" tag="SingleAtt"/>
-    <tag group="wCategory" tag="RangeProj"/>
-    <tag group="wClass" tag="Light"/>
-    </thing>
-  <thing id="wS2Touch" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
-    <fieldval field="wFixDamage" value="As Spell"/>
-    <usesource source="s20PFCamp"/>
-    <tag group="wClass" tag="Light"/>
-    <tag group="wCritMin" tag="20"/>
-    <tag group="wCritMult" tag="2"/>
-    <tag group="Helper" tag="Proficient"/>
-    <tag group="Helper" tag="NoDblStr"/>
-    <tag group="wCategory" tag="Melee"/>
-    <tag group="Helper" tag="Finesse"/>
-    <tag group="Helper" tag="NoOutGear"/>
-    <tag group="Helper" tag="GearNoSize"/>
-    <tag group="Helper" tag="FixSizeDmg"/>
-    <tag group="Shadowd20" tag="TouchWep"/>
-    <tag group="Helper" tag="SingleAtt"/>
-    </thing>
   <thing id="wS2ScimDbl" name="Scimitar, Osirion Double" description="The people of osirion use a dangerous and exotic double weapon with curving scimitar blades on each end. You can fight with a double weapon as if fighting with two weapons, but if you do, you incur all the normal attack penalties as if using a one-handed weapon and a light weapon. A creature using a double weapon in one hand, such as a Large creature using a Medium double scimitar, can’t use it as a double weapon." compset="Weapon">
     <fieldval field="gSizeCost" value="125"/>
     <fieldval field="gWeight" value="10"/>
@@ -507,56 +476,55 @@ endif]]></eval>
     <comment><![CDATA[Now acts like a light weapon for purpsoses of TWF when "Shadow d20" is turned on.]]></comment>
     <fieldval field="gSizeCost" value="15"/>
     <fieldval field="gWeight" value="4"/>
-    <tag group="wCritMin" tag="18" name="18" abbrev="18"/>
-    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
-    <tag group="wFtrGroup" tag="BladeHeavy" name="Blades, Heavy" abbrev="Blades, Heavy"/>
-    <tag group="wGroup" tag="cHelpDrd" name="Druid" abbrev="Druid"/>
-    <tag group="wMain" tag="1d6_5" name="1d6" abbrev="1d6"/>
-    <tag group="wProfReq" tag="Martial" name="Martial" abbrev="Martial"/>
-    <tag group="wType" tag="S" name="Slashing" abbrev="S"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
-    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
-    <tag group="wClass" tag="OneHanded" name="One-Handed" abbrev="One-Handed"/>
+    <tag group="wCritMin" tag="18"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wFtrGroup" tag="BladeHeavy"/>
+    <tag group="wGroup" tag="cHelpDrd"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wProfReq" tag="Martial"/>
+    <tag group="wType" tag="S"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wClass" tag="OneHanded"/>
     <eval phase="PreLevel" priority="4500"><![CDATA[
-~ If Shadow d20 not activated, don't do anything
-doneif (hero.tagis[source.s20PFCamp] <> 1)
+      ~ If Shadow d20 not activated, don't do anything
+      doneif (hero.tagis[source.s20PFCamp] <> 1)
 
-perform assign[Helper.TwoWpLight]
+      perform assign[Helper.TwoWpLight]
 
-~ If we're a custom/magic weapon, we need to alter our parent, too
-if (container.ishero = 0) then
-   perform container.parent.assign[Helper.TwoWpLight]
-endif]]></eval>
+      ~ If we're a custom/magic weapon, we need to alter our parent, too
+      if (container.ishero = 0) then
+         perform container.parent.assign[Helper.TwoWpLight]
+      endif]]></eval>
     </thing>
   <thing id="wS2EldBlas" name="Eldritch Blast" description="A warlock attacks his foes with eldritch power, using baleful magical energy to deal damage and sometimes impart other debilitating effects." compset="Weapon">
     <usesource source="s20PFCamp"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCritMult" tag="2"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wRangeInc" tag="60"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="IsWeapon" tag="wRay"/>
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="NoDblStr"/>
     <tag group="Helper" tag="FixSizeDmg"/>
     <tag group="Helper" tag="NoOutGear"/>
     <tag group="Helper" tag="GearNoSize"/>
-    <tag group="wClass" tag="Light"/>
     <tag group="Helper" tag="Helper"/>
-    <tag group="wRangeInc" tag="60"/>
     <tag group="Helper" tag="SingleAtt"/>
-    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="PackHelper" tag="Touch"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <tag group="Shadowd20" tag="TouchWep"/>
     <bootstrap thing="abS2EldBla"></bootstrap>
-    <eval phase="PostAttr" priority="10000" index="2">~ Give a Int bonus to the Eldritch Blast Weapon
-field[wDamBonus].value += #attrmod[aINT]</eval>
+    <eval phase="PostAttr" priority="10000" index="2">
+      ~ Give a Int bonus to the Eldritch Blast Weapon
+      field[wDamBonus].value += #attrmod[aINT]</eval>
     <eval phase="Final" priority="11000"><![CDATA[
-~ Set the Fix Ranged Damage amount text
-field[wFixRanDam].text = #value[abS2EldBla] & "d" & #value2[abS2EldBla] & signed(field[wDamBonus].value + field[dmrBonus].value)
+      ~ Set the Fix Ranged Damage amount text
+      field[wFixRanDam].text = #value[abS2EldBla] & "d" & #value2[abS2EldBla] & signed(field[wDamBonus].value + field[dmrBonus].value)
 
-~ Remove any extra high tags
-perform delete[Helper.ExtraHigh]
-
-~ Temp fix for problems in v8.0
-~field[wAttMelee].value = field[wRanAtk].value
-~field[wAttack].value = field[wRanAtk].value]]></eval>
+      ~ Remove any extra high tags
+      perform delete[Helper.ExtraHigh]
+      ]]></eval>
     </thing>
   <thing id="wS2BoarAxe" name="Axe, Boarding" description="Basically a hand axe with a backwardpointing spike, a boarding axe is used to chop through hatches or rigging, to drag burning debris off a ship, or as a weapon. A boarding axe is a one-handed martial weapon that uses the same statistics as a handaxe, except it deals slashing or piercing damage. In addition, the spike grants a +2 circumstance bonus on Climb checks on wooden surfaces." compset="Weapon">
     <fieldval field="gSizeCost" value="6"/>

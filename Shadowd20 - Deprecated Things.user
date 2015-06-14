@@ -1189,7 +1189,37 @@ Hidden]]></comment>
       hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <exprreq message="You need to be at least a 3rd level Ranger take this feat." iserror="no"><![CDATA[#levelcount[Ranger] >= 3]]></exprreq>
     </thing>
-
+  <thing id="wS2RaTouch" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
+    <fieldval field="wFixRanDam" value="As Spell"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="Helper" tag="FixSizeDmg"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="Shadowd20" tag="TouchWep"/>
+    <tag group="Helper" tag="SingleAtt"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="wClass" tag="Light"/>
+    </thing>
+  <thing id="wS2Touch" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
+    <fieldval field="wFixDamage" value="As Spell"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="Helper" tag="Finesse"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="Helper" tag="FixSizeDmg"/>
+    <tag group="Shadowd20" tag="TouchWep"/>
+    <tag group="Helper" tag="SingleAtt"/>
+    </thing>
 
 
 
@@ -1233,4 +1263,8 @@ Hidden]]></comment>
   <hidden id="fS2TerrExp"/>
   <hidden id="fS2FavEne"/>
   <hidden id="fS2FavTerr"/>
+  <hidden id="wS2Touch"/>
+  <hidden id="wS2RaTouch"/>
+
+
 </document>

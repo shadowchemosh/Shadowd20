@@ -3804,7 +3804,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="p1wTouch2" name="Weapon: Touch, Ranged" description="Use this adjustment to select your &quot;Ranged Touch Attack&quot; weapon and whatever you type into the (source) section will get displayed instead of &quot;As Spell&quot; for damage. This allows you to setup a Ranged Touch Attack that matches to a domain power or other class ability." compset="InPlay">
-    <fieldval field="pCandExpr" value="thingid.wRangedTou"/>
+    <fieldval field="pCandExpr" value="PackHelper.Touch &amp; wCategory.RangeProj"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
@@ -3819,7 +3819,7 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[wFixRanDam].text = field[pSource].text]]></eval>
     </thing>
   <thing id="p1wTouch1" name="Weapon: Touch" description="Use this adjustment to select your &quot;Touch Attack&quot; weapon and whatever you type into the (source) section will get displayed instead of &quot;As Spell&quot; for damage. This allows you to setup a Touch Attack that matches to a domain power or other class ability." compset="InPlay">
-    <fieldval field="pCandExpr" value="thingid.wTouchAtta"/>
+    <fieldval field="pCandExpr" value="PackHelper.Touch &amp; wCategory.Melee"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="S2Custom"/>
