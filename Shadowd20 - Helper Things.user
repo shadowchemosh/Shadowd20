@@ -683,7 +683,7 @@ version 1.40 - Released May 12, 2013
           perform eachthing.amendthing[description,"{b}Prerequisites:{/b} Str 13, Power Attack, Improved Overrun, base attack bonus +1.\n\n{b}Benefit:{/b} When you overrun an opponent and your maneuver check exceeds your opponent&#146;s CMD by 5 or more you can make one attack with an unarmed strike or a natural weapon against that opponent as a swift action.\n\n{b}Normal:{/b} When your overrun maneuver check exceeds your opponent's CMD by 5 or more, you move through the target's space and she is knocked prone.{br}{br}{B}Shadow d20:{/b} Changed wording to try and make this feat usuable."]
         Endif
 
-        ~ Heroic Recovery feat and Unchained Poison rules active
+        ~ Heroic Recovery feat and Unchained Poison rules active dd
         If (eachthing.tagcountstr["thingid.fHeroicRec"] + hero.tagis[source.PUPoiDis] = 2) Then
           perform eachthing.amendthing[description,"You can throw off the effects of crippling conditions.{br}{br}{b}Prerequisites{/b}: Diehard, Endurance, base Fortitude save +4.{br}{br}{b}Benefit{/b}: Once per day as a standard action you may attempt a new saving throw against a harmful condition or affliction requiring a Fortitude save that is affecting you. If this save against the affliction fails, there is no additional effect, but a successful save moves you up on the afflication track towards cured. You cannot use this feat to recover from instantaneous effects, effects that do not allow a saving throw, or effects that do not require a Fortitude save.{br}{br}{b}Shadow d20:{/b} This feat adjusted for use with Unchained poison/disease rules."]
         Endif
