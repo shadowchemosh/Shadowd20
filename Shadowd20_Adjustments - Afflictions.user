@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Author:  Tim Shadow
+      Email: shadowchemosh@yahoo.com</info_author>
+    <info_history/>
+    </fileinfo>
+  <thing id="affS2StrPo" name="Strength Poison (Shadow d20)" description="{b}Shadow d20{/b} The encumbrance divided by 3 has been removed.  The medium/heavy load is already bad enough." compset="Affliction">
+    <arrayval field="affDesc" index="0" value="Weakened"/>
+    <arrayval field="affDesc" index="1" value="Impaired"/>
+    <arrayval field="affDesc" index="2" value="Staggered"/>
+    <arrayval field="affDesc" index="3" value="Imobile"/>
+    <arrayval field="affDesc" index="4" value="Dead"/>
+    <arrayval field="affText" index="0" value="A character weakened by Strength poison suffers a –2 penalty on Strength-based attack rolls, damage rolls, skill checks, and ability checks. She is always considered to be carrying at least a medium load."/>
+    <arrayval field="affText" index="1" value="A character impaired by Strength poison experiences rapid muscle atrophy. She takes an additional –2 penalty on the affected Strength-based rolls, and is always considered to be carrying at least a heavy load."/>
+    <arrayval field="affText" index="2" value="A character staggered by Strength poison is so weakened that she suffers the effects of the staggered condition (except she can take a full-round action if it is purely mental)."/>
+    <arrayval field="affText" index="3" value="A character rendered immobile by Strength poison cannot move her body at all. She is helpless and can take only purely mental actions."/>
+    <arrayval field="affText" index="4" value="All the character’s muscles cease functioning, including the heart."/>
+    <usesource source="s20PFCamp"/>
+    <usesource source="PUPoiDis"/>
+    <tag group="OthAdjCat" tag="Poison"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="UserPreLv" priority="9000">
+      doneif (field[pIsOn].value = 0)
+      call PoisStr1</eval>
+    <eval phase="PostAttr" priority="1100" index="2"><![CDATA[
+      doneif (field[pIsOn].value = 0)
+      ~call PoisStr3
+      if (field[affStage].value >= 1) then
+        perform hero.assign[Hero.HeavyLoad]
+      else
+        perform hero.assign[Hero.MedLoad]
+      endif]]>
+      <before name="Encumber Final"/>
+      <after name="Encumber Value"/>
+      </eval>
+    <eval phase="PostAttr" priority="60100" index="3">
+      doneif (field[pIsOn].value = 0)
+      call PoisStr2</eval>
+    </thing>
+  </document>
