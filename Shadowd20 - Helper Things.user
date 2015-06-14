@@ -296,34 +296,55 @@ version 1.40 - Released May 12, 2013
     </fileinfo>
   <thing id="mecS20" name="Shadow d20 Mechanic" description="Shadow d20 Potions &amp; Scrolls\nShadow d20 Wondrous Items\nShadow d20 Rods\nShadow d20 Rogue Skill Tricks\nShadow d20 Teamwork feats\nShadow d20 Fix X-bows\nShadow d20 Two-Handed Weapons\nShadow d20 Casting Time change\nShadow d20 Spell bonus damage\nShadow d20 Mythic Text Changes\n\n--Tags--\nwRangeInc.250 - 250ft range increment tag" compset="Mechanics">
     <usesource source="pShadowd20"/>
-    <tag group="wRangeInc" tag="250"/>
-    <tag group="ProductId" tag="Shadowd20" name="Shadow d20"/>
-    <tag group="Usage" tag="S2Encount" name="/encounter"/>
-    <tag group="abCategory" tag="S2Warlock" name="Warlock Hex" abbrev="Hex"/>
+    <tag group="wRangeInc"  tag="250"/>
+    <tag group="ProductId"  tag="Shadowd20"  name="Shadow d20"/>
+    <tag group="Usage"      tag="S2Encount"  name="/encounter"/>
+    <tag group="abCategory" tag="S2Warlock"  name="Warlock Hex" abbrev="Hex"/>
     <tag group="abCategory" tag="S2WolfFaSt" name="Barbarian(Wolf Fang Strike Totem)" abbrev="Wolf Fang Strike"/>
-    <tag group="abCategory" tag="S2RogSkTr" name="Rogue Skill Trick"/>
-    <bootstrap thing="S2TwoHand"></bootstrap>
-    <bootstrap thing="s20ActPoin"></bootstrap>
-    <bootstrap thing="s20SpellCo"></bootstrap>
-    <bootstrap thing="s20TWF"></bootstrap>
+    <tag group="abCategory" tag="S2RogSkTr"  name="Rogue Skill Trick"/>
+
+    <!-- Combat and weapons -->
+    <bootstrap thing="S2TwoHand"></bootstrap>  <!-- Power Attack and 2H weapons don't get 1.5x Str until level 6 -->
+    <bootstrap thing="s20SpellCo"></bootstrap> <!-- TWF for Magus and Touch Attack weapon -->
+    <bootstrap thing="s20TWF"></bootstrap>     <!-- TWF no longer gives -2 to hit -->
+
+    <!-- Make these items put in a Item ID Text -->
     <bootstrap thing="s20Potions"></bootstrap>
-    <bootstrap thing="s20CastTim"></bootstrap>
-    <bootstrap thing="s20SpelDmg"></bootstrap>
-    <bootstrap thing="s20SkillPo"></bootstrap>
-    <bootstrap thing="s20Wondrou"></bootstrap>
-    <bootstrap thing="s20MiscTxt"></bootstrap>
-    <bootstrap thing="s20Rogue"></bootstrap>
-    <bootstrap thing="s20MythTxt"></bootstrap>
     <bootstrap thing="s20Rods"></bootstrap>
-    <bootstrap thing="s20Rogue2"></bootstrap>
-    <bootstrap thing="S20Teamwor"></bootstrap>
+    <bootstrap thing="s20Wondrou"></bootstrap>
+
+    <!-- Misc Changes -->
+    <bootstrap thing="s20ActPoin"></bootstrap> <!-- NPCs Action Points are zero -->
+    <bootstrap thing="s20SkillPo"></bootstrap> <!-- Specific classes get bonus skill points -->
+    <bootstrap thing="s20MiscTxt"></bootstrap> <!-- Update Things with Shadow d20 house rule notes -->
+    <bootstrap thing="s20MythTxt"></bootstrap> <!-- Update Mythic Things with Shadow d20 house rule notes -->
+    <bootstrap thing="S20Teamwor"></bootstrap> <!-- House rule note for Team Work feats -->
+
+    <!-- Spell Casting -->
+    <bootstrap thing="s20CastTim"></bootstrap> <!-- 1 round spells are Full-Round spells -->
+    <bootstrap thing="s20SpelDmg"></bootstrap> <!-- Give Spells bonus damage --> 
+
+    <!-- Rogue Class Changes -->
+    <bootstrap thing="s20Rogue"></bootstrap>   <!-- Rogue class gets Skill Tricks. Unchained does NOT. -->
+    <bootstrap thing="s20Rogue2"></bootstrap>  <!-- Rogue and Unchained Rogue Talents are usuable per encounter not day -->
+
+    <!-- This gives an option where XP is not needed -->
     <bootstrap thing="s20NoXP"></bootstrap>
+    
     <eval phase="First" priority="10000">~ If not human get out now
       ~#hasrace[rHuman] + #hasrace[rElf] + #hasrace[rDwarf] +
       doneif (#hasrace[rHalfling] = 0)
 
       Call GiveEthnic</eval>
     </thing>
+
+  <thing id="creaMedium" name="Medium Fantasy" compset="Creation">
+    <fieldval field="creaName" value="Point Buy: Shadow d20, 22"/>
+    <fieldval field="creaAttPts" value="22"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="explicit" tag="70" name="70" abbrev="70"/>
+    </thing>
+
   <thing id="s20Potions" name="Shadow d20 Potions, Scrolls, and Wands" description="Change all potions, scrolls, and Wand on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
     <usesource source="srcPotID"/>
     <eval phase="First"><![CDATA[
@@ -342,30 +363,6 @@ version 1.40 - Released May 12, 2013
          perform eachpick.assign[User.NeedDomain]
       nexteach]]></eval>
     </thing>
-  <thing id="s20Rogue" name="Shadow d20 Rogue Skill Tricks" description="Give rogue Skill Tricks starting at level 1. Also change any rogue talents from 1/day to 1/encounter" compset="Simple" uniqueness="useronce">
-    <usesource source="s20PFCamp"/>
-    <eval phase="PostLevel" priority="10000"><![CDATA[
-      ~ Done if no rogue class found
-      doneif (hero.childlives[cHelpRog] = 0)
-      var tricks as number
-      tricks = maximum(round(#levelcount[Rogue]/2,0,1),1)
-
-      ~ Give 1 point to the Secondary Class Abilities total
-      hero.child[cHelpRog].field[cGiveSp2nd].value += tricks
-
-      ~ Change all the rogue talents to per encounter instead per day
-      foreach pick in hero from BaseCustSp where "Usage.Day & CustTaken.cHelpRog"
-        perform eachpick.delete[Usage.?]
-        perform eachpick.assign[Usage.S2Encount]
-      nexteach]]></eval>
-    <eval phase="Render" priority="100000" index="2"><![CDATA[
-      ~ Done if no rogue class found
-      doneif (hero.childlives[cHelpRog] = 0)
-
-      ~ Give name of Skill Tricks
-      hero.child[cHelpRog].field[cSpec2ndNm].text = "Skill Tricks"
-      hero.child[cHelpRog].field[cSpec2ndSi].text = "Skill Trick"]]></eval>
-    </thing>
   <thing id="s20Rods" name="Shadow d20 Rods" description="Change all rod items on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="First"><![CDATA[
@@ -374,6 +371,51 @@ version 1.40 - Released May 12, 2013
          perform eachpick.assign[User.NeedDomain]
       nexteach]]></eval>
     </thing>
+
+
+
+
+  <thing id="s20Rogue" name="Shadow d20 Rogue Skill Tricks" description="Give rogue Skill Tricks starting at level 1. Also change any rogue talents from 1/day to 1/encounter" compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Done if no rogue class found
+      if (hero.childlives[cHelpRog] = 1)
+        ~ Give 1 point to the Secondary Class Abilities total
+        hero.child[cHelpRog].field[cGiveSp2nd].value += maximum(round(#levelcount[Rogue]/2,0,1),1)
+      endif  
+
+      ~ Change all the rogue talents to per encounter instead per day
+      foreach pick in hero from BaseCustSp where "Usage.Day & abCategory.RogTal?"
+        perform eachpick.delete[Usage.?]
+        perform eachpick.assign[Usage.S2Encount]
+      nexteach
+      ]]></eval>
+    <eval phase="Render" priority="100000" index="2"><![CDATA[
+      ~ Done if no rogue class found
+      doneif (hero.childlives[cHelpRog] = 0)
+
+      ~ Give name of Skill Tricks
+      hero.child[cHelpRog].field[cSpec2ndNm].text = "Skill Tricks"
+      hero.child[cHelpRog].field[cSpec2ndSi].text = "Skill Trick"]]></eval>
+    </thing>
+
+  <thing id="s20Rogue2" name="Shadow d20 Rogue 1/day to 1/Encounter TEXT addition" description="All one time a day rogue abilities are being changed to 1/day." compset="Simple" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <eval phase="Render" priority="200"><![CDATA[
+      ~ Set text fields
+      var sText   as string
+      var sChange as string
+
+      sChange = "{b}Shadow d20:{/b} Rogue talents usable 1/day are changed to 1/encounter. Final say of a encounter definition is left in the hands of the DM. It takes 1 minute after the encounter to recover this talent."
+
+      foreach thing in BaseCustSp where "Usage.Day & abCategory.RogTal?"
+        ~ Build text string
+        sText = eachthing.field[descript].text & "{br}{br}" & sChange
+        ~ Set message
+        perform eachthing.amendthing[description,sText]  
+      nexteach]]></eval>
+    </thing>
+
   <thing id="S20Teamwor" name="Shadow d20 Teamwork Feats" description="Add extra house rules text to all teamwork feats.  Most of the teamwork feats we are allowing them to be used within 30ft of each other." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="Render" priority="200"><![CDATA[
@@ -397,6 +439,7 @@ version 1.40 - Released May 12, 2013
         perform eachthing.amendthing[description,sText]  
       nexteach]]></eval>
     </thing>
+
   <thing id="S2TwoHand" name="Shadow d20 Two-Handed Weapons" compset="Simple" uniqueness="useronce">
     <usesource source="srcTHW"/>
     <eval phase="PostAttr" priority="200000"><![CDATA[
@@ -452,6 +495,7 @@ version 1.40 - Released May 12, 2013
 
       nexteach]]></eval>
     </thing>
+
   <thing id="s20ActPoin" name="Shadow d20 Action Points" description="This sets the action points for NPCs to be zero." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="PostLevel" priority="10010"><![CDATA[
@@ -465,6 +509,7 @@ version 1.40 - Released May 12, 2013
 
       #appenddesc[hActionPts,"{b}Shadow d20:{/b} NPCs do not gain any APs unless they take the Heroic Spirit feat"]]]></eval>
     </thing>
+
   <thing id="s20SpellCo" name="Shadow d20 Magus Spell-Combat" description="Correctly has HL calculate the TWF values of a Magus with a weapon and &quot;Touch Attack&quot;." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
@@ -507,6 +552,7 @@ version 1.40 - Released May 12, 2013
         Endif
       Endif]]></eval>
     </thing>
+
   <thing id="s20TWF" name="Shadow d20 Two-Weapon Fighting" compset="Simple" uniqueness="useronce">
     <usesource source="srcTWF"/>
     <eval phase="PreLevel" priority="11000"><![CDATA[
@@ -559,6 +605,7 @@ version 1.40 - Released May 12, 2013
       ~ If we passed the above tests set the Shadow d20 Two-Weapon Fighting Tag
       perform hero.assign[Shadowd20.TwoWep]]]></eval>
     </thing>
+
   <thing id="s20CastTim" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters." compset="Simple" uniqueness="useronce">
     <usesource source="srcNo1Rnd"/>
     <bootstrap thing="s2Info1Rou"></bootstrap>
@@ -568,6 +615,7 @@ version 1.40 - Released May 12, 2013
         perform eachpick.tagreplace[sCastTime.Round1,sCastTime.FullAction]
       nexteach]]></eval>
     </thing>
+
   <thing id="s2Info1Rou" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before." compset="Ability" summary="1 round casting time spells are now 1 Full-Round action instead.">
     <usesource source="srcNo1Rnd"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -577,6 +625,7 @@ version 1.40 - Released May 12, 2013
          perform assign[Helper.ShowSpec]
       Endif]]></eval>
     </thing>
+
   <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a bonus on damage equal to your caster level. This should help some with how little damage spellcasters do vs melee characters." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a bonus on damage.">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -587,7 +636,8 @@ version 1.40 - Released May 12, 2013
       ~ Show us
       perform assign[Helper.ShowSpec]</eval>
     </thing>
-  <thing id="s20SpelDmg" name="Shadow d20 Spell Damage" description="Just show a info about spell damage bonus if your arcane or divine caster." compset="Simple" uniqueness="useronce">
+
+  <thing id="s20SpelDmg" name="Shadow d20 Spell Damage" description="Just show info about spell damage bonus if your arcane or divine caster." compset="Simple" uniqueness="useronce">
     <usesource source="srcSpelDmg"/>
     <bootstrap thing="s2InfoSpDm"></bootstrap>
     <eval phase="PostLevel" priority="15000"><![CDATA[
@@ -639,6 +689,7 @@ version 1.40 - Released May 12, 2013
         eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell does hit point damage it gains a bonus equal to your caster level (" & signed(eachpick.field[sCL].value) & ")."  
       nexteach]]></eval>
     </thing>
+
   <thing id="s20SkillPo" name="Shadow d20 Increase Class Skill Points" description="Give an increase to some class skill points.\n\n-Clerics increased by 2 per level." compset="Simple">
     <usesource source="pShadowd20"/>
     <eval phase="First" priority="1000"><![CDATA[
@@ -648,12 +699,7 @@ version 1.40 - Released May 12, 2013
          hero.child[cHelpClr].field[cSkills].value += 2
       Endif]]></eval>
     </thing>
-  <thing id="creaMedium" name="Medium Fantasy" compset="Creation">
-    <fieldval field="creaName" value="Point Buy: Shadow d20, 22"/>
-    <fieldval field="creaAttPts" value="22"/>
-    <usesource source="s20PFCamp"/>
-    <tag group="explicit" tag="70" name="70" abbrev="70"/>
-    </thing>
+
   <thing id="s20MiscTxt" name="Shadow d20 Misc Text Changes" description="This Thing sets the text desc on Things with house rules text." compset="Simple">
     <usesource source="s20PFCamp"/>
     <eval phase="Render" priority="200"><![CDATA[
@@ -709,22 +755,9 @@ version 1.40 - Released May 12, 2013
       nexteach            
       ]]></eval>
     </thing>
-  <thing id="s20Rogue2" name="Shadow d20 Rogue 1/day to 1/Encounter TEXT addition" description="All one time a day rogue abilities are being changed to 1/day." compset="Simple" uniqueness="useronce">
-    <usesource source="s20PFCamp"/>
-    <eval phase="Render" priority="200"><![CDATA[
-      ~ Set text fields
-      var sText   as string
-      var sChange as string
+    
 
-      sChange = "{b}Shadow d20:{/b} Rogue talents usable 1/day are changed to 1/encounter. Final say of a encounter definition is left in the hands of the DM. It takes 1 minute after the encounter to recover this talent."
-
-      foreach thing in BaseCustSp where "Usage.Day & SpecSource.cHelpRog"
-        ~ Build text string
-        sText = eachthing.field[descript].text & "{br}{br}" & sChange
-        ~ Set message
-        perform eachthing.amendthing[description,sText]  
-      nexteach]]></eval>
-    </thing>
+    
   <thing id="s20Tracker" name="Shadow d20 Tracker Reset to Max" description="Set all trackers and action points to reset to Max instead of 0. This way a wand will be 50/50 instead of 50/50." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -733,6 +766,7 @@ version 1.40 - Released May 12, 2013
         perform eachpick.assign[Helper.ResetMax]
       nexteach]]></eval>
     </thing>
+    
   <thing id="trkS2APs" name=" Action Points" description="A beginning (1st-level) character starts the game with 5 action points. A character above 1st level starts the game with a number of action points equal to 5 + 1/2 his current character level. Every time a character advances, he gains a number of action points equal to 5 + 1/2 his new character level.\n\nWhen you spend 1 action point to improve a d20 roll, you add the result of a 1d6 to your d20 roll (including attack rolls, saves, checks, or any other roll of a d20) to help you meet or exceed the target number. You can declare the use of 1 action point to alter a d20 roll after the roll is made, but only before the GM reveals the result of that roll. You can’t use an action point to alter the result of a d20 roll when you are taking 10 or taking 20.\n\nDepending on character level, a character might be able to roll more than one d6 when he spends an action point. If so, apply the highest result and disregard the other rolls. A 15th-level character, for instance, gets to roll 3d6 and take the best result of the three. So, if he rolled a 1, 2, and 4, he would apply the 4 to his d20 roll. \n\n{B}1st-7th{/b} 1d6\n{B}8th-14th{/b} 2d6\n{B}15th-20th{/b} 3d6" compset="Tracker" replaces="hActionPts" uniqueness="useronce">
     <fieldval field="trkMax" value="5"/>
     <usesource source="OptAction"/>
@@ -758,16 +792,14 @@ version 1.40 - Released May 12, 2013
       ~ Set livename
       field[livename].text = field[name].text & " " & dice & "d6"]]></eval>
     </thing>
-  <thing id="trS2Traini" name="Training" compset="Trait" isshowonly="yes">
-    <usesource source="s20PFCamp"/>
-    <tag group="trCategory" tag="Training"/>
-    <tag group="Helper" tag="ShowSpec"/>
-    </thing>
+    
   <thing id="s20NoXP" name="Shadow d20 No XP" description="This helper script prevents the need of using XP on level up." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="PostAttr" priority="5000">~ This tag tells HL to not use XP!
       perform hero.assign[Hero.NoAdvance]</eval>
     </thing>
+
+
   <hidden id="fKQImpDA"/>
   <hidden id="fKQAddFavE"/>
   <hidden id="fKQAddFavT"/>
