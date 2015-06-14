@@ -4212,8 +4212,7 @@ call S2SetName]]></eval>
     <tag group="Adjustment" tag="Class"/>
     <tag group="OthAdjCat" tag="Class"/>
     <tag group="Helper" tag="NoIncr"/>
-    <eval phase="PostLevel" priority="10000">
-      ~ Select Class Things
+    <eval phase="PostLevel" priority="10000">~ Select Class Things
       field[pUsePicks].value = 0
       ~ Select Animal Companion Picks
       field[pUsePicks2].value = 1</eval>
@@ -4228,5 +4227,21 @@ call S2SetName]]></eval>
 
       ~ Push the Class Companion List to the animal companion
       perform hero.findchild[BaseComp,"Race.AnimComp"].pushtags[CompList.?]]]></eval>
+    </thing>
+  <thing id="pS2FtPreRe" name="Feat, Pre-Req Valid" description="Use this adjustment to be able to make any feat on your character into a valid feat.  In example if you add feat that has validation errors for prerequisites you can select that feat from the drop down and it will not longer be invalid." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.BaseFeat"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="FeatTrait"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="500"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen = 0)
+
+      perform field[pChosen].chosen.assign[thing.skipprereq]]]></eval>
     </thing>
   </document>
