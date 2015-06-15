@@ -27,7 +27,15 @@
     </source>
   <source
     id="srcTHW"
-    name="Two-Handed Weapons receive 1.0x Str dmg"
+    name="2H Weapons do 1x Str dmg until level 6"
+    selectable="yes"
+    parent="HouseRules"
+    sortorder="0"
+    description="Two-Handed weapons will no longer get to apply the one-half strength damage bonus and power attack will no longer provide a +3 bonus to damage until level 6.">
+    </source>
+  <source
+    id="srcTHW2"
+    name="2H Weapons do 1x Str dmg always"
     selectable="yes"
     parent="HouseRules"
     sortorder="0"

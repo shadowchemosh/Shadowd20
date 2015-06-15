@@ -379,7 +379,7 @@ version 1.40 - Released May 12, 2013
     <usesource source="s20PFCamp"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ Done if no rogue class found
-      if (hero.childlives[cHelpRog] = 1)
+      if (hero.childlives[cHelpRog] = 1) then
         ~ Give 1 point to the Secondary Class Abilities total
         hero.child[cHelpRog].field[cGiveSp2nd].value += maximum(round(#levelcount[Rogue]/2,0,1),1)
       endif  
@@ -440,11 +440,18 @@ version 1.40 - Released May 12, 2013
       nexteach]]></eval>
     </thing>
 
+  <!-- ============================================================================================= -->
+  <!-- Two-Handed Weapons                                                                            -->
+  <!-- ============================================================================================= -->
   <thing id="S2TwoHand" name="Shadow d20 Two-Handed Weapons" compset="Simple" uniqueness="useronce">
     <usesource source="srcTHW"/>
+    <usesource source="srcTHW2"/>
     <eval phase="PostAttr" priority="200000"><![CDATA[
-      ~ If level is 6 or greater then get out now
-      doneif (#totallevelcount[] >= 6)
+      if (hero.tagis[source.srcTHW] = 1) then
+        ~ If level is 6 or greater then get out now
+        doneif (#totallevelcount[] >= 6)
+      endif
+
       var penalty as number
       var nPower  as number
 
@@ -469,10 +476,10 @@ version 1.40 - Released May 12, 2013
 
         ~ Are we a natural attack
         If (eachpick.tagis[wGroup.Natural] <> 0) Then
-        ~ And we are a PC then remove the two-handed tag
-        If (hero.tagis[CharType.typHero] <> 0) Then
-          perform eachpick.delete[Helper.NatTwoHand]
-        Endif
+          ~ And we are a PC then remove the two-handed tag
+          If (hero.tagis[CharType.typHero] <> 0) Then
+            perform eachpick.delete[Helper.NatTwoHand]
+          Endif
 
         ~...we are a one handed weapon equipped in two hands
         ElseIf (eachpick.tagis[wClass.OneHanded] + eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value = 3) Then
@@ -487,13 +494,14 @@ version 1.40 - Released May 12, 2013
             eachpick.field[wDamBonus].value += penalty
           Endif
 
-          ~...we are a two-handed weapon
-          ElseIf (eachpick.tagis[wClass.TwoHanded] <> 0) Then
-            ~ Give a penalty to offset the 1.5 Str damage
-            eachpick.field[wDamBonus].value += penalty
-          Endif
+        ~...we are a two-handed weapon
+        ElseIf (eachpick.tagis[wClass.TwoHanded] <> 0) Then
+          ~ Give a penalty to offset the 1.5 Str damage
+          eachpick.field[wDamBonus].value += penalty
+        Endif
 
-      nexteach]]></eval>
+      nexteach
+      ]]></eval>
     </thing>
 
   <thing id="s20ActPoin" name="Shadow d20 Action Points" description="This sets the action points for NPCs to be zero." compset="Simple" uniqueness="useronce">
@@ -507,7 +515,8 @@ version 1.40 - Released May 12, 2013
       ~ Set action points to zero if we are a NPC
       #trkmax[hActionPts] = 0
 
-      #appenddesc[hActionPts,"{b}Shadow d20:{/b} NPCs do not gain any APs unless they take the Heroic Spirit feat"]]]></eval>
+      #appenddesc[hActionPts,"{b}Shadow d20:{/b} NPCs do not gain any APs unless they take the Heroic Spirit feat"]
+      ]]></eval>
     </thing>
 
   <thing id="s20SpellCo" name="Shadow d20 Magus Spell-Combat" description="Correctly has HL calculate the TWF values of a Magus with a weapon and &quot;Touch Attack&quot;." compset="Simple" uniqueness="useronce">
@@ -550,7 +559,8 @@ version 1.40 - Released May 12, 2013
              Endif
           nexteach
         Endif
-      Endif]]></eval>
+      Endif
+      ]]></eval>
     </thing>
 
   <thing id="s20TWF" name="Shadow d20 Two-Weapon Fighting" compset="Simple" uniqueness="useronce">
@@ -615,7 +625,6 @@ version 1.40 - Released May 12, 2013
         perform eachpick.tagreplace[sCastTime.Round1,sCastTime.FullAction]
       nexteach]]></eval>
     </thing>
-
   <thing id="s2Info1Rou" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before." compset="Ability" summary="1 round casting time spells are now 1 Full-Round action instead.">
     <usesource source="srcNo1Rnd"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -636,7 +645,6 @@ version 1.40 - Released May 12, 2013
       ~ Show us
       perform assign[Helper.ShowSpec]</eval>
     </thing>
-
   <thing id="s20SpelDmg" name="Shadow d20 Spell Damage" description="Just show info about spell damage bonus if your arcane or divine caster." compset="Simple" uniqueness="useronce">
     <usesource source="srcSpelDmg"/>
     <bootstrap thing="s2InfoSpDm"></bootstrap>
@@ -719,6 +727,10 @@ version 1.40 - Released May 12, 2013
       ~ Lore Skill from Unchained not as specific.
       #appenddesc[skLorOther,"{b}Shadow d20:{/b} Lore is changed to only be a little specific but NOT as restrictive as the book. Listed below are some new valid examples for what you could pick with Lore.{br}{br}-For gods list up to three gods.{br}-Any City, Town, Village regardless of size and know all areas of that location.{br}-Elves, Dwarves, Orcs, Half-Orcs, Goblins, or other specific race. But you can't say 'Humanoids'.{br}-Undead, Dragons, Aberrations, Devils, Demons, Lycanthrops, or other broad single Creature Type. So again you can't say 'Outsider (Evil)' but can list Devil or Demon."]
 
+      ~ Unchained poison note on Heal Skill
+      if (hero.tagis[source.PUPoiDis] = 1) then
+        #appenddesc[skHeal,"{b}Unchained:{/b} For every day of bed rest (or 2 nights of normal rest), a victim recovers one step; this recovery is doubled as normal by Heal checks, and tenacious poisons might require a longer recovery period."]
+      endif
 
       var sText as string
 
