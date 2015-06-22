@@ -345,11 +345,6 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
       ~Add to our new  Shadow d20 SubSkill
       #skillbonus[skS2SurvTr] += field[abValue].value]]></eval>
     </thing>
-  <thing id="cPalS2DEvi" name="Detect Evil" description="At will, a paladin can use detect evil, as the spell. A paladin can, as a move action, concentrate on a single item or individual within 60 feet and determine if it is evil, learning the strength of its aura as if having studied it for 3 rounds. While focusing on one individual or object, the paladin does not detect evil in any other object or individual within range." compset="ClSpecial" summary="You can use Detect Evil at will (as the spell)." replaces="cPalDtEvil">
-    <tag group="Helper" tag="ClExLose" name="ClExLose" abbrev="ClExLose"/>
-    <tag group="Usage" tag="AtWill" name="At will" abbrev="At will"/>
-    <tag group="AbilType" tag="SpellLike"/>
-    </thing>
   <thing id="arClrHoWar" name="Holy Warrior" description="Some clerics think of themselves more as holy warriors than proselytizers or shepherds. For these clerics, the ability to fight trumps all other concerns. Holy Warriors are the crusaders of the faith doing things that no Paladin or warrior could." compset="ClassVary" uniqueness="unique">
     <fieldval field="cvHitDice" value="10"/>
     <fieldval field="srcBookInf" value="Shadow d20"/>
@@ -372,8 +367,9 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpClr"/>
-    <eval phase="First">~ Remove the notice about domain spells
-hero.child[cHelpClr].field[cSecSplReq].value = 0</eval>
+    <eval phase="First">
+      ~ Remove the notice about domain spells
+      hero.child[cHelpClr].field[cSecSplReq].value = 0</eval>
     </thing>
   <thing id="cS2Sphere" name="Spherewalker" description="{b}Requirements{/b}: Must have visited two locations sacred to Desna, at least 200 miles apart.\n\nMust have at least two of the following skills at 2 ranks or more; Climb, Knowledge (geography), Knowledge (nature), Knowledge (religion), Perform, Ride, Survival, or Swim.\n\nMust have at least one of the following feats; Great Fortitude, Iron Will, or Lightning Reflexes.\n\nMust have at least one of the following feats; Acrobatic, Agile, Athletic, Endurance, Run, Self-Sufficient" compset="ClassLevel" maxlimit="5" replaces="cPFSphere">
     <comment>Changed to be allowed for when Shadow d20 is active.</comment>
