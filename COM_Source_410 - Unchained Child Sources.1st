@@ -16,7 +16,7 @@
     selectable="yes"
     parent="pUnchPack"
     sortorder="10"
-    description="These are community modified archetypes that fit the new Unchained Monk class. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
+    description="These are community created archetypes that fit the new Unchained Monk class. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
   </source>
     
   <!-- Bloodrager Unchained -->
@@ -26,7 +26,7 @@
     selectable="yes"
     parent="pUnchPack"
     sortorder="10"
-    description="These are community modified archetypes that give Unchained Barbarian abilities to the Bloodrager. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
+    description="These are community created archetypes that give Unchained Barbarian abilities to the Bloodrager. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
   </source>
 
   <!-- Ninja Unchained -->
@@ -36,7 +36,27 @@
     selectable="yes"
     parent="pUnchPack"
     sortorder="10"
-    description="These are community modified archetypes that give unchained rogue abiliteis to the ninja. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
+    description="These are community created archetypes that give unchained rogue abiliteis to the ninja. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
+  </source>
+
+  <!-- Rogue Unchained -->
+  <source
+    id="srcUnRogAr"
+    name="Unchained Rogue Archetypes"
+    selectable="yes"
+    parent="pUnchPack"
+    sortorder="10"
+    description="These are community created archetypes for the unchained rogue. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
+  </source>
+
+  <!-- Barbarian Unchained -->
+  <source
+    id="srcUnBbnAr"
+    name="Unchained Barbarian Archetypes"
+    selectable="yes"
+    parent="pUnchPack"
+    sortorder="10"
+    description="These are community created archetypes for the unchained Barbarian. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
   </source>
 
   <!-- Unchained Domains-->
@@ -46,7 +66,7 @@
     selectable="yes"
     parent="pUnchPack"
     sortorder="15"
-    description="These are community modified Domains give Unchained Barbarian abilities like rage. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
+    description="These are community created Domains give Unchained Barbarian abilities like rage. Copy Righted 2015 Tim Shadow. Use is allowed for gaming groups only.">
   </source>
     
 </document>

@@ -155,6 +155,108 @@
     <tag group="AdjustAC" tag="Misc"/>
     </thing>
 
+  <!-- Class Level Selection Helpers -->
+  <thing id="selS2lvl01" name="Lvl 01" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel" name="Character Levels 1-20"/>
+    <tag group="Value" tag="1"/>
+  </thing>
+  <thing id="selS2lvl02" name="Lvl 02" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="2"/>
+  </thing>
+  <thing id="selS2lvl03" name="Lvl 03" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="3"/>
+  </thing>
+  <thing id="selS2lvl04" name="Lvl 04" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="4"/>
+  </thing>
+  <thing id="selS2lvl05" name="Lvl 05" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="5"/>
+  </thing>
+  <thing id="selS2lvl06" name="Lvl 06" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="6"/>
+  </thing>
+  <thing id="selS2lvl07" name="Lvl 07" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="7"/>
+  </thing>
+  <thing id="selS2lvl08" name="Lvl 08" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="8"/>
+  </thing>
+  <thing id="selS2lvl09" name="Lvl 09" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="9"/>
+  </thing>
+  <thing id="selS2lvl10" name="Lvl 10" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="10"/>
+  </thing>
+  <thing id="selS2lvl11" name="Lvl 11" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="11"/>
+  </thing>
+  <thing id="selS2lvl12" name="Lvl 12" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="12"/>
+  </thing>
+  <thing id="selS2lvl13" name="Lvl 13" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="13"/>
+  </thing>
+  <thing id="selS2lvl14" name="Lvl 14" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="14"/>
+  </thing>
+  <thing id="selS2lvl15" name="Lvl 15" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="15"/>
+  </thing>
+  <thing id="selS2lvl16" name="Lvl 16" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="16"/>
+  </thing>
+  <thing id="selS2lvl17" name="Lvl 17" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="17"/>
+  </thing>
+  <thing id="selS2lvl18" name="Lvl 18" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="18"/>
+  </thing>
+  <thing id="selS2lvl19" name="Lvl 19" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="19"/>
+  </thing>
+  <thing id="selS2lvl20" name="Lvl 20" compset="SelectHelp">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Value" tag="20"/>
+  </thing>
+
    
   <!-- ============================================================================================ -->
   <!-- Equipment Item Slots                                                                         -->

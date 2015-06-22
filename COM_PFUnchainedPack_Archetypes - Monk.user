@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
-  <loadonce key="COM_PFUnchainedPack - Archetypes Monk"/>
-  <thing id="arP6Mnk4Wi" name="Monk of the Four Winds" description="The monk of the four winds is connected to the natural world in a way few other creatures—even other monks—can hope to match. He can call upon the elements and the spirits of the world in times of need, and as he nears his goal of perfection, he gains the ability to slow down time and even defeat death itself. A monk of the four winds has the following class features.\n\n{b}Unchained:{/b} At level 12 we lose a Ki Power instead of Abundant Step." compset="ClassVary" uniqueness="unique">
+  <loadonce key="COM_PFUnchainedPack_Archetypes - Monk"/>
+  <thing id="arP6Mnk4Wi" name="Monk of the Four Winds" description="The monk of the four winds is connected to the natural world in a way few other creatures—even other monks—can hope to match. He can call upon the elements and the spirits of the world in times of need, and as he nears his goal of perfection, he gains the ability to slow down time and even defeat death itself. A monk of the four winds has the following class features.\n\n{b}Unchained:{/b} At level 12 we lose a Ki Power instead of Abundant Step.{BR}{BR}{b}Community Created:{/b} As this is a community created archetype that expands the unchained rules be sure you have your GM&apos;s approval before taking this archetype." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="20"/>
     <fieldval field="srcBookInf" value="Advanced Player&apos;s Guide"/>
     <fieldval field="cvSpec5thS" value="Aspect"/>
@@ -48,7 +48,7 @@
       ~ abilities of the Monk of the Four Winds archetype
       linkage[varies].field[cCstS5Expr].text = "(SpecSource.arMnkFourW) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & !Helper.Quintenary & !Helper.Obsolete"]]></eval>
     </thing>
-  <thing id="arP6MnkZen" name="Zen Archer" description="Some monks seek to become one with another weapon entirely—the bow. The zen archer takes a weapon most other monks eschew and seeks perfection in the pull of a taut bowstring, the flex of a bow’s limbs, and the flight of an arrow fired true.\n\n{b}Weapon and Armor Proficiency{/b}: Zen archers are proficient with longbows, shortbows, composite longbows, and composite shortbows in addition to their normal weapon proficiencies.\n\n{b}Bonus Feats{/b}: A zen archer’s bonus feats must be taken from the following list: Combat Reflexes, Deflect Arrows, Dodge, Far Shot, Point-Blank Shot, Precise Shot, and Rapid Shot. \n\nAt 6th level, the following feats are added to the list: Focused Shot, Improved Precise Shot, Manyshot, Mobility, and Parting Shot. \n\nAt 10th level, the following feats are added to the list: Improved Critical, Pinpoint Targeting, Shot on the Run, and Snatch Arrows. \n\nA monk need not have any of the prerequisites normally required for these feats to select them. These feats replace the monk’s normal bonus feats.\n\n{b}Unchained:{/b} \n-Zen Archery now replaces Ki Strike instead of Maneuver Training.\n-Point Blank Master moved from 3rd level to 4th level to replace Still Mind.\n-Ki Pool moved from 4th to 3rd to match up with getting Ki Pool sooner.\n-Trick Shot moved from 11th to 12th level to replace the Ki power as no Diamond Body.\n-Ki Focus Bow moved from 17th to 16th level to replace the Ki power as no Tongue of the Sun and Moon." compset="ClassVary" uniqueness="unique">
+  <thing id="arP6MnkZen" name="Zen Archer" description="Some monks seek to become one with another weapon entirely—the bow. The zen archer takes a weapon most other monks eschew and seeks perfection in the pull of a taut bowstring, the flex of a bow’s limbs, and the flight of an arrow fired true.\n\n{b}Weapon and Armor Proficiency{/b}: Zen archers are proficient with longbows, shortbows, composite longbows, and composite shortbows in addition to their normal weapon proficiencies.\n\n{b}Bonus Feats{/b}: A zen archer’s bonus feats must be taken from the following list: Combat Reflexes, Deflect Arrows, Dodge, Far Shot, Point-Blank Shot, Precise Shot, and Rapid Shot. \n\nAt 6th level, the following feats are added to the list: Focused Shot, Improved Precise Shot, Manyshot, Mobility, and Parting Shot. \n\nAt 10th level, the following feats are added to the list: Improved Critical, Pinpoint Targeting, Shot on the Run, and Snatch Arrows. \n\nA monk need not have any of the prerequisites normally required for these feats to select them. These feats replace the monk’s normal bonus feats.\n\n{b}Unchained:{/b} \n-Zen Archery now replaces Ki Strike instead of Maneuver Training.\n-Point Blank Master moved from 3rd level to 4th level to replace Still Mind.\n-Ki Pool moved from 4th to 3rd to match up with getting Ki Pool sooner.\n-Trick Shot moved from 11th to 12th level to replace the Ki power as no Diamond Body.\n-Ki Focus Bow moved from 17th to 16th level to replace the Ki power as no Tongue of the Sun and Moon.{BR}{BR}{b}Community Created:{/b} As this is a community created archetype that expands the unchained rules be sure you have your GM&apos;s approval before taking this archetype." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcBookInf" value="Advanced Player&apos;s Guide"/>
     <arrayval field="cvCustTot" index="11" value="-1"/>
     <arrayval field="cvCustTot" index="15" value="-1"/>
@@ -216,5 +216,218 @@
       ~ Give an extra attack to our custom Flurry of Blows
       perform hero.childfound[cMnkP6FoBU].assign[Helper.ExtraHigh]
       perform hero.assign[Hero.FlurryBon]]]></eval>
+    </thing>
+  <thing id="arS2MoMS" name="Master of Many Styles" description="The master of many styles is a collector. For every move, he seeks a counter. For every style, he has a riposte. Ultimately, he seeks perfection through the fusion of styles.\n\n{b}Unchained:{/b} No special changes where required for this archetype.\n\n{b}Community Created:{/b} As this is a community created archetype that expands the unchained rules be sure you have your GM&apos;s approval before taking this archetype." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Ultimate Combat"/>
+    <fieldval field="srcPageNum" value="59"/>
+    <usesource source="srcUnMnkAr"/>
+    <tag group="ClassVary"  tag="arMnkMaMan"/>
+    <tag group="AbReplace"  tag="cMnkFlurUn"/>
+    <tag group="AbReplace"  tag="cMnkPeSeUn"/>
+    <tag group="fInclude"   tag="fElemFist"/>
+    <tag group="fCategory"  tag="Style"/>
+    <tag group="Helper"     tag="NoPathSoc"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    <bootstrap thing="cMnkFuseSt">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cMnkFuseSt">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cMnkFuseSt">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cMnkFuseSt">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpMnkUn"/>
+    <eval phase="PostLevel" priority="11000"><![CDATA[
+      ~ If not correctly linked to our class get out now!
+      doneif (islinkage[varies] = 0)
+
+      ~ Lets remove the normal monk bonus feats
+      perform linkage[varies].delete[BonusFor.Monk1]
+      perform linkage[varies].delete[BonusFor.Monk6]
+      perform linkage[varies].delete[BonusFor.Monk10]
+      perform linkage[varies].delete[BonusFor.Monk14]
+
+      ~ Exclude the following Elemental Fist feats unless we have Elemental Fist
+      if (#hasfeat[fElemFist] = 0) then
+        perform linkage[varies].assign[fExclude.fEfreeStyl]
+        perform linkage[varies].assign[fExclude.fShaitStyl]
+        perform linkage[varies].assign[fExclude.fDjinnStyl]
+        perform linkage[varies].assign[fExclude.fMaridStyl]
+      endif
+      ~ Djinni Style
+      if (#hasfeat[fDjinnStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fDjinnSpir]
+      endif
+      if (#hasfeat[fDjinnSpir] = 1) then
+        perform linkage[varies].assign[fInclude.fDjinnSpin]
+      endif
+      ~ Shaitan Style
+      if (#hasfeat[fShaitStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fShaitSkin]
+      endif
+      if (#hasfeat[fShaitSkin] = 1) then
+        perform linkage[varies].assign[fInclude.fShaitEart]
+      endif
+      ~ Marid Style
+      if (#hasfeat[fMaridStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fMaridSpir]
+      endif
+      if (#hasfeat[fMaridSpir] = 1) then
+        perform linkage[varies].assign[fInclude.fMaridCold]
+      endif
+      ~ Efreeti Syle
+      if (#hasfeat[fEfreeStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fEfreeStan]
+      endif
+      if (#hasfeat[fEfreeStan] = 1) then
+        perform linkage[varies].assign[fInclude.fEfreeTouc]
+      endif
+      
+      if (#hasfeat[fArchonSty] = 1) then
+        perform linkage[varies].assign[fInclude.fArchonDiv]
+      endif
+      if (#hasfeat[fArchonDiv] = 1) then
+        perform linkage[varies].assign[fInclude.fArchonJus]
+      endif
+
+      if (#hasfeat[fBoarStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fBoarFero]
+      endif
+      if (#hasfeat[fBoarFero] = 1) then
+        perform linkage[varies].assign[fInclude.fBoarShre]
+      endif
+
+      if (#hasfeat[fDragoStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fDragoRoar]
+      endif
+      if (#hasfeat[fDragoRoar] = 1) then
+        perform linkage[varies].assign[fInclude.fDragoFero]
+      endif
+
+      if (#hasfeat[fCraneStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fCraneWing]
+      endif
+      if (#hasfeat[fCraneWing] = 1) then
+        perform linkage[varies].assign[fInclude.fCraneRipo]
+      endif
+
+      if (#hasfeat[fEarChlSty] = 1) then
+        perform linkage[varies].assign[fInclude.fEarChlTop]
+      endif
+      if (#hasfeat[fEarChlTop] = 1) then
+        perform linkage[varies].assign[fInclude.fEarChlBin]
+      endif
+
+      if (#hasfeat[fGrabStyle] = 1) then
+        perform linkage[varies].assign[fInclude.fGrabDrag]
+      endif
+      if (#hasfeat[fGrabDrag] = 1) then
+        perform linkage[varies].assign[fInclude.fGrabMast]
+      endif
+
+      if (#hasfeat[fJabStyle] = 1) then
+        perform linkage[varies].assign[fInclude.fJabDancer]
+      endif
+      if (#hasfeat[fJabDancer] = 1) then
+        perform linkage[varies].assign[fInclude.fJabMaster]
+      endif
+
+      if (#hasfeat[fJanniStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fJanniTemp]
+      endif
+      if (#hasfeat[fJanniTemp] = 1) then
+        perform linkage[varies].assign[fInclude.fJanniRush]
+      endif
+
+      if (#hasfeat[fKirinStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fKirinStri]
+      endif
+      if (#hasfeat[fKirinStri] = 1) then
+        perform linkage[varies].assign[fInclude.fKirinPath]
+      endif
+
+      if (#hasfeat[fMantiStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fMantiWisd]
+      endif
+      if (#hasfeat[fMantiWisd] = 1) then
+        perform linkage[varies].assign[fInclude.fMantiTorm]
+      endif
+
+      if (#hasfeat[fMonkeStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fMonkeMove]
+      endif
+      if (#hasfeat[fMonkeMove] = 1) then
+        perform linkage[varies].assign[fInclude.fMonkeShin]
+      endif
+
+      if (#hasfeat[fKoboStyle] = 1) then
+        perform linkage[varies].assign[fInclude.fKoboGroun]
+      endif
+      if (#hasfeat[fKoboGroun] = 1) then
+        perform linkage[varies].assign[fInclude.fKoboFlood]
+      endif
+
+      if (#hasfeat[fPanthStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fPanthClaw]
+      endif
+      if (#hasfeat[fPanthClaw] = 1) then
+        perform linkage[varies].assign[fInclude.fPanthParr]
+      endif
+
+      if (#hasfeat[fPumStyle] = 1) then
+        perform linkage[varies].assign[fInclude.fPumBully]
+        perform linkage[varies].assign[fInclude.fPumCharge]
+      endif
+
+      if (#hasfeat[fSnakeStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fSnakeSide]
+      endif
+      if (#hasfeat[fSnakeSide] = 1) then
+        perform linkage[varies].assign[fInclude.fSnakeFang]
+      endif
+
+      if (#hasfeat[fSnaTurSty] = 1) then
+        perform linkage[varies].assign[fInclude.fSnaTurClu]
+      endif
+      if (#hasfeat[fSnaTurClu] = 1) then
+        perform linkage[varies].assign[fInclude.fSnaTurShl]
+      endif
+
+      if (#hasfeat[fTigerStyl] = 1) then
+        perform linkage[varies].assign[fInclude.fTigerClaw]
+      endif
+      if (#hasfeat[fTigerClaw] = 1) then
+        perform linkage[varies].assign[fInclude.fTigerPoun]
+      endif
+
+      if (#hasfeat[fUnbFlFein] = 0) then
+        perform linkage[varies].assign[fExclude.fUnbFlaFis]
+      endif
+      if (#hasfeat[fPerStyleF] = 0) then
+        perform linkage[varies].assign[fExclude.fUnbFlFein]
+      endif
+      if (#hasfeat[fPerStyleW] = 0) then
+        perform linkage[varies].assign[fExclude.fUnfWindSt]
+      endif
+      if (#hasfeat[fUntIroStr] = 0) then
+        perform linkage[varies].assign[fExclude.fUntIroSki]
+      endif
+      if (#hasfeat[fUnfWindSt] = 0) then
+        perform linkage[varies].assign[fExclude.fUnfWinRus]
+      endif
+      if (#hasfeat[fWolfTrip] = 0) then
+        perform linkage[varies].assign[fExclude.fWolfSavag]
+      endif      
+      if (#hasfeat[fPerStyleI] = 0) then
+        perform linkage[varies].assign[fExclude.fUntIroStr]
+      endif
+      if (#hasfeat[fWolfStyl] = 0) then
+        perform linkage[varies].assign[fExclude.fWolfTrip]
+      endif
+      ]]></eval>
     </thing>
   </document>

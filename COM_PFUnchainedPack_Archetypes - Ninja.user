@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
-  <loadonce key="COM_PFUnchainedPack - Archetypes Ninja"/>
-  <thing id="arP6NinUnc" name="Unchained" description="You are a unchained ninja.\n\n{b}Unchained:{/b} The ninja gains all the of the Unchained Rogue class abilities.  Your normal sneak attack is replaced with the unchained version." compset="ClassVary" uniqueness="unique">
+  <loadonce key="COM_PFUnchainedPack_Archetypes - Ninja"/>
+  <thing id="arP6NinUnc" name="Unchained" description="You are a unchained ninja.\n\n{b}Unchained:{/b} The ninja gains all the of the Unchained Rogue class abilities.  Your normal sneak attack is replaced with the unchained version.{BR}{BR}{b}Community Created:{/b} As this is a community created archetype that expands the unchained rules be sure you have your GM's approval before taking this archetype." compset="ClassVary" uniqueness="unique">
     <usesource source="srcUnNinAr"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="ClVaryName" tag="AppParen"/>
@@ -72,6 +72,18 @@
     <bootstrap thing="cDangerSen">
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
+    <bootstrap thing="cRogRogEdg">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cRogRogEdg">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cRogRogEdg">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cRogRogEdg">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpNin"/>
     </thing>
   <thing id="cNinP6Tric" name="Ninja Tricks" description="Please select the type of Ninja Tricks you should have access too.  \n\nEither only Core list of Ninja Tricks, only Unchained Rogue Tricks, or both Unchained and Core Ninja and Rogue talents." compset="ClSpecial">
@@ -84,17 +96,17 @@
       ~ If our linked class does not exist get out now!
       doneif (root.islinkage[varies] = 0)
 
-      ~ If Core only set here
-      if (field[usrIndex].value = 0) then
-        ~root.linkage[varies].field[cCstSpExpr].text = "(SpecSource.cHelpNin|SpecSource.cHelpRog) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & !Helper.Quintenary & !Helper.Obsolete"
+      var S2_SpecTag as string
+      ~ We need to not wipe out any other archetypes so get that list
+      Call GetSpExpr1
 
       ~ If Unchained only set here
-      elseif (field[usrIndex].value = 1) then
-        root.linkage[varies].field[cCstSpExpr].text = "(SpecSource.cHelpNin|SpecSource.cHelpRogUn) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & !Helper.Quintenary & !Helper.Obsolete"
+      if (field[usrIndex].value = 1) then
+        root.linkage[varies].field[cCstSpExpr].text = "(" & S2_SpecTag & "|SpecSource.cHelpRogUn) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & !Helper.Quintenary & !Helper.Obsolete"
 
       ~ If both set here
       elseif (field[usrIndex].value = 2) then
-        root.linkage[varies].field[cCstSpExpr].text = "(SpecSource.cHelpNin|SpecSource.cHelpRogUn|SpecSource.cHelpRog) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & !Helper.Quintenary & !Helper.Obsolete"
+        root.linkage[varies].field[cCstSpExpr].text = "(" & S2_SpecTag & "|SpecSource.cHelpRogUn|SpecSource.cHelpRog) & !Helper.Secondary & !Helper.Tertiary & !Helper.Quaternary & !Helper.Quintenary & !Helper.Obsolete"
       endif]]></eval>
     </thing>
   </document>
