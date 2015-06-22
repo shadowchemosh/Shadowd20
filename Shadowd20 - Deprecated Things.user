@@ -1220,6 +1220,48 @@ Hidden]]></comment>
     <tag group="Shadowd20" tag="TouchWep"/>
     <tag group="Helper" tag="SingleAtt"/>
     </thing>
+  <thing id="pS2ProtEne" name="Protection from Energy" description="Protection from energy grants temporary immunity to the type of energy you specify when you cast it (acid, cold, electricity, fire, or sonic). When the spell absorbs 12 points per caster level of energy damage (to a maximum of 120 points at 10th level), it is discharged.\n\nProtection from energy overlaps (and does not stack with) resist energy. If a character is warded by protection from energy and resist energy, the protection spell absorbs damage until its power is exhausted.{br}{br}{b}Note:{/b} The counter is used to set your Caster Level. Then the total protection value will (12 x CL) will be calculated for you on a tracker that will display on the {b}In-Play{/b} tab. Go to the In-Play tab and press Reset and it will be set the maximum value. This way as you take damage you can lower the amount." compset="InPlay">
+    <fieldval field="pDuration" value="1 hour/level (D)"/>
+    <fieldval field="abValue" value="20"/>
+    <fieldval field="abValue2" value="10"/>
+    <fieldval field="pMinimum" value="0"/>
+    <fieldval field="pCandExpr" value="component.SelectHelp &amp; Selection.Energy"/>
+    <fieldval field="pCandExpr2" value="component.Tracker &amp; thingid.trkS2ProtE"/>
+    <fieldval field="pUsePicks2" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Adjust2nd" tag="S2Custom"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <bootstrap thing="trkS2ProtE"></bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen + field[pChosen2].ischosen <> 2)
+
+      ~ Set the energy type on to the tracker
+      perform field[pChosen].chosen.pulltags[BloodEner.?]
+      perform field[pChosen2].chosen.pushtags[BloodEner.?]
+
+      ~ Set livename
+      field[livename].text = field[name].text & " (" & tagnames[BloodEner.?]  & ")"
+
+      ~ Set the tracker counter
+      field[pChosen2].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="trkS2ProtE" name="Protection from Energy" description="." compset="Tracker" uniqueness="useronce">
+    <tag group="User" tag="Tracker"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="SpInfo" tag="spProtfro3"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If no energy tag we are done
+      doneif (tagis[BloodEner.?] = 0)
+
+      ~ Set livename
+      field[livename].text = field[name].text & " (" & tagnames[BloodEner.?]  & ")"]]></eval>
+    </thing>
 
 
 
@@ -1265,6 +1307,8 @@ Hidden]]></comment>
   <hidden id="fS2FavTerr"/>
   <hidden id="wS2Touch"/>
   <hidden id="wS2RaTouch"/>
+  <hidden id="trkS2ProtE"/>
+  <hidden id="pS2ProtEne"/>
 
 
 </document>
