@@ -8,6 +8,45 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v1.10 June 9, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Path Of War (TheIronGolem) - Fixed Defensive Focus, which was using the old way of calculating initiator level (and thus coming up with an IL of 0).</li>
+<li>Path Of War (TheIronGolem) - Warlord: Fixed Warleader ability not granting bonus teamwork feat, not getting additional uses/day at higher levels, and not adding CHA to duration, also added duration to livename. Warleader ability is now tagged as a standard action, and then retagged by Improved Warleader and Warlord's Presence as a move and swift action, respectively. Updated text of several class features and added summary text to all. Fixed Deadeye Gambit not being available for selection. Fixed Force of Personality to add CHA to Will saves, though it is currently incapable of preventing stacking with other abilities that do the same. Fixed Tactical Flanker and Battle Prowess having no effect.</li>
+<li>Ultimate Psionics (psych777) - Updated Psionic Shield Bash feat to fix issue #52. Feat was asking for a selection when none should have been.</li>
+<li>Ultimate Psionics (psych777) - Touched up more feat text and scripts through the letter "F". In addition tagged feats to the community.</li>
+<li>Ultimate Psionics (psych777) - Removed unnecessary dropdown on Touch of Terror feat.</li>
+<li>Ultimate Psionics (psych777) - Focused Precision feat now correctly validates its requirement of needing weapon focus with any crossbow or firearm.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed issue #55. Soulknife mind blade is a masterwork weapon and was not getting the +1 enhancement bonus to attack.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed the soulknife's "Throw Mind Blade" class ability as it was not changing mind blades to thrown weapons.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Path Of War (TheIronGolem) - Added a "Maneuver Recovery" class special for the Stalker, so that Stalkers can correctly benefit from the AC bonus while recovering maneuvers.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added the Vigilante and Desperado archetype.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added maneuvers for Tempest Gale discipline.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added maneuvers for Sleeping Goddess discipline. Sleeping Goddess maneuvers now make the character psionic and grant power points as per the discipline description.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added maneuvers for the Eternal Guardian discipline.</li>
+<li>Path Of War (TheIronGolem) - Discipline Focus feat now counts all disciplines for pre-reqs, and also validates maneuver count on the chosen discipline after being taken.</li>
+<li>Path Of War Exanded (TheIronGolem) - Added support for Elemental Flux's "active energy type" component, so that maneuvers/stances will be able to have different effects according to user's selection.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added stances for the Elemental Flux discipline.</li>
+<li>Ultimate Psionics Adjustments (ShadowChemosh) - Added "Add Power to Class Power List" adjustment for adding a single psionic power to a class. Added "Add Power Type to Class Power List" adjustment for adding a whole power list to another class.</li>
+<li>RGG Talented Monk (ShadowChemosh) - More Talents added. Please note this is still a Work in Progress.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Ultimate Psionics (TheIronGolem) - Added the abAction.PUExpFocus and abAction.PUManFocus tags to class specials that require the character to expend or maintain psionic focus. Added Save DC and Type tags to several class specials that were lacking them. Updated several class special scripts that check for psionic focus to use the PUPsiFocus function, so that they can benefit from Persistent Focus.</li>
+<li>Path of War Expanded (TheIronGolem) - Added tags for Tempest Gale and Piercing Thunder disciplines.</li>
+<li>Path Of War Expanded (TheIronGolem) - The PWSetupMan procedure now pushes the maneuver/stance's mLevel tag to the Discipline helper object.  This allows us to track the number and level spread of maneuvers known on a per-discipline basis, which is necessary to correctly calculate the bonus PP granted by Sleeping Goddess maneuvers. Reworked Sleeping Goddess PP bonus to take advantage of this change.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added AbilType.Extra tags to some stances that were missing it.</li>
+<li>Path Of War (TheIronGolem) - Added mExValue field to maneuver component, this acts as an extra abValue field. Added the PWgetILBon procedure, which is used as a helper for stances that provide a numeric bonus that increases at level X and every Y levels thereafter.</li>
+<li>Path Of War Expanded (TheIronGolem) - Elemental Flux now assigns active energy tags much sooner, to allow bootstrap conditions to check them.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fix Product ID tags on Weapons.</li>
+</ul>
+
+
+
 <strong>v1.9 May 5, 2015</strong>
 
 <strong>Bug Fixes</strong>

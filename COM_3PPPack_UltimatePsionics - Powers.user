@@ -7339,7 +7339,7 @@
     <tag group="sDuration" tag="Instant"/>
     <tag group="sSave" tag="WillNeg"/>
     </thing>
-  <thing id="puRepos6" name="Reposition" description="You force the target to delay their action until after the next creature in the initiative order takes their action unless the target makes a successful Will save. You must manifest this power before the results of the creature&apos;s actions are determined. This may result in the creature&apos;s action being invalid, such as attacking a target that has moved, in which case the action is wasted. If the target was manifesting a power or casting a spell, they do not need to make a concentration check.\n\n{b}Augment{/b}: For every 3 additional power points you spend, the target&apos;s action is delayed until after an additional creature in the initiative order." compset="PsiPower" summary="Teleport multiple creatures short distances to different locations.">
+  <thing id="puRepos6" name="Reposition" description="  You instantly reposition each willing target anywhere within Medium range (100 ft. + 10 ft./level) from your location to which you have line of effect. This does not provoke attacks of opportunity for the creatures moved. The destination must be a valid space; this power cannot reposition creatures inside of another creature, a boulder, or some other solid structure, etc., although it could reposition a creature through a wall, as long as the manifester has line of effect to the destination, or reposition a creature underwater, midair, or over a bonfire. Attempts to reposition a creature into a harmful situation allow the creature a save.\n\n{b}Augment{/b}: This power may be augmented in the following ways.\n1. If you spend 6 additional power points, you may target unwilling creatures.\n2. If you spend 8 additional power points, you may manifest this power as an immediate action." compset="PsiPower" summary="Teleport multiple creatures short distances to different locations.">
     <fieldval field="sRange" value="Medium (100 ft. + 10 ft./lvl.)"/>
     <fieldval field="sDuration" value="Instantaneous"/>
     <fieldval field="sSave" value="Will negates (harmless); see text"/>
@@ -7361,6 +7361,7 @@
     <tag group="sSave" tag="SeeText"/>
     <tag group="sResist" tag="Harmless"/>
     <tag group="sResist" tag="SeeText"/>
+    <tag group="psiClass" tag="cPsiNomad"/>
     </thing>
   <thing id="puPsyTr1" name="Psychic Tracking" description="You can track creatures with an Intelligence score of 3 or greater by following the trails of mental energy they leave behind. {i}Pass without trace{/i} and similar effects provide no protection from this power; however, creatures immune to mind-affecting effects leave no perceptible psychic tracks, and cannot be followed this way.\n\nFinding psychic tracks or following them for 1 mile requires a DC 20 Spellcraft check. Every time the tracks become difficult to follow (such as when they intersect with other psychic tracks, enter an area of heavy traffic such as a market, or backtrack and diverge), you must make another check. If you fail a Spellcraft check, you can retry by meditating for 10 minutes (low traffic) 1 hour (high traffic) .\n\nWhile tracking, you move at half your normal speed. You may move up to your normal speed by taking a -5 penalty on the Spellcraft check, or double your speed by taking a -20 penalty on the Spellcraft check.\n\n{b}Augment{/b}: For every additional power point you spend, you gain a +2 bonus on your Spellcraft checks to follow psychic tracks." compset="PsiPower" summary="Track a creature by thought, rather than by physical tracks.">
     <fieldval field="sRange" value="Personal"/>
@@ -8464,5 +8465,4 @@
     <tag group="sResist" tag="Yes"/>
     <tag group="sSave" tag="WillNeg"/>
     </thing>
-
   </document>

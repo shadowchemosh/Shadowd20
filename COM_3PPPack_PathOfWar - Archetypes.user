@@ -335,6 +335,9 @@ nexteach]]></eval>
 doneif (tagis[Helper.ShowSpec] = 0)
 doneif (tagis[Helper.SpcDisable] <> 0)
 
+~ This ability explicitly doesn't work with the Phalanx Lancer stance
+doneif (hero.childfound[staPWPhLn1].field[abilActive].value = 1)
+
 var hide as number
 ~ If we have at least one one-handed or two-handed weapon being wielded in both hands, unhide the "Armament Shield Bash" weapon
 foreach pick in hero from BaseWep where "fieldval:wIs2nd = 1 & fieldval:gIsEquip = 1 & (wClass.OneHanded | wClass.TwoHanded)"

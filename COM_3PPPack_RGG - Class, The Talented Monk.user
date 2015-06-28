@@ -78,13 +78,48 @@
     <tag group="ConsClSkil" tag="cskAcrobat"/>
     <bootstrap thing="fWepMnk"></bootstrap>
     <eval phase="Render" priority="99999" index="2"><![CDATA[
-
       ~ Make Custom List 5 select Fighter Styles
       field[cCstS5Expr].text = "component.BaseCustSp & abCategory.FtrWepTra"]]></eval>
-    <eval phase="First" priority="50000">~ Remove talented monk levels so that we can add Monk 
+    <eval phase="First" priority="50000">      
+      ~ Remove talented monk levels so that we can add Monk 
       ~ levels. This way we meet pre-req from feats and abilities
       ~ correctly.
       perform hero.delete[Classes.RGMonkTal]</eval>
+    <eval phase="PostLevel" priority="20000" index="3"><![CDATA[
+      var nMnkLevel as number
+      var nAttacks  as number
+      var nBAB      as number
+
+      ~ Because we need our level count multiple times save it once 
+      ~ in a local variable to save CPU time.
+      nMnkLevel += hero.tagcount[Classes.Monk]
+
+      ~ Calculate our current BAB vs Level difference
+      nBAB += nMnkLevel - #BAB[]
+
+      ~ Calculate the number of attacks we have as a full BAB character
+      nAttacks += 1
+      if (nMnkLevel >= 6) then
+        nAttacks += 1
+      endif
+      if (nMnkLevel >= 11) then
+        nAttacks += 1
+      endif
+      if (nMnkLevel >= 16) then
+        nAttacks += 1
+      endif
+        
+      ~ Adjust each weapon that is a Talented Monk Specialy Attack Bonus 
+      ~ to be FULL BAB and have the correct number of additional attacks.
+      foreach pick in hero from BaseWep where "wSpecial.RGTalMnkAB"
+        eachpick.field[wAttBAB].value += nBAB
+        eachpick.field[wRanAttBAB].value += nBAB
+        eachpick.field[wNumAttTbl].arrayvalue[0] = nAttacks
+        eachpick.field[wNumAttTbl].arrayvalue[1] = nAttacks
+        eachpick.field[wNumAttTbl].arrayvalue[2] = nAttacks
+        eachpick.field[wNumAttTbl].arrayvalue[3] = nAttacks
+        eachpick.field[wNumAttTbl].arrayvalue[5] = nAttacks      
+      nexteach]]></eval>
     </thing>
   <thing id="cRGMonkTal" name="Monk (Talented)" description="{i}The Genius Guide to the Talented Monk{/i} rewrites the classic monk class to use talents, rather than static class abilities and bonus feats. Rather than require all monks to be masters of unarmed attacks and self- perfection, each monk can have custom-fit class abilities to match a player&apos;s specific concept. This greater flexibility allows the monk to be the default esotericcombat- style- oriented character without limiting it to just one or two styles of fighting. Like a rogue, a talented monk character can pick and choose from a range of similarly-powered abilities appropriate for the monk&apos;s role, without making the class overpowered. The talented monk can still fill the same roles in a party, but can customize his combat style and abilities to fill a much broader range of concepts.\n\n{b}Alignment:{/b} A talented monk may be of any lawful alignment." compset="ClassLevel" maxlimit="20">
     <usesource source="srcMonkTal"/>
@@ -205,7 +240,7 @@
     <tag group="SpecSource" tag="cHelpRG1"/>
     <tag group="ChooseSrc1" tag="Thing"/>
     <tag group="abCategory" tag="RGGMnkEdge"/>
-    <eval phase="First" priority="20000" index="2"><![CDATA[
+    <eval phase="First" priority="20000"><![CDATA[
       ~ If nothing chosen then get out now!
       doneif (field[usrChosen1].ischosen = 0)
       ~ Only process here if we are the improvised weapon group
@@ -231,51 +266,7 @@
         perform eachpick.assign[Helper.Proficient]
         perform eachpick.assign[wSpecial.RGTalMnkAB]
       nexteach]]></eval>
-    <eval phase="PostLevel" priority="20000" index="4"><![CDATA[
-      ~ If nothing chosen then get out now!
-      doneif (field[usrChosen1].ischosen = 0)
-
-      ~ Build search expression of all Weapon Fighter Group tags
-      var searchexpr as string
-      searchexpr = field[usrChosen1].chosen.tagids[wFtrGroup.?,"|"]
-      
-      ~ If we are the improvised weapon group then make use look for
-      ~ the special Helper Improvised tag.
-      if (field[usrChosen1].chosen.tagis[Helper.Improvised] = 1) then
-        searchexpr = "Helper.Improvised"
-      endif
-
-      ~ Because we need our level count multiple times save it once 
-      ~ in a local variable to save CPU time.
-      field[abValue].value += hero.tagcount[Classes.Monk]
-
-      ~ Calculate our current BAB vs Level difference
-      field[abValue2].value += hero.tagcount[Classes.Monk] - #BAB[]
-
-      ~ Calculate the number of attacks we have as a full BAB character
-      field[abValue3].value += 1
-      if (field[abValue].value >= 6) then
-        field[abValue3].value += 1
-      endif
-      if (field[abValue].value >= 11) then
-        field[abValue3].value += 1
-      endif
-      if (field[abValue].value >= 16) then
-        field[abValue3].value += 1
-      endif
-        
-      ~ Adjust each weapon in the weapon group to use full BAB and
-      ~ to have the correct number of additional attacks.
-      foreach pick in hero from BaseWep where searchexpr
-        eachpick.field[wAttBAB].value += field[abValue2].value
-        eachpick.field[wRanAttBAB].value += field[abValue2].value
-        eachpick.field[wNumAttTbl].arrayvalue[0] = field[abValue3].value
-        eachpick.field[wNumAttTbl].arrayvalue[1] = field[abValue3].value
-        eachpick.field[wNumAttTbl].arrayvalue[2] = field[abValue3].value
-        eachpick.field[wNumAttTbl].arrayvalue[3] = field[abValue3].value
-        eachpick.field[wNumAttTbl].arrayvalue[5] = field[abValue3].value      
-      nexteach]]></eval>
-    <eval phase="First" priority="20000"><![CDATA[
+    <eval phase="First" priority="20000" index="2"><![CDATA[
       ~ If nothing chosen then get out now!
       doneif (field[usrChosen1].ischosen = 0)
       ~ Only process here if we are NOT the improvised weapon
@@ -820,5 +811,37 @@
       endif
 
       #applydr[xDamRd, field[abValue].value]]]></eval>
+    </thing>
+  <thing id="cRG1AdaSty" name="Adaptive Style" description="Select one manufactured weapon. The monk gains proficiency with the weapon, and may use it with weapon-related edges and talents market with an asterisk*. When making attacks with this weapon he may use his specialty attack bonus, rather than his base attack bonus.\n\nThis talent may be taken more than once. Each time, it applies to a different weapon." compset="CustomSpec">
+    <usesource source="srcMonkTal"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="SpecSource" tag="cHelpRG1"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="abCategory" tag="RGGMnkTlnt"/>
+    <tag group="fShowWhat" tag="Weapons"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <eval phase="First" priority="20000"><![CDATA[
+      ~ If nothing chosen then get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      var searchexpr as string
+
+      perform field[usrChosen1].chosen.pulltags[WepProf.?]
+      perform hero.pushtags[WepProf.?]
+
+      ~ Cycle through and apply the Helper.ExoticProf tag to all
+      ~ examples of the chosen weapon on the hero. This is important
+      ~ for the Aldori Dueling Sword specifically, and possibly others.
+      ~ In addition add the Talented Weapon Special for Speciality
+      ~ Attack Bonus
+      searchexpr = tagids[WepProf.?,"|"]
+
+      foreach pick in hero from BaseWep where searchexpr
+        perform eachpick.assign[Helper.ExoticProf]
+        perform eachpick.assign[Helper.Proficient]
+        perform eachpick.assign[wSpecial.RGTalMnkAB]
+      nexteach]]></eval>
     </thing>
   </document>

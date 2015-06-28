@@ -275,6 +275,12 @@
     if (hero.tagis[Helper.Undersized] = 1) then
       perform assign[Helper.DamageDown]
     endif
+
+    ~ All Mind Blades are Masterwork weapons. We can't apply a tag YET
+    ~ like we can do with armor. So we need to give a +1 Enhancement bonus
+    ~ to attack rolls only.
+    #applybonus[atmBonEnh,this,1]
+    #applybonus[atrBonEnh,this,1]
     ]]>
   </procedure>
 

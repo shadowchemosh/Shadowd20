@@ -289,7 +289,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="fCategory" tag="Psionic"/>
     <exprreq message="Fort save bonus +2 required"><![CDATA[hero.child[svFort].field[svBase].value >= 2]]></exprreq>
-    <exprreq message="Collective class feature required"><![CDATA[(#hasability[cPUVitColl] + #hasability[cPUTacColl]) <> 0]]></exprreq>
+    <exprreq message="Collective class feature required"><![CDATA[(#hasability[cPUTacColl] + #hasability[cPUVitColl] + #hasability[cPW5Collec]) <> 0]]></exprreq>
     </thing>
   <thing id="fPWBBStyle" name="Broken Blade Style" description="Your fists strike harder than any blade\n\n{b}Prerequisites:{/b} 1 or more Broken Blade stances, Improved Unarmed Strike, Acrobatics 3 ranks\n\n{b}Benefit:{/b} Your unarmed strikes ignore DR and hardness equal to 1/2 your character level." compset="Feat" uniqueness="useronce">
     <usesource source="srcPOWEx"/>
@@ -1140,5 +1140,71 @@ Email: mail@theirongolem.com</info_author>
     <tag group="fCategory" tag="Combat"/>
     <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Spellcraft 11+ ranks required"><![CDATA[#skillranks[skSpellcr] >= 11]]></exprreq>
+    </thing>
+  <thing id="fPWChrgTri" name="Charge of Triumph" description="{b}Prerequisites:{/b} Collective class feature, Psionic Charge\n\n{b}Benefit:{/b} Creatures in your collective can charge through squares containing other creatures in your collective. In addition, whenever you expend psionic focus to use your Psionic Charge feat, your allies gain the benefit on a single charge made before the beginning of your next turn." compset="Feat" summary="Collective members can charge through each other&apos;s squares" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <pickreq thing="fPUPsiChrg"/>
+    </thing>
+  <thing id="fPWXtraCon" name="Extra Conviction" description="{b}Prerequisite:{/b} Conviction class feature\n\n{b}Benefit:{/b} Choose a conviction that you qualify for. You gain the benefit of that conviction.\n\n{b}Special:{/b} You can choose this feat more than once. Each time you take it, you choose a conviction you qualify for and gain its benefit." compset="Feat" summary="Gain an extra conviction" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      hero.childfound[cHelpPW5].field[cGiveSpec].value += 1]]></eval>
+    <exprreq message="Zealot level 2 required"><![CDATA[hero.tagcount[ClsCountAs.cHelpPW5] >= 2]]></exprreq>
+    </thing>
+  <thing id="fPWHigtMan" name="Heighten Maneuver" description="{b}Prerequisites:{/b} Able to initiate a 2nd level maneuver, must have a power point pool\n\n{b}Benefit:{/b} You can infuse your maneuvers with psionic power, making them difficult to resist. Your maneuvers gain the following augment:\n\n• For every 2 power points you spend, your maneuver’s effective level increases by 1. All effects dependent on maneuver level (such as saving throw DCs) are calculated according to the heightened level. You cannot increase a maneuver’s level beyond your highest maneuver level known." compset="Feat" summary="Spend PP to increase the effective level of a maneuver" uniqueness="useronce">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <prereq message="Must be able to initiate 2nd-level maneuvers">
+      <validate><![CDATA[      ~ It takes an IL of 3 to initiate 2nd-level maneuvers
+      foreach pick in hero from PWManList
+          validif (eachpick.field[cIL].value >= 3)
+      nexteach]]></validate>
+      </prereq>
+    <prereq message="Must have a power point pool">
+      <validate><![CDATA[validif (hero.childfound[resPowerPt].field[resMax].value >= 1)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fPWObsPath" name="Obscured Path" description="{b}Prerequisites:{/b} Cloak Dance feat, Path of Dedication conviction\n\n{b}Benefit:{/b} Whenever you use your Path of Dedication or Improved Path of Dedication abilities, all affected allies gain 20% concealment until the beginning of your next turn." compset="Feat" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <pickreq thing="fPUClkDnce"/>
+    <pickreq thing="cPW5PthDed"/>
+    </thing>
+  <thing id="fPWUnhWay" name="Unhindered Way" description="{b}Prerequisites:{/b} Collective class feature, Speed of Thought, medium armor proficiency\n\n{b}Benefit:{/b} Your speed is no longer reduced by medium or heavy armor, and you gain the benefit of your Speed of Thought feat while wearing heavy armor. In addition, as long as you maintain psionic focus, allies in your collective gain a +10 ft. insight bonus to their base movement speeds." compset="Feat" uniqueness="useronce">
+    <fieldval field="abValue" value="10"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~ Remove ArmorCateg.Slows from medium/heavy armor
+      foreach pick in hero from BaseArmor where "ArmorClass.Medium | ArmorClass.Heavy"
+        perform eachpick.delete[ArmorCateg.Slows]
+      nexteach
+
+      ~ Stop now if we're not psi-focused
+      var v_focus as number
+      call PUPsiFocus
+      doneif (v_focus = 0)
+
+      ~ Add insight bonus to speed
+      #applybonus[BonInsight, hero.child[Speed], field[abValue].value]]]></eval>
+    <pickreq thing="fPUSpdThgt"/>
+    <exprreq message="Collective ability required"><![CDATA[(#hasability[cPUTacColl] + #hasability[cPUVitColl] + #hasability[cPW5Collec]) <> 0]]></exprreq>
+    <exprreq message="Must be proficient with medium armor"><![CDATA[hero.tagis[Ability.fArmMedium] <> 0]]></exprreq>
     </thing>
   </document>

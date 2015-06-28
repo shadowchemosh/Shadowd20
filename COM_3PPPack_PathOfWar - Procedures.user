@@ -24,6 +24,7 @@
     doneif (empty(s2Search) <> 0)
     s2Search = "PathOfWar.Class & " & replace(s2Search,"ClsCountAs","thingid",0)]]></procedure>
   <procedure id="PWsetupMan" context="pick"><![CDATA[
+  
     ~ If we are maneuver then process here
     If (tagis[mType.Stance] = 0) Then
       ~ Setup the user choice array
@@ -65,7 +66,16 @@
         perform linkage[table].assign[PathOfWar.StanceOn]
         perform hero.assign[PathOfWar.StanceOn]
       Endif  
-    Endif]]></procedure>
+	  
+
+    Endif
+	
+	~ Push our level tag to the discipline object; this is for tracking purposes so that things like the Sleeping Goddess PP bonus can work
+	perform hero.findchild[Simple,tagids[Discipline.?]].setfocus
+	doneif (state.isfocus = 0)
+	perform focus.pushtags[mLevel.?]
+	
+	]]></procedure>
   <procedure id="PWsetupCfg" context="pick"><![CDATA[  
     ~ Set to pull anything that is not a stance
     field[cfgAllow1].text = "PathOfWar.Manuever & (" & tagids[Discipline.?,"|"] & ")"
@@ -447,5 +457,24 @@
       ~ Grant access to this tradition's discipline
       perform field[usrChosen1].chosen.pushtags[Discipline.?]
 	  ]]>
+  </procedure>
+  
+  <procedure id="PWgetILBon" context="pick"><![CDATA[
+      ~ This procedure is used by stances that increase a granted bonus at level X and again every Y levels.
+	  var firstIncLv as number
+	  var incEveryLv as number
+	  var incAmt as number
+	  var inc as number
+	  
+	  ~ Start by assuming no increase
+	  inc = 0
+	  
+	  var tmp as number
+	  tmp = field[mIL].value
+	  while (tmp >= firstIncLv)
+	    inc += incAmt
+		tmp -= incEveryLv
+	  loop
+      ]]>
   </procedure>
   </document>

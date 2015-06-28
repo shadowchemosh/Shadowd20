@@ -85,6 +85,14 @@
       type="user"
       maxlength="100">
     </field>
+	
+	<!-- mExValue is an "overflow" field for cases where we need more than 5 abValue fields -->
+	<field
+	  id="mExValue"
+	  name="Extra Value"
+	  type="derived"
+	  maxlength="0">
+	</field>
 
     <!-- TAGS -->
     <tag group="Usage" tag="PWEncounte"/>
@@ -159,12 +167,12 @@
       arrayrows="20">
     </field>
     <field
-	  id="cMaxManLvl"
-	  name="Max Maneuver Level"
-	  type="derived"
-	  style="array"
+      id="cMaxManLvl"
+      name="Max Maneuver Level"
+      type="derived"
+      style="array"
       arrayrows="20">
-	</field>
+    </field>
     <field
       id="AryLevel"
       name="Array Class Level"
@@ -211,7 +219,7 @@
       ~ If this is a prestige class, stop now, because we're going to inherit our IL from another configurable in the next script
       doneif (linkage[powClass].tagis[ClassType.Prestige] + linkage[powClass].tagis[PathOfWar.Class] = 2)
 
-        var otherlev as number
+      var otherlev as number
       var miPrc as number
 
       ~ Calculate initiator level
@@ -240,20 +248,20 @@
 
       ~ If we're a prestige class, make sure we have chosen an existing maneuver list to work from, otherwise don't allow picking any maneuvers yet
       if (linkage[powClass].tagis[ClassType.Prestige] = 1) then
-	    if (hero.childfound[cPWP1Man].field[usrChosen1].ischosen = 0) then
+        if (hero.childfound[cPWP1Man].field[usrChosen1].ischosen = 0) then
           linkage[powCfg].field[cfgMax1].value = 0
           linkage[powCfg].field[cfgMax2].value = 0
           linkage[powCfg].field[livename].text = linkage[powCfg].tagnames[ClsCountAs.?] & " Maneuvers: Pick Maneuver List on class tab first!"
           done
-		endif
+        endif
       endif
     
       ~ If no disciplines setup then display error and stop!
-	  ~ But don't display the error if this class has to choose disciplines (like the Pathwalker archetype)
+      ~ But don't display the error if this class has to choose disciplines (like the Pathwalker archetype)
       if (tagcount[Discipline.?] = 0) then
-	    if (linkage[powClass].tagis[PathOfWar.selDisc] = 0) then
+        if (linkage[powClass].tagis[PathOfWar.selDisc] = 0) then
           notify "Your class has no Disciplines defined. Please define Disciplines in the editor 'zCommunity->PoW Class Setup'"
-		endif
+        endif
         done
       endif
 
@@ -261,23 +269,23 @@
       linkage[powCfg].field[cfgAllow1].text = "PathOfWar.Manuever & (" & tagids[Discipline.?,"|"] & ")"
       ~ Set to pull all the stances 
       linkage[powCfg].field[cfgAllow2].text = "PathOfWar.Stance & (" & tagids[Discipline.?,"|"] & ")"
-  	  
-	  ~ Enforce maximum maneuver level, if we have a custom progression
-	  if (tagis[PathOfWar.CstManProg] <> 0) then
-	    linkage[powCfg].field[cfgAllow1].text &= " & (mLevel.0"
-	    var i as number
-	    i = 1
-	    while (i <= field[cMaxManLvl].arrayvalue[field[cIL].value - 1])
-		  linkage[powCfg].field[cfgAllow1].text &= " | mLevel." & i
-		  i += 1
-	    loop
-	    linkage[powCfg].field[cfgAllow1].text &= ")"
-	  endif
-	  
+      
+      ~ Enforce maximum maneuver level, if we have a custom progression
+      if (tagis[PathOfWar.CstManProg] <> 0) then
+        linkage[powCfg].field[cfgAllow1].text &= " & (mLevel.0"
+        var i as number
+        i = 1
+        while (i <= field[cMaxManLvl].arrayvalue[field[cIL].value - 1])
+          linkage[powCfg].field[cfgAllow1].text &= " | mLevel." & i
+          i += 1
+        loop
+        linkage[powCfg].field[cfgAllow1].text &= ")"
+      endif
+    
       ~ Calculate the array value which is class level minus one as we start at zero
       field[AryLevel].value += linkage[powClass].field[cTotalLev].value - 1     
       level = field[AryLevel].value
-	  
+    
       ~ Set the configurator's number of manuevers known
       linkage[powCfg].field[cfgMax1].value += field[cManKnown].arrayvalue[level]
 

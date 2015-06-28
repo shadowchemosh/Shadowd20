@@ -11,16 +11,9 @@
     -File created
     -Added DarkFocus tag group
     -Added PoWFreeMan tag group
-  -->
-
-  <!--The DarkFocus tag group is used to denote disciplines that have been selected by the Harbinger's Dark Focus ability-->
-  <group id="DarkFocus" name="Dark Focus Disc." 
-    inherit="Discipline">
-  </group>
   
-  <!--PoWFreeMan indicates that maneuvers from the tagged discipline can be readied without counting against the normal maneuver count (such as with the Harbinger capstone ability)-->
-  <group id="PoWFreeMan" name="Free Maneuvers" 
-    inherit="Discipline">
-  </group>
+    05/30/2015 - TheIronGolem
+    -Added PWActNRG tag group
+  -->
 
 </document>

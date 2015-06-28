@@ -4244,4 +4244,41 @@ call S2SetName]]></eval>
 
       perform field[pChosen].chosen.assign[thing.skipprereq]]]></eval>
     </thing>
+  <thing id="pS2ArcStRe" name="Archetype: Stop Replace Ability" description="This adjustment lets you prevent an archetype from replacing a specific class ability. This is useful for when you want to combine two different archetypes together and they both replace the same class feature and not display a warning message.\n\n{b}Note:{/b} This adjustment ONLY works AFTER you have already added the archetype to your character.  Then from the first drop down select the archetype.  From the second drop down select the class ability that should not get replaced." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.BaseVary"/>
+    <fieldval field="pCandExpr2" value="component.BaseClSpec"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Adjust2nd" tag="S2Custom"/>
+    <tag group="OthAdjCat" tag="Class"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen = 0)
+
+      var sTags as string
+      ~ Built a list of abilities that are being replaced
+      sTags = field[pChosen].chosen.tagids[AbReplace.?,"|"]
+
+      ~ Select Things
+      field[pUsePicks2].value = 0
+      ~ Set search expression for CORE spell school
+      field[pCandExpr2].text = "component.BaseClSpec & (" & sTags & ")"]]></eval>
+    <eval phase="First" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen2].ischosen = 0)
+
+      var sTags as string
+      ~ Get the tag of the ability we need to remove
+      sTags = field[pChosen2].chosen.tagids[AbReplace.?]
+      ~ Delete the ability replace tag from the archetype
+      perform field[pChosen].chosen.deletestr[sTags]]]></eval>
+    </thing>
   </document>

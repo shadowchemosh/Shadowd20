@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document signature="Hero Lab Structure">
   <loadonce key="COM_3PPPack_PathOfWar - Tags"/>
-
   <!--
-  Oct 12, 2014 - Tim Shadow
-  -Added Veiled Moon and Broken Blade Discipline tags.
-  -Added custom descriptors and made dynamic.
-
-
-  March 1, 2013 - Tim Shadow
-  -Broke out the tags to its own .1st file to make maintenanince easier.
-
+    **NOTE: I moved the groups that do an inherit into this single .1st file.
+            For some reason one "some" computers the files are loaded in reverse order
+            thus preventing the inherit concept from working. By moving all the inherit
+            groups into one .1st file we can control the load better.
   -->
-
   <!-- ============================================== -->
   <!-- CUSTOM GROUPS AND TAGS FOR PATHS OF WAR        -->
   <!-- ============================================== -->
+
   <!-- Path of War custom tags -->
   <group id="PathOfWar" name="Path of War">
     <value id="Discipline"  name="Martial Discipline"/>
@@ -34,7 +29,7 @@
     <value id="StaInnrEye"  name="Stance of the Inner Eye"/>
     <value id="CstManProg"  name="Custom Maneuver Progression"/>
     <value id="MartTrad"    name="Martial Tradition"/>
-	<value id="DarkMessgr"	name="Dark Messenger"/>
+    <value id="DarkMessgr"  name="Dark Messenger"/>
   </group>
 
   <!-- Martial Discipline custom tags -->
@@ -52,11 +47,13 @@
     <value id="SilvrCrane"  name="Silver Crane"/>
     <value id="CurseRazor"  name="Cursed Razor"/>
     <value id="ShaMirror"   name="Shattered Mirror"/>
-	<value id="ElemFlux"    name="Elemental Flux"/>
-	<value id="EternGuard"  name="Eternal Guardian"/>
-	<value id="MithCurr"    name="Mithral Current"/>
-	<value id="RivnHglass"  name="Riven Hourglass"/>
-	<value id="SlpGoddess"  name="Sleeping Goddess"/>
+    <value id="ElemFlux"    name="Elemental Flux"/>
+    <value id="EternGuard"  name="Eternal Guardian"/>
+    <value id="MithCurr"    name="Mithral Current"/>
+    <value id="PrcThun"     name="Piercing Thunder"/>
+    <value id="RivnHglass"  name="Riven Hourglass"/>
+    <value id="SlpGoddess"  name="Sleeping Goddess"/>
+    <value id="TmpGale"     name="Tempest Gale"/>
   </group>
 
   <!-- Has Manuever tags inherited from the discipline level group -->
@@ -186,5 +183,26 @@
     <value id="PerLevel2"   name="2 initiator levels"/>
     <value id="None"        name="No Duration"/>
   </group>
+
+  <!-- The DarkFocus tag group is used to denote disciplines that have been 
+       selected by the Harbinger's Dark Focus ability
+  -->
+  <group id="DarkFocus" name="Dark Focus Disc." 
+    inherit="Discipline">
+  </group>
+  
+  <!-- PoWFreeMan indicates that maneuvers from the tagged discipline can 
+       be readied without counting against the normal maneuver count 
+       (such as with the Harbinger capstone ability)
+  -->
+  <group id="PoWFreeMan" name="Free Maneuvers" 
+    inherit="Discipline">
+  </group>
+
+  <!-- PWActNRG indicates the hero's active energy type for the Elemental Flux discipline -->
+  <group id="PWActNRG" name="Active Energy Type" 
+    inherit="PriElement">
+  </group>
+
 
 </document>

@@ -109,6 +109,16 @@
     <tag group="wFtrGroup" tag="WPMndBld"/>
     <eval phase="First" priority="50">~ Setup the Discipline Class Skill
       Call PWsetupDSk</eval>
+    <eval phase="First" priority="10500" index="2"><![CDATA[      ~ Find out how many Sleeping Goddess maneuvers (including stances) we have, and stop if it's zero
+      var numMans as number
+      numMans = tagcount[mLevel.?]
+      doneif (numMans = 0)
+
+      ~ Make the hero psionic, if they're not already
+      call SetHeroPsi
+
+      ~ Increase our total amount of Power Points by the level of our highest-level Sleeping Goddess maneuver, plus one for every SG maneuver beyond the first
+      #resmax[resPowerPt] += tagmax[mLevel.?] + (numMans - 1)]]></eval>
     </thing>
   <thing id="dPWSlpGods" name="Sleeping Goddess Discipline" compset="SplSchool">
     <usesource source="srcPOWEx"/>
@@ -130,6 +140,7 @@
     <tag group="wFtrGroup" tag="BladeLight"/>
     <tag group="wFtrGroup" tag="Monk"/>
     <tag group="wFtrGroup" tag="Thrown"/>
+    <bootstrap thing="fPWEFlxNrg"></bootstrap>
     <eval phase="First" priority="50">~ Setup the Discipline Class Skill
       Call PWsetupDSk</eval>
     </thing>
@@ -192,5 +203,58 @@
     <tag group="wFtrGroup" tag="Spears"/>
     <eval phase="First" priority="50">~ Setup the Discipline Class Skill
       Call PWsetupDSk</eval>
+    </thing>
+  <thing id="fPWEFlxNrg" name="Active Energy Type" compset="Feat" summary="Choose your active energy type" uniqueness="useronce">
+    <arrayval field="usrArray" index="0" value="Air (Electricity)"/>
+    <arrayval field="usrArray" index="1" value="Earth (Acid)"/>
+    <arrayval field="usrArray" index="2" value="Fire (Fire)"/>
+    <arrayval field="usrArray" index="3" value="Water (Cold)"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="Hide" tag="Feat"/>
+    <tag group="Helper" tag="ActivMenu"/>
+    <tag group="thing" tag="skipprereq"/>
+    <eval phase="First" priority="10500" index="2"><![CDATA[      ~ If we don't have any Elemental Flux maneuvers, disable this feat and remove any tags it assigned
+      ~ We wait until First/10500 to do this because we need the PWActNRG tags early for bootstraps but can't check for maneuver presence until after First/10000
+      var hasAET as number
+      hasAET = 0
+      if (hero.childlives[zPWElmFlux] = 1) then
+        if (hero.childfound[zPWElmFlux].tagcount[mLevel.?] > 0) then
+          hasAET = 1
+        endif
+      endif
+
+      ~ We can also get an active energy type from Elemental Attunement
+      if (hasAET = 0) then
+        hasAET = hero.childlives[cPW6ElmAtt]
+      endif
+
+      if (hasAET = 0) then
+        perform assign[Helper.FtDisable]
+        perform delete[Helper.ActivMenu]
+        perform hero.delete[PWActNRG.?]
+      endif]]></eval>
+    <eval phase="First"><![CDATA[      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we have not chosen then get out now
+      doneif (field[usrChosen1].ischosen <> 1)
+
+      ~ Assign an energy type tag based on our selection
+      If (field[usrIndex].value = 0) Then
+         perform hero.assign[PWActNRG.Air]
+      ElseIf (field[usrIndex].value = 1) Then
+         perform hero.assign[PWActNRG.Earth]
+      ElseIf (field[usrIndex].value = 2) Then
+         perform hero.assign[PWActNRG.Fire]
+      ElseIf (field[usrIndex].value = 3) Then
+         perform hero.assign[PWActNRG.Water]
+      Endif]]></eval>
+    </thing>
+  <thing id="arHdPWZeal" name="Zealot" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Zealot" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPW5"/>
+    </thing>
+  <thing id="arHdPWMyst" name="Mystic" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Mystic" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPW6"/>
     </thing>
   </document>

@@ -16,7 +16,7 @@
     <fieldval field="cSpecSing" value="Gambit"/>
     <fieldval field="cHDSides" value="10"/>
     <fieldval field="srcBookInf" value=" [PoW]"/>
-    <arrayval field="cBonFtTot" index="5" value="2"/>
+    <fieldval field="cSBonFtNm" value="Teamwork Feats"/>
     <arrayval field="cBonFtTot" index="9" value="3"/>
     <arrayval field="cBonFtTot" index="13" value="4"/>
     <arrayval field="cBonFtTot" index="17" value="5"/>
@@ -27,9 +27,9 @@
     <arrayval field="cCustTot" index="15" value="6"/>
     <arrayval field="cCustTot" index="19" value="7"/>
     <arrayval field="cBonFtTot" index="0" value="1"/>
+    <arrayval field="cBonFtTot" index="5" value="2"/>
+    <arrayval field="cSBonFtTot" index="2" value="1"/>
     <usesource source="srcPathOfW"/>
-    <tag group="ClassSkill" tag="skKnowHist"/>
-    <tag group="ClassSkill" tag="Craft"/>
     <tag group="ClassSkill" tag="skIntim"/>
     <tag group="cRef" tag="Poor"/>
     <tag group="cFort" tag="Good"/>
@@ -52,15 +52,9 @@
     <tag group="cAttack" tag="Good"/>
     <tag group="ClassSkill" tag="skClimb"/>
     <tag group="AgeColumn" tag="2"/>
-    <bootstrap thing="cPW1Presen">
-      <autotag group="ClSpecWhen" tag="7"/>
-      </bootstrap>
-    <bootstrap thing="cPW1TacAss">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPW1VicPre">
-      <autotag group="ClSpecWhen" tag="9"/>
-      </bootstrap>
+    <tag group="fCatSec" tag="Teamwork"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="ClassSkill" tag="skKnowHist"/>
     <bootstrap thing="cPW1DuaPre">
       <autotag group="ClSpecWhen" tag="11"/>
       </bootstrap>
@@ -122,6 +116,27 @@
       <autotag group="ClSpecWhen" tag="6"/>
       </bootstrap>
     <bootstrap thing="fArmShield"></bootstrap>
+    <bootstrap thing="cPW1Presen">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPW1TacAss">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cPW1VicPre">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cPW1Warlea">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPW1Warlea">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cPW1Warlea">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cPW1Warlea">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
     </thing>
   <thing id="cPWWarlord" name="Warlord" description="Dynamos on the field of combat, warlords walk the line of victory and ruin through their determination to achieve glory. Where some may talk tactics, the warlord dives in. Where some may fight in strategic units, the warlord shines alone as an inspirational beacon on the field of combat; to be a warlord is to be a lord of war.{br}{br}{b}Adventures{/b}: Warlords adventure for many reasons, but one reason that will always be prominent is the desire to test their skill against the world&apos;s most dangerous opponents, to show their strength to themselves and to the world. Others may do this for profit, others for fun, others for revenge, but it is always certain that a warlord seeks the glory and honor only a battle well-fought can bring.{br}{br}{b}Characteristics{/b}: Brash arrogance and an irrepressible nature are hallmarks of the warlord. A devil-maycare warrior, many warlords are as fearless as they are fierce, and they both love life and live their lives to the fullest. Hedonists in some extreme cases, the warlord is drawn to combat as a moth to the flame.{br}{br}{b}Alignment{/b}: Any. Warlords can come from any and all ethical backgrounds, though they do tend more towards a chaotic alignment. Lawfully aligned warlords are rarer, and tend to compose their impulses through strict discipline.\n\n{b}Role{/b}: Striker. As a very aggressive class, the warlord seeks to bring martial power to the field in the form of overwhelming force and ferocity. Additionally, warlords make excellent leaders, as they provide some passive benefits from their class features as well as active benefits from discipline choices and their gambits." compset="ClassLevel" maxlimit="20">
     <usesource source="srcPathOfW"/>
@@ -144,7 +159,7 @@
         @valid = ValidManOn</validate>
       </prereq>
     </thing>
-  <thing id="cPW1Gambit" name="Warlord’s Gambit" description="At his core, the warlord is a warrior who relies on both skill and daring; without this he is but any other combatant. By setting himself to danger, does his true skill shine, or so the motto of the warlord goes. At 1st level, a warlord selects two gambits as methods by which the warlord can recover expended maneuvers. Each gambit possesses three aspects - a {i}risk{/i}, a {i}rake{/i}, and a {i}reward{/i}.{br}{br}Each gambit&apos;s risk describes an action that the warlord must undertake in order to attempt to recover an expended maneuver. The warlord begins a gambit as a swift action, effectively diving recklessly into the act he is attempting. The warlord then performs the action described in the gambit, and if he is successful, he regains maneuvers (see below). If he is not, he suffers the rake of the gambit and only regains a single maneuver of his choosing. While performing a gambit, the warlord may add his Charisma modifier to the d20 check(s) to aid in accomplishing the gambit as a luck bonus. A warlord may attempt the actions of a gambit, but without declaring the attempt a gambit attempt by spending a swift action to do so, the character does not regain any maneuvers nor does he suffer a rake for failure. The character may initiate a maneuver while performing a gambit (if the maneuver helps him accomplish it) but he may not recover the maneuver used to achieve the gambit as part of the reward. A warlord may use each gambit available to him once per encounter. If at the start of the warlord&apos;s turn he has no available gambits, he regains all uses of his known gambits.{br}{br}A gambit&apos;s rake is the penalty that the warlord suffers if he attempts his gambit and fails, such as failing a trip attempt or failing to strike an opponent with a charge attack. Each gambit possesses a unique reward that the warlord enjoys for succeeding at that gambit. All gambits possess the same rake; the warlord only regains a single expended maneuver and suffers a -2 penalty on all d20 rolls for one round. A warlord who succeeds at fulfilling his gambit immediately recovers a number of expended maneuvers equal to his Charisma modifier (minimum 2) and enjoys the unique reward for each gambit. Allies who would witness the successful gambit and receive benefits must be within 60 ft. of the warlord to receive bonuses and must be able to see him perform the action.{br}{br}At 4th level and every four levels thereafter, the warlord selects adds an additional gambit." compset="ClSpecial">
+  <thing id="cPW1Gambit" name="Warlord’s Gambit" description="At his core, the warlord is a warrior who relies on both skill and daring; without this he is but any other combatant. By setting himself to danger, does his true skill shine, or so the motto of the warlord goes. At 1st level, a warlord selects two gambits as methods by which the warlord can recover expended maneuvers. Each gambit possesses three aspects - a {i}risk{/i}, a {i}rake{/i}, and a {i}reward{/i}.\n\nEach gambit&apos;s {i}risk{/i} describes an action that the warlord must undertake in order to attempt to recover an expended maneuver. The warlord begins a gambit as a swift action, effectively diving recklessly into the act he is attempting. The warlord then performs the action described in the gambit, and if he is successful, he regains maneuvers (see below). If he is not, he suffers the {i}rake{/i} of the gambit and only regains a single maneuver of his choosing. While performing a gambit, the warlord may add his Charisma modifier to the d20 check(s) to aid in accomplishing the gambit as a luck bonus. A warlord may attempt the actions of a gambit, but without declaring the attempt a gambit attempt by spending a swift action to do so, the character does not regain any maneuvers nor does he suffer a rake for failure. The character may initiate a maneuver while performing a gambit (if the maneuver helps him accomplish it) but he may not recover the maneuver used to achieve the gambit as part of the reward.\n\nA gambit&apos;s {i}rake{/i} is the penalty that the warlord suffers if he attempts his gambit and fails, such as failing a trip attempt or failing to strike an opponent with a charge attack. Each gambit possesses a unique {i}reward{/i} that the warlord enjoys for succeeding at that gambit. All gambits possess the same {i}rake{/i}; the warlord only regains a single expended maneuver and suffers a -2 penalty on all d20 rolls for one round. A warlord who succeeds at fulfilling his gambit immediately recovers a number of expended maneuvers equal to his Charisma modifier (minimum 2) and enjoys the unique reward for each gambit. Allies who would witness the successful gambit and receive benefits must be within 60 ft. of the warlord and must be able to see him perform the action. Finally, gambits may not be initiated outside of combat due to their reliance upon the stresses of battle to bring out the best of the warlord.\n\nAt 4th level and every four levels thereafter, the warlord selects adds an additional gambit." compset="ClSpecial" summary="Regain maneuvers by taking risky actions">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Extra"/>
     </thing>
@@ -153,7 +168,7 @@
     <tag group="SpecSource" tag="cHelpPW1"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="cPW1BraGam" name="Brave Gambit" description="{i}Risk{/i}: The warlord attempts to make a successful charge attack against an opponent.{br}{br}{i}Reward{/i}: The warlord&apos;s actions embolden his allies and sets his spirit alight with courage; the warlord and his allies gain a morale bonus to damage equal to the warlord&apos;s Charisma modifier on the next attack they make or until the warlord&apos;s next turn." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1BraGam" name="Brave Gambit" description="{i}Risk{/i}: The warlord attempts to make a successful charge attack against an opponent (if the character has the ability to make multiple attacks at the end of a charge, the initial first attack must be successful for this gambit’s success).\n\n{i}Reward{/i}: The warlord&apos;s actions embolden his allies and sets his spirit alight with courage; the warlord and his allies gain a morale bonus to damage equal to the warlord&apos;s Charisma modifier on the next attack they make or until the warlord&apos;s next turn." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -168,17 +183,17 @@
     <tag group="SpecSource" tag="cHelpPW1"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="cPW1DueGam" name="Duelist&apos;s Gambit" description="{i}Risk{/i}: The warlord attempts to successfully use the disarm maneuver against an opponent.{br}{br}{i}Reward{/i}: The warlord&apos;s opponent is disarmed of a weapon and then the warlord may make an immediate attack of opportunity against his foe and gains a damage bonus equal to his Charisma modifier if the attack is successful." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1DueGam" name="Duelist&apos;s Gambit" description="{i}Risk{/i}: The warlord attempts to successfully use the disarm maneuver against an opponent.\n\n{i}Reward{/i}: The warlord&apos;s opponent is disarmed of a weapon and then the warlord may make an immediate attack of opportunity against his foe and gains a morale bonus to damage equal to his Charisma modifier if the attack is successful." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
     </thing>
-  <thing id="cPW1GatGam" name="Gatecrasher Gambit" description="{i}Risk{/i}: The warlord attempts a successful bull rush maneuver against an opponent.{br}{br}{i}Reward{/i}: The opponent is so rattled by the warlord&apos;s deft bull rush, that he suffers a penalty equal to the warlord&apos;s Charisma modifier for one round on all d20 checks." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1GatGam" name="Gatecrasher Gambit" description="{i}Risk{/i}: The warlord attempts a successful bull rush maneuver against an opponent.\n\n{i}Reward{/i}: The opponent is so rattled by the warlord’s deft bull rush, that he suffers a penalty equal to the warlord’s Charisma modifier for one round on all d20 checks." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
     </thing>
-  <thing id="cPW1Presen" name="Tactical Presence" description="At 2nd level, the warlord&apos;s innate charisma allows his very presence to aid and assist not only himself but his allies as well, just by his being around. Adopting a presence is a move-equivalent action, and only one presence may be maintained at any given time. At 7th level, the warlord is capable of adopting a presence as a free action." compset="ClSpecial">
+  <thing id="cPW1Presen" name="Tactical Presence" description="At 2nd level, the warlord&apos;s innate charisma allows his very presence to aid and assist not only himself but his allies as well, just by his being around. Adopting a presence is a move-equivalent action, and only one presence may be maintained at any given time. At 7th level, the warlord is capable of adopting a presence as a free action." compset="ClSpecial" summary="Grant bonuses to nearby allies">
     <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
@@ -188,11 +203,17 @@
   <thing id="cPW1IntPre" name="Intimidating Presence" description="The skill in battle that a warlord possesses and the stories told of his battles can strike fear in the hearts of those who come into a warlord&apos;s gaze. At 5th level, the warlord may add half of his class level to Intimidate checks (rounding down) as a circumstance bonus." compset="ClSpecial">
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="cPW1Warlea" name="Warleader" description="The warlord excels in the theater of war because he knows how best to work with his allies. At 3rd level, the warlord becomes an ever more capable commander and may share tactics with his allies. First, the warlord gains a teamwork feat as a bonus feat (he must meet the prerequisites for this feat to select it). As a standard action that the warlord performs, the warlord and allies within 30 ft. of him can share teamwork feats that they possess with each other, acting as if they both possessed the teamwork feat that they are sharing. The warlord can only share one teamwork feat at a time, either one his own (with all allies within 30 ft. of him) or an ally&apos;s (in which case only the warlord receives the ability to use the teamwork feat he does not possess). The warlord and allies retain the use of this feat for 3 + the warlord&apos;s Charisma modifier in rounds. The character may use this ability 1 + Charisma modifier times per day at 3rd level (minimum of 1), and one additional time per day for every four warlord levels the character possesses." compset="ClSpecial">
-    <tag group="User" tag="Tracker"/>
-    <tag group="Usage" tag="Day"/>
+  <thing id="cPW1Warlea" name="Warleader" description="The warlord excels in the theater of war because he knows how best to work with his allies. At 3rd level, the warlord becomes an ever more capable commander and may share tactics with his allies. First, the warlord gains a teamwork feat as a bonus feat (he must meet the prerequisites for this feat to select it). As a standard action that the warlord performs, the warlord and allies within 30 ft. of him can share teamwork feats that they possess with each other, acting as if they both possessed the teamwork feat that they are sharing. The warlord can only share one teamwork feat at a time, either one his own (with all allies within 30 ft. of him) or an ally&apos;s (in which case only the warlord receives the ability to use the teamwork feat he does not possess). The warlord and allies retain the use of this feat for 3 + the warlord&apos;s Charisma modifier in rounds. The character may use this ability 1 + Charisma modifier times per day at 3rd level (minimum of 1), and one additional time per day for every four warlord levels the character possesses." compset="ClSpecial" summary="Gain a bonus teamwork feat; share teamwork feats with allies">
+    <fieldval field="abRange" value="30"/>
+    <fieldval field="abDuration" value="3"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PostLevel" priority="10000"><![CDATA[
+    <tag group="abAction" tag="Standard"/>
+    <tag group="abRange" tag="Feet"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="abDuration" tag="Round"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="LvNamePar" tag="IncDurati"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
       ~Set the list name
       field[listname].text = field[thingname].text & " " & field[xIndex].value & tagnames[Usage.?]
 
@@ -201,18 +222,28 @@
       ~ if we've been disabled, get out now
       doneif (tagis[Helper.SpcDisable] <> 0)
 
+      var initMod as number
+      call PWgetIMod
+
+      ~ Set daily uses
+      field[abValue].value += maximum(1,initMod)
       field[abValue].value += field[xCount].value
-      field[trkMax].value += field[abValue].value]]></eval>
+      field[trkMax].value += field[abValue].value
+
+      ~ Set range
+      field[abDuration].value += initMod]]></eval>
     </thing>
-  <thing id="cPW1IndPre" name="Indomitable Presence" description="At 2nd level, the warlord shines as a beacon to his allies on the field of battle, inspiring them to fight with him to their last breath. All allies within 30 ft. of his position gain the benefits of the Die Hard feat, and may add the warlord&apos;s Charisma modifier to Fortitude saves versus death effects, fatigue or exhaustion effects, or poison effects as a morale bonus." compset="ClSpecial">
+  <thing id="cPW1IndPre" name="Indomitable Presence" description="At 2nd level, the warlord shines as a beacon to his allies on the field of battle, inspiring them to fight with him to their last breath. All allies within 30 ft. of his position gain the benefits of the Die Hard feat, and may add the warlord&apos;s Charisma modifier to Fortitude saves versus death effects, fatigue or exhaustion effects, or poison effects as a morale bonus." compset="ClSpecial" summary="Allies gain Die Hard feat and add your CHA to some Fort saves">
+    <fieldval field="abRange" value="30"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abRange" tag="Feet"/>
     </thing>
-  <thing id="cPW1GrpGam" name="Grappler Gambit" description="{i}Risk{/i}: The warlord attempts a successful grapple maneuver against an opponent.{br}{br}{i}Reward{/i}: When the warlord has his enemy pinned and he chooses to inflict damage upon him, the warlord adds his Charisma modifier to damage until the foe successfully escapes the grapple." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1GrpGam" name="Grappler Gambit" description="{i}Risk{/i}: The warlord attempts a successful grapple maneuver against an opponent.\n\n{i}Reward{/i}: When the warlord has his enemy pinned and he chooses to inflict damage upon him, the warlord adds a morale bonus to damage equal to his Charisma modifier until the foe successfully escapes the grapple." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
     </thing>
-  <thing id="cPW1OutGam" name="Outrider&apos;s Gambit" description="{i}Risk{/i}: The warlord attempts a successful ranged attack while on a moving mount.{br}{br}{i}Reward{/i}: The warlord success allows for his allies to reap the benefits of his skill; allies who make ranged at{b}6{/b} tacks against this target opponent add the warlord&apos;s Charisma modifier to their next attack roll." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1OutGam" name="Outrider&apos;s Gambit" description="{i}Risk{/i}: The warlord attempts a successful ranged attack while on a moving mount (the mount must move 10 ft. or more to use this gambit).\n\n{i}Reward{/i}: The warlord success allows his allies to reap the benefits of his skill; allies who make ranged attacks against this target opponent add the warlord’s Charisma modifier as a morale bonus to their next attack roll." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
@@ -232,12 +263,12 @@
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
     </thing>
-  <thing id="cPW1SweGam" name="Sweeping Gambit" description="{i}Risk{/i}: The warlord attempts a successful trip maneuver against an opponent.{br}{br}{i}Reward{/i}: The warlord trips his foe and may make an immediate attack of opportunity against that foe, adding his Charisma modifier to the damage he inflicts if successful." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1SweGam" name="Sweeping Gambit" description="{i}Risk{/i}: The warlord attempts a successful trip maneuver against an opponent.\n\n{i}Reward{/i}: The warlord trips his foe and may make an immediate attack of opportunity against that foe, adding his Charisma modifier as a morale bonus to the damage he inflicts if successful." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
     </thing>
-  <thing id="cPW1UnbGam" name="Unbreakable Gambit" description="{i}Risk{/i}: The warlord attempts to succeed on a Fortitude or Will save against an extraordinary ability, maneuver, power, spell, or spell-like or supernatural ability. Unlike other gambits, this one can be attempted as an immediate action instead of a swift action.\n\n{i}Reward{/i}: The warlord is emboldened by his ability to resist his opponent&apos;s attack, and regains a number of hit points equal to three times his Charisma modifier." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1UnbGam" name="Unbreakable Gambit" description="{i}Risk{/i}: The warlord attempts to succeed on a Fortitude or Will save against an extraordinary ability, maneuver, power, spell, or spell-like or supernatural ability. The effect in question must be a harmless effect on a failed saving throw. Unlike other gambits, this one can be attempted as an immediate action instead of a swift action.\n\n{i}Reward{/i}: The warlord is emboldened by his ability to resist his opponent&apos;s attack, and regains a number of hit points equal to three times his Charisma modifier." compset="CustomSpec" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
@@ -247,14 +278,29 @@
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecSource" tag="cHelpPW1"/>
     </thing>
-  <thing id="cPW1RalPre" name="Rallying Presence" description="The sight of a warlord on the battlefield is enough to strengthen the hearts and wills of those who fight beside him in battle. At 5th level, the warlord may add his Charisma modifier as a morale bonus to Will saves versus fear, death effect, or compulsion effects to all allies within 30 ft. of his position. If the warlord maintaining this presence becomes cowed, frightened, panicked or falls prey to a hostile mind-affecting ability (such as one that would stun or daze him), compulsion or death effect, this presence immediately ends." compset="ClSpecial">
+  <thing id="cPW1RalPre" name="Rallying Presence" description="The sight of a warlord on the battlefield is enough to strengthen the hearts and wills of those who fight beside him in battle. At 5th level, the warlord may add his Charisma modifier as a morale bonus to Will saves versus fear, death effect, or compulsion effects to all allies within 30 ft. of his position. If the warlord maintaining this presence becomes cowed, frightened, panicked or falls prey to a hostile mind-affecting ability (such as one that would stun or daze him), compulsion or death effect, this presence immediately ends." compset="ClSpecial" summary="Allies add your CHA to some Will saves as a morale bonus">
+    <fieldval field="abRange" value="30"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abRange" tag="Feet"/>
     </thing>
-  <thing id="cPW1VicPre" name="Victorious Presence" description="The preternatural skill at arms that a warlord of at this level possesses is enough to win any battle. At 9th level, any foe that the warlord brings to 0 or fewer hit points in battle immediately fuels his hunger for the win, granting him and his allies within 30 ft. of his position the character&apos;s class level plus Charisma modifier in temporary hit points. These hit points endure until they are lost or until the end of the encounter, whichever occurs first. Damage inflicted on the warlord is deducted from his temporary hit points first before being deducted from his normal hit point total." compset="ClSpecial">
+  <thing id="cPW1VicPre" name="Victorious Presence" description="The preternatural skill at arms that a warlord of at this level possesses is enough to win any battle. At 9th level, any foe that the warlord brings to 0 or fewer hit points in battle immediately fuels his hunger for the win, granting him and his allies within 30 ft. of his position the character&apos;s class level plus Charisma modifier in temporary hit points. These hit points endure until they are lost or until the end of the encounter, whichever occurs first. Damage inflicted on the warlord is deducted from his temporary hit points first before being deducted from his normal hit point total." compset="ClSpecial" summary="You and your allies gain temp HP when you kill a foe">
+    <fieldval field="abRange" value="30"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abRange" tag="Feet"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ Calculate HP gained on enemy kill
+      field[abValue].value = field[xTotalLev].value
+      ~If an archetype needs to replace CHA with another attribute, do it here, or call PWinitMod if it's also replacing the initiating attribute
+      field[abValue].value += #attrmod[aCHA]]]></eval>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[      field[livename].text = field[livename].text & " (" & field[abValue].value & " HP)"]]></eval>
     </thing>
-  <thing id="cPW1BatPro" name="Battle Prowess" description="The warlord is a skilled combatant, mixing traditional fighting skills with the skill of his martial discipline training. When the warlord is in a martial stance and wielding a weapon that is a member of a weapon group associated with that martial stance&apos;s discipline (example: a warlord wielding a longsword while in Scarlet Zweihander stance or a longbow while in the Stance of Piercing Rays), the character gets the listed bonus (+1 at 5th level, +2 at 12th level, +3 at 19th level) as a circumstance bonus to attack and damage rolls, CMB rolls, and to his CMD." compset="ClSpecial">
+  <thing id="cPW1BatPro" name="Battle Prowess" description="The warlord is a skilled combatant, mixing traditional fighting skills with the skill of his martial discipline training. Choose a discipline, and when the warlord is in a martial stance from this chosen discipline, the character gets the listed bonus (+1 at 5th level, +2 at 12th level, +3 at 19th level) as a competence bonus to attack and damage rolls, CMB rolls, and to his CMD. He may select another discipline at 12th level, and third discipline at 19th level." compset="ClSpecial" summary="Gain combat bonuses while in stance of chosen discipline">
+    <fieldval field="usrCandid1" value="component.Simple &amp; PathOfWar.selDisc"/>
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue2" value="1"/>
+    <tag group="abAction" tag="None"/>
     <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="SpecType" tag="Defense"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~Set the list name
@@ -265,10 +311,32 @@
       ~ if we've been disabled, get out now
       doneif (tagis[Helper.SpcDisable] <> 0)
 
-      field[abValue].value += field[xCount].value
-      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)]]></eval>
+      field[abValue3].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue3].value)
+
+      if (field[xTotalLev].value >= 12) then
+        field[abValue].value += field[abValue2].value
+      endif
+      if (field[xTotalLev].value >= 19) then
+        field[abValue].value += field[abValue2].value
+      endif
+
+      ~ stop now if discipline not chosen
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Stop if we're not in a stance of the chosen discipline
+      var IsInStance as number
+      var targetDisc as string
+      targetDisc = replace(field[usrChosen1].chosen.tagids[Discipline.?],"Discipline.","",0)
+      call PWinDSta
+      doneif (IsInStance = 0)
+
+      ~ Apply bonus to attack, damage, and CMD
+      #applybonus[BonComp,hero.childfound[Attack],field[abValue].value]
+      #applybonus[BonComp,hero.childfound[Damage],field[abValue].value]
+      #applybonus[BonComp,hero.childfound[ManeuvDef],field[abValue].value]]]></eval>
     </thing>
-  <thing id="cPW1DulBoo" name="Dual Boost" description="Knowledgeable in the ways of making the best of any situation through pluck and verve, the warlord is capable of applying multiple martial principles simultaneously. At 6th level, once per day the warlord may initiate two boost type maneuvers as part of the same swift action. He may use this an additional time per day at 12th level, and three times per day at 18th level." compset="ClSpecial">
+  <thing id="cPW1DulBoo" name="Dual Boost" description="Knowledgeable in the ways of making the best of any situation through pluck and verve, the warlord is capable of applying multiple martial principles simultaneously. At 6th level, once per day the warlord may initiate two boost type maneuvers as part of the same swift action. He may use this an additional time per day at 12th level, and three times per day at 18th level." compset="ClSpecial" summary="Initiate two boosts with the same swift action">
     <tag group="User" tag="Tracker"/>
     <tag group="Usage" tag="Day"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -284,20 +352,33 @@
       field[abValue].value += field[xCount].value
       field[trkMax].value += field[abValue].value]]></eval>
     </thing>
-  <thing id="cPW1TacAss" name="Tactical Assistance" description="At 8th level, the warlord&apos;s gift for helping his allies in combat improves. The character may use the Aid Another action for any single ally within 30 ft. of his position as a move action, and he uses his Charisma modifier for the bonus he grants to his ally&apos;s action (min +2)." compset="ClSpecial">
+  <thing id="cPW1TacAss" name="Tactical Assistance" description="At 8th level, the warlord&apos;s gift for helping his allies in combat improves. The character may use the Aid Another action for any single ally within 30 ft. of his position as a move action, and he uses his Charisma modifier for the bonus he grants to his ally&apos;s action (min +2)." compset="ClSpecial" summary="Use Aid Another action at range">
+    <fieldval field="abRange" value="30"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="abAction" tag="Move"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abRange" tag="Feet"/>
     </thing>
-  <thing id="cPW1ImpWar" name="Improved Warleader" description="At 13th level, the warlord&apos;s excellence in battle has enabled him to utilize the tactical skills of his allies as well as his own with greater speed. The warlord may now use his warleader class feature as a move action." compset="ClSpecial">
+  <thing id="cPW1ImpWar" name="Improved Warleader" description="At 13th level, the warlord&apos;s excellence in battle has enabled him to utilize the tactical skills of his allies as well as his own with greater speed. The warlord may now use his warleader class feature as a move action." compset="ClSpecial" summary="Use Warleader as a move action">
     <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      
+      ~ Change Warleader's action from Standard to Move
+      perform hero.childfound[cPW1Warlea].delete[abAction.Standard]
+      perform hero.childfound[cPW1Warlea].delete[abAction.Move]]]></eval>
     </thing>
   <thing id="cPW1JacGam" name="Jackpot Gambit" description="At 15th level, the warlord is the undeniable master of his gambits, reaping the greatest rewards for his risks. When the character succeeds on a gambit, he recovers all expended maneuvers instead of the normal allotment equal to his Charisma modifier" compset="ClSpecial">
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="cPW1DuaPre" name="Dual Tactical Presence" description="At 11th level, the sight of the warlord on a field of combat inspires multiple feelings in those around him. He may select and use two presences, activating them together as a free action." compset="ClSpecial">
+  <thing id="cPW1DuaPre" name="Dual Tactical Presence" description="At 11th level, the sight of the warlord on a field of combat inspires multiple feelings in those around him. He may select and use two presences, activating them together as a free action." compset="ClSpecial" summary="Use two Tactical Presences">
     <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="Free"/>
     </thing>
-  <thing id="cPW1DuaSta" name="Dual Stance" description="At 20th level, the warlord&apos;s ability to use his stances improves, allowing him to gain the benefits of two known stances simultaneously from the warlord class. He must still adopt each stance individually, requiring him to expend one swift action for each stance." compset="ClSpecial">
+  <thing id="cPW1DuaSta" name="Dual Stance" description="At 20th level, the warlord&apos;s ability to use his stances improves, allowing him to gain the benefits of two known stances simultaneously from the warlord class. He must still adopt each stance individually, requiring him to expend one swift action for each stance." compset="ClSpecial" summary="You can maintain two martial stances at once">
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -308,23 +389,64 @@
       ~ Give the abilit to have two stances
       perform hero.child[cCfgPW1].assign[PathOfWar.StanceUp]]]></eval>
     </thing>
-  <thing id="cPW1ForPer" name="Force of Personality" description="At 3rd level, the warlord&apos;s forceful personality and bold, headstrong nature assist him in resisting the influence of others. Where others use personal serenity, awareness of the world around them, or plain old sensibility, the warlord gets by with endless nerve. The warlord may add his Charisma modifier to his Wisdom modifier to determine his Will save bonus. If the character is ever able to add his Charisma modifier to his Will save through use of another ability (for example. the paladin&apos;s divine grace) he may only add his Charisma modifier once to his Will save." compset="ClSpecial">
+  <thing id="cPW1ForPer" name="Force of Personality" description="At 3rd level, the warlord&apos;s forceful personality and bold, headstrong nature assist him in resisting the influence of others. Where others use personal serenity, awareness of the world around them, or plain old sensibility, the warlord gets by with endless nerve. The warlord may add his Charisma modifier to his Wisdom modifier to determine his Will save bonus. If the character is ever able to add his Charisma modifier to his Will save through use of another ability (for example. the paladin&apos;s divine grace) he may only add his Charisma modifier once to his Will save.\n\n{b}NOTE:{/b} Currently, we cannot reliably determine if Charisma is already being added to the saving throw, so if you already have an ability that duplicates this effect, you will need to add an adjustment to give yourself a penalty equal to the bonus from this ability, in order to negate the illegal bonus." compset="ClSpecial" summary="Add CHA to Will saves">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostAttr" priority="10000">      ~ Get our CHA mod (or other, if an archetype has changed our initiating attribute)
+      var initMod as number
+      call PWgetIMod
+      field[abValue].value += initMod</eval>
+    <eval phase="PostAttr" priority="20000" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      hero.child[svAll].field[Bonus].value += field[abValue].value]]></eval>
     </thing>
-  <thing id="cPW1TacFla" name="Tactical Flanker" description="The warlord is exceptionally gifted at working with his allies to bring down opponents and his skills assist any who ally with him. When flanking a target with an allied creature, both the warlord and the ally may use the warlord&apos;s Charisma modifier (min +2) for the bonus they receive on flanking their opponent." compset="ClSpecial">
+  <thing id="cPW1TacFla" name="Tactical Flanker" description="At 4th level, the warlord is exceptionally gifted at working with his allies to bring down opponents and his skills assist any who ally with him. When flanking a target with an allied creature, both the warlord and the ally may use the warlord&apos;s Charisma modifier (min +2) for the bonus they receive on flanking their opponent." compset="ClSpecial" summary="Use CHA mod for flanking bonus">
     <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Get our CHA mod (or other, if an archetype has replaced initiator mod)
+      var initMod as number
+      call PWgetIMod
+
+      ~ Substitute flanking bonus with init mod, if higher
+      perform hero.childfound[pstFlankin].setfocus
+      doneif (state.isfocus = 0)
+      var fBon as number
+      fBon = focus.field[abValue2].value
+      doneif (fBon > initMod)
+      focus.field[abValue2].value = initMod
+
+      ~ The flanking script has already set the attack bonus, so we need to increase the bonus by the difference between our init mod and the normal flanking bonus
+      doneif (focus.field[pIsOn].value = 0)
+      hero.child[Attack].field[atmBonus].value += (initMod - fBon)]]></eval>
     </thing>
-  <thing id="cPW1WarPre" name="Warlord&apos;s Presence" description="At 15th level, the warlord is capable using three of his presences together at the same time, activating them together as a free action." compset="ClSpecial">
+  <thing id="cPW1WarPre" name="Warlord&apos;s Presence" description="At 15th level, the warlord is capable using three of his presences together at the same time, activating them together as a free action." compset="ClSpecial" summary="Use three Tactical Presences">
     <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="Free"/>
     </thing>
   <thing id="cPW1MasWar" name="Master Warleader" description="At 17th level, the warlord&apos;s peerless ability in the theater of war has enabled him to utilize the tactical skills of his allies as well as his own with the greatest of speed. The warlord may now use his warleader class feature as a swift action." compset="ClSpecial">
     <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      
+      ~ Change Warleader's action from Move to Swift
+      perform hero.childfound[cPW1Warlea].delete[abAction.Move]
+      perform hero.childfound[cPW1Warlea].delete[abAction.Swift]]]></eval>
     </thing>
-  <thing id="cPW1DeaGam" name="Deadeye Gambit" description="{i}Risk{/i}: The warlord attempts a successful called shot maneuver on a target opponent.{br}{br}{i}Reward{/i}: The warlord&apos;s incredible accuracy livens up his allies and restores to them a measure of spirit; the warlord and his allies regain hit points equal to the warlord&apos;s Charisma modifier, helping them ignore the pains of their injuries and continue the fight." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPW1DeaGam" name="Deadeye Gambit" description="{i}Risk{/i}: The warlord attempts a successful called shot maneuver on a target opponent.\n\n{i}Reward{/i}: The warlord&apos;s incredible accuracy livens up his allies and restores to them a measure of spirit; the warlord and his allies gain temporary hit points equal to the warlord&apos;s Charisma modifier (persisting until the end of the encounter or until they are used), helping them ignore the pains of their injuries and continue the fight." compset="CustomSpec" uniqueness="unique">
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="SpecSource" tag="cHelpPW1"/>
     </thing>
   <thing id="cPWStalker" name="Stalker" description="An effective warrior wielding both skill and stealth, the stalker is a martial disciple who battles in the deep shadows and the hidden underworld of night. Through rigorous training and deep, intuitive instincts, the stalker is a trained killer whose very art is considered illegal in some places. Part mystic, part warrior, and part assassin, the stalker&apos;s arts are varied, but always deadly.\n\n{b}Adventures:{/b} Stalkers adventure for many reasons, but most do so either as part of a guild of fellow stalkers on a mission, for money and profit, or for deeper, often darker purposes of the heart. Some adventure for the test of their skill, but this is slightly rarer; whatever the reason, the path of the stalker is often a self-absorbed one.\n\n{b}Characteristics:{/b} Stalkers universally are very introspective people, they rely so heavily upon their intuitive reactions to situations and their heightened reflexes through athletic skill that they usually have an air of detachment. Some are braggarts, but many are quiet and calm, paying close attention to their surroundings should they need to use their lethal skills.\n\n{b}Alignment:{/b} Any. Stalkers do not lean to any particular alignment trend, running the gamut of all walks of life.\n\n{b}Role:{/b} Striker. In the party, the stalker follows the heavily armored fighter into combat, using them as shields and distractions so they can inflict maximum damage on their foes. In addition, the stalker can serve quite well as the party scout, finding danger and warning the party before they stumble upon it." compset="ClassLevel" maxlimit="20">
     <usesource source="srcPathOfW"/>
