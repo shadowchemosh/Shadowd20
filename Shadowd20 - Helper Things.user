@@ -330,7 +330,10 @@ version 1.40 - Released May 12, 2013
 
     <!-- This gives an option where XP is not needed -->
     <bootstrap thing="s20NoXP"></bootstrap>
-    
+
+    <!-- Archetype Class Changes -->
+    <bootstrap thing="s20RogueUn"></bootstrap>
+   
     <eval phase="First" priority="10000">~ If not human get out now
       ~#hasrace[rHuman] + #hasrace[rElf] + #hasrace[rDwarf] +
       doneif (#hasrace[rHalfling] = 0)
@@ -767,7 +770,25 @@ version 1.40 - Released May 12, 2013
       nexteach            
       ]]></eval>
     </thing>
+   
     
+  <thing id="s20RogueUn" 
+    name="Shadow d20 Rogue Unchained" 
+    description="Auto apply specific archetypes to the Unchained Rogue class." 
+    compset="Simple" uniqueness="useronce">
+
+    <usesource source="s20PFCamp"/>
+    <bootstrap thing="arS2URog01">
+      <containerreq phase="GlobalTest" priority="10050"><![CDATA[Shadowd20.arS2URog01]]></containerreq>    
+    </bootstrap>
+    <eval phase="GlobalTest" priority="10000"><![CDATA[
+      ~ If unchained Rogue class found then apply archetype
+      doneif (hero.haschild[BaseClHelp, "thingid.cHelpRogUn"] = 0)
+
+      ~ Set archetype tag onto hero
+      perform hero.assign[Shadowd20.arS2URog01]      
+      ]]></eval>
+    </thing>
 
     
   <thing id="s20Tracker" name="Shadow d20 Tracker Reset to Max" description="Set all trackers and action points to reset to Max instead of 0. This way a wand will be 50/50 instead of 50/50." compset="Simple" uniqueness="useronce">

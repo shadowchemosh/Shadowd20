@@ -54,6 +54,10 @@
     <value id="UndeadAnat"  name="Undead Anatomy Spell Adjustment"/>
     <value id="UndeadAna2"  name="Undead Anatomy 2"/>
     <value id="UndeadAna3"  name="Undead Anatomy 2"/>
+
+    <!-- Bootstrapped Archetypes -->
+    <value id="arS2URog01"  name="Rogue Unchained Shadow d20"/>
+
   </group>
 
 <!-- Group Dragonborn custom tags -->

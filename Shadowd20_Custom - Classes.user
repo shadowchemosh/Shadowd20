@@ -367,8 +367,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpClr"/>
-    <eval phase="First">
-      ~ Remove the notice about domain spells
+    <eval phase="First">~ Remove the notice about domain spells
       hero.child[cHelpClr].field[cSecSplReq].value = 0</eval>
     </thing>
   <thing id="cS2Sphere" name="Spherewalker" description="{b}Requirements{/b}: Must have visited two locations sacred to Desna, at least 200 miles apart.\n\nMust have at least two of the following skills at 2 ranks or more; Climb, Knowledge (geography), Knowledge (nature), Knowledge (religion), Perform, Ride, Survival, or Swim.\n\nMust have at least one of the following feats; Great Fortitude, Iron Will, or Lightning Reflexes.\n\nMust have at least one of the following feats; Acrobatic, Agile, Athletic, Endurance, Run, Self-Sufficient" compset="ClassLevel" maxlimit="5" replaces="cPFSphere">
@@ -2176,6 +2175,44 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       doneif (field[usrChosen1].ischosen = 0)
 
       #extradamage[field[usrChosen1].chosen,"+" & field[abValue].value & "d" & field[abValue2].value & " vs Evil",field[name].text]]]></eval>
+    </thing>
+  <thing id="arS2URog01" name="Shadow d20" description="This archetype is used to apply houserules to the Unchained Rogue Class." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="1"/>
+    <fieldval field="srcBookInf" value="Shadow d20"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <bootstrap thing="cURogS2LuP">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpRogUn"/>
+    </thing>
+  <thing id="cURogS2LuP" name="Luck Pool" description="At 2nd level, a rogue gains a pool of luck points, measuring her ability to get out of scrapes. The number of points in the rogue&apos;s luck pool is equal to 1/2 her rogue level + her Dexterity modifier. Luck points can be used to power any ability that requires Ki Points. As long as she has at least 1 point in her luck pool, a rogue may move at full speed when using the Acrobatics skill to move through threatened squares without increasing the DC by 10.\n\nAt 2nd level, a rogue can spend 1 luck point to improve a d20 roll, you add the result of a 1d6 to your d20 roll including attack rolls, saves, checks, or any other roll of a d20. You can declare the use of a luck point to alter a d20 roll after the roll is made, but only before the GM reveals the result of that roll. You can&apos;t use an luck point to alter the result of a d20 roll when you are taking 10 or taking 20.  At 8th level the rogue can roll 2d6 and take the highest of the dice rolls to add to the d20.  At 15th level a rogue can roll 3d6 and the best result of the three is added to the d20. In example if the rogue rolled a 1, 2, and 4, she would apply the 4 to her d20. \n\nThe luck pool is replenished each morning after 8 hours of rest or meditation; these hours do not need to be consecutive. If the rogue possesses levels in another class that grants points to a ki pool, rogue levels stack with the levels of that class to determine the total number of luck points in the combined pool, but only one ability score modifier is added to the total. The choice of which score to use is made when the second class ability is gained, and once made, the choice is set. The ninja can now use luck or ki points from this pool to power the abilities of every class she possesses that grants a luck or ki pool." compset="ClSpecial" summary="Luck points power Ki abilities or add d6&apos;s to any d20 roll before GM reveals result.">
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostAttr" priority="5000"><![CDATA[      ~ only run the rest for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~ Calculate half level bonus
+      field[abValue].value += round(field[xAllLev].value/2, 0, -1)
+
+      ~ Check to see if we can find the Monk Specific Ki Pool ability
+      if (hero.haschild[BaseClSpec,"thingid.cMnkKiPool"] = 1) then
+        perform assign[Helper.SpecUp]
+        #trkmax[cMnkKiPool] += field[abValue].value
+        perform hero.child[cMnkKiPool].assign[UseAttr.aDEX]
+        perform hero.child[cMnkKiPool].assign[Helper.ShowSpec]
+      else
+        field[trkMax].value += field[abValue].value + #attrmod[aDEX]
+      endif
+
+      ~ Meet core Ki Pool pre-reqs
+      perform hero.assign[Ability.cMnkKiPool]
+      perform hero.assign[HasAbility.cMnkKiPool]]]></eval>
     </thing>
   <hidden id="arRgrSpell"/>
   </document>
