@@ -730,6 +730,9 @@ version 1.40 - Released May 12, 2013
       ~ Lore Skill from Unchained not as specific.
       #appenddesc[skLorOther,"{b}Shadow d20:{/b} Lore is changed to only be a little specific but NOT as restrictive as the book. Listed below are some new valid examples for what you could pick with Lore.{br}{br}-For gods list up to three gods.{br}-Any City, Town, Village regardless of size and know all areas of that location.{br}-Elves, Dwarves, Orcs, Half-Orcs, Goblins, or other specific race. But you can't say 'Humanoids'.{br}-Undead, Dragons, Aberrations, Devils, Demons, Lycanthrops, or other broad single Creature Type. So again you can't say 'Outsider (Evil)' but can list Devil or Demon."]
 
+      ~ Unchained Sneak Attack
+      #appenddesc[cSneakUnc,"{b}Shadow d20:{/b} The rogue can take advantage of the distractions that her allies attacks cause. When a creature is attacked in melee combat by an ally (regardless if its a hit or a miss) the rogue can deal sneak attack damage to that target until the end of the rogue's turn."]
+
       ~ Unchained poison note on Heal Skill
       if (hero.tagis[source.PUPoiDis] = 1) then
         #appenddesc[skHeal,"{b}Unchained:{/b} For every day of bed rest (or 2 nights of normal rest), a victim recovers one step; this recovery is doubled as normal by Heal checks, and tenacious poisons might require a longer recovery period."]

@@ -1315,6 +1315,46 @@ Hidden]]></comment>
       Endif]]></eval>
     </thing>
 
+  <thing id="arRgrSpell" name="Spellless" description="{b}Kobold Quartly#11{/b}\n\nThe following variant class has no spell casting ability. To compensate for this, the class gains specialized ranger talents (similar to Rogue talents) and a stealth attack which can be used only in a favored terrain or against a favored enemy. A few additional class abilities are also included, most notably nature’s healing, which allows the ranger to use his Heal skill with better results when in a favored environment." compset="ClassVary" uniqueness="unique">
+    <comment>HIDDEN</comment>
+    <fieldval field="cvSpec3rdS" value="Ranger Talent"/>
+    <arrayval field="cvCustTTot" index="6" value="2"/>
+    <arrayval field="cvCustTTot" index="8" value="3"/>
+    <arrayval field="cvCustTTot" index="10" value="4"/>
+    <arrayval field="cvCustTTot" index="12" value="5"/>
+    <arrayval field="cvCustTTot" index="15" value="6"/>
+    <arrayval field="cvCustTTot" index="18" value="7"/>
+    <arrayval field="cvCustTTot" index="3" value="1"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="fDisable" tag="fArmMedium"/>
+    <tag group="Helper" tag="RemoveCast"/>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cRsLfasMov">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cRsLfasMov">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cStelthAtt">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cNatrHeali">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpRgr"/>
+    </thing>
 
 
 
@@ -1361,6 +1401,7 @@ Hidden]]></comment>
   <hidden id="trkS2ProtE"/>
   <hidden id="pS2ProtEne"/>
   <hidden id="cS2SneakUn"/>
+  <hidden id="arRgrSpell"/>
 
 
 </document>

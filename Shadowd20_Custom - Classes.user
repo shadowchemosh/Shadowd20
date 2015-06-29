@@ -383,79 +383,40 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
     <exprreq message="Worshippers of Desna only."><![CDATA[#hasdeity[deiDesna] <> 0]]></exprreq>
     <exprreq message="Base Attack Bonus +5 required."><![CDATA[child[Attack].field[tAtkBase].value >= 5]]></exprreq>
     <exprreq message="Must be proficent in the Starknife."><![CDATA[#hasfeat[fWepMart] + hero.tagis[WepProf.wStarknife] <> 0]]></exprreq>
-    <prereq message="Must have two skills from a list at 2 ranks or more." onlyonce="yes">
-      <validate><![CDATA[@valid = 0
-var total as number
-total = 0
-if (#skillranks[skClimb] >= 2) then
-   total +=1
-endif
-if (#skillranks[skKnowGeog] >= 2) then
-   total +=1
-endif
-if (#skillranks[skKnowNat] >= 2) then
-   total +=1
-endif
-if (#skillranks[skKnowRel] >= 2) then
-   total +=1
-endif
-if (herofield[tMaxPerf].value >=2) then
-   total +=1
-endif
-if (#skillranks[skRide] >= 2) then
-   total +=1
-endif
-if (#skillranks[skSurvival] >= 2) then
-   total +=1
-endif
-if (#skillranks[skSwim] >= 2) then
-   total +=1
-endif
+    <prereq message="Must have two skills from a list with at 2 ranks or more." onlyonce="yes">
+      <validate><![CDATA[
+        @valid = 0
+        var total as number
+        total = 0
+        if (#skillranks[skClimb] >= 2) then
+           total +=1
+        endif
+        if (#skillranks[skKnowGeog] >= 2) then
+           total +=1
+        endif
+        if (#skillranks[skKnowNat] >= 2) then
+           total +=1
+        endif
+        if (#skillranks[skKnowRel] >= 2) then
+           total +=1
+        endif
+        if (herofield[tMaxPerf].value >=2) then
+           total +=1
+        endif
+        if (#skillranks[skRide] >= 2) then
+           total +=1
+        endif
+        if (#skillranks[skSurvival] >= 2) then
+           total +=1
+        endif
+        if (#skillranks[skSwim] >= 2) then
+           total +=1
+        endif
 
-if (total >=2) then
-   @valid = 1
-endif]]></validate>
+        if (total >=2) then
+           @valid = 1
+        endif]]></validate>
       </prereq>
-    </thing>
-  <thing id="arRgrSpell" name="Spellless" description="{b}Kobold Quartly#11{/b}\n\nThe following variant class has no spell casting ability. To compensate for this, the class gains specialized ranger talents (similar to Rogue talents) and a stealth attack which can be used only in a favored terrain or against a favored enemy. A few additional class abilities are also included, most notably nature’s healing, which allows the ranger to use his Heal skill with better results when in a favored environment." compset="ClassVary" uniqueness="unique">
-    <comment>HIDDEN</comment>
-    <fieldval field="cvSpec3rdS" value="Ranger Talent"/>
-    <arrayval field="cvCustTTot" index="6" value="2"/>
-    <arrayval field="cvCustTTot" index="8" value="3"/>
-    <arrayval field="cvCustTTot" index="10" value="4"/>
-    <arrayval field="cvCustTTot" index="12" value="5"/>
-    <arrayval field="cvCustTTot" index="15" value="6"/>
-    <arrayval field="cvCustTTot" index="18" value="7"/>
-    <arrayval field="cvCustTTot" index="3" value="1"/>
-    <usesource source="s20PFCamp"/>
-    <tag group="ClVaryName" tag="AppParen"/>
-    <tag group="fDisable" tag="fArmMedium"/>
-    <tag group="Helper" tag="RemoveCast"/>
-    <bootstrap thing="cStelthAtt">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cStelthAtt">
-      <autotag group="ClSpecWhen" tag="18"/>
-      </bootstrap>
-    <bootstrap thing="cStelthAtt">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cStelthAtt">
-      <autotag group="ClSpecWhen" tag="6"/>
-      </bootstrap>
-    <bootstrap thing="cRsLfasMov">
-      <autotag group="ClSpecWhen" tag="5"/>
-      </bootstrap>
-    <bootstrap thing="cRsLfasMov">
-      <autotag group="ClSpecWhen" tag="12"/>
-      </bootstrap>
-    <bootstrap thing="cStelthAtt">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <bootstrap thing="cNatrHeali">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
-    <link linkage="varies" thing="cHelpRgr"/>
     </thing>
   <thing id="cBbnWolvSt" name="Wolverine Stance" description="When an opponent has you in his grasp, you transform into a snarling, frothing, raging beast. You hack with your weapon at your foe’s arms or tentacles, your wild frenzy allowing you to fight even with a large, awkward weapon. When you are in the grasp of a larger foe, your frenzy ignites into an inferno as you desperately attempt to break free.\n\nWhile you are grappled, you can attack a foe grappling you with any one-handed weapon. You do not take the -2 penalty on attack rolls for fighting while grappled.\n\nIf your foe is of a larger size category than yours, your feral rage ignites and grants you a +4 bonus on damage rolls against that creature while it continues to grapple you." compset="CustomSpec" summary="While you are grappled, you can attack a foe grappling you with any onehanded weapon. You do not take the -2 penalty on attack rolls for fighting while grappled." uniqueness="unique">
     <usesource source="s20PFCamp"/>
@@ -463,11 +424,12 @@ endif]]></validate>
     <tag group="SpecType" tag="Defense"/>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
     <tag group="abCategory" tag="BbnRagePow"/>
-    <eval phase="UserPreLv" priority="10001">~ If grappled condition not enabled, get out now
-doneif (hero.child[pcnGrapple].field[pIsOn].value + hero.isidentity[Condition] = 0)
+    <eval phase="UserPreLv" priority="10001">
+      ~ If grappled condition not enabled, get out now
+      doneif (hero.child[pcnGrapple].field[pIsOn].value + hero.isidentity[Condition] = 0)
 
-~ +2 Attack to Cancel out Grappled Condition
-hero.child[Attack].field[Penalty].value += 2</eval>
+      ~ +2 Attack to Cancel out Grappled Condition
+      hero.child[Attack].field[Penalty].value += 2</eval>
     </thing>
   <thing id="cS2CavRide" name="Ride Mount" description="A cavalier does not take an armor check penalty on Ride checks while riding his mount." compset="ClSpecial" replaces="cCavRide">
     <comment><![CDATA[Currently fixed so that we don't remove the ACP for all skills but only for Ride.]]></comment>
@@ -2136,12 +2098,13 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       </bootstrap>
     <link linkage="varies" thing="cHelpRogUn"/>
     </thing>
-  <thing id="cURogS2LuP" name="Luck Pool" description="At 2nd level, a rogue gains a pool of luck points, measuring her ability to get out of scrapes. The number of points in the rogue&apos;s luck pool is equal to 1/2 her rogue level + her Dexterity modifier. Luck points can be used to power any ability that requires Ki Points. As long as she has at least 1 point in her luck pool, a rogue may move at full speed when using the Acrobatics skill to move through threatened squares without increasing the DC by 10.\n\nAt 2nd level, a rogue can spend 1 luck point to improve a d20 roll, you add the result of a 1d6 to your d20 roll including attack rolls, saves, checks, or any other roll of a d20. You can declare the use of a luck point to alter a d20 roll after the roll is made, but only before the GM reveals the result of that roll. You can&apos;t use an luck point to alter the result of a d20 roll when you are taking 10 or taking 20.  At 8th level the rogue can roll 2d6 and take the highest of the dice rolls to add to the d20.  At 15th level a rogue can roll 3d6 and the best result of the three is added to the d20. In example if the rogue rolled a 1, 2, and 4, she would apply the 4 to her d20. \n\nThe luck pool is replenished each morning after 8 hours of rest or meditation; these hours do not need to be consecutive. If the rogue possesses levels in another class that grants points to a ki pool, rogue levels stack with the levels of that class to determine the total number of luck points in the combined pool, but only one ability score modifier is added to the total. The choice of which score to use is made when the second class ability is gained, and once made, the choice is set. The ninja can now use luck or ki points from this pool to power the abilities of every class she possesses that grants a luck or ki pool." compset="ClSpecial" summary="Luck points power Ki abilities or add d6&apos;s to any d20 roll before GM reveals result.">
+  <thing id="cURogS2LuP" name="Luck Pool" description="At 2nd level, a rogue gains a pool of luck points, measuring her ability to get out of scrapes. The number of points in the rogue&apos;s luck pool is equal to 1/2 her rogue level + her Dexterity modifier. Luck points can be used to power any ability that requires Ki Points. As long as she has at least 1 point in her luck pool, a rogue may move at full speed when using the Acrobatics skill to move through threatened squares without increasing the DC by 10.\n\nIn addition a rogue can spend 1 luck point to improve a d20 roll, you add the result of a 1d6 to your d20 roll including saving throws, skill checks, and Constitution checks to become stable. You can declare the use of a luck point to alter a d20 roll after the roll is made, but only before the GM reveals the result of that roll. You can&apos;t use a luck point to alter the result of a d20 roll when you are taking 10 or taking 20.  At 8th level the rogue can roll 2d6 and take the highest of the dice rolls to add to the d20.  At 15th level a rogue can roll 3d6 and the best result of the three is added to the d20. In example if the rogue rolled a 1, 2, and 4, she would apply the 4 to her d20. \n\nThe luck pool is replenished each morning after 8 hours of rest or meditation; these hours do not need to be consecutive. If the rogue possesses levels in another class that grants points to a ki pool, rogue levels stack with the levels of that class to determine the total number of luck points in the combined pool, but only one ability score modifier is added to the total. The choice of which score to use is made when the second class ability is gained, and once made, the choice is set. The ninja can now use luck or ki points from this pool to power the abilities of every class she possesses that grants a luck or ki pool." compset="ClSpecial" summary="Luck points power Ki abilities or add d6&apos;s to any d20 roll before GM reveals result.">
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="User" tag="Tracker"/>
     <tag group="Usage" tag="Day"/>
     <tag group="AbilType" tag="Extra"/>
-    <eval phase="PostAttr" priority="5000"><![CDATA[      ~ only run the rest for the first copy
+    <eval phase="PostAttr" priority="5000"><![CDATA[      
+      ~ only run the rest for the first copy
       doneif (tagis[Helper.FirstCopy] = 0)
       ~ If we're not shown, just get out now
       doneif (tagis[Helper.ShowSpec] = 0)
@@ -2163,5 +2126,4 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       perform hero.assign[Ability.cMnkKiPool]
       perform hero.assign[HasAbility.cMnkKiPool]]]></eval>
     </thing>
-  <hidden id="arRgrSpell"/>
   </document>
