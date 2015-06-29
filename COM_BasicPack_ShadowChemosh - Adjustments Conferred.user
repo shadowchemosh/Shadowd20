@@ -189,22 +189,23 @@
   <thing id="abS2SneakA" name="Sneak Attack" description="If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.\n\nThe rogue&apos;s attack deals extra damage anytime her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and increases by 1d6 every two rogue levels thereafter. Should the rogue score a critical hit with a sneak attack, this extra damage is not multiplied. Ranged attacks can count as sneak attacks only if the target is within 30 feet.\n\nWith a weapon that deals nonlethal damage (like a sap, whip, or an unarmed strike), a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual –4 penalty.{br}{br}{b}Note:{/b} The drop down lets you select the size of your damage dice. By default it assumes 1d6 but some archetypes/feats can change this value up to 1d8 or down to 1d4." compset="Ability" summary="Apply sneak attack damage to weapons.">
     <comment>NOTE: This has features you can NOT see in the editor.</comment>
     <fieldval field="actName" value="Activate"/>
+    <fieldval field="actName2" value="Flanking"/>
     <arrayval field="usrArray" index="0" value="SA Dmg Xd6"/>
     <arrayval field="usrArray" index="1" value="SA Dmg Xd8"/>
     <arrayval field="usrArray" index="2" value="SA Dmg Xd4"/>
     <usesource source="srcS2Adjus"/>
     <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="User" tag="Activation"/>
     <tag group="User" tag="NoAutoName"/>
     <tag group="abAction" tag="None"/>
     <tag group="abRange" tag="Personal"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="Helper" tag="ShowSpec"/>
-    <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ActivMenu"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <tag group="LvNameApp" tag="DieSizVal2"/>
     <tag group="LvNameApp" tag="DieCntVal"/>
     <tag group="LvNameApp" tag="SignDieCnt"/>
     <tag group="Hide" tag="Statblock"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="First"><![CDATA[
       ~ If we're in output mode hide so that two Ability
       ~ specials do not display.
@@ -212,7 +213,16 @@
         perform assign[Hide.Special]
         done
       endif]]></eval>
-    <eval phase="Final" priority="10100" index="2"><![CDATA[
+    <eval phase="PostLevel" priority="20050" index="2">
+      ~ If we are NOT active get out now
+      doneif (field[abilAct2].value = 0)
+      ~ If the combat Flanking is already active get out now
+      doneif (hero.tagis[Condition.pstFlankin] = 1)
+
+      ~ Give flanking condition bonus value to hit
+      hero.child[Attack].field[atmBonus].value += #value2[pstFlankin]
+      perform hero.assign[Condition.pstFlankin]</eval>
+    <eval phase="Final" priority="10100" index="3"><![CDATA[
       ~ Setup the sneak attack die size = d6
       if (field[usrIndex].value = 0) then
         field[abValue2].value += 6
