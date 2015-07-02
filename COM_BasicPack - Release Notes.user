@@ -8,6 +8,29 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.12 July 2, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Equipment (ShadowChemosh) - Made misc fixes to the Touch Attack and Ranged Touch Attack weapons.</li>
+<li>Equipment (ShadowChemosh) - A few misc fixes to the extra Unarmed Strike weapon. In some cases it was calculating one too many attacks in a FoB.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Adjustemnts (ShadowChemosh) - New adjustment "Archetype: Stop Replace Ability" added that allows for combining two conflicting archetypes together by preventing one of the Class Abilities from being replaced twice.</li>
+<li>Conferred Adjustments (ShadowChemosh) - "Combat: Sneak Attack" now allows for an easy way to activate Flanking on the In-Play tab. This is much easier to use then switching to Condition tab on the iPad.</li>
+<li>Pathfinder v11.7 clash fixes (ShadowChemosh) - Fix: "File: COM_BasicPack - Tags.1st (line 86) - Tag Group - Duplicate record encountered ('DragonAge')" issue.</li>
+<li>Pathfinder v11.7 clash fixes (ShadowChemosh) - Fix: "File: COM_BasicPack_ShadowChemosh - Equipment.user (line 233) - Thing - Duplicate record encountered ('ioGoodberr')"</li>
+<li>Note: This Pack now REQUIRES Pathfinder v11.7 or higher to load.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Equipment (ShadowChemosh) - Moved deprecated equipment to the Deprecated .user file.</li>
+<li>Equipment (ShadowChemosh) - Moved Touch Attacks to the "Universal Things" file instead.</li>
+<li>Helper Things (ShadowChemosh) - Added in selection helpers for class levels 1 to 20.</li>
+</ul>
+
+
 <strong>v3.11 June 8, 2015</strong>
 
 <strong>Bug Fixes</strong>
