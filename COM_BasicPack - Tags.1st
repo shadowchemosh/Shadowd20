@@ -81,8 +81,8 @@
 
     July 22, 2013 - Jeffrey Hersh
      - macro for dragon name change
-  -->
 
+  This group was officially added in Pathfinder v11.7. So commented out for now
   <group id="DragonAge" width ="7" visible="no" sequence="explicit">
     <value id="Wyrmling" name="Wyrmling" order="1"/>
     <value id="VeryYoung" name="Very Young" order="2"/>
@@ -97,6 +97,7 @@
     <value id="Wyrm" name ="Wyrm" order="11"/>
     <value id="GreatWyrm" name="Great Wyrm" order="12"/>
   </group>
+  -->
 
   <group id="BreathShp" width="7" visible="no">
     <value id="Line" name="Line"/>

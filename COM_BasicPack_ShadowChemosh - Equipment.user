@@ -230,15 +230,6 @@
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="CoreCampOK"/>
     </thing>
-  <thing id="ioGoodberr" name="Goodberry" description="Thus transmuted berry provides nourishment as if it were a normal meal for a Medium creature. The berry also cures 1 point of damage when eaten, subject to a maximum of 8 points of such curing in any 24-hour period." compset="Wondrous">
-    <usesource source="srcS2Gear"/>
-    <tag group="gType" tag="Wonder"/>
-    <tag group="Helper" tag="AlwaysAvl"/>
-    <tag group="Helper" tag="UsesQty"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="Helper" tag="ShowSpec"/>
-    <tag group="Helper" tag="CoreCampOK"/>
-    </thing>
   <thing id="wImp1d4" name="Improvised Weapon" description="This is a generic &quot;improvised Weapon&quot; that can be used to represent anything from a broken bottle to a chair leg.\n\n{B}Note:{/b} To change the damage die size go to the &quot;Adjust&quot; tab, then &quot;Other Adjustments&quot; and add &quot;Weapon Size&quot;.\n\n{B}Note2:{/b} To turn any normal weapon into a Improvised Weapon you can make a custom weapon and add the &quot;Improvised&quot; item power." compset="Weapon">
     <usesource source="srcS2Gear"/>
     <tag group="wSpecial" tag="Improvised"/>
