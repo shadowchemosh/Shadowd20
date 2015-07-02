@@ -8,6 +8,52 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v1.11 July 2, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (Quintain) - Added enhancement bonus to Psychoactive Skin of the Chameleon</li>
+<li>Ultimate Psionics (Quintain) - Added Coordinate class ability missing from Tactician class.</li>
+<li>Ultimate Psionics (Quintain) - Modified ready response feat to remove pick list, as there is no reference to natural weapons in the feat description.</li>
+<li>Ultimate Psionics (Quintain) - Renamed Broken Dreams to Broken Dreams Style.</li>
+<li>Ultimate Psionics (psych777) - Fix #57 corrected text of Reposition power.</li>
+<li>Ultimate Psionics (psych777) - More feat updates A-H Edited feats: Greater Cushion the Blow, Greater Intuitive Shot, Greater Power Penetration, Greater Power Specialization, Greater Psionic Endowment, Greater Psionic Fist, Greater Psionic Shot, Greater Psionic Weapon, Harmonic Resonance, Hawkeye and Hustle Power.</li>
+<li>Ultimate Psionics (psych777) - More feat updates A-I Edited feats: Improved Cushion the Blow, Improved Disruption, Improved Metamorphosis, Improved Psi-like Ability, Improved Psicrystal, Inquisitor, Insightful Terror, Intimidating Shot, Intuitive Fighting and Intuitive Shot.</li>
+<li>Ultimate Psionics (psych777) - Fixed typo in Covert Nature</li>
+<li>Ultimate Psionics (psych777) - Some updates to Shadow Hunter archetype.</li>
+<li>Ultimate Psionics (psych777) - Fixed Dread not getting a Terror at level 20.</li>
+<li>Ultimate Psionics (TheIronGolem) - Ported the Zealot's Collective script to the Vitalist and Tactician's version of Collective, so they too will show range and membership limits in the livename.</li>
+<li>Ultimate Psionics (TheIronGolem) - Tactician now correctly gets its last instance of Collective at level 19 instead of 20.</li>
+<li>Ultimate Psionics (TheIronGolem) - Vitalist: Removed extra copies of Expanded Knowledge and Request Aid.</li>
+<li>Ultimate Psionics (TheIronGolem) - Vitalist: Expanded Knowledge class feature no longer adds the bonus feat twice per instance.</li>
+<li>Ultimate Psionics (TheIronGolem) - Collective-enhancing feats now allow Zealot's Collective to qualify.</li>
+<li>Ultimate Psionics (TheIronGolem) - Enhanced Mind Bolt now fulfills requirement for Soul Archer PrC (fixes #56).</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #61 ART's that where still referencing old/deprecated Racial Abilities.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added thing.skipprereq to the Elemental Flux Active Energy feat (fixes #59)</li>
+<li>Path Of War Expanded (TheIronGolem) - Desperado: Fixed bonus Rapid Reload feat being gained at level 1 instead of 2.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (Quintain) - Added Pattern Breaker's Gloves (equipment).</li>
+<li>Ultimate Psionics (Quintain) - Added multiple missing feats as stubs.</li>
+<li>Ultimate Psionics (Quintain) - Added the Psion's Advanced Disciplines and their associated abilities.</li>
+<li>Ultimate Psionics (Quintain) - Added Bestiary feat, added enhancement bonus of 10 to psychoactive skin of chameleon, <li>Ultimate Psionics (psych777) - Added feat Gravitic Stability, Improved Cover Fire and Improved Disengage..</li>
+added Pattern Breaker Gloves, Added Coordinate class ability to tactician.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added the Zealot class.</li>
+<li>Path Of War Expanded (TheIronGolem) - Feats added: Charge of Triumph, Extra Conviction, Heighten Maneuver, Obscured Path, Unhindered Way.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added the Mystic class. Reworked the Active Energy Type feat to appear for Mystics, and removed Elemental Flux from its name.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added adjustments for the Mystic's Glyphs.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added maneuvers and stances for the Riven Hourglass discipline.</li>
+<li>Ultimate Psionics (psych777) - Added Dread archetype Shadow Hunter.</li>
+<li>Path Of War Expanded (TheIronGolem) - Added stances and manuevers for the Piercing Thunder discipline.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - Fixes issue #53. Deprecated the duplicate Extra Power Known feat.</li>
+<li>3PP Pack (ShadowChemosh) - Fix Load Issues with .1st files. Moved the groups that do an inherit into this single .1st file. For some reason on "some" computers the files are loaded in reverse order thus preventing the inherit concept from working. By moving all the inherit groups into one .1st file we can control the load better.</li>
+</ul>
+
+
 <strong>v1.10 June 9, 2015</strong>
 
 <strong>Bug Fixes</strong>

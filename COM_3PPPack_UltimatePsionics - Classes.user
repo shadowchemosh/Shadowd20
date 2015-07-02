@@ -5473,11 +5473,6 @@ Call PsyWarTrMa</eval>
     <fieldval field="cPsiSPowMa" value="2"/>
     <fieldval field="srcPageNum" value="40"/>
     <fieldval field="srcBookInf" value="Ultimate Psionics"/>
-    <arrayval field="cCustTot" index="9" value="5"/>
-    <arrayval field="cCustTot" index="11" value="6"/>
-    <arrayval field="cCustTot" index="13" value="7"/>
-    <arrayval field="cCustTot" index="15" value="8"/>
-    <arrayval field="cCustTot" index="17" value="9"/>
     <arrayval field="cBonFtTot" index="4" value="1"/>
     <arrayval field="cBonFtTot" index="8" value="2"/>
     <arrayval field="cBonFtTot" index="12" value="3"/>
@@ -5546,17 +5541,13 @@ Call PsyWarTrMa</eval>
     <arrayval field="cCustTot" index="3" value="2"/>
     <arrayval field="cCustTot" index="5" value="3"/>
     <arrayval field="cCustTot" index="7" value="4"/>
+    <arrayval field="cCustTot" index="9" value="5"/>
+    <arrayval field="cCustTot" index="11" value="6"/>
+    <arrayval field="cCustTot" index="13" value="7"/>
+    <arrayval field="cCustTot" index="15" value="8"/>
+    <arrayval field="cCustTot" index="17" value="9"/>
+    <arrayval field="cCustTot" index="19" value="10"/>
     <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="Craft"/>
-    <tag group="ClassSkill" tag="Profession"/>
-    <tag group="ClassSkill" tag="skBluff"/>
-    <tag group="cAttack" tag="Medium"/>
-    <tag group="ClassSkill" tag="skClimb"/>
-    <tag group="ClassSkill" tag="skEscape"/>
-    <tag group="ClassSkill" tag="skIntim"/>
-    <tag group="cFort" tag="Poor"/>
-    <tag group="ClassSkill" tag="skPercep"/>
-    <tag group="ClassSkill" tag="skSenseMot"/>
     <tag group="ClassSkill" tag="skSpellcr"/>
     <tag group="ClassSkill" tag="skStealth"/>
     <tag group="ClassSkill" tag="skSwim"/>
@@ -5575,6 +5566,29 @@ Call PsyWarTrMa</eval>
     <tag group="ClassSkill" tag="skAcrobat"/>
     <tag group="ClassSkill" tag="skPUAhypno"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassSkill" tag="skSenseMot"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="ClassSkill" tag="Profession"/>
+    <tag group="ClassSkill" tag="skBluff"/>
+    <tag group="cAttack" tag="Medium"/>
+    <tag group="ClassSkill" tag="skClimb"/>
+    <tag group="ClassSkill" tag="skEscape"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="cFort" tag="Poor"/>
+    <tag group="ClassSkill" tag="skPercep"/>
+    <bootstrap thing="cPUTerrors">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="fSimple"></bootstrap>
+    <bootstrap thing="cPUImmFear">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPUDreTal">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUShaTwin">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
     <bootstrap thing="cPUShaTwin">
       <autotag group="ClSpecWhen" tag="15"/>
       </bootstrap>
@@ -5601,19 +5615,6 @@ Call PsyWarTrMa</eval>
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
     <bootstrap thing="fArmLight"></bootstrap>
-    <bootstrap thing="cPUTerrors">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="fSimple"></bootstrap>
-    <bootstrap thing="cPUImmFear">
-      <autotag group="ClSpecWhen" tag="7"/>
-      </bootstrap>
-    <bootstrap thing="cPUDreTal">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
-    <bootstrap thing="cPUShaTwin">
-      <autotag group="ClSpecWhen" tag="11"/>
-      </bootstrap>
     <link linkage="psiattr" thing="aCHA"/>
     </thing>
   <thing id="cPUDread" name="Dread" description="Most creatures must learn to deal with fear in some fashion. For some, it is confronting and overcoming their fears. For others, it is always running away. For the dread, it is using her fear as a weapon, it is understanding how fear works and manipulating the fears of others in unusual and devastating ways. The dread is the master of fear and terror.\n\n{b}Role:{/b} A dread is an opponent on the battlefield who can turn the bravest of enemies into a sniveling coward with but a touch. Combining moderate manifesting ability with destructive melee attacks, the dread is a dangerous opponent to ignore. Out of combat, the dread uses fear and intimidation to manipulate or bully others into the path she deems best.\n\n{b}Alignment:{/b} Any." compset="ClassLevel" maxlimit="20">
@@ -13290,7 +13291,8 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
     <prereq message="Enhanced Mind Blade or Enhanced Mind Bolt class feature required.">
       <validate><![CDATA[
         validif (#hasability[cSknEnhMB] <> 0)
-        ~ TO-DO add logic fo Enhanced Mind Bolt????]]></validate>
+        validif (#hasability[cPUEnhMBlt] <> 0)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="cPUAFoMiAr" name="Form Mind Arrow" description="A soul archer can choose to shape her mind blade as a semisolid arrow of psychic energy and forms a mind arrow as a free action. If the soul archer has the ability to make multiple attacks, he can create multiple mind arrows as part of an attack. The soul archer must have one hand free to create and fire a mind arrow.\n\nThe arrow is identical in all ways (except visually) to an arrow shot from a composite longbow of a size appropriate to the soul archer. The soul archer adds his Wisdom modifier to the damage for attacks made with mind arrows, instead of his Strength modifier. The mind arrow receives all the benefits normally applied to the mind blade, including the ability to use psychic strike, any enhancement bonus or weapon special abilities, or feats that apply to the mind blade, although any meleespecific options are non-functional while in mind arrow form. Ranged feats that apply to ranged attacks, such as Point-Blank Shot, apply to the mind arrow. Any weapon special abilities that only work on melee weapons that apply to the mind blade are inactive while in mind arrow form until the soulknife spends the normal amount of time to reassign the special abilities of the mind blade." compset="ClSpecial" summary="Shape your mind blade into a semisolid arrow of psychic energy.">
@@ -14727,29 +14729,35 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
   <thing id="cPUDayPowr" name="Daily Powers" description="At 2nd level, each day, you may choose one power from the Psion/Wilder list that is not on your list of powers known and manifest that power as if it was. You must have manifested the power from a power stone at some point prior to choosing it as a daily power and the power’s level may not exceed your maximum power level. You may decide which power to manifest at the time of manifesting. Once this choice has been made, it cannot be changed until you have meditated to regain\nyour daily power points after resting. At 7th level and every five psion levels thereafter, you may choose one additional power per day to treat as if a power known (2 at 7th level, 3 at 12th level, 4 at 17th level). These powers are in addition to your normal powers known.\n\nThis ability replaces the Bonus Feat normally gained by a generalist psion and the powers known gained at each level a daily power is gained, as displayed on Table: The Erudite." compset="ClSpecial">
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="arPUShaHnt" name="Shadow Hunter" description="*Not fully implemented yet\nEven the most intelligent of races can have fears of what might be lurking within the shadows, and a special breed of dread known as shadow hunters have learned how to use their connection to fears to manipulate darkness to aid them. Whether it is concealing them from sight or turning shadows into substance, shadow hunters are at home where others fear the unknown." compset="ClassVary" uniqueness="unique">
+  <thing id="arPUShaHnt" name="Shadow Hunter" description="Even the most intelligent of races can have fears of what might be lurking within the shadows, and a special breed of dread known as shadow hunters have learned how to use their connection to fears to manipulate darkness to aid them. Whether it is concealing them from sight or turning shadows into substance, shadow hunters are at home where others fear the unknown." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="269"/>
     <arrayval field="cvBonFtMod" index="4" value="-1"/>
+    <arrayval field="cvCustTot" index="9" value="-1"/>
+    <arrayval field="cvCustTot" index="11" value="-1"/>
+    <arrayval field="cvCustTot" index="13" value="-1"/>
+    <arrayval field="cvCustTot" index="15" value="-1"/>
+    <arrayval field="cvCustTot" index="17" value="-1"/>
+    <arrayval field="cvCustTot" index="19" value="-1"/>
     <usesource source="pPsiUn"/>
     <tag group="AbReplace" tag="cPUFearIns"/>
     <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cPUDevaTou"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPUCovNatu">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
-    <bootstrap thing="cPUShdwDiv">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
     <bootstrap thing="cPUGrspShd">
       <autotag group="ClSpecWhen" tag="5"/>
       </bootstrap>
     <bootstrap thing="cPUStThShd">
       <autotag group="ClSpecWhen" tag="10"/>
       </bootstrap>
+    <bootstrap thing="cPUShdwDiv">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUCovNatu">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpPU2"/>
     </thing>
-  <thing id="cPUShdwDiv" name="Shadow Diversion" description="As a standard action, the shadow hunter can cause shadows to take physical shape adjacent to a creature within 30 ft. Unless the creature makes a successful Will save (DC 10 + 1/2 the shadow hunter’s level + the shadow hunter’s Charisma modifier), the creature treats the shadow as an enemy when determining if the creature is flanked until the end of the shadow hunter’s next turn. If the shadow is adjacent to multiple creatures, the shadow hunter must choose which one is affected by it. If the shadow hunter has Improved Feint, it reduces the action needed to use this ability to a move action, while Greater Feint reduces action needed to a swift action. This ability replaces devastating touch." compset="ClSpecial">
+  <thing id="cPUShdwDiv" name="Shadow Diversion" description="As a standard action, the shadow hunter can cause shadows to take physical shape adjacent to a creature within 30 ft. Unless the creature makes a successful Will save (DC 10 + 1/2 the shadow hunter’s level + the shadow hunter’s Charisma modifier), the creature treats the shadow as an enemy when determining if the creature is flanked until the end of the shadow hunter’s next turn. If the shadow is adjacent to multiple creatures, the shadow hunter must choose which one is affected by it. If the shadow hunter has Improved Feint, it reduces the action needed to use this ability to a move action, while Greater Feint reduces action needed to a swift action. This ability replaces devastating touch." compset="ClSpecial" summary="Use a shadow creature for flanking">
     <usesource source="pPsiUn"/>
     <tag group="abSave" tag="WillNeg"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -14778,11 +14786,10 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
       doneif (tagis[Helper.SpcDisable] <> 0)
 
       ~ Calc 1/2 Dread level with a minimum of 1
-      field[abValue2].value = #levelcount[Dread]
-      field[abValue].value += maximum(round(field[abValue2].value/2,0,-1),1)
+      field[abValue].value += maximum(round(field[xTotalLev].value/2,0,-1),1)
       #applybonus[BonInsight,hero.childfound[skStealth],field[abValue].value]]]></eval>
     </thing>
-  <thing id="cPUGrspShd" name="Grasping Shade" description="*Not fully implemented yet\nA shadow hunter of 5th level can make shadows turn into reaching, grabbing tentacles of substance. As a standard action, the shadow hunter can target a creature within 30 ft. and direct shadows near the creature to entangle the target. The creature targeted cannot be in an area of bright light or the attempt fails. The creature may make a Reflex save to negate the attack with a DC equal to 10 + 1/2 the shadow hunter’s class level + the shadow hunter’s Charisma modifier. \n\nEntangled creatures can attempt to break free as a move action, making a Strength or Escape Artist check. The DC for this check is equal to 11 + the shadow hunter’s Charisma modifier. Successive successful uses on the same target before the target has successfully broken free cause the target to gain the grappled condition if entangled and the pinned condition if grappled, although a successful save only stops the target from gaining the additional condition. \n\nThis ability can be used a number of times per day equal to 3 + the shadow hunter’s Charisma modifier. This ability replaces the bonus feat normally gained at 5th level." compset="ClSpecial" summary="Use shadows to entagle a creature not in bright light">
+  <thing id="cPUGrspShd" name="Grasping Shade" description="A shadow hunter of 5th level can make shadows turn into reaching, grabbing tentacles of substance. As a standard action, the shadow hunter can target a creature within 30 ft. and direct shadows near the creature to entangle the target. The creature targeted cannot be in an area of bright light or the attempt fails. The creature may make a Reflex save to negate the attack with a DC equal to 10 + 1/2 the shadow hunter’s class level + the shadow hunter’s Charisma modifier. \n\nEntangled creatures can attempt to break free as a move action, making a Strength or Escape Artist check. The DC for this check is equal to 11 + the shadow hunter’s Charisma modifier. Successive successful uses on the same target before the target has successfully broken free cause the target to gain the grappled condition if entangled and the pinned condition if grappled, although a successful save only stops the target from gaining the additional condition. \n\nThis ability can be used a number of times per day equal to 3 + the shadow hunter’s Charisma modifier. This ability replaces the bonus feat normally gained at 5th level." compset="ClSpecial" summary="Use shadows to entagle a creature not in bright light">
     <fieldval field="abRange" value="30"/>
     <usesource source="pPsiUn"/>
     <tag group="abSave" tag="RefNeg"/>
@@ -14795,9 +14802,11 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="Usage" tag="Day"/>
     <tag group="ChargeCalc" tag="AttrUses3"/>
     </thing>
-  <thing id="cPUStThShd" name="Step Through Shadows" description="*Not fully implemented\nAt 10th level, if the shadow hunter is in an area of dim light or darkness, she can travel to another location of dim light or darkness as if by means of fold space, as long as the destination is within 60 ft. of the her initial location. Using this ability counts as a daily use of the terrors ability. This ability replaces the terror normally gained at 10th level." compset="ClSpecial">
+  <thing id="cPUStThShd" name="Step Through Shadows" description="At 10th level, if the shadow hunter is in an area of dim light or darkness, she can travel to another location of dim light or darkness as if by means of fold space, as long as the destination is within 60 ft. of the her initial location. Using this ability counts as a daily use of the terrors ability. This ability replaces the terror normally gained at 10th level." compset="ClSpecial" summary="Travel up to 60 ft through shadows">
+    <fieldval field="abRange" value="60"/>
     <usesource source="pPsiUn"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Super"/>
+    <tag group="abRange" tag="Feet"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   </document>
