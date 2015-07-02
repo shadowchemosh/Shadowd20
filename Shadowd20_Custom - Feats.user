@@ -1775,5 +1775,21 @@ perform hero.assign[Shifter.Feat]]]></eval>
         validif (#hasfeat[fDragoFero] <> 0)]]></validate>
       </prereq>
     </thing>
+  <thing id="trS2Martia" name="Martial Weapon Training" description="You trained for years in a martial tradition based around a particular, difficult to master weapon. Choose one type of Martial Weapon. You are proficient with that weapon and make attack rolls with the weapon normally." compset="Trait" summary="You are proficient with an martial weapon." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Combat"/>
+    <tag group="fShowWhat" tag="WeaponsMar"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      call ChosenProf
+
+      var name as string
+      call fTargetId
+      ~ Set our 'short name'
+      field[shortname].text = "MWT: " & name
+      field[sbName].text = "Martial Weapon Training (" & lowercase(name) & ")"]]></eval>
+    </thing>
   <hidden id="fS2ComCast"/>
   </document>

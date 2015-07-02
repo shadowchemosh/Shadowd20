@@ -27,7 +27,7 @@
     </source>
   <source
     id="srcUndDark"
-    name="Underdark"
+    name="Darklands"
     selectable="yes"
     parent="pS20Camp"
     sortorder="10"

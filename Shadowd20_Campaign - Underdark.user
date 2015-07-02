@@ -209,4 +209,25 @@
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="OthAdjCat" tag="Campaign"/>
     </thing>
+  <thing id="raS2DwrWF" name="Dwarven Weapon Familiarity" description="Proficient with handaxe, throwing axe, light pick, and light hammers, and treat all weapons with the word &quot;dwarven&quot; in its name as a martial weapon. This replaces the standard Dwarven Weapon Familiarity." compset="AltRaceTrt" uniqueness="unique">
+    <usesource source="srcUndDark"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="rDwarf"/>
+    <tag group="Helper" tag="WeaponFam"/>
+    <tag group="WepProf" tag="wHandaxe"/>
+    <tag group="WepProf" tag="wHammLight"/>
+    <tag group="WepProf" tag="wPickLight"/>
+    <tag group="WepProf" tag="wAxeThrow"/>
+    <tag group="RaReplace" tag="raDwWeps"/>
+    <eval phase="First" priority="11000"><![CDATA[
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Pull all the easy weapon tags from the officil racial special
+      perform hero.child[raDwWeps].pulltags[EasyWeapon.?]
+
+      ~ assign our weapon proficiencies to the hero
+      perform hero.pushtags[WepProf.?]
+      perform hero.pushtags[EasyWeapon.?]]]></eval>
+    </thing>
   </document>
