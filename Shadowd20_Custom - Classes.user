@@ -2112,6 +2112,13 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       ~ Calculate half level bonus
       field[abValue].value += round(field[xAllLev].value/2, 0, -1)
 
+      ~ If we have the "Extra Ki" feat then give two extra uses. We do this
+      ~ here so that the "core" feat still works for us sense we know use
+      ~ a custom Ki/Luck Pool.
+      If (hero.childlives[fExtraKi] = 1) Then
+        field[abValue].value += 2
+      Endif
+
       ~ Check to see if we can find the Monk Specific Ki Pool ability
       if (hero.haschild[BaseClSpec,"thingid.cMnkKiPool"] = 1) then
         perform assign[Helper.SpecUp]
