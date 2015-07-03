@@ -120,15 +120,16 @@
     <fieldval field="usrCandid1" value="component.BaseCustUs &amp; Helper.Secondary"/>
     <fieldval field="actName" value="in Favored Terrain"/>
     <usesource source="srcS2Adjus"/>
+    <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="User" tag="Activation"/>
-    <tag group="ChooseSrc1" tag="Thing"/>
     <tag group="Helper" tag="UserAdjust"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="Hide" tag="Statblock"/>
+    <tag group="User" tag="Activation"/>
     <tag group="User" tag="NoAutoName"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
     <tag group="abAction" tag="None"/>
     <tag group="abRange" tag="Personal"/>
-    <tag group="AbilType" tag="Extra"/>
-    <tag group="Hide" tag="Statblock"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
       ~ If we're not enabled, get out now
@@ -201,6 +202,7 @@
     <tag group="abRange" tag="Personal"/>
     <tag group="Helper" tag="ActivMenu"/>
     <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="LvNameApp" tag="DieSizVal2"/>
     <tag group="LvNameApp" tag="DieCntVal"/>
     <tag group="LvNameApp" tag="SignDieCnt"/>
