@@ -594,6 +594,7 @@ version 1.40 - Released May 12, 2013
         ~ Loop through all the weapons in main and off hand but ignore double weapons
         foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand & !wCategory.Double"
            eachpick.field[wAttMelee].value += Bonus
+           eachpick.field[wRanAtk].value += Bonus
         nexteach
       Endif
 

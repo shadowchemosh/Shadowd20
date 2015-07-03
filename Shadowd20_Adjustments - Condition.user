@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <fileinfo>
-    <info_author>
-      Author:  Tim Shadow
+    <info_author>Author:  Tim Shadow
       Email: shadowchemosh@yahoo.com</info_author>
-    <info_history><![CDATA[
-    ]]></info_history>
+    <info_history/>
     </fileinfo>
-
   <thing id="pS2flounde" name="Floundering" description="Creatures flailing about in the water (usually because they failed their Swim checks) have a hard time fighting effectively. An off-balance creature loses its Dexterity bonus to Armor Class, and opponents gain a +2 bonus on attacks against it.\n\n{B}Note:{/b} This script gives you the flat-footed condition and an additional -2 to AC. This is easier to track then the DM applying a +2 bonus to creatures." compset="InPlay">
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="AdjCond"/>
@@ -23,5 +20,8 @@
       ~ Apply an additional -2 to AC which is same as the others getting +2
       hero.child[ArmorClass].field[Penalty].value += -2]]></eval>
     </thing>
-
+  <thing id="pcnS2Bleed" name="Bleeding" description="A creature that is taking bleed damage takes the listed amount of damage at the beginning of its turn. Bleeding can be stopped by a DC 15 Heal check or through the application of any spell that cures hit point damage (even if the bleed is ability damage). Some bleed effects cause ability damage or even ability drain. Bleed effects do not stack with each other unless they deal different kinds of damage. When two or more bleed effects deal the same kind of damage, take the worse effect. In this case, ability drain is worse than ability damage." compset="Condition">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
   </document>
