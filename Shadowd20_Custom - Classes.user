@@ -2116,7 +2116,7 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       ~ here so that the "core" feat still works for us sense we know use
       ~ a custom Ki/Luck Pool.
       If (hero.childlives[fExtraKi] = 1) Then
-        field[abValue].value += 2
+        field[abValue2].value += 2
       Endif
 
       ~ Check to see if we can find the Monk Specific Ki Pool ability
@@ -2126,7 +2126,7 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
         perform hero.child[cMnkKiPool].assign[UseAttr.aDEX]
         perform hero.child[cMnkKiPool].assign[Helper.ShowSpec]
       else
-        field[trkMax].value += field[abValue].value + #attrmod[aDEX]
+        field[trkMax].value += field[abValue2].value + field[abValue].value + #attrmod[aDEX]
       endif
 
       ~ Meet core Ki Pool pre-reqs
