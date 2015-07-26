@@ -30,7 +30,7 @@
   <thing id="stS2FaSBSh" name="Fire as Ship Bears" compset="Subtype" uniqueness="unique">
     <usesource source="srcFASB"/>
     <tag group="NeedType" tag="tpS2Ship"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rcS2HullLo" name="Hull" description="A Hull Location is Colossal, and has a hardness of 5 and 150 hit points. The standard hull is sized for non-specialized vessels. Most ships use the standard hull but you can purchase other types on the {b}&quot;Gear&quot;{/b} tab.\n\nThe Armor Class of a ship’s Hull Location is 10 + your ship’s Dexterity bonus + your ship’s armor bonus.\n\n{B}Note:{/b} This hull location will disable itself once it has zero hit points. Please type in the hull location identifier to help keep track of its location in your ship." compset="RaceCustom" summary="A single hull location of your ship.">
     <comment>1 = Hardness
@@ -108,7 +108,7 @@ herofield[tEncum].value += field[abValue].value</eval>
     <fieldval field="abValue" value="30"/>
     <tag group="User" tag="Tracker"/>
     <tag group="Usage" tag="HitPoints"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PostLevel" priority="25000"><![CDATA[~ 30HP per Base Hull Locations.
 ~ Note we don't use the tags here as destroying a Hull Location does
@@ -125,7 +125,7 @@ field[trkMax].value += field[abValue].value * hero.child[raS2HullNu].field[domDo
     </thing>
   <thing id="raS2SpdInt" name="Speed, Into the Wind" description="Your ship has three tactical movement speeds: Base Speed, Into the Wind, and With the Wind. Your Base Speed is your ship&apos;s speed when you are not sailing Into the Wind or With the Wind. Your base speed is the listed {i}speed{/I} of your ship character.\n\nYour &quot;Into the Wind&quot; value is your ship&apos;s speed when you are sailing directly against the wind, and the wind slows your vessel.\n\nFinally, your &quot;With the Wind&quot; value is your ship&apos;s speed when the wind is directly at your back, pushing your ship faster as she sails the high seas.\n\nYour total number of Rigging Locations determines your tactical movement speed. In addition, other features such as carrying capacity, engines (mundane, alchemical or magical in nature), and magic can alter your speed. Those features are discussed in the next section, Equipping Your Ship." compset="RaceSpec" summary="Your ship&apos;s Into the Wind speed is one-half her Base Speed, rounded down.">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="25000"><![CDATA[
 ~ Calc speed as Half our normal speed
 field[abValue].value += round(hero.child[Speed].field[tSpeed].value/2,0,-1)
@@ -135,7 +135,7 @@ field[livename].text = field[name].text & " (" & field[abValue].value & ")"]]></
     </thing>
   <thing id="raS2SpdWth" name="Speed, With the Wind" description="Your ship has three tactical movement speeds: Base Speed, Into the Wind, and With the Wind. Your Base Speed is your ship&apos;s speed when you are not sailing Into the Wind or With the Wind. Your base speed is the listed {i}speed{/I} of your ship character.\n\nYour &quot;Into the Wind&quot; value is your ship&apos;s speed when you are sailing directly against the wind, and the wind slows your vessel.\n\nFinally, your &quot;With the Wind&quot; value is your ship&apos;s speed when the wind is directly at your back, pushing your ship faster as she sails the high seas.\n\nYour total number of Rigging Locations determines your tactical movement speed. In addition, other features such as carrying capacity, engines (mundane, alchemical or magical in nature), and magic can alter your speed. Those features are discussed in the next section, Equipping Your Ship." compset="RaceSpec" summary="Your ship&apos;s with the Wind speed is double her Base Speed.">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="25000"><![CDATA[
 ~ Calc speed as double our normal speed
 field[abValue].value += hero.child[Speed].field[tSpeed].value * 2
@@ -148,7 +148,7 @@ field[livename].text = field[name].text & " (" & field[abValue].value & ")"]]></
     <fieldval field="actUserMax" value="5"/>
     <fieldval field="actName" value="Getting the Gauge"/>
     <tag group="Helper" tag="UserAdjust"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="Final" priority="25000" index="2"><![CDATA[
@@ -217,7 +217,7 @@ nexteach]]></eval>
     </thing>
   <thing id="raS2SpdBas" name="Speed, Base" description="Your ship has three tactical movement speeds: Base Speed, Into the Wind, and With the Wind. Your Base Speed is your ship&apos;s speed when you are not sailing Into the Wind or With the Wind. Your base speed is the listed {i}speed{/I} of your ship character.\n\nYour &quot;Into the Wind&quot; value is your ship&apos;s speed when you are sailing directly against the wind, and the wind slows your vessel.\n\nFinally, your &quot;With the Wind&quot; value is your ship&apos;s speed when the wind is directly at your back, pushing your ship faster as she sails the high seas.\n\nYour total number of Rigging Locations determines your tactical movement speed. In addition, other features such as carrying capacity, engines (mundane, alchemical or magical in nature), and magic can alter your speed. Those features are discussed in the next section, Equipping Your Ship." compset="RaceSpec" summary="Your Base Speed is your ship&apos;s speed when you are not sailing Into the Wind or With the Wind.">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="25000"><![CDATA[
 ~ Calc speed as double our normal speed
 field[abValue].value += hero.child[Speed].field[tSpeed].value
@@ -227,7 +227,7 @@ field[livename].text = field[name].text & " (" & field[abValue].value & ")"]]></
     </thing>
   <thing id="gS2HullLeL" name="Hull Material, Lead Lining" description="{b}Cost Per Location:{/b} +1,000gp\n{b}Weight Per Location:{/b} 500 lbs.\n{b}Special:{/b} -2 Dex\n\nThis ship has a lining of thinly hammered lead built into its bulkheads and decks that foils divination magic aimed at targets inside a ship. It does not however, prevent divination magic from locating a ship or targeting those above decks or in the rigging.\n\n{b}Note:{/b} The value of the weight and gold will be calculated after you added to the ship." compset="Gear" summary="This ship has a lining of thinly hammered lead built into its bulkheads and decks that foils divination magic aimed at targets inside a ship. It does not however, prevent divination magic from locating a ship or targeting those above decks or in the">
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -248,7 +248,7 @@ field[gearWeight].value += hero.tagcount[FaSB.Hull] * 500</eval>
     </thing>
   <thing id="gS2HullOak" name="Hull Material, Reinforced Oak" description="{b}Cost Per Location:{/b} +1,000gp\n{b}Weight Per Location:{/b} +1,000 lbs.\n{b}Hardness:{/b} 6\n{b}HP:{/b} 250\n{b}Special:{/b} +2 Strength, -1 maneuverability rating\n\nThicker oak planks and iron reinforcements are used in this ship&apos;s construction, granting +2 to Strength, but at the cost of maneuverability.\n\n{b}Note:{/b} The value of the weight and gold will be calculated after you added to the ship." compset="Gear" summary="Thicker oak planks and iron reinforcements are used in this ship&apos;s construction, granting +2 to Strength, but at the cost of maneuverability.">
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -282,7 +282,7 @@ nexteach]]></eval>
     </thing>
   <thing id="gS2HullIro" name="Hull Material, Iron" description="{b}Cost Per Location:{/b} +2,500gp\n{b}Weight Per Location:{/b} +4,500 lbs.\n{b}Hardness:{/b} 8\n{b}HP:{/b} 400\n{b}Special:{/b} +6 Str, +4 armor bonus to AC, -2 Dex, -1 maneuverability rating, -2 Speed\n\nThe hull of this ship is clad in iron, significantly increasing its resilience. Note that this is not the same thing as armor plating (described later in this chapter). A ship clad in iron is stronger and tougher, but also slower and less agile. Note that the penalty to Speed cannot reduce the ship&apos;s Speed below 1.\n\n{b}Note:{/b} The value of the weight and gold will be calculated after you added to the ship." compset="Gear" summary="The hull of this ship is clad in iron, significantly increasing its resilience. Note that this is not the same thing as armor plating (described later in this chapter). A ship clad in iron is stronger and tougher, but also slower and less agile. Note">
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -316,7 +316,7 @@ nexteach]]></eval>
     </thing>
   <thing id="gS2HullDar" name="Hull Material, Darkwood" description="{b}Cost Per Location:{/b} +5,000gp\n{b}Weight Per Location:{/b} 1/2 original\n{b}Hardness:{/b} 5\n{b}HP:{/b} 200\n{b}Special:{/b} +2 Dex, +1 maneuverability rating\n\nBuilding your ship&apos;s Hull Locations from this magical wood greatly increases the cost, but the finished product is lighter and more nimble.\n\n{b}Note:{/b} The value of the weight and gold will be calculated after you added to the ship." compset="Gear" summary="Building your ship&apos;s Hull Locations from this magical wood greatly increases the cost, but the finished product is lighter and more nimble.">
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -352,7 +352,7 @@ nexteach]]></eval>
     <fieldval field="gCost" value="500"/>
     <fieldval field="gWeight" value="75"/>
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="GearNoSize"/>
     </thing>
@@ -364,7 +364,7 @@ nexteach]]></eval>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCritMult" tag="2"/>
     <tag group="Helper" tag="Proficient"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wType" tag="B"/>
     <tag group="wType" tag="P"/>
@@ -394,7 +394,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="140"/>
@@ -414,7 +414,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="180"/>
@@ -434,7 +434,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="220" name="220" abbrev="220"/>
@@ -454,7 +454,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="260" name="260" abbrev="260"/>
@@ -474,7 +474,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="300" name="300" abbrev="300"/>
@@ -494,7 +494,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="340" name="340" abbrev="340"/>
@@ -514,7 +514,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="380" name="380" abbrev="380"/>
@@ -534,7 +534,7 @@ Endif]]></eval>
     <tag group="EquipType" tag="Metal"/>
     <tag group="wProfReq" tag="SiegeFire"/>
     <tag group="wClass" tag="Siege"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wRangeInc" tag="420" name="420" abbrev="420"/>
@@ -551,7 +551,7 @@ Endif]]></eval>
     <tag group="wClass" tag="Siege"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wProfReq" tag="Siege"/>
     <tag group="wFtrGroup" tag="Siege"/>
@@ -564,7 +564,7 @@ Endif]]></eval>
     <tag group="wClass" tag="Siege"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wProfReq" tag="Siege"/>
     <tag group="wFtrGroup" tag="Siege"/>
@@ -577,7 +577,7 @@ Endif]]></eval>
     <tag group="wClass" tag="Siege"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wFtrGroup" tag="Siege"/>
     <tag group="wProfReq" tag="Siege"/>
@@ -589,7 +589,7 @@ Endif]]></eval>
     <tag group="Helper" tag="Proficient"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="SpecGroup" tag="Siege"/>
     </thing>
@@ -601,7 +601,7 @@ Endif]]></eval>
     <tag group="wClass" tag="Siege"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wFtrGroup" tag="Siege"/>
     <tag group="wProfReq" tag="Siege"/>
@@ -614,7 +614,7 @@ Endif]]></eval>
     <tag group="wClass" tag="Siege"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wProfReq" tag="Siege"/>
     <tag group="wFtrGroup" tag="Siege"/>
@@ -627,7 +627,7 @@ Endif]]></eval>
     <tag group="wClass" tag="Siege"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wProfReq" tag="Siege"/>
     <tag group="wFtrGroup" tag="Siege"/>
@@ -640,7 +640,7 @@ Endif]]></eval>
     <tag group="wClass" tag="Siege"/>
     <tag group="wCategory" tag="Ammunition"/>
     <tag group="EquipType" tag="Metal"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wProfReq" tag="Siege"/>
     <tag group="wFtrGroup" tag="Siege"/>
@@ -653,7 +653,7 @@ Endif]]></eval>
     <tag group="wType" tag="B"/>
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="GearNoSize"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wClass" tag="Siege"/>
     <tag group="wSpecial" tag="S2Splinter" name="Splinter"/>
     <tag group="wCategory" tag="RangeProj"/>
@@ -668,7 +668,7 @@ Endif]]></eval>
     <tag group="wType" tag="B"/>
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="GearNoSize"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wClass" tag="Siege"/>
     <tag group="wType" tag="P"/>
     <tag group="wSpecial" tag="S2RefSave" name="Reflex save required" abbrev="Reflex save required"/>
@@ -684,7 +684,7 @@ Endif]]></eval>
     <tag group="wType" tag="B"/>
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="GearNoSize"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wClass" tag="Siege"/>
     <tag group="wType" tag="S"/>
     <tag group="wSpecial" tag="S2Half5"/>
@@ -696,7 +696,7 @@ Endif]]></eval>
   <thing id="gS2HullBro" name="Hull Type, Broad" description="{b}Cost Per Hull Location:{/b} +3,000gp\n{b}Special:{/b} Str +4, -1 maneuverability rating\n\nThis wide hull slows a vessel, but its reinforced interior increases its strength (and therefore its carrying capacity). This increased capacity comes at the cost of maneuverability in the water.\n\n{b}Note:{/b} The cost in gold will be calculated after you add to your ship." compset="Gear" summary="This wide hull slows a vessel, but its reinforced interior increases its strength (and therefore its carrying capacity). This increased capacity comes at the cost of maneuverability in the water.">
     <fieldval field="gWeight" value="3000"/>
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -715,7 +715,7 @@ field[gCost].value += hero.tagcount[FaSB.Hull] * 3000</eval>
   <thing id="gS2HullSta" name="Hull Type, Standard" description="{b}Cost Per Hull Location:{/b} +2,400gp\n{b}Special:{/b} Str +0, speed +0\n\nThe standard hull is sized for non-specialized vessels. Most ships use the standard hull.\n\n{b}Note:{/b} The cost in gold will be calculated after you add to your ship." compset="Gear" summary="The standard hull is sized for non-specialized vessels.">
     <fieldval field="gWeight" value="3000"/>
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -734,7 +734,7 @@ field[gCost].value += hero.tagcount[FaSB.Hull] * 2400</eval>
   <thing id="gS2HullSle" name="Hull Type, Sleek" description="{b}Cost Per Hull Location:{/b} +3,000gp\n{b}Special:{/b} Str -4, +1 maneuverability rating\n\nThis streamlined hull increases a vessel&apos;s maneuverability, but its smaller cross-section reduces strength.\n\n{b}Note:{/b} The cost in gold will be calculated after you add to your ship." compset="Gear" summary="This streamlined hull increases a vessel&apos;s maneuverability, but its smaller cross-section reduces strength.">
     <fieldval field="gWeight" value="1500"/>
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="gType" tag="Transport"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -752,7 +752,7 @@ field[gCost].value += hero.tagcount[FaSB.Hull] * 3000</eval>
     </thing>
   <thing id="raS2SpdOvr" name="Speed, Overland" description="Your first Rigging Location allows you to move at a rate of 2 miles per hour; each additional Rigging Location increases that speed by 1/2 mile per hour. For example, a ship with 4 Rigging Locations has an overland movement speed of 3-1/2 miles per hour, or 84 miles per 24 hours.\n\n{b}Note:{/b} To be more nautical I changed the wording to use knots and nautical miles (NM).  1 Knot equals 1.151 MPH and one nautical mile is 1.151 miles." compset="RaceSpec" summary="Overland movement speed.">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="25000"><![CDATA[
 ~ Calc MPH
 field[abValue].value += 2 + ((hero.tagcount[FaSB.Rigging]-1)*.5)
@@ -772,7 +772,7 @@ field[livename].text = field[name].text & " (" & field[abValue].value & " knot "
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="gType" tag="Transport"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we have not chosen then get out now
@@ -796,7 +796,7 @@ field[usrChosen1].chosen.field[livename].text = field[usrChosen1].chosen.field[n
     <usesource source="srcFASB"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="gType" tag="Transport"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -813,7 +813,7 @@ field[usrChosen1].chosen.field[abValue4].value += 5]]></eval>
     <usesource source="srcFASB"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="gType" tag="Transport"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -830,7 +830,7 @@ field[usrChosen1].chosen.field[abValue4].value += 3]]></eval>
     <usesource source="srcFASB"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="gType" tag="Transport"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -847,7 +847,7 @@ field[usrChosen1].chosen.field[abValue4].value += 8]]></eval>
     <usesource source="srcFASB"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="gType" tag="Transport"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -864,7 +864,7 @@ field[usrChosen1].chosen.field[abValue4].value += 8]]></eval>
     <usesource source="srcFASB"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="gType" tag="Transport"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -877,7 +877,7 @@ field[usrChosen1].chosen.field[abValue4].value += 9]]></eval>
   <thing id="raS2ShipTy" name=" Ship Type" description="Use this to fill in the ship type (ie sailing ship, Sargavan fishing hooker)." compset="RaceSpec">
     <tag group="User" tag="NeedDomain"/>
     <tag group="User" tag="OptDomain"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="First" priority="600"><![CDATA[      
 ~set our ship's type to our own name
 hero.findchild[BaseRace].field[livename].text = field[domDomain].text]]></eval>
@@ -901,7 +901,7 @@ hero.findchild[BaseRace].field[livename].text = field[domDomain].text]]></eval>
     <tag group="Alignment" tag="NeutralLC"/>
     <tag group="Alignment" tag="NeutralGE"/>
     <tag group="Hero" tag="NoDefComm"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="NoScore" tag="aCHA"/>
     <tag group="NoScore" tag="aCON"/>
     <bootstrap thing="raS2BlwWat"></bootstrap>
@@ -1154,7 +1154,7 @@ nexteach]]></eval>
     <fieldval field="gCost" value="30"/>
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="GearNoSize"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wType" tag="B"/>
     <tag group="Helper" tag="FixSizeDmg"/>
     <tag group="Helper" tag="Proficient"/>
@@ -1165,7 +1165,7 @@ nexteach]]></eval>
     <fieldval field="gCost" value="30"/>
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="GearNoSize"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="wType" tag="B"/>
     <tag group="Helper" tag="FixSizeDmg"/>
     <tag group="Helper" tag="Proficient"/>
@@ -1174,7 +1174,7 @@ nexteach]]></eval>
   <thing id="pS2BelWaLi" name="Fire as She Bears: Below Water Line" description="Use this adjustment to increase/decrease the hit points your ship has Below the Water Line." compset="InPlay">
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1187,7 +1187,7 @@ doneif (field[pIsOn].value <> 1)
     <usesource source="srcFASB"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1200,7 +1200,7 @@ field[pChosen].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
     <usesource source="srcFASB"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10050"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1221,7 +1221,7 @@ field[gearWeight].value += field[domDomain].text * 600</eval>
     </thing>
   <thing id="raS2Encumb" name="Encumbrance" description="This is used to help those running on the iPad as the Encumbrance values do not display." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
 var text as string
 text = "{b}Current Encumbrance: " & herofield[tEncum].value & "/" & herofield[tEncumHvy].value & " lbs{/b}"
@@ -1241,7 +1241,7 @@ field[abSumm].text = "Current Encumbrance: " & herofield[tEncum].value & "/" & h
     </thing>
   <thing id="wS2RamAtt" name="Ram Attack" description="In order to make a ram attack, your ship must move at least 8 squares in a straight line. Up to 6 of those squares of movement can occur in the previous round — essentially, the Captain can choose to make a ram attack over 2 rounds if he doesn’t have enough movement available in one round. The Captain targets a specific Hull Location on the enemy ship. His ship collides with this Location, inflicting 4d8 + the ship’s Strength modifier to that Location, and half this amount of damage to all neighboring Locations. In addition, any Hull Locations at the front of the ramming Captain’s ship also takes half the total damage, unless the ship was equipped with a ram. A ram attack ignores up to 10 points of hardness on the Hull Location it strikes. Damage suffered applies equally to the Hull Location and the Below the Waterline Location; that is, if the damage inflicted is 35 points, this amount of damage is applied to both the struck Hull Location as well as the Below the Waterline Location." compset="Weapon">
     <usesource source="srcFASB"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="FixSizeDmg"/>
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="NoSelect"/>
@@ -1256,7 +1256,7 @@ field[abSumm].text = "Current Encumbrance: " & herofield[tEncum].value & "/" & h
   <thing id="pS2FasBSpd" name="Fire as She Bears: Base Speed" description="Use this adjustment to increase/decrease the base speed of your ship." compset="InPlay">
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1290,7 +1290,7 @@ Endif]]></eval>
   <thing id="pS2HullAC" name="Fire as She Bears: AC All Hulls" description="Use this adjustment to increase/decrease the AC of ALL Hull Locations." compset="InPlay">
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1304,7 +1304,7 @@ nexteach]]></eval>
   <thing id="pS2RiggAC" name="Fire as She Bears: AC All Rigging" description="Use this adjustment to increase/decrease the AC of ALL rigging locations." compset="InPlay">
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1318,7 +1318,7 @@ nexteach]]></eval>
   <thing id="pS2HulHard" name="Fire as She Bears: Hardness All Hulls" description="Use this adjustment to increase/decrease the hardness value of ALL Hull Locations." compset="InPlay">
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1332,7 +1332,7 @@ nexteach]]></eval>
   <thing id="pS2RigHard" name="Fire as She Bears: Hardness All Rigging" description="Use this adjustment to increase/decrease the hardness of ALL rigging locations." compset="InPlay">
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)
@@ -1346,7 +1346,7 @@ nexteach]]></eval>
   <thing id="pS2RiggHPa" name="Fire as She Bears: Rigging HP, All" description="Use this adjustment to increase/decrease the hit points for all Rigging Locations." compset="InPlay">
     <usesource source="srcFASB"/>
     <tag group="Helper" tag="AdjConfer"/>
-    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10050"><![CDATA[
 ~ If we're not enabled, get out now
 doneif (field[pIsOn].value <> 1)

@@ -3757,6 +3757,9 @@ abValue2 = Save bonus</comment>
         field[abValue].value += 1
       endif
 
+      ~ If we're not enabled, get out now
+      doneif (field[abilActive].value = 0)
+
       ~ Add damage to shield bashes
       foreach pick in hero from BaseWep where "wCategory.ShieldBash"
         if (eachpick.tagis[wCategory.ShieldBash] = 1) then
@@ -3782,7 +3785,7 @@ abValue2 = Save bonus</comment>
       <containerreq phase="First" priority="100">fieldVal:abilActive = 1</containerreq>
       <autotag group="thing" tag="skipprereq"/>
       </bootstrap>
-    <eval phase="PreLevel" priority="10000">      ~ Stop now if not activated
+    <eval phase="PreLevel" priority="10000">~ Stop now if not activated
       doneif (field[abilActive].value = 0)
 
       ~ Stop now if no armor chosen
@@ -3798,7 +3801,7 @@ abValue2 = Save bonus</comment>
         perform focus.delete[ArmorCateg.Slows]
         perform focus.assign[ArmorClass.Light]
       endif</eval>
-    <eval phase="PostLevel" priority="1000" index="2">      ~ Bonus increases from IL (1 per 3 IL beyond 1, max 5)
+    <eval phase="PostLevel" priority="1000" index="2">~ Bonus increases from IL (1 per 3 IL beyond 1, max 5)
       var firstIncLv as number
       var incEveryLv as number
       var incAmt as number
@@ -4268,5 +4271,471 @@ abValue2 = 1 if character has ITWF without this stance</comment>
     <tag group="mTarget" tag="You"/>
     <tag group="mDuration" tag="Round1"/>
     <tag group="mLevel" tag="8"/>
+    </thing>
+  <thing id="staPWRdDr1" name="Ready the Draw" description="The power and grace of a Mithral Current Disciple comes from their ability to draw their weapon with blinding speed and channeling that motion into a deadly attack.  While in this stance, you may draw your weapon while flat footed or when making an attack of opportunity, and can sheathe your weapon once per round as a free action (even if it is not your turn).  While in this stance you are considered to be threatening all squares within reach of your weapon even if it is sheathed.  In addition, the disciple gains the benefits of the Combat Reflexes feat, but uses their Initiating Modifier in place of their Dexterity Modifier to determine the number of extra Attacks of Opportunity they can make." compset="PWManuever" summary="Threaten with sheathed weapon, can draw during AoO or while flat-footed" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Stance"/>
+    <tag group="mLevel" tag="1"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Stance"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="PathOfWar" tag="Stance"/>
+    <bootstrap thing="fComRef">
+      <containerreq phase="First" priority="100"><![CDATA[fieldVal:abilActive <> 0]]></containerreq>
+      </bootstrap>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not enabled, get out now
+      doneif (field[abilActive].value = 0)
+
+      ~ Combat Reflexes: Use initiatior attribute instead of DEX
+      hero.child[fComRef].field[abValue].value = 1 + maximum(field[mIM].value, 0)]]></eval>
+    </thing>
+  <thing id="staPWRcBl1" name="Reaching Blade Stance" description="By relying on the momentum generated in making an attack, the Mithral Current Disciple can extend their reach to strike opponents further away than they could normally reach.  While in this stance, your attacks deal an extra 1d6 points of damage plus an additional 1d6 points of damage per 8 levels and the first attack made per round can attack an opponent 5 ft further away." compset="PWManuever" uniqueness="useronce">
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue2" value="6"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mLevel" tag="1"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Stance"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="PathOfWar" tag="Stance"/>
+    <tag group="mType" tag="Stance"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not enabled, get out now
+      doneif (field[abilActive].value = 0)
+
+      ~ Calculate bonus damage
+      field[abValue].value += round(field[mIL].value/8,0,-1)
+
+      ~ Add bonus damage to attacks
+      foreach pick in hero from BaseWep
+        #extradamage[eachpick, signed(field[abValue].value) & "d" & field[abValue2].value, field[name].text]
+      nexteach]]></eval>
+    </thing>
+  <thing id="staPWFlWa3" name="Flowing Water Stance" description="The disciple adopts a stance that maximizes free movement and  speed, allowing them to dance around their opponents attacks and flow past obstacles like a rushing stream.  While in this stance the disciple gains a +4 dodge bonus to AC and CMD and a +4 bonus to initiative.  In addition, the disciple may sheathe their weapon once per round as a free action (even if it is not their turn) that does not provoke attacks of opportunity." compset="PWManuever" summary="+4 to dodge AC and init, can sheate 1/rd with no AoO" uniqueness="useronce">
+    <comment>abValue = Dodge bonus
+abValue2 = Init bonus</comment>
+    <fieldval field="abValue2" value="4"/>
+    <fieldval field="abValue" value="4"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Stance"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="PathOfWar" tag="Stance"/>
+    <tag group="mType" tag="Stance"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mLevel" tag="3"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're not enabled, get out now
+      doneif (field[abilActive].value = 0)
+
+      ~ Dodge bonus
+      #applybonus[tACDodge, hero.child[ArmorClass], field[abValue].value]
+
+      ~ Init bonus
+      hero.child[Initiative].field[Bonus].value += field[abValue2].value]]></eval>
+    </thing>
+  <thing id="staPWMtCr6" name="Mithral Current Stance" description="With the speed and grace of a rapid flowing river, the disciple moves and strikes with blinding speed.  While in this stance, creatures you hit must succeed on a Will Save (DC 16+ initiation modifier) or gain vulnerability to silver until the end of your next turn.  Creatures with vulnerability to silver take 50% more damage from silver weapons.  In addition, while your weapon is sheathed you threaten squares within your weapon’s normal reach and can make attacks of opportunity against creatures in these squares as if your weapon were not sheathed.  Once per round you may sheathe your weapon as a free action that does not provoke attacks of opportunity (even if it is not your turn)." compset="PWManuever" summary="Attacks can make foes vulnerable to silver, threaten squares with sheathed weapon and gain 1 free sheathe/rd" uniqueness="useronce">
+    <fieldval field="abValue2" value="4"/>
+    <fieldval field="abValue" value="4"/>
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Stance"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="PathOfWar" tag="Stance"/>
+    <tag group="mType" tag="Stance"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mLevel" tag="6"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mSave" tag="WillNeg"/>
+    </thing>
+  <thing id="staPWMtLt8" name="Mithral Lightning Stance" description="With blinding movements and rapid, graceful strikes, the masters of the Mithral Current are able to travel across the battlefield and bring death to any who would try to stop them.  While in this stance, the disciple gains a +10 ft. enhancement bonus to speed, a +6 dodge bonus to AC vs. Attacks of opportunity, and can make a free counterattack against any enemy that makes an attack of opportunity against the disciple.  In addition, all counterattacks made by the disciple while in this stance deal +3d6 damage.  The Disciple treats their weapon as silver for purposes of overcoming damage reduction and vulnerabilities while in this stance.  Once per round you may sheathe your weapon as a free action that does not provoke attacks of opportunity (even if it is not your turn)." compset="PWManuever" summary="+10 to speed, +6 dodge vs AoO, free counterattack against AoO&apos;s with +3d6 dam, gain 1 free sheathe/rd" uniqueness="useronce">
+    <fieldval field="abValue" value="10"/>
+    <fieldval field="abValue2" value="6"/>
+    <fieldval field="abValue3" value="3"/>
+    <fieldval field="abValue4" value="6"/>
+    <fieldval field="mPreReq" value="3"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="PathOfWar" tag="Stance"/>
+    <tag group="mType" tag="Stance"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mLevel" tag="8"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mSave" tag="WillNeg"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mDuration" tag="Stance"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not enabled, get out now
+      doneif (field[abilActive].value = 0)
+
+      ~ Apply speed boost
+      #applybonus[BonEnhance, hero.child[Speed], field[abValue].value]
+
+      ~ Apply AC bonus vs AoO
+      #situational[hero.child[ArmorClass], signed(field[abValue2].value) & " dodge vs AoO", field[name].text]
+
+      ~ Add bonus damage to attacks
+      foreach pick in hero from BaseWep
+        #extradamage[eachpick, signed(field[abValue3].value) & "d" & field[abValue4].value & " on AoO counter", field[name].text]
+      nexteach]]></eval>
+    </thing>
+  <thing id="manPWSwCr1" name="Swift Current" description="One of the basic tenets of the Mithral Current discipline is that all momentum can be turned into a powerful offensive tool.  Beginning initiates learn to use the momentum of drawing their blade from its sheath to increase the striking power of their blade.  Make a melee attack against a foe. If the attack hits it deals an additional 1d6 points of damage.  If you draw your weapon as part of initiating this maneuver, your opponent is flat-footed against this attack." compset="PWManuever" summary="Attack deals +1d6 damage, foe is flat-footed if you drew for the attack" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="1"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="mDuration" tag="Instant"/>
+    </thing>
+  <thing id="manPWTdBl1" name="Tidal Blade" description="The skill and grace of a Mithral Current disciple comes from their flowing movements and lightning swift attacks.  The disciple shows this skill by attacking multiple opponents with a single swing. Make a single attack roll against two enemies adjacent to you.  If the attack is successful, you deal damage to both creatures.  If you draw your weapon as part of initiating this maneuver, you gain a +2 bonus to the attack roll." compset="PWManuever" summary="Attack two foes with same roll, +2 to hit if you drew for the attack" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="1"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature2R" name="Two creatures in range"/>
+    </thing>
+  <thing id="manPWDlCr2" name="Dual Crash" description="A sudden reversal of direction allows a disciple of Mithral Current to strike an opponent when they least expect it, the instant after they’ve already been hit.  Make a melee attack against an opponent that deals weapon damage as normal.  If you draw your weapon as part of initiating this maneuver, make a second attack against that target at your full base attack bonus." compset="PWManuever" summary="Attack normally, gain a second attack if you drew for the first attack" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="2"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    </thing>
+  <thing id="manPWIrWv2" name="Iron Wave" description="By imitating the motions of ocean waves, the disciple is able to extend the reach of their blade beyond that of a normal attack.  Make a melee attack against one opponent in range that deals an additional 2d6 points of damage.  If the you drew your as part of initiating this maneuver increase the range of the attack to Close, but treat the attack roll as being a melee attack, and the target must succeed on a Will save (DC 12+ initiation modifier) or gain vulnerability to silver until the end of your next turn.  Creatures with vulnerability to silver take 50% more damage from silver weapons.    This is a supernatural Maneuver." compset="PWManuever" summary="Attack deals +2d6 damage, with draw range is Close and may impart silver vuln." uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="2"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="mSave" tag="SeeText"/>
+    <tag group="mSave" tag="WillPart"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="mRange" tag="MeleeOrCls" name="Melee or Close (25 ft + 5 ft/2 levels)" abbrev="Melee or Close"/>
+    </thing>
+  <thing id="manPWRTSt2" name="Riptide Strike" description="Like the dangerous tidal swells that pull swimmers out to sea and under the waves, the disciple makes an attack that pulls an opponent to the ground.  Make a melee attack against a foe that deals an additional 2d6 points of damage.  If you draw your weapon as part of initiating this maneuver, you may make a free trip attempt against your target with a +2 bonus that does not provoke attacks of opportunity." compset="PWManuever" summary="Attack deals +2d6 dmg, with draw grants free trip at +2" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="2"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    </thing>
+  <thing id="manPWSBSt3" name="Salt Breeze Strike" description="The winds of the ocean sting the eyes and blur vision, The Mithral Current disciple imitates this tendency with a debilitating slash that forces his opponent on the defensive by obscuring his vision with stinging dust.  Make a melee attack against an opponent that deals an additional 3d6 points of damage.  If you drew your weapon as part of initiating this maneuver, your opponent takes a -4 penalty to attack rolls for one round." compset="PWManuever" summary="Attack deals +3d6 dmg, with draw gives foe -4 to hit for 1 rd" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="3"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    </thing>
+  <thing id="manPWRpCr3" name="Rippling Current" description="The disciple’s blade weaves in and out of the opponent’s sight to strike at an unexpected angle.   Make a melee attack against a single opponent that deals an additional 3d6 points of damage.  If you draw your weapon as part of initiating this maneuver, the opponent is considered flat footed against this attack." compset="PWManuever" summary="Attack deals +3d6 dmg, catches foe flat-footed on draw" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="3"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    </thing>
+  <thing id="manPWSlWv4" name="Silver Wave" description="Drawing his blade in a powerful diagonal cut, the disciple strikes his foe with a brutal wave of kinetic energy.  The Disciple makes a melee attack against an opponent that deals +6d6 damage.  If the you drew your as part of initiating this maneuver increase the range of the attack to Close, but treat the attack roll as being a melee attack, and the target must succeed on a Will save (DC 14+ initiation modifier) or gain vulnerability to silver until the end of your next turn.    This is a supernatural maneuver." compset="PWManuever" summary="Attack deals +6d6 damage, with draw range is Close and may impart silver vuln." uniqueness="useronce">
+    <fieldval field="mPreReq" value="1"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="4"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mSave" tag="SeeText"/>
+    <tag group="mSave" tag="WillPart"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="mRange" tag="MeleeOrCls"/>
+    </thing>
+  <thing id="manPWBlRf4" name="Blinding Reflection" description="Reflecting light off their blade like a pond bathed in moonlight the disciple is able to temporarily blind their foe and leave them at a serious disadvantage.  Make a melee attack against a foe that deals an additional 6d6 points of damage on a successful hit.  If you drew your weapon as part of initiating this maneuver, the opponent must succeed on a Fortitude Save (DC 14+Initiating Modifier) or be blinded for 1 minute.  If the target succeeds on their save, they are dazzled for 1 round." compset="PWManuever" summary="Attack deals +6d6 dmg, on draw will blind or dazzle target" uniqueness="useronce">
+    <fieldval field="mPreReq" value="1"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="4"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mSave" tag="SeeText"/>
+    <tag group="mSave" tag="FortPart"/>
+    </thing>
+  <thing id="manPWWhPl5" name="Whirlpool Strike" description="The disciple lashes out at all nearby foes with a spiral cut that strikes anyone nearby.  Make a single attack roll against all  adjacent foes that deals an additional 3d6 points of damage to each enemy it hits.  If the you drew your weapon as part of initiating this maneuver, you may attack all foes within reach in addition to all adjacent enemies." compset="PWManuever" summary="Single attack roll vs all adj. foes with +3d6 dmg, on draw targets all foes in reach" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="5"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mTarget" tag="AllEnmRang"/>
+    </thing>
+  <thing id="manPWRpCr5" name="Rapid Current" description="The disciple unleashes a rapid flurry of attacks against their foe, carving deep wounds into their flesh.  Make two attacks at your full base attack bonus.  Each attack deals an additional 3d6 points of damage.  If you drew your weapon as part of initiating this maneuver, make one additional attack at your full base attack bonus.  This third attack does not deal the bonus damage from the maneuver." compset="PWManuever" summary="Two attacks with +3d6 dmg, on draw get a 3rd attack (no bonus dmg)" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="5"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    </thing>
+  <thing id="manPWQsWv6" name="Quicksilver Wave" description="A wave of silver energy leaps from the disciple’s weapon to slash at a distant foe.  Make a melee attack against an opponent that deals an additional 8d6 points of damage.  If the you drew your as part of initiating this maneuver increase the range of the attack to Close, but treat the attack roll as being a melee attack, and the target must succeed on a Will save (DC 16+ initiation modifier) or gain vulnerability to silver until the end of your next turn.    This is a supernatural maneuver." compset="PWManuever" summary="Attack deals +8d6 damage, with draw range is Close and may impart silver vuln." uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="6"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mSave" tag="SeeText"/>
+    <tag group="mSave" tag="WillPart"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="mRange" tag="MeleeOrCls"/>
+    </thing>
+  <thing id="manPWCrWk6" name="Crashing Wake" description="The disciple rushes across the battlefield, striking any and every foe along his path.  When you initiate this maneuver, you can move 30 ft as a free action.  While moving, you can make a single attack against each enemy adjacent to you along your movement path.  Each successful attack does +4d6 damage." compset="PWManuever" summary="Move up to 30 ft, make one attack w/+4d6 dmg on each adj. enemy you pass" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="6"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mTarget" tag="AllEnmRang"/>
+    </thing>
+  <thing id="manPWRWpS7" name="Raging Whirlpool Strike" description="A whirling slash carves across all foes that presume to approach a Disciple of the Mithral Current.  Make a single attack  roll against all adjacent enemies that deals an additional 5d6 points of damage.  If you drew your weapon as part of initiating this maneuver, you can make a second attack roll at your full base attack bonus against all adjacent enemies that deals an additional 3d6 points of damage if successful." compset="PWManuever" summary="Single attack roll vs all adj. foes with +5d6 dmg, on draw gain second attack at +3d6" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="7"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mTarget" tag="AllEnmRang"/>
+    </thing>
+  <thing id="manPWBoSS7" name="Blade of the Silver Sea" description="The disciple’s blade ripples and shimmers with a bright silver light as it strikes home and rends the flesh of his foe.  Make a melee attack against one enemy that deals an additional 8d6 points of damage.  If you drew your weapon as part of initiating this maneuver, this attack ignores any damage reduction the target has and suppresses any fast healing or regeneration the target has for a number of rounds equal to your initiation modifier, provided that regeneration can be overcome by any specific material or elemental damage type (such as acid, adamantine, fire or silver, but not the tarrasque’s regeneration).  Treat your weapon as silver for purposes of overcoming damage reduction or vulnerabilities.  This is a supernatural maneuver." compset="PWManuever" summary="Attack deals +8d6 dmg, on draw ignores DR and suppresses fast healing and regeneration" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="7"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="AttrRounds"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="manPWMthW8" name="Mithral Wave" description="A wave of blinding silver energy erupts from the disciple’s blade to strike a distant foe.  Make a melee attack that deals an additional 14d6 points of damage.  If the you drew your as part of initiating this maneuver increase the range of the attack to Close, but treat the attack roll as being a melee attack, and the target must succeed on a Will save (DC 18+ initiation modifier) or gain vulnerability to silver until the end of your next turn.  This is a supernatural maneuver." compset="PWManuever" summary="Attack deals +14d6 damage, on draw range is Close and may impart silver vuln." uniqueness="useronce">
+    <fieldval field="mPreReq" value="3"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="8"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mSave" tag="SeeText"/>
+    <tag group="mSave" tag="WillPart"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="mRange" tag="MeleeOrCls"/>
+    </thing>
+  <thing id="manPWRpSl8" name="Riptide Slice" description="The master of the Mithral Current discipline can make a cut so light and gentle it feels like a mere breeze, but still cuts their opponent to the very core.  Make a melee attack against an opponent that deals an additional 12d6 points of damage.  If you drew your weapon as part of initiating this maneuver, this attack is made against your opponents Touch AC." compset="PWManuever" summary="Attack deals +12d6 dmg, on draw attacks touch AC" uniqueness="useronce">
+    <fieldval field="mPreReq" value="3"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Strike"/>
+    <tag group="mLevel" tag="8"/>
+    <tag group="mInitAct" tag="Standard1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mRange" tag="Melee"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="mTarget" tag="Creature1"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    </thing>
+  <thing id="manPWFlCr1" name="Flowing Creek" description="Like the flowing water that inspired the discipline, a student of the Mithral Current learns to sidestep and work around foes instead of taking their opponents on directly.  When you initiate this counter, make a Perform (Dance) check in place of AC, and if your opponent’s attack misses you may take a 5 foot step as a free action." compset="PWManuever" summary="Use Perform (Dance) check in place of AC, take a 5-ft step if attack misses" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="1"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    </thing>
+  <thing id="manPWCltS2" name="Calm the Storm" description="By accepting an incoming blow, the Mithral Current disciple manipulates their opponent into a position where they are unable to execute more attacks.  When you are attacked, make a counterattack as an immediate action after the opponent’s attack is resolved.  If your attack hits, your opponent must succeed on a Reflex Save (DC 12+ Initiation Modifier) or be unable to attack you again for the rest of their turn as you twist out of the way of your opponents attacks." compset="PWManuever" summary="Make a counterattack after foe attacks you, if hit then foe must save or be unable to attack you for rest of their turn" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="2"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    </thing>
+  <thing id="manPWDsWv4" name="Disruptive Wave" description="By sensing the ripples in reality caused by powerful magic, the disciple is able to anticipate and strike before being targeted by vile magics.  When you are targeted by a  spell or spell-like ability,  you may activate this counter to make a charge attack against the caster as an immediate action before the spell is cast.  If you successfully attack the spellcaster, the DC for the concentration check is increased by +2." compset="PWManuever" summary="Charge foe as they target you with a spell, if you hit then concentration DC increased by +2" uniqueness="useronce">
+    <fieldval field="mPreReq" value="1"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="4"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
+  <thing id="manPWRtCr4" name="Ride the Current" description="By reading the movements of a foe, the disciple of the Mithral Current is able to position themselves out of reach of their enemy and leave them a parting gift as they step out of reach.  When you initiate this counter, you can make  a 10 foot step as a free action after your enemy’s attack is resolved.  If you draw your weapon as part of making this counter you can make a free counter attack against your opponent." compset="PWManuever" summary="Take a 10-ft step after enemy attacks, if you draw weapon then counterattack" uniqueness="useronce">
+    <fieldval field="mPreReq" value="1"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="4"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
+  <thing id="manPWFlSt5" name="Flowing Stream" description="The disciple’s graceful movements allow him to distance himself from enemies attacks.  When attacked you can make a Perform (Dance) check in place of AC or a Reflex Save.  If your opponent’s attack misses or you succeed on the Reflex save, you take no damage from the attack.  If you successfully avoid the attack, you may move up to your speed as a free action that does not provoke attacks of opportunity.  If you drew your weapon as part of initiating this counter, you can make a counterattack against your foe that does +3d6 damage." compset="PWManuever" summary="Perform (Dance) in place of AC or Ref save, move up to your speed, on draw you can counterattack with +3d6 dmg" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="5"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
+  <thing id="manPWMtFl5" name="Mithral Flash" description="Though Mithral Current is a discipline noted for its graceful movements and avoiding enemy attacks, sometimes it is better to block an attack altogether.  Make an attack roll , if you roll higher than your opponent, the opponent’s attack is negated.  If you drew your weapon as part of initiating this maneuver, you can make a counter attack against the foe that deals an additional 5d6 points of damage.  Treat your weapon as silver for purposes of overcoming damage reduction and vulnerabilities." compset="PWManuever" summary="Opposed attack roll to negate foe&apos;s attack, if you drew then counterattack at +5d6 dmg" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="5"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
+  <thing id="manPWFlRv7" name="Flowing River" description="The dance of the Mithral Current allows a disciple to avoid any incoming attack and return the insult with great fury.  Make a Perform (Dance) check in place of a Fortitude, Reflex or Will save.  If you succeed on the save, you can immediately move to the space nearest to you that is adjacent to the enemy who forced the save and make a free counterattack against the enemy that deals an additional 5d6 points of damage.  If  you draw your weapon as part of initiating this maneuver, you can make a second counterattack at your highest base attack bonus that does an additional 3d6 points of damage." compset="PWManuever" summary="Perform (Dance) check in place of save, on success move to enemy and counterattack at +5d6 dmg, on draw gain 2nd counter at +3d6" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="7"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
+  <thing id="manPWDoSH9" name="Dance of the Silver Hurricane" description="The true master of the Mithral Current knows the dance of battle and every step that he takes is perfectly attuned to that deadly rhythm. Until the start of your next turn, you can make a Perform (Dance) check in place of your AC or CMD against any attack made against you. Any time an attack misses you, you can make a free 10 ft. step which does not provoke attacks of opportunity, although you may choose to provoke an attack of opportunity if you wish. At the start of your next turn, you can make a single counterattack against each creature that attacked you and missed while this counter was active. You can make the counterattacks against each creature that attacked you regardless of the distance between you and the attacking creature. These counterattacks are treated as silver for purposes of overcoming damage reduction or vulnerabilities. If you drew your weapon as part of initiating this counter, your counterattacks deal an additional 1d6 points of damage for each time you were attacked by that creature, to a maximum of 6d6 points of additional damage." compset="PWManuever" summary="Until next turn, use Perform (Dance) for AC/CMD, take 10-ft step for each miss, then counterattack all attackers on your turn" uniqueness="useronce">
+    <fieldval field="mPreReq" value="4"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Counter"/>
+    <tag group="mLevel" tag="9"/>
+    <tag group="mInitAct" tag="Immed1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
+  <thing id="manPWFlWk1" name="Following Wake" description="By utilizing the momentum of their body and blade the disciple turns their strike into a disabling attack that leaves their opponent on the ground.  The next time you make a charge attack this round, you can make a free trip attempt against the target of your attack that does not provoke Attacks of Opportunity.  This combat maneuver uses Perform(Dance) instead of your CMB when making this trip attempt." compset="PWManuever" summary="Charge attack gains free trip using Perform (Dance) in place of CMB" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mType" tag="Boost"/>
+    <tag group="mLevel" tag="1"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mDuration" tag="Instant"/>
+    </thing>
+  <thing id="manPWRsWk3" name="Rushing Wake" description="With a sudden burst of speed and skill the Mithral Current disciple charges towards a foe knocking aside any others in their path.  When you make a charge attack against a foe, you may initiate this maneuver to make a free trip attempt against each foe adjacent to you during your charge.  These trip attempts do not provoke attacks of opportunity but your movement still does as normal." compset="PWManuever" summary="Charge attack gains free trip against all in your path" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    <tag group="mType" tag="Boost"/>
+    <tag group="mLevel" tag="3"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mDuration" tag="Instant"/>
+    </thing>
+  <thing id="manPWEnCr6" name="Endless Current" description="Channeling the momentum of their attacks into a leaping dance allows a disciple of Mithral Current to maneuver across the battlefield with every strike.  When you initiate this boost, you can make a free 10 foot step after each attack for the rest of the round.  A 10 ft. step functions exactly like a 5 ft. step save that you can move up to 10 ft when you take it." compset="PWManuever" summary="Take a 10-ft step after each attack for the rest of the round" uniqueness="useronce">
+    <fieldval field="mPreReq" value="2"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="mType" tag="Boost"/>
+    <tag group="mLevel" tag="6"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mDuration" tag="Round1"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
+  <thing id="manPWRdWk2" name="Ride the Wake" description="To stop moving is to die, and the Disciple acknowledges this by continuing their movement even after attacking their foe.  If you drew your weapon as part of making an attack, you can initiate this boost to move up to your speed speed as a free action after the attack has resolved.  This movement does not provoke attacks of opportunity." compset="PWManuever" summary="Move up to your speed after making an attack" uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="Discipline" tag="MithCurr"/>
+    <tag group="mType" tag="Boost"/>
+    <tag group="mLevel" tag="2"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="PathOfWar" tag="Manuever"/>
     </thing>
   </document>

@@ -6,7 +6,7 @@
 -Broke apart from the main .user file.</info_history>
     </fileinfo>
   <thing id="raGoWeps" name="Weapon Familiarity" description="You treat all weapons with the word &quot;goblin&quot; in its name as a martial weapon." compset="RaceSpec">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowStatbl"/>
     <tag group="WepProf" tag="wPFDogslic"/>
     <tag group="WepProf" tag="wHorsechop"/>
@@ -47,7 +47,7 @@
       nexteach]]></eval>
     </thing>
   <thing id="raNatPsion" name="Naturally Psionic" description="Members of your race gain the Wild Talent feat as a bonus feat at 1st level. If you take levels in a psionic class, you instead gain the Psionic Talent feat." compset="RaceSpec">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="fPUWildTal">
       <containerreq phase="First" priority="2000"><![CDATA[!Psionics.Class & !AbReplace.raNatPsion]]></containerreq>
       </bootstrap>
@@ -127,7 +127,7 @@
   <thing id="raChitin" name="Chitin" description="Dromites receive a +1 natural armor bonus and one of the following kinds of energy resistance of their choice at creation: cold 5, electricity 5, fire 5, or sonic 5. This choice is permanent and stacks with any future energy resistance gained through other effects." compset="RaceSpec" summary="Exoskeleton provides natural armor and energy resistance.">
     <fieldval field="abValue" value="5"/>
     <fieldval field="usrCandid1" value="Selection.Energy &amp; (BloodEner.Cold|BloodEner.Elec|BloodEner.Fire|BloodEner.Sonic)"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecType" tag="Defense"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
@@ -149,7 +149,7 @@ endif]]></eval>
     </thing>
   <thing id="raCompEyes" name="Compound Eyes" description="+2 racial bonus to Perception skill checks." compset="RaceSpec">
     <fieldval field="abValue" value="2"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~if we've been replaced, get out now
 doneif (tagis[Helper.SpcReplace] <> 0)
@@ -158,7 +158,7 @@ doneif (tagis[Helper.SpcReplace] <> 0)
 #skillbonus[skPercep] += field[abValue].value]]></eval>
     </thing>
   <thing id="raPsiApt" name="Psionic Aptitude" description="When this creature takes a level in a favored class, it can chooes to gain an additional power point instead of a hit point or a skill point." compset="RaceSpec">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="fcPUPwrPnt">
       <containerreq phase="First" priority="1000">!AbReplace.raPsiApt</containerreq>
       </bootstrap>
@@ -233,7 +233,7 @@ doneif (tagis[Helper.SpcReplace] <> 0)
       </eval>
     </thing>
   <thing id="raDuerHard" name="Hardy" description="Duergars receive a +2 racial bonus on saving throws against poison, powers, spells, psi-like abilities, and spell-like abilities." compset="RaceSpec" summary="+2 racial bonus to save vs. poison, powers, spells, psi-like abilities, and spell-like abilities.">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -242,7 +242,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raDuerPsi" name="Duergar Psionics" description="Duergars gain the following psi-like abilities: 1/day-expansion and cloud mind. These abilities affect only the duergar and his gear. The manifester level for these effects is equal to the duergar&apos;s level (minimum 3rd). The DC for cloud mind is equal to 10 + the power&apos;s level + the duergar&apos;s Charisma modifier." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="StandardDC" tag="aCHA"/>
     <bootstrap thing="puCloudMn2">
       <containerreq phase="First" priority="1000">!AbReplace.raDuerPsi</containerreq>
@@ -294,7 +294,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <bootstrap thing="fcPUElaAlF"></bootstrap>
     </thing>
   <thing id="raAberrNat" name="Aberrant Nature" description="Although human in appearance, elans suffer from a nature slightly off from the rest of the non-elan society. They suffer a -1 penalty to Charisma-based skill checks when dealing with non-elans." compset="RaceSpec" summary="-1 to Cha based skill checks for dealing with non-Elans.">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="25000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -323,7 +323,7 @@ nexteach]]></eval>
     <fieldval field="abValue" value="4"/>
     <fieldval field="actName" value="Resistance"/>
     <tag group="User" tag="Activation"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
@@ -379,7 +379,7 @@ hero.child[svAll].field[Bonus].value += field[abValue].value]]></eval>
     <bootstrap thing="stGiant"></bootstrap>
     </thing>
   <thing id="raFireAccl" name="Fire Acclimated" description="Half-giants receive a +2 racial bonus on saving throws against all fire spells and effects." compset="RaceSpec" summary="+2 racial bonus on saving throws against all fire spells and effects.">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -388,7 +388,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raSurvivor" name="Survivor" description="Half-giants gain a +4 racial bonus to Survival checks." compset="RaceSpec" summary="+4 racial bonus on Survival Checks.">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -438,7 +438,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <bootstrap thing="raPUMaePsi"></bootstrap>
     </thing>
   <thing id="raMaWeps" name="Weapon Familiarity" description="Maenads are proficient with flails. Maenads treat any weapon with the word “maenad” in the name as a martial weapon rather than an exotic one." compset="RaceSpec" xactspecial="0">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowStatbl"/>
     <eval phase="First"><![CDATA[
 ~ If we're disabled, do nothing
@@ -450,7 +450,7 @@ perform hero.pushtags[EasyWeapon.?]]]></eval>
     </thing>
   <thing id="raSonicAff" name="Sonic Affinity" description="Maenads add a +1 to the DC of any spell or power with the sonic descriptor." compset="RaceSpec">
     <fieldval field="abValue" value="1"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
@@ -462,7 +462,7 @@ hero.child[ssSonic].field[schDC].value += field[abValue].value]]></eval>
   <thing id="raOutburst" name="Outburst" description="Maenads can dampen their mental processes for an increase in raw power called an outburst. As a result, they take a -2 penalty to Intelligence and Wisdom but gain a +2 bonus to Strength. The character must spend one power point at the beginning of each round during an outburst and may stop an outburst at any time." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="User" tag="Activation"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -476,7 +476,7 @@ hero.child[aSTR].field[Bonus].value += 2]]></eval>
   <thing id="raInRage" name="Inner Rage" description="Maenads are able to rage one additional round per day should they have the rage ability and they gain an additional round per day for every two character levels. In addition to using these rounds for rage, maenads may use them to fuel their outburst, instead of power points." compset="RaceSpec">
     <fieldval field="abValue" value="1"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -491,7 +491,7 @@ field[abValue].value += round(hero.tagcount[Classes.?]/2,0,-1)
     </thing>
   <thing id="raOrdRage" name="Ordered Rage" description="Maenads may take levels in the barbarian class even if they are of the lawful alignment.\n\n{b}Note:{/b} After you add your barbarian levels you will not get any messages about the wrong alignment. But the warning can&apos;t be changed until you add the barbarian level." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -503,7 +503,7 @@ perform hero.child[cHelpBbn].delete[AlgnForbid.Lawful]]]></eval>
     </thing>
   <thing id="raNatSail" name="Natural Sailors" description="Maenads have a +2 bonus to Swim and Profession (sailor) checks. In addition, they gain a +2 bonus to Acrobatics and Climb checks made on sailing ships." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -561,7 +561,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raOpWeps" name="Weapon Familiarity" description="Ophiduans treat any weapon with the word “ophiduan” in the name as a martial weapon rather than an exotic one." compset="RaceSpec" xactspecial="0">
     <tag group="Helper" tag="ShowStatbl"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="First"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -571,12 +571,12 @@ perform hero.pushtags[WepProf.?]
 perform hero.pushtags[EasyWeapon.?]]]></eval>
     </thing>
   <thing id="raScaled" name="Scaled Hide" description="An ophiduan&apos;s skin is hardened scales and grants the character a +1 natural armor bonus to AC." compset="RaceSpec" xactspecial="0">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raPUSerBit" name="Serpent&apos;s Bite" description="Once per day, an ophiduan can alter his jaws, gaining a bite attack that deals 1d8 points of damage, plus an extra 1d8 points of damage per five character levels beyond 1st. This effect lasts for 1 minute. The manifester level is equal to the ophiduan&apos;s level." compset="RaceSpec" xactspecial="0">
     <fieldval field="actName" value="Serpent&apos;s Bite"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="SingleAtt"/>
     <tag group="wCategory" tag="Melee"/>
     <tag group="wMain" tag="1d8_6"/>
@@ -602,7 +602,7 @@ If (field[abValue].value <> 0) Then
 Endif]]></eval>
     </thing>
   <thing id="raPoResist" name="Poison Resistant" description="Ophiduans gain a +2 racial bonus on saving throws against poison." compset="RaceSpec" xactspecial="0">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -667,7 +667,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Usage" tag="Day"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -689,7 +689,7 @@ doneif (field[abilActive].value <> 1)
     </thing>
   <thing id="raDromPsi" name="Dromite Psionics" description="Dromites gain the following psilike ability: 1/day-energy ray. A dromite always deals the kind of energy damage that its chitin has resistance to (for example, a dromite who has resistance to cold 5 deals cold damage with its energy ray). The manifester level for this effect is equal to 1/2 the dromite&apos;s level (minimum 1st)." compset="RaceSpec">
     <tag group="AbilType" tag="PsiLike"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="puEnerRay1">
       <containerreq phase="First" priority="1000">!AbReplace.raDromPsi</containerreq>
       <autotag group="Usage" tag="Day"/>
@@ -751,15 +751,15 @@ doneif (field[abilActive].value <> 1)
   <thing id="raPUReplet" name="Repletion" description="You can sustain his body without need of food or water. If he spends 1 power point, an elan does not need to eat or drink for 24 hours." compset="RaceSpec" summary="Spend 1 power point to go without food or drink for 24 hours.">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raPUResili" name="Resilience" description="When you take damage, he can spend power points to reduce its severity. As an immediate action, he can reduce the damage he is about to take by 2 hit points for every 1 power point he spends." compset="RaceSpec" summary="Spend 1 or more power points to reduce damage.">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raPUMaePsi" name="Maenad Psionics" description="Maenad gain the following psi-like ability. 1/day - {i}energy ray{/i}. A maenad can deal only sonic damage with this ability. It is accompanied by a tremendous scream of rage. The manifester level is equal to 1/2 Hit Dice (minimum 1st). The DC for this power is equal to 10 + the power&apos;s level + the maenad&apos;s Charisma modifier." compset="RaceSpec">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="puEnerRay1">
       <containerreq phase="First" priority="1000">!AbReplace.raPUMaePsi</containerreq>
       <autotag group="Helper" tag="PsiLike"/>
@@ -1680,7 +1680,7 @@ hero.child[svWill].field[Bonus].value += field[abValue].value]]></eval>
   <thing id="raPUConRes" name="Construct Resistance" description="You gain a +2 racial bonus on saving throws against disease, mind-affecting effects, poison, and effects that cause either exhaustion or fatigue." compset="RaceSpec">
     <fieldval field="abValue" value="2"/>
     <tag group="SpecType" tag="Resist"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="Final" priority="50000" index="2"><![CDATA[
 ~if we've been replaced, get out now

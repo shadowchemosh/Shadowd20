@@ -837,37 +837,26 @@ www.necromancers-online.com</comment>
     <usesource source="srcLibVamp"/>
     <bootstrap thing="raDarkVis">
       <autotag group="Value" tag="60"/>
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="abNNWMindE">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="xImmPois">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="xImmBleed">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="xImmDeath">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="xImmDis">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="xImmExhaus">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="xImmFatigu">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="xImmParaly">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="abNNWSlpSn">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <bootstrap thing="abNNWAbAdm">
-      <autotag group="SpecSource" tag="stNNWRisen"/>
       </bootstrap>
     <eval phase="First"><![CDATA[perform hero.assignstr["Type.tpUndead"]]]></eval>
     </thing>

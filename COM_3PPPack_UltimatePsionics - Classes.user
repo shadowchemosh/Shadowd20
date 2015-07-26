@@ -1835,7 +1835,7 @@ This should allow for people making custom races to have it work correctly for t
 
 Note: This does not work correctly if it is source marked.
 Note2: DO NOT CLICK the "All Characters?" option.]]></comment>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000">~ Give a bonus to Power Points each time we are taken
       field[abValue].value += field[fcCount].value    
       #resmax[resPowerPt] += field[abValue].value
@@ -2993,23 +2993,26 @@ if (hero.tagis[Classes.Monk] <> 0) then
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="abAction" tag="PUManFocus"/>
     <bootstrap thing="xDamRd">
-      <autotag group="SpecSource" tag="cHelpFst"/>
       </bootstrap>
-    <eval phase="PostLevel" priority="10000"><![CDATA[field[listname].text = "Infused Body (DR: " & field[xIndex].value & "/-)"
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      field[listname].text = field[name].text & " (DR: " & field[xIndex].value & "/-)"
 
-  ~These calculations should only happen for the first copy
-  doneif (tagis[Helper.FirstCopy] = 0)
+      ~ These calculations should only happen for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
 
-  ~ If we're not shown, just get out now
-  doneif (tagis[Helper.ShowSpec] = 0)
+      field[abValue].value += field[xCount].value
+      field[CustDesc].text = "Damage Reduction (" & field[abValue].value & ") against weapons and natural attacks."
 
-  field[abValue].value += field[xCount].value
-  field[CustDesc].text = "Damage Reduction (" & field[abValue].value & ") against weapons and natural attacks."
+      var v_focus as number
+      call PUPsiFocus
+      ~ If Not psionically focused get out now
+      doneif (v_focus <> 1)
 
-~If psionically focused, add the Damage Reduction
-if (hero.tagis[Hero.PsiFocus] <> 0) then
-  hero.child[xDamRd].field[abValue].value = maximum(hero.child[xDamRd].field[abValue].value, field[abValue].value)
-endif]]></eval>
+      ~ If psionically focused, add the Damage Reduction
+      #applydr[xDamRd,field[abValue].value]
+      ]]></eval>
     </thing>
   <thing id="cMesmerGlo" name="Mesmerising Glow" description="A psychic fist of 4th level can, as a standard action, spend 1 ki point to perform a visually-dazzling display, dazing up to half his class level in targets for one round unless the targets make a successful Will save (DC 10 + 1/2 psychic fist level + psychic fist&apos;s Wisdom modifier). All targets must be within 30 feet of the psychic fist and have line of sight to him to be affected." compset="ClSpecial">
     <tag group="AbilType" tag="Super"/>
@@ -6083,12 +6086,6 @@ perform forward[WepProf.?]]]></eval>
     <bootstrap thing="cPUCoorStr">
       <autotag group="ClSpecWhen" tag="17"/>
       </bootstrap>
-    <bootstrap thing="cPUTacColl">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <bootstrap thing="cPUTacColl">
-      <autotag group="ClSpecWhen" tag="19"/>
-      </bootstrap>
     <bootstrap thing="cPUSpiMany">
       <autotag group="ClSpecWhen" tag="2"/>
       </bootstrap>
@@ -6118,8 +6115,15 @@ perform forward[WepProf.?]]]></eval>
     <bootstrap thing="cPUCoorStr">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
-    <bootstrap thing="cPUTacColl">
+    <bootstrap thing="cPUCollect">
       <autotag group="ClSpecWhen" tag="1"/>
+      <autotag group="UseAttr" tag="aINT"/>
+      </bootstrap>
+    <bootstrap thing="cPUCollect">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cPUCollect">
+      <autotag group="ClSpecWhen" tag="19"/>
       </bootstrap>
     <link linkage="psiattr" thing="aINT"/>
     </thing>
@@ -6230,13 +6234,14 @@ perform forward[WepProf.?]]]></eval>
       <autotag group="ClSpecWhen" tag="9"/>
       <assignval field="abValue" value="9"/>
       </bootstrap>
-    <bootstrap thing="cPUVitColl">
+    <bootstrap thing="cPUCollect">
       <autotag group="ClSpecWhen" tag="1"/>
+      <autotag group="UseAttr" tag="aWIS"/>
       </bootstrap>
-    <bootstrap thing="cPUVitColl">
+    <bootstrap thing="cPUCollect">
       <autotag group="ClSpecWhen" tag="15"/>
       </bootstrap>
-    <bootstrap thing="cPUVitColl">
+    <bootstrap thing="cPUCollect">
       <autotag group="ClSpecWhen" tag="19"/>
       </bootstrap>
     <bootstrap thing="cPUVitColH">
@@ -6493,7 +6498,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     <tag group="AbilType" tag="Super"/>
     <tag group="User" tag="Tracker"/>
     <tag group="Usage" tag="Rounds"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       ~NOTE:
       ~ abValue is bonus
@@ -6522,7 +6527,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     <tag group="AbilType" tag="Super"/>
     <tag group="abRange" tag="Feet"/>
     <tag group="abDuration" tag="Instant"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="WeaponSpec"/>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="Helper" tag="SingleAtt"/>
@@ -6577,7 +6582,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
   <thing id="cPUEnhDisr" name="Enhanced Disruption" description="At 3rd level and every two levels thereafter, the cryptic’s disrupt pattern deals an additional 1d6 points of damage. This additional damage is not multiplied on a critical hit or by using feats such as Vital Strike, but it is halved if the creature struck is not of the cryptic’s active creature type." compset="ClSpecial" summary="Deal additional damage with Disrupt Pattern.">
     <fieldval field="abValue2" value="6"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="LvNameApp" tag="AppText"/>
     <tag group="LvNameApp" tag="SignAppVal"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
@@ -6621,7 +6626,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     <tag group="Helper" tag="SpecUp"/>
     </thing>
   <thing id="cPUScribTa" name="Scribe Tattoo" description="At 1st level, cryptics receive Scribe Tattoo as a bonus feat. A cryptic can scribe tattoos of any power she knows (up to 3rd level). The power must be one that can be made into a tattoo. The cryptic does not need to meet the prerequisites for this feat." compset="ClSpecial">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="SpecUp"/>
     <bootstrap thing="fPUScrTatt">
       <containerreq phase="First" priority="500">!AbReplace.cPUScribTa</containerreq>
@@ -6629,7 +6634,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
       </bootstrap>
     </thing>
   <thing id="cPUTrapmak" name="Trapmaker" description="A cryptic gains a competence bonus on Craft (traps) checks equal to her class level." compset="ClSpecial">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
       doneif (tagis[Helper.ShowSpec] <> 1)
@@ -6640,7 +6645,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     </thing>
   <thing id="cPUHiddenP" name="Hidden Pattern" description="A cryptic learns how to recognize patterns in light and sound around her that can help her to mask her presence. At 2nd level, a cryptic gains a +2 competence bonus on all Stealth checks. This bonus increases to +4 at 5th level, and then again to +6 at 8th level. At 10th level, as long as the cryptic maintains psionic focus, she can use the Stealth skill to hide, even while being observed." compset="ClSpecial" summary="You gain a competence bonus on all Stealth checks.">
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="abAction" tag="PUManFocus"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
@@ -6665,16 +6670,16 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     </thing>
   <thing id="cPURapDef" name="Rapid Defense" description="Starting at 4th level, a cryptic can use her altered defense ability as a free action by expending her psionic focus. The cryptic may even do this when it is not her turn." compset="ClSpecial" summary="Use your altered defense ability as a free action by expending your psionic focus.">
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="Free"/>
     </thing>
   <thing id="cPUSwiftTr" name="Swift Trapper" description="At 6th level, a cryptic can create traps with astounding speed. It takes a cryptic half the normal amount of time to create traps." compset="ClSpecial" summary="It takes a cryptic half the normal amount of time to create traps.">
     <tag group="AbilType" tag="Extra"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPUEndDef" name="Enduring Defense" description="A cryptic of 14th level can choose any option from the Altered Defense ability and always be under that effect. The cryptic can still change the effect as a swift action, but she is no longer limited to how many rounds per day she can have Altered Defense active." compset="ClSpecial" summary="Altered Defense is usable unlimited amount of time per day.">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
       doneif (tagis[Helper.ShowSpec] <> 1)
@@ -6691,7 +6696,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     </thing>
   <thing id="cPUUncPatt" name="Unchanging Pattern" description="At 18th level, the cryptic gains power resistance equal to 12 + her class level." compset="ClSpecial" summary="Gain power resistance equal to 12 + her class level.">
     <fieldval field="abValue" value="12"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="SpecUp"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -6726,7 +6731,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU1"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="10050"><![CDATA[
 
       ~ Calculate total dice from
@@ -6841,7 +6846,7 @@ field[livename].text = "Augment Suit (" & myPts & ") (" & myTimes & " rounds)"]]
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU1"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="10050"><![CDATA[
 
       ~ Calculate total dice from
@@ -9129,11 +9134,26 @@ else
     <tag group="Helper" tag="SpecUp"/>
     </thing>
   <thing id="cPUVitColl" name="Collective" description="A vitalist learns to use psionic power to connect willing minds through an internal network that strengthens their psychic bonds. As a standard action, a vitalist can join any number of willing targets into his collective equal (up to his limit, see below) . The vitalist must have line of sight to each target, each target must have a Wisdom score of at least 1, and all targets must be within Medium range (100 ft. + 10 ft. per class level).{br}{br}The collective can contain up to his key ability modifier or half his vitalist level, whichever is higher. The vitalist is always considered a member of his own collective, and does not count against this limit.{br}{br}The vitalist can choose to remove a member as a free action on his turn, and any member can voluntarily leave the collective as a free action on their turn. Any member whose Wisdom drops to zero or who moves out of range of the collective (100 ft. + 10 ft. per class level) is automatically removed. If a member enters a null psionics field, the connection to the collective is suppressed until that member leaves the field. A member who leaves the collective for any reason immediately loses any and all benefits they may have gained from being a member. A vitalist is aware of the status of his collective and can, roughly, sense the presence of each member, although beyond telling if such a creature is still a member, this has no mechanical benefit until higher levels (see telepathy and health sense, below).{br}{br}A vitalist can manifest certain powers through his collective. If a vitalist power specifies one or more willing targets (or is harmless) and has a range greater than personal, he can manifest this power on a member of his collective regardless of the range of the actual power. All other non-range restrictions still apply. He may also manifest any power with the Network descriptor this way, regardless of their actual ranges or targets. If he is capable of manifesting powers or casting spells from a different class (as is the case for a multiclass vitalist), any compatible spell or power with a range greater than touch can also be used through the collective.{br}{br}If a member of the collective dies, the member is removed from the collective and the vitalist must make a Fortitude save (DC 15) or lose 1 power point for every Hit Die of the fallen member and be sickened for an equal number of rounds.{br}{br}At 15th level, a vitalist&apos;s collective range is limitless on the same plane as the vitalist.{br}{br}At 19th level, a vitalist&apos;s collective reaches even across to other planes and dimensions." compset="ClSpecial">
-    <fieldval field="abRange" value="100"/>
+    <comment>DEPRECATED: Use cPUCollect instead</comment>
     <fieldval field="abValue2" value="10"/>
+    <fieldval field="abRange" value="100"/>
     <usesource source="pPsiUn"/>
-    <tag group="Custom" tag="HasCollect" name="Has the Collective Ability"/>
     <tag group="AbilType" tag="Super"/>
+    <tag group="Custom" tag="HasCollect" name="Has the Collective Ability"/>
+    <eval phase="PostAttr" priority="1000" index="2"><![CDATA[      ~ Set max members from key ability mod
+      field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),#attrmod[aWIS])
+
+      field[abSumm].text = "You have a collective of up to " & field[abValue].value & " individuals"
+
+      if (field[xCount].value = 1) then
+        field[abRange].value += (field[abValue2].value * field[xTotalLev].value)
+        perform assign[abRange.Feet]
+        field[abSumm].text &= " within " & field[abRange].value & " feet" 
+      elseif (field[xCount].value = 2) then
+        field[abRange].value = 0
+        perform delete[abRange.Plane]
+        field[abSumm].text &= " on the same plane"
+      endif]]></eval>
     <eval phase="Final" priority="10000"><![CDATA[      field[livename].text = field[thingname].text & " (" & field[abValue].value & " members, "
       if (field[xCount].value = 1) then
         field[livename].text &= field[abRange].value & " " & tagnames[abRange.?] & ")"
@@ -9150,20 +9170,6 @@ else
       elseif (field[xIndex].value = 3) then
         field[listname].text = "Collective Range (planar)"
         field[abSumm].text = "Your collective's range now extends across all planes"
-      endif]]></eval>
-    <eval phase="PostAttr" priority="1000" index="2"><![CDATA[      ~ Set max members from key ability mod
-      field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),#attrmod[aWIS])
-
-      field[abSumm].text = "You have a collective of up to " & field[abValue].value & " individuals"
-
-      if (field[xCount].value = 1) then
-        field[abRange].value += (field[abValue2].value * field[xTotalLev].value)
-        perform assign[abRange.Feet]
-        field[abSumm].text &= " within " & field[abRange].value & " feet" 
-      elseif (field[xCount].value = 2) then
-        field[abRange].value = 0
-        perform delete[abRange.Plane]
-        field[abSumm].text &= " on the same plane"
       endif]]></eval>
     </thing>
   <thing id="cPUCoorStr" name="Coordinated Strike" description="The tactician is able to direct his allies to coordinating their attacks upon a single target to devastating effect. As a swift action, the tactician can declare one target within his line of sight as the primary foe. All members of the tactician&apos;s collective, including the tactician himself gain a +1 insight bonus to attacks against the primary foe until the beginning of the tactician&apos;s next turn. At 5th level and every four levels thereafter, this bonus increases by 1.{br}{br}This ability may be used a number of times per day equal to 3 + the tacticians Intelligence modifier." compset="ClSpecial">
@@ -9494,10 +9500,25 @@ perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
 perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
     </thing>
   <thing id="cPUTacColl" name="Collective" description="A tactician learns to use psionic power to connect willing minds through an internal network that strengthens their psychic bonds. As a standard action, a tactician can join any number of willing targets into his collective equal (up to his limit, see below) . The tactician must have line of sight to each target, each target must have a Wisdom score of at least 1, and all targets must be within Medium range (100 ft. + 10 ft. per class level). The collective can contain up to his key ability modifier or half his tactician level, whichever is higher. The tactician is always considered a member of his own collective, and does not count against this limit.\n\nThe tactician can choose to remove a member as a free action on his turn, and any member can voluntarily leave the collective as a free action on their turn. Any member whose Wisdom drops to zero or who moves out of range of the collective is automatically removed. If a member enters a null psionics field, the connection to the collective is suppressed until that member leaves the field. A member who leaves the collective for any reason immediately loses any and all benefits they may have gained from being a member. A tactician is aware of the status of his collective and can, roughly, sense the presence of each member, although beyond telling if such a creature is still a member, this has no mechanical benefit until higher levels (see telepathy below).\n\nA tactician can manifest certain powers through his collective. If a tactician power specifies one or more willing targets (or is harmless) and has a range greater than personal, he can manifest this power on a member of his collective regardless of the range of the actual power.\n\nAll other non-range restrictions still apply. He may also manifest any power with the Network descriptor this way, regardless of their actual ranges or targets. If he is capable of manifesting powers or casting spells from a different class (as is the case for a multiclass tactician), any compatible spell or power with a range greater than touch can also be used through the collective.{br}{br}If a member of the collective dies, the member is removed from the collective and the tactician must make a Fortitude save (DC 15) or lose 1 power point for every Hit Die of the fallen member and be sickened for an equal number of rounds.{br}{br}At 15th level, a tactician&apos;s collective range is limitless on the same plane as the tactician.{br}{br}At 19th level, a tactician&apos;s collective reaches even across to other planes and dimensions." compset="ClSpecial">
-    <fieldval field="abRange" value="100"/>
+    <comment>DEPRECATED: Use cPUCollect instead</comment>
     <fieldval field="abValue2" value="10"/>
+    <fieldval field="abRange" value="100"/>
     <usesource source="pPsiUn"/>
     <tag group="AbilType" tag="Super"/>
+    <eval phase="PostAttr" priority="1000" index="2"><![CDATA[      ~ Set max members from key ability mod
+      field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),#attrmod[aINT])
+
+      field[abSumm].text = "You have a collective of up to " & field[abValue].value & " individuals"
+
+      if (field[xCount].value = 1) then
+        field[abRange].value += (field[abValue2].value * field[xTotalLev].value)
+        perform assign[abRange.Feet]
+        field[abSumm].text &= " within " & field[abRange].value & " feet" 
+      elseif (field[xCount].value = 2) then
+        field[abRange].value = 0
+        perform delete[abRange.Plane]
+        field[abSumm].text &= " on the same plane"
+      endif]]></eval>
     <eval phase="Final" priority="10000"><![CDATA[      field[livename].text = field[thingname].text & " (" & field[abValue].value & " members, "
       if (field[xCount].value = 1) then
         field[livename].text &= field[abRange].value & " " & tagnames[abRange.?] & ")"
@@ -9514,20 +9535,6 @@ perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
       elseif (field[xIndex].value = 3) then
         field[listname].text = "Collective Range (planar)"
         field[abSumm].text = "Your collective's range now extends across all planes"
-      endif]]></eval>
-    <eval phase="PostAttr" priority="1000" index="2"><![CDATA[      ~ Set max members from key ability mod
-      field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),#attrmod[aINT])
-
-      field[abSumm].text = "You have a collective of up to " & field[abValue].value & " individuals"
-
-      if (field[xCount].value = 1) then
-        field[abRange].value += (field[abValue2].value * field[xTotalLev].value)
-        perform assign[abRange.Feet]
-        field[abSumm].text &= " within " & field[abRange].value & " feet" 
-      elseif (field[xCount].value = 2) then
-        field[abRange].value = 0
-        perform delete[abRange.Plane]
-        field[abSumm].text &= " on the same plane"
       endif]]></eval>
     </thing>
   <thing id="cPUVitColH" name="Collective Healing" description="Whenever a willing member of the vitalist&apos;s collective could regain lost hit points or ability damage, the vitalist may choose to redirect any or all of that healing to one or more other willing members of the collective as a free action. This can transfer instantaneous healing (such as a {i}body adjustment{/i} power), healing from ongoing healing effects, such as fast healing, and even hit points gained from rest (in which case, a member of the collective would rest for a period of time as normal, and the amount of hit points {i}A vitalist joins his allies into a collective so he can share healing energy{/i} {b}Psionics Expanded{/b} 59 and ability damage healed would go to another).{br}{br}In any case, the original recipient of the healing effect chooses whether to allow the diverted healing, and does not gain the benefits of any healing he grants to another.{br}{br}The type of healing (positive energy, negative energy, construct repair, etc.) is unchanged from the original source for determining who or what can be healed.{br}{br}{i}Example: Darius the soulknife is a willing member of Jorus the vitalist&apos;s collective. He drinks a potion of cure light wounds that would normally heal him for 6 hit points, but Jorus decides to redirect 4 of those points to himself. Darius agrees and, as a result, Darius is healed for 2 hit points, and Jorus is healed for 4. If there were more members in Jorus&apos;s collective, Jorus could spread the healing from that potion out even more as long as the sum of hit points healed was no greater than 6.{br}{br}{/i}A vitalist may even heal wounds through collective healing if at full health. This may only be used with healing effects such as potions, powers, or other such effects. Healing from long term care or natural healing cannot be transferred in this way." compset="ClSpecial">
@@ -13291,8 +13298,7 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
     <prereq message="Enhanced Mind Blade or Enhanced Mind Bolt class feature required.">
       <validate><![CDATA[
         validif (#hasability[cSknEnhMB] <> 0)
-        validif (#hasability[cPUEnhMBlt] <> 0)
-        ]]></validate>
+        validif (#hasability[cPUEnhMBlt] <> 0)]]></validate>
       </prereq>
     </thing>
   <thing id="cPUAFoMiAr" name="Form Mind Arrow" description="A soul archer can choose to shape her mind blade as a semisolid arrow of psychic energy and forms a mind arrow as a free action. If the soul archer has the ability to make multiple attacks, he can create multiple mind arrows as part of an attack. The soul archer must have one hand free to create and fire a mind arrow.\n\nThe arrow is identical in all ways (except visually) to an arrow shot from a composite longbow of a size appropriate to the soul archer. The soul archer adds his Wisdom modifier to the damage for attacks made with mind arrows, instead of his Strength modifier. The mind arrow receives all the benefits normally applied to the mind blade, including the ability to use psychic strike, any enhancement bonus or weapon special abilities, or feats that apply to the mind blade, although any meleespecific options are non-functional while in mind arrow form. Ranged feats that apply to ranged attacks, such as Point-Blank Shot, apply to the mind arrow. Any weapon special abilities that only work on melee weapons that apply to the mind blade are inactive while in mind arrow form until the soulknife spends the normal amount of time to reassign the special abilities of the mind blade." compset="ClSpecial" summary="Shape your mind blade into a semisolid arrow of psychic energy.">
@@ -13339,16 +13345,16 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
     </thing>
   <thing id="cPUARefSho" name="Reflexive Shot" description="At 6th level, a soul archer can make attacks of opportunity with his mind arrows. The soul archer still only threatens squares he could reach with his mind blade or with unarmed strikes, but can still only make one attack of opportunity per round (unless he has additional sources of attacks of opportunity such as the Combat Reflexes feat)." compset="ClSpecial" summary="Make AoO&apos;s with your mind arrow.">
     <tag group="AbilType" tag="Extra"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPUAPhaSho" name="Phasing Shot" description="Once a soul archer has achieved 8th level, he can expend his psionic focus and make a single ranged touch attack as a standard action and launch a mind arrow at a target within range. The mind arrow travels to the target in a straight path, passing through any nonmagical or nonpsionic barrier or wall on its way. (A {i}wall of force{/i}, {i}wall of fire{/i}, {i}wall of ectoplasm{/i}, or the like stops a mind arrow.) This ability negates cover and concealment, but otherwise the attack is rolled normally." compset="ClSpecial" summary="Expend your focus to make a ranged touch attack with your mind arrow.">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="Standard"/>
     </thing>
   <thing id="cPUAEmpSho" name="Empowered Shot" description="At 10th level, the soul archer can expend his psionic focus to grant the effect of a single feat that requires focus expenditure to apply to all attacks in a full attack sequence that round. The feat must only work on ranged attacks." compset="ClSpecial" summary="Expend your focus to grant the effect of a feat that requires focus expenditure to apply to full attack.">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="abAction" tag="PUExpFocus"/>
     </thing>
@@ -13602,6 +13608,7 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
     </thing>
   <thing id="cPUTelLash" name="Telepathic Lash" description="The nightmare constructor gains {i}telepathic lash{/i} as a talent. This ability replaces talents." compset="ClSpecial">
     <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="puTelLash0">
       <autotag group="SpellSort" tag="cHelpPU2"/>
       <autotag group="SpellType" tag="cHelpPU2"/>
@@ -13615,11 +13622,12 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
 
       hero.child[cHelpPU2].field[cPsiSPowMa].value = 0]]></eval>
     </thing>
-  <thing id="cPUHorror" name="Horror" description="A nightmare constructor is able to form a creature created from distilled fears and nightmares.{br}{br}Creating a horror takes one minute of concentration to complete and the horror remains until dismissed by the nightmare constructor.{br}{br}This horror functions as a summoner&apos;s eidolon using the nightmare constructor&apos;s class level as the summoner level, with the following exceptions. A horror is treated as a construct for the purposes of effects related to its type, such as favored enemy. Commanding a horror is the same as commanding an astral construct. A horror disperses if the nightmare constructor is rendered unconscious or dies.{br}{br}The nightmare constructor can allow his horror to use his terrors, but such uses still count against his daily limit. At 3rd level, the nightmare constructor can also allow his horror to utilize his channel terrors ability.{br}{br}This ability replaces devastating touch." compset="ClSpecial">
+  <thing id="cPUHorror" name="Horror" description="A nightmare constructor is able to form a creature created from distilled fears and nightmares. Creating a horror takes one minute of concentration to complete and the horror remains until dismissed by the nightmare constructor.\n\nThis horror functions as a summoner&apos;s eidolon using the nightmare constructor&apos;s class level as the summoner level, with the following exceptions. A horror is treated as a construct for the purposes of effects related to its type, such as favored enemy. Commanding a horror is the same as commanding an astral construct. A horror disperses if the nightmare constructor is rendered unconscious or dies.\n\nThe nightmare constructor can allow his horror to use his terrors, but such uses still count against his daily limit. At 3rd level, the nightmare constructor can also allow his horror to utilize his channel terrors ability.\n\nThis ability replaces devastating touch." compset="ClSpecial">
     <usesource source="pPsiUn"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="Helper" tag="ShowStatbl"/>
     <tag group="Helper" tag="SpecUp"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Render" priority="10000"><![CDATA[
       doneif (hero.childlives[cEidolon] = 0)
 
@@ -13668,7 +13676,7 @@ perform hero.findchild[BaseClSpec,"thingid.cSknEnhMB & SpecSource.cHelpSkn & ClS
     </thing>
   <thing id="cPUNBWFin" name="Weapon Finesse" description="A nimble blade gains the Weapon Finesse feat as a bonus feat at 1st level. This replaces the bonus feat normally gained at 1st level." compset="ClSpecial">
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="fWepFin"></bootstrap>
     </thing>
   <thing id="cPUNBMinFi" name="Mind Blade Finesse" description="A 1st level nimble blade gains the Mind Blade Finesse blade skill*. This replaces proficiency with shields and medium armor." compset="ClSpecial">
@@ -13681,13 +13689,13 @@ perform hero.findchild[BaseClSpec,"thingid.cSknEnhMB & SpecSource.cHelpSkn & ClS
     </thing>
   <thing id="cPUNBPirSt" name="Piranha Strike" description="At 2nd level nimble blade gains the Piranha Strike* feat as a bonus feat. This replaces the blade skill normally gained at 2nd level." compset="ClSpecial">
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="fPUPiranha">
       <containerreq phase="First" priority="500"><![CDATA[count:Classes.Soulknife >= 2]]></containerreq>
       </bootstrap>
     </thing>
   <thing id="cPUNBAgBla" name="Agile Blade" description="A nimble blade of 7th level treats his mind blade as if it had the agile weapon special ability. This does not count toward the nimble blade’s mind blade’s enhancement bonus. This replaces the mind blade enhancement increase gained at 7th level." compset="ClSpecial">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[~ If the hero doesn't have this ability, ignore the following.
 doneif (tagis[Helper.ShowSpec] = 0)
 
@@ -13696,7 +13704,7 @@ foreach pick in hero from BaseWep where "IsWeapon.wMindBlade"
   nexteach]]></eval>
     </thing>
   <thing id="cPUNBAdaFo" name="Adaptive Form" description="Once a nimble blade has reached 10th level, he has learned how to rapidly alter his use of the mind blade to adapt to any particular situation. As an immediate action and by expending psionic focus, the nimble blade can select any one blade skill whose requirements he meets and be treated as having that blade skill. The effect of the blade skill selected lasts until he expends his psionic focus as an immediate action to change it. This replaces the blade skill normally gained at 10th level." compset="ClSpecial">
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="Immediate"/>
     </thing>
@@ -13977,7 +13985,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     </thing>
   <thing id="cPUAltDef1" name="Altered Defense, Absorb" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Absorb:{/i} The cryptic gains DR 1/-." compset="ClSpecial" summary="The cryptic gains DR 1/-.">
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="User" tag="Activation"/>
     <eval phase="PostAttr" priority="11000"><![CDATA[
       ~NOTE:
@@ -14001,7 +14009,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     </thing>
   <thing id="cPUAltDef2" name="Altered Defense, Deflect" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Deflect:{/i} The cryptic gains a +1 dodge bonus to her AC." compset="ClSpecial" summary="The cryptic gains a +1 dodge bonus to her AC.">
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="User" tag="Activation"/>
     <eval phase="PostAttr" priority="11000"><![CDATA[
       ~NOTE:
@@ -14025,7 +14033,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     </thing>
   <thing id="cPUAltDef3" name="Altered Defense, Retaliate" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Retaliate:{/i} The cryptic gains a +1 bonus on her attack rolls against any opponent that successfully hit her since her last turn." compset="ClSpecial" summary="+1 bonus on your attack rolls against any opponent that hit you since your last turn.">
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="User" tag="Activation"/>
     <eval phase="PostAttr" priority="11000"><![CDATA[
       ~NOTE:
@@ -14808,5 +14816,194 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="AbilType" tag="Super"/>
     <tag group="abRange" tag="Feet"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUCollect" name="Collective" description="The character learns to use psionic power to connect willing minds through an internal network that strengthens their psychic bonds. As a standard action, you can join any number of willing targets into your collective (up to your limit, see below). You must have line of sight to each target, each target must have a Wisdom score of at least 1, and all targets must be within Medium range (100 ft. + 10 ft. per class level). The collective can contain up to your relevant ability modifier (determined by class) or half your level (minimum 1), whichever is higher. If you are a zealot, add the intensity of your zeal to this limit.  You are always considered a member of your own collective, and do not count against this limit. \n\nYou can choose to remove a member as a free action on your turn, and any member can voluntarily leave the collective as a free action on their turn. Any member whose Wisdom drops to zero or who moves out of range of the collective is automatically removed. If a member enters a null psionics field, the connection to the collective is suppressed until the member leaves the field. A member who leaves the collective for any reason immediately loses any and all benefits they may have gained from being a member. You are aware of the status of his collective and can, roughly, sense the presence of each member, although beyond telling if such a creature is still a member, this has no mechanical benefit until higher levels (see telepathy below).\n\nIf you are capable of manifesting powers, casting spells, or initiating maneuvers, any compatible spell, power, or maneuver with a range greater than touch can be used through the collective. You may manifest any power with the Network Descriptor this way, regardless of their actual ranges or targets.\n\nIf a member of the collective dies, the member is removed from the collective and you must make a Fortitude save (DC 15) or lose 1 power point for every Hit Die of the fallen member or be sickened for an equal number of rounds.\n\nAt 15th level, your collective range is limitless on the same plane as you.\n\nAt 19th level, your range reaches even across other planes and dimensions." compset="ClSpecial">
+    <comment>abValue = Max members</comment>
+    <fieldval field="abValue2" value="10"/>
+    <fieldval field="abRange" value="100"/>
+    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <eval phase="PostAttr" priority="2000" index="2"><![CDATA[      ~ Stop now if we're not the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+
+      ~ The class that adds this ability will tag with UseAttr.? to specify which attribute modifies our max collective size; if we are using multiple classes then use only the highest attribute
+      var abMod as number
+      abMod = 0
+      foreach pick in hero from BaseAttr where tagids[UseAttr.?, " | "]
+        abMod = maximum(abMod,eachpick.field[aModBonus].value)
+      nexteach
+
+      ~ Max size is our attribute mod OR 1/2 class level, whichever is higher
+      var lev as number
+      lev = field[xAllLev].value + field[xExtraLev].value
+      field[abValue].value += maximum(round(lev / 2,0,-1),abMod)
+
+      ~ Zealot: Add zeal value to max members
+      if (hero.childlives[cPW5Zeal] <> 0) then
+        field[abValue].value += #value[cPW5Zeal]
+      endif
+
+      field[abSumm].text = "You have a collective of up to " & field[abValue].value & " individuals"
+
+      if (field[xCount].value = 1) then
+        field[abRange].value += (field[abValue2].value * field[xAllLev].value)
+        perform assign[abRange.Feet]
+        field[abSumm].text &= " within " & field[abRange].value & " feet" 
+      elseif (field[xCount].value = 2) then
+        field[abRange].value = 0
+        perform delete[abRange.Plane]
+        field[abSumm].text &= " on the same plane"
+      endif]]></eval>
+    <eval phase="First" priority="1000" index="3"><![CDATA[      ~ This script is for characters who receive Collective from multiple classes.
+      ~ We take our UseAttr tag (if any) and push it to the first instance of this special, if it doesn't already have this tag
+      ~ This way, all UseAttr tags across all instances will be seen and considered
+      perform hero.child[cPUCollect].pushtags[UseAttr.?]
+
+      ~ If we have the Enlarged Collective feat, upgrades come online at level 12 and 16 instead of 15 and 19
+      perform hero.childfound[fPUEnlgCol].setfocus
+      doneif (state.isfocus = 0)
+      if (tagvalue[ClSpecWhen.?] = 15) then
+        perform tagreplace[ClSpecWhen.15,ClSpecWhen.12]
+      endif
+      if (tagvalue[ClSpecWhen.?] = 19) then
+        perform tagreplace[ClSpecWhen.19,ClSpecWhen.16]
+      endif]]></eval>
+    <eval phase="Final" priority="10000"><![CDATA[
+      field[livename].text = field[thingname].text & " (" & field[abValue].value & " members, "
+      if (field[xCount].value = 1) then
+        field[livename].text &= field[abRange].value & " " & tagnames[abRange.?] & ")"
+      elseif (field[xCount].value = 2) then
+        field[livename].text &= "Same Plane)"
+
+      elseif (field[xCount].value = 3) then
+        field[livename].text &= "Anywhere)"
+
+      endif
+      if (field[xIndex].value = 2) then
+        field[listname].text = "Collective Range (unlimited)"
+        field[abSumm].text = "Your collective's range is unlimited within the same plane"
+      elseif (field[xIndex].value = 3) then
+        field[listname].text = "Collective Range (planar)"
+        field[abSumm].text = "Your collective's range now extends across all planes"
+      endif]]></eval>
+    </thing>
+  <thing id="arPUNightC" name="Nightmare Constructor" description="Where most dreads use fear as something to manipulate in creatures, nightmare constructors turn fears into reality. These individuals form horrors created from the energy of nightmares and send them into battle. Enemies of nightmare constructors must truly face their deepest fears when confronted by the creatures created from terror.\n\n{b}Telepathic Lash:{/b} The nightmare constructor gains telepathic lash as a talent. This ability replaces talents.\n\n{b}Horror (Su):{/b} A nightmare constructor is able to form a creature created from distilled fears and nightmares. Creating a horror takes one minute of concentration to complete and the horror remains until dismissed by the nightmare constructor.\nThis horror functions as a summoner’s eidolon using the nightmare constructor’s class level as the summoner level, with the following exceptions. A horror is treated as a construct for the purposes of effects related to its type, such as favored enemy. Commanding a horror is the same as commanding an astral construct. A horror disperses if the nightmare constructor is rendered unconscious or dies.\nThe nightmare constructor can allow his horror to use his terrors, but such uses still count against his daily limit. At 3rd level, the nightmare constructor can also allow his horror to utilize his channel terrors ability.\nThis ability replaces devastating touch.\n\n{b}Reinvigorate Horror:{/b} The nightmare constructor is able to channel his own energy to restore the nightmarish form of his horror. As a standard action that provokes attacks of opportunity, the nightmare constructor can touch his horror and restore 5 hit points per power point spent. The nightmare constructor cannot spend more power points on this ability than his manifester level.\n\n{b}Devastating Touch:{/b} At 2nd level, the nightmare constructor’s horror gains the devastating touch ability of a dread, using the nightmare constructor’s class level to determine the total damage dealt. This also allows the nightmare constructor to select terrors that modify\ndevastating touch, but these terrors only apply to the horror’s use of devastating touch. This ability replaces the power known gained at 2nd level.\n\n{b}Fear Surge (Su):{/b} When the horror of a 3rd level or higher nightmare constructor is within 30 ft. of a creature that suffers from the shaken, frightened, or panicked condition, the nightmare constructor gains an additional evolution point to spend on the horror. This evolution point only lasts while there is a creature within 30 ft. of the horror with the shaken, frightened, or panicked condition. This ability replaces channel terror.\n\n{b}Improved Fear Surge:{/b} At 6th level, when the nightmare constructor gains an evolution point from fear surge, he instead gains two evolution points. This ability replaces the terror normally gained at 6th level.\n\n{b}Greater Fear Surge:{/b} A nightmare constructor of 9th level gains three evolution points when his fear surge is activated. This ability replaces the bonus feat normally gained at 9th level.\n\n{b}Horrific Infusion (Su):{/b} Starting at 11th level, the nightmare constructor can merge with his horror as a standard action. The nightmare constructor wears the horror like translucent and undulating armor. The horror mimics all of the nightmare constructor’s movements, and the nightmare constructor perceives through the horror’s senses and speaks through its voice, as the two are now one creature. The nightmare constructor directs all of the horror’s actions while merged. While merged with his horror, the nightmare constructor uses the horror’s Strength, Dexterity, and Constitution, but retains his own Intelligence, Wisdom, and Charisma. The nightmare constructor\ngains the horror’s hit points as temporary hit points. When these hit points reach 0, the horror is killed and sent back to its home plane. The nightmare constructor uses the horror’s base attack bonus, and gains the horror’s armor and natural armor bonuses and modifiers to ability scores. The nightmare constructor also gains access to the horror’s special abilities and the horror’s evolutions. The nightmare\nconstructor is still limited to the horror’s maximum number of natural attacks. The horror has no skills or feats of its own. The horror must be at least the same size as the nightmare constructor. The horror must have limbs for the nightmare constructor to cast spells with somatic components (should the nightmare constructor have spellcasting ability).\nWhile fused, the nightmare constructor loses the benefits of his armor. He counts both as his original type and as a construct for any effect related to type, whichever is worse for the nightmare constructor. Powers such as dismiss ectoplasm work on the horror,\nbut the nightmare constructor is unaffected. Neither the nightmare constructor nor his horror can be targeted separately, as they are fused into one creature. The nightmare constructor and horror cannot take separate actions. While fused with his horror, the nightmare\nconstructor can use all of his own abilities and gear, except for his armor. In all other cases, this ability functions as the normal horror ability. \nThis ability replaces shadow twin.\n\n{b}Empowered in Fear (Su):{/b} At 11th level, the nightmare constructor’s horror is treated as if under the effect of physical acceleration any time it is within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions.\nAt 15th level, the horror is also treated as if under the form of doom power when within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions. This effect allows the horror to have more natural attacks than its normal eidolon form limit.\nThis ability replaces twin fear." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="268"/>
+    <arrayval field="cvPsiPowTo" index="1" value="-1"/>
+    <arrayval field="cvBonFtMod" index="8" value="-1"/>
+    <arrayval field="cvCustTot" index="5" value="-1"/>
+    <arrayval field="cvCustTot" index="7" value="-1"/>
+    <arrayval field="cvCustTot" index="9" value="-1"/>
+    <arrayval field="cvCustTot" index="11" value="-1"/>
+    <arrayval field="cvCustTot" index="13" value="-1"/>
+    <arrayval field="cvCustTot" index="15" value="-1"/>
+    <arrayval field="cvCustTot" index="17" value="-1"/>
+    <arrayval field="cvCustTot" index="19" value="-1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="AbReplace" tag="cPUDreTal"/>
+    <tag group="AbReplace" tag="cPUTwinFea"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cPUChanTer"/>
+    <tag group="AbReplace" tag="cPUDevaTou"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbReplace" tag="cPUShaTwin"/>
+    <bootstrap thing="cPUHorrInf">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cPUEmpFear">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cPUTelLash">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUHorror">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUReinHor">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUNCDevaT">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPUFearSur">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPUImpFrSu">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPUGrtFrSu">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cPUEmpFear">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU2"/>
+    </thing>
+  <thing id="cPUReinHor" name="Reinvigorate Horror" description="The nightmare constructor is able to channel his own energy to restore the nightmarish form of his horror. As a standard action that provokes attacks of opportunity, the nightmare constructor can touch his horror and restore 5 hit points per power point spent. The nightmare constructor cannot spend more power points on this ability than his manifester level." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUNCDevaT" name="Devastating Touch" description="At 2nd level, the nightmare constructor’s horror gains the devastating touch ability of a dread, using the nightmare constructor’s class level to determine the total damage dealt. This also allows the nightmare constructor to select terrors that modify devastating touch, but these terrors only apply to the horror’s use of devastating touch. This ability replaces the power known gained at 2nd level." compset="ClSpecial">
+    <usesource source="pPsiUn" parent="pDscar" name="DSP - Ultimate Psionics"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ Set the list name
+      field[listname].text = field[name].text & " (" & field[xIndex].value & "d6+" & field[xTotalLev].value & ")"
+
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      field[abValue].value += field[xCount].value
+
+      field[livename].text = field[name].text & " (" & field[abValue].value & "d6+" & field[xTotalLev].value & ")"]]></eval>
+    </thing>
+  <thing id="cPUFearSur" name="Fear Surge" description="When the horror of a 3rd level or higher nightmare constructor is within 30 ft. of a creature that suffers from the shaken, frightened, or panicked condition, the nightmare constructor gains an additional evolution point to spend on the horror. This evolution point only lasts while there is a creature within 30 ft. of the horror with the shaken, frightened, or panicked condition. This ability replaces channel terror." compset="ClSpecial">
+    <fieldval field="abValue" value="1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[      field[listname].text = field[name].text & " (+" & field[abValue].value & " evolution point(s) to spend on horror)"
+
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      field[livename].text = field[name].text & " (+" & field[abValue].value & " evolution point(s) to spend on horror)"]]></eval>
+    </thing>
+  <thing id="cPUImpFrSu" name="Improved Fear Surge" description="At 6th level, when the nightmare constructor gains an evolution point from fear surge, he instead gains two evolution points. This ability replaces the terror normally gained at 6th level." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~ increase the value of Fear Surge
+      hero.child[cPUFearSur].field[abValue].value += 1]]></eval>
+    </thing>
+  <thing id="cPUGrtFrSu" name="Greater Fear Surge" description="A nightmare constructor of 9th level gains three evolution points when his fear surge is activated. This ability replaces the bonus feat normally gained at 9th level." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      ~ increase the value of Fear Surge
+      hero.child[cPUFearSur].field[abValue].value += 1]]></eval>
+    </thing>
+  <thing id="cPUHorrInf" name="Horrific Infusion" description="Starting at 11th level, the nightmare constructor can merge with his horror as a standard action. The nightmare constructor wears the horror like translucent and undulating armor. The horror mimics all of the nightmare constructor’s movements, and the nightmare constructor perceives through the horror’s senses and speaks through its voice, as the two are now one creature. The nightmare constructor directs all of the horror’s actions while merged.\nWhile merged with his horror, the nightmare constructor uses the horror’s Strength, Dexterity, and Constitution, but retains his own Intelligence, Wisdom, and Charisma. The nightmare constructor gains the horror’s hit points as temporary hit points. When these hit points reach 0, the horror is killed and sent back to its home plane. The nightmare constructor uses the horror’s base attack bonus, and gains the horror’s armor and natural armor bonuses and modifiers to ability scores. The nightmare constructor also gains access to the horror’s special abilities and the horror’s evolutions. The nightmare constructor is still limited to the horror’s maximum number of natural attacks. The horror has no skills or feats of its own. The horror must be at least the same size as the nightmare constructor. The horror must have limbs for the nightmare constructor to cast spells with somatic components (should the nightmare constructor have spellcasting ability). \nWhile fused, the nightmare constructor loses the benefits of his armor. He counts both as his original type and as a construct for any effect related to type, whichever is worse for the nightmare constructor. Powers such as dismiss ectoplasm work on the horror, but the nightmare constructor is unaffected. Neither the nightmare constructor nor his horror can be targeted separately, as they are fused into one creature. The nightmare constructor and horror cannot take separate actions. While fused with his horror, the nightmare constructor can use all of his own abilities and gear, except for his armor. In all other cases, this ability functions as the normal horror ability.\nThis ability replaces shadow twin." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abAction" tag="Standard"/>
+    </thing>
+  <thing id="cPUEmpFear" name="Empowered in Fear" description="At 11th level, the nightmare constructor’s horror is treated as if under the effect of {i}physical acceleration{/i} any time it is within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions.\nAt 15th level, the horror is also treated as if under the {i}form of doom{/i} power when within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions. This effect allows the horror to have more natural attacks than its normal eidolon form limit.\nThis ability replaces twin fear." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
     </thing>
   </document>

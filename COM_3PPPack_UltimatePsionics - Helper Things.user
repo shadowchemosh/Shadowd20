@@ -10,7 +10,6 @@
   <thing id="mechS2PU" name="Ultimate Psionics Mechanic" compset="Mechanics">
     <usesource source="pPsiUn"/>
     <tag group="wRangeInc" tag="15" name="15"/>
-    <tag group="ProductId" tag="PUProdID" name="Community Created Psionics"/>
     <tag group="psiClass" tag="PUVitMetGu" name="Vitalist Method - Guardian"/>
     <tag group="psiClass" tag="PUVitMetMe" name="Vitalist Method - Mender"/>
     <tag group="psiClass" tag="PUVitMetSo" name="Vitalist Method - Soulthief"/>

@@ -270,7 +270,7 @@
   <thing id="raChanPwr" name="Channel Power" description="If the owner is 15th level or higher, he can manifest powers through the psicrystal to a distance of up to 1 mile. The psicrystal is treated as the power&apos;s originator, and all ranges are calculated from its location.\n\nWhen channeling a power through his psicrystal, the owner manifests the power by paying its power point cost. He is still subject to attacks of opportunity and other hazards of manifesting a power, if applicable (for instance, he becomes visible when manifesting an offensive power if invisible, as does the psicrystal)." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="SpellLike"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rmPsicrBul" name="Psicrystal (Bully)" description="A psicrystal is a fragment of a psionic character&apos;s personality, brought into physical form and a semblance of life (via the Psicrystal Affinity feat). A psicrystal appears as a crystalline construct about the size of a human hand.\n\nBecause it is an extension of its creator&apos;s personality, a character&apos;s psicrystal is in some ways a part of him. That&apos;s why, for example, a psionic character can manifest a personal range power on his psicrystal even though normally he can manifest such a power only on himself.\n\nA psicrystal is treated as a construct for the purposes of all effects that depend on its type.\n\nA psicrystal grants special abilities to its owner, as shown on the Psicrystal Special Abilities table below. In addition, a psicrystal has a personality (being a fragment of the owner&apos;s personality), which gives its owner a bonus on certain types of checks or saving throws, as given on the Psicrystal Personalities table below. These special abilities and bonuses apply only when the owner and the psicrystal are within 1 mile of each other.\n\nPsicrystal abilities are based on the owner&apos;s levels in psionic classes. Levels from other classes do not count toward the owner&apos;s level for purposes of psicrystal abilities.\n\nA psicrystal can speak one language of its owner&apos;s choice (so long as it is a language the owner knows). A psicrystal can understand all other languages known by its owner, but cannot speak them. This is a supernatural ability." compset="Race">
     <fieldval field="rCR" value="1"/>
@@ -1954,7 +1954,7 @@ myVal +=6
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Attack"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="StandardDC" tag="aCON"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
@@ -1968,7 +1968,7 @@ doneif (state.isfocus = 0)
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="FastHeal"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rCallDark" name="Caller in Darkness" description="Horrifying in ways that would break the minds of most humans, callers in darkness are thankfully rare. Usually formed upon the death of an innocent who was slowly and painfully tortured until its demise, a caller in the darkness exists with an urge to bring others into its own miserable existence. This is not a method of gaining power. The caller in the darkness is simply incapable of fighting its desire to force others to feel its torment.\n\nA mind captured by a caller of darkness is forever trapped within the creature, forced to relive its own personal nightmares for as long as the entity that absorbed it exists. Few things will shake someone as quickly as seeing the face of someone they recognize coming out of the fog, trying to scream." compset="Race">
     <fieldval field="rHitDice" value="11"/>
@@ -2069,23 +2069,23 @@ doneif (state.isfocus = 0)
     <tag group="SpecType" tag="Aura"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="StandardDC" tag="aCHA"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raPUVulSu" name="Vulnerability to Sunlight" description="Callers in darkness are utterly powerless in natural sunlight (not merely a daylight spell) and flee from it. A caller caught in sunlight cannot attack and can take only a single move action or standard action each turn, but not both (nor can it take full-round actions)." compset="RaceSpec">
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Weakness"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raStealEss" name="Steal Essence" description="Any living, intelligent creature slain by a caller in darkness&apos;s touch attack is mentally absorbed into the monster&apos;s consciousness. (The physical body of the victim remains intact). Stealing a victim&apos;s essence is a free action; it grants the caller 12 temporary hit points, and a permanent new screaming face appears within its cloud.\n\nA caller in darkness can also steal the essence of living, intelligent creatures within 30 feet that are paralyzed or sleeping, or that are helpless due to having a mental ability score reduced to 0 (often by the caller&apos;s ego whip attack). Doing so is a standard action that provokes attacks of opportunity. The victim dies, and the caller gains 12 temporary hit points." compset="RaceSpec">
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="Attack"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raKnowPsiC" name="Class Skill - Knowledge (Psionics)" description="Knowledge (Psionics) is a class skill." compset="RaceSpec" summary="Knowledge (Psionics) is a class skill.">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -2094,7 +2094,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raStealth4" name="+4 Stealth" description="+4 Racial Bonus to Stealth" compset="RaceSpec" summary="+4 Racial Bonus to Stealth.">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -2103,7 +2103,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raPerPen2" name="-2 Visual Perception" description="-2 Visual Perception" compset="RaceSpec" summary="-2 Visual Perception">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -2259,7 +2259,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raPercep8" name="+8 Perception" description="+8 Racial Bonus to Perception" compset="RaceSpec" summary="+8 Racial Bonus to Perception">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -2342,7 +2342,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raApprais8" name="+8 Appraise" description="+8 Racial Bonus to Appraise" compset="RaceSpec" summary="+8 Racial Bonus to Appraise">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -2393,7 +2393,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
   <thing id="raScentCry" name="Scent Crystal" description="This ability functions much like the scent ability, except that the range is 90 ft. and the folugub can only use it to sense crystal objects (including creatures wearing or carrying crystal objects)." compset="RaceSpec" summary="Detect crystals within 90+ feet by sense of smell." uniqueness="unique">
     <tag group="SpecType" tag="Sense" name="Sense" abbrev="Sense"/>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="xScent">
       <containerreq phase="First" priority="1000">!AbReplace.raScentCry</containerreq>
       </bootstrap>
@@ -2403,7 +2403,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="SpecType" tag="Attack"/>
     <tag group="StandardDC" tag="aCON"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rGreyGlutt" name="Grey Glutton" description="The gray glutton&apos;s sole purpose is to destroy psionic creatures and characters. The tenacity and rage it harnesses to track down and annihilate psionic creatures is terrifying.\n\nGray gluttons are rare, being the offspring of the victims of experimentation by manifesters. The hatred for their tormentors has been passed from generation to generation, leading to an instinctual hatred for any creature with psionic power. Although their hide is gray, the creature is named for its hunger for gray matter.\n\nIn combat, a gray glutton makes any creature with psionic power its priority target, and will attack any creature who gets in its way to reach its prey. A gray glutton will always break off an attack with a nonpsionic creature if a psionic creature is nearby." compset="Race">
     <fieldval field="rHitDice" value="9"/>
@@ -2464,7 +2464,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Usage" tag="Round"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rIntelDevo" name="Intellect Devourer" description="Intellect devourers prey on sentient creatures, using their body thief ability to disguise themselves as their victims. This allows an intellect devourer the ability to hide within populated areas to seek out new prey.\n\nIntellect devourers have the ability to understand Common, but cannot speak unless they are in possession of a body that has the ability to speak. An intellect devourer in possession of a body knows all the languages that the victim knows.\n\nIntellect devourers stalk their prey, relying on stealth and psionic powers to remain undetected and catch their victims unaware. It will use its psi-like abilities to overcome an enemy if it can catch them by surprise, then using its body thief ability to inhabit and control the corpse, pretending to be the victim while it seeks out new prey." compset="Race">
     <fieldval field="rHitDice" value="6"/>
@@ -2560,17 +2560,17 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Weakness"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raBodThief" name="Body Thief" description="As a full-round action that provokes an attack of opportunity, an intellect devourer can reduce its size, crawl into the mouth of a helpless or dead creature, and burrow into the victim&apos;s skull to devour its brain. This is a coup de grace attempt that inflicts 8d4+3d6+8 points of damage. If the victim is slain (or already dead), the intellect devourer usurps control of the body and may use it as its own, as if it controlled the target via mind control. The intellect devourer has full access to all of the host&apos;s defensive and offensive abilities save for spellcasting, manifesting, spell-like abilities, and psilike abilities (although the intellect devourer can still use its own psilike abilities). A host body may not have been dead for longer than 1 day for this ability to function, and even successfully inhabited bodies decay to uselessness in 7 days (unless this time is extended via effects such as gentle repose). As long as the intellect devourer occupies the body, it knows (and can speak) the languages known by the victim and basic information about the victim&apos;s identity and personality, yet has none of the victim&apos;s specific memories or knowledge. Damage done to a host body does not harm the intellect devourer, and if the host body is slain, the intellect devourer emerges and is dazed for 1 round. Raise dead cannot restore a victim of body theft, but resurrection or more powerful magic can." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="Attack"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raStealth8" name="+8 Stealth" description="+8 Racial Bonus to Stealth" compset="RaceSpec" summary="+8 Racial Bonus to Stealth">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -2579,7 +2579,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raBluff8" name="+8 Bluff" description="+8 Racial Bonus to Bluff" compset="RaceSpec" summary="+8 Racial Bonus to Bluff">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -2673,19 +2673,19 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="StandardDC" tag="aCON"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Attack"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raDispaIns" name="Dispassionate Insight" description="Despite having emotions, phrenic scourges don&apos;t interact with the world through them, but through cold, piercing logic; thus, all psi-like and supernatural abilities a phrenic scourge has use its Intelligence instead of its Charisma for all purposes." compset="RaceSpec">
     <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raSapWill" name="Sap Will" description="As a standard action, a phrenic scourge can use this psionic attack to manifest a 20-ft.-radius sphere, which the scourge can center anywhere within 30 ft. (a common tactic is to center the ability on itself, as a scourge is immune to its own sap will ability). Anyone caught in this sphere must succeed on a Will save or lose the will to act for 3d4 rounds, during which they are stunned. Once used, this ability can&apos;t be used again for 2 rounds. Phrenic scourges often use this ability to take out groups of enemies at once, or to hunt for victims they can make into slaves or breeding vessels." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="Attack"/>
     <tag group="StandardDC" tag="aINT"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raUnnatVis" name="Unnatural Vision" description="A phrenic scourge sees and hears through its entire body; this gives it a +6 racial bonus to Listen and Spot checks, and makes it impossible to derive any benefit from flanking it. When a scourge is disguised as a humanoid, and thus wearing clothes, these benefits A phrenic scourge are lost." compset="RaceSpec">
     <fieldval field="actName" value="Is Unclothed?"/>
@@ -2693,14 +2693,14 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="SpecType" tag="Sense"/>
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raPSCompre" name="Compress" description="Although they normally stand as humanoid, phrenic scourges are not bound to that form. By shifting and relaxing their tendrils, they can thin themselves out, or flatten themselves into a mass of writhing limbs no thicker than a snake. As a full-round action, a phrenic scourge can move up to its speed through a space as narrow as two or three inches in one dimension, as long as it is at least a foot or more in the other dimension. For instance, a scourge could fit through a hole that was two inches by fourteen inches, but not one two inches by four inches." compset="RaceSpec">
     <fieldval field="actName" value="Is Unclothed?"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rPhthisic" name="Phthisic" description="Standing 10 feet tall and weighing over 600 pounds, a phthisic is a repressed neurosis that has been forcefully shunted from the subsconscious and turned into a living creature. They feed off mental energy, permanently damaging the psyches of their vicitims. \n\nA phthisic will faintly resemble the person from whose mind it came, but is a warped, twisted version of that person (a DC 25 Perception check to note the resemblence allows someone who knows the source individual to recognize the source of the phthisic.\n\nA phthisic feeds off the intelligence of a living creature, temporarily assuaging its constant craving for the sanity that can calm its own mental torment." compset="Race">
     <fieldval field="rHitDice" value="6"/>
@@ -2795,7 +2795,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
   <thing id="raMindFeed" name="Mind Feed" description="A phthisic that hits with its bite attack deals 1d4 points of Intelligence damage. If this effect reduces the opponent&apos;s Intelligence score to 0, the ability damage becomes ability drain." compset="RaceSpec">
     <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rPsionKill" name="Psion Killer" description="Sometimes referred to as crystal golems, psion-killers are typically between 9 and 10 feet tall, weighing in excess of 2,500 pounds. Composed entirely of crystal, they are created as the antithesis of manifesters.\n\nPsion-killers require explicit orders from their creator in order to do anything. They follow instructions literally and are incapable of using tactics or interpreting strategy. The creator can command the psion-killer if within 60 feet of the construct and the construct can see and hear its creator. In the absence of its creator, the psion-killer will follow its last instruction to the best of its ability, although if attacked, it will defend itself. Simple, persistent commands work to keep the psion-killer governed if the creator must be absent, including commands such as, “Attack any creatures other than me if they enter this room.”" compset="Race">
     <fieldval field="rHitDice" value="15"/>
@@ -2836,13 +2836,13 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="AbilType" tag="Super"/>
     <tag group="SpInfo" tag="spDisPsio3"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raImmunPsi" name="Immunity to Psionics" description="This creature is immune to any psionic effects that are subject to power resistance." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Immune"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rPuppet" name="Puppeteer" description="With large, fleshy bodies, puppeteers resemble large, slightly purple slugs.\n\nCreated by the phrenic scourges, puppeteers seek out suitable slaves and breeding grounds for their phrenic scourge masters and then bring these hosts back to their nest. Most puppeteers will drop down onto a passerby from a tree or precipe, or use their psionic powers to coerce a target, mentally asking them to come pick up the seemingly harmless slug. Once they establish physical contact, the puppeteer takes over its host by inserting very thin infiltrating tendrils into the flesh of the target.\n\nA puppeteer rarely fights; if attacked, it will try to charm an attacker and ask to be protected, hoping to find a guardian amongst its assailants. Otherwise, it will try to flee, but in direct combat a puppeteer is rarely dangerous. If it can, it will manifest mental barrier as a last ditch effort to save itself." compset="Race">
     <fieldval field="rHitDice" value="1"/>
@@ -2908,13 +2908,13 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Attack"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raHostProt" name="Host Protection" description="A puppeteer in control of a host is treated as an attended magic item for the purpose of making saving throws, even if the puppeteer is specifically targeted. A puppeteer that is attached to its host is treated as a creature in a grapple for the purpose of striking at the puppeteer instead of the host (but the host is not considered grappled in turn)." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Defense"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rPuppetFH" name="Puppeteer, Flesh Harrower" description="When separated from a nest of scourges for a long time, a puppeteer can form a colony to protect itself, awaiting the arrival of its psionic masters. When it establishes a colony, it uses a host as a breeding ground, not unlike the way the scourges reproduce, but half of the numerous offspring bursting from the poor host, will be flesh harrowers. In a colony, the flesh harrower is the soldier and worker, protecting the brood mother puppeteer and its siblings. When fully grown, the flesh harrower looks like a gigantic slug where one side ends in a terrible slit filled with sharp teeth and the other in two bony, but wickedly sharp, blades. A flesh harrower also looks somewhat like a single scourge and the resemblance is striking for anyone who have seen both.\n\nA flesh harrower will generally retreat until it has more soldiers which can help it, or if cornered or protecting a puppeteer, will target the weakest looking enemy. Flesh harrowers are quite intelligent, just like normal puppeteers and will therefore start battle by manifesting vigor, using hustle to stay away from immediate danger. Usually, that is followed by concealing amorpha before the flesh harrower enters combat in truth, saving one manifestation for mental barrier against enemy attacks after it has been reduced to ½ its hit points." compset="Race">
     <fieldval field="rDescript" value="This dark brown, 4-foot long creature has a tail that ends in two protruding, chitinous blades. Its mouth doesn&apos;t open so much as it seems to unfold, revealing a cavernous maw filled with rows of sharp teeth."/>
@@ -3066,7 +3066,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="Attack"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rThoughtEa" name="Thought Eater" description="Bizarre in appearance, thought eaters feed on the mental energy of creatures. They are capable of transporting rapidly between the Material Plane and the Ethereal Plane and use this to deadly effect.\n\nAlthough they possess intelligence, thought eaters do not speak.\n\nThought eater tactics revolve around waiting in the Ethereal Plane for intelligent, or preferrably psionic, creatures to come near. It will then shift to the Material Plane in an attempt to ambush its intended victim. If this ambush proves successful, the thought eater returns back to the Ethereal Plane to digest its newly acquired meal.\n\nA thought eater can only stay in the Material Plane continuously for one minute before it dies due to its flesh dissipating. A thought eater prefers to retreat back to the Ethereal Plane rather than continuing to fight if it is badly injured." compset="Race">
     <fieldval field="rCR" value="2"/>
@@ -3130,13 +3130,13 @@ focus.field[wFixDamage].text = "(Eat Thoughts)"]]></eval>
   <thing id="raEatThoug" name="Eat Thoughts" description="A thought eater can drain psionic power points with a successful melee touch attack. Each touch drains 6 power points from the opponent (or fewer, if the opponent has fewer than 6 points remaining). Against a nonpsionic creature or a psionic creature that currently has no power points, this touch attack instead deals 1 point of Intelligence damage, which provides nourishment equivalent to 6 power points.\n\nA thought eater requires 12 power points per day to survive but will gorge itself on weak prey." compset="RaceSpec">
     <tag group="AbilType" tag="Super"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raEtherJau" name="Etheral Jaunt" description="Creature can shift from the Ethereal Plane to the Material Plane as part of any move action, and then shift back again as a free action. The ability is otherwise identical to the psionic ethereal jaunt power." compset="RaceSpec">
     <tag group="AbilType" tag="Super"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Defense"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rThoughtSl" name="Thought Slayer" description="A more advanced version of the thought eater, thought slayers also survive by consuming the mental energy of intelligent creatures, but they are far deadlier than their lesser cousins. Like the thought eater, thought slayers are able to quickly travel to and from the Material Plane from the Ethereal Plane, and like thought eaters, thought slayers do not speak.\n\nThought slayer tactics revolve around waiting in the Ethereal Plane for intelligent, or preferrably psionic, creatures to come near. It will then shift to the Material Plane in an attempt to ambush its intended victim. If this ambush proves successful, the thought slayer returns back to the Ethereal Plane to digest its newly acquired meal.\n\nA thought slayer can only stay in the Material Plane continuously for ten minutes before it dies due to its flesh dissipating. A thought slayer prefers to retreat back to the Ethereal Plane rather than continuing to fight if it is badly injured." compset="Race">
     <fieldval field="rDescript" value="Towering over you, the creature has transparent skin that seems to flow away from its body, allowing you to see its internal organs and bones. Glowing eyes peer out from an avian head, topping a notably feline form."/>
@@ -3237,7 +3237,7 @@ focus.field[wFixDamage].text = "(Eat Thoughts)"]]></eval>
     <tag group="SpecType" tag="Attack"/>
     <tag group="StandardDC" tag="aCHA"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rUdoroot" name="Udoroot" description="Udoroots are carnivorous plants that use psionic powers to overcome creatures that it then devours. The majority of the udoroot&apos;s body is its root system which hides below the surface of the ground, leaving only a few stalks that resemble sunflowers exposed. In subterranean environments, an udoroot can essentially grow upside down, with its stalks coming from the ceiling, rather than the floor.\n\nThe exposed stalks of an udoroot have white petals with reddish seeds that are tough, but nitritious and can be made into a bread if ground down and cooked." compset="Race">
     <fieldval field="rHitDice" value="6"/>
@@ -3278,19 +3278,19 @@ focus.field[wFixDamage].text = "(Eat Thoughts)"]]></eval>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Attack"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raCrRegen" name="Crown Regeneration" description="An udoroot takes no damage from having a crown severed or destroyed. A severed crown dies and can no longer be used to attack, but the udoroot takes no other penalties. As long as the root system remains intact, the crown regrows in about a month." compset="RaceSpec">
     <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="FastHeal"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="raUdoTrait" name="Udoroot Traits" description="An udoroot can be killed only if its root is dug up or exposed, then burned, hacked apart, or otherwise destroyed. Severing or destroying all six crowns puts the plant out of commission, allowing excavation of the helpless root. The crowns are Medium objects with a hardness of 5 and 7 hit points. To sever a crown, an opponent must use the sunder action. The crowns can also be affected by spells or effects that affect an area or targeted by spells that affect an individual target." compset="RaceSpec">
     <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="FastHeal"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="rUnbodied" name="Unbodied" description="A race of former humanoids who have transformed themselves fully into purely mental energy, unbodied maintain the ability through their assume likeness ability to return to physical form.\n\nTypically, unbodied will manifest in a physical form as a human of seemingly regal stock, as a disembodied floating brain, or sometimes as a wisp of light, but they have the capacity to assume nearly any form they can conceive.\n\nUnbodied use telepathy to converse with others, rather than relying on physical speech.\n\nUnbodied prefer to use their psionic powers if in combat, although their touch alone can cause physical disruption and pain." compset="Race">
     <fieldval field="rHitDice" value="4"/>
@@ -3340,7 +3340,7 @@ focus.field[wFixDamage].text = "(Eat Thoughts)"]]></eval>
     </thing>
   <thing id="raUnbBluff" name="+4 Bluff (+8 if capable of reading opponent&apos;s mind)" description="+4 Racial Bonus to Bluff" compset="RaceSpec" summary="+4 Racial Bonus to Bluff. (+8 if capable of reading opponent&apos;s mind)">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -3350,7 +3350,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raUnbDisg" name="+4 Disguise (+8 if capable of reading opponent&apos;s mind)" description="+4 Racial Bonus to Disguise. (+8 if capable of reading opponent&apos;s mind)" compset="RaceSpec">
     <tag group="SpecType" tag="Skill"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="4000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -3361,7 +3361,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
   <thing id="raAssumeLi" name="Assume Likeness" description="An unbodied can assume the likeness of any Small, Medium, or Large creature as a standard action that does not provoke attacks of opportunity. Its abilities do not change, but it appears to be that creature, relying on its Bluff and Disguise skills to deflect suspicion. An unbodied gets an additional +10 circumstance bonus on Disguise checks when using this ability." compset="RaceSpec" summary="An unbodied gets an additional +10 circumstance bonus on Disguise checks when using this ability.">
     <tag group="AbilType" tag="Super"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
 ~ If we're disabled, do nothing
 doneif (tagis[Helper.SpcDisable] <> 0)
@@ -3370,7 +3370,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     </thing>
   <thing id="raPsiPower" name="Psionic Powers" description="An unbodied manifests powers as a 4th-level psion (telepath). The save DCs are Intelligence-based.\n\n{i}Typical Psion Powers Known{/i} (power points 21, base save DC 12 + power level): 1st- detect psionics, empty mind, mind thrust (DC 13*), empathic connection (DC 13*); 2nd-brain lock (DC 14), cloud mind (DC 14), energy push (DC 14), read thoughts (DC 14).\n\n*Power can be augmented." compset="RaceSpec">
     <fieldval field="abValue" value="19"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="SpecType" tag="Attack"/>
     <bootstrap thing="puDetPsio1">
       <containerreq phase="First" priority="1000">!AbReplace.raPsiPower</containerreq>
@@ -3403,7 +3403,7 @@ doneif (tagis[Helper.SpcDisable] <> 0)
   <thing id="raTKForce" name="Telekinetic Force" description="An unbodied can use {i}telekinetic force{/i} (DC 15) as a standard action that does not provoke attacks of opportunity. Manifester level 4th. The save DC is Charisma-based." compset="RaceSpec">
     <tag group="AbilType" tag="Super"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="puTeleFor3">
       <containerreq phase="First" priority="1000">!AbReplace.raTKForce</containerreq>
       <autotag group="Usage" tag="AtWill"/>
@@ -3414,6 +3414,6 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="Defense"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="PUProdID"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   </document>

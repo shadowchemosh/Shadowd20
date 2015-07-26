@@ -181,49 +181,63 @@
     </thing>
 
   <!-- Class Level Selection Helpers -->
+  <thing id="selS2lvl00" name="Lvl 00" compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Selection" tag="S2SplLevel" name="Spell Levels 0-9"/>
+    <tag group="Value" tag="0"/>
+  </thing>
   <thing id="selS2lvl01" name="Lvl 01" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel" name="Character Levels 1-20"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="1"/>
   </thing>
   <thing id="selS2lvl02" name="Lvl 02" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="2"/>
   </thing>
   <thing id="selS2lvl03" name="Lvl 03" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="3"/>
   </thing>
   <thing id="selS2lvl04" name="Lvl 04" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="4"/>
   </thing>
   <thing id="selS2lvl05" name="Lvl 05" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="5"/>
   </thing>
   <thing id="selS2lvl06" name="Lvl 06" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="6"/>
   </thing>
   <thing id="selS2lvl07" name="Lvl 07" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="7"/>
   </thing>
   <thing id="selS2lvl08" name="Lvl 08" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="8"/>
   </thing>
   <thing id="selS2lvl09" name="Lvl 09" compset="SelectHelp">
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Selection" tag="S2ChrLevel"/>
+    <tag group="Selection" tag="S2SplLevel"/>
     <tag group="Value" tag="9"/>
   </thing>
   <thing id="selS2lvl10" name="Lvl 10" compset="SelectHelp">

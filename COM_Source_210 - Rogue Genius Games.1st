@@ -450,7 +450,106 @@
     sortorder="0"
     description="Bullet Points: 9 Alchemical Bomb Discoveries (PFRPG) PDF">
     </source>
+ <source
+    id="BP5CntlWtr"
+    name="RGG - Control Water Feats (5)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 5 Control Water Spell Feats (PFRPG) PDF">
+    </source>
+ <source
+    id="BP6ExtMrtS"
+    name="RGG - Exotic and Martial Swords (6)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 6 New Exotic and Martial Swords (PFRPG) PDF">
+    </source>
+ <source
+    id="BP10Fear"
+    name="RGG - Feats of Fear and Fearlessness (10)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 10 Feats of Fear and Fearlessness (PFRPG) PDF">
+    </source>
+ <source
+    id="BP7FlyFoes"
+    name="RGG - Feats for Flying Foes (7)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 7 Feats for Flying Foes (PFRPG) PDF">
+    </source>
+ <source
+    id="BP10Hammer"
+    name="RGG - Feats of Hammer and Thunder (10)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 10 Feats for Hammer and Thunder (PFRPG) PDF">
+    </source>
+ <source
+    id="BP5HstSlw"
+    name="RGG - Feats for Haste and Slow (5)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 5 Haste/Slow Feats (PFRPG) PDF">
+    </source>	
+ <source
+    id="BP5MntStd"
+    name="RGG - Feats for Mount and Steed (5)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 5 Mount Steed Feats (PFRPG) PDF">
+    </source>	
+ <source
+    id="BP6SumnMon"
+    name="RGG - Feats for Summon Spells (6)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 6 Feats for Summon Spells (PFRPG) PDF">
+    </source>		
+ <source
+    id="BP6Teleprt"
+    name="RGG - Feats for Teleport Spells (6)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 6 Teleportation Spell Feats (PFRPG) PDF">
+    </source>	
+ <source
+    id="BP5UnsnSrv"
+    name="RGG - Unseen Servant Feats (5)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 5 Unseen Servant Feats (PFRPG) PDF">
+    </source>	
+ <source
+    id="BP5HellF"
+    name="RGG - Hellfire Feats (5)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 5 Hellfire Feats (PFRPG) PDF">
+    </source>	
 
+ <source
+    id="BP6Jester"
+    name="RGG - Jester Feats (6)"
+    selectable="yes"
+    parent="SGGBullet"
+    sortorder="0"
+    description="Bullet Points: 6 Jester Feats (PFRPG) PDF">
+    </source>	
+	
+
+	
   <!-- New child source of SGG for Magic or Spells -->
   <source
     id="110SpV"

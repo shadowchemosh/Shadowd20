@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_3PPPack_LegGames - Procedures"/>
+
+  <fileinfo>
+    <info_author><![CDATA[
+      Tim Shadow
+      Email: ShadowChemosh@yahoo.com
+    ]]>
+    </info_author>
+    <info_history><![CDATA[
+      July 18, 2015
+      -Created new to hold procedures specific to Legendary Games products.
+      ]]>
+    </info_history>
+  </fileinfo>
+
+  <!-- =================================================================== -->
+  <!-- Give activited bonuses for Armry Commander Boons                    -->
+  <!-- =================================================================== -->
+  <procedure id="3PComBoons" context="pick"><![CDATA[
+    ~ Timing: First/1000
+    ~ abValue  = OM
+    ~ abValue2 = DV
+    ~ abValue3 = Morale
+    ~ abValue4 = Damage Bonus
+
+    ~ if activation 1 checked
+    if (field[abilActive].value = 1) then
+      ~ OM
+      field[tacOffMod].value += field[abValue].value
+      ~ DV
+      field[tacDefMod].value += field[abValue2].value
+      ~ Morale
+      field[tacMrlMod].value += field[abValue3].value
+      ~ Damage bonus
+      field[tacDamMod].value += field[abValue4].value
+    endif
+    ]]>
+  </procedure>
+
+</document>

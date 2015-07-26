@@ -403,7 +403,7 @@
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.SpcDisable] <> 0)
 
-      hero.child[svAll].field[Bonus].value += field[abValue].value]]></eval>
+      hero.child[svWill].field[Bonus].value += field[abValue].value]]></eval>
     </thing>
   <thing id="cPW1TacFla" name="Tactical Flanker" description="At 4th level, the warlord is exceptionally gifted at working with his allies to bring down opponents and his skills assist any who ally with him. When flanking a target with an allied creature, both the warlord and the ally may use the warlord&apos;s Charisma modifier (min +2) for the bonus they receive on flanking their opponent." compset="ClSpecial" summary="Use CHA mod for flanking bonus">
     <tag group="AbilType" tag="Extra"/>

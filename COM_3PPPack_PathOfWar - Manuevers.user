@@ -2352,9 +2352,11 @@ August 13, 2013 - Tim Shadow
       ~ Don't do anything if stance is not activated
       doneif (field[abilActive].value = 0)
       ~ Stop if we're using a shield (except bucklers)
-      if (hero.tagis[Hero.EquipShld] = 1) then
-        doneif (hero.tagis[ShldClass.Buckler] = 0)
-      endif     
+      ~ This rule has been disabled as per new ruling from DSP allowing shields with Scarlet Throne
+      ~if (hero.tagis[Hero.EquipShld] = 1) then
+      ~  doneif (hero.tagis[ShldClass.Buckler] = 0)
+      ~endif 
+    
       ~ Make sure we're using one weapon in one hand
       doneif (hero.tagcount[Hero.OffHand] = 1)
 
@@ -2574,9 +2576,10 @@ August 13, 2013 - Tim Shadow
       ~ Don't do anything if the stance isn't activated
       doneif (field[abilActive].value = 0)
       ~ Stop if we're using a shield (except bucklers)
-      if (hero.tagis[Hero.EquipShld] <> 0) then
-        doneif (hero.tagis[ShldClass.Buckler] = 0)
-      endif
+      ~ This rule has been disabled as per new ruling from DSP
+      ~if (hero.tagis[Hero.EquipShld] <> 0) then
+      ~  doneif (hero.tagis[ShldClass.Buckler] = 0)
+      ~endif
 
       ~ Add to base speed
       hero.child[Speed].field[tSpeed].value += field[abValue].value

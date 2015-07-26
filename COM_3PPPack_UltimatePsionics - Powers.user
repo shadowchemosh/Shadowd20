@@ -793,6 +793,7 @@
     <tag group="psiSubdisc" tag="psdPUCompu"/>
     <tag group="Helper" tag="Secondary"/>
     <tag group="psiClass" tag="cHelpPU4"/>
+    <tag group="psiClass" tag="cHelpPU2"/>
     </thing>
   <thing id="puDecel1" name="Deceleration" description="You warp space around an individual, hindering the subject&apos;s ability to move. The subject&apos;s speed (in any movement mode it possesses) is halved. A subsequent manifestation of deceleration on the subject does not further decrease its speed.\n\n{b}Augment{/b}: For every 2 additional power points you spend, this power can affect a target one size category larger and this power&apos;s save DC increases by 1." compset="PsiPower" summary="Target&apos;s speed is halved">
     <fieldval field="sDuration" value="1 min. / level"/>
