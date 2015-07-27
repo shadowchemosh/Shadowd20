@@ -1383,15 +1383,21 @@ perform hero.childfound[iPUMndBl2H].assign[wCategory.RangeThrow]]]></eval>
     <tag group="abSave" tag="FortNeg"/>
     </thing>
   <thing id="cSknEnhMB" name="Enhanced Mind Blade" description="A soulknife&apos;s mind blade improves as the character gains higher levels. At 3rd level and every odd level thereafter, the mind blade gains a cumulative +1 enhancement bonus that he may spend on an actual enhancement bonus or on weapon special abilities. A soulknife&apos;s level determines his maximum enhancement bonus (see Table 2-8: The Soulknife). The soulknife may (and must, when his total enhancement is higher than his maximum bonus) apply any special ability from the table below instead of an enhancement bonus, as long as he meets the level requirements. A soulknife can choose any combination of weapon special abilities and/or enhancement bonus that does not exceed the total allowed by the soulknife&apos;s level, but he must assign at least a +1 enhancement bonus before assigning any special abilities.\n\nIf the soulknife shapes his mind blade into two items, the enhancement bonus of his mind blade (if any) is reduced by 1 (to a minimum of 0). If this would reduce the enhancement bonus on the mind blades to 0 and weapon special abilities are applied, the soulknife must reshape his mind blade to make the options valid. Both mind blades have the same selection of enhancement bonus and weapon special abilities (if any). This penalty does not apply when using the Mind Shield blade skill.\n\n{b}Note:{/b} To ehance your mind blade go to the {b}Weapons{/b} tab and click on the &quot;Wrench/Hammer&quot; icon.  Then you can make it a +1 mindblade or a +1 Flaming mindblade.  Currently the scripts will not error check if you increase the bonus past what you should be allowed or take a invalid item power.  This will come in a future update." compset="ClSpecial" summary="You can enhance your mind blade with extra power.">
-    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
-    <tag group="Helper" tag="UseOwnLev" name="UseOwnLev" abbrev="UseOwnLev"/>
+    <tag group="SpecType" tag="Attack"/>
     <tag group="AbilType" tag="Super"/>
     <eval phase="Final" priority="10000"><![CDATA[
-field[abValue].value += field[xCount].value
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " " & signed(field[xIndex].value)
 
-field[livename].text = "Enhanced Mind Blade +" & field[abValue].value
-field[abSumm].text = "You can enhance your Mind Blade with a total enhancement bonus of +" & field[abValue].value & "."
-field[listname].text = "Enhanced Mind Blade +" & field[xIndex].value]]></eval>
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      field[abSumm].text = "You can enhance your Mind Blade with a total enhancement bonus of +" & field[abValue].value & "."
+      ]]></eval>
     </thing>
   <thing id="cSknMBMas" name="Mind Blade Mastery" description="At 20th level, a soulknife reaches the pinnacle of her art and her connection to her blade is so strong it cannot be severed. She no longer requires a Will save to maintain her mind blade in a null psionics field, although it still loses any enhancement bonus and special abilities. In addition, she may change the configurations of her mind blade&apos;s special abilities at will as a fullround action, which also resets any penalties that may have accrued from the Fluid Form and Improved Fluid Form blade skills." compset="ClSpecial">
     <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>

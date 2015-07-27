@@ -8,6 +8,33 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v1.12 July 26, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fix Load error with next Pathfinder version (ShadowChemosh) - File: COM_3PPPack_RGG - Feats of Runic Might I.user (line 227) - Thing - Duplicate record encountered ('fThirdEye').</li>
+<li>Fix load issues with next Pathfinder Release (ShadowChemosh) - Thing 'cInfuseBod' - Undefined tag 'SpecSource.cHelpFst' referenced in bootstrap. Thing 'stNNWRisen' - Undefined tag 'SpecSource.stNNWRisen' referenced in bootstrap.</li>
+<li>Ultimate Psionics / Path of War Expanded (TheIronGolem) - Consolidated the three versions of Collective (Tactician, Vitalist, and Zealot) into one ability so that they can correctly stack when taking levels of more than one of these classes. Text has been updated to be class-neutral.</li>
+<li>Ultimate Psionics / Path of War Expanded (TheIronGolem) - Implemented feat effects: Enlarged Collective, Expansive Collective, Expanded Collective, Unbreakable Collective (fixes issue #60).</li>
+<li>Ultimate Psionics / Path of War Expanded (TheIronGolem) - Updated prereqs of all collective-using feats to recognize any version of Collective (including deprecated ones)</li>
+<li>Path of War (TheIronGolem) - Warlord: Force of Personality was granting bonus to all saves, fixed it so that it only affects Will.</li>
+<li>Path of War (TheIronGolem) - Scarlet Throne stances now allow shield use, as per recent FAQ ruling from DSP.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>12 new Rogue Genius Games Bullet Point feat files (Sethvir) - Control Water, Exotic/Martial Swords, Fear and Fearlessness, Flying Foes, Hammer and Thunder, Haste and Slow, Hellfire, Jester, Mount & Steed, Summon Monster/Ally, Teleportation, and Unseen Servant.</li>
+<li>Path of War Expanded (TheIronGolem) - Added maneuvers and stances for the Mithral Current discipline.</li>
+<li>Ultimate Psionics (Psych777) - Added Dread archetype Nightmare Constructor.</li>
+<li>Legendary Games - Ultimate Battle (ShadowChemosh) - Most of the Ultimate Battle from LG has been entered. To make use of this it appears you must have the Ultimate Campaign license from LW to get Armies to display.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Added Loadonce Element (ShadowChemosh) - Fixes issue #62. Added Loadonce Element to all new RGG .user files. Renamed two of the RGG files to remove underscores.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Removed the old product ID of "Community Created Psionics" and replaced with the standard product id of "Hero Lab Community".</li>
+<li>FGG - Fire as she Bears (ShadowChemosh) - Fixed the Product ID tags.</li>
+</ul>
+
+
 <strong>v1.11 July 2, 2015</strong>
 
 <strong>Bug Fixes</strong>

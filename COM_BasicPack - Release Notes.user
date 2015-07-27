@@ -8,6 +8,28 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.13 July 26, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed "Equipment, Remove Tracker" to work with masterwork and magical weapons.</li>
+<li>ShadowChemosh Conferred (ShadowChemosh) - "Sneak Attack" and "Favored Enemy" abilities will no longer display twice on the "Specials" tab.</li>
+<li>No XP Required for Advancement (ShadowChemosh) - Fixed issue where familiars where being asked to level when this was active.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New generic metamagic "- Higher Spell Slot-" added that allows for setting a lower level spell into a higher level spell slot.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New adjustment "Class, Spells Change Lvl" lets you easily move spells uses per day from one spell level to another.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Selection Helpers/Editor Tabs (ShadowChemosh) - Added new "Army Strategy" tab for armies.</li>
+<li>Selection Helpers/Editor Tabs (ShadowChemosh) - Misc changes to the Selection Helpers in the Basic Pack.</li>
+<li>Selection Helpers/Editor Tabs (AnderwD2) - Added new "Selection Helper" tab.</li>
+<li>Selection Helpers (ShadowChemosh) - Added new selection helpers "Selection.S2SplLevel" that can be used to allow a selection of spells from Levels 0-9.</li>
+</ul>
+
+
 <strong>v3.12 July 2, 2015</strong>
 
 <strong>Bug Fixes</strong>
