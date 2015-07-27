@@ -6,6 +6,34 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.3 July 26, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Rogue's Luck Pool (Ex) - Increase the luck pool if the Extra Ki feat is taken but don't increase the core Ki Pool twice.</li>
+<li>Fix Load error with next Pathfinder version (ShadowChemosh) - File: COM_3PPPack_RGG - Feats of Runic Might I.user (line 227) - Thing - Duplicate record encountered ('fThirdEye').</li>
+<li>Fix load issues with next Pathfinder Release (ShadowChemosh) - Thing 'cInfuseBod' - Undefined tag 'SpecSource.cHelpFst' referenced in bootstrap. Thing 'stNNWRisen' - Undefined tag 'SpecSource.stNNWRisen' referenced in bootstrap.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed "Equipment, Remove Tracker" to work with masterwork and magical weapons.</li>
+<li>ShadowChemosh Conferred (ShadowChemosh) - "Sneak Attack" and "Favored Enemy" abilities will no longer display twice on the "Specials" tab.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New generic metamagic "- Higher Spell Slot-" added that allows for setting a lower level spell into a higher level spell slot.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New adjustment "Class, Spells Change Lvl" lets you easily move spells uses per day from one spell level to another.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>TWF was not applying correctly to TWF with ranged weapons like daggers or throwing axes.</li>
+<li>Added new combat condition "Bleeding" to help with tracking the rules.</li>
+<li>12 new Rogue Genius Games Bullet Point feat files (Sethvir) - Control Water, Exotic/Martial Swords, Fear and Fearlessness, Flying Foes, Hammer and Thunder, Haste and Slow, Hellfire, Jester, Mount & Steed, Summon Monster/Ally, Teleportation, and Unseen Servant.</li>
+<li>Legendary Games - Ultimate Battle (ShadowChemosh) - Most of the Ultimate Battle from LG has been entered. To make use of this it appears you must have the Ultimate Campaign license from LW to get Armies to display.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Selection Helpers/Editor Tabs (ShadowChemosh) - Added new "Army Strategy" tab for armies.</li>
+<li>Selection Helpers/Editor Tabs (ShadowChemosh) - Misc changes to the Selection Helpers in the Basic Pack.</li>
+<li>Selection Helpers/Editor Tabs (AnderwD2) - Added new "Selection Helper" tab.</li>
+<li>Selection Helpers (ShadowChemosh) - Added new selection helpers "Selection.S2SplLevel" that can be used to allow a selection of spells from Levels 0-9.</li>
+</ul>
+
+
 <strong>v2.2 July 2, 2015</strong>
 
 <strong>Bug Fixes</strong>
