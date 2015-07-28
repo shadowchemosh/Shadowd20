@@ -758,7 +758,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
       <autotag group="wMain" tag="1d6_5"/>
       <autotag group="Shadowd20" tag="FeralWep"/>
       </bootstrap>
-    <eval phase="First"><![CDATA[
+    <eval phase="First" priority="600"><![CDATA[
       ~if we've been replaced, get out now
       doneif (tagis[Helper.SpcReplace] <> 0)
       ~ If not active get out now
