@@ -230,4 +230,61 @@
       perform hero.pushtags[WepProf.?]
       perform hero.pushtags[EasyWeapon.?]]]></eval>
     </thing>
+  <thing id="ipS2FlamMi" name="Flaming, Minor" description="Upon command, a {i}flaming, minor{/i} weapon is sheathed in fire. The fire does not harm the wielder. The effect remains until another command is given. A minor flaming weapon deals an extra 1d4 points of fire damage on a successful hit. Bows, crossbows, and slings so crafted bestow the fire energy upon their ammunition." compset="ItemPower" summary="Weapon deals +1d4 fire damage." uniqueness="useronce">
+    <comment>Helper Object for Scalling Weapons</comment>
+    <fieldval field="iCL" value="5"/>
+    <usesource source="srcUndDark"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="iSchool" tag="Evocation" name="Evocation" abbrev="Evoc"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="PowerType" tag="Weapon" name="Weapon" abbrev="Weapon"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      if (parent.tagis[component.BaseWep] <> 0) then
+        #extradamage[parent,"+1d4 fire",field[name].text]
+      else
+        foreach pick in hero from BaseWep where container.child[gCustMagic].field[gWeapExpr].text
+          #extradamage[eachpick,"+1d4 fire",field[name].text]
+          nexteach
+        endif]]></eval>
+    </thing>
+  <thing id="iS2IronGlo" name="Iron Glory" description="Throwing Axe iron Glory king of stoneholm (King) +1 &amp; +1d4 Fire" compset="MagicWep">
+    <fieldval field="iCL" value="20"/>
+    <fieldval field="BonEnhance" value="1"/>
+    <fieldval field="gSizeCost" value="8"/>
+    <fieldval field="gCost" value="35300"/>
+    <arrayval field="iScaleText" index="2" value="When in the hands of a dwarf Iron Glory ignites with the flames of the forge and causes an extra 1d4 fire damage."/>
+    <usesource source="srcUndDark"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wAxeThrow"></bootstrap>
+      <bootstrap thing="ipS2FlamMi">
+        <containerreq phase="First" priority="1000"><![CDATA[(count:hero#Classes.? >= 3)]]></containerreq>
+        </bootstrap>
+      </child>
+    </thing>
+  <thing id="ioS2ShaRe1" name="Cloak of shadow resistance +1" description="Flecks of silver or steel are often sown amid the fabric of these magical cloaks. This garment offers magic protection in the form of a +1 resistance bonus on all saving throws (Fortitude, Reflex, and Will). In addition a shadow cloak gives +4 bonus to Stealth checks.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}resistance{/i}, creator’s caster level must be at least three times the cloak’s bonus; {b}Cost{/b} 500 gp" compset="Wondrous">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="1100"/>
+    <fieldval field="iCL" value="5"/>
+    <usesource source="srcUndDark"/>
+    <tag group="Hero" tag="EqpBack"/>
+    <tag group="gType" tag="Wonder" abbrev="Wonder"/>
+    <tag group="iSchool" tag="Abjur" abbrev="Abjur"/>
+    <tag group="GearVlSort" tag="Protection"/>
+    <tag group="Helper" tag="ABPForbid"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="InnaForbid"/>
+    <eval phase="PreLevel" priority="5000">
+      doneif (field[gIsEquip].value = 0)
+
+      ~ Give Resistance bonus to saves
+      #applybonus[svResist, hero.child[svAll], 1]
+
+      #skillbonus[skStealth] += 4</eval>
+    </thing>
   </document>
