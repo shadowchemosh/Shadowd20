@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="stS2Parago" name="Paragon" description="Boss or elite Monster." compset="Subtype" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <bootstrap thing="raS2ParaHP"></bootstrap>
+    <bootstrap thing="raS2ParAct"></bootstrap>
+    <bootstrap thing="raS2ParCDG"></bootstrap>
+    </thing>
+  <thing id="tmS2Parago" name="Paragon" description="Adds the Paragon sub-type to a creature. This template is most benificial when used on monsters that are meant to fight one vs many PCs. The special rules and abilities should make the fight more fair and dynamic." compset="Template" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Shadow d20"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="TemplHelp" tag="Acquired"/>
+    <tag group="ClVaryName" tag="Append"/>
+    <bootstrap thing="cfgS2Parag"></bootstrap>
+    <bootstrap thing="stS2Parago"></bootstrap>
+    </thing>
+  <thing id="raS2ParaHP" name="Paragon Hit Points" description="The creature has multiple pools of hit points, each of which is tracked separately. All damage and healing must be completely applied only to one pool of hit points. One pool of hit points must be completely reduced to zero hit points before any damage is applied to another pool. When a pool of hit points is reduced to zero, all ongoing conditions and effects affecting the creature end immediately. After a pool of hit points has been reduced to zero, it cannot receive any healing until after a long rest. If all pools of hit points have been reduced to zero hit points, the creature is killed." compset="RaceSpec" summary="Mutiple pools of hit points.">
+    <fieldval field="actUserMin" value="2"/>
+    <fieldval field="actIncrNam" value="HP Pools"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="SpecType" tag="HpNote"/>
+    <bootstrap thing="trkS2PaHP1">
+      <containerreq phase="First" priority="4000"><![CDATA[ fieldval:actUser >= 2 & !hero#Paragon.NoHPPool]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="trkS2PaHP1">
+      <containerreq phase="First" priority="4000"><![CDATA[ fieldval:actUser >= 3 & !hero#Paragon.NoHPPool]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="trkS2PaHP1">
+      <containerreq phase="First" priority="4000"><![CDATA[ fieldval:actUser >= 4 & !hero#Paragon.NoHPPool]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="trkS2PaHP1">
+      <containerreq phase="First" priority="4000"><![CDATA[ fieldval:actUser >= 5 & !hero#Paragon.NoHPPool]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="trkS2PaHP1">
+      <containerreq phase="First" priority="4000"><![CDATA[ fieldval:actUser >= 6 & !hero#Paragon.NoHPPool]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="trkS2PaHP1">
+      <containerreq phase="First" priority="4000"><![CDATA[ fieldval:actUser >= 7 & !hero#Paragon.NoHPPool]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="trkS2PaHP1">
+      <containerreq phase="First" priority="4000"><![CDATA[ fieldval:actUser >= 8 & !hero#Paragon.NoHPPool]]></containerreq>
+      </bootstrap>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      perform hero.assign[Paragon.HPPool]]]></eval>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Count number of HP Pools
+      field[abValue].value += hero.tagcount[Paragon.HPPool]
+
+      field[livename].text = field[name].text & " (" & field[abValue].value & " Pools)"]]></eval>
+    </thing>
+  <thing id="raS2ParAct" name="Paragon Actions" description="Paragon Actions are only abvabile to paragon monsters. They allow a special action to happen once at the start of each new combat round." compset="RaceSpec" summary="Special Paragon action that happens at the start of each new round.">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="trkS2PaHP1" name=" Paragon HP Pool" description="The creature has multiple pools of hit points, each of which is tracked separately. All damage and healing must be completely applied only to one pool of hit points. One pool of hit points must be completely reduced to zero hit points before any damage is applied to another pool. When a pool of hit points is reduced to zero, all ongoing conditions and effects affecting the creature end immediately. After a pool of hit points has been reduced to zero, it cannot receive any healing until after a long rest. If all pools of hit points have been reduced to zero hit points, the creature is killed.\n\n{b}Note:{/b} Use the reset button to set the counter to its &quot;max&quot; value. This allows you to count HP down to zero which makes more sense for hit points." compset="Tracker">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="HitPoints"/>
+    <tag group="Helper" tag="ShowStatbl"/>
+    <tag group="Helper" tag="ResetMax"/>
+    <eval phase="Final" priority="40000">~ Set pool to Max HP
+      field[trkMax].value += herofield[tHP].value
+
+      ~ Set tag that we have an active pool
+      perform hero.assign[Paragon.HPPool]
+
+      ~ Set tag that we have an empty pool
+      ~if (field[trkMax].value = field[trkUser].value) then
+      if (field[trkUser].value = 0) then
+        perform hero.assign[Paragon.PoolAt0]
+      endif</eval>
+    </thing>
+  <thing id="cfgS2Parag" name="Paragon" compset="Configure" uniqueness="unique">
+    <fieldval field="cfgMax1" value="1"/>
+    <fieldval field="cfgObject1" value="Paragon Action Abilties"/>
+    <fieldval field="cfgObject2" value="Paragon Traits"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="Allow2Abil"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    </thing>
+  <thing id="rcS2ParExh" name="Paragon Fortitude" description="The creature may take one complete turn in each round of combat for each hit point pool it has above zero and receives one reaction between each of its turns. When a pool of hit points has been reduced to zero, the creature loses one turn each round thereafter. The creature determines initiative normally for its first turn, though it gains advantage on the roll. Each subsequent turn is inserted immediately after any one PC’s turn in the initiative order." compset="RaceCustom" summary="Gain a complete set of extra actions per pool of HP." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Round"/>
+    <tag group="SpecType" tag="Attack"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[trkMax].value += hero.tagcount[Paragon.HPPool]]]></eval>
+    </thing>
+  <thing id="rcS2ParFur" name="Paragon Fury" description="The creature may take one additional turn in each round of combat for each of its hit point pools that have been reduced to zero. The creature determines initiative normally for its first turn, though it gains advantage on the roll. Each subsequent turn the creature gains is inserted immediately after any one PC’s turn in the initiative order." compset="RaceCustom" summary="Gain additional actions a round per HP pool reduced to zero." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Round"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[trkMax].value += hero.tagcount[Paragon.PoolAt0]]]></eval>
+    </thing>
+  <thing id="rcS2ParTra" name="Paragon Transformation" description="The creature has multiple forms, each corresponding to one of the creature’s hit point pools. The create begins the battle in its first form. When that form’s hit point pool has been reduced to zero, it assumes its next form immediately. Statistics, traits, or actions keyed to a specific form are only used when the creature is in that form.  To represent this in HL each form should be made as a seperate character." compset="RaceCustom" summary="Multiple forms, each corresponding to one of the creature’s hit point pools." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="User" tag="NeedDomain"/>
+    <eval phase="First"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ We will need a unique statblock so do not add the extra
+      ~ HP Pool trackers.
+      perform hero.assign[Paragon.NoHPPool]]]></eval>
+    </thing>
+  <thing id="rcS2ParDiv" name="Paragon Division" description="The creature splits into two new creatures. The Creature’s hit point pools, including the current and maximum hit points in each pool, are divided as evenly as possible amongst the new creatures. Apart from the hit points, the new creatures have identical statistics. Each creature is worth half as many experience points as the original when defeated." compset="RaceCustom" summary="Splits into two new creatures &amp; HP pools are divided as evenly as possible." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    </thing>
+  <thing id="rcS2ParRep" name="Paragon Replication (Action)" description="If the creature uses {i}Paragon Stabilization{/i} then the creature may spawn a duplicate of itself by transferring one or more of its hit point pools to the new creature. The new creature has the same statistics as the original, however it only has as many hit point pools as are transferred to it. It has any many current hit points in each pool as are transferred to it. The original creature loses the transferred hit point pools completely; they are not reduced to zero. Any effects based on the number of hit point pools are refigured based on the new number of hit point pools for both creatures, including number of turns in combat. The new creature is not worth any experience points when defeated." compset="RaceCustom" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    <exprreq message="Paragon Stabilization (Action) required."><![CDATA[#hasability[rcS2ParSta] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcS2ParAbs" name="Paragon Absorption (Action)" description="If the creature is adjacent to a Paragon creation of the same name, it may absorb that creature. The absorbed target is destroyed. creature gains the hit points pools of the target, including the current hit points and maximum hit points. If any of those pools has been reduced to zero, creature gains that pool, but that pool is still reduced to zero. All effects based on the hit point pools of creature are refigured based on the new number of hit point pools." compset="RaceCustom" summary="When adjacent to a Paragon creation of the same name, it may absorb that creature." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    </thing>
+  <thing id="rcS2ParSta" name="Paragon Stabilization (Action)" description="The creature may distribute all of it&apos;s current hit points evenly amongst all of it&apos;s hit point pools above zero. The creature may not distribute hit points to any pool that has been reduced to zero." compset="RaceCustom" uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecType" tag="Defense"/>
+    </thing>
+  <thing id="rcS2ParDi2" name="Paragon Division (Reaction)" description="When creature has more than one hit point pool and &lt;&lt;condition occurs&gt;&gt;, creature splits into two new creatures. Before the division, the creature uses {i}Paragon Stabilization{/i}. The creature’s hit point pools, including the current and maximum hit points in each pool, are divided as evenly as possible amongst the new creatures. Apart from the hit points, the new creatures have identical statistics. Each creature is worth half as many experience points as the original when defeated." compset="RaceCustom" summary="Splits into two new creatures &amp; HP pools are divided as evenly as possible." uniqueness="useronce">
+    <fieldval field="domDomain" value="Condition"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="User" tag="NeedDomain"/>
+    <tag group="User" tag="OptDomain"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <exprreq message="Paragon Stabilization (Action) reuquired."><![CDATA[#hasability[rcS2ParSta] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcS2ParExp" name="Paragon Expansion" description="The creature’s size is based on the number of pools of hit points it has above zero. At six or more, creature is huge. At four or more, creature is large. At two or more, creature is medium. At one, creature is small." compset="RaceCustom" uniqueness="useronce">
+    <fieldval field="domDomain" value="Condition"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="rcS2ParClC" name="Paragon Class Changer" description="The creature has multiple classes, each corresponding to one of the creature’s hit point pools. The creature begins the battle in its first class. When that classes’s hit point pool has been reduced to zero, it assumes its next class immediately. Statistics, traits, or actions keyed to a specific class are only used when the creature is in that class. To represent this in HL each class should be made as a seperate character." compset="RaceCustom" summary="Multiple classes, each corresponding to one of the creature’s hit point pools." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="User" tag="NeedDomain"/>
+    <eval phase="First"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ We will need a unique statblock so do not add the extra
+      ~ HP Pool trackers.
+      perform hero.assign[Paragon.NoHPPool]]]></eval>
+    </thing>
+  <thing id="raS2ParCDG" name="Paragon Coup de Grace" description="This creature reacts in a special way when it gets coup de graced during combat where instead of being killed when coup de grace it instead has one hit point pool immediently reduced to zero. When a pool of hit points is destroyed in this way, all ongoing conditions and effects affecting the creature end immediately.  In addition this creatures receieves a +15 bonus to the Fortitude save to not die when its coup de grace." compset="RaceSpec" summary="Coup de grace only destroys a single HP pool instead of being dead.">
+    <fieldval field="abValue" value="15"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Defense"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      #situational[hero.child[svFort],signed(field[abValue].value) & "  vs coup de grace.",field[thingname].text]]]></eval>
+    </thing>
+  <thing id="rcS2ParSpa" name="Paragon Spawn" description="This creature may reduce one of it&apos;s hit point pools to zero to spawn a new creature in any space within range. This new spawn appears and may take its turn immediately after the creature that spawned it. The new spawn’s current hit points are equal to the number of hit points lost by its master when reducing its hit point pool to zero, up to the spawns’s listed maximum hit points. The master may not reduce it&apos;s last hit point pool to zero use this effect." compset="RaceCustom" summary="Create a new spawn monster." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="User" tag="NeedDomain"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="rcS2ParUnm" name="Paragon Unmake" description="This creature may destroy one of it&apos;s spawned creations within range. The spawned creature is immediately reduced to zero hit points and destroyed. This creature heals a number of hit points equal to spawn&apos;s current hit points before it was destroyed. This creature may divide this healing between multiple hit point pools and even apply it to a pool that has already been reduced to zero." compset="RaceCustom" summary="Destroy a spawn monster and use its hit points to heal." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    <tag group="User" tag="NeedDomain"/>
+    <tag group="SpecType" tag="Attack"/>
+    <exprreq message="Paragon Spawn ability required."><![CDATA[#hasability[rcS2ParSpa] <> 0]]></exprreq>
+    </thing>
+  <thing id="rcS2ParEli" name="Paragon Elite" description="Elite paragon creatures can as a full-round action save vs continuing effects on each of there hit point pools turns.  This extra save if successful immediately ends any on-going effect on the paragon creature.  In example an elite paragon creature affected by a Sleep Hex can attempt a new save vs the same DC as the original save to end the sleep effect." compset="RaceCustom" summary="As a full-round action save vs continuing effects on each hit point pool turn." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="cfgS2Parag"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="Secondary"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~set our focus to the hero's race
+      perform hero.findchild[BaseRace].setfocus
+      doneif (state.isfocus = 0)
+
+      focus.field[livename].text = "Elite " & focus.field[livename].text]]></eval>
+    </thing>
+  </document>

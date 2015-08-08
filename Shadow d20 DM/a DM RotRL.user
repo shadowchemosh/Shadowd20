@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[
+    
+6/30/2013
+-Moved over to the DM version the racial specials.
+
+Author: Tim Shadow
+contact: ShadowChemosh on Hero Lab forms or shadowchemosh@yahoo.com]]></info_history>
+    </fileinfo>
+  <thing id="raS2Runes" name="Runes" description="As a free action, whenever a rune giant uses its spark shower or spell-like abilities, it can cause the runes on its body to flash with light. All creatures within 10 feet of the giant must make a DC Fortitude save or be blinded for 1 round. The saving throw is Charisma-based." compset="RaceSpec" replaces="raRunRunes">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    </thing>
+  </document>

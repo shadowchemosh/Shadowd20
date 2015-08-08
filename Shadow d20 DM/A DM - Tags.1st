@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+
+  <!-- ============================================== -->
+  <!-- CUSTOM GROUPS AND TAGS                         -->
+  <!-- ============================================== -->
+
+  <!-- Group Paragon custom tags -->
+  <group id="Paragon" name="Paragon Monster">
+    <value id="HPPool"      name="Hit Point Pool"/>
+    <value id="PoolAt0"     name="HP Pool at Zero"/>
+    <value id="NoHPPool"    name="Do not display HP Pools"/>
+  </group>
+    
+</document>

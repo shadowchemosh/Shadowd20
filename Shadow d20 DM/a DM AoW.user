@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history>7/5/2012
+-Created new so I have a place to hold DM only stuff.</info_history>
+    </fileinfo>
+  <thing id="rS2SpKyuss" name="Spawn of Kyuss" description="Sons of Kyuss are disgusting undead creatures created by Kyuss, a powerful evil cleric turned demigod. Completely mad, the sons of Kyuss wander caverns, crypts, and sometimes the open countryside searching for victims.\nA son of Kyuss looks like a well-rotted zombie. Only once the monster is within 20 feet do the writhing, green worms crawling in and out of its skull orifices become apparent. A son of Kyuss is usually clad in rotted clothing, though a rare few wear decaying pieces of armor.\n\nA cleric of 16th level or higher may use a create greater undead spell to create new sons of Kyuss. This process requires maggots from the corpse of a diseased creature in addition to the normal material components.\nSons of Kyuss split into multiple smaller groups when creating their own spawn, and it is rare to encounter more than three of them together. Occasionally a larger creature falls under the curse of a son of Kyuss and follows it as a normal zombie (see above).\n\nUnlike zombies, Spawn of Kyuss do not have the staggered special quality, and they are intelligent enough to pretend that they have restricted movement until ready to attack. They normally use their fear auras to scatter victims, then gang up on individuals until they have caught all opponents." compset="Race">
+    <fieldval field="rHitDice" value="4"/>
+    <fieldval field="rHPStart" value="18"/>
+    <fieldval field="rSTR" value="8"/>
+    <fieldval field="rDEX" value="-1"/>
+    <fieldval field="rINT" value="-4"/>
+    <fieldval field="rWIS" value="1"/>
+    <fieldval field="rCHA" value="5"/>
+    <fieldval field="rAC" value="2"/>
+    <fieldval field="rCR" value="5"/>
+    <usesource source="srcAoW"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="NoScore" tag="aCON"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <bootstrap thing="wOtherRng">
+      <assignval field="livename" value="Ranged Touch"/>
+      </bootstrap>
+    <bootstrap thing="wOtherMel">
+      <assignval field="livename" value="Melee Touch"/>
+      </bootstrap>
+    <bootstrap thing="xFastHeal">
+      <autotag group="Value" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="1"/>
+      <autotag group="Helper" tag="NatTwoHand"/>
+      <assignval field="livename" value="Slam (plus Kyuss&apos;s gift)"/>
+      </bootstrap>
+    <bootstrap thing="raS2CrKyus"></bootstrap>
+    <bootstrap thing="raS2FAkyus">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="raS2GiKyus"></bootstrap>
+    <bootstrap thing="raS2CTkyus"></bootstrap>
+    <bootstrap thing="xChanRes">
+      <autotag group="Value" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="stS2WormUn"></bootstrap>
+    </thing>
+  <thing id="raS2CrKyus" name="Create Spawn" description="Once per round as a free action, a spawn of Kyuss can transfer a worm from its own body to that of an opponent. It can do this whenever it hits with a natural attack or an unarmed attack, but it can also make the transfer by means of a successful melee touch attack or a ranged touch attack, hurling a worm at a foe from a distance of up to 10 feet.\n\nEach worm is a Fine vermin with AC 10 and 1 hit point. It can be killed with normal damage or by the touch of silver. On the spawn&apos;s next action, the worm burrows into its host&apos;s flesh. A creature with a natural armor bonus of +5 or better is immune to this burrowing effect. The worm makes its way toward the host&apos;s brain, dealing 1 point of damage per round for 1d4+1 rounds. At the end of that period, it reaches the brain. While the worm is inside a victim, a remove curse or remove disease effect destroys it, and a dispel evil or neutralize poison effect delays its progress for 10d6 minutes. A successful DC 20 Heal check extracts the worm and kills it.\n\nOnce the worm reaches the brain, it deals 1d2 points of Intelligence damage per round until it either is killed (by remove curse or remove disease) or slays its host (death occurs at o Intelligence). A Small, Medium, or Large creature slain by a worm rises as a new spawn of Kyuss (not a  spawn) 1d6+4 rounds later; a Tiny or smaller creature quickly putrefies, and a Huge or larger creature becomes a normal zombie of the appropriate size. Newly created spawn are not under the control of their creator, but they usually follow whatever  spawn of Kyuss created them.\n\nIf a creature is infested with multiple worms, a single remove curse or remove disease destroys all the worms infesting the creature at once." compset="RaceSpec" summary="Your attacks transfer a worm to the target.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+~ All natural and unarmed strikes get worm note
+foreach pick in hero from BaseWep where "wGroup.Natural|thingid.wUnarmed"
+   #extradamage[eachpick," plus worm",field[name].text]
+nexteach]]></eval>
+    </thing>
+  <thing id="raS2FAkyus" name="Fear Aura" description="A spawn of Kyuss continuously radiates a fear effect. This ability functions like a fear spell (caster level 7th), except that it affects all creatures within a specificed radius. Any creature that makes a successful saving throw against the effect cannot be affected again by the fear aura of that spawn of Kyuss for 24 hours." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+~ Set abValue
+call CalcValue
+~ add any additional radius bonus
+field[abValue].value += field[abValue2].value
+~ set live name to include radius
+field[livename].text = field[name].text & " (" & field[abValue].value & "ft radius)"]]></eval>
+    </thing>
+  <thing id="raS2GiKyus" name="Kyuss&apos; Gift" description="Any creature hit by a favored spawn of Kyuss&apos; natural attack or unarmed attack must succeed at a Fortitude save or contract this supernatural disease. The incubation period is 1 day, and the disease deals 1d6 points of Constitution damage and 1d4 points of Wisdom damage. These effects manifest as rotting flesh and dementia. An affected creature gets only half the benefits of natural and magical healing, though a remove disease effect removes the affliction." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <eval phase="Final" priority="20000"><![CDATA[
+~ All natural and unarmed strikes get worm note
+foreach pick in hero from BaseWep where "wGroup.Natural|thingid.wUnarmed"
+   #extradamage[eachpick," plus Kyuss' gift",field[name].text]
+nexteach]]></eval>
+    </thing>
+  <thing id="raS2CTkyus" name="Curative Transformation" description="Any {i}remove curse{/i} or {i}remove disease{/I} effect, or a more powerful version of either of these effects, ransforms a spawn of Kyuss into a normal zombie." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Weakness"/>
+    </thing>
+  <thing id="deiS2Kyuss" name="Kyuss" description="An obscure deity associated with creating and mastering the undead.  Classically, his appearance has been likened to a gaunt man with hands of bone and eye sockets filled with writhing worms, but many religious scholars believe that Kyuss has shed all remnants of his once mortal body, and is now composed entirely of a humanoid-shaped mass of writhing green worms.\n\nThe spawn of Kyuss began with Kyuss, an ancient priest of a forgotten deity who rules an empire before the advent of modern civilization.  Little remains in writing of the details concerning Kyuss and his rule, but it seems clear his skill at creating undead was unsurpassed.  Eventually, the necromancer priest vanished into parts unknown, leaving in his wake an empire of the dead.\n\n{b}Symbol:{/b} A human skull with green worms writhing from the eye sockets and jaw." compset="Deity" uniqueness="unique">
+    <fieldval field="deiPortfol" value="Creation and Mastery of the Undead, Decay, Unholy Transformation, Worms"/>
+    <fieldval field="deiEpithet" value="The Wormgod, the Bonemaster, the Herald of the Age of Worms"/>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="DeityCat" tag="Forgotten"/>
+    <tag group="AllowDom" tag="cdDeath"/>
+    <tag group="AllowDom" tag="cdDestruct"/>
+    <tag group="AllowDom" tag="cdEvil"/>
+    <tag group="AlignTemp" tag="NeutEvil"/>
+    <tag group="WepProf" tag="wGreatclub"/>
+    <tag group="AllowDom" tag="cdCatastro"/>
+    <tag group="AllowDom" tag="cdDaemon"/>
+    <tag group="AllowDom" tag="cdDemonE"/>
+    <tag group="AllowDom" tag="cdDevilE"/>
+    <tag group="AllowDom" tag="cdFear"/>
+    <tag group="AllowDom" tag="cdMurder"/>
+    <tag group="AllowDom" tag="cdRage"/>
+    <tag group="AllowDom" tag="cdTorture"/>
+    <tag group="AllowDom" tag="cdInqTortu"/>
+    <tag group="AllowDom" tag="cdUndead"/>
+    <tag group="AllowDom" tag="cdDeceptio"/>
+    <tag group="AllowDom" tag="cdInsanity"/>
+    <tag group="AllowDom" tag="cdMadness"/>
+    <tag group="AllowDom" tag="cdNightmar"/>
+    <tag group="AllowDom" tag="cdThievery"/>
+    <tag group="AllowDom" tag="cdTrickery"/>
+    <tag group="AllowDom" tag="cdInqSin"/>
+    <tag group="AllowDom" tag="cdInqVenge"/>
+    </thing>
+  <thing id="fS2Wormbou" name="Wormbound" description="You have taken a vil green kyuss worm into your own body and bound yourself to its power.\n\n{b}Prerequisite:{/b} Living creature Host of a living Kyuss Worm\n\n{b}Benifit:{/b} Successfully hosting a Kyuss worm requires a special binding ritual. The ritual requires 4 hours of unintermpted meditation, 500 gp in special materials, and a living Kyuss worm. At the end of the ceremony, you must succeed at a DC 15 Fortitude saving throw or die. If you fail the saving throw, you rise as a spawn of Kyuss within 1d6+4 rounds. If you succeed at the saving throw, you can add the following spells to your class spell list:\n\n    2nd - path of worms\n    3rd - consume the parasite, the worm within\n    4th - mindworms\n    5th - servant of the green corruption\n    7th - extrude wormswarm\n\nYou must still learn and prepare these spells according to the normal spellcasting rules for your class.\n\nThe worm can be removed only by casting one of the following spells: {i}dispel evil, heal, remove curse, or remove disease{/i} in a hallowed area, or by casting {i}consume the parasite{/I}. If the worm is removed, you cannot cast these spells and lose any of these spells that you may have prepared. You must repeat the binding ritual to regain this feat&apos;s benefits.\n\n{b}Special:{/b} If you die with a living Kyuss worm inside you, you rise as a spawn of Kyuss within 1d6+4 rounds. As a spawn of Kyuss, you exist only to spread the corrupting power of Kyuss and have no free will of your own(meaning that the spawn of Kyuss becomes a monster under the DM&apos;s control)." compset="Feat" uniqueness="useronce">
+    <comment><![CDATA[{b}Benifit:{/b} The living Kyuss Worm inside you grants you the knowledge of spells. If the worm dies (such as due to Dispel Evil, Remove Curse, Consume the Parasite, etc.), you loose access to the spells until you consume an new worm. If you die with a living worm inside, you automatically rise as a Spawn of Kyuss in 1d6 rounds:
+
+2nd: Path of Worms(DR343 p78) - Receive a +6 Insight bonus on one roll or your AC vs. one attack.
+3rd: Consume the Parasite(DR343 p78) - Consume the Kyuss Worm inside you for a temporary bonus to your hit-points, Strength, Dexterity, effective caster level, etc.
+3rd: The Worm Within(DR343 p79) - Create a Kyuss inside of a living creature. If not removed quickly, the creature dies and becomes a Spawn of Kyuss.
+4th: Mindworms(DR343 p78) - Does Wisdom damage and causes the target to loose spells (if applicable). If the target looses spells, the caster can make use of energy to regain his/her own spells, etc..
+5th: Servant of the Green Corruption(DR343 p79) - Target gains bonus on attacks, AC, & movement, but receives a penalty on saves vs. Wormbound spells.
+7th: Extrude Wormspawn(DR343 p79) - Creates a Wormswarm (i.e., a Swarm of Kyuss Worms).]]></comment>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="spS2CotPa3" name="Consume the Parasite" description="You consume the Kyuss worm in your own body to grant yourself a temporary boost in power. When you cast this spell, you gain 3 hi points per caster level. If this hit point takes you above your normal maximum you gain the remaining total as temporary hit points. These temporary hit points expire when the spell&apos;s duration ends if they are not lost sooner. In addition, you gain a +4 enhancement bonus to Strength and Dexterity for the duration of the spell. This spell also increases the power of your spells whil eit is in effect, granting you a +2 bonus to caster level on other spells cast during the duration of the spell and increasing the DC of any spell that you cast by 2. However, casting this spell consumes the Kyuss worm that you have bound to your soul and you do not gain the effects of {I}Wormbound{/i} feat until you are able to find another Kyuss worm and complete the ritual of binding once again." compset="Spell">
+    <fieldval field="sCompDesc" value="A kyuss worm hosted within your body. Creatures with the wormspawn subtype merly require a live Kyss Worm."/>
+    <fieldval field="sRange" value="Personal"/>
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="srcAoW"/>
+    <tag group="sComp" tag="M"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sCastTime" tag="Swift1"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sSubschool" tag="Evil"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="SpellEff" tag="BuffAttr"/>
+    <tag group="HasDeity" tag="deiS2Kyuss"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpAdp"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpAlc"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSum"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    </thing>
+  <thing id="stS2WormUn" name="Wormspawn" description="Wormspawn are undead or aberrant creatures created by and in service to Kyuss. Mindless wormspawn instinctively obey the orders of intelligent wormspawn." compset="Subtype" uniqueness="unique">
+    <usesource source="srcAoW"/>
+    <tag group="NeedType" tag="tpUndead"/>
+    </thing>
+  <thing id="stS2WormAb" name="Wormspawn" description="Wormspawn are undead or aberrant creatures created by and in service to Kyuss. Mindless wormspawn instinctively obey the orders of intelligent wormspawn." compset="Subtype" uniqueness="unique">
+    <usesource source="srcAoW"/>
+    <tag group="NeedType" tag="tpAberr"/>
+    </thing>
+  <thing id="spS2Worms7" name="Extrude Wormswarm" description="You summon a swarm of Kyuss worms to attack your foes. These writhing, Twisting green worms swarm over your body briefly and then congregate in adjacent swquires of your choice. The wormswarm takes no other action on the firs round that it is summoned, although if it apears in occupied squares, the creatures in those spaces suffer the distraction effect tyhpical of swarms." compset="Spell">
+    <fieldval field="sRange" value="5ft (See text)"/>
+    <fieldval field="sDuration" value="1 round/level"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <fieldval field="sCompDesc" value="A kyuss worm hosted within your body or warmspawn subtype."/>
+    <fieldval field="sEffect" value="One wormswarm"/>
+    <usesource source="srcAoW"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sSubschool" tag="Evil"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="SpellEff" tag="BuffAttr"/>
+    <tag group="HasDeity" tag="deiS2Kyuss"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpAdp"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpAlc"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSum"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sLevel" tag="7"/>
+    <tag group="sRange" tag="5"/>
+    <tag group="sRange" tag="Feet"/>
+    <tag group="sComp" tag="M"/>
+    </thing>
+  <thing id="rS2WoSwarm" name="Wormswarm" compset="Race">
+    <fieldval field="rHitDice" value="12"/>
+    <fieldval field="rHPStart" value="54"/>
+    <fieldval field="rSTR" value="-9"/>
+    <fieldval field="rDEX" value="12"/>
+    <fieldval field="rCON" value="8"/>
+    <fieldval field="rCHA" value="-2"/>
+    <fieldval field="rEnviron" value="any Kyuss-associated"/>
+    <fieldval field="rOrgan" value="solitary, swath (2-4), or infestation (5-12)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rDescript" value="A writhing mass of tiny green worms surges across the floor, each one a horror of teeth and malignant hunger."/>
+    <fieldval field="rCR" value="10"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="0"/>
+    <usesource source="srcAoW"/>
+    <tag group="NoScore" tag="aINT"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="HasType" tag="tpVermin"/>
+    <tag group="RaceSize" tag="Dimin13"/>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="raPoiINT">
+      <assignval field="abValue" value="2"/>
+      <assignval field="abDuration" value="8"/>
+      <assignval field="livename" value="Poison: Swarm"/>
+      </bootstrap>
+    <bootstrap thing="raS2ObeyWT"></bootstrap>
+    <bootstrap thing="wOtherMel">
+      <autotag group="Value" tag="1"/>
+      <autotag group="wMain" tag="3d6_8"/>
+      <assignval field="livename" value="Swarm"/>
+      </bootstrap>
+    <bootstrap thing="raS2CrKyus"></bootstrap>
+    <bootstrap thing="stSwarm"></bootstrap>
+    <bootstrap thing="xBurrow">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <eval phase="Final" priority="100000"><![CDATA[
+~ set the swarm weapon damage
+hero.child[wOtherMel].field[wFixDamage].text = hero.child[raSwarmAtk].field[abValue].value & "d6"]]></eval>
+    </thing>
+  <thing id="raS2ObeyWT" name="Obey the Wormtouched" description="Although they are mindless, wormswarms unerringly follow simple commands given by other undead servants fo Kyuss." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+  <thing id="spS2Mindw4" name="Mindworms" description="This spell causes incorporeal green worms to fly through the target creature. The affected creature takes 1d6 points of Wisdom damage and loses three spell levels worth of spells. The spell levels can be in any form or combination of prepared spells or remaining spell slots (for spontaneous casters) of the target&apos;s choice. This spwll-draining effect on spell-like abilities. The spells drained can be either arcane or divine spells, depending on what kind of spells the target has access to. If the target casts both arcane and divine spells, the target can choose any combination of arcane and divine spells that it currently has prepared (or spell slots that it still has available) to meet the three-level requirment. This spell has no effect on cantrips or orisons (0-level spells) and only affects spells of 1st level or higher. The target halves the Wisdom damage and negates the spll-draining effect with successful Will saving throw.\n\nIf the target does not have the ability to cast spells or has no remaining spells or spell slots of 3rd level or lower, the spell-draining effect fo the spell has no effect.\n\nWhenever you successfully drain three spells from a target with this spell, you gain spell energy that can power your spells. Draining less than three spells grants you no benefit. You can use this spell energy in one of three ways:\n\n- Recall one prepared spell of 3rd level or lower. The recalled spell must have been previouisly cast during the same day, and you must meet any other requirments for being able to cast the spell.\n- Gain an additinal spell slot of 3rd level or lower. Spontaneous spellcasters can use the spell energy to give themselves one additional use of 3rd level or lower spell known.\n- Spontaneously apply metamagic effects to a spell. you can use the spell energy to spontaneously apply the effects of one metamagic feat that you possess to spell as you cast it. Applying this one metamagic feat totally consumes the spell energy.\n\nRegardless of how the spell energy is used, it is aviable only one time. The energy is completely gone once used, and if not used withone 1 hour it fades harmlessly away." compset="Spell">
+    <fieldval field="sResist" value="Yes"/>
+    <fieldval field="sTarget" value="One living creature"/>
+    <fieldval field="sSave" value="Will partial"/>
+    <fieldval field="sFocusDesc" value="A Kyuss worm hosted within your body."/>
+    <usesource source="srcAoW"/>
+    <tag group="SpellEff" tag="BuffAttr"/>
+    <tag group="HasDeity" tag="deiS2Kyuss"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpAdp"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpAlc"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSum"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sSubschool" tag="Evil"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="WillPart"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Conjur"/>
+    <tag group="sDescript" tag="Evil"/>
+    </thing>
+  <thing id="fS2DistMvt" name="Disturbing Movements" description="The disjointed, uneven, jerky way you move strains the mind of those who see you.\n\n{b}Prerequisites:{/b} 2 HD, undead type, Cha 13.\n\n{b}Benefit:{/b} The obviously unnatural style of your movements is unsettling if seen clearly. Whenever you take a full attack action or a full move action, all non-undead within 30 feet who are able to see you must make Will saves (DC 10 + 1/2 your HD + your Cha modifier) or be shaken for 2d4 rounds. This ability does not stack with other fear effects (it never creates conditions worse than shaken), and a creature can only fail its saving throw against this ability once per day. This is a mind-affecting fear effect." compset="Feat" summary="The disjointed, uneven, jerky way you move strains the mind of those who see you." uniqueness="useronce">
+    <comment>From SGG - 7 Feats for the Undead</comment>
+    <usesource source="srcAoW"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    <exprreq message="Must have at least 2 HD."><![CDATA[#totallevelcount[] >= 2]]></exprreq>
+    <exprreq message="Must be undead."><![CDATA[#hastype[tpUndead] <> 0]]></exprreq>
+    <exprreq message="Must be corporeal."><![CDATA[#hassubtype[stIncorpor] <> 1]]></exprreq>
+    </thing>
+  <thing id="fS2Fulmina" name="Fulminate" description="You explode.\n\n{b}Prerequisites:{/b} 2 HD, undead type, corporeal body.\n\n{b}Benefit:{/b} When you are reduced to 10 or fewer hit points, you explode. You deal 1d6 fire damage per 2 HD in a 30 ft. radius. Creatures and objects in this radius may make a Reflex save (DC 10 + 1/2 your HD + your Cha modifier) for half damage. If your pieces aren&apos;t found and destroyed (dealt damage equal to your remaining hit points), your corpse reforms in 2d12 hours." compset="Feat" summary="When you are reduced to 10 or fewer hp, you explode." uniqueness="useronce">
+    <comment>From SGG - 7 Feats for the Undead</comment>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <exprreq message="Must be corporeal."><![CDATA[#hassubtype[stIncorpor] <> 1]]></exprreq>
+    <exprreq message="Must have at least 2 HD."><![CDATA[#totallevelcount[] >= 2]]></exprreq>
+    <exprreq message="Must be undead."><![CDATA[#hastype[tpUndead] <> 0]]></exprreq>
+    </thing>
+  <thing id="fS2PutrSpr" name="Putrid Spray" description="When you are damaged, you spray a putrid fluid from your rotting flesh.\n\n{b}Prerequisites:{/b} 3 HD, undead type, corporeal body.\n\n{b}Benefit:{/b}When you take hp damage, you can spray all adjacent spaces with a putrid puss as an immediate action. Creatures in this area must make Reflex saves (DC 10 + 1/2 your HD + your Cha modifier)or be exposed to the slimy doom disease, except its save DC is the same as this ability&apos;s Reflex save DC, and a creature killed by it becomes an undead of the same type as you. (See below and the PFRPG Core Rulebook, p.557, for more information on slimy doom.) You may use this ability once per day, plus once per day for every 4 HD you possess.\n\nSlimy Doom\nType: disease, contact; Save: Fortitude DC see above\nOnset: 1 day; Frequency: 1/day\nEffect: 1d4 Con damage, target must make a second Fort save or 1 point of the damage is drain instead\nCure: 2 consecutive saves" compset="Feat" summary="When you are damaged, you spray a putrid fluid from your rotting flesh." uniqueness="useronce">
+    <comment>From SGG - 7 Feats for the Undead</comment>
+    <usesource source="srcAoW"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostAttr" priority="5000">field[trkMax].value += 1 + round(#totallevelcount[]/4,0,-1)</eval>
+    <exprreq message="Must have at least 3 HD."><![CDATA[#totallevelcount[] >= 3]]></exprreq>
+    <exprreq message="Must be undead."><![CDATA[#hastype[tpUndead] <> 0]]></exprreq>
+    <exprreq message="Must be corporeal."><![CDATA[#hassubtype[stIncorpor] <> 1]]></exprreq>
+    </thing>
+  <thing id="fS2StagCon" name="Staggering Consequences" description="Energy damage tends to stick to you, and harm those around you.\n\n{b}Prerequisites:{/b} 6 HD, undead type, corporeal body.\n\n{b}Benefit:{/b} When you take acid, cold, electricity or fire damage, your body becomes engulfed in energy of that type (acid clings to your skin and is splattered as you move about, ice forms a mist around you, you become a walking lightning rod, or you burst into flames). You deal 1d6 damage of the same energy type to all creatures in adjacent spaces. No creature can be damaged by this more than once per round. This gives you no immunity to the energy damage, it just creates a damaging aura around you. You continue to have this damaging aura for 1 round per die of energy damage dealt to you." compset="Feat" summary="Energy damage tends to stick to you, and harm those around you." uniqueness="useronce">
+    <comment>From SGG - 7 Feats for the Undead</comment>
+    <usesource source="srcAoW"/>
+    <tag group="SpecType" tag="Aura"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="AbilType" tag="Super"/>
+    <exprreq message="Must be undead."><![CDATA[#hastype[tpUndead] <> 0]]></exprreq>
+    <exprreq message="Must have at least 6 HD."><![CDATA[#totallevelcount[] >= 6]]></exprreq>
+    <exprreq message="Must be corporeal."><![CDATA[#hassubtype[stIncorpor] <> 1]]></exprreq>
+    </thing>
+  <thing id="fS2WpnBind" name="Weapon Bind" description="Your animate corpse often catches on weapons stuck in it.\n\n{b}Prerequisites:{/b} 3 HD, undead type, corporeal body.\n\n{b}Benefit:{/b} The weapons of your foes often get stuck in your body, forcing them to take extra time to pull their weapons free. When a foe successfully attacks you with a held melee weapon, as an immediate action you may make a CMB check against the foe. You gain a +4 bonus to your CMB check against piercing weapons and take a -4 penalty against bludgeoning weapons. On a successful check, the weapon is stuck in your dead flesh, and cannot be used until it is freed. Freeing a weapon requires its wielder taking a standard action to make a Strength check (DC 10 + 1/2 your HD + your Str modifier), or a successful CMB check against your CMD. You may use this ability once per day, plus once per day for every 4 HD you possess." compset="Feat" summary="Your animate corpse often catches on weapons stuck in it." uniqueness="useronce">
+    <comment>From SGG - 7 Feats for the Undead</comment>
+    <usesource source="srcAoW"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="StandardDC" tag="aSTR"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Usage" tag="Day"/>
+    <eval phase="PostAttr" priority="5000">field[trkMax].value += 1 + round(#totallevelcount[]/4,0,-1)</eval>
+    <exprreq message="Must be corporeal."><![CDATA[#hassubtype[stIncorpor] <> 1]]></exprreq>
+    <exprreq message="Must have 3 HD."><![CDATA[#totallevelcount[] >= 3]]></exprreq>
+    <exprreq message="Must be undead."><![CDATA[#hastype[tpUndead] <> 0]]></exprreq>
+    </thing>
+  <thing id="fS2ShadMin" name="Shadow Minion" description="You can send your shadow out to do your bidding.\n\n{b}Prerequisite:{/b} 7 HD, undead type, Cha 13.\n\n{b}Benefit:{/b} As a standard action,  you can detach your shadow and have it act as your loyal agent. Your shadow acts as a shadow (the undead creature) totally loyal to you, with HD equal to the level of the cohort you would receive if you had the Leadership feat (see below and PFRPG Core Rulebook, p.129). Your shadow can reattach itself to you as a swift action, and is immune to all damage and all effects while acting as your normal shadow. It heals itself of hp equal to your HD for every 24 hours it remains attached to you. If your shadow is destroyed, you have no shadow for 30 days, after which it returns and can once again be sent out.\n\nLeadership score: total levels &amp; HD + Cha modifier\nScore --&gt; Cohort level\n2 --&gt; 1\n3 --&gt; 2\n4-5 --&gt; 3\n6 --&gt; 4\n7-8 --&gt; 5\n9 --&gt; 6\n10-11 --&gt; 7\n12 --&gt; 8\n13 --&gt; 9\n14-15 --&gt; 10\n16 --&gt; 11\n17-18 --&gt; 12\n19 --&gt; 13\n20 --&gt; 14\n21-22 --&gt; 15\n23 --&gt; 16\n24+ --&gt; 17" compset="Feat" summary="You can send your shadow out to do your bidding." uniqueness="useronce">
+    <comment>From SGG - 7 Feats for the Undead</comment>
+    <usesource source="srcAoW"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Must have at least 7 HD."><![CDATA[#totallevelcount[] >= 7]]></exprreq>
+    <exprreq message="Charisma 13 required."><![CDATA[#attrvalue[aCHA] >= 13]]></exprreq>
+    <exprreq message="Must be undead."><![CDATA[#hastype[tpUndead] <> 0]]></exprreq>
+    </thing>
+  <thing id="fS2MistWlk" name="Mist Walk" description="You can often get ahead of your prey, even if you always seem to be moving slowly.\n\n{b}Prerequisites:{/b} 12 HD, undead type, incorporeal or gaseous form.\n\n{b}Benefit:{/b} You gain the ability to travel between darkness and shadow as if by means of a {i}dimension door{/i} spell. The limitation is that the magical transport must begin and end in an area with no more than dim light. You can teleport up to a total of twice your movement rate as a standard action, or up to four times your movement rate as a full round action." compset="Feat" summary="You can often get ahead of your prey, even if you always seem to be moving slowly." uniqueness="useronce">
+    <comment>From SGG - 7 Feats for the Undead</comment>
+    <usesource source="srcAoW"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Movement"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="SpInfo" tag="spDimeDoo4"/>
+    <exprreq message="Must be undead."><![CDATA[#hastype[tpUndead] <> 0]]></exprreq>
+    <exprreq message="Must have at least 12 HD."><![CDATA[#totallevelcount[] >= 12]]></exprreq>
+    <exprreq message="Must be incorporeal or gaseous."><![CDATA[#hassubtype[stIncorpor] <> 0]]></exprreq>
+    </thing>
+  <thing id="tmS2FavKyu" name="Favored Spawn of Kyuss" description="&quot;Favored Spawn of Kyuss&quot; (known simply as the &quot;favored&quot; to cultists of Kyuss) is an inherited template that can be added to any living, corporeal creature. A favored spawn uses all the base creature&apos;s statistics and special abilities except as noted here.\n\n{b}Special Qualities:{/b} A favored spawn retains all the special qualities of the base creature and gains the following.\n{b}Damage Reduction (Ex):{/b} A favored spawn of Kyuss gains damage reduction 5/silver. If the favored spawn has 10 or more Hit Dice, this increases to damage reduction 10/silver.\n{b}Fast Healing (Ex):{/b} A favored spawn of Kyuss has fast healing 5.\n{b}Turn Resistance (Ex):{/b} A favored spawn of Kyuss has channel resistance +3.\n{b}Abilities:{/b} Increase from the base creature as follows: Str +4, Int +2, Wis +2, Cha +2. Favored spawn are undead and as such do not have a Constitution score.\n{b}Feats:{/b} A favored spawn of Kyuss gains Improved Unarmed Strike as a bonus feat.\n{b}Challenge Rating:{/b} +2 (for creatures with 9 HD or less) or +3 (for creatures with 10 HD or more).\n{b}Alignment:{/b} Always chaotic evil." compset="Template" uniqueness="unique">
+    <fieldval field="tmSTR" value="4"/>
+    <fieldval field="tmINT" value="2"/>
+    <fieldval field="tmWIS" value="2"/>
+    <fieldval field="tmCHA" value="2"/>
+    <arrayval field="tmCRArray" index="0" value="2"/>
+    <arrayval field="tmCRArray" index="9" value="3"/>
+    <usesource source="srcAoW"/>
+    <tag group="AlgnReq" tag="ChaotEvil"/>
+    <tag group="TemplHelp" tag="Inherited"/>
+    <tag group="TypeAndAug" tag="tpUndead"/>
+    <bootstrap thing="xChanRes">
+      <autotag group="Value" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="typUndead"></bootstrap>
+    <bootstrap thing="fImpUnarm">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="raS2GiKyus"></bootstrap>
+    <bootstrap thing="raS2FEkyus"></bootstrap>
+    <bootstrap thing="raS2DRkyus"></bootstrap>
+    <bootstrap thing="xFastHeal">
+      <autotag group="Value" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="stS2WormUn"></bootstrap>
+    <bootstrap thing="raS2CrKyus"></bootstrap>
+    <bootstrap thing="raS2FAkyus">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="cfgFSKyuss"></bootstrap>
+    <eval phase="PostLevel" priority="1000"><![CDATA[
+~ If we are over 9 hit dice give a special gift option
+If (herofield[tHitDice].value >= 10) Then
+   hero.childfound[cfgFSKyuss].field[cfgMax1].value += 1
+Endif]]></eval>
+    </thing>
+  <thing id="raS2FEkyus" name="Foul Embrace" description="By pressing its face against a helpless victim, the favored spawn of Kyuss can infest the victim with a rain of 2d6 worms. This ability is treated the same as the create spawn ability, but a victim slain by the resulting infestation rises as a favored spawn of Kyuss rather than a normal zombie." compset="RaceSpec" summary="Press your face against a helpless victim and infest them 2d6 worms.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="raS2DRkyus" name="Damage Reduction" description="A favored spawn of Kyuss gains damage reduction 5/silver. If the favored spawn has 10 or more Hit Dice, this increases to damage reduction 10/silver." compset="RaceSpec">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Defense"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+~ Set default DR to 5
+field[abValue].value += 5
+~ If 10HD or more increase by DR 5
+If (herofield[tHitDice].value >= 10) Then
+   field[abValue].value += 5
+Endif
+~ Apply the DR to the hero
+#applydr[xDamRdSil,field[abValue].value]]]></eval>
+    </thing>
+  <thing id="cfgFSKyuss" name="Favored Spawn of Kyuss" description="In addition to the previously described abilities, a favored spawn with 10 HD or more gains one of the following additional special attacks as a gift from Kyuss himself. Saving throws against these effects are against a DC of 10 + half the favored Spawn&apos;s Hit Dice + the favored spawn&apos;s Charisma modifier." compset="Configure" uniqueness="unique">
+    <fieldval field="shortname" value="Favored Spawn"/>
+    <fieldval field="cfgObject1" value="Gift From Kyuss"/>
+    </thing>
+  <thing id="rcS2InfeSk" name="Infested Skin" description="The favored spawn of Kyuss is so infested with worms that any creature that strikes it with an unarmed strike, natural weapon, or light weapon must make a Reflex save or a Kyuss worm is transferred to the attacker&apos;s body. Any creature that shares the same square as the favored spawn (such as might occur during a grapple, bull rush, or Acrobtics check) must make a Reflex save to avoid the same fate." compset="RaceCustom" summary="Close contact requires a Reflex save to prevent a worm transfering to the attacker." uniqueness="useronce">
+    <usesource source="srcAoW"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="AllowRCust" tag="cfgFSKyuss"/>
+    </thing>
+  <thing id="rcS2NoxBre" name="Noxious Breath" description="Once every 1d4 rounds, as a standard action, the favored spawn of Kyuss can exhale nauseating vapor from its mouth in a 15-foot cone. All creatures in this area must make a Fortitude save or be nauseated for 1d4 rounds." compset="RaceCustom" summary="Exhale nauseating vapor from your mouth in a 15-foot cone." uniqueness="useronce">
+    <usesource source="srcAoW"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="AllowRCust" tag="cfgFSKyuss"/>
+    </thing>
+  <thing id="rcS2WormBu" name="Wormburst" description="Once per day as a standard action, the favored spawn of Kyuss can expel a 10-foot-radius burst of worms from its body. All creatures in this area of effect must make a Reflex save or become infested by 1d6 Kyuss worms." compset="RaceCustom" summary="10ft radius burst of worms vs Reflex or become infested with 1d6 Kyuss worms." uniqueness="useronce">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="srcAoW"/>
+    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="AllowRCust" tag="cfgFSKyuss"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="spS2PatWo2" name="Path of Worms" description="This spell infuses your own perceptions with a shard of Kyuss&apos; power, granting you a sixth sense. Once during the spell&apos;s duration, you may choose to use its effect. This spell grants you a +6 insight bonus on any single attack roll, opposed ability or skill check, or saving throw. Alternately, you can apply the insight bonus to your AC against a single attack (even if flat-footed).\n\nActivating the effect is an immediate action. You must chose to use the {i}path of worms{/i} bonus either before you make the roll it is to modify or, when increasing your AC, before a roll is made to attack you. When the spell is used, living creatures within 20 feet of you are exposed to a glimpse of the writhing madness prophesied in the Age of Worms. For the merest second, they see within their minds the desolation and ever-increasing terror of what the world will one day become. These visions are so overpowering that all who experience them must make a Will saving throw or be stunned for 1 round. This discharge effect is a mind-affecting effect, and spell resistance applies." compset="Spell">
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sFocusDesc" value="A Kyuss worm hosted within your body."/>
+    <fieldval field="sRange" value="Personal"/>
+    <fieldval field="sDuration" value="1 hour/level or until discharged"/>
+    <usesource source="srcAoW"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpAdp"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpAlc"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpInq"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSum"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sSubschool" tag="Evil"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Divination"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sDuration" tag="Hour"/>
+    <tag group="sDuration" tag="UntilTrig"/>
+    <tag group="HasDeity" tag="deiS2Kyuss"/>
+    <tag group="sSave" tag="SeeText"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="SeeText"/>
+    </thing>
+  <thing id="spS2SotGC5" name="Servant of the Green Corruption" description="You imbue the affected creature with a small shard of Kyuss&apos; divine power. The affected creature gains a +4 insight bonus to attack rolls, armor class, and a +20 foot enhancement bonus to speed. Kyuss&apos; power never comes without a price, however, as the wormgod constantly seeks to bind mortals to his will and to bring about the long foretold Age of Worms. Because of Kyuss&apos; corrupting influence, the affected creature becomes more susceptible to the powers of Kyuss. The affected creature suffers a -10 penalty on all saving throws against spells that require a Kyuss worm as a component and against effects generated by creatures with the wormspawn subtype. A successful Will saving throw negates both the positive and negative effects of this spell." compset="Spell">
+    <fieldval field="sFocusDesc" value="A Kyuss worm hosted within your body."/>
+    <fieldval field="sTarget" value="One living creature"/>
+    <fieldval field="sDuration" value="1 minute/level"/>
+    <usesource source="srcAoW"/>
+    <tag group="HasDeity" tag="deiS2Kyuss"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sSubschool" tag="MindAffect"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="5"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpAdp"/>
+    <tag group="sClass" tag="cHelpAlc"/>
+    <tag group="sClass" tag="cHelpAPa"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    </thing>
+  <thing id="spS2WorWi3" name="The Worm Within" description="You create a Kyuss worm burrowing within the flesh of your foe. The worm makes its way through the host&apos;s body, dealing 1 point of damage per round for 1d4+1 rounds. At the end of that point, it reaches the brain. While the worm is inside a victim, any of the following spells can destroy it: {i}dispel evil, heal, remove curse,{/i} and {i}remove disease{/i}. A successful DC 20 Heal check extracts the worm and destroys it. Once the worm reaches the brain, it deals 1d2 points of Intelligence damage per round until either it is killed or it slays its host. A Small, Medium, or Large creature rises as a spawn of Kyuss 1d6+4 rounds later. A Tiny or smaller creature quickly putrefies, and a Huge or larger creature becomes a normal zombie of the appropriate size. This spell grants no control over undead creatures created in this manner.\n\nA successful Fortitude saving throw negates the effects of this spell." compset="Spell">
+    <fieldval field="sFocusDesc" value="A Kyuss worm hosted within your body."/>
+    <fieldval field="sTarget" value="One living creature"/>
+    <fieldval field="sDuration" value="1 minute/level"/>
+    <usesource source="srcAoW"/>
+    <tag group="HasDeity" tag="deiS2Kyuss"/>
+    <tag group="sSchool" tag="Necromancy"/>
+    <tag group="sDescript" tag="Evil"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sRange" tag="Close"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpAdp"/>
+    <tag group="sClass" tag="cHelpAlc"/>
+    <tag group="sClass" tag="cHelpAPa"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpMag"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sComp" tag="F"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sDuration" tag="Instant"/>
+    </thing>
+  <thing id="rS2Avolaki" name="Avolakia" description="The avolakia is a nauseating creature that combines the worst aspects of a worm, an octopus, and an insect. It has exceptional intelligence and is incredibly wise and glib. Avolakias are experts at infiltrating humanoid societies for a variety of nefarious purposes.\n\nAn avolakia stands 10 feet tall. Its wormlike body is pallid and gray, shimmering with a pale yellow slime. The creature supports itself and moves about on a set of six suckered tentacles, each of which is tipped with a multifaceted yellow eye. Its &quot;head&quot; consists of a fleshy sheath that houses a set of three cruelly hooked mandibles. Eight long, spidery arms tipped with tiny insectoid claws that almost look like human hands protrude from a set of ridges about halfway up the creature&apos;s body. An avolakia reeks of mold and decay.\n\nAlthough they can digest dead or living flesh, avolakias find both disgusting and resort to such sustenance only under dire circumstances. They prefer to eat undead flesh - &quot;fresh&quot; off a zombie&apos;s flank is best.\n\nAvolakias speak their own language (a guttural, slobbering tongue). Many of them also understand Undercommon and other languages, though they do not have the vocal apparatus to speak them. With its {i}polymorph self{/i} spell-like ability, however, an avolakia can assume a form that is capable of speaking any language it desires. This ability also enhances its disguise capabilities and aids it in laying ambushes for unwary opponents." compset="Race">
+    <fieldval field="rHitDice" value="10"/>
+    <fieldval field="rHPStart" value="45"/>
+    <fieldval field="rSTR" value="9"/>
+    <fieldval field="rDEX" value="6"/>
+    <fieldval field="rCON" value="7"/>
+    <fieldval field="rINT" value="6"/>
+    <fieldval field="rWIS" value="11"/>
+    <fieldval field="rCHA" value="12"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rCR" value="10"/>
+    <fieldval field="rSpCastLev" value="14"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rEnviron" value="Underground"/>
+    <fieldval field="rOrgan" value="Solitary, pair, band (3-8), or tribe (4-24 avolakias plus 3-30 zombies, 2-12 wights, and 1-6 mummies)"/>
+    <fieldval field="rTreasure" value="Standard coins, standard goods, double items"/>
+    <fieldval field="rDescript" value="This creature stands 10 feet tall. Its wormlike body is pallid and gray, shimmering with a pale yellow slime. The creature supports itself and moves about on a set of six suckered tentacles, each of which is tipped with a multifaceted yellow eye. Its &amp;quot;head&amp;quot; consists of a fleshy sheath that houses a set of three cruelly hooked mandibles. Eight long, spidery arms tipped with tiny insectoid claws that almost look like human hands protrude from a set of ridges about halfway up the creature"/>
+    <usesource source="srcAoW"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="HasType" tag="tpAberr"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <bootstrap thing="wClaw">
+      <autotag group="Value" tag="8"/>
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    <bootstrap thing="raS2DefAur"></bootstrap>
+    <bootstrap thing="fComCast">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fComRef">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fDodge">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fQuickSpel">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="raPoiWIS">
+      <assignval field="abValue" value="3"/>
+      <assignval field="abValue2" value="1"/>
+      <assignval field="abDuration" value="6"/>
+      </bootstrap>
+    <bootstrap thing="spCausFea1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spChilTou1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spDeteMag0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spDisrUnd0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spGentRep2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spGhouTou2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spHaltUnd3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spMageHan0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spPolymor5">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spReadMag0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spSpecHan2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spAnimDea3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spCreaUnd4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spEnervat4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spVampTou3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="fAbilFoc">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="stS2WormAb"></bootstrap>
+    <bootstrap thing="raS2AvoSug"></bootstrap>
+    <bootstrap thing="lUndercomm"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="2d6_104"/>
+      <autotag group="Value" tag="1"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="4000">~ Pre-levels/4000
+#skillinnate[skBluff]    += 10
+#skillinnate[skDiplo]    += 10
+#skillinnate[skIntim]    += 10
+#skillinnate[skSenseMot] += 10
+#skillinnate[skSpellcr]  += 10
+#skillinnate[skKnowArca] += 10
+#skillinnate[skKnowRel]  += 10</eval>
+    </thing>
+  <thing id="raS2AvoSug" name="Suggestion" description="When in humanoid form, an avolakia has a melodious and hypnotic voice. By speaking soothingly to any one creature in range that understands its spoken words, the avolakia can create an effect identical to that of a quickened {i}suggestion{/i} spell (caster level 10th; Will save). An opponent in eye contact with the creature while it makes its suggestion takes a -2 penalty on the saving throw. The avolakia can use this ability a number of times per day equal to its Charisma modifier (usually six times per day)." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ChargeAttr" tag="aCHA"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="SpInfo" tag="spSuggest3"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <eval phase="PostAttr" priority="25000">~ DC is 13 + Charisma modifier
+field[abDC].value += 13 + #attrmod[aCHA]</eval>
+    </thing>
+  <thing id="raS2DefAur" name="Defensive Aura" description="An avolakia has a +6 deflection bonus to Armor Class. This ability is always in effect." compset="RaceSpec" summary="You gain a +6 deflection bonus to Armor Class.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="SpellLike"/>
+    <tag group="SpecType" tag="Defense"/>
+    <eval phase="PostLevel" priority="10000">#applybonus[tACDeflect,hero.child[ArmorClass],6]</eval>
+    </thing>
+  <thing id="rS2SpWeave" name="Spell Weaver" description="These creatures are enigmatic in the extreme. Outside of the fact that they covet magic items, little is known about them. Most encounters with spell weavers occur when they attempt to purloin magic items from other creatures.{br}{br}A spell weaver is a scrawny, hairless, six-armed creaure about 5 feet tall. It is humanoid in shape, with a vaguely birdlike face and large, dark eyes. A long neck allows it to twist and turn its face in any direction.{br}{br}Usually only one spell weaver is encountered at a time, but occasionally these monsters organize themselves into a raiding party to seize a particular item. Such a raid is extremely well planned and is usually the result of months of investigation conducted through a combination of scrying and simple spying - an activity made easier by the spell weaver&apos;s {i}invisibility{/i} power.{br}{br}Spell weavers do not communicate with anyone except their own kind.{br}{br}This means, of course, that no one has ever had a meaningful conversation with a spell weaver, so nothing is known about the background, motivations, or society of these creatures other than what their actions reveal. Occasionally, for reasons that no one else understands, a spell weaver leaves a written note where a humanoid can find it.{br}{br}Such messages are invariably rambling and often completely incoherent, so they usually raise more questions than they answer.{br}{br}Spell weavers do not speak, but they can communicate with one another telepathically across a distance of 1,000 miles." compset="Race">
+    <fieldval field="rAC" value="5"/>
+    <fieldval field="rSTR" value="-1"/>
+    <fieldval field="rDEX" value="6"/>
+    <fieldval field="rCON" value="-1"/>
+    <fieldval field="rINT" value="8"/>
+    <fieldval field="rWIS" value="7"/>
+    <fieldval field="rCHA" value="6"/>
+    <usesource source="srcAoW"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="HasType" tag="tpMonHuman"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <bootstrap thing="spDeteMag0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spInvisib2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spPlanShi5">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="raS2ImmMin"></bootstrap>
+    <bootstrap thing="raS2ShldMi"></bootstrap>
+    <bootstrap thing="raS2SpWeav"></bootstrap>
+    <bootstrap thing="raS2Telep1"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d3_3"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="spSeeInv2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Constant"/>
+      </bootstrap>
+    <eval phase="PostLevel" priority="10000">~ Set Sp caster level equal to Sorcerer level +2
+field[rSpCastLev].value += hero.tagcount[Classes.Sorcerer] + 2</eval>
+    <eval phase="First" priority="500" index="2">
+~ Adjust sorcerer CL and level by 2
+hero.childfound[cHelpSor].field[cMagicLev].value += 2
+~hero.childfound[cHelpSor].field[cCasterLev].value += 2</eval>
+    </thing>
+  <thing id="raS2ImmMin" name="Immunity to Mind-Affecting Effects" description="Because its alien mind functions differently than those of other creatures, a spell weaver is immune to all mind-affecting spells and effects." compset="RaceSpec" summary="Immune to all mind-affecting spells and effects.">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Immune"/>
+    </thing>
+  <thing id="raS2ShldMi" name="Shielded Mind" description="Attempts by creatures of other races to communicate telepathically with a spell weaver, or to read its mind, always fail. A creature making such an attempt must succeed at a Will save (DC 17) or be affected as if by a {i}confusion{/i} spell (caster level equals spell weaver&apos;s effective sorcerer level) for 1d6 days. This effect can be dispelled or removed with a {i}heal{/i} effect." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Defense"/>
+    </thing>
+  <thing id="raS2SpWeav" name="Spell Weaving" description="These monsters are infamous for their ability to cast more than one spell at a time. Casting a spell occupies a number of the spell weaver&apos;s arms equal to the spell&apos;s level (maximum 6th). A spell weaver can cast more than one spell simultaneously, as long as the sum of the spell levels is six or less. It could, for example, cast one 6th-level spell, one 4th-level and one 2nd level spell, one 3rd-level and three 1st-level spells, six 1st level spells, or any combination of spells whose levels add up to six or less. (A single 0-level spell occupies one arm.)" compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="SpecType" tag="Attack"/>
+    </thing>
+  <thing id="raS2Telep1" name="Telepathy" description="Spell weavers can communicate with each other telepathically at a range of up to 1,000 miles." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="SpecType" tag="Language"/>
+    </thing>
+  </document>

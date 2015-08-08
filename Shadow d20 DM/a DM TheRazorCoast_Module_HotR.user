@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history>June 12, 2013 - Jai Erwin
+- Removed pieces that belong in the Core Files, and changed source markas requested.</info_history>
+    </fileinfo>
+  <thing id="rFGDunkleo" name="Dunkleosteus" description="A dunkleosteus is a massive fish with a bony head, armor plating, and a beaklike maw capable of creating a vortex that siphons in its prey. Despite growing to over 30 feet in length and weighing 8,000 pounds, dunkleosteuses are agile swimmers." compset="Race">
+    <fieldval field="rHitDice" value="10"/>
+    <fieldval field="rHPStart" value="45"/>
+    <fieldval field="rSTR" value="20"/>
+    <fieldval field="rDEX" value="4"/>
+    <fieldval field="rCON" value="7"/>
+    <fieldval field="rINT" value="-9"/>
+    <fieldval field="rWIS" value="2"/>
+    <fieldval field="rCHA" value="-4"/>
+    <fieldval field="rSpeed" value="0"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rAC" value="9"/>
+    <fieldval field="rCR" value="6"/>
+    <fieldval field="rDescript" value="A gigantic, prehistoric fish cuts through the water, its head like a snapping turtle, complete with sharp, toothlike plates."/>
+    <fieldval field="rEnviron" value="any ocean"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rSpace" value="15"/>
+    <fieldval field="rReach" value="15"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="SlotSet" tag="selMISPisc"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="RaceSize" tag="Huge2"/>
+    <bootstrap thing="fImpCrit">
+      <autotag group="Target" tag="wBite"/>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="3d8_306"/>
+      </bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="raSwallow">
+      <assignval field="livename" value="Swallow Whole (1d10 acid"/>
+      </bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skSwim"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="raFGDnkShB"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <eval phase="Final" index="2">hero.child[raSwallow].field[abValue].value -= 4
+hero.child[raSwallow].field[abValue2].value -= 1</eval>
+    <eval phase="First">#skillinnate[skPercep] += 4
+#skillinnate[skSwim] += 6
+
+#racialbonus[skPercep] += 4</eval>
+    </thing>
+  <thing id="rFGKillSea" name="Mimic, Killer Sea Chest" compset="Race">
+    <fieldval field="rHitDice" value="7"/>
+    <fieldval field="rHPStart" value="31"/>
+    <fieldval field="rSTR" value="9"/>
+    <fieldval field="rDEX" value="2"/>
+    <fieldval field="rCON" value="7"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rSpeed" value="10"/>
+    <fieldval field="rFeat" value="-4"/>
+    <fieldval field="rAC" value="5"/>
+    <fieldval field="rCR" value="5"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Helper" tag="Snaky"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="HasType" tag="tpAberr"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ClassSkill" tag="skDisguise"/>
+    <tag group="ClassSkill" tag="skKnowDun"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="RaceType" tag="NPC"/>
+    <bootstrap thing="fLightRef"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wSlam"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="stShapecha"></bootstrap>
+    <bootstrap thing="wConstrict">
+      <autotag group="wMain" tag="1d8_6"/>
+      </bootstrap>
+    <bootstrap thing="raMimAdhes"></bootstrap>
+    <bootstrap thing="raMimMimiO"></bootstrap>
+    <bootstrap thing="xImmAcid"></bootstrap>
+    <bootstrap thing="xFastHeal">
+      <autotag group="Value" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="skKnowDun"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d8_6"/>
+      <assignval field="wDamExtra" value=" plus adhesive"/>
+      </bootstrap>
+    <eval phase="First">#skillinnate[skClimb] += 7
+#skillinnate[skDisguise] += 7
+#skillinnate[skKnowDun] += 7
+#skillinnate[skPercep] += 7</eval>
+    </thing>
+  <thing id="rFGJadeBat" name="Jade Bat" compset="Race">
+    <fieldval field="rHitDice" value="3"/>
+    <fieldval field="rHPStart" value="16"/>
+    <fieldval field="rDEX" value="4"/>
+    <fieldval field="rINT" value="1"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="1"/>
+    <fieldval field="rAC" value="2"/>
+    <fieldval field="rCR" value="2"/>
+    <fieldval field="rFeat" value="-2"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="SlotSet" tag="selMISAvia"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="HasType" tag="tpConst"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="RaceSize" tag="Tiny12"/>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d3_3"/>
+      <assignval field="wDamExtra" value=" plus 1d6 electricity"/>
+      </bootstrap>
+    <bootstrap thing="fImpInit">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fLightRef">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fWepFin"></bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Perfect"/>
+      <autotag group="Value" tag="50"/>
+      </bootstrap>
+    <bootstrap thing="stClockwor"></bootstrap>
+    <bootstrap thing="fAlertness"></bootstrap>
+    <bootstrap thing="xDamRdAdam">
+      <autotag group="Value" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="xDamRsCold">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xDamRsFire">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="raFGJBAcid"></bootstrap>
+    <bootstrap thing="raFGJBIllR"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <eval phase="First">#skillinnate[skFly] += 2
+#skillinnate[skPercep] += 2
+#skillinnate[skStealth] += 2</eval>
+    </thing>
+  <thing id="rFGBlkLchS" name="Black Leech Swarm" compset="Race">
+    <fieldval field="rHitDice" value="6"/>
+    <fieldval field="rHPStart" value="27"/>
+    <fieldval field="rSTR" value="-9"/>
+    <fieldval field="rDEX" value="8"/>
+    <fieldval field="rCON" value="5"/>
+    <fieldval field="rCHA" value="-8"/>
+    <fieldval field="rSpeed" value="5"/>
+    <fieldval field="rCR" value="4"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="0"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="HasType" tag="tpVermin"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Helper" tag="Snaky"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="RaceSize" tag="Dimin13"/>
+    <tag group="NoScore" tag="aINT"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <bootstrap thing="raGiaSuscS"></bootstrap>
+    <bootstrap thing="raLeeBlooD"></bootstrap>
+    <bootstrap thing="rBlindSi">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="stSwarm"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="xImmMind"></bootstrap>
+    <bootstrap thing="xImmWepDam"></bootstrap>
+    <bootstrap thing="raFGBLCurs"></bootstrap>
+    <bootstrap thing="typSwarm"></bootstrap>
+    <bootstrap thing="raDrPoiDEX">
+      <assignval field="abValue" value="4"/>
+      <assignval field="abDuration" value="2"/>
+      </bootstrap>
+    <bootstrap thing="raSmAnimal"></bootstrap>
+    <eval phase="Final">perform hero.child[raDarkVis].assign[Helper.SpcDisable]
+perform hero.child[raDarkVis].assign[Hide.Special]</eval>
+    <eval phase="PreLevel" priority="4000" index="2"><![CDATA[#racialsituational[hero.child[skStealth],"+8 in the black liquid of the leech tanks", field[name].text]]]></eval>
+    </thing>
+  <thing id="rFGGamInis" name="Gam Inisha" compset="Race">
+    <fieldval field="rHitDice" value="13"/>
+    <fieldval field="rHPStart" value="108"/>
+    <fieldval field="rSTR" value="25"/>
+    <fieldval field="rCON" value="13"/>
+    <fieldval field="rINT" value="2"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="2"/>
+    <fieldval field="rAC" value="19"/>
+    <fieldval field="rCR" value="13"/>
+    <fieldval field="rFeat" value="-7"/>
+    <fieldval field="rLangBonus" value="-1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="HasType" tag="tpDragon"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Gargant3"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="xDamRdMag">
+      <autotag group="Value" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="xSplRs">
+      <autotag group="Value" tag="23"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="3d8_306"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="Value" tag="2"/>
+      <autotag group="wMain" tag="2d8_305"/>
+      </bootstrap>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="fFuriousFo">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="lDraconic"></bootstrap>
+    <bootstrap thing="fVitStr"></bootstrap>
+    <bootstrap thing="raDraBreaW"></bootstrap>
+    <bootstrap thing="raDraCapsi"></bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wClaw"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="4000"><![CDATA[#skillinnate[skDiplo] += 13
+          #skillinnate[skIntim] += 13
+          #skillinnate[skPercep] += 13
+          #skillinnate[skSenseMot] += 13
+          #skillinnate[skStealth] += 13
+          #skillinnate[skSurvival] += 13
+          #skillinnate[skSwim] += 13
+    
+    #racialsituational[hero.child[skStealth],"+8 in water", field[name].text]]]></eval>
+    </thing>
+  <thing id="rFGHawani" name="Hawani" description="The oppressive yoke of a qlippoth&apos;s mental domination transforms humanoids into monstrous creatures devoid of inhibition and possessing only the weakest self-determination. In simplest terms, a hawani is an impulsive being of pure violence and id. Hawanis are created when a qlippoth deals enough Wisdom damage to reduce a creature&apos;s Wisdom score to 0 or lower. When the victim regains consciousness, it rises as a monstrous thrall under the qlippoth&apos;s complete domination. Unfortunately, they remain humanoid enough to breed.\n\nHawanis typically give birth to broods of three to five young at a time, and they reproduce at a remarkable rate, giving birth to two or even three broods per year. Hawanis remain fertile until they die. Their offspring mature rapidly, reaching adulthood in six years, though few survive to that age. The hawanis&apos; dark master feasts on the life force of the living and the very young its hawanis produce give it the most of the energy it needs.\n\nHawanis lack any societal structure or political hierarchy other than performing their master&apos;s bidding. In the absence of a qlippoth master, the hawanis devolve into beasts of mindless rage with a tendency to tear each other apart and, oddly, lose their ability to reproduce. \n\nThe hawanis attack with unbridled ferocity, inflicting as much damage as possible with their claw and bite attacks. They fight to the death, as their own demise feeds their insidious master." compset="Race">
+    <fieldval field="rHitDice" value="4"/>
+    <fieldval field="rHPStart" value="22"/>
+    <fieldval field="rSTR" value="6"/>
+    <fieldval field="rDEX" value="5"/>
+    <fieldval field="rCON" value="5"/>
+    <fieldval field="rINT" value="-5"/>
+    <fieldval field="rCHA" value="2"/>
+    <fieldval field="rFeat" value="-2"/>
+    <fieldval field="rAC" value="4"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rDescript" value="This gaunt, feral humanoid has blood red eyes, leathery skin and wicked claws. It moves with a simian gait and has a mouth full of oversized, pointed teeth. Despite its monstrous appearance, it is not unimaginable that the creature may have been human at one time."/>
+    <fieldval field="rEnviron" value="any (usually Dolentla Island)"/>
+    <fieldval field="rOrgan" value="solitary, gang (2-5), tribe or (10-40)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="HasType" tag="tpMonHuman"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      <assignval field="wDamExtra" value=" plus Hawanapoki&apos;s dark dream"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="xTelepathy">
+      <autotag group="Value" tag="100"/>
+      <assignval field="livename" value="Telepathy (qlippoths only)"/>
+      </bootstrap>
+    <bootstrap thing="raFGHawBRa"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="raFGHaDkDr"></bootstrap>
+    <bootstrap thing="raFGHawThr"></bootstrap>
+    <bootstrap thing="lAbyssal"></bootstrap>
+    <eval phase="First">#skillinnate[skIntim] += 1
+    #skillinnate[skPercep] += 1
+    #skillinnate[skStealth] += 1
+    #skillinnate[skSurvival] += 1</eval>
+    </thing>
+  <thing id="tmFGBkLchI" name="Black Leech Inhabited" description="Those implanted with a black leech gain a +2 enhancement bonus to his Constitution score and the Toughness feat, and the inability to resist any spell cast upon him by the Engineer." compset="Template" uniqueness="unique">
+    <fieldval field="tmCON" value="2"/>
+    <usesource source="CampRazorC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="TemplHelp" tag="Acquired"/>
+    <bootstrap thing="raFGBlkLee"></bootstrap>
+    <bootstrap thing="fToughness">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    </thing>
+  </document>

@@ -1,0 +1,2420 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history>June 12, 2013 - Jai Erwin
+- Removed pieces that belong in the Core Files, and changed source markas requested.</info_history>
+    </fileinfo>
+  <thing id="rFGOmCyclo" name="Cyclops, Omargwato" description="Among the ruins of the Omargwato - an ancient civilization of jungle giants devoted to bloodthirsty gods - their shrunken descendants lurk. Malformed, primitive barbarians of tremendous size and but a single eye, they believe it a sacred charge to watch over the holy ruins of their forebears, to re-reenacting the ancient rituals whenever possible, and bide until their more massive Omargwato ancestors return." compset="Race">
+    <fieldval field="rHitDice" value="9"/>
+    <fieldval field="rHPStart" value="40"/>
+    <fieldval field="rSTR" value="23"/>
+    <fieldval field="rDEX" value="3"/>
+    <fieldval field="rCON" value="11"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="-2"/>
+    <fieldval field="rSpeed" value="40"/>
+    <fieldval field="rAC" value="10"/>
+    <fieldval field="rSpCastLev" value="9"/>
+    <fieldval field="rEnviron" value="tropical jungles"/>
+    <fieldval field="rOrgan" value="solitary, pair, hunting party (3 - 6), tribe (20 - 50)"/>
+    <fieldval field="rTreasure" value="standard"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rDescript" value="The lumbering brute stands at least 18 feet in height, its brown skin seamlessly blending with the tree bark. Its most distinctive feature is the single, massive eye in the middle of its face. It wears poorly cured and ill-fitting leather armor and wields a massive longspear, its point made from sharpened obsidian."/>
+    <fieldval field="rCR" value="9"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpHumanoid"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Huge2"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="raFGImpSig"></bootstrap>
+    <bootstrap thing="raFGCyJuHu"></bootstrap>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="fIntProw"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wLongspear"/>
+      </bootstrap>
+    <bootstrap thing="stGiant"></bootstrap>
+    <bootstrap thing="lCyclops"></bootstrap>
+    <bootstrap thing="fArmLight"></bootstrap>
+    <bootstrap thing="skCrafOth">
+      <assignval field="skUserName" value="Primitive Traps"/>
+      <assignval field="Bonus" value="4"/>
+      <assignval field="skInnate" value="2"/>
+      </bootstrap>
+    <bootstrap thing="spDarknes2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="raFGBruThr"></bootstrap>
+    <eval phase="PreLevel" priority="4000">~ Racial Bonus
+#skillbonus[skStealth]   += 4
+~ Innate skill ranks spent
+#skillinnate[skPercep]   += 5
+#skillinnate[skStealth]  += 5
+#skillinnate[skSurvival] += 4</eval>
+    </thing>
+  <thing id="rFGKarikan" name="Karikanti" description="Gatorfolk are rumored to be the cursed descendants of a once glorious Tulita tribe that ruled from the Blacksink Marsh. These twisted monsters are fiercely territorial and defend their homeland savagely against any intrusion. Tribal by nature, they respect strength above all else and may be persuaded to ally themselves with particularly powerful foes whom they deem worthy allies.{br}{br}Gatorfolk stand six feet tall on average, are broad shouldered and heavily muscled, and weigh about 250 pounds. Gatorfolk speak Aquan, though many among them have had contact with other humanoids and speak dialects of Tulita.{br}{br}Gatorfolk are dangerous opponents, especially in the waters of their homeland. They are skilled hunters and often ambush their prey. They make liberal use of their drowning curse ability to incapacitate their enemies, dragging them half-drowned from the water afterward. Fanatical in their defense of their territory, gatorfolk often fight to the death and their death throes usually claim the lives of their slayers." compset="Race">
+    <fieldval field="rCR" value="4"/>
+    <fieldval field="rHitDice" value="8"/>
+    <fieldval field="rHPStart" value="45"/>
+    <fieldval field="rSTR" value="8"/>
+    <fieldval field="rDEX" value="4"/>
+    <fieldval field="rCON" value="6"/>
+    <fieldval field="rINT" value="-2"/>
+    <fieldval field="rWIS" value="6"/>
+    <fieldval field="rCHA" value="5"/>
+    <fieldval field="rFeat" value="-4"/>
+    <fieldval field="rEnviron" value="Warm Marsh, Aquatic, or Underground"/>
+    <fieldval field="rOrgan" value="Solitary, band (5-10) or tribe (20-100)"/>
+    <fieldval field="rTreasure" value="Standard"/>
+    <fieldval field="rAC" value="4"/>
+    <fieldval field="rDescript" value="This lumbering scaled horror has the head of a gator atop its humanoid body. A long heavy tail trails from its lower torso, and its eyes glow an unnatural dark crimson."/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpMonHuman"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wSlam"/>
+      </bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="raFGKarDeT"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="wTailSlap">
+      <autotag group="wMain" tag="1d8_6"/>
+      </bootstrap>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="raFGKarDrC"></bootstrap>
+    <bootstrap thing="raFGKarMaE"></bootstrap>
+    <bootstrap thing="raFGKarMaH"></bootstrap>
+    <bootstrap thing="raFGKarSmL"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="raAmphib"></bootstrap>
+    <bootstrap thing="fMultiAtt"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <eval phase="PreLevel" priority="4000"><![CDATA[#skillinnate[skAcrobat]  += 3
+#skillinnate[skPercep]   += 7
+#skillinnate[skSurvival] += 7
+#skillinnate[skStealth]  += 7
+
+#racialsituational[hero.child[skStealth],"+8 in marshes",field[name].text]
+#racialsituational[hero.child[skSurvival],"+8 in marshes",field[name].text]]]></eval>
+    </thing>
+  <thing id="rFGSharkin" name="Sharkin" description="The surface races only recently encountered this mutation, which appeared among the independent sahuagin within the last few decades. Less than one in hundred sea devils is born with this mien. Sailors of the Razor Coast know them as &apos;sharkin&apos; or &apos;soggies&apos; (the latter may be a corruption of the word &apos;sahuagin&apos; or merely descriptive).\n\nSharkin resemble human men and women, save their skin is dull grey and sandpapery like that of a shark. The rough texture results from countless tiny denticles that reduce water resistance when the sharkin swims. \n\nBoth genders of sharkin possess square, masculine features, and their wide jaws hold a surprising number of pointed teeth. Sharkin&apos;s hands and feet are webbed, but they lack the claws of typical sahuagin. Though physically and mentally weaker than their parent race, the more human-looking sharkin can survive out of water indefinitely, allowing them to more easily integrate with surface races." compset="Race">
+    <fieldval field="rSTR" value="2"/>
+    <fieldval field="rWIS" value="2"/>
+    <fieldval field="rCHA" value="-2"/>
+    <fieldval field="rDescript" value="Sharkin resemble human men and women, save their skin is dull grey and sandpapery like that of a shark. "/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Language" tag="lAquan"/>
+    <tag group="Language" tag="lDraconic"/>
+    <tag group="Language" tag="lElven"/>
+    <tag group="Language" tag="lInfernal"/>
+    <tag group="Language" tag="lOrc"/>
+    <tag group="Language" tag="lFGTulita"/>
+    <tag group="HasType" tag="tpHumanoid"/>
+    <tag group="RaceType" tag="Extra"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lSahaugin"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="raFGAquAff"></bootstrap>
+    <bootstrap thing="raFGRouSki"></bootstrap>
+    <bootstrap thing="raAmphib"></bootstrap>
+    <bootstrap thing="raDarkVis">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="lCommonND"></bootstrap>
+    </thing>
+  <thing id="rFGAchimay" name="Achimayen" description="Achimayen are horrific aberrations spawned by supernatural disease and an accursed vengeance wreaked on some mortal agent. The creatures grow in the boils of a cursed host, who can produce as many as 3 achimayen a day, though the total number of achimayen in existence at any one time can&apos;t exceed the host&apos;s Hit Dice. The achimayen serve whomever their host wronged, though they also seek to spread chaos and misery where they can. If the brood&apos;s host is destroyed, all members of the brood also die." compset="Race">
+    <fieldval field="rHitDice" value="10"/>
+    <fieldval field="rHPStart" value="45"/>
+    <fieldval field="rSTR" value="4"/>
+    <fieldval field="rDEX" value="11"/>
+    <fieldval field="rCON" value="8"/>
+    <fieldval field="rINT" value="6"/>
+    <fieldval field="rWIS" value="5"/>
+    <fieldval field="rCHA" value="7"/>
+    <fieldval field="rSpeed" value="40"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rAC" value="5"/>
+    <fieldval field="rCR" value="8"/>
+    <fieldval field="rDescript" value="This twisted, distorted creature is about the size of a halfling. It has the features of an infant, with long, gangly limbs extending from a tiny body, twisted around a distended belly. Its mouth is full of short, jagged teeth, and its skin is covered in oozing boils."/>
+    <fieldval field="rEnviron" value="any"/>
+    <fieldval field="rOrgan" value="solitary, twins (2), or brood (5-20)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpAberr"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    <bootstrap thing="skKnowArca"></bootstrap>
+    <bootstrap thing="raFGPoiAch">
+      <autotag group="Target" tag="wBite"/>
+      <assignval field="livename" value="Bite - injury"/>
+      <assignval field="abValue" value="3"/>
+      </bootstrap>
+    <bootstrap thing="xClimb">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="fAlertness"></bootstrap>
+    <bootstrap thing="fDodge"></bootstrap>
+    <bootstrap thing="fStealthy"></bootstrap>
+    <bootstrap thing="fWepFin"></bootstrap>
+    <bootstrap thing="fLightRef"></bootstrap>
+    <bootstrap thing="raFGAchMCr"></bootstrap>
+    <bootstrap thing="xImmDis"></bootstrap>
+    <bootstrap thing="raEvasion"></bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="lAbyssal"></bootstrap>
+    <eval phase="First">#skillinnate[skAcrobat] += 6
+#skillinnate[skBluff] += 10
+#skillinnate[skEscape] += 5
+#skillinnate[skIntim] += 8
+#skillinnate[skKnowArca] += 10
+#skillinnate[skPercep] += 9
+#skillinnate[skSenseMot] += 9
+#skillinnate[skSpellcr] += 7
+#skillinnate[skStealth] += 6</eval>
+    </thing>
+  <thing id="rFGFahjee" name="Fah-jee" description="Some sages claim cannibal tribes feasting on undead flesh gave rise to the first fah-jee by dark happenstance, while other experts claim the existence of complex and wicked incantations that transform entire aboriginal tribes into these savage undead abominations. Whatever the original cause, today&apos;s fah-jee populate - and often swiftly depopulate - isolated jungle islands, particularly among the Pearl Eye Atoll, the Darkols and other archipelagos of the Razor. Always a threat to ships taking shelter in their jungle-lined bays, fah-jee also leave these island sanctuaries to raid neighboring peoples for fresh bodies to twist, modify and induct into their undead community. Recent whispers tell tales of humans who seek out the anthropophagi to learn their secret rituals of undeath and transform themselves into fah-jee. If the fah-jee do not simply eat them, these converts become respected additions to the tribe and the fah-jee hunas claim them as omens from the whispering gods.\n\nFah-jee pride themselves on their undeath, often performing strange rites of passage wherein they prove their ability to live chained to the bottom of the sea, consume foul poisons or fast for eternity. Anthropophagus hunas - the chiefs of the tribes - claim the passage into undeath is the surest way to escape the grave. To create its tribe, the fah-jee huna butchers living creatures, boils them in a necromantic iron cooking pot and stitches the shrunken pieces back together, mixing dozens of different parts throughout individual bodies. Sages who have studied the fah-jee and escaped with their lives claim the hunas regard this mixing of body parts as a religious sacrament representing the essential equality and unity of undeath.\n\nFah-jee stand just under 3 feet tall. Withered and dry, their compact bodies weigh between 20 and 40 pounds.\n\nFah-jee always hunt in packs, swarming along the jungle floor under its darkened canopy, raiding nearby villages or defending their territory from aggressors. Considering their small size, fah-jee use numbers to their advantage and know their chieftains can always add to those numbers by creating new members of the tribe. Fah-jee in combat are fast and headstrong, fully confident they can take down any opponent. The strongest fah-jee in the group attacks first, using its latch ability. As soon as it is grappling the opponent with its strong jaws, other fah-jee join the struggle. The creatures remain latched onto their victim until the creature expires." compset="Race">
+    <fieldval field="rHitDice" value="4"/>
+    <fieldval field="rHPStart" value="18"/>
+    <fieldval field="rSTR" value="4"/>
+    <fieldval field="rDEX" value="5"/>
+    <fieldval field="rINT" value="1"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="6"/>
+    <fieldval field="rFeat" value="-2"/>
+    <fieldval field="rAC" value="3"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rDescript" value="Short in stature and long in savagery, this small primitive humanoid reeks of death. A too-wide mouth, choked with filed teeth, splits the creature&apos;s face. "/>
+    <fieldval field="rEnviron" value="any jungle"/>
+    <fieldval field="rOrgan" value="solitary, pair, band (3-10), or tribe (12-24 plus one Fah-jee huna)"/>
+    <fieldval field="rTreasure" value="standard"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lFGTulita"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      <assignval field="wDamExtra" value=" plus latch"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d3_3"/>
+      </bootstrap>
+    <bootstrap thing="fDefCom"></bootstrap>
+    <bootstrap thing="raFGFJLatc"></bootstrap>
+    <bootstrap thing="raFGFJSvBt"></bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <eval phase="First">#skillinnate[skAcrobat] += 3
+#skillinnate[skClimb] += 3
+#skillinnate[skIntim] += 2
+#skillinnate[skPercep] += 4
+#skillinnate[skStealth] += 4</eval>
+    </thing>
+  <thing id="rFGFahjeeH" name="Fah-jee Huna" description="Some sages claim cannibal tribes feasting on undead flesh gave rise to the first fah-jee by dark happenstance, while other experts claim the existence of complex and wicked incantations that transform entire aboriginal tribes into these savage undead abominations. Whatever the original cause, today&apos;s fah-jee populate - and often swiftly depopulate - isolated jungle islands, particularly among the Pearl Eye Atoll, the Darkols and other archipelagos of the Razor. Always a threat to ships taking shelter in their jungle-lined bays, fah-jee also leave these island sanctuaries to raid neighboring peoples for fresh bodies to twist, modify and induct into their undead community. Recent whispers tell tales of humans who seek out the anthropophagi to learn their secret rituals of undeath and transform themselves into fah-jee. If the fah-jee do not simply eat them, these converts become respected additions to the tribe and the fah-jee hunas claim them as omens from the whispering gods.\n\nFah-jee pride themselves on their undeath, often performing strange rites of passage wherein they prove their ability to live chained to the bottom of the sea, consume foul poisons or fast for eternity. Anthropophagus hunas - the chiefs of the tribes - claim the passage into undeath is the surest way to escape the grave. To create its tribe, the fah-jee huna butchers living creatures, boils them in a necromantic iron cooking pot and stitches the shrunken pieces back together, mixing dozens of different parts throughout individual bodies. Sages who have studied the fah-jee and escaped with their lives claim the hunas regard this mixing of body parts as a religious sacrament representing the essential equality and unity of undeath.\n\nFah-jee hunas hold sway over their tribe not only as leaders and tyrants, but also as their creators. Ordinary fah-jee tribesmen see their creator, in the flesh, every day. Without the fah-jee hunas, the tribe would not be. Fah-jee hunas use their ability to manufacture undead and their powerful cook pots to expand the tribe, spawning more fah-jee hunas and forging fah-jee totem warriors or other variants. As a rule, Hunas despise the creation of mindless undead, but if forced into it they will raise zombies, skeletons, and the like in defense of their tribe. Once the threat passes, the entire fah-jee tribe turns on their undead assistants and slaughters them.\n\nFah-jee hunas claim to hear the dead whispering from the night sky, often claiming atmospheric disturbances and weather patterns reflect the mood of the dead. The hunas follow the movements of the stars and other celestial bodies closely, interpreting heavenly perorations as messages from their alien gods beyond the stars - messages the dead alone hear before whispering them to the hunas. When sky-listening, fah-jee hunas enter a form of trance divination, sometimes abetted by chewing the hallucinogenic residue that cakes their unwashed cook pots. The hunas claim this trance opens them to the whispering spirits. Later, minds awash in the incoherent and inconceivable ramblings of their trances, the hunas interpret and relate the whispers to the tribe. Some sages report that fah-jee hunas blame any failures in the predictive value of the sky whispers on the failure of the dead to properly carry the word of the star gods.\n\nWhile under trance, the strongest warrior in the tribe wears the huna&apos;s headdress and acts in its stead. Fah-jee hunas claim that during the trance ritual a portion of their psyche leaves their body and transfers to the warrior, temporarily transforming the warrior into a true huna. True or not, reports indicate the chosen warriors act as if they were true hunas, and Grevo reports witnessing elevated warriors employing huna abilities. A tribe usually supports only one huna, though Grevo also reports an obscene alliance of husband and wife hunas leading his study group. Of course, since Grevo vanished into the Pearl Eye Atolls with the avowed intent of becoming a fah-jee, his testimony remains suspect. \n\nFah-jee hunas stand just under 3 feet tall and their withered frame weighs between 20 and 40 pounds." compset="Race">
+    <fieldval field="rHitDice" value="7"/>
+    <fieldval field="rHPStart" value="31"/>
+    <fieldval field="rSTR" value="3"/>
+    <fieldval field="rDEX" value="5"/>
+    <fieldval field="rINT" value="5"/>
+    <fieldval field="rWIS" value="6"/>
+    <fieldval field="rCHA" value="8"/>
+    <fieldval field="rFeat" value="-4"/>
+    <fieldval field="rAC" value="5"/>
+    <fieldval field="rCR" value="5"/>
+    <fieldval field="rEnviron" value="any jungle"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="standard"/>
+    <fieldval field="rLangBonus" value="-2"/>
+    <fieldval field="rDescript" value="A tattered headdress adorns the skull of this withered humanoid. Teeth filed to points fill a wide mouth stretching from ear to ear. Festooned in animal bones, dangling bits of dried flesh and vine, it is hard to tell where the creature&apos;s dead skin ends and its foul jewelry begins. "/>
+    <fieldval field="rSpCastLev" value="8"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Race" tag="rFGFahjee"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fDefCom"></bootstrap>
+    <bootstrap thing="raFGFJLatc"></bootstrap>
+    <bootstrap thing="raFGFJSvBt"></bootstrap>
+    <bootstrap thing="fAlertness"></bootstrap>
+    <bootstrap thing="fComCast"></bootstrap>
+    <bootstrap thing="lAbyssal"></bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="raFGFJCrSp"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="lFGTulita"></bootstrap>
+    <bootstrap thing="raBleed">
+      <assignval field="livename" value="Bleed (1d4)"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      <assignval field="wDamExtra" value=" plus bleed and latch"/>
+      </bootstrap>
+    <bootstrap thing="spBleed0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spCausFea1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spDeteMag0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spInflLig1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spMessage0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spPasswit1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spInflMod2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spMagiFan1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spShield1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spSpeaDea3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spSpecHan2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spVampTou3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spBestCur3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spDesecra2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spPoison3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spTinyHut3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d3_3"/>
+      </bootstrap>
+    <eval phase="First">#skillinnate[skAcrobat] += 5
+#skillinnate[skClimb] += 4
+#skillinnate[skIntim] += 7
+#skillinnate[skPercep] += 7
+#skillinnate[skSenseMot] += 5
+#skillinnate[skSpellcr] += 7
+#skillinnate[skStealth] += 7</eval>
+    </thing>
+  <thing id="rFGFahJeTW" name="Fah-jee Totem Warrior" description="Some sages claim cannibal tribes feasting on undead flesh gave rise to the first fah-jee by dark happenstance, while other experts claim the existence of complex and wicked incantations that transform entire aboriginal tribes into these savage undead abominations. Whatever the original cause, today&apos;s fah-jee populate - and often swiftly depopulate - isolated jungle islands, particularly among the Pearl Eye Atoll, the Darkols and other archipelagos of the Razor. Always a threat to ships taking shelter in their jungle-lined bays, fah-jee also leave these island sanctuaries to raid neighboring peoples for fresh bodies to twist, modify and induct into their undead community. Recent whispers tell tales of humans who seek out the anthropophagi to learn their secret rituals of undeath and transform themselves into fah-jee. If the fah-jee do not simply eat them, these converts become respected additions to the tribe and the fah-jee hunas claim them as omens from the whispering gods.\n\nFah-jee pride themselves on their undeath, often performing strange rites of passage wherein they prove their ability to live chained to the bottom of the sea, consume foul poisons or fast for eternity. Anthropophagus hunas - the chiefs of the tribes - claim the passage into undeath is the surest way to escape the grave. To create its tribe, the fah-jee huna butchers living creatures, boils them in a necromantic iron cooking pot and stitches the shrunken pieces back together, mixing dozens of different parts throughout individual bodies. Sages who have studied the fah-jee and escaped with their lives claim the hunas regard this mixing of body parts as a religious sacrament representing the essential equality and unity of undeath.\n\nLeaking gore and glaring down on all who surround them, fah-jee totem warriors are twice as easy to detect by scent as a standard fah-jee. Fah-jee totem warriors stand 12 feet tall and weigh upwards of 1,500 pounds.\n\nThis horrid creation serves as both a revered member of the fah-jee tribe and its best protection. Fah-jee totem warriors are only found at the center of a fah-jee tribe&apos;s village. Composed of dozens, sometimes hundreds, of different body parts, fah-jee totem warriors represent the pinnacle of tribe&apos;s passage into the unity of undeath. Fah-jee totem warriors reek of slaughter and rot. Their scent blows through the trees near fah-jee villages, warning living creatures away lest they end up in a fah-jee cook pot. \n\nSlow to move, fah-jee totem warriors usually let their enemies come to them. They rely on their many slam attacks to bludgeon and grapple foes and enjoy ripping enemies apart if possible. Against clever foes who keep their distance, fah-jee totem warriors tear their own limbs and non-functional heads from their towering body and pelt invaders. Fah-jee totem warriors display a basic animal intelligence. They follow the orders of their fah-jee huna with unswerving dedication, though the huna must be extremely clear in its commands." compset="Race">
+    <fieldval field="rHitDice" value="13"/>
+    <fieldval field="rHPStart" value="58"/>
+    <fieldval field="rSTR" value="10"/>
+    <fieldval field="rDEX" value="-1"/>
+    <fieldval field="rINT" value="-8"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="8"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rFeat" value="-7"/>
+    <fieldval field="rAC" value="8"/>
+    <fieldval field="rCR" value="9"/>
+    <fieldval field="rEnviron" value="any jungle"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rDescript" value="This tower of body parts reeks of death, the stench filling the jungle. A massive stack of arms, legs, torsos, and dangling viscera looms above. Embedded within this tower of flesh, at least three stacked heads rotate wetly in place, eye different foes, gnash pointed teeth or shout battle cries. The totem warrior waves its amalgam of stitched arms, slamming opponents and bathing them in gore."/>
+    <fieldval field="rNumHands" value="4"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="10"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Race" tag="rFGFahjee"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="fImpBull"></bootstrap>
+    <bootstrap thing="fImpOver"></bootstrap>
+    <bootstrap thing="fPointBlnk"></bootstrap>
+    <bootstrap thing="wOtherRng">
+      <autotag group="wMain" tag="1d6_5"/>
+      <assignval field="livename" value="Fling"/>
+      <assignval field="wDamExtra" value=" plus disease"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d8_6"/>
+      <autotag group="Value" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="xDamRdGood">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="fPrecShot"></bootstrap>
+    <bootstrap thing="raFGFjBthB"></bootstrap>
+    <bootstrap thing="raFGDisFah"></bootstrap>
+    <bootstrap thing="raFGFJWFlg"></bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wSlam"/>
+      </bootstrap>
+    <bootstrap thing="xSplRs">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="fAlertness"></bootstrap>
+    <eval phase="First">#skillinnate[skIntim] += 1
+#skillinnate[skPercep] += 12</eval>
+    </thing>
+  <thing id="rFGElecElD" name="Electric Eel, Dire" description="Dire electric eels are larger, fiercer versions of normal electric eels. They are highly aggressive and extremely territorial, attacking any creature that intrudes upon their lair.\n\nDire electric eels attempt to bite and constrict foes and then release their electric discharge to finish off a squirming meal." compset="Race">
+    <fieldval field="rHitDice" value="9"/>
+    <fieldval field="rHPStart" value="40"/>
+    <fieldval field="rSTR" value="7"/>
+    <fieldval field="rDEX" value="8"/>
+    <fieldval field="rCON" value="5"/>
+    <fieldval field="rINT" value="-8"/>
+    <fieldval field="rWIS" value="4"/>
+    <fieldval field="rCHA" value="-4"/>
+    <fieldval field="rSpeed" value="0"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rAC" value="4"/>
+    <fieldval field="rCR" value="5"/>
+    <fieldval field="rDescript" value="Measuring up to six feet in length, this eel&apos;s toothy maw is almost as fearsome as the crackling arcs of electricity that course about its writhing body. "/>
+    <fieldval field="rEnviron" value="any salt water aquatic"/>
+    <fieldval field="rOrgan" value="solitary or nest (3-8)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="wConstrict">
+      <autotag group="wMain" tag="1d8_6"/>
+      <autotag group="Helper" tag="Powerful"/>
+      </bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="fLightRef"></bootstrap>
+    <bootstrap thing="fStealthy"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="50"/>
+      </bootstrap>
+    <bootstrap thing="fAlertness"></bootstrap>
+    <bootstrap thing="xDamRsElec">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="rBlindsen">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="raFGElecDi"></bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fImpNatAtt">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[hero.child[wConstrict].field[livename].text = "Constrict" & " (" & field[name].text & ")"]]></eval>
+    <eval phase="First"><![CDATA[#skillinnate[skPercep] += 5
+#skillinnate[skStealth] += 4
+
+#racialbonus[skStealth] += 4
+#racialsituational[hero.child[skStealth],"+4 in underwater rock formations",field[name].text]]]></eval>
+    </thing>
+  <thing id="rFGFlameto" name="Flametooth" description="Flameteeth are the product of humanoids that turned to ritual cannibalism in direct contravention of their own religious laws and taboos. After consuming the undercooked flesh of their fellows, they grew sick and died before rising within 1d4 days as flameteeth. Flameteeth are powered by their own shame at having broken their food taboos, coupled with an unending hunger for the flesh of living humanoids.\n\nThe flametooth&apos;s teeth are long, yellow, and significantly larger than they were in the creature&apos;s life. They are also constantly aflame, automatically cooking anything the flametooth bites into. They are largely immune to the types of damage dealt by most eating implements (with damage reduction against all slashing and piercing weapons), and have the foul and roasting special qualities as a direct result of the cultural taboos they violated.\n\nA flametooth rushes any humanoid it sees in an effort to consume the creature&apos;s flesh. Their constant gnawing hunger drives them to move with great speed, often allowing them to close with potential meals before their foes are prepared. Flameteeth prefer to attack lightly armored targets (to more easily access their flesh), and use Following Step and Step Up and Strike to stay near such targets. They are offended by slashing and piercing weapons (which they perceive as cooking implements and thus a constant reminder of their own failures) and make at least one attempt to disarm a foe using such tools. Bludgeoning weapons, which cause more harm to the flameteeth, do not offend them and are almost never the focus of a disarm maneuver." compset="Race">
+    <fieldval field="rHitDice" value="12"/>
+    <fieldval field="rHPStart" value="54"/>
+    <fieldval field="rSTR" value="15"/>
+    <fieldval field="rDEX" value="3"/>
+    <fieldval field="rINT" value="-3"/>
+    <fieldval field="rWIS" value="4"/>
+    <fieldval field="rCHA" value="6"/>
+    <fieldval field="rSpeed" value="40"/>
+    <fieldval field="rFeat" value="-6"/>
+    <fieldval field="rAC" value="6"/>
+    <fieldval field="rCR" value="7"/>
+    <fieldval field="rDescript" value="Dark-skinned and gaunt, this filthy, nearly naked humanoid&apos;s distended belly and loose skin is well illuminated by the flames licking out from its oversized, chattering mouth full of gnashing, burning teeth."/>
+    <fieldval field="rEnviron" value="any jungle"/>
+    <fieldval field="rOrgan" value="solitary, glut (2-6), or feast (7-12)"/>
+    <fieldval field="rTreasure" value="standard"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fFollStep"></bootstrap>
+    <bootstrap thing="xDamRdB">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="fStepUpStr"></bootstrap>
+    <bootstrap thing="raFGFmtFou"></bootstrap>
+    <bootstrap thing="raFGFmtQuk"></bootstrap>
+    <bootstrap thing="raFGFmtRst"></bootstrap>
+    <bootstrap thing="raFGFmtTch"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d8_6"/>
+      <assignval field="wDamExtra" value=" plus 2d6 fire"/>
+      </bootstrap>
+    <bootstrap thing="fStepUp"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <eval phase="First">#skillinnate[skPercep] += 8
+#skillinnate[skStealth] += 9
+#skillinnate[skSwim] += 7</eval>
+    </thing>
+  <thing id="rFGRoachSw" name="Roachlord Swarm" description="A roachlord swarm is a mass of cockroaches devouring whatever lies in its path." compset="Race">
+    <fieldval field="rHitDice" value="6"/>
+    <fieldval field="rHPStart" value="27"/>
+    <fieldval field="rSTR" value="-9"/>
+    <fieldval field="rDEX" value="7"/>
+    <fieldval field="rCON" value="2"/>
+    <fieldval field="rCHA" value="-8"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rDescript" value="A scuttling wave of bristling legs and antennas stems from a mass of ovular dark brown bodies that course with terrifying speed across the ground."/>
+    <fieldval field="rEnviron" value="any aquatic, underground, or urban"/>
+    <fieldval field="rOrgan" value="solitary, infestation (2-4 swarms) or colony (7-12 swarms)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="0"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="HasType" tag="tpVermin"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="NoScore" tag="aINT"/>
+    <tag group="RaceSize" tag="Dimin13"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xClimb">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="stSwarm"></bootstrap>
+    <bootstrap thing="xxFGDisFil"></bootstrap>
+    <bootstrap thing="xImmMind"></bootstrap>
+    <bootstrap thing="xImmWepDam"></bootstrap>
+    <bootstrap thing="rBlindsen">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <eval phase="First" priority="5000">perform hero.child[skClimb].assign[SkillOver.aDEX]
+      perform hero.child[skSwim].assign[SkillOver.aDEX]</eval>
+    <eval phase="Final" priority="20000" index="2"><![CDATA[hero.child[raSwarmAtk].field[livename].text = "Swarm Attack (" & hero.child[raSwarmAtk].field[abValue].value & "d6 plus disease)"]]></eval>
+    <eval phase="PreLevel" priority="4000" index="3">#racialbonus[skStealth] += 8</eval>
+    </thing>
+  <thing id="rFGNecrowo" name="Necroworm" description="Necroworms are the creation of the arch necromancer Tarath-Vreen. These dangerous aberrations possess the ability to inhabit dead corpses and animate them. Necroworms exist for two purposes: to defend and feed their queen. They animate corpses in order to bring them to the queen and amass a feeding pile for her. If a queen is ever slain, the necroworms scatter and flee. Eventually one consumes enough corpses to transform into a queen itself and the others flock to her and recognize the new queen as their master. \n\nNecroworms fight from the safety of an inhabited body whenever possible. If the corpse they inhabit is felled, they seek a new husk to animate. The worms rarely fight naked, except in defense of their queen, so if a worm denuded of its corpse cannot find a nearby body to inhabit, it flees. Necroworms press their attack with their stingers, delighting in injecting acid into foes and watching them melt away. Necroworms enjoy nothing more than sucking up the soupy paste of a recently melted enemy." compset="Race">
+    <fieldval field="rHitDice" value="3"/>
+    <fieldval field="rHPStart" value="13"/>
+    <fieldval field="rDEX" value="10"/>
+    <fieldval field="rINT" value="2"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rFeat" value="-2"/>
+    <fieldval field="rAC" value="2"/>
+    <fieldval field="rCR" value="2"/>
+    <fieldval field="rDescript" value="This bloated white worm&apos;s tail, rupturing from the back of a lurching corpse, ends in a vicious stinger. Needle-like fangs fill its mouth, lurking behind rotting human teeth. "/>
+    <fieldval field="rEnviron" value="underground"/>
+    <fieldval field="rOrgan" value="solitary, gathering (4-6) or nest (10-20)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rLangBonus" value="-1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="HasType" tag="tpAberr"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fAlertness"></bootstrap>
+    <bootstrap thing="fGreatFort"></bootstrap>
+    <bootstrap thing="fWepFin">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="lAklo"></bootstrap>
+    <bootstrap thing="lUndercomm"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      <assignval field="wDamExtra" value=" plus 1d4 acid"/>
+      </bootstrap>
+    <bootstrap thing="xImmAcid"></bootstrap>
+    <bootstrap thing="xImmCold"></bootstrap>
+    <bootstrap thing="xImmDis"></bootstrap>
+    <bootstrap thing="xImmPois"></bootstrap>
+    <bootstrap thing="raFGNcwIhC"></bootstrap>
+    <bootstrap thing="raFGNcwIjA"></bootstrap>
+    <bootstrap thing="wSting">
+      <autotag group="wMain" tag="1d4_4"/>
+      <assignval field="wDamExtra" value=" plus inject acid"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <eval phase="First">#skillinnate[skClimb] += 3
+#skillinnate[skPercep] += 3
+#skillinnate[skStealth] += 3
+#skillinnate[skSurvival] += 3
+#skillinnate[skSwim] += 3</eval>
+    </thing>
+  <thing id="rFGNecoQue" name="Necroworm Queen" description="Necroworms are the creation of the arch necromancer Tarath-Vreen. These dangerous aberrations possess the ability to inhabit dead corpses and animate them. Necroworms exist for two purposes: to defend and feed their queen. They animate corpses in order to bring them to the queen and amass a feeding pile for her. If a queen is ever slain, the necroworms scatter and flee. Eventually one consumes enough corpses to transform into a queen itself and the others flock to her and recognize the new queen as their master. \n\nNecroworms fight from the safety of an inhabited body whenever possible. If the corpse they inhabit is felled, they seek a new husk to animate. The worms rarely fight naked, except in defense of their queen, so if a worm denuded of its corpse cannot find a nearby body to inhabit, it flees. Necroworms press their attack with their stingers, delighting in injecting acid into foes and watching them melt away. Necroworms enjoy nothing more than sucking up the soupy paste of a recently melted enemy." compset="Race">
+    <fieldval field="rHitDice" value="10"/>
+    <fieldval field="rHPStart" value="70"/>
+    <fieldval field="rDEX" value="6"/>
+    <fieldval field="rINT" value="4"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rAC" value="6"/>
+    <fieldval field="rCR" value="7"/>
+    <fieldval field="rDescript" value="This bloated white worm&apos;s tail, rupturing from the back of a lurching corpse, ends in a vicious stinger. Needle-like fangs fill its mouth, lurking behind rotting human teeth. "/>
+    <fieldval field="rEnviron" value="underground"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rLangBonus" value="-1"/>
+    <fieldval field="rSTR" value="13"/>
+    <fieldval field="rCON" value="4"/>
+    <fieldval field="rWIS" value="2"/>
+    <fieldval field="rSpCastLev" value="10"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="10"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="HasType" tag="tpAberr"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Alignment" tag="Lawful"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fAlertness"></bootstrap>
+    <bootstrap thing="fGreatFort"></bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="fStealthy"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="xTelepathy">
+      <autotag group="Value" tag="100"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d8_6"/>
+      <assignval field="wDamExtra" value=" plus 1d6 acid"/>
+      </bootstrap>
+    <bootstrap thing="spSuggest2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="xImmAcid"></bootstrap>
+    <bootstrap thing="xImmCold"></bootstrap>
+    <bootstrap thing="xImmDis"></bootstrap>
+    <bootstrap thing="fFGAbilFoc">
+      <autotag group="Target" tag="spSuggest2"/>
+      </bootstrap>
+    <bootstrap thing="raFGQNcSpn"></bootstrap>
+    <bootstrap thing="raFGQNcSpA"></bootstrap>
+    <eval phase="First">#skillinnate[skClimb] += 10
+#skillinnate[skIntim] += 10
+#skillinnate[skPercep] += 10
+#skillinnate[skSenseMot] += 10
+#skillinnate[skStealth] += 10
+#skillinnate[skSwim] += 10</eval>
+    </thing>
+  <thing id="rFGAualWha" name="Whale, Qualmaga&apos;s" description="Decades ago, Qualmaga, a Tulita druid, imbued the whale with sentience and wielded it like a weapon against the ships of the newcomers. The Tulita wars are long lost, Qualmaga slain and his ashes scattered, but the whale fights on.\n\nWhen the whale spots the ship, it charges towards the vessel in an effort to capsize it. If the whale cannot capsize it, it uses its tail slap or bite to strike the boat and destroy it. The whale does not attack individual creatures. It is on a mission to destroy or capsize ships. Once the whale accomplishes that mission, it leaves as suddenly as it appeared." compset="Race" uniqueness="unique">
+    <fieldval field="rSTR" value="20"/>
+    <fieldval field="rDEX" value="-4"/>
+    <fieldval field="rCON" value="9"/>
+    <fieldval field="rWIS" value="1"/>
+    <fieldval field="rCHA" value="-3"/>
+    <fieldval field="rSpeed" value="0"/>
+    <fieldval field="rFeat" value="-6"/>
+    <fieldval field="rHitDice" value="12"/>
+    <fieldval field="rHPStart" value="66"/>
+    <fieldval field="rAC" value="14"/>
+    <fieldval field="rCR" value="7"/>
+    <fieldval field="rEnviron" value="Any oceans"/>
+    <fieldval field="rOrgan" value="Unique"/>
+    <fieldval field="rTreasure" value="None"/>
+    <fieldval field="rDescript" value="The water ripples as if a mighty earthquake opened the ground beneath the ship. A huge whale hurtles towards the ship at breakneck speed, almost literally parting the sea in two as it churns through the open water. The creature seems intent on crashing headlong into the ship."/>
+    <fieldval field="rSpCastLev" value="12"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="Snaky" name="Snaky Body" abbrev="Snaky Body"/>
+    <tag group="Hero" tag="NoDefComm" name="NoDefComm" abbrev="NoDefComm"/>
+    <tag group="RaceSize" tag="Huge2"/>
+    <tag group="RaceType" tag="NPC" name="NPC Race" abbrev="NPC Race"/>
+    <tag group="Alignment" tag="NeutralGE" name="Neutral" abbrev="N"/>
+    <tag group="HasType" tag="tpMagBeast"/>
+    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fEndure"></bootstrap>
+    <bootstrap thing="fImpBull"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="raWhaCapsi"></bootstrap>
+    <bootstrap thing="raHoldBrea"></bootstrap>
+    <bootstrap thing="wTailSlap">
+      <autotag group="wMain" tag="3d6_8"/>
+      <autotag group="Helper" tag="NatTwoHand"/>
+      <autotag group="Helper" tag="NatPrimary"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="3d6_8"/>
+      <autotag group="Helper" tag="NatTwoHand"/>
+      </bootstrap>
+    <bootstrap thing="rBlindSi">
+      <autotag group="Value" tag="120"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="fDiehard"></bootstrap>
+    <bootstrap thing="spLocaObj2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Constant"/>
+      <assignval field="livename" value="Locate Object (whale&apos;s ambergris only)"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="4000">#skillbonus[skPercep] += 4
+      hero.child[skPercep].field[skInnate].value += 12
+      hero.child[skSwim].field[skInnate].value += 12
+      <before name="Skill Bonus Feats"/>
+      </eval>
+    <eval phase="Final" index="2">perform hero.child[raDarkVis].assign[Helper.SpcDisable]
+perform hero.child[raDarkVis].assign[Hide.Special]</eval>
+    </thing>
+  <thing id="rFGDrolsha" name="Drolsharg" description="Drolshargs are hunger made flesh, the perfect killing machines and ground zero for a plague of Dajobas&apos; design. These nightmares only appear when Dajobas&apos; slumber is disturbed or the shark god draws closer to the mortal world. Drolshargs hunt the open ocean but seek humanoid prey above all else. They follow in the wake of ships, board them and devour the crew, usually leaving a few alive as weresharks to spread mayhem when the vessel drifts ashore or is discovered by another ship." compset="Race">
+    <fieldval field="rHitDice" value="10"/>
+    <fieldval field="rHPStart" value="55"/>
+    <fieldval field="rSTR" value="12"/>
+    <fieldval field="rDEX" value="9"/>
+    <fieldval field="rCON" value="10"/>
+    <fieldval field="rINT" value="-4"/>
+    <fieldval field="rWIS" value="6"/>
+    <fieldval field="rCHA" value="2"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rAC" value="8"/>
+    <fieldval field="rCR" value="8"/>
+    <fieldval field="rDescript" value="A dark green giant of fin, scale, and teeth rises from the surf. This towering humanoid&apos;s arms end in five talons, studded on all sides with shark&apos;s teeth. The thing&apos;s massive chest is a field of shark maws spasming insatiably for prey. The thing&apos;s face is squashed, its dark beady eyes squinting over a yawning mouth filled with countless rows of razor teeth."/>
+    <fieldval field="rEnviron" value="any aquatic or coastal"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="10"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpMonHuman"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      <assignval field="wDamExtra" value=" plus grab"/>
+      </bootstrap>
+    <bootstrap thing="wTailSlap">
+      <autotag group="wMain" tag="1d8_6"/>
+      <assignval field="wDamExtra" value=" plus grab"/>
+      <assignval field="livename" value="Shark-Mawed Tail"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="fImpCrit">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="rBlindSi">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="raPounce"></bootstrap>
+    <bootstrap thing="raDarkVis">
+      <autotag group="Value" tag="90"/>
+      </bootstrap>
+    <bootstrap thing="raAmphib"></bootstrap>
+    <bootstrap thing="fMultiAtt"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="lSahaugin"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d8_6"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wClaw"/>
+      </bootstrap>
+    <bootstrap thing="raFGDrlAcL"></bootstrap>
+    <bootstrap thing="raFGDrlBlS"></bootstrap>
+    <bootstrap thing="raFGDrlFrz"></bootstrap>
+    <bootstrap thing="raFGDrlHdM"></bootstrap>
+    <bootstrap thing="xDamRsCold">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="raGrab"></bootstrap>
+    <eval phase="First"><![CDATA[#skillinnate[skIntim] += 4
+#skillinnate[skPercep] += 8
+#skillinnate[skStealth] += 6
+#skillinnate[skSurvival] += 2
+
+#racialsituational[hero.child[skStealth],"+8 underwater",field[name].text]
+
+#racialsituational[hero.child[skSurvival],"+8 underwater",field[name].text]]]></eval>
+    </thing>
+  <thing id="rFGBenSerp" name="Benthic Serpent" description="Benthic serpents are aquatic dragons of the deep ocean trenches, dark grey creatures that surface only rarely. Normally they feast on whales, dolphins, walrus, seals, and merfolk, whatever they can catch. Sometimes, however, their lust for treasure drives them to attack ships or even coastal lands. When they prowl the surface or shallows, their lust for gold is as great as any land dragon&apos;s: they often destroy all shipping in a huge region.\n\nBenthic serpents like to lurk below their prey and surge up from the depths to ambush them. They prefer to attack by capsizing and crushing any vessel they encounter. When hungry, they may sweep a deck, swallowing half a dozen sailors in an instant (using Great Cleave). Their deep-water stare also helps them lure large warships onto reefs and rocks, usually by {i}dominating{/i} the sailor at the helm during a long night watch. Benthic serpents are far from mindless and flee if their food proves too troublesome." compset="Race">
+    <fieldval field="rHitDice" value="12"/>
+    <fieldval field="rHPStart" value="78"/>
+    <fieldval field="rSTR" value="20"/>
+    <fieldval field="rCON" value="16"/>
+    <fieldval field="rINT" value="-1"/>
+    <fieldval field="rCHA" value="8"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rFeat" value="-6"/>
+    <fieldval field="rAC" value="20"/>
+    <fieldval field="rCR" value="11"/>
+    <fieldval field="rEnviron" value="temperate aquatic or coastal"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="triple standard"/>
+    <fieldval field="rSpace" value="20"/>
+    <fieldval field="rReach" value="15"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpDragon"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="RaceSize" tag="Gargant3"/>
+    <tag group="Helper" tag="Snaky"/>
+    <tag group="SlotSet" tag="selMISSerp"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="4d8_206"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="2d6_104"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="fSnatch"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="fCleave"></bootstrap>
+    <bootstrap thing="raDarkVis">
+      <autotag group="Value" tag="120"/>
+      </bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="xImmFire"></bootstrap>
+    <bootstrap thing="xImmParaly"></bootstrap>
+    <bootstrap thing="xImmSleep"></bootstrap>
+    <bootstrap thing="raFGBtSDpS"></bootstrap>
+    <bootstrap thing="raFgBtSCap"></bootstrap>
+    <bootstrap thing="fGreatClv"></bootstrap>
+    <bootstrap thing="fImpBull"></bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="lDraconic"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <eval phase="First">#skillinnate[skAppraise] += 6
+#skillinnate[skDiplo] += 12
+#skillinnate[skIntim] += 12
+#skillinnate[skPercep] += 12
+#skillinnate[skSenseMot] += 6
+#skillinnate[skSwim] += 12</eval>
+    </thing>
+  <thing id="rFGShMGulp" name="Sahuagin Mutant, Gulper" description="Gigantism is arguably the most common mutation among sahuagin. While many chiefs stand head and shoulders above their cohort, rare cases of true gigantism produce sahuagin who stand half again or even twice the normal height. Such mutants appear more often (though still uncommonly) among the followers of Dajobas, and sometimes sport other mutations.\n\nGulper sahuagin always grow to Large size (and rumors speak of even bigger specimens). Though clearly of sahuagin stock, a gulper&apos;s body is less humanoid and more reptilian, with splayed limbs and clawed hands unsuited for fine manipulation. The most striking difference is the gulper&apos;s mouth: instead of a shark&apos;s maw, the mutant possesses the elongated jaw and distensible belly of a gulper eel (see The Tome of Horrors Complete). These mutants often display bioluminescent features, and sometimes their normal-sized relatives possess these as well." compset="Race">
+    <fieldval field="rSTR" value="8"/>
+    <fieldval field="rDEX" value="1"/>
+    <fieldval field="rCON" value="8"/>
+    <fieldval field="rINT" value="4"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="-1"/>
+    <fieldval field="rFeat" value="-1"/>
+    <fieldval field="rHitDice" value="2"/>
+    <fieldval field="rHPStart" value="11"/>
+    <fieldval field="rAC" value="8"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rLangBonus" value="-2"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpMonHuman"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="Lawful"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Race" tag="rSahuagin"/>
+    <tag group="WepProf" tag="wTrident"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lSahaugin"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="raSahBlooF"></bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="raLightBl"></bootstrap>
+    <bootstrap thing="raSahSpeaw"></bootstrap>
+    <bootstrap thing="raSwallow"></bootstrap>
+    <bootstrap thing="rBlindsen">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="fImpNatAtt">
+      <autotag group="Target" tag="wBite"/>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fGreatFort"></bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <eval phase="PostAttr" priority="1000"><![CDATA[var strB as number
+var conB as number
+strB = hero.child[aSTR].field[aModBonus].value
+conB = hero.child[aCON].field[aModBonus].value
+
+hero.child[raSwallow].field[livename].text = "Swallow Whole (1d8+" & strB & " bludgeoning plus " & conB & " acid"]]></eval>
+    <eval phase="First" index="2">#skillinnate[skHandleAn] += 2
+      #skillinnate[skPercep] += 2
+      #skillinnate[skRide] += 2
+      #skillinnate[skStealth] += 2
+      #skillinnate[skSurvival] += 2
+      #skillinnate[skSwim] += 2</eval>
+    </thing>
+  <thing id="rFGShMNare" name="Sahuagin Mutant, Narekhin" description="Unique to the water&apos;s depths are many wonders, both fair and foul. Alchemists and poisoners eager for exotic ingredients journey to the water&apos;s edge to trade with the sea devils. The sahuagin bring unusual plants and animals - mostly venomous - exchanging them for gold and goods from the surface world. \n\nSome tribes of sea devils even consider these toxic creatures worthy of consumption. These sahuagin believe that if they can survive the poison&apos;s effects, they gain improved strength and resilience. While the efficacy of this practice is debatable, it has resulted in yet another mutation among the sea devils.\n\nNearly one in two hundred sea devils are born with the bright striations and elongated spines of a lionfish, and like those fish, the narekhin&apos;s spines are envenomed." compset="Race">
+    <fieldval field="rHitDice" value="2"/>
+    <fieldval field="rHPStart" value="11"/>
+    <fieldval field="rSTR" value="4"/>
+    <fieldval field="rDEX" value="3"/>
+    <fieldval field="rCON" value="4"/>
+    <fieldval field="rINT" value="4"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="-1"/>
+    <fieldval field="rLangBonus" value="-2"/>
+    <fieldval field="rCR" value="2"/>
+    <fieldval field="rAC" value="5"/>
+    <fieldval field="rFeat" value="-1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="HasType" tag="tpMonHuman"/>
+    <tag group="Race" tag="rSahuagin"/>
+    <tag group="WepProf" tag="wTrident"/>
+    <tag group="Alignment" tag="Lawful"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="fGreatFort"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="lSahaugin"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="rBlindsen">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="raSahBlooF"></bootstrap>
+    <bootstrap thing="raLightBl"></bootstrap>
+    <bootstrap thing="raSahSpeaw"></bootstrap>
+    <bootstrap thing="raFGNarPoi">
+      <assignval field="abValue" value="2"/>
+      <assignval field="abDuration" value="6"/>
+      <assignval field="livename" value="Spines - contact"/>
+      </bootstrap>
+    <bootstrap thing="raFGNarSpi"></bootstrap>
+    <eval phase="First">#skillinnate[skHandleAn] += 2
+      #skillinnate[skPercep] += 2
+      #skillinnate[skRide] += 2
+      #skillinnate[skStealth] += 2
+      #skillinnate[skSurvival] += 2
+      #skillinnate[skSwim] += 2</eval>
+    </thing>
+  <thing id="rFGHargoth" name="Harthagoa" description="Harthagoa is a fearsome opponent in combat, making devastating use of his many spell-like abilities before closing with his foes. During the first few rounds of combat he uses unholy blight and horrid wilting against as many foes as possible. He employs quickened poison against particularly powerful foes to erode their will to live. He also keeps his enemies at bay with the 60ft. reach of his tentacles, striking dangerous melee combatants from a distance and pushing them out of reach with Awesome Blow. Against multiple foes, he quickly grapples the most dangerous spellcasters, constricting them each round until they are little more than pulp. \n\nAt sea he uses the water to his advantage, swiftly sinking any offending vessels and forcing his enemies to battle amongst the churning waves. If the Krakenfiend ends up attacking Port Shaw at the climactic end of the adventure (see Chapter 7), he hurtles out of the water into the sky, stretching his horrific black wings. His massive form blocks out the sun as he swoops down on Port Shaw. \n\nIn a large-scale battle, Harthagoa uses his wand of sending to issue orders to sahuagin troops just as he uses it to communicate with his spies in the Ring. He employs his staff of transmutation against particularly dangerous foes, and often disintegrates well-cannoned vessels right out from under sailors. Harthagoa also uses the staff to punish minions with baleful polymorph, reducing them to gulls or rainbow fish and sending them out to spy for him in their new inconspicuous forms. He uses his medallion of thoughts in order to read their minds and learn the secrets they have witnessed. When traveling away from Kraken&apos;s Reef, the Krakenfiend sometimes polymorphs in order to avoid attracting the wrong kind of attention. Harthagoa has, on occasion and for a short time, transformed himself into a humanoid to walk the docks of Port Shaw and learn about the pathetic surface dwellers - in order to exploit their numerous weaknesses better.\n\nHarthagoa is far too intelligent to fight to the death, and if he feels there is genuine mortal danger he flees, making full use of his jet ability to retreat into the deep reaches of the ocean where land dwellers cannot follow." compset="Race" uniqueness="unique">
+    <fieldval field="rHitDice" value="21"/>
+    <fieldval field="rHPStart" value="115"/>
+    <fieldval field="rSTR" value="28"/>
+    <fieldval field="rDEX" value="4"/>
+    <fieldval field="rCON" value="21"/>
+    <fieldval field="rINT" value="15"/>
+    <fieldval field="rWIS" value="10"/>
+    <fieldval field="rCHA" value="12"/>
+    <fieldval field="rSpeed" value="0"/>
+    <fieldval field="rFeat" value="-11"/>
+    <fieldval field="rAC" value="20"/>
+    <fieldval field="rCR" value="15"/>
+    <fieldval field="rNumHands" value="8"/>
+    <fieldval field="rSpace" value="20"/>
+    <fieldval field="rReach" value="60"/>
+    <fieldval field="rLangBonus" value="-7"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpOutsider"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Gargant3"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ClassSkill" tag="skKnowGeog"/>
+    <tag group="ClassSkill" tag="skKnowNat"/>
+    <tag group="SaveGood" tag="svFort"/>
+    <tag group="SaveGood" tag="svWill"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lAbyssal"></bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="lDraconic"></bootstrap>
+    <bootstrap thing="lElven"></bootstrap>
+    <bootstrap thing="lIgnan"></bootstrap>
+    <bootstrap thing="lInfernal"></bootstrap>
+    <bootstrap thing="lSahaugin"></bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="stNative"></bootstrap>
+    <bootstrap thing="wConstrict">
+      <autotag group="wMain" tag="2d8_305"/>
+      <assignval field="livename" value="Constrict (tentacles)"/>
+      </bootstrap>
+    <bootstrap thing="wOtherMel">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="6"/>
+      <assignval field="livename" value="Arms"/>
+      <assignval field="wDamExtra" value=" plus grab"/>
+      </bootstrap>
+    <bootstrap thing="wTentacle">
+      <autotag group="wMain" tag="2d8_305"/>
+      <autotag group="Value" tag="2"/>
+      <assignval field="wDamExtra" value=" plus grab"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="4d6_106"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="2d6_104"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="wConstrict">
+      <autotag group="wMain" tag="1d6_5"/>
+      <assignval field="livename" value="Constrict (arms)"/>
+      </bootstrap>
+    <bootstrap thing="xDamRdMag">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xDamRsAcid">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xDamRsCold">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xDamRsElec">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xDamRsFire">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xImmPois"></bootstrap>
+    <bootstrap thing="xSplRs">
+      <autotag group="Value" tag="26"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="fAwesomeBl"></bootstrap>
+    <bootstrap thing="fBleedCrit"></bootstrap>
+    <bootstrap thing="spDarknes1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spPoison4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spUnhoAur8">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spBlasphe6">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spContagi3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spContWea7">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spContWin5">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spDesecra2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spDestruc7">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spDomiAni3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spHorrWil8">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spResiEne1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spSummMon9">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      <assignval field="livename" value="Summon Monster IX (evil outsider only)"/>
+      </bootstrap>
+    <bootstrap thing="spUnhallo5">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="spUnhoBli4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      </bootstrap>
+    <bootstrap thing="fMultiAtt"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="fQuickSpel">
+      <autotag group="Target" tag="spPoison4"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="fCritFoc"></bootstrap>
+    <bootstrap thing="raJet">
+      <autotag group="Value" tag="280"/>
+      </bootstrap>
+    <bootstrap thing="raFGHgSmtG"></bootstrap>
+    <bootstrap thing="raFGHgInkC">
+      <autotag group="Value" tag="80"/>
+      </bootstrap>
+    <bootstrap thing="skKnowArca"></bootstrap>
+    <bootstrap thing="skKnowGeog"></bootstrap>
+    <bootstrap thing="skKnowHist"></bootstrap>
+    <bootstrap thing="skKnowNat"></bootstrap>
+    <bootstrap thing="skKnowPlan"></bootstrap>
+    <bootstrap thing="fFlybyAt"></bootstrap>
+    <bootstrap thing="fImpBull"></bootstrap>
+    <bootstrap thing="fImpCrit">
+      <autotag group="Target" tag="wTentacle"/>
+      </bootstrap>
+    <bootstrap thing="fIronWill"></bootstrap>
+    <eval phase="First">#skillinnate[skDiplo] += 20
+#skillinnate[skFly] += 17
+#skillinnate[skIntim] += 20
+#skillinnate[skKnowArca] += 15
+#skillinnate[skKnowGeog] += 20
+#skillinnate[skKnowHist] += 15
+#skillinnate[skKnowNat] += 20
+#skillinnate[skKnowPlan] += 15
+#skillinnate[skPercep] += 20
+#skillinnate[skSenseMot] += 20
+#skillinnate[skSpellcr] += 11
+#skillinnate[skStealth] += 20
+#skillinnate[skSurvival] += 20
+#skillinnate[skSwim] += 20
+#skillinnate[skUseMagic] += 20</eval>
+    </thing>
+  <thing id="rFGSloughS" name="Slough Shade" description="The Slough Shade is a vile undead spawned from the souls of dozens of tormented mothers who watched their children ripped apart on Dajobas&apos; razor-toothed altars. Now these spirits hate the land, and envy the cries of children which only serve to remind them of their lost loved ones. It wishes to add all their voices to its undead choir. A typical slough shade dwells in still waters and will seek to surround itself with dead children it lured to its mire. The hag-like thing acts as a mother to these children and will do her utmost to protect and add to her brood.\n\nUnless her children are threatened the shade will generally cautiously approach any visitors in the hope of finding children to tempt into the water. The shade often mistakes small creatures for children. During combat, she will always seek to charm children to enter the water, and will try to stay in the waters to charm others in. If those who enter are not children, she forms a whirlwind and attacks. The shade has no morale to affect where her children are concerned, and will always fight to the death to protect them. Those sad shades without babes often fear combat and will flee as soon as they are injured.\n\nAn old nursery rhyme tells the tale of the Cailleach Brey - a dreadful Slough Shade who was once married to a giant. Her dark mire was a place called the Mother&apos;s Fen, and locals used to say they could hear her children singing at night, there were so many that they sounded &quot;like a great temple choir.&quot;" compset="Race">
+    <fieldval field="rHitDice" value="9"/>
+    <fieldval field="rHPStart" value="40"/>
+    <fieldval field="rSTR" value="14"/>
+    <fieldval field="rDEX" value="6"/>
+    <fieldval field="rWIS" value="4"/>
+    <fieldval field="rCHA" value="4"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rFeat" value="-5"/>
+    <fieldval field="rAC" value="9"/>
+    <fieldval field="rCR" value="6"/>
+    <fieldval field="rSpCastLev" value="10"/>
+    <fieldval field="rDescript" value="A blackness crosses the waters, a darkness you first take for a shadow until you see purpose in its movements, there is a hideous sucking noise as the column of water rises, accompanied by a woman&apos;s scream. The vaguely woman-shaped thing before you is a horrid amalgamation of marsh weed, algae and flotsam littered with detritus of the swamp. A ragged doll hangs from it as does a child&apos;s jawbone."/>
+    <fieldval field="rEnviron" value="warm marshes"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="standard"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="spDancLig0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spFogClo2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="spTongues2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="90"/>
+      </bootstrap>
+    <bootstrap thing="fAbilFoc"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wSlam"/>
+      </bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="raFGSlSStn">
+      <assignval field="abText" value="1d6+4 min."/>
+      <assignval field="livename" value="Stench (30 ft., 1d6+4 min.)"/>
+      </bootstrap>
+    <bootstrap thing="raWhirlwin"></bootstrap>
+    <bootstrap thing="raFGSlSBir"></bootstrap>
+    <bootstrap thing="raFGSlSSng"></bootstrap>
+    <bootstrap thing="raFGSlSVmD"></bootstrap>
+    <eval phase="First">#skillinnate[skPercep] += 9
+#skillinnate[skSenseMot] += 9
+#skillinnate[skStealth] += 9
+#skillinnate[skSwim] += 9</eval>
+    </thing>
+  <thing id="rFGSloughB" name="Slough Born" description="The children taken and drowned by a slough shade give up their old form and become small water elementals (Pathfinder Roleplaying Game Bestiary &quot;Elemental, Water&quot;) that still retain a likeness to the children they were in life. These creatures are Neutral Evil and have the ability to add to the slough shade&apos;s song of the mire ability by joining in the songs. For each two slough born within 60 feet of a slough shade that join in her song, add 1 to the save DC (maximum +5).\n\nThe slough shade seeks to defend her slough born at all costs, whilst the drowned young ones simply seek escape. The monster always singles out anyone she sees attacking the children." compset="Race">
+    <fieldval field="rSTR" value="4"/>
+    <fieldval field="rCON" value="3"/>
+    <fieldval field="rINT" value="-6"/>
+    <fieldval field="rWIS" value="1"/>
+    <fieldval field="rCHA" value="1"/>
+    <fieldval field="rSpeed" value="20"/>
+    <fieldval field="rFeat" value="-1"/>
+    <fieldval field="rHitDice" value="2"/>
+    <fieldval field="rHPStart" value="11"/>
+    <fieldval field="rAC" value="6"/>
+    <fieldval field="rCR" value="1"/>
+    <fieldval field="rCompLevel" value="5"/>
+    <fieldval field="rDescript" value="This translucent creature&apos;s shape shifts between a spinning column of water and a crashing wave."/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpOutsider" name="Outsider" abbrev="Outsider"/>
+    <tag group="Hero" tag="NoDefComm" name="NoDefComm" abbrev="NoDefComm"/>
+    <tag group="RaceSize" tag="Small11" name="Small" abbrev="Small"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="SaveGood" tag="svFort" name="Fortitude Save" abbrev="Fortitude Save"/>
+    <tag group="SaveGood" tag="svRef" name="Reflex Save" abbrev="Reflex Save"/>
+    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
+    <tag group="ClassSkill" tag="skAcrobat" name="Acrobatics" abbrev="Acrobatics"/>
+    <tag group="ClassSkill" tag="skEscape" name="Escape Artist" abbrev="Escape Artist"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="CompIs" tag="cArcFamil" name="Arcane Familiar" abbrev="Arcane Familiar"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="stExtrapla"></bootstrap>
+    <bootstrap thing="fPowerAtt">
+      <autotag group="Helper" tag="NoPrereq"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Helper" tag="NatTwoHand"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="90"/>
+      </bootstrap>
+    <bootstrap thing="raWatMstry"></bootstrap>
+    <bootstrap thing="raWatDrenc"></bootstrap>
+    <bootstrap thing="raWhirlwin">
+      <assignval field="livename" value="Vortex"/>
+      </bootstrap>
+    <bootstrap thing="skKnowPlan"></bootstrap>
+    <bootstrap thing="stElement"></bootstrap>
+    <bootstrap thing="stWater"></bootstrap>
+    <eval phase="First" priority="1000" index="2">#skillinnate[skAcrobat] += 1
+      #skillinnate[skEscape] += 1
+      #skillinnate[skStealth] += 1
+      #skillinnate[skKnowPlan] += 1
+      #skillinnate[skPercep] += 1
+      #skillinnate[skSwim] += 1</eval>
+    </thing>
+  <thing id="rFGIkuTusa" name="Iku-Tursas" description="The Iku-Tursas dwarfs even the largest shark along the Razor Coast, and is the unnatural alpha hunter in its territory, stripping the sea and coast bare of life. Typically 30 feet long and weighing 8,000 lbs., it is covered in tooth-like spines from snout to tail, with the exception of the dorsal, pectoral and caudal fins which are bony, serrated blades. The bloody drool excreted from the Iku-Tursas&apos; skin is too saline for human consumption.\n\nCreated by the Tulita tribes during vile, desperate exultations to Dajobas, the Iku-Tursas is tasked with taking revenge upon the tribe&apos;s enemies by flooding their towns and devouring them wholesale. Any alliance with an Iku-Tursas is treacherous, as the beast immediately attempts to supplant the tribe&apos;s leader.\n\nThe Iku-Tursas will flood the area with its quickened control water ability before attempting to swallow its opponents. It will thrash if engaged by multiple melee opponents. An Iku-Tursas always fights to the death.\n\n{b}Variants{/b}\nSeveral variants of the Spawn are known to exist - the type described above reflects the local Tulita tribes&apos; vision of Dajobas&apos; avatar. Other variants reflect regional shark species (hammerheads, mako and tiger), as well as alligators, enormous rays and even swarms of piranha. These changes in appearance are superficial, and the statistics above can be used for any of the varieties." compset="Race">
+    <fieldval field="rHitDice" value="16"/>
+    <fieldval field="rHPStart" value="88"/>
+    <fieldval field="rSTR" value="25"/>
+    <fieldval field="rDEX" value="7"/>
+    <fieldval field="rCON" value="15"/>
+    <fieldval field="rINT" value="2"/>
+    <fieldval field="rWIS" value="8"/>
+    <fieldval field="rCHA" value="6"/>
+    <fieldval field="rSpeed" value="0"/>
+    <fieldval field="rFeat" value="-8"/>
+    <fieldval field="rAC" value="16"/>
+    <fieldval field="rCR" value="11"/>
+    <fieldval field="rDescript" value="This beast resembles an enormous shark whose endless rows of teeth have escaped its maw and now sheath its form, like a lodestone encrusted with needles. A deluge of sanguine, briny seawater oozes from the creature&apos;s flesh, forming a gory wake wherever it thrashes. Void- filled, edacious jaws promise swift oblivion."/>
+    <fieldval field="rEnviron" value="any aquatic"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rSpCastLev" value="16"/>
+    <fieldval field="rLangBonus" value="-1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Huge2"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="HasType" tag="tpMagBeast"/>
+    <tag group="Helper" tag="Snaky"/>
+    <tag group="SlotSet" tag="selMISPisc"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="3d8_306"/>
+      </bootstrap>
+    <bootstrap thing="rBlindsen">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="raKeenScen"></bootstrap>
+    <bootstrap thing="raSwallow">
+      <assignval field="livename" value="Swallow Whole (3d8+18 acid"/>
+      </bootstrap>
+    <bootstrap thing="wOtherMel">
+      <autotag group="wMain" tag="3d6_8"/>
+      <autotag group="Helper" tag="NatTwoHand"/>
+      <assignval field="livename" value="Thrash"/>
+      <assignval field="wAttMelee" value="1"/>
+      </bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="80"/>
+      </bootstrap>
+    <bootstrap thing="fComRef"></bootstrap>
+    <bootstrap thing="fCritFoc"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="spContWat4">
+      <autotag group="Helper" tag="SpellLike"/>
+      </bootstrap>
+    <bootstrap thing="spCreaWat0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      </bootstrap>
+    <bootstrap thing="fIronWill"></bootstrap>
+    <bootstrap thing="xDamRsCold">
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="xSplRs">
+      <autotag group="Value" tag="22"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="fQuickSpel">
+      <autotag group="Target" tag="spCreaWat0"/>
+      </bootstrap>
+    <bootstrap thing="lAbyssal"></bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="fQuickSpel">
+      <autotag group="Target" tag="spContWat4"/>
+      </bootstrap>
+    <bootstrap thing="raFGIkHung"></bootstrap>
+    <bootstrap thing="raFGIkThra"></bootstrap>
+    <eval phase="First">#skillinnate[skEscape] += 10
+#skillinnate[skPercep] += 16
+#skillinnate[skIntim] += 16
+#skillinnate[skSwim] += 6</eval>
+    <eval phase="Final" priority="9000" index="2">hero.child[raSwallow].field[abValue2].value = round(0.125*herofield[tHP].value,0,-1)</eval>
+    </thing>
+  <thing id="rFGBronkSw" name="Bronk Swarm" description="A bronk swarm appears to be a pile of mobile pebbles about 1-2 inches across, rolling along of their own accord. Each individual bronk can &apos;unwrap&apos; itself to become crab-like, acquiring small rocky legs and pincers, easily able to climb and attack larger creatures. A bronk swarm initially resembles a small avalanche; a mass of pebbles swarming towards their prey. They are only known to be found in the divine-realm of Oggun but some scholars believe that they may be spreading outward." compset="Race">
+    <fieldval field="rHitDice" value="7"/>
+    <fieldval field="rHPStart" value="31"/>
+    <fieldval field="rSTR" value="-9"/>
+    <fieldval field="rDEX" value="4"/>
+    <fieldval field="rCON" value="3"/>
+    <fieldval field="rCHA" value="-8"/>
+    <fieldval field="rAC" value="2"/>
+    <fieldval field="rCR" value="4"/>
+    <fieldval field="rEnviron" value="any"/>
+    <fieldval field="rOrgan" value="solitary, pair, or avalanche (3-8 swarms)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rDescript" value="A small stone unfolds itself, revealing a beetle-like creature that crawls forward with tiny pincers and claw-like legs. Dozens more of the nearby pebbles undergo the same transformation until there is a veritable swarm forming."/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="0"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpVermin"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="NoScore" tag="aINT"/>
+    <tag group="RaceSize" tag="Dimin13"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="stSwarm"></bootstrap>
+    <bootstrap thing="xClimb">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <bootstrap thing="xImmMind"></bootstrap>
+    <bootstrap thing="xImmWepDam"></bootstrap>
+    <bootstrap thing="raFGBSwSkH"></bootstrap>
+    </thing>
+  <thing id="rFGHaastEa" name="Haast&apos;s Eagle" description="Haast&apos;s Eagles are believed to be the largest of the raptor birds. Yet despite their immense size, they have one of the smallest wingspans of the raptors. This lessened wingspan allows the Haast&apos;s Eagle to soar through light woodlands as it hunts. The bird compensates for this shortened wingspan with an exceptionally long tail, typically 20 inches, which provides additional lift during flight. \n\nHaast&apos;s Eagles are fearless hunters and are not afraid to attack a larger foe; they especially like the taste of moa flesh, but will hunt any creature - including humanoids - it feels it can kill with its vicious claws.\n\nFemale Haast&apos;s Eagles are slightly larger than males. A female weighs between 22 and 33 pounds, while a male typically weighs between 20 and 26 pounds. Females are typically 4 1/2 feet tall, while males measure 3 feet in height. Wingspans vary from 8 1/2 feet in length up to 11 feet." compset="Race">
+    <fieldval field="rHitDice" value="5"/>
+    <fieldval field="rHPStart" value="22"/>
+    <fieldval field="rSTR" value="11"/>
+    <fieldval field="rDEX" value="3"/>
+    <fieldval field="rCON" value="5"/>
+    <fieldval field="rINT" value="-8"/>
+    <fieldval field="rWIS" value="2"/>
+    <fieldval field="rCHA" value="-4"/>
+    <fieldval field="rSpeed" value="10"/>
+    <fieldval field="rFeat" value="-3"/>
+    <fieldval field="rAC" value="3"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rEnviron" value="temperate plains"/>
+    <fieldval field="rOrgan" value="solitary or pair"/>
+    <fieldval field="rTreasure" value="none"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="SlotSet" tag="selMISAvia"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fFlybyAt"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skFly"/>
+      </bootstrap>
+    <bootstrap thing="raPounce"></bootstrap>
+    <bootstrap thing="raPowCharg">
+      <assignval field="livename" value="Powerful Charge (x4 claw damage)"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <eval phase="First">#skillinnate[skFly] += 2
+#skillinnate[skPercep] += 3</eval>
+    </thing>
+  <thing id="anFGHaastE" name="Haast&apos;s Eagle" compset="AnimalComp">
+    <arrayval field="anSTR" index="0" value="7"/>
+    <arrayval field="anSTR" index="3" value="11"/>
+    <arrayval field="anDEX" index="0" value="5"/>
+    <arrayval field="anDEX" index="3" value="3"/>
+    <arrayval field="anCON" index="0" value="3"/>
+    <arrayval field="anCON" index="3" value="5"/>
+    <arrayval field="anINT" index="0" value="-8"/>
+    <arrayval field="anWIS" index="0" value="2"/>
+    <arrayval field="anCHA" index="0" value="-4"/>
+    <arrayval field="anSpeed" index="0" value="10"/>
+    <arrayval field="anNatural" index="0" value="1"/>
+    <arrayval field="anNatural" index="3" value="3"/>
+    <arrayval field="anSizeMod" index="3" value="1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Alignment" tag="NeutralGE" name="Neutral" abbrev="N"/>
+    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
+    <tag group="HasType" tag="tpAnimal" name="Animal" abbrev="Animal"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="SlotSet" tag="selMISAvia"/>
+    <tag group="CompList" tag="cdEagle"/>
+    <tag group="CompList" tag="arDrdEagle"/>
+    <tag group="CompList" tag="arRgrFalco"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4_4"/>
+      </bootstrap>
+    <bootstrap thing="raPounce"></bootstrap>
+    <bootstrap thing="raPowCharg">
+      <containerreq phase="First" priority="502"><![CDATA[  (fieldval:anCompLev >= 4) & (!Hero.AltAnimAdv)]]></containerreq>
+      <assignval field="livename" value="Powerful Charge (x4 claws dam.)"/>
+      </bootstrap>
+    </thing>
+  <thing id="rFGMoa" name="Moa" description="Moa are the largest of the flightless birds. Unlike most other flightless birds, moa do not even possess vestigial wings. Moa attack with their powerful beaks, and if given the chance will jump and rake with their powerful claws as well. \n\nMoa stand 8 feet tall at the shoulder and weigh about 500 pounds. If a moa raises its long neck to full height, they can reach objects up to 12 feet off the ground." compset="Race">
+    <fieldval field="rHitDice" value="5"/>
+    <fieldval field="rHPStart" value="22"/>
+    <fieldval field="rSTR" value="9"/>
+    <fieldval field="rDEX" value="4"/>
+    <fieldval field="rCON" value="7"/>
+    <fieldval field="rINT" value="-8"/>
+    <fieldval field="rCHA" value="-2"/>
+    <fieldval field="rFeat" value="-3"/>
+    <fieldval field="rAC" value="4"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rEnviron" value="temperate plains"/>
+    <fieldval field="rOrgan" value="solitary, pair, flock (3-6)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="5"/>
+    <fieldval field="rSpeed" value="40"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="SlotSet" tag="selMISAvia"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fGreatFort"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fRun"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d8_6"/>
+      <assignval field="livename" value="Beak"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="wRend">
+      <autotag group="wMain" tag="1d8_6"/>
+      <assignval field="livename" value="Rend (2 claws)"/>
+      </bootstrap>
+    <eval phase="First">#skillinnate[skPercep] += 5</eval>
+    </thing>
+  <thing id="anFGMoa" name="Moa" compset="AnimalComp">
+    <arrayval field="anSTR" index="0" value="1"/>
+    <arrayval field="anSTR" index="6" value="9"/>
+    <arrayval field="anDEX" index="0" value="6"/>
+    <arrayval field="anDEX" index="6" value="4"/>
+    <arrayval field="anCON" index="0" value="3"/>
+    <arrayval field="anCON" index="6" value="7"/>
+    <arrayval field="anINT" index="0" value="-8"/>
+    <arrayval field="anCHA" index="0" value="-3"/>
+    <arrayval field="anSpeed" index="0" value="40"/>
+    <arrayval field="anNatural" index="0" value="2"/>
+    <arrayval field="anNatural" index="6" value="2"/>
+    <arrayval field="anSizeMod" index="6" value="1"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="HasType" tag="tpAnimal"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="SlotSet" tag="selMISAvia"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="wRend">
+      <containerreq phase="First" priority="502"><![CDATA[  (fieldval:anCompLev >= 7) & (!Hero.AltAnimAdv)]]></containerreq>
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d6_5"/>
+      <assignval field="livename" value="Beak"/>
+      </bootstrap>
+    </thing>
+  <thing id="rFGWetapun" name="Wetapunga" description="Wetapunga are huge grasshopper like insects native to the Razor Coast. Shy and docile herbivores, an adult wetapunga can grow up to a foot in length and weigh nearly half a pound. The Tulita consider wetapunga sacred and believe they carry the lost secrets of their ancestors from island to island. \n\n{b}Wetapunga Familiars:{/b} The process of making a wetapunga into a familiar grants it an Intelligence score and removes the mindless trait. Wetapunga familiars communicate with their masters and other wetapungas and grasshoppers by way of a strange combination of behaviors, rubbing of the legs, and hormonal excretions. As with other types of familiars, other creatures cannot understand this communication without magical aid.\n\nA wetapunga familiar grants his master a +3 bonus to Acrobatics checks." compset="Race">
+    <fieldval field="rSTR" value="-9"/>
+    <fieldval field="rDEX" value="6"/>
+    <fieldval field="rINT" value="-8"/>
+    <fieldval field="rCHA" value="-7"/>
+    <fieldval field="rHitDice" value="1"/>
+    <fieldval field="rHPStart" value="4"/>
+    <fieldval field="rAC" value="3"/>
+    <fieldval field="rCR" value=".125"/>
+    <fieldval field="rNumHands" value="0"/>
+    <fieldval field="rInfFamBon" value="+3 bonus on Acrobatics checks"/>
+    <fieldval field="rEnviron" value="warm or temperate deserts, forests, plains, or underground"/>
+    <fieldval field="rOrgan" value="solitary or colony (3-6)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <fieldval field="rCON" value="-2"/>
+    <fieldval field="rSpeed" value="10"/>
+    <usesource source="CampRazorC"/>
+    <tag group="CompIs" tag="cArcFamil" name="Arcane Familiar" abbrev="Arcane Familiar"/>
+    <tag group="HasType" tag="tpVermin" name="Vermin" abbrev="Vermin"/>
+    <tag group="Helper" tag="ManyLegs" name="More than 4 Legs" abbrev="More than 4 Legs"/>
+    <tag group="Helper" tag="NotHum" name="NotHum" abbrev="NotHum"/>
+    <tag group="RaceSize" tag="Dimin13"/>
+    <tag group="RaceType" tag="Animal" name="Minion" abbrev="Minion"/>
+    <tag group="Hero" tag="NoDefComm" name="NoDefComm" abbrev="NoDefComm"/>
+    <tag group="NoScore" tag="aINT" name="Intelligence" abbrev="Intelligence"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="SlotSet" tag="selMISVerm"/>
+    <bootstrap thing="raSmAnimal"></bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Clumsy"/>
+      <autotag group="Value" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1_1"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="4000" index="3"><![CDATA[#racialsituational[hero.child[skAcrobat],"+20 to jump",field[name].text]]]></eval>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[ 
+      ~ If we're a familiar, and we're close, give our master a save bonus
+      if (#isfamiliarwithin1mile[]) then
+        master.child[skAcrobat].field[Bonus].value += 3
+        endif]]></eval>
+    </thing>
+  <thing id="rFGDevAqua" name="Devourer, Aquatic" compset="Race">
+    <fieldval field="rHitDice" value="14"/>
+    <fieldval field="rHPStart" value="63"/>
+    <fieldval field="rSTR" value="18"/>
+    <fieldval field="rDEX" value="6"/>
+    <fieldval field="rINT" value="9"/>
+    <fieldval field="rWIS" value="6"/>
+    <fieldval field="rCHA" value="11"/>
+    <fieldval field="rAC" value="13"/>
+    <fieldval field="rFeat" value="-7"/>
+    <fieldval field="rCR" value="11"/>
+    <fieldval field="rLangBonus" value="-4"/>
+    <fieldval field="rSpCastLev" value="18"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fPowerAtt"></bootstrap>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="fCleave"></bootstrap>
+    <bootstrap thing="lAbyssal"></bootstrap>
+    <bootstrap thing="lCelestial"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="lInfernal"></bootstrap>
+    <bootstrap thing="fComCast"></bootstrap>
+    <bootstrap thing="fComExpert"></bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d8_6"/>
+      <autotag group="Value" tag="2"/>
+      <assignval field="wDamExtra" value=" plus energy drain"/>
+      </bootstrap>
+    <bootstrap thing="xSplRs">
+      <autotag group="Value" tag="22"/>
+      </bootstrap>
+    <bootstrap thing="xTelepathy">
+      <autotag group="Value" tag="100"/>
+      </bootstrap>
+    <bootstrap thing="raEnDrain">
+      <assignval field="abValue" value="1"/>
+      </bootstrap>
+    <bootstrap thing="raDevDevoS"></bootstrap>
+    <bootstrap thing="raDevSpelD"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="spAnimDea4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spBestCur4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spConfusi4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spContUnd7">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spDeatKne2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spGhouTou2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spInflSer3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spPlanAll4">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spRayEnf1">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spSpecHan2">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spSuggest3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spTrueSee6">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="spVampTou3">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fImpSunder"></bootstrap>
+    <bootstrap thing="skKnowArca"></bootstrap>
+    <bootstrap thing="skKnowPlan"></bootstrap>
+    <bootstrap thing="stExtrapla"></bootstrap>
+    <eval phase="First">#skillinnate[skBluff] += 14
+      #skillinnate[skDiplo] += 9
+      #skillinnate[skFly] += 7
+      #skillinnate[skIntim] += 11
+      #skillinnate[skKnowArca] += 14
+      #skillinnate[skKnowPlan] += 14
+      #skillinnate[skPercep] += 14
+      #skillinnate[skSenseMot] += 11
+      #skillinnate[skSpellcr] += 14
+      #skillinnate[skStealth] += 4</eval>
+    </thing>
+  <thing id="rFGSeaCron" name="Sea Crone" compset="Race">
+    <fieldval field="rHitDice" value="4"/>
+    <fieldval field="rHPStart" value="22"/>
+    <fieldval field="rDEX" value="6"/>
+    <fieldval field="rCON" value="8"/>
+    <fieldval field="rCHA" value="7"/>
+    <fieldval field="rSTR" value="7"/>
+    <fieldval field="rINT" value="2"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rLangBonus" value="-1"/>
+    <fieldval field="rAC" value="3"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="HasType" tag="tpMonHuman"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="lAquan"></bootstrap>
+    <bootstrap thing="raSeaHorrA"></bootstrap>
+    <bootstrap thing="raSeaEvilE"></bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="xSplRs">
+      <autotag group="Value" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d6_5"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="fAbilFoc"></bootstrap>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="raAmphib"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="raEvasion"></bootstrap>
+    <eval phase="First">#skillinnate[skPercep] += 4
+#skillinnate[skStealth] += 4
+#skillinnate[skBluff] += 4</eval>
+    </thing>
+  <thing id="rFGBeetlJa" name="Beetle, Jabala" compset="Race">
+    <fieldval field="rHitDice" value="7"/>
+    <fieldval field="rHPStart" value="31"/>
+    <fieldval field="rSTR" value="9"/>
+    <fieldval field="rCON" value="5"/>
+    <fieldval field="rCHA" value="-1"/>
+    <fieldval field="rAC" value="8"/>
+    <fieldval field="rCR" value="4"/>
+    <fieldval field="rSpeed" value="20"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpVermin"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Helper" tag="ManyLegs"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="NoScore" tag="aINT"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="2d8_305"/>
+      <assignval field="wDamExtra" value=" plus disease"/>
+      </bootstrap>
+    <bootstrap thing="raFGJBBloa"></bootstrap>
+    <bootstrap thing="wTrample">
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Poor"/>
+      <autotag group="Value" tag="20"/>
+      </bootstrap>
+    </thing>
+  <thing id="rFGWgtSkin" name="Wight, Skinned" compset="Race">
+    <fieldval field="rHitDice" value="4"/>
+    <fieldval field="rHPStart" value="18"/>
+    <fieldval field="rSTR" value="2"/>
+    <fieldval field="rDEX" value="2"/>
+    <fieldval field="rINT" value="1"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="5"/>
+    <fieldval field="rSpeed" value="3-"/>
+    <fieldval field="rFeat" value="-2"/>
+    <fieldval field="rAC" value="4"/>
+    <fieldval field="rCR" value="3"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="Lawful"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <bootstrap thing="raFGSkWAcc"></bootstrap>
+    <bootstrap thing="raWigCreaS"></bootstrap>
+    <bootstrap thing="raEnDrain">
+      <assignval field="abValue" value="1"/>
+      </bootstrap>
+    <bootstrap thing="raWigResuV"></bootstrap>
+    <bootstrap thing="skKnowRel"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d4_4"/>
+      <assignval field="wDamExtra" value=" plus energy drain"/>
+      </bootstrap>
+    <eval phase="First">#skillinnate[skIntim] += 4
+    #skillinnate[skKnowRel] += 4
+    #skillinnate[skPercep] += 4
+    #skillinnate[skStealth] += 4
+    
+    #racialbonus[skStealth] += 8</eval>
+    </thing>
+  <thing id="rFGWightMk" name="Wight, Monkey" compset="Race">
+    <fieldval field="rHitDice" value="4"/>
+    <fieldval field="rHPStart" value="18"/>
+    <fieldval field="rSTR" value="2"/>
+    <fieldval field="rDEX" value="2"/>
+    <fieldval field="rINT" value="1"/>
+    <fieldval field="rWIS" value="3"/>
+    <fieldval field="rCHA" value="5"/>
+    <fieldval field="rSpeed" value="3-"/>
+    <fieldval field="rFeat" value="-2"/>
+    <fieldval field="rAC" value="3"/>
+    <fieldval field="rCR" value="4"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpUndead"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Alignment" tag="Lawful"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="ClassSkill" tag="skAcrobat"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <bootstrap thing="raEnDrain">
+      <assignval field="abValue" value="1"/>
+      </bootstrap>
+    <bootstrap thing="raWigResuV"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d4_4"/>
+      <assignval field="wDamExtra" value=" plus energy drain"/>
+      </bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="raWigCreaS"></bootstrap>
+    <eval phase="First">#skillinnate[skAcrobat] += 4
+    #skillinnate[skClimb] += 4
+    #skillinnate[skPercep] += 4
+    #skillinnate[skStealth] += 4</eval>
+    </thing>
+  <thing id="pFGImpCpCr" name="Imprint: Captain Cray" description="Captain Cray was a career seaman. He never married, and joked that the ocean was cruel enough of a mistress without a wife to please as well. His crew always respected him. Once the curse takes effect, he believes his &quot;men,&quot; actually the rest of the party now, are planning to mutiny at any minute. A streak of bad luck, the storm tossing them in that forbidden place, and now the fearsome image of those idols leering at them from the masts have set his men on edge. They blame Cray for it all, and he hates them for doing so. He will tolerate no insubordination from his crew and plans to be ready if his men turn on him&#133;in fact he might even have to kill one or two first to keep the others from rising up against him.\n\nHe&apos;ll never let them have his ship. He&apos;ll smash it to splinters on any nearby shoals or rocks before he lets her fall into mutineers&apos; hands.\n\nThe PC imprinted with Cray&apos;s personality gains 6 ranks in the Profession (sailor) skill and the Alertness feat." compset="InPlay">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Custom" tag="Imprinted"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <bootstrap thing="fAlertness">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <eval phase="First"><![CDATA[~ If we're not enabled, get out now
+          doneif (field[pIsOn].value = 0)
+    
+    perform hero.assign[Custom.Imprinted]
+    
+    hero.childfound[skProfSail].field[skInnate].value += 6]]></eval>
+    <prereq message="You are already imprinted with a ship&apos;s ghost.">
+      <validate>if (hero.tagis[Custom.Imprinted] = 0) then
+     @valid = 1
+    endif</validate>
+      </prereq>
+    </thing>
+  <thing id="pFGImpSgRg" name="Imprint: Sgt. Riggs" description="Riggs was a young man who just made sergeant in the merchant guild marines. He was engaged to a beautiful woman named Scarlet who meant the world to him, putting a ring on her finger and a kiss on her lips only a few hours before setting sail on the Seabear. Shortly after the Seabear took on the accursed idols, Riggs lost his hand in a cannon explosion that occurred during a routine firing drill. Now in the grips of his paranoia, he is certain that it was no accident. He won a great deal of silver from his crewmates in a dice game the night before the accident and he distinctly remembers Kalae Manu muttering &quot;You sure do roll remarkably when you throw with that damned left hand.&quot; Riggs is sure that Kalae, and possibly the other crewmembers, wanted revenge and over-filled the powder in the cannon before the drill.\n\nThe PC imprinted with Riggs&apos; spirit believes he is missing his left hand and acts accordingly, even showing the &quot;stump&quot; to the others accusingly.\n\nThe character imprinted with James&apos; spirit gains Point Blank Shot, Precise Shot, Far Shot and Two-Weapon Fighting (ah, the irony)." compset="InPlay">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Custom" tag="Imprinted"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <bootstrap thing="fPrecShot">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fFarShot">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fTwoWep">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fPointBlnk">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <eval phase="First"><![CDATA[~ If we're not enabled, get out now
+          doneif (field[pIsOn].value = 0)
+    
+    perform hero.assign[Custom.Imprinted]]]></eval>
+    <prereq message="You are already imprinted with a ship&apos;s ghost.">
+      <validate>if (hero.tagis[Custom.Imprinted] = 0) then
+     @valid = 1
+    endif</validate>
+      </prereq>
+    </thing>
+  <thing id="pFGImpMtDa" name="Imprint: 1st Mate Dawson" description="Tristan was a handsome man with a sly tongue. He was one of those pompous dandies with a pretty face, always very popular with the ladies. Under the effects of the curse, he knows the others hate him for his luck with women. What&apos;s more, he has also carried on with several of the others&apos; wives behind their backs. He always thought his silver tongue could turn any suspicion aside, but now he sees the look in their eyes. They know. They know, and they are going to kill him unless he kills them first.\n\nThe PC imprinted with Dawson&apos;s spirit gains 6 ranks in Bluff and Diplomacy. He also gains Combat Expertise and Improved Feint." compset="InPlay">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Custom" tag="Imprinted"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <bootstrap thing="fImpFeint">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fComExpert">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <eval phase="First"><![CDATA[~ If we're not enabled, get out now
+          doneif (field[pIsOn].value = 0)
+    
+    perform hero.assign[Custom.Imprinted]
+    
+    hero.childfound[skBluff].field[skInnate].value += 6
+    hero.childfound[skDiplo].field[skInnate].value += 6]]></eval>
+    <prereq message="You are already imprinted with a ship&apos;s ghost.">
+      <validate>if (hero.tagis[Custom.Imprinted] = 0) then
+     @valid = 1
+    endif</validate>
+      </prereq>
+    </thing>
+  <thing id="pFGImpEnsM" name="Imprint: Ensign Manu" description="As a half-Tulita and an experienced sea hand, Kalae was secretly against tearing down the idols in order to repair the Seabear, but he was afraid to challenge the captain&apos;s orders. Now, under the effects of the curse, he knows that the rest of the crew is doomed for defiling the refuge and angering the gods. He must make it right by sacrificing the defilers to the dark idols, bathing the old gods in his crewmates&apos; blood. Only then will the idols be appeased and release him.\n\nA PC imprinted with Kalae&apos;s spirit receives Power Attack, Cleave, and Improved Bull Rush as well as 5 ranks in Knowledge (religion) and Stealth. The character also gains the ability to speak and understand Tulita." compset="InPlay">
+    <usesource source="CampRazorC"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Custom" tag="Imprinted"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <bootstrap thing="fCleave">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fImpBull">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="lFGTulita">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fPowerAtt">
+      <containerreq phase="First" priority="200">hero#Custom.Imprinted</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <eval phase="First"><![CDATA[~ If we're not enabled, get out now
+          doneif (field[pIsOn].value = 0)
+    
+    perform hero.assign[Custom.Imprinted]
+    
+    hero.childfound[skKnowRel].field[Bonus].value += 5
+    hero.childfound[skStealth].field[Bonus].value += 5]]></eval>
+    <prereq message="You are already imprinted with a ship&apos;s ghost.">
+      <validate>if (hero.tagis[Custom.Imprinted] = 0) then
+     @valid = 1
+    endif</validate>
+      </prereq>
+    </thing>
+  <thing id="rFGTutIdlM" name="Tulita Idol Mast" compset="Race">
+    <fieldval field="rHitDice" value="7"/>
+    <fieldval field="rHPStart" value="38"/>
+    <fieldval field="rSTR" value="12"/>
+    <fieldval field="rDEX" value="-2"/>
+    <fieldval field="rWIS" value="-9"/>
+    <fieldval field="rCHA" value="-9"/>
+    <fieldval field="rSpeed" value="0"/>
+    <fieldval field="rAC" value="6"/>
+    <fieldval field="rCR" value="5"/>
+    <fieldval field="rSpace" value="10"/>
+    <fieldval field="rReach" value="10"/>
+    <usesource source="CampRazorC"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="Helper" tag="Snaky"/>
+    <tag group="NoScore" tag="aCON"/>
+    <tag group="NoScore" tag="aINT"/>
+    <tag group="HasType" tag="tpConst"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="RaceType" tag="NPC"/>
+    <bootstrap thing="raHardness">
+      <autotag group="Value" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d8_6"/>
+      <autotag group="Value" tag="2"/>
+      <autotag group="Helper" tag="NatTwoHand"/>
+      </bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wSlam"/>
+      </bootstrap>
+    <bootstrap thing="wConstrict">
+      <autotag group="wMain" tag="1d8_6"/>
+      <autotag group="Helper" tag="NatTwoHand"/>
+      </bootstrap>
+    </thing>
+  <thing id="rFGCentiBa" name="Baby Centipede" compset="Race">
+    <fieldval field="rSTR" value="-6"/>
+    <fieldval field="rDEX" value="8"/>
+    <fieldval field="rINT" value="-8"/>
+    <fieldval field="rCHA" value="-8"/>
+    <fieldval field="rHitDice" value="1"/>
+    <fieldval field="rHPStart" value="1"/>
+    <fieldval field="rAC" value="2"/>
+    <fieldval field="rCR" value=".125"/>
+    <fieldval field="rNumHands" value="0"/>
+    <fieldval field="rInfFamBon" value="+3 bonus on Stealth checks"/>
+    <fieldval field="rEnviron" value="temperate or warm forest or underground"/>
+    <fieldval field="rOrgan" value="solitary, pair, or colony (3&#150;6)"/>
+    <fieldval field="rTreasure" value="none"/>
+    <usesource source="APGFamil" parent="APGHeader" name="Advanced Player&apos;s Guide Familiars"/>
+    <usesource source="UMFamil" parent="UMHeader" name="Ultimate Magic Familiars"/>
+    <usesource source="CampRazorC"/>
+    <tag group="CompIs" tag="cArcFamil" name="Arcane Familiar" abbrev="Arcane Familiar"/>
+    <tag group="HasType" tag="tpVermin" name="Vermin" abbrev="Vermin"/>
+    <tag group="Helper" tag="ManyLegs" name="More than 4 Legs" abbrev="More than 4 Legs"/>
+    <tag group="Helper" tag="NotHum" name="NotHum" abbrev="NotHum"/>
+    <tag group="Hero" tag="NoDefComm" name="NoDefComm" abbrev="NoDefComm"/>
+    <tag group="RaceSize" tag="Tiny12" name="Tiny" abbrev="Tiny"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="SlotSet" tag="selMISVerm" name="Verminous" abbrev="Verminous"/>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d3_3"/>
+      </bootstrap>
+    <bootstrap thing="raPoiDEX">
+      <autotag group="Target" tag="wBite"/>
+      <assignval field="abDC" value="2"/>
+      <assignval field="abDuration" value="6"/>
+      <assignval field="abValue" value="3"/>
+      </bootstrap>
+    <bootstrap thing="raSmAnimal"></bootstrap>
+    <eval phase="PreLevel" priority="4000" index="2">#skillbonus[skPercep] += 4
+          #skillbonus[skStealth] += 8
+    
+          #skillinnate[skClimb] += 1</eval>
+    <eval phase="PreLevel" priority="5000"><![CDATA[ 
+          ~ If we're a familiar, and we're close, give our master a save bonus
+          if (#isfamiliarwithin1mile[]) then
+            master.child[skStealth].field[Bonus].value += 3
+            endif]]></eval>
+    </thing>
+  <thing id="rFGBlackCu" name="Black Curdle" compset="Race">
+    <fieldval field="rHitDice" value="4"/>
+    <fieldval field="rHPStart" value="18"/>
+    <fieldval field="rSTR" value="2"/>
+    <fieldval field="rDEX" value="-2"/>
+    <fieldval field="rCON" value="6"/>
+    <fieldval field="rWIS" value="1"/>
+    <fieldval field="rCHA" value="-1"/>
+    <fieldval field="rSpeed" value="10"/>
+    <fieldval field="rAC" value="6"/>
+    <fieldval field="rCR" value="3"/>
+    <fieldval field="rSpace" value="5"/>
+    <fieldval field="rReach" value="10"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="NoScore" tag="aINT"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <tag group="HasType" tag="tpPlant"/>
+    <bootstrap thing="raVioRot"></bootstrap>
+    <bootstrap thing="raFGBCBurr"></bootstrap>
+    <bootstrap thing="raFGBCMott"></bootstrap>
+    <bootstrap thing="wTentacle">
+      <autotag group="wMain" tag="1d4_4"/>
+      <autotag group="Value" tag="2"/>
+      <assignval field="wDamExtra" value=" plus rot"/>
+      </bootstrap>
+    </thing>
+  <thing id="rFGPhasm" name="Phasm" compset="Race">
+    <fieldval field="rHitDice" value="15"/>
+    <fieldval field="rHPStart" value="67"/>
+    <fieldval field="rSTR" value="2"/>
+    <fieldval field="rDEX" value="5"/>
+    <fieldval field="rCON" value="5"/>
+    <fieldval field="rINT" value="6"/>
+    <fieldval field="rWIS" value="5"/>
+    <fieldval field="rCHA" value="4"/>
+    <fieldval field="rFeat" value="-8"/>
+    <fieldval field="rAC" value="5"/>
+    <fieldval field="rCR" value="7"/>
+    <fieldval field="rEnviron" value="underground"/>
+    <fieldval field="rOrgan" value="solitary"/>
+    <fieldval field="rTreasure" value="standard"/>
+    <fieldval field="rFort" value="4"/>
+    <fieldval field="rRef" value="4"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpAberr"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Helper" tag="Snaky"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="ClassSkill" tag="Knowledge"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d3_3"/>
+      </bootstrap>
+    <bootstrap thing="raFGAmorph"></bootstrap>
+    <bootstrap thing="xScent"></bootstrap>
+    <bootstrap thing="xTremorsen">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="raChangeSh">
+      <assignval field="livename" value="Change Shape ({i}greater polymorph{/i})"/>
+      </bootstrap>
+    <bootstrap thing="xTelepathy">
+      <autotag group="Value" tag="100"/>
+      </bootstrap>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="fWepFin"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="fMobility"></bootstrap>
+    <bootstrap thing="lCommon"></bootstrap>
+    <bootstrap thing="stShapecha"></bootstrap>
+    <bootstrap thing="fBlindFgt"></bootstrap>
+    <bootstrap thing="fComRef"></bootstrap>
+    <bootstrap thing="fDodge"></bootstrap>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <eval phase="First"><![CDATA[#skillinnate[skBluff] += 15
+    #skillinnate[skClimb] += 3
+    #skillinnate[skDiplo] += 15
+    #skillinnate[skDisguise] += 15
+    #skillinnate[skIntim] += 12
+    #skillinnate[skKnowOth] += 15
+    #skillinnate[skPercep] += 15
+    #skillinnate[skSurvival] += 15
+    
+    #racialsituational[hero.child[skDisguise],"+10 when using change shape",field[name].text]]]></eval>
+    </thing>
+  <thing id="rFGAquThoq" name="Thoqqua, Aquatic" compset="Race">
+    <fieldval field="rHitDice" value="3"/>
+    <fieldval field="rHPStart" value="16"/>
+    <fieldval field="rSTR" value="3"/>
+    <fieldval field="rDEX" value="3"/>
+    <fieldval field="rCON" value="5"/>
+    <fieldval field="rINT" value="-4"/>
+    <fieldval field="rWIS" value="2"/>
+    <fieldval field="rFeat" value="-2"/>
+    <fieldval field="rAC" value="4"/>
+    <fieldval field="rCR" value="2"/>
+    <usesource source="CampRazorC"/>
+    <tag group="HasType" tag="tpOutsider"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Hero" tag="CantSpeak"/>
+    <tag group="Helper" tag="Snaky"/>
+    <tag group="Helper" tag="NotHum"/>
+    <tag group="Alignment" tag="NeutralLC"/>
+    <tag group="Alignment" tag="NeutralGE"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="ClassSkill" tag="skAcrobat"/>
+    <tag group="ClassSkill" tag="skSurvival"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="lIgnan"></bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="wMain" tag="1d6_5"/>
+      <assignval field="wDamExtra" value=" plus burn"/>
+      </bootstrap>
+    <bootstrap thing="raBurn">
+      <assignval field="livename" value="Burn (1d6)"/>
+      </bootstrap>
+    <bootstrap thing="xTremorsen">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="raThoMoltB"></bootstrap>
+    <bootstrap thing="fNimbMove"></bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="stFire"></bootstrap>
+    <bootstrap thing="stAquatic"></bootstrap>
+    <bootstrap thing="stEarth"></bootstrap>
+    <bootstrap thing="stElement"></bootstrap>
+    <bootstrap thing="stExtrapla"></bootstrap>
+    <bootstrap thing="xSwim">
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    <eval phase="First">#skillinnate[skAcrobat] += 3
+    #skillinnate[skPercep] += 3
+    #skillinnate[skStealth] += 3
+    #skillinnate[skSurvival] += 3</eval>
+    </thing>
+  <thing id="rFGRoachlo" name="Roachlord, The" compset="Race">
+    <fieldval field="rHitDice" value="11"/>
+    <fieldval field="rHPStart" value="49"/>
+    <fieldval field="rSTR" value="10"/>
+    <fieldval field="rDEX" value="7"/>
+    <fieldval field="rCON" value="8"/>
+    <fieldval field="rINT" value="1"/>
+    <fieldval field="rWIS" value="4"/>
+    <fieldval field="rCHA" value="-2"/>
+    <fieldval field="rSpeed" value="40"/>
+    <fieldval field="rDescript" value="The Roachlord is 9 ft. tall and covered in black chitinous armor. Two large antennae extend from his grotesque insectile head. His mouth holds four barbed mandibles around an open maw. A scrap of a child&apos;s jacket hangs from one of his mandibles."/>
+    <fieldval field="rFeat" value="-6"/>
+    <fieldval field="rCR" value="7"/>
+    <fieldval field="rAC" value="9"/>
+    <fieldval field="rSpCastLev" value="11"/>
+    <usesource source="CampRazorC"/>
+    <tag group="Alignment" tag="Evil"/>
+    <tag group="Alignment" tag="Chaotic"/>
+    <tag group="HasType" tag="tpAberr"/>
+    <tag group="RaceType" tag="NPC"/>
+    <tag group="RaceSize" tag="Large1"/>
+    <tag group="Hero" tag="NoDefComm"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="FrogGod"/>
+    <bootstrap thing="fImpInit"></bootstrap>
+    <bootstrap thing="fIronWill"></bootstrap>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <autotag group="Target" tag="wSlam"/>
+      </bootstrap>
+    <bootstrap thing="lGiant"></bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="2d8_204"/>
+      <autotag group="Value" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="xImmDis"></bootstrap>
+    <bootstrap thing="xImmPois"></bootstrap>
+    <bootstrap thing="raGrab">
+      <autotag group="Target" tag="wBite"/>
+      </bootstrap>
+    <bootstrap thing="raFGNausPr"></bootstrap>
+    <bootstrap thing="raFGSumRoa"></bootstrap>
+    <bootstrap thing="rBlindsen">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="wSlam">
+      <autotag group="Value" tag="2"/>
+      <autotag group="wMain" tag="1d6_5"/>
+      </bootstrap>
+    <bootstrap thing="fComRef"></bootstrap>
+    <eval phase="PreLevel" priority="4000">#skillinnate[skClimb]   += 11
+#skillinnate[skPercep]  += 11
+#skillinnate[skStealth] += 11
+#skillinnate[skSwim]    += 11
+
+#skillbonus[skClimb]   += 8
+#skillbonus[skStealth] += 8</eval>
+    </thing>
+  </document>
