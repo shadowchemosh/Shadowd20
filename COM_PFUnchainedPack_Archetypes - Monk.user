@@ -112,7 +112,24 @@
     <bootstrap thing="cMnkKiBow">
       <autotag group="ClSpecWhen" tag="16"/>
       </bootstrap>
+    <bootstrap thing="fPerStrike">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fWepFoc">
+      <containerreq phase="First" priority="500"><![CDATA[Classes.MonkUnc >= 2]]></containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fPointBMas">
+      <containerreq phase="First" priority="500"><![CDATA[Classes.MonkUnc >= 4]]></containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fWepSpec">
+      <containerreq phase="First" priority="500"><![CDATA[Classes.MonkUnc >= 6]]></containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpMnkUn"/>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      #appenddesc[cMnkP6FoBU,"{b}Zen Archer modification{/b}: Starting at 1st level, a zen archer can make a flurry of blows as a full-attack action, but only when using a bow (even though it is a ranged weapon). He may not make a flurry of blows with his unarmed attacks or any other weapons. A zen archer does not apply his Strength bonus on damage rolls made with flurry of blows unless he is using a composite bow with a Strength rating. A zen archer's flurry of blows otherwise functions as normal for a monk of his level.{br}{br}A zen archer cannot use Rapid Shot or Manyshot when making a flurry of blows with his bow."]]]></eval>
     <eval phase="PostLevel" priority="11050"><![CDATA[
       ~ Make sure we are linked to class before
       ~ proceeding.
@@ -148,8 +165,6 @@
         perform linkage[varies].assign[fInclude.fPinTarget]
         perform linkage[varies].assign[fInclude.fSnatchArr]
       Endif]]></eval>
-    <eval phase="Final" priority="50000" index="2"><![CDATA[
-      #appenddesc[cMnkP6FoBU,"{b}Zen Archer modification{/b}: Starting at 1st level, a zen archer can make a flurry of blows as a full-attack action, but only when using a bow (even though it is a ranged weapon). He may not make a flurry of blows with his unarmed attacks or any other weapons. A zen archer does not apply his Strength bonus on damage rolls made with flurry of blows unless he is using a composite bow with a Strength rating. A zen archer's flurry of blows otherwise functions as normal for a monk of his level.{br}{br}A zen archer cannot use Rapid Shot or Manyshot when making a flurry of blows with his bow."]]]></eval>
     </thing>
   <thing id="cMnkP6FoBU" name="Flurry of Blows (Unchained)" description="At 1st level, a monk can make a flurry of blows as a full-attack action. When making a flurry of blows, the monk can make one additional attack at his highest base attack bonus. This additional attack stacks with the bonus attacks from {i}haste{/i} and other similar effects. When using this ability, the monk can make these attacks with any combination of his unarmed strikes and weapons that have the monk special weapon quality. He takes no penalty for using multiple weapons when making a flurry of blows, but he does not gain any additional attacks beyond what’s already granted by the flurry for doing so. (He can still gain additional attacks from a high base attack bonus, from this ability, and from {i}haste{/i} and similar effects).\n\nAt 11th level, a monk can make an additional attack at his highest base attack bonus whenever he makes a flurry of blows. This stacks with the first attack from this ability and additional attacks from {i}haste{/i} and similar effects." compset="ClSpecial" summary="As full-round action, gain extra attacks with some weapons.">
     <fieldval field="listname" value="Flurry of blows (bonus attack)"/>
@@ -221,13 +236,13 @@
     <fieldval field="srcBookInf" value="Ultimate Combat"/>
     <fieldval field="srcPageNum" value="59"/>
     <usesource source="srcUnMnkAr"/>
-    <tag group="ClassVary"  tag="arMnkMaMan"/>
-    <tag group="AbReplace"  tag="cMnkFlurUn"/>
-    <tag group="AbReplace"  tag="cMnkPeSeUn"/>
-    <tag group="fInclude"   tag="fElemFist"/>
-    <tag group="fCategory"  tag="Style"/>
-    <tag group="Helper"     tag="NoPathSoc"/>
-    <tag group="ProductId"  tag="HLCommunit"/>
+    <tag group="ClassVary" tag="arMnkMaMan"/>
+    <tag group="AbReplace" tag="cMnkFlurUn"/>
+    <tag group="AbReplace" tag="cMnkPeSeUn"/>
+    <tag group="fInclude" tag="fElemFist"/>
+    <tag group="fCategory" tag="Style"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="cMnkFuseSt">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
@@ -241,7 +256,7 @@
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpMnkUn"/>
-    <eval phase="PostLevel" priority="11000"><![CDATA[
+    <eval phase="PostLevel" priority="11000">
       ~ If not correctly linked to our class get out now!
       doneif (islinkage[varies] = 0)
 
@@ -427,7 +442,6 @@
       endif
       if (#hasfeat[fWolfStyl] = 0) then
         perform linkage[varies].assign[fExclude.fWolfTrip]
-      endif
-      ]]></eval>
+      endif</eval>
     </thing>
   </document>

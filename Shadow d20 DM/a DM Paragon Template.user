@@ -204,15 +204,17 @@
       ~ HP Pool trackers.
       perform hero.assign[Paragon.NoHPPool]]]></eval>
     </thing>
-  <thing id="raS2ParCDG" name="Paragon Coup de Grace" description="This creature reacts in a special way when it gets coup de graced during combat where instead of being killed when coup de grace it instead has one hit point pool immediently reduced to zero. When a pool of hit points is destroyed in this way, all ongoing conditions and effects affecting the creature end immediately.  In addition this creatures receieves a +15 bonus to the Fortitude save to not die when its coup de grace." compset="RaceSpec" summary="Coup de grace only destroys a single HP pool instead of being dead.">
-    <fieldval field="abValue" value="15"/>
+  <thing id="raS2ParCDG" name="Paragon Coup de Grace" description="This creature reacts in a special way when it gets coup de graced during combat where instead of being killed when coup de grace it instead has one hit point pool immediently reduced to zero. When a pool of hit points is destroyed in this way, all ongoing conditions and effects affecting the creature end immediately.  In addition this creatures receieves a bonus equal to its hit dice to the Fortitude save to not die when its coup de grace." compset="RaceSpec" summary="Coup de grace only destroys a single HP pool instead of being dead.">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Defense"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.SpcDisable] <> 0)
 
-      #situational[hero.child[svFort],signed(field[abValue].value) & "  vs coup de grace.",field[thingname].text]]]></eval>
+      ~ Set bonus equal to hit dice
+      field[abValue].value += herofield[tHitDice].value
+
+      #situational[hero.child[svFort],signed(field[abValue].value) & " vs coup de grace.",field[thingname].text]]]></eval>
     </thing>
   <thing id="rcS2ParSpa" name="Paragon Spawn" description="This creature may reduce one of it&apos;s hit point pools to zero to spawn a new creature in any space within range. This new spawn appears and may take its turn immediately after the creature that spawned it. The new spawn’s current hit points are equal to the number of hit points lost by its master when reducing its hit point pool to zero, up to the spawns’s listed maximum hit points. The master may not reduce it&apos;s last hit point pool to zero use this effect." compset="RaceCustom" summary="Create a new spawn monster." uniqueness="useronce">
     <usesource source="s20PFCamp"/>
@@ -233,12 +235,13 @@
     <tag group="SpecType" tag="Attack"/>
     <exprreq message="Paragon Spawn ability required."><![CDATA[#hasability[rcS2ParSpa] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2ParEli" name="Paragon Elite" description="Elite paragon creatures can as a full-round action save vs continuing effects on each of there hit point pools turns.  This extra save if successful immediately ends any on-going effect on the paragon creature.  In example an elite paragon creature affected by a Sleep Hex can attempt a new save vs the same DC as the original save to end the sleep effect." compset="RaceCustom" summary="As a full-round action save vs continuing effects on each hit point pool turn." uniqueness="useronce">
+  <thing id="rcS2ParEli" name="Paragon Elite" description="Elite paragon creatures can as a full-round action save vs continuing effects on each of there hit point pools turns.  This extra save if successful immediately ends any on-going effect on the paragon creature.  In example an elite paragon creature affected by a Sleep Hex can attempt a new save vs the same DC as the original save to end the sleep effect." compset="RaceCustom" summary="Full-round action save vs continuing effects on each HP pool turn." uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="AllowRCust" tag="cfgS2Parag"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="Helper" tag="Secondary"/>
+    <tag group="SpecType" tag="Defense"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~set our focus to the hero's race
       perform hero.findchild[BaseRace].setfocus

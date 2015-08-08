@@ -3825,13 +3825,13 @@ abValue2 = Save bonus</comment>
       focus.field[arMaxDex].value += field[abValue].value</eval>
     <eval phase="Render" priority="10000" index="3"><![CDATA[field[abSumm].text = "Armor's max DEX and ACP are improved by " & field[abValue].value & " and lightens by one step"]]></eval>
     </thing>
-  <thing id="staPWTwTh3" name="Twin Thunder Stance" description="You have learned how to use normally two-handed weapons in one hand, using the weapon&apos;s’ size and momentum to strike your foes with powerful blows. While you maintain this stance, you can wield normally two-handed weapons as one-handed weapons, and you gain the benefits of the Two-Weapon Fighting feat while using two discipline weapons in either hand (even if you do not meet its prerequisites). If you already possess the Two-Weapon Fighting feat, you may instead wield one or both of weapons as light weapons (reducing the penalties further and making them eligible for use with feats such as Weapon Finesse or Deadly Agility), and you gain the benefits of the Improved Two-Weapon Fighting feat, or the Greater Two-Weapon Fighting if you already possessed Improved Two-Weapon Fighting, even if you do not meet these feats’ prerequisites. You do not need to be wielding multiple weapons to gain the benefits of this stance.\n\n{b}Special Note:{/b} If you possess the armament shield class feature (see Zweihander Sentinel warder archetype in {i}Path of War{/i}) and wielding a two-handed weapon in one hand, the benefits of armament shield will still apply to that weapon. If you are wielding a pair of two-handed weapons, armament shield only applies to one of them, although you can choose which weapon it applies to as a free action at the start of each turn. Note that even if you are wielding more than two weapons, you can only gain extra attacks with a single off hand weapon each turn." compset="PWManuever" summary="Dual-wield 2-hand weapons as if they were 1-hand" uniqueness="useronce">
-    <comment>abValue = 1 if character has TWF without this stance
-abValue2 = 1 if character has ITWF without this stance</comment>
+  <thing id="staPWTwTh3" name="Twin Thunder Stance" description="You have learned how to use normally two-handed weapons in one hand, using the weapon&apos;s’ size and momentum to strike your foes with powerful blows. While you maintain this stance, you can wield normally two-handed weapons as one-handed weapons, and you gain the benefits of the Two-Weapon Fighting feat while using two weapons in either hand (even if you do not meet its prerequisites). If you already possess the Two-Weapon Fighting feat, you may instead wield one or both of weapons as light weapons (reducing the penalties further and making them eligible for use with feats such as Weapon Finesse or Deadly Agility), and you gain the benefits of the Improved Two-Weapon Fighting feat, or the Greater Two-Weapon Fighting if you already possessed Improved Two-Weapon Fighting, even if you do not meet these feats’ prerequisites. You do not need to be wielding multiple weapons to gain the benefits of this stance.\n\n{b}Special Note:{/b} If you possess the armament shield class feature (see Zweihander Sentinel warder archetype in {i}Path of War{/i}) and wielding a two-handed weapon in one hand, the benefits of armament shield will still apply to that weapon. If you are wielding a pair of two-handed weapons, armament shield only applies to one of them, although you can choose which weapon it applies to as a free action at the start of each turn. Note that even if you are wielding more than two weapons, you can only gain extra attacks with a single off hand weapon each turn." compset="PWManuever" summary="Dual-wield 2-hand weapons as if they were 1-hand" uniqueness="useronce">
+    <comment>abValue = 0 if character has TWF without this stance
+abValue2 = 0 if character has ITWF without this stance</comment>
     <fieldval field="mPreReq" value="1"/>
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="abValue2" value="1"/>
     <usesource source="srcPOWEx"/>
-    <tag group="AbilType" tag="Extra"/>
-    <tag group="mInitAct" tag="Swift1"/>
     <tag group="Discipline" tag="PrcThun"/>
     <tag group="PathOfWar" tag="Stance"/>
     <tag group="mType" tag="Stance"/>
@@ -3839,34 +3839,62 @@ abValue2 = 1 if character has ITWF without this stance</comment>
     <tag group="mRange" tag="Personal"/>
     <tag group="mTarget" tag="You"/>
     <tag group="mDuration" tag="Stance"/>
-    <bootstrap thing="fTwoWep">
-      <containerreq phase="First" priority="150"><![CDATA[fieldVal:abilActive = 1 & fieldVal:abValue = 0]]></containerreq>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="AbilType" tag="Extra"/>
+    <bootstrap thing="fGrtTwoWep">
+      <containerreq phase="First" priority="150">fieldVal:abilActive = 1</containerreq>
       <autotag group="thing" tag="skipprereq"/>
+      <autotag group="PathOfWar" tag="Stance"/>
+      <autotag group="Helper" tag="FtDisable"/>
+      <autotag group="Hide" tag="Feat"/>
+      </bootstrap>
+    <bootstrap thing="fTwoWep">
+      <containerreq phase="First" priority="150">fieldVal:abilActive = 1</containerreq>
+      <autotag group="thing" tag="skipprereq"/>
+      <autotag group="PathOfWar" tag="Stance"/>
+      <autotag group="Helper" tag="FtDisable"/>
+      <autotag group="Hide" tag="Feat"/>
       </bootstrap>
     <bootstrap thing="fImpTwoWep">
-      <containerreq phase="First" priority="150"><![CDATA[fieldVal:abilActive = 1 & fieldVal:abValue = 1 & fieldVal:abValue2 = 0]]></containerreq>
+      <containerreq phase="First" priority="150">fieldVal:abilActive = 1</containerreq>
       <autotag group="thing" tag="skipprereq"/>
+      <autotag group="PathOfWar" tag="Stance"/>
+      <autotag group="Helper" tag="FtDisable"/>
+      <autotag group="Hide" tag="Feat"/>
       </bootstrap>
-    <bootstrap thing="fGrtTwoWep">
-      <containerreq phase="First" priority="150"><![CDATA[fieldVal:abilActive = 1 & fieldVal:abValue = 1 & fieldVal:abValue2 = 1]]></containerreq>
-      <autotag group="thing" tag="skipprereq"/>
-      </bootstrap>
-    <eval phase="First"><![CDATA[      ~ If we're not enabled, get out now
+    <eval phase="PreLevel" priority="500"><![CDATA[      ~ If we're not enabled, get out now
       doneif (field[abilActive].value = 0)
 
-      ~ Figure out if we already have TWF and ITWF, this will affect bootstrap conditions and later script logic
+      ~ Determine if we already have TWF/ITWF without this stance
       perform hero.childfound[fTwoWep].setfocus
-      field[abValue].value = state.isfocus
+      if (state.isfocus = 1) then
+        field[abValue].value = focus.tagis[PathOfWar.Stance]
+      endif
       perform state.clearfocus
       perform hero.childfound[fImpTwoWep].setfocus
-      field[abValue2].value = state.isfocus
+      if (state.isfocus = 1) then
+        field[abValue2].value = focus.tagis[PathOfWar.Stance]
+      endif
       perform state.clearfocus
+
+      ~ If we already have TWF, unlock ITWF, or if we already have that then unlock GTWF
+      if (field[abValue].value = 0) then
+        perform hero.childfound[fImpTwoWep].delete[Helper.FtDisable]
+        perform hero.childfound[fImpTwoWep].delete[Hide.Feat]
+          if (field[abValue2].value = 0) then
+            perform hero.childfound[fGrtTwoWep].delete[Helper.FtDisable]
+            perform hero.childfound[fGrtTwoWep].delete[Hide.Feat]
+          endif
+      else
+        perform hero.childfound[fTwoWep].delete[Helper.FtDisable]
+        perform hero.childfound[fTwoWep].delete[Hide.Feat]
+      endif
 
       ~ Make 2H weapons 1H, or Light if we have TWF without this stance
       foreach pick in hero from BaseWep where "wClass.TwoHanded | wClass.OneHanded"
         perform eachpick.delete[wClass.TwoHanded]
         perform eachpick.assign[wClass.OneHanded]
-        if (field[abValue].value = 1) then
+        if (field[abValue].value = 0) then
           perform eachpick.delete[wClass.OneHanded]
           perform eachpick.assign[wClass.Light]
         endif

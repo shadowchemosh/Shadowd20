@@ -970,7 +970,7 @@
     S2Class = field[usrChosen1].chosen.tagids[Spellbook.?,"|"]
 
     ~ Read through all the spells on the selected class
-    foreach pick in hero from BaseSpell where S2Class
+    foreach pick in hero from BaseSpell where "(" & S2Class & ") & !Hide.Spell"
        ~ Total up the Cost and number of pages used at each spell level
        If (eachpick.tagis[sLevel.0] <> 0) Then
           Cost += 5

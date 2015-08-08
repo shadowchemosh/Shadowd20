@@ -80,6 +80,7 @@ April 10, 2014 - Tim Shadow
     <exprreq message="Weapon Finesse feat required."><![CDATA[#hasfeat[fWepFin] <> 0]]></exprreq>
     </thing>
   <thing id="fPWExtrGam" name="Extra Gambit" description="You have learned another manner in which to take a chance for success.\n\n{b}Prerequisites{/b}: The ability to initiate a gambit, Charisma 13, warlord level 3+ \n\n{b}Benefit{/b}: You may select another gambit method in which to regain maneuvers.\n\n{b}Special{/b}: You may select this feat multiple times, selecting a new gambit each time." compset="Feat">
+    <fieldval field="reqCha" value="13"/>
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -91,7 +92,6 @@ April 10, 2014 - Tim Shadow
       hero.childfound[cHelpPW1].field[cGiveSpec].value += 1]]></eval>
     <exprreq message="Warlord level 3+ required."><![CDATA[#featlevelcount[PWWarlord] >= 3]]></exprreq>
     <exprreq message="Ability to initiate a gambit required."><![CDATA[#hasability[cPW1Gambit] <> 0]]></exprreq>
-    <exprreq message="Charisma 13 required."><![CDATA[#attrvalue[aCHA] >= 13]]></exprreq>
     </thing>
   <thing id="fPWDoubFin" name="Double Weapon Finesse" description="You have mastered ways to take a double weapon and turn it into a spinning majesty of deadly grace.\n\n{b}Prerequisites{/b}: Proficiency with one or more double weapons, Two-Weapon Fighting, Weapon Finesse\n\n{b}Benefits{/b}: While wielding a double weapon that you are proficient in, you may treat both heads of the weapon as light weapons for the purposes of the Weapon Finesse feat and for Two-Weapon Fighting. You also receive a +2 competence bonus to CMD when using a double weapon." compset="Feat" uniqueness="useronce">
     <fieldval field="abValue" value="2"/>
@@ -202,6 +202,7 @@ April 10, 2014 - Tim Shadow
       field[trkMax].value += hero.tagcount[HasFeat.fPWLightRe]</eval>
     </thing>
   <thing id="fPWLightSw" name="Lightning Swap" description="Your speed is legendary, allowing you to switch weapons at a frightening pace.\n\n{b}Prerequisite{/b}: Quick Draw, Dexterity 15, base attack bonus +5 \n\n{b}Benefit{/b}: You may draw or put away a weapon as a free action. You cannot make more weapon swaps per round than your Dexterity modifier. You also gain a +2 bonus to CMD to resist attempts to be disarmed due to your fast hands and reflexes." compset="Feat" summary="Draw/sheath a weapon as a free action a number of times equal to your Dex modifier." uniqueness="useronce">
+    <fieldval field="reqDex" value="15"/>
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -212,13 +213,13 @@ April 10, 2014 - Tim Shadow
 
       ~ Give +2 bonus to CMD Disarm
       hero.child[manDisarm].field[manCMD].value += 2]]></eval>
-    <exprreq message="Dexterity 15+ required."><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
     <exprreq message="Base attack bonus of +5 required."><![CDATA[#BAB[] >= 5]]></exprreq>
     <exprreq message="Quick Draw feat required."><![CDATA[#hasfeat[fQuickDraw] <> 0]]></exprreq>
     </thing>
   <thing id="fPWMartPow" name="Martial Power" description="You are able to instinctively call upon reserves of untapped power within yourself to defend yourself.\n\n{b}Prerequisites:{/b} Constitution 13, knowledge of at least one maneuver or stance.\n\n{b}Benefit:{/b} You can choose to take a -1 penalty on melee attack rolls and combat maneuver checks to gain 2 temporary hit points. This bonus is increased by half (50%) when you are using a shield of any kind. When your base attack bonus reaches +3 and every +2 thereafter, the penalty increases by -1 and the temporary hit point bonus increases by 2. You can only choose to use this feat when you declare that you are making an attack or a full-attack action with a melee weapon, or when you are initiating a maneuver. The temporary hit points gained from use of this feat last until your next turn.\n\n{b}Special:{/b} Martial Power can be used in place of Combat Expertise to qualify for a feat, prestige class, or other special ability. You can take both this feat and Combat Expertise." compset="Feat" uniqueness="useronce">
     <fieldval field="abValue" value="1"/>
     <fieldval field="abValue2" value="2"/>
+    <fieldval field="reqCon" value="13"/>
     <usesource source="srcPathOfW"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="HasFeat" tag="fComExpert"/>
@@ -256,7 +257,6 @@ April 10, 2014 - Tim Shadow
       ~ Set display name with +/- values
       field[livename].text = field[thingname].text & " -" & field[abValue].value & "/" & signed(field[abValue2].value)]]></eval>
     <exprreq message="Knowledge of at least one maneuver or stance required."><![CDATA[hero.tagcount[HasMan.?] + hero.tagcount[HasStance.?] <> 0]]></exprreq>
-    <exprreq message="Constitution 13 required."><![CDATA[#attrvalue[aCON] >= 13]]></exprreq>
     </thing>
   <thing id="fPWMartTr1" name="Martial Training I" description="You’ve learned the basics in a martial discipline.\n\n{b}Prerequisites{/b}: Base attack bonus +3 or Knowledge (martial) 3 ranks.\n\n{b}Benefit{/b}: Select a martial discipline. The associated skill for this discipline is now a class skill. Your martial initiator level maneuvers granted by this feat (and subsequent Martial Training feats) is equal to half your character level + your attribute modifier that modifies your chosen discipline for use with this discipline (example, Dexterity for a discipline that uses Acrobatics), not to exceed your character level. Likewise, your initiation modifier is the attribute modifier that effects the associated skill of this chosen discipline (for example, Charisma if the discipline uses Diplomacy). You may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. You may recover one maneuver by expending a full round action to recover it.\n\n{b}Special{/b}: If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead." compset="Feat" uniqueness="useronce">
     <comment>abValue  = Manuevers Known
@@ -541,25 +541,27 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="General"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="Render" priority="10000"><![CDATA[~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+    <eval phase="Render" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Get all disciplines associated with chosen class
-~var sTags as string
-~sTags = hero.tagids[Discipline.?,"|"]
-~sTags = replace(sTags,"Discipline","pwdSkill",0)
+      ~ Get all disciplines associated with chosen class
+      ~var sTags as string
+      ~sTags = hero.tagids[Discipline.?,"|"]
+      ~sTags = replace(sTags,"Discipline","pwdSkill",0)
 
-~ Get associated skill for each discipline, and append to the description
-~foreach pick in hero from BaseSkill where sTags
-foreach pick in hero from BaseSkill where "Discipline.?"
-  if (eachpick.field[skRanks].value >= field[abValue].value) then
-    #situational[eachpick, "You may always take 10 with this skill, with no increase in the time needed to make the check, even if combat or distractions would otherwise prevent you from doing so", field[thingname].text]
-  endif
-nexteach]]></eval>
+      ~ Get associated skill for each discipline, and append to the description
+      ~foreach pick in hero from BaseSkill where sTags
+      foreach pick in hero from BaseSkill where "Discipline.?"
+        if (eachpick.field[skRanks].value >= field[abValue].value) then
+          #situational[eachpick, "You may always take 10 with this skill, with no increase in the time needed to make the check, even if combat or distractions would otherwise prevent you from doing so", field[thingname].text]
+        endif
+      nexteach]]></eval>
     <prereq message="Requires 8+ ranks in one of your martial discipline&apos;s associated skills">
-      <validate><![CDATA[foreach pick in hero from BaseSkill where "Discipline.?"
-  validif (eachpick.field[skRanks].value >= #value[fPWDiscMst])
-nexteach]]></validate>
+      <validate><![CDATA[
+        foreach pick in hero from BaseSkill where "Discipline.?"
+          validif (eachpick.field[skRanks].value >= #value[fPWDiscMst])
+        nexteach]]></validate>
       </prereq>
     </thing>
   <thing id="fPWDefExp" name="Defensive Expertise" description="You are able to use your defenses to greater effect.\n\n{b}Prerequisites:{/b} Shield Focus, shield proficiency, base attack bonus +1\n\n{b}Benefit:{/b}  Your shield bonus to armor class applies against touch attacks. Additionally, you may add the enhancement bonus of your shield (if any) as a competence bonus to Reflex saves." compset="Feat" summary="Your shield bonus applies to your touch AC" uniqueness="useronce">
@@ -568,16 +570,17 @@ nexteach]]></validate>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="abAction" tag="None"/>
-    <eval phase="Final" priority="10000"><![CDATA[~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Apply shield AC bonus to Touch AC
-hero.child[ArmorClass].field[tACTouch].value += hero.child[ArmorClass].field[tACShield].value
+      ~ Apply shield AC bonus to Touch AC
+      hero.child[ArmorClass].field[tACTouch].value += hero.child[ArmorClass].field[tACShield].value
 
-~ Find any shields equipped on the hero, and add their enhancements as a comp. bonus to Ref saves
-foreach pick in hero from BaseArmor where "EquipType.Shield & Helper.CurrShield"
-  #applybonus[BonComp, hero.child[svRef], eachpick.field[BonEnhance].value]
-nexteach]]></eval>
+      ~ Find any shields equipped on the hero, and add their enhancements as a comp. bonus to Ref saves
+      foreach pick in hero from BaseArmor where "EquipType.Shield & Helper.CurrShield"
+        #applybonus[BonComp, hero.child[svRef], eachpick.field[BonEnhance].value]
+      nexteach]]></eval>
     <pickreq thing="fShieldFoc"/>
     <pickreq thing="fArmShield"/>
     <exprreq message="Base attack bonus +1 required"><![CDATA[#BAB[] >= 1]]></exprreq>
@@ -590,34 +593,36 @@ nexteach]]></eval>
     <bootstrap thing="wShLtSteel">
       <autotag group="Hide" tag="Weapon"/>
       </bootstrap>
-    <eval phase="PostAttr"><![CDATA[~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+    <eval phase="PostAttr"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-var hide as number
-foreach pick in hero from BaseArmor where "EquipType.Shield & Helper.CurrShield & IsArmor.shBuckler"
-   hide += 1
-nexteach
+      var hide as number
+      foreach pick in hero from BaseArmor where "EquipType.Shield & Helper.CurrShield & IsArmor.shBuckler"
+         hide += 1
+      nexteach
 
-~ If we found any two/one-handed weapons used in two hands
-~ then display the our special armament shield
-if (hide <> 0) Then
-  perform hero.childfound[wShLtSteel].delete[Hide.Weapon]
-endif
+      ~ If we found any two/one-handed weapons used in two hands
+      ~ then display the our special armament shield
+      if (hide <> 0) Then
+        perform hero.childfound[wShLtSteel].delete[Hide.Weapon]
+      endif
 
-~TODO: Add buckler as associated weapon for Iron Tortoise and Broken Blade]]></eval>
+      ~TODO: Add buckler as associated weapon for Iron Tortoise and Broken Blade]]></eval>
     <pickreq thing="fArmShield"/>
     </thing>
   <thing id="fPWSerStrd" name="Serene Stride" description="Your ki allows for the lightest touch upon almost any surface.\n\n{b}Prerequisites:{/b}  Ki pool, Wis 13.\n\n{b}Benefit:{/b}  As long as you have at least one point in your ki pool you may ignore movement and Acrobatics penalties from difficult terrain and move across liquid surfaces just as if they were solid. You may still choose to swim if you wish to." compset="Feat" summary="Ignore difficult terrain penalties, walk on liquids" uniqueness="useronce">
+    <fieldval field="reqWis" value="13"/>
     <usesource source="srcPathOfW"/>
     <tag group="abAction" tag="None"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <exprreq message="Wisdom 13 required"><![CDATA[#attrvalue[aWIS] > 13]]></exprreq>
     <prereq message="Ki Pool required">
-      <validate><![CDATA[validif (#hasability[cMnkKiPool] <> 0)
-validif (#hasability[cPW2KiPool] <> 0)
-validif (#hasability[cPW2JgKiPl] <> 0)
-validif (#hasability[cPW2SHKiPl] <> 0)]]></validate>
+      <validate><![CDATA[
+        validif (#hasability[cMnkKiPool] <> 0)
+        validif (#hasability[cPW2KiPool] <> 0)
+        validif (#hasability[cPW2JgKiPl] <> 0)
+        validif (#hasability[cPW2SHKiPl] <> 0)]]></validate>
       </prereq>
     </thing>
   <thing id="cCfgPWMtTr" name="Martial Training Maneuvers" compset="Configure" uniqueness="unique">
@@ -768,11 +773,11 @@ validif (#hasability[cPW2SHKiPl] <> 0)]]></validate>
     <exprreq message="Must be able to initiate a martial strike"><![CDATA[#hasability[PWDisLevel] <> 0]]></exprreq>
     </thing>
   <thing id="fPWRicWeap" name="Ricochet Weapon" description="When throwing weapons as part of a martial strike, you are quite capable of bouncing the weapon in such a way as to have it return to you.\n\n{b}Prerequisites:{/b} Point Blank Shot, Dex 13.\n\n{b}Benefit:{/b} Whenever you throw a weapon as part of a martial strike, that weapon bounces or ricochets off your target and returns to your hand at the end of your turn. You must have a free hand to be able to catch the weapon on its return, otherwise it falls into your space at your feet." compset="Feat" summary="Thrown weapon returns to your hand" uniqueness="useronce">
+    <fieldval field="reqDex" value="13"/>
     <usesource source="srcPathOfW"/>
     <tag group="abAction" tag="None"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <exprreq message="Dexterity 13 required"><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
     <exprreq message="Point-Blank Shot required"><![CDATA[#hasfeat[fPointBlnk] <> 0]]></exprreq>
     </thing>
   <thing id="fPWVicRec" name="Victorious Recovery" description="You learn how to use victory over a foe to your advantage, repositioning yourself and recovering a martial maneuver.\n\n{b}Prerequisites:{/b} Able to initiate maneuvers.\n\n{b}Benefit:{/b} Once per encounter, you may recover maneuvers equal to your initiator modifier when you reduce an opponent to zero or less hit points." compset="Feat" summary="Recover maneuvers when you defeat an opponent 1/encounter" uniqueness="useronce">
@@ -823,6 +828,7 @@ validif (#hasability[cPW2SHKiPl] <> 0)]]></validate>
       nexteach]]></eval>
     </thing>
   <thing id="fPWXtrStAr" name="Extra Stalker Art" description="You’ve learned a new way to use your stalker training.\n\n{b}Prerequisites:{/b} 3rd-level stalker, Wis 13.\n\n{b}Benefit:{/b} You may select a new stalker art and add it to your known stalker arts.\n\n{b}Special:{/b} You may select this feat multiple times, selecting a new stalker art each time." compset="Feat" summary="Learn a new Stalker Art" uniqueness="useronce">
+    <fieldval field="reqWis" value="13"/>
     <usesource source="srcPathOfW"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -832,6 +838,5 @@ validif (#hasability[cPW2SHKiPl] <> 0)]]></validate>
 
       hero.childfound[cHelpPW2].field[cGiveSpec].value += 1]]></eval>
     <exprreq message="Stalker level 3 required"><![CDATA[#featlevelcount[PWStalker] >= 3]]></exprreq>
-    <exprreq message="Wisdom 13 required"><![CDATA[#attrvalue[aWIS] >= 13]]></exprreq>
     </thing>
   </document>

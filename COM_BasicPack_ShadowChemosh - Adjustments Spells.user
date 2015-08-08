@@ -56,12 +56,14 @@
     <fieldval field="pCandExpr" value="component.BaseWep &amp; AdjShadow.SpWeapon"/>
     <fieldval field="pCandExpr2" value="component.BaseWep &amp; PackHelper.Touch"/>
     <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Helper" tag="AdjPerm"/>
     <tag group="Helper" tag="AdjInfo"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Adjust2nd" tag="S2Custom"/>
-    <tag group="Helper" tag="NoIncr"/>
-    <tag group="Helper" tag="CoreCampOK"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="wS2SpelWep">
       <containerreq phase="First" priority="457"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
       </bootstrap>

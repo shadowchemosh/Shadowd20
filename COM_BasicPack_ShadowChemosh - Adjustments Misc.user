@@ -4318,4 +4318,64 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[cMemMax].arrayvalue[toLvl] += field[pAdjust].value
       field[pChosen].chosen.field[cCastMax].arrayvalue[toLvl] += field[pAdjust].value]]></eval>
     </thing>
+  <thing id="pS2ClsAlF1" name="Class, Allowed Feats" description="Select this adjustment to be able to add addtional feat choices for a specific class. In example if you wanted to allow a Monk to choose Vital Strike as a class bonus feat you would select Monk from the first drop down and &quot;Vital Strike&quot; from the 2nd drop down." compset="InPlay">
+    <fieldval field="pCandExpr2" value="component.BaseFeat"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Adjustment" tag="Class"/>
+    <tag group="OthAdjCat" tag="Class"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Adjust2nd" tag="S2Custom"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If no class chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+      ~ If no feat chosen, get out now
+      doneif (field[pChosen2].ischosen <> 1)
+
+      perform field[pChosen2].chosen.pulltags[fInclude.?]
+      perform field[pChosen].chosen.pushtags[fInclude.?]]]></eval>
+    </thing>
+  <thing id="pS2ClsAlF2" name="Class, Allowed 2nd Feats" description="Select this adjustment to be able to add addtional feat choices for a specific class 2nd table of feats. In example if you wanted to allow a Brawler to choose Vital Strike as a class bonus feat you would select Brawler from the first drop down and &quot;Vital Strike&quot; from the 2nd drop down." compset="InPlay">
+    <fieldval field="pCandExpr2" value="component.BaseFeat"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Adjustment" tag="Class"/>
+    <tag group="OthAdjCat" tag="Class"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Adjust2nd" tag="S2Custom"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If no class chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+      ~ If no feat chosen, get out now
+      doneif (field[pChosen2].ischosen <> 1)
+
+      perform field[pChosen2].chosen.pulltags[fIncSec.?]
+      perform field[pChosen].chosen.pushtags[fIncSec.?]]]></eval>
+    </thing>
+  <thing id="pS2ClsAlF3" name="Class, Allowed 3rd Feats" description="Select this adjustment to be able to add addtional feat choices for a specific class 3rd table of feats. In example if you wanted to allow a Brawler to choose Vital Strike as a class bonus feat you would select Brawler from the first drop down and &quot;Vital Strike&quot; from the 2nd drop down." compset="InPlay">
+    <fieldval field="pCandExpr2" value="component.BaseFeat"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Adjustment" tag="Class"/>
+    <tag group="OthAdjCat" tag="Class"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Adjust2nd" tag="S2Custom"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If no class chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+      ~ If no feat chosen, get out now
+      doneif (field[pChosen2].ischosen <> 1)
+
+      perform field[pChosen2].chosen.pulltags[fIncTert.?]
+      perform field[pChosen].chosen.pushtags[fIncTert.?]]]></eval>
+    </thing>
   </document>

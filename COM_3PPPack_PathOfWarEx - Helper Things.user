@@ -157,6 +157,8 @@
     <bootstrap thing="zPWRvnHgls"></bootstrap>
     <bootstrap thing="zPWShaMirr"></bootstrap>
     <bootstrap thing="zPWSlpGods"></bootstrap>
+    <bootstrap thing="zPWPrcThun"></bootstrap>
+    <bootstrap thing="zPWTmpGale"></bootstrap>
     </thing>
   <thing id="zPWTmpGale" name="Tempest Gale" compset="Simple">
     <usesource source="srcPOWEx"/>

@@ -1396,8 +1396,7 @@ perform hero.childfound[iPUMndBl2H].assign[wCategory.RangeThrow]]]></eval>
 
       field[abValue].value += field[xCount].value
       field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
-      field[abSumm].text = "You can enhance your Mind Blade with a total enhancement bonus of +" & field[abValue].value & "."
-      ]]></eval>
+      field[abSumm].text = "You can enhance your Mind Blade with a total enhancement bonus of +" & field[abValue].value & "."]]></eval>
     </thing>
   <thing id="cSknMBMas" name="Mind Blade Mastery" description="At 20th level, a soulknife reaches the pinnacle of her art and her connection to her blade is so strong it cannot be severed. She no longer requires a Will save to maintain her mind blade in a null psionics field, although it still loses any enhancement bonus and special abilities. In addition, she may change the configurations of her mind blade&apos;s special abilities at will as a fullround action, which also resets any penalties that may have accrued from the Fluid Form and Improved Fluid Form blade skills." compset="ClSpecial">
     <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
@@ -2998,8 +2997,7 @@ if (hero.tagis[Classes.Monk] <> 0) then
     <tag group="AbilType" tag="Super"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <bootstrap thing="xDamRd">
-      </bootstrap>
+    <bootstrap thing="xDamRd"></bootstrap>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       field[listname].text = field[name].text & " (DR: " & field[xIndex].value & "/-)"
 
@@ -3017,8 +3015,7 @@ if (hero.tagis[Classes.Monk] <> 0) then
       doneif (v_focus <> 1)
 
       ~ If psionically focused, add the Damage Reduction
-      #applydr[xDamRd,field[abValue].value]
-      ]]></eval>
+      #applydr[xDamRd,field[abValue].value]]]></eval>
     </thing>
   <thing id="cMesmerGlo" name="Mesmerising Glow" description="A psychic fist of 4th level can, as a standard action, spend 1 ki point to perform a visually-dazzling display, dazing up to half his class level in targets for one round unless the targets make a successful Will save (DC 10 + 1/2 psychic fist level + psychic fist&apos;s Wisdom modifier). All targets must be within 30 feet of the psychic fist and have line of sight to him to be affected." compset="ClSpecial">
     <tag group="AbilType" tag="Super"/>
@@ -7510,7 +7507,7 @@ endif]]></eval>
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU2"/>
     <tag group="User" tag="Activation"/>
-    <tag group="StandardDC" tag="aCHA"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <prereq message="Dread level 4 or higher required for this Terror">
       <validate><![CDATA[        var classcheck as string
         var levels as number
@@ -7592,7 +7589,7 @@ endif]]></eval>
         validif (levels >= 4)]]></validate>
       </prereq>
     </thing>
-  <thing id="cPUTerMndl" name="Mindlock" description="The dread can invade the mind of an enemy through their subsconscious by making a melee touch attack that does not provoke attacks of opportunity. The target must succeed on a Will save (DC 10 + 1/2 the dread’s class level + the dread’s Charisma modifier), or be mindlocked for 1 minute per dread level. A mindlock allows the dread to either channel her devastating touch ability at range as a standard action which automatically hits, or attempt an Intimidate check on the target, even though the target might be out of normal range or out of sight. The range of the mindlock is 10 feet per dread level, and the dread does not need line of effect or line of sight once a mindlock is established. This is a mind-affecting effect. A dread can only sustain one mindlock at a time. If the dread attempts to mindlock a new target while another mindlock is active, the active mindlock ends. The dread is aware if the mindlock fails or ends, although she does not necessarily know the reason. The dread must be at least 4th level to select this option." compset="CustomSpec">
+  <thing id="cPUTerMndl" name="Mindlock" description="The dread can invade the mind of an enemy through their subsconscious by making a melee touch attack that does not provoke attacks of opportunity. The target must succeed on a Will save (DC 10 + 1/2 the dread’s class level + the dread’s Charisma modifier), or be mindlocked for 1 minute per dread level. A mindlock allows the dread to either channel her devastating touch ability at range as a standard action which automatically hits, or attempt an Intimidate check on the target, even though the target might be out of normal range or out of sight. The range of the mindlock is 10 feet per dread level, and the dread does not need line of effect or line of sight once a mindlock is established. This is a mind-affecting effect. A dread can only sustain one mindlock at a time. If the dread attempts to mindlock a new target while another mindlock is active, the active mindlock ends. The dread is aware if the mindlock fails or ends, although she does not necessarily know the reason. The dread must be at least 4th level to select this option." compset="CustomSpec" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU2"/>
     <tag group="StandardDC" tag="aCHA"/>
@@ -7622,7 +7619,7 @@ endif]]></eval>
         validif (levels >= 10)]]></validate>
       </prereq>
     </thing>
-  <thing id="cPUTerNiTo" name="Nightmare Touch" description="The dread can use her Devastating Touch ability while using the Nightmare Form terror, even though she normally cannot make physical attacks. This terror is used when Nightmare Form is activated and does not take a separate use of terrors to activate. The dread must be at least 10th level and have the Nightmare Form terror to select this option." compset="CustomSpec" summary="Use Devastating Touch when in Nightmare Form.">
+  <thing id="cPUTerNiTo" name="Nightmare Touch" description="The dread can use her Devastating Touch ability while using the Nightmare Form terror, even though she normally cannot make physical attacks. This terror is used when Nightmare Form is activated and does not take a separate use of terrors to activate. The dread must be at least 10th level and have the Nightmare Form terror to select this option." compset="CustomSpec" summary="Use Devastating Touch when in Nightmare Form." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU2"/>
     <prereq message="Dread level 10 or higher required for this terror">
@@ -7651,22 +7648,23 @@ endif]]></eval>
     <tag group="User" tag="Activation"/>
     <tag group="StandardDC" tag="aCHA"/>
     </thing>
-  <thing id="cPUTerPNF" name="Persistant Nightmare Form" description="The dread can maintain her Nightmare Form inside areas of Null Psionics or dead magic areas. The dread must be at least 18th level and have the Nightmare Form terror to select this option." compset="CustomSpec" uniqueness="unique">
+  <thing id="cPUTerPNF" name="Persistent Nightmare Form" description="The dread can maintain her Nightmare Form inside areas of Null Psionics or dead magic areas. The dread must be at least 18th level and have the Nightmare Form terror to select this option." compset="CustomSpec" uniqueness="unique">
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU2"/>
     <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <prereq message="Nightmare Form terror required.">
+      <validate><![CDATA[validif (#hasability[cPUTerNFor] <> 0)]]></validate>
+      </prereq>
     <prereq message="Dread level 18 or higher required for this Terror">
       <validate><![CDATA[        var classcheck as string
         var levels as number
 
-        classcheck = "Cryptic"
+        classcheck = "Dread"
 
         call PUPreReqs
 
         validif (levels >= 18)]]></validate>
-      </prereq>
-    <prereq message="Nightmare Form terror required.">
-      <validate><![CDATA[validif (#hasability[cPUTerNFor] <> 0)]]></validate>
       </prereq>
     </thing>
   <thing id="cPUTerRngM" name="Ranged Mindlock" description="The dread can initiate the mindlock terror at a range of 10 ft. per class level instead of as a touch attack as a standard action, but she still requires initial line of sight and line of effect. The target still gets a Will save as normal to resist the mindlock. The dread must be at least 10th level and have the Mindlock terror to select this option." compset="CustomSpec" uniqueness="unique">
@@ -14895,7 +14893,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     </thing>
   <thing id="arPUNightC" name="Nightmare Constructor" description="Where most dreads use fear as something to manipulate in creatures, nightmare constructors turn fears into reality. These individuals form horrors created from the energy of nightmares and send them into battle. Enemies of nightmare constructors must truly face their deepest fears when confronted by the creatures created from terror.\n\n{b}Telepathic Lash:{/b} The nightmare constructor gains telepathic lash as a talent. This ability replaces talents.\n\n{b}Horror (Su):{/b} A nightmare constructor is able to form a creature created from distilled fears and nightmares. Creating a horror takes one minute of concentration to complete and the horror remains until dismissed by the nightmare constructor.\nThis horror functions as a summoner’s eidolon using the nightmare constructor’s class level as the summoner level, with the following exceptions. A horror is treated as a construct for the purposes of effects related to its type, such as favored enemy. Commanding a horror is the same as commanding an astral construct. A horror disperses if the nightmare constructor is rendered unconscious or dies.\nThe nightmare constructor can allow his horror to use his terrors, but such uses still count against his daily limit. At 3rd level, the nightmare constructor can also allow his horror to utilize his channel terrors ability.\nThis ability replaces devastating touch.\n\n{b}Reinvigorate Horror:{/b} The nightmare constructor is able to channel his own energy to restore the nightmarish form of his horror. As a standard action that provokes attacks of opportunity, the nightmare constructor can touch his horror and restore 5 hit points per power point spent. The nightmare constructor cannot spend more power points on this ability than his manifester level.\n\n{b}Devastating Touch:{/b} At 2nd level, the nightmare constructor’s horror gains the devastating touch ability of a dread, using the nightmare constructor’s class level to determine the total damage dealt. This also allows the nightmare constructor to select terrors that modify\ndevastating touch, but these terrors only apply to the horror’s use of devastating touch. This ability replaces the power known gained at 2nd level.\n\n{b}Fear Surge (Su):{/b} When the horror of a 3rd level or higher nightmare constructor is within 30 ft. of a creature that suffers from the shaken, frightened, or panicked condition, the nightmare constructor gains an additional evolution point to spend on the horror. This evolution point only lasts while there is a creature within 30 ft. of the horror with the shaken, frightened, or panicked condition. This ability replaces channel terror.\n\n{b}Improved Fear Surge:{/b} At 6th level, when the nightmare constructor gains an evolution point from fear surge, he instead gains two evolution points. This ability replaces the terror normally gained at 6th level.\n\n{b}Greater Fear Surge:{/b} A nightmare constructor of 9th level gains three evolution points when his fear surge is activated. This ability replaces the bonus feat normally gained at 9th level.\n\n{b}Horrific Infusion (Su):{/b} Starting at 11th level, the nightmare constructor can merge with his horror as a standard action. The nightmare constructor wears the horror like translucent and undulating armor. The horror mimics all of the nightmare constructor’s movements, and the nightmare constructor perceives through the horror’s senses and speaks through its voice, as the two are now one creature. The nightmare constructor directs all of the horror’s actions while merged. While merged with his horror, the nightmare constructor uses the horror’s Strength, Dexterity, and Constitution, but retains his own Intelligence, Wisdom, and Charisma. The nightmare constructor\ngains the horror’s hit points as temporary hit points. When these hit points reach 0, the horror is killed and sent back to its home plane. The nightmare constructor uses the horror’s base attack bonus, and gains the horror’s armor and natural armor bonuses and modifiers to ability scores. The nightmare constructor also gains access to the horror’s special abilities and the horror’s evolutions. The nightmare\nconstructor is still limited to the horror’s maximum number of natural attacks. The horror has no skills or feats of its own. The horror must be at least the same size as the nightmare constructor. The horror must have limbs for the nightmare constructor to cast spells with somatic components (should the nightmare constructor have spellcasting ability).\nWhile fused, the nightmare constructor loses the benefits of his armor. He counts both as his original type and as a construct for any effect related to type, whichever is worse for the nightmare constructor. Powers such as dismiss ectoplasm work on the horror,\nbut the nightmare constructor is unaffected. Neither the nightmare constructor nor his horror can be targeted separately, as they are fused into one creature. The nightmare constructor and horror cannot take separate actions. While fused with his horror, the nightmare\nconstructor can use all of his own abilities and gear, except for his armor. In all other cases, this ability functions as the normal horror ability. \nThis ability replaces shadow twin.\n\n{b}Empowered in Fear (Su):{/b} At 11th level, the nightmare constructor’s horror is treated as if under the effect of physical acceleration any time it is within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions.\nAt 15th level, the horror is also treated as if under the form of doom power when within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions. This effect allows the horror to have more natural attacks than its normal eidolon form limit.\nThis ability replaces twin fear." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="268"/>
-    <arrayval field="cvPsiPowTo" index="1" value="-1"/>
+    <fieldval field="cvEidStar" value="1"/>
     <arrayval field="cvBonFtMod" index="8" value="-1"/>
     <arrayval field="cvCustTot" index="5" value="-1"/>
     <arrayval field="cvCustTot" index="7" value="-1"/>
@@ -14905,17 +14903,15 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <arrayval field="cvCustTot" index="15" value="-1"/>
     <arrayval field="cvCustTot" index="17" value="-1"/>
     <arrayval field="cvCustTot" index="19" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="1" value="-1"/>
     <usesource source="pPsiUn"/>
-    <tag group="AbReplace" tag="cPUDreTal"/>
     <tag group="AbReplace" tag="cPUTwinFea"/>
     <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cPUChanTer"/>
     <tag group="AbReplace" tag="cPUDevaTou"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbReplace" tag="cPUShaTwin"/>
-    <bootstrap thing="cPUHorrInf">
-      <autotag group="ClSpecWhen" tag="11"/>
-      </bootstrap>
+    <tag group="AbReplace" tag="cPUDreTal"/>
     <bootstrap thing="cPUEmpFear">
       <autotag group="ClSpecWhen" tag="11"/>
       </bootstrap>
@@ -14942,6 +14938,9 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
       </bootstrap>
     <bootstrap thing="cPUEmpFear">
       <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cPUHorrInf">
+      <autotag group="ClSpecWhen" tag="11"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpPU2"/>
     </thing>

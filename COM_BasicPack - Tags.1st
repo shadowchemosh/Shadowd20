@@ -15,6 +15,13 @@
     <value id="Touch"       name="Touch Attack Weapon"/>
   </group>
 
+  <!-- Global Psionic Package Tags -->
+  <group id="Psionics" name="Ultimate Psionics">
+    <value id="Class"       name="Psionic Class"/>
+    <value id="Race"        name="Psionic Race"/>
+    <value id="PsiFocus"    name="Psionic Focus Always"/>
+    <value id="FocusPick"   name="Psionic Focus Pick"/>
+  </group>
 
   <!-- ==================== -->
   <!-- Diseases Custom tags -->
