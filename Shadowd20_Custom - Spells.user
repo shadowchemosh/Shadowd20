@@ -838,21 +838,26 @@
     <tag group="sCastTime" tag="FullAction" name="1 Full Action"/>
     <tag group="sLevel" tag="9"/>
     </thing>
-  <thing id="spS2Pearl1" name=" -Pearl of Power 1-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab." compset="Spell">
+  <thing id="spS2Pearl1" name=" -Pearl of Power 1-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab. This spell will not count against your memorized total. Then on the Spell tab you can simply mark off a charge of this thing to show you using your Pearl of Power." compset="Spell">
     <usesource source="s20PFCamp"/>
     <tag group="sLevel" tag="1"/>
     <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Universal"/>
     <tag group="sClass" tag="cHelpClr"/>
     <tag group="sClass" tag="cHelpDrd"/>
     <tag group="sClass" tag="cHelpPal"/>
     <tag group="sClass" tag="cHelpRgr"/>
     <tag group="sClass" tag="cHelpWiz"/>
     <tag group="sClass" tag="cHelpWit"/>
-    <tag group="sSave" tag="None"/>
-    <tag group="sResist" tag="No"/>
-    <tag group="sSchool" tag="Universal"/>
+    <tag group="sClass" tag="cHelpArc"/>
+    <tag group="sClass" tag="cHelpSha"/>
+    <tag group="sClass" tag="cHelpWaP"/>
+    <eval phase="Final" priority="10000">~ This spell does not count against our memorized amount
+      Call S2SpFrSlot</eval>
     </thing>
-  <thing id="spS2Pearl2" name=" -Pearl of Power 2-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab." compset="Spell">
+  <thing id="spS2Pearl2" name=" -Pearl of Power 2-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab. This spell will not count against your memorized total. Then on the Spell tab you can simply mark off a charge of this thing to show you using your Pearl of Power." compset="Spell">
     <usesource source="s20PFCamp"/>
     <tag group="sLevel" tag="2"/>
     <tag group="sCastTime" tag="Action1"/>
@@ -865,8 +870,13 @@
     <tag group="sSave" tag="None"/>
     <tag group="sResist" tag="No"/>
     <tag group="sSchool" tag="Universal"/>
+    <tag group="sClass" tag="cHelpArc"/>
+    <tag group="sClass" tag="cHelpSha"/>
+    <tag group="sClass" tag="cHelpWaP"/>
+    <eval phase="Final" priority="10000">~ This spell does not count against our memorized amount
+      Call S2SpFrSlot</eval>
     </thing>
-  <thing id="spS2Pearl3" name=" -Pearl of Power 3-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab." compset="Spell">
+  <thing id="spS2Pearl3" name=" -Pearl of Power 3-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab. This spell will not count against your memorized total. Then on the Spell tab you can simply mark off a charge of this thing to show you using your Pearl of Power." compset="Spell">
     <usesource source="s20PFCamp"/>
     <tag group="sLevel" tag="3"/>
     <tag group="sCastTime" tag="Action1"/>
@@ -879,6 +889,30 @@
     <tag group="sSave" tag="None"/>
     <tag group="sResist" tag="No"/>
     <tag group="sSchool" tag="Universal"/>
+    <tag group="sClass" tag="cHelpArc"/>
+    <tag group="sClass" tag="cHelpSha"/>
+    <tag group="sClass" tag="cHelpWaP"/>
+    <eval phase="Final" priority="10000">~ This spell does not count against our memorized amount
+      Call S2SpFrSlot</eval>
+    </thing>
+  <thing id="spS2Pearl4" name=" -Pearl of Power 4-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab. This spell will not count against your memorized total. Then on the Spell tab you can simply mark off a charge of this thing to show you using your Pearl of Power." compset="Spell">
+    <usesource source="s20PFCamp"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpDrd"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpRgr"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sClass" tag="cHelpWit"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="sSchool" tag="Universal"/>
+    <tag group="sClass" tag="cHelpArc"/>
+    <tag group="sClass" tag="cHelpSha"/>
+    <tag group="sClass" tag="cHelpWaP"/>
+    <eval phase="Final" priority="10000">~ This spell does not count against our memorized amount
+      Call S2SpFrSlot</eval>
     </thing>
   <thing id="spS2RaFir0" name="Ray of Fire" description="A ray of fire and flame projects from your pointing finger. You must succeed on a ranged touch attack with the ray to deal damage to a target. The ray deals 1d3 points of fire damage." compset="Spell" summary="Ray deals 1d3 fire damage.">
     <fieldval field="sEffect" value="Ray"/>
