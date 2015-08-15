@@ -39,4 +39,24 @@
     ]]>
   </procedure>
 
+  <!-- =================================================================== -->
+  <!-- Look for a specific racial ability and if not found hide ourself    -->
+  <!-- =================================================================== -->
+  <procedure id="3PArAbHide" context="pick"><![CDATA[
+    ~ Timing: Final/999999999
+    ~ S2_ability - Used to pass in the Thing ID of the racial special to look for.
+    var S2_ability as string
+
+    ~ If Amorphous racial ability found then get out now!
+    doneif (hero.tagcountstr["HasAbility." & S2_ability] <> 0)
+
+    ~ No specific racial ability found so hide ourself
+    perform assign[Hide.ArmyAbil]
+    ~ Remove the "HasAbility.?" tag from hero as we really don't
+    ~ have this ability.
+    perform hero.deletestr[tagids[HasAbility.?]]    
+    ]]>
+  </procedure>
+
+
 </document>

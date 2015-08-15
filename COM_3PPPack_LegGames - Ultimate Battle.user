@@ -58,6 +58,7 @@
     <usesource source="srcLGUltBa"/>
     <tag group="Helper" tag="AdjArmy"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
@@ -727,71 +728,130 @@
     <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Requires Shields army resource."><![CDATA[#hasability[rs3PShield] <> 0]]></exprreq>
     </thing>
-
-
-  <thing id="aa3PStr" name="Strength" description="When an army is comprised of a humanoid race with a modifier to its physical ability scores, it affects the combat statistics of the armies they comprise. The army gains a +1 bonus to OM if its soldiers gain a bonus to Strength, -1 if they have a penalty." compset="ArmyAbil" summary="" uniqueness="unique">
+  <thing id="aa3PStr" name="Strength" description="When an army is comprised of a humanoid race with a modifier to its physical ability scores, it affects the combat statistics of the armies they comprise. The army gains a +1 bonus to OM if its soldiers gain a bonus to Strength, -1 if they have a penalty." compset="ArmyAbil" uniqueness="unique">
     <usesource source="srcLGUltBa"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="Bootstrap"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
+      ~ If not a humanoid race then hide
+      If (hero.tagis[Type.tpHumanoid] = 0) then
+        perform assign[Hide.ArmyAbil]
+        done
+      ~..If no Str modifier then hide
+      ElseIf (hero.child[aSTR].field[aStartMod].value = 0) then
+        perform assign[Hide.ArmyAbil]
+        done      
+      Endif 
+      
       ~ Test to see if we should be active
       if (hero.child[aSTR].field[aStartMod].value > 0) then
-       field[tacOffMod].value += 1
+        field[tacMrlMod].value += 1
       elseif (hero.child[aSTR].field[aStartMod].value < 0) then
-       field[tacOffMod].value += -1
-
-      ~ If not active then hide ourself
-      else
-       perform assign[Hide.ArmyAbil]
+        field[tacMrlMod].value += -1
       endif
       
       ~ Set the summary text
-      field[abSumm].text = signed(field[tacOffMod].value) & " bonus to OM."      
-      ]]></eval>
+      field[abSumm].text = signed(field[tacOffMod].value) & " bonus to OM."]]></eval>
     </thing>
-  <thing id="aa3PDex" name="Dexterity" description="When an army is comprised of a humanoid race with a modifier to its physical ability scores, it affects the combat statistics of the armies they comprise. The army gains a +1 bonus to OM if its soldiers gain a bonus to Dexterity, -1 if they have a penalty." compset="ArmyAbil" summary="" uniqueness="unique">
+  <thing id="aa3PDex" name="Dexterity" description="When an army is comprised of a humanoid race with a modifier to its physical ability scores, it affects the combat statistics of the armies they comprise. The army gains a +1 bonus to OM if its soldiers gain a bonus to Dexterity, -1 if they have a penalty." compset="ArmyAbil" uniqueness="unique">
     <usesource source="srcLGUltBa"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="Bootstrap"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
+      ~ If not a humanoid race then hide
+      If (hero.tagis[Type.tpHumanoid] = 0) then
+        perform assign[Hide.ArmyAbil]
+        done
+      ~..If no Dex modifier then hide
+      ElseIf (hero.child[aDEX].field[aStartMod].value = 0) then
+        perform assign[Hide.ArmyAbil]
+        done      
+      Endif 
+      
       ~ Test to see if we should be active
       if (hero.child[aDEX].field[aStartMod].value > 0) then
-       field[tacOffMod].value += 1
+        field[tacMrlMod].value += 1
       elseif (hero.child[aDEX].field[aStartMod].value < 0) then
-       field[tacOffMod].value += -1
-
-      ~ If not active then hide ourself
-      else
-       perform assign[Hide.ArmyAbil]
+        field[tacMrlMod].value += -1
       endif
-      
+     
       ~ Set the summary text
-      field[abSumm].text = signed(field[tacOffMod].value) & " bonus to OM."      
-      ]]></eval>
+      field[abSumm].text = signed(field[tacOffMod].value) & " bonus to OM."]]></eval>
     </thing>
-  <thing id="aa3PCon" name="Constitution" description="When an army is comprised of a humanoid race with a modifier to its physical ability scores, it affects the combat statistics of the armies they comprise. The army gains 1 additional hit point and a +1 bonus to Morale checks to avoid fatigue if its soldiers have a bonus to Constitution, -1 if they have a penalty." compset="ArmyAbil" summary="" uniqueness="unique">
+  <thing id="aa3PCon" name="Constitution" description="When an army is comprised of a humanoid race with a modifier to its physical ability scores, it affects the combat statistics of the armies they comprise. The army gains 1 additional hit point and a +1 bonus to Morale checks to avoid fatigue if its soldiers have a bonus to Constitution, -1 if they have a penalty." compset="ArmyAbil" uniqueness="unique">
     <usesource source="srcLGUltBa"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="Bootstrap"/>
     <eval phase="PreAttr" priority="10000"><![CDATA[
+      ~ If not a humanoid race then hide
+      If (hero.tagis[Type.tpHumanoid] = 0) then
+        perform assign[Hide.ArmyAbil]
+        done
+      ~..If no Con modifier then hide
+      ElseIf (hero.child[aCON].field[aStartMod].value = 0) then
+        perform assign[Hide.ArmyAbil]
+        done      
+      Endif 
+      
       ~ Test to see if we should be active
       if (hero.child[aCON].field[aStartMod].value > 0) then
-       field[tacMrlMod].value += 1
+        field[tacMrlMod].value += 1
       elseif (hero.child[aCON].field[aStartMod].value < 0) then
-       field[tacMrlMod].value += -1
-
-      ~ If not active then hide ourself
-      else
-       perform assign[Hide.ArmyAbil]
+        field[tacMrlMod].value += -1
       endif
 
       ~ Set the summary text
-      field[abSumm].text = signed(field[tacMrlMod].value) & " bonus to Morale checks."      
-      ]]></eval>
+      field[abSumm].text = signed(field[tacMrlMod].value) & " bonus to Morale checks."]]></eval>
     </thing>
+  <thing id="p3PAbDmg" name="Ability Damage or Drain (alternate)" description="When you successfully attack in melee, the defending unit takes a -1d4 penalty to OM and DV for the remainder of the battle.\n\n{B}Note:{/b} Use the counter to set the value of the number of times your army has been bloodied." compset="InPlay">
+    <fieldval field="pMinimum" value="-1"/>
+    <fieldval field="pMaximum" value="-4"/>
+    <usesource source="srcLGUltBa"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="AdjArmy"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-
+      ~ Give Penalty to OM and DV
+      hero.childfound[aHelpOM].field[asArmAdj].value += field[pAdjust].value
+      hero.childfound[aHelpDV].field[asArmAdj].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="aa3PAmorph" name="Amorphous" description="This unit is immune to critical hits in mass combat; when an attacking unit rolls a natural 20 on its attack, they deal normal damage." compset="ArmyAbil" uniqueness="unique">
+    <usesource source="srcLGUltBa"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="Helper" tag="Bootstrap"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="999999999"><![CDATA[
+      var S2_ability as string
+      S2_ability = "raGibAmorp"
+      Call 3PArAbHide]]></eval>
+    </thing>
+  <thing id="aa3PInqBan" name="Bane (Inquisitor 5)" description="Once per day, an army with this ability can gain a +1 bonus to OM, and if the attack succeeds the attack deals an extra 1d3 points of damage. This ability affects only a single attack, even if this army would be eligible to make an extra attack later in the Battle phase, such as against a retreating army." compset="ArmyAbil" uniqueness="unique">
+    <fieldval field="actName" value="+1 OM"/>
+    <fieldval field="trkMax" value="1"/>
+    <fieldval field="abValue" value="1"/>
+    <usesource source="srcLGUltBa"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="Bootstrap"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10000" index="1"><![CDATA[
+      ~ If ability not activated get out now!
+      doneif (field[abilActive].value = 0)
+      
+      ~ Give OM bonus  
+      field[tacOffMod].value += field[abValue].value
+      ]]></eval>
+    <eval phase="Final" priority="999999999" index="2"><![CDATA[
+      var S2_ability as string
+      S2_ability = "cInqBane"
+      Call 3PArAbHide]]></eval>
+    </thing>
   </document>
