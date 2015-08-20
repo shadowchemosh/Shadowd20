@@ -532,37 +532,29 @@ version 1.40 - Released May 12, 2013
       ~ Make sure we don't have two-weapon fighting already
       doneif (hero.tagis[Hero.TwoWep] = 1)
 
-      ~ If we're in output mode, don't do anything
-      ~doneif (state.isoutput <> 0)
-
       var Hands as number
       var Touch as number
       Hands = 0
       Touch = 0
 
-      foreach pick in hero from BaseWep
-        If (eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value <> 0) Then
-           Hands += 1
-        Endif 
-        ~ If touch attack weapon set flag
-        If (eachpick.tagexpr[PackHelper.Touch & wCategory.Melee] = 1) Then
-           Touch = 1
-        Endif
-      nexteach
+      ~ Are we duel wielding?
+      Hands = tagexpr[(count:hero#Hero.EquipWep = 2) | hero#Hero.EquipDbl]
+      ~ Is Touch attack equipped?
+      Touch = horo.tagis[PackHelper.EquipTouch]
 
-      If (Hands = 2) Then
-        if (Touch = 1) Then
-          foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
-             If (eachpick.tagis[Hero.MainHand] <> 0) Then
-                 eachpick.field[wAttMelee].value += 2
-             Endif
-             If (eachpick.tagis[Hero.OffHand] <> 0) Then
-                 eachpick.field[wAttMelee].value += 6
-                 eachpick.field[wAttRanged].value += 6
-             Endif
-          nexteach
-        Endif
-      Endif
+      ~ If not duel wielding with a touch attack weapon then get out!
+      doneif (Hands + Touch = 2)
+      
+      ~ Make us act like we have two-weapon fighting
+      foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
+         If (eachpick.tagis[Hero.MainHand] <> 0) Then
+             eachpick.field[wAttMelee].value += 2
+         Endif
+         If (eachpick.tagis[Hero.OffHand] <> 0) Then
+             eachpick.field[wAttMelee].value += 6
+             eachpick.field[wAttRanged].value += 6
+         Endif
+      nexteach
       ]]></eval>
     </thing>
 

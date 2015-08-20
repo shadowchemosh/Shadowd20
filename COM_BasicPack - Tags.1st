@@ -13,6 +13,8 @@
   <group id="PackHelper" name="Community Helper">
     <value id="ClsSrcAbr"   name="Class Source Abbrevation"/>
     <value id="Touch"       name="Touch Attack Weapon"/>
+    <value id="EquipTouch"  name="Equipped Touch Weapon"/>
+    <value id="EquipRngTo"  name="Equipped Ranged Touch"/>
   </group>
 
   <!-- Global Psionic Package Tags -->

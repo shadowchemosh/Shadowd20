@@ -134,6 +134,13 @@
     <tag group="Helper" tag="NoDblStr"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="PackHelper" tag="Touch"/>
+    <eval phase="First" priority="50000"><![CDATA[
+      ~ If not equipped get out now
+      doneif (field[gIsEquip].value + field[wIs2nd].value = 0)
+      
+      ~ Put a helper tag on the hero that we have been equipped
+      perform hero.assign[PackHelper.EquipTouch]
+      ]]></eval>
     </thing>
   <thing id="wRangedTou" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
@@ -151,5 +158,12 @@
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="PackHelper" tag="Touch"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="50000"><![CDATA[
+      ~ If not equipped get out now
+      doneif (field[gIsEquip].value + field[wIs2nd].value = 0)
+      
+      ~ Put a helper tag on the hero that we have been equipped
+      perform hero.assign[PackHelper.EquipRngTo]
+      ]]></eval>
     </thing>
   </document>
