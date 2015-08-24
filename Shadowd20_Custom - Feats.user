@@ -1839,5 +1839,85 @@ perform hero.assign[Shifter.Feat]]]></eval>
       perform hero.assign[Hero.ComFtInt13]
       ~perform hero.assign[Hero.ComFtDex13]]]></eval>
     </thing>
+  <thing id="fS2SpelFoc" name="Spell Focus" description="Choose a school of magic. Any spells you cast of that school are more difficult to resist.\n\n{b}Benefit{/b}: Add +2 to the Difficulty Class for all saving throws against spells from the school of magic you select.\n\n{b}Special{/b}: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic.\n\n{b}Shadow d20:{/b} Bonus to DC has been doubled." compset="Feat" summary="Spells from one school of magic have +2 to their save DC." replaces="fSpellFoc">
+    <comment>Increased Spell Focus to +2</comment>
+    <fieldval field="abValue" value="2"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="fShowWhat" tag="Schools" name="Schools" abbrev="Schools"/>
+    <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
+    <tag group="BonusFor" tag="Disencha1" name="Disenchanter Level 1" abbrev="Disenchanter Level 1"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~set our focus to the selected pick
+      call fTargetFoc
+      doneif (state.isfocus = 0)
+
+      ~ If the target already has a spell focus tag, we're a duplicate
+      if (focus.tagis[Broadcast.SpellFocus] <> 0) then
+        perform assign[Helper.Duplicate]
+        endif
+
+      ~ Add the appropriate tag to our target
+      perform focus.assign[Broadcast.SpellFocus]
+
+      ~add 2 to the DC field on that helper
+      focus.field[schDC].value += field[abValue].value
+
+      ~ Add a tag to our hero, telling him we've chosen spell 
+      ~ focus (needed for the Archmage prestige class)
+      perform hero.assign[Hero.SpellFocus]
+
+      ~ Set our 'short name'
+      field[shortname].text = "Focus: " & focus.field[name].text
+      field[sbName].text = "Spell Focus (" & lowercase(focus.field[name].text) & ")"]]></eval>
+    <evalrule phase="Final" priority="10000" message="Spell Focus taken twice for same school." summary="Taken twice."><![CDATA[
+      ~ If we're disabled, do nothing, we're valid
+      validif (tagis[Helper.FtDisable] <> 0)
+
+      @valid = 1 - tagis[Helper.Duplicate]
+
+      if (@valid = 0) then
+        hero.panelvalid[feats] = 0
+        endif]]></evalrule>
+    </thing>
+  <thing id="fS2GrtSpFo" name="Greater Spell Focus" description="Choose a school of magic to which you have already applied the Spell Focus feat. Any spells you cast of this school are very hard to resist. \n\n{b}Prerequisite{/b}: Spell Focus.\n\n{b}Benefit{/b}: Add +2 to the Difficulty Class for all saving throws against spells from the school of magic you select. This bonus stacks with the bonus from Spell Focus.\n\n{b}Special{/b}: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school to which you already have applied the Spell Focus feat.\n\n{b}Shadow d20:{/b} Bonus to DC has been doubled." compset="Feat" summary="+2 to the Save DC of spells from one school." replaces="fGrtSpFoc">
+    <fieldval field="abValue" value="2"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="fShowWhat" tag="FocSchools" name="Schools with Spell Focus" abbrev="Schools with Spell Focus"/>
+    <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~set our focus to the selected pick
+      call fTargetFoc
+      doneif (state.isfocus = 0)
+
+      ~ If the target already has a greater spell focus tag, we're a duplicate
+      if (focus.tagis[Broadcast.SpellGrFoc] <> 0) then
+        perform assign[Helper.Duplicate]
+        endif
+
+      ~ Assign the appropriate tag to our targets
+      perform focus.assign[Broadcast.SpellGrFoc]
+
+      ~add 1 to the DC field on that helper
+      focus.field[schDC].value += field[abValue].value
+
+      ~ Set our 'short name'
+      field[shortname].text = "Greater Focus: " & focus.field[name].text
+      field[sbName].text = "Greater Spell Focus (" & lowercase(focus.field[name].text) & ")"]]></eval>
+    <evalrule phase="Final" priority="10000" message="Greater Spell Focus taken twice for same school." summary="Taken twice."><![CDATA[
+      ~ If we're disabled, do nothing, we're valid
+      validif (tagis[Helper.FtDisable] <> 0)
+
+      @valid = 1 - tagis[Helper.Duplicate]
+      if (@valid = 0) then
+        hero.panelvalid[feats] = 0
+        endif]]></evalrule>
+    <exprreq message="Spell Focus feat required."><![CDATA[hero.tagis[Hero.SpellFocus] <> 0]]></exprreq>
+    </thing>
   <hidden id="fS2ComCast"/>
   </document>
