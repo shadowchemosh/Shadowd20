@@ -92,6 +92,7 @@ Feb 17, 2013
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="iSchool" tag="Enchant"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
       ~ If not active get out now
       doneif (field[abilActive].value <> 1)
@@ -515,16 +516,14 @@ endif]]></eval>
     <tag group="PackHelper" tag="Touch"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="abS2EldBla"></bootstrap>
-    <eval phase="PostAttr" priority="10000" index="2">
-      ~ Give a Int bonus to the Eldritch Blast Weapon
+    <eval phase="PostAttr" priority="10000" index="2">~ Give a Int bonus to the Eldritch Blast Weapon
       field[wDamBonus].value += #attrmod[aINT]</eval>
     <eval phase="Final" priority="11000"><![CDATA[
       ~ Set the Fix Ranged Damage amount text
       field[wFixRanDam].text = #value[abS2EldBla] & "d" & #value2[abS2EldBla] & signed(field[wDamBonus].value + field[dmrBonus].value)
 
       ~ Remove any extra high tags
-      perform delete[Helper.ExtraHigh]
-      ]]></eval>
+      perform delete[Helper.ExtraHigh]]]></eval>
     </thing>
   <thing id="wS2BoarAxe" name="Axe, Boarding" description="Basically a hand axe with a backwardpointing spike, a boarding axe is used to chop through hatches or rigging, to drag burning debris off a ship, or as a weapon. A boarding axe is a one-handed martial weapon that uses the same statistics as a handaxe, except it deals slashing or piercing damage. In addition, the spike grants a +2 circumstance bonus on Climb checks on wooden surfaces." compset="Weapon">
     <fieldval field="gSizeCost" value="6"/>
@@ -890,5 +889,188 @@ field[abValue2].value += hero.child[cWitS2ElBl].field[abValue2].value</eval>
     <tag group="wMain" tag="1d4_4"/>
     <tag group="wCritMin" tag="20"/>
     </thing>
+  <thing id="ioS2CirMF1" name="Circlet of Magic Focus +1" description="This circlet adds +1 to +5 to the Difficulty Class for all saving throws against spells from a specific school of magic or spells of a specific element (acid, cold, electricity or fire).\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Spell Focus feat, creator must have a caster level at least three times the bonus of the circlet" compset="Wondrous">
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="gCost" value="2000"/>
+    <fieldval field="iCL" value="5"/>
+    <fieldval field="usrCandid1" value="component.SplSchool &amp; !component.WordCat &amp; (sSchool.?|sSubschool.Acid|sSubschool.Electric|sSubschool.Cold|sSubschool.Fire)"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
 
+      ~ Increase DC by chosen amount    
+      field[usrChosen1].chosen.field[schDC].value += field[abValue].value</eval>
+    </thing>
+  <thing id="ioS2CirMF2" name="Circlet of Magic Focus +2" description="This circlet adds +1 to +5 to the Difficulty Class for all saving throws against spells from a specific school of magic or spells of a specific element (acid, cold, electricity or fire).\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Spell Focus feat, creator must have a caster level at least three times the bonus of the circlet" compset="Wondrous">
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="gCost" value="8000"/>
+    <fieldval field="iCL" value="5"/>
+    <fieldval field="usrCandid1" value="component.SplSchool &amp; !component.WordCat &amp; (sSchool.?|sSubschool.Acid|sSubschool.Electric|sSubschool.Cold|sSubschool.Fire)"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Increase DC by chosen amount    
+      field[usrChosen1].chosen.field[schDC].value += field[abValue].value</eval>
+    </thing>
+  <thing id="ioS2CirMF3" name="Circlet of Magic Focus +3" description="This circlet adds +1 to +5 to the Difficulty Class for all saving throws against spells from a specific school of magic or spells of a specific element (acid, cold, electricity or fire).\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Spell Focus feat, creator must have a caster level at least three times the bonus of the circlet" compset="Wondrous">
+    <fieldval field="abValue" value="3"/>
+    <fieldval field="gCost" value="18000"/>
+    <fieldval field="iCL" value="5"/>
+    <fieldval field="usrCandid1" value="component.SplSchool &amp; !component.WordCat &amp; (sSchool.?|sSubschool.Acid|sSubschool.Electric|sSubschool.Cold|sSubschool.Fire)"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Increase DC by chosen amount    
+      field[usrChosen1].chosen.field[schDC].value += field[abValue].value</eval>
+    </thing>
+  <thing id="ioS2CirMF4" name="Circlet of Magic Focus +4" description="This circlet adds +1 to +5 to the Difficulty Class for all saving throws against spells from a specific school of magic or spells of a specific element (acid, cold, electricity or fire).\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Spell Focus feat, creator must have a caster level at least three times the bonus of the circlet" compset="Wondrous">
+    <fieldval field="abValue" value="4"/>
+    <fieldval field="gCost" value="32000"/>
+    <fieldval field="iCL" value="5"/>
+    <fieldval field="usrCandid1" value="component.SplSchool &amp; !component.WordCat &amp; (sSchool.?|sSubschool.Acid|sSubschool.Electric|sSubschool.Cold|sSubschool.Fire)"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Increase DC by chosen amount    
+      field[usrChosen1].chosen.field[schDC].value += field[abValue].value</eval>
+    </thing>
+  <thing id="ioS2CirMF5" name="Circlet of Magic Focus +5" description="This circlet adds +1 to +5 to the Difficulty Class for all saving throws against spells from a specific school of magic or spells of a specific element (acid, cold, electricity or fire).\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Spell Focus feat, creator must have a caster level at least three times the bonus of the circlet" compset="Wondrous">
+    <fieldval field="abValue" value="5"/>
+    <fieldval field="gCost" value="50000"/>
+    <fieldval field="iCL" value="5"/>
+    <fieldval field="usrCandid1" value="component.SplSchool &amp; !component.WordCat &amp; (sSchool.?|sSubschool.Acid|sSubschool.Electric|sSubschool.Cold|sSubschool.Fire)"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Increase DC by chosen amount    
+      field[usrChosen1].chosen.field[schDC].value += field[abValue].value</eval>
+    </thing>
+  <thing id="ioS2CirSF2" name="Circlet of Superior Focus +2" description="This circlet adds +2, +4 or +6 bonus to the Difficulty Class of all schools of magic.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Greater Spell Focus feat in at least three different schools" compset="Wondrous">
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="gCost" value="32000"/>
+    <fieldval field="iCL" value="16"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+      
+      ~ Loop through all the Spell Schools on the character
+      foreach pick in hero from SplSchool where "sSchool.?"
+        eachpick.field[schDC].value += field[abValue].value
+      nexteach]]></eval>
+    </thing>
+  <thing id="ioS2CirSF4" name="Circlet of Superior Focus +4" description="This circlet adds +2, +4 or +6 bonus to the Difficulty Class of all schools of magic.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Greater Spell Focus feat in at least three different schools" compset="Wondrous">
+    <fieldval field="abValue" value="4"/>
+    <fieldval field="gCost" value="64000"/>
+    <fieldval field="iCL" value="16"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+      
+      ~ Loop through all the Spell Schools on the character
+      foreach pick in hero from SplSchool where "sSchool.?"
+        eachpick.field[schDC].value += field[abValue].value
+      nexteach]]></eval>
+    </thing>
+  <thing id="ioS2CirSF6" name="Circlet of Superior Focus +6" description="This circlet adds +2, +4 or +6 bonus to the Difficulty Class of all schools of magic.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, creator must have the Greater Spell Focus feat in at least three different schools" compset="Wondrous">
+    <fieldval field="abValue" value="6"/>
+    <fieldval field="gCost" value="144000"/>
+    <fieldval field="iCL" value="16"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Universal"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+      
+      ~ Loop through all the Spell Schools on the character
+      foreach pick in hero from SplSchool where "sSchool.?"
+        eachpick.field[schDC].value += field[abValue].value
+      nexteach]]></eval>
+    </thing>
   </document>
