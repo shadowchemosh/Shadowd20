@@ -6,6 +6,29 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.5 August 29, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed #29. The auto calculating spellbooks gear item was including cantrips from opposition schools of magic.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Conferred (ShadowChemosh) - Really fixed "Favored Enemy" to not appear twice on the Specials tab.</li>
+<li>ShadowChemosh Conferred (ShadowChemosh) - Made changes to have permanent affecting adjustments not display on the iPad.</li>
+<li>Darklands Campaign - Added the Ring of Torag as a magic item for the Darklands Campaign.</li>
+<li>Shadow d20 Spells - Spell Focus and Greater Spell Focus feats have had the bonus they provide doubled.</li>
+<li>Shadow d20 Spells - Sorcerer, Wizard, and Arcanist spell slots per day doubled.</li>
+<li>Shadow d20 Equipment - Added new Circlet of Magic Focus +1 to +5 bonus to a single school of magic.</li>
+<li>Shadow d20 Equipment - Added new Circlet of Superior Focus +2, +4, or +6 bonus to ALL schools of magic.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>I have consolidated all the Craft and Profession skills from the different packs into the Basic Pack. Updated all the skills to work with the Unchained Rules. As they are not specific to a module/AP/Monster I have removed all source marks so they will appear for everyone.</li>
+<li>Changed logic for when a magus duel wields a weapon and a touch attack weapon to remove one of the foreach loops. This makes the script less CPU intensive.</li>
+</ul>
+
+
 <strong>v2.4 August 15, 2015</strong>
 
 <strong>Bug Fixes</strong>

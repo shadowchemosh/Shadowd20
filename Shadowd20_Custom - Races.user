@@ -3692,10 +3692,7 @@ abValue4 = Not Used</comment>
     #makeclassskill[skFly]</eval>
     </thing>
   <thing id="rcS2truedi" name="Truedive" description="While shifting, a truedive shifter temporarily gains a +2 bonus to Constitution and a swim speed of 30 feet. Gaining a swim speed grants him a +8 racial bonus on Swim checks. In addition, the shifter can hold his breath for a number of rounds equal to 5 x his Constitution score before he risks drowning. A truedive shifter gains this benefit even when he isn’t shifting. A truedive shifter gains the Swim skill as a class skill." compset="RaceCustom" summary="+2 Con and 30ft swim speed when shifting." uniqueness="useronce">
-    <comment>abValue = Ability Score bonus
-abValue2 = Misc ability bonus
-abValue3 = Natural Attack dmg bonus
-abValue4 = Not Used</comment>
+    <comment>abValue = Ability Score bonus,abValue2 = Misc ability bonus,abValue3 = Natural Attack dmg bonus,abValue4 = Not Used</comment>
     <fieldval field="abValue" value="2"/>
     <fieldval field="abValue2" value="30"/>
     <usesource source="srcShifter"/>
