@@ -295,7 +295,7 @@
     var levels as number
 
     ~ First add the levels of the class we specified. Plus new LW logic for comparing all the new
-    ~ PreReq and Class Specla count as logic.
+    ~ PreReq and Class Specials count as logic.
     levels += hero.tagcountstr["Classes." & classcheck] + hero.tagcountstr["CSCountAs." & classcheck] + altthing.intersect[PreReqPos1,PreReqPos1,countsource] - altthing.intersect[PreReqNeg1,PreReqNeg1,countsource] + altthing.intersect[abCategory,PreReqCaP1,countsource] - altthing.intersect[abCategory,PreReqCaN1,countsource]
 
     ~ Next check for any other class levels allowed by archetypes or PrC's
@@ -306,6 +306,14 @@
 
       ~ Soul Archer
       levels += #levelcount[PUSoulArc]
+
+    endif
+
+    ~ Aegis
+    if (compare(classcheck,"Aegis") = 0) then
+
+      ~ Metaforg PrC
+      levels += #levelcount[PUMetafrg]
 
     endif
     ]]>
@@ -355,6 +363,115 @@
       ~ Set the Hero.Psionic tag on the hero
       perform hero.assign[Hero.Psionic]
     Endif
+    ]]>
+  </procedure>
+
+
+  <procedure id="PUSetAegCP" context="pick"><![CDATA[
+    ~ Adds four effective class levels worth of customization points
+    ~ Aegis hard codes the customization points per level in a script that 
+    ~ runs at PostLevels 600, storing the bonus reconfigure points in 
+    ~ field abValue2. And Metaforge runs it's calcs at 610. So we need to 
+    ~ run after those and alter CPs by determining how many pseudo-levels 
+    ~ to add and then how much TO add.
+
+    var V_CurrLvl as number
+    var V_NewLvl as number
+    var PUCurrCP as number
+    var PUNewCP as number
+
+    ~debug "Student of the Astral Suit: V_CurrLvl = " & V_CurrLvl & " and ~V_NewLvl = " & V_NewLvl
+
+    if (V_CurrLvl = 1) then
+      PUCurrCP = 3
+    elseif (V_CurrLvl = 2) then
+      PUCurrCP = 4
+    elseif (V_CurrLvl = 3) then
+      PUCurrCP = 5
+    elseif (V_CurrLvl = 4) then
+      PUCurrCP = 7
+    elseif (V_CurrLvl = 5) then
+      PUCurrCP = 8
+    elseif (V_CurrLvl = 6) then
+      PUCurrCP = 9
+    elseif (V_CurrLvl = 7) then
+      PUCurrCP = 10
+    elseif (V_CurrLvl = 8) then
+      PUCurrCP = 11
+    elseif (V_CurrLvl = 9) then
+      PUCurrCP = 13
+    elseif (V_CurrLvl = 10) then
+      PUCurrCP = 14
+    elseif (V_CurrLvl = 11) then
+      PUCurrCP = 15
+    elseif (V_CurrLvl = 12) then
+      PUCurrCP = 16
+    elseif (V_CurrLvl = 13) then
+      PUCurrCP = 17
+    elseif (V_CurrLvl = 14) then
+      PUCurrCP = 19
+    elseif (V_CurrLvl = 15) then
+      PUCurrCP = 20
+    elseif (V_CurrLvl = 16) then
+      PUCurrCP = 21
+    elseif (V_CurrLvl = 17) then
+      PUCurrCP = 22
+    elseif (V_CurrLvl = 18) then
+      PUCurrCP = 23
+    elseif (V_CurrLvl = 19) then
+      PUCurrCP = 25
+    elseif (V_CurrLvl = 20) then
+      PUCurrCP = 26
+    endif
+
+    if (V_NewLvl = 1) then
+      PUNewCP = 3
+    elseif (V_NewLvl = 2) then
+      PUNewCP = 4
+    elseif (V_NewLvl = 3) then
+      PUNewCP = 5
+    elseif (V_NewLvl = 4) then
+      PUNewCP = 7
+    elseif (V_NewLvl = 5) then
+      PUNewCP = 8
+    elseif (V_NewLvl = 6) then
+      PUNewCP = 9
+    elseif (V_NewLvl = 7) then
+      PUNewCP = 10
+    elseif (V_NewLvl = 8) then
+      PUNewCP = 11
+    elseif (V_NewLvl = 9) then
+      PUNewCP = 13
+    elseif (V_NewLvl = 10) then
+      PUNewCP = 14
+    elseif (V_NewLvl = 11) then
+      PUNewCP = 15
+    elseif (V_NewLvl = 12) then
+      PUNewCP = 16
+    elseif (V_NewLvl = 13) then
+      PUNewCP = 17
+    elseif (V_NewLvl = 14) then
+      PUNewCP = 19
+    elseif (V_NewLvl = 15) then
+      PUNewCP = 20
+    elseif (V_NewLvl = 16) then
+      PUNewCP = 21
+    elseif (V_NewLvl = 17) then
+      PUNewCP = 22
+    elseif (V_NewLvl = 18) then
+      PUNewCP = 23
+    elseif (V_NewLvl = 19) then
+      PUNewCP = 25
+    elseif (V_NewLvl = 20) then
+      PUNewCP = 26
+    endif
+
+    ~ Set configurable points on Aegis Helper in abValue2 field by adding 
+    ~ the difference. 
+    ~   field abValue contains the # of times tracker for the first copy
+    ~   field abValue2 contains the bonus reconfigure points
+    ~   field abValue3 contains the bonus uses
+    hero.childfound[cPUAegHelp].field[abValue2].value += (PUNewCP - PUCurrCP)
     ]]>
   </procedure>
 

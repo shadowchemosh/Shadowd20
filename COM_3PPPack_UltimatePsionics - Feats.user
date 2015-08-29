@@ -337,7 +337,7 @@
   <thing id="fPUGPsiWep" name="Greater Psionic Weapon" description="You can charge your melee weapon with additional damage potential.{br}{br}{b}Prerequisite:{/b} Str 13, Psionic Weapon, base attack bonus +6.{br}{br}{b}Benefit:{/b} When you use the Psionic Weapon feat, your attack deals an extra 2 points of damage instead of 1 point of damage while you maintain psionic focus, and deal an extra 4d6 points of damage instead of an extra 2d6 points when you expend your psionic focus." compset="Feat" summary="You can charge your melee weapon with additional damage potential." uniqueness="useronce">
     <fieldval field="abValue" value="1"/>
     <fieldval field="abValue2" value="2"/>
-    <fieldval field="reqStr" value="13"/>    
+    <fieldval field="reqStr" value="13"/>
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
@@ -628,7 +628,7 @@
     <fieldval field="abValue2" value="2"/>
     <fieldval field="abValue3" value="6"/>
     <fieldval field="actName" value="Expend Focus"/>
-    <fieldval field="reqStr" value="13"/>    
+    <fieldval field="reqStr" value="13"/>
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic" name="Psionic" abbrev="Psionic"/>
     <tag group="User" tag="Activation"/>
@@ -2414,17 +2414,24 @@ field[abValue].value += 1
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[
+    <eval phase="PreLevel" priority="20000" name="Fighters Blade"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] = 1)
       ~ If Soulknife Enhance Mindblade not live get out now!
       doneif (hero.childlives[cSknEnhMB] = 0)
 
+      ~ Calculate our Soulknife level PLUS extra levels minus
+      ~ our total character level. This will give us the correct
+      ~ bonus to use in the Extra Levels field.
+      ~ NOTE: We assume all other scripts will run BEFORE us so 
+      ~       that we can take any other levels from PrCs into
+      ~       account.
+      field[abValue5].value += #totallevelcount[] - (#levelcount[Soulknife] + hero.childfound[cSknEnhMB].field[xExtraLev].value) 
+
       ~ Adds four effective class levels to Mind Blade
-      hero.childfound[cSknEnhMB].field[xExtraLev].value += minimum( #totallevelcount[]-#featlevelcount[Soulknife], 4)]]></eval>
-    <prereq message="Enhanced Mind Blade required">
-      <validate>@valid = #hasability[cSknEnhMB]</validate>
-      </prereq>
+      ~ up to our class total level.
+      hero.childfound[cSknEnhMB].field[xExtraLev].value += minimum(field[abValue5].value,4)]]></eval>
+    <exprreq message="Enhanced Mind Blade class ability required"><![CDATA[#hasability[cSknEnhMB] <> 0]]></exprreq>
     </thing>
   <thing id="fPUChanRag" name="Channel Rage" description="You have learned to focus your anger to fuel your wild surges.\n\n{b}Prerequisites:{/b} Wild surge class feature, Rage class feature\n\n{b}Benefit:{/b} When you choose to power a manifestation with only your wild surge, you may spend 1 round of your rage instead of expending your psionic focus." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -2642,4 +2649,38 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Disengage class feature required"><![CDATA[#hasability[cPUDisenga] <> 0]]></exprreq>
     </thing>
+
+  <thing id="fPUStdntAS" name="Student of the Astral Suit" description="Your studies in other areas has not hindered your skill with astral suits.\n\n{b}Prerequisite:{/b}  Invigorating suit class feature.\n\n{b}Benefit:{/b}  Treat  your  class  level  as  four  higher  to determine  your  number  of  customization  points  and which customizations you can select for your astral suit, to a maximum of your character level." compset="Feat" summary="Your studies in other areas has not hindered your skill with astral suits." uniqueness="useronce">
+    <usesource source="pPsiUn" parent="pDscar" name="DSP - Ultimate Psionics"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <eval phase="PostLevel" priority="650"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] = 1)
+
+      ~ If Aegis isn't active get out now!
+      doneif (hero.childlives[cHelpPU0] = 0)
+
+      var V_CurrLvl as number
+      var V_NewLvl as number
+
+      ~ Increase aegis suit for purposes of customization points. 
+      ~ As technically we need 3 levels of Aegis to legitimately attain this
+      ~ PrC, we really shouldn't need to start checking Aegis levels before
+      ~ 3 and combined levels before 4, but just in case...
+      V_CurrLvl = #levelcount[PUMetafrg] + #levelcount[Aegis] 
+      V_NewLvl = V_CurrLvl + 4
+      if (V_NewLvl > #totallevelcount[]) then
+        V_NewLvl = #totallevelcount[]
+      endif
+      if (V_NewLvl > 20) then
+        V_NewLvl = 20
+      endif
+      ~ Set Aegis Customization Points
+      Call PUSetAegCP
+      ]]></eval>
+    <exprreq message="Invigorating Suit class ability required."><![CDATA[#hasability[cPUInvigSu] <> 0]]></exprreq>
+    </thing>
+
   </document>

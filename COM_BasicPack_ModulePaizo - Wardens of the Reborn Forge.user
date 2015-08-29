@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <loadonce key="COM_BasicPack_ModulePaizo - Wardens of the Reborn Forge"/>
-  <thing id="skCBCrftCk" name="Craft (clockwork)" description="You are skilled in the creation of a specific group of items, such as armor or weapons. Like Knowledge, Perform, and Profession, Craft is actually a number of separate skills. You could have several Craft skills, each with its own ranks. The most common Craft skills are alchemy, armor, baskets, books, bows, calligraphy, carpentry, cloth, clothing, glass, jewelry, leather, locks, paintings, pottery, sculptures, ships, shoes, stonemasonry, traps, and weapons.\n\nA Craft skill is specifically focused on creating something. If nothing is created by the endeavor, it probably falls under the heading of a Profession skill.\n\n{b}Check{/b}: You can practice your trade and make a decent living, earning half your check result in gold pieces per week of dedicated work. You know how to use the tools of your trade, how to perform the craft&apos;s daily tasks, how to supervise untrained helpers, and how to handle common problems. (Untrained laborers and assistants earn an average of 1 silver piece per day.)\n\nContinued - Core Rulebook, pg. 91." compset="Skill" summary="You are skilled in the creation of a specific group of items, such as armor or weapons." uniqueness="unique">
-    <tag group="Helper" tag="ExtraSkill" name="ExtraSkill" abbrev="ExtraSkill"/>
-    <tag group="Helper" tag="SkCatCraft" name="Craft Skill" abbrev="Craft Skill"/>
-    <tag group="Helper" tag="ToolsUses" name="Skill Makes Use of Tools" abbrev="Skill Makes Use of Tools"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <link linkage="skillattr" thing="aINT"/>
-    </thing>
   <thing id="gWRFCrush" name="Drug, crush" description="{b}Type{/b}: i injury\n{b}Addiction{/b}: major Fortitude DC 20\n{b}Effect{/b}: 1 hour; +1d4 alchemical bonus to Dex, –2 penalty on saves against fear effects\n{b}Damage{/b}: 1d4 Wis damage\n\nA creature on crush is jittery and hyperactive, as well as easily frightened and slightly paranoid." compset="Gear" stacking="merge">
     <fieldval field="gCost" value="75"/>
     <fieldval field="gCraftDC" value="20"/>

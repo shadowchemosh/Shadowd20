@@ -6351,53 +6351,55 @@ if (hero.childlives[cfgPUAstSu] <> 0) then
     <bootstrap thing="xDamRd">
       <autotag group="SpecSource" tag="cHelpBbn"/>
       </bootstrap>
-    <eval phase="PostLevel" priority="10000"><![CDATA[field[listname].text = "Craftsman (+" & field[xIndex].value & ")"
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      field[listname].text = "Craftsman (+" & field[xIndex].value & ")"
 
-var searchStr as string
-var myText as string
+      var searchStr as string
+      var myText as string
 
-searchStr = "Helper.SkCatCraft"
+      searchStr = "Helper.SkCatCraft"
 
-field[usrCandid1].text = searchStr
+      field[usrCandid1].text = searchStr
 
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
 
-field[abValue].value += field[xCount].value
-field[CustDesc].text = "+" & field[abValue].value & " bonus to chosen Craft skill."
+      field[abValue].value += field[xCount].value
+      field[CustDesc].text = "+" & field[abValue].value & " bonus to chosen Craft skill."
 
-if (field[usrChosen1].ischosen <> 0) then
-  myText = field[usrChosen1].chosen.idstring
-  field[usrChosen1].chosen.field[Bonus].value += field[abValue].value
-  endif]]></eval>
+      if (field[usrChosen1].ischosen <> 0) then
+        myText = field[usrChosen1].chosen.idstring
+        field[usrChosen1].chosen.field[Bonus].value += field[abValue].value
+      endif]]></eval>
     </thing>
-  <thing id="cPUAegDR" name="Damage Reduction" description="Starting at 2nd level, when an aegis is wearing his astral suit, he gains damage reduction 2/-, regardless of what type of astral suit he is wearing. At 5th level and every three levels thereafter, this damage reduction improves by 1." compset="ClSpecial" summary="Damage Reduction against weapons and natural attacks.">
+  <thing id="cPUAegDR" name="Damage Reduction" description="Starting at 2nd level, when an aegis is wearing his astral suit, he gains damage reduction 2/-, regardless of what type of astral suit he is wearing. At 5th level and every three levels thereafter, this damage reduction improves by 1." compset="ClSpecial" summary="Gain DR/- when wearing your Astral Suit.">
     <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
-    <tag group="SpecType" tag="DR" name="Damage Reduction" abbrev="Damage Reduction"/>
-    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
-    <bootstrap thing="xDamRd">
-      <autotag group="SpecSource" tag="cHelpBbn"/>
-      </bootstrap>
-    <eval phase="PostLevel" priority="10100"><![CDATA[~ If we're not wearing the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <tag group="Helper" tag="SpecUp"/>
+    <tag group="SpecType" tag="DR"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="10100"><![CDATA[
+      var myDR as number
+      myDR = 1 + field[xIndex].value + field[abValue2].value
 
-var myDR as number
+      field[listname].text = field[name].text & " " & myDR & "/-"
 
-myDR = 1 + field[xIndex].value + field[abValue2].value
+      ~ These calculations should only happen for the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
 
-field[listname].text = "Damage Reduction (" & myDR & "/-)"
-
-~These calculations should only happen for the first copy
-doneif (tagis[Helper.FirstCopy] = 0)
-
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] = 0)
-
-field[abValue].value += (1 + field[xCount].value + field[abValue2].value)
-field[CustDesc].text = "Damage Reduction (" & field[abValue].value & ") against weapons and natural attacks."
+      ~ Calculate DR value starting at 2 at level 2
+      field[abValue].value += (1 + field[xCount].value + field[abValue2].value)
       
-hero.child[xDamRd].field[abValue].value = maximum(hero.child[xDamRd].field[abValue].value, field[abValue].value)]]></eval>
+      field[listname].text = field[name].text & " " & field[abValue].value & "/-"
+      field[CustDesc].text = "Gain DR " & field[abValue].value & "/- when wearing your Astral Suit."
+
+      ~ If we're not wearing the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
+      
+      ~ Apply DR to hero
+      #applydr[xDamRd,field[abValue].value]
+      ]]></eval>
     </thing>
   <thing id="cPUInvigSu" name="Invigorating Suit" description="An aegis of at least 3rd level wearing his astral suit gains a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -8299,27 +8301,28 @@ else
     <tag group="Helper" tag="Secondary"/>
     <tag group="ChooseSrc1" tag="Thing"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="PostLevel" priority="1000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="1000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-~if nothing's been selected, there's nothing we can do
-doneif (field[usrChosen1].ischosen = 0)
+      ~if nothing's been selected, there's nothing we can do
+      doneif (field[usrChosen1].ischosen = 0)
 
-if (field[usrChosen1].chosen.tagis[BloodEner.Cold] <> 0) then
-  #applyresist[xDamRsCold, field[abValue].value]
-elseif (field[usrChosen1].chosen.tagis[BloodEner.Elec] <> 0) then
-  #applyresist[xDamRsElec, field[abValue].value] 
-elseif (field[usrChosen1].chosen.tagis[BloodEner.Fire] <> 0) then
-  #applyresist[xDamRsFire, field[abValue].value]
-elseif (field[usrChosen1].chosen.tagis[BloodEner.Sonic] <> 0) then
-  #applyresist[xDamRsSoni, field[abValue].value]
-  endif]]></eval>
-    <eval phase="PostLevel" priority="900" index="2">var res as number
-res = round(#levelcount[Aegis]/5,0,-1)*5
-res = minimum(res,10)
-res += 5
-
-field[abValue].value = res</eval>
+      if (field[usrChosen1].chosen.tagis[BloodEner.Cold] <> 0) then
+        #applyresist[xDamRsCold, field[abValue].value]
+      elseif (field[usrChosen1].chosen.tagis[BloodEner.Elec] <> 0) then
+        #applyresist[xDamRsElec, field[abValue].value] 
+      elseif (field[usrChosen1].chosen.tagis[BloodEner.Fire] <> 0) then
+        #applyresist[xDamRsFire, field[abValue].value]
+      elseif (field[usrChosen1].chosen.tagis[BloodEner.Sonic] <> 0) then
+        #applyresist[xDamRsSoni, field[abValue].value]
+      endif]]></eval>
+    <eval phase="PostLevel" priority="900" index="2">
+      var res as number
+      res = round(#levelcount[Aegis]/5,0,-1)*5
+      res = minimum(res,10)
+      res += 5
+      field[abValue].value += res</eval>
     </thing>
   <thing id="rcPUaEvade" name="Evasion" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Reflex save for half damage, he takes no damage if he makes a successful saving throw. The aegis must be at least 2nd level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -8332,7 +8335,13 @@ field[abValue].value = res</eval>
       <containerreq phase="First" priority="500"><![CDATA[count:hero#Custom.WearAstS <> 0]]></containerreq>
       </bootstrap>
     <prereq message="Aegis level 2+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 2)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 2)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExArL" name="Extra Arms, Lesser" description="The aegis&apos;s astral suit has an extra pair of arms with limited function. Each arm can hold, but not use, any one item that can normally be held in one hand. Items held in this way count toward the aegis&apos;s carrying capacity. The aegis can retrieve any item held by his extra arms as a swift action. The aegis does not gain any mechanical benefit from items held by these arms, such as a shield bonus to armor class." compset="RaceCustom" uniqueness="useronce">
@@ -8378,7 +8387,13 @@ endif]]></eval>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Power Stone Repository customization required."><![CDATA[#hasability[rcPUaPwrSR] <> 0]]></exprreq>
     <prereq message="Aegis level 3+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 3)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 3)
+        ]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[var allowed as number
@@ -8415,14 +8430,21 @@ else
     <tag group="CustomCost" tag="1"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="SpecType" tag="Defense"/>
-    <eval phase="PostLevel" priority="3500"><![CDATA[~ If we're not wearing the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="3500"><![CDATA[
+      ~ If we're not wearing the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-foreach pick in hero from BaseArmor where "EquipType.Armor & Custom.AstArmor"
-  eachpick.field[Bonus].value += 1
-  nexteach]]></eval>
+      foreach pick in hero from BaseArmor where "EquipType.Armor & Custom.AstArmor"
+        eachpick.field[Bonus].value += 1
+      nexteach]]></eval>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaPwrSR" name="Power Stone Repository" description="The aegis may absorb power stones into his astral suit, causing them to appear and disappear whenever the suit does. The aegis may choose to have the absorbed power stones visible (much like embedded gems), or may decide to keep any or all of them concealed. The aegis may store one power stone per class level in this fashion; adding or removing a power stone takes 1 minute per stone (any power stone that is completely flushed and powerless dissolves immediately and is not counted against the aegis&apos;s limit).{br}{br}The aegis may activate any power stone stored in his repository as if he were holding it in hand; this follows all of the standard rules for using power stones, except the aegis gets a bonus equal to the number of stored power stones to any Use Magic Device checks he makes for this purpose. If the aegis loses this customization for any reason, any power stones stored in the astral suit are inert but unharmed until removed or this customization is regained." compset="RaceCustom">
@@ -8442,13 +8464,20 @@ foreach pick in hero from BaseArmor where "EquipType.Armor & Custom.AstArmor"
     <tag group="Helper" tag="Secondary"/>
     <tag group="CustomCost" tag="1"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
-    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not enabled, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.child[Damage].field[dmmBonus].value += 1]]></eval>
+      hero.child[Damage].field[dmmBonus].value += 1]]></eval>
     <exprreq message="Psionic Attacks customization required."><![CDATA[#hasability[rcPUaPsiAt] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaPull" name="Pull" description="The aegis&apos;s astral suit envelopes his weapon and grants him the ability to pull creatures closer with a successful melee attack. Whenever the aegis makes a successful melee attack, he can attempt a free combat maneuver check. If successful, the target of the attack is pulled 5 feet closer to the aegis. This ability only works on creatures of a size equal to or smaller than the aegis.{br}{br}Creatures pulled in this way do not provoke attacks of opportunity. The aegis must have a reach of 10 feet or more to select this customization. If there is insufficient room for the target to move closer to the aegis, the attempt automatically fails." compset="RaceCustom" uniqueness="useronce">
@@ -8475,7 +8504,13 @@ hero.child[Damage].field[dmmBonus].value += 1]]></eval>
     <tag group="CustomCost" tag="1"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <prereq message="Aegis level 8+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 8)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 8)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSpikC" name="Spiked Carapace" description="The astral suit is covered in sharp spikes as if equipped with armor spikes." compset="RaceCustom" uniqueness="useronce">
@@ -8490,7 +8525,13 @@ hero.child[Damage].field[dmmBonus].value += 1]]></eval>
     <tag group="CustomCost" tag="1"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <prereq message="Aegis level 2+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 2)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 2)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSwim" name="Swim" description="The aegis gains a swim speed equal to his base speed." compset="RaceCustom" uniqueness="useronce">
@@ -8523,14 +8564,21 @@ hero.child[xSwim].field[abValue].value = maximum(hero.child[xSwim].field[abValue
     <tag group="Helper" tag="Secondary"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
-    <eval phase="PreLevel" priority="5000"><![CDATA[~ If we're not wearing the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're not wearing the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-foreach pick in hero from BaseWep where "fieldval:gIsEquip = 1"
-  perform eachpick.assign[Helper.DamageUp]
-nexteach]]></eval>
+      foreach pick in hero from BaseWep where "fieldval:gIsEquip = 1"
+        perform eachpick.assign[Helper.DamageUp]
+      nexteach]]></eval>
     <prereq message="Aegis level 6+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 6)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBrawn" name="Brawn" description="The aegis gains a +2 enhancement bonus to Strength while he is wearing his astral suit. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Strength is increased by +2." compset="RaceCustom">
@@ -8568,23 +8616,33 @@ else
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-allowed = round(#levelcount[Aegis]/5,0,-1)
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        var allowed as number
+        allowed = round(levels/5,0,-1)
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaCham] <= allowed)
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaCham] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaCham] < allowed)
+        endif
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaCham] < allowed)
-  endif
-
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+         @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaClimb" name="Climb" description="The aegis gains a climb speed equal to 1/2 of his base land speed." compset="RaceCustom" uniqueness="useronce">
@@ -8608,15 +8666,22 @@ hero.child[xClimb].field[abValue].value = maximum(hero.child[xClimb].field[abVal
     <tag group="Helper" tag="Secondary"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
-    <eval phase="PostLevel" priority="950"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="950"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-var val as number
-val = hero.child[rcPUaEnerR].field[abValue].value 
-hero.child[rcPUaEnerR].field[abValue].value += val]]></eval>
+      var val as number
+      val = hero.child[rcPUaEnerR].field[abValue].value 
+      hero.child[rcPUaEnerR].field[abValue].value += val]]></eval>
     <exprreq message="Energy Resistance customization required."><![CDATA[#hasability[rcPUaEnerR] <> 0]]></exprreq>
     <prereq message="Aegis level 6+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 6)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExtAr" name="Extra Arms" description="The extra arms on the aegis&apos;s astral suit gain improved functionality. The aegis gains a +2 circumstance bonus to Climb checks and CMD against grapple attempts for each extra arm that is not holding anything. In addition, one of the arms can wield and use a light or one-handed weapon, a shield, or any other item that can be used with one hand. Attacks made with this additional arm suffer a -2 penalty to attack rolls in addition to any penalties for using two weapons.{br}{br}These extra arms do not grant any additional attacks, only alternate arms with which to make the standard attacks. The aegis must be at least 5th level and have the Lesser Extra Arms customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -8626,7 +8691,13 @@ hero.child[rcPUaEnerR].field[abValue].value += val]]></eval>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Extra Arms, Lesser customization required."><![CDATA[#hasability[rcPUaExArL] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFligh" name="Flight" description="The aegis uses psychokinetic energy to gain a fly speed equal to its base speed. The aegis&apos;s maneuverability depends on his size. Medium or smaller aegii have good maneuverability. Large aegii have average maneuverability, while Huge aegii have poor maneuverability. For 2 additional customization points, the aegis&apos;s maneuverability increases to perfect. The aegis&apos;s fly speed can be increased by spending additional customization points, gaining a 20-foot increase to fly speed for each additional point spent. The aegis must be at least 5th level before selecting this customization." compset="RaceCustom">
@@ -8648,7 +8719,13 @@ elseif (hero.tagis[Size.Huge] <> 0) then
    perform hero.child[xFly].assign[Maneuver.Poor]
 endif]]></eval>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaForti" name="Fortification" description="The aegis gains 25% chance to negate critical hits or sneak attacks (so damage is rolled normally instead). This does not stack with armor with the same special ability. This ability can be selected again starting at 8th level and at 12th level, increasing the chance to negate critical hits or sneak attacks by an additional 25% for every additional time it is taken." compset="RaceCustom">
@@ -8729,27 +8806,38 @@ else
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Power Stone Repository customization required."><![CDATA[#hasability[rcPUaPwrSR] <> 0]]></exprreq>
     <prereq message="Aegis level 7+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 7)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-if (#levelcount[Aegis] <= 8 ) then
-  allowed = 1
-else
-  allowed = 2
-endif
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaHaPSI] <= allowed)
+        var allowed as number
+        if (levels <= 8 ) then
+          allowed = 1
+        else
+          allowed = 2
+        endif
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaHaPSI] < allowed)
-  endif
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaHaPSI] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaHaPSI] < allowed)
+        endif
 
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+        @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaImDmg" name="Improved Damage" description="The aegis&apos;s melee attacks deal additional damage. If wielding a two-handed weapon, the aegis deals 3 additional points of damage on a successful hit. If wielding a one-handed weapon, the aegis deals 2 additional points of damage on a successful hit. If wielding a light weapon, the aegis deals 1 additional point of damage on a successful hit. If dual-wielding, each weapon is affected separately." compset="RaceCustom" uniqueness="useronce">
@@ -8757,46 +8845,59 @@ else
     <tag group="Helper" tag="Secondary"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
-    <eval phase="PreLevel" priority="5000"><![CDATA[~ If we're not wearing the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're not wearing the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-foreach pick in hero from BaseWep where "fieldval:gIsEquip = 1|fieldval:wIs2nd = 1"
-  if (eachpick.tagis[wClass.Light] <> 0) then
-    eachpick.field[wDamMelee].value += 1
-  elseif (eachpick.tagis[wClass.OneHanded] <> 0) then
-    eachpick.field[wDamMelee].value += 2
-  elseif (eachpick.tagis[wClass.TwoHanded] <> 0) then
-    eachpick.field[wDamMelee].value += 3
-  endif
-nexteach]]></eval>
+      foreach pick in hero from BaseWep where "fieldval:gIsEquip = 1|fieldval:wIs2nd = 1"
+        if (eachpick.tagis[wClass.Light] <> 0) then
+          eachpick.field[wDamMelee].value += 1
+        elseif (eachpick.tagis[wClass.OneHanded] <> 0) then
+          eachpick.field[wDamMelee].value += 2
+        elseif (eachpick.tagis[wClass.TwoHanded] <> 0) then
+          eachpick.field[wDamMelee].value += 3
+        endif
+      nexteach]]></eval>
     </thing>
   <thing id="rcPUaIDamR" name="Improved Damage Reduction" description="The aegis&apos;s damage reduction from his astral suit increases by 1. This customization can be taken once for every five levels the aegis possesses Its effects stack. The aegis must be at least 5th level before selecting this customization." compset="RaceCustom">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="Secondary"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
-    <eval phase="PostLevel" priority="1000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="1000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.childfound[cPUAegDR].field[abValue2].value += 1]]></eval>
+      hero.childfound[cPUAegDR].field[abValue2].value += 1]]></eval>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-allowed = round(#levelcount[Aegis]/5,0,-1)
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaIDamR] <= allowed)
+        var allowed as number
+        allowed = round(levels/5,0,-1)
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaIDamR] < allowed)
-  endif
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaIDamR] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaIDamR] < allowed)
+        endif
 
-@message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+        @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaInSiz" name="Increased Size" description="The transformed body grows in size and the aegis and all of his equipment is treated as one size category larger as if affected by {i}expansion{/i}. The aegis must be at least 9th level to select this customization." compset="RaceCustom" uniqueness="useronce">
@@ -8806,7 +8907,13 @@ else
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="DescInfo" tag="puExpand1"/>
     <prereq message="Aegis level 9+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 9)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 9)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaNimbl" name="Nimble" description="The aegis gains a +2 enhancement bonus to Dexterity while he is wearing his astral suit. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Dexterity is increased by +2." compset="RaceCustom" uniqueness="unique">
@@ -8896,7 +9003,13 @@ else
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Retaliate customization required."><![CDATA[#hasability[rcPUaRetal] <> 0]]></exprreq>
     <prereq message="Aegis level 16+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 16)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 16)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaTrem" name="Tremorsense" description="The aegis gains tremorsense out to a range of 30 feet. This allows the aegis to pinpoint the location of creatures that it cannot see without having to make a Perception check as long as the creature and the aegis are in contact with the ground, but such creatures still have total concealment from the aegis. Visibility still affects the aegis&apos;s movement and he is still denied his Dexterity bonus to Armor Class against attacks from creatures he cannot see. The aegis must be at least 7th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -8910,7 +9023,13 @@ else
       <assignval field="abValue" value="30"/>
       </bootstrap>
     <prereq message="Aegis level 7+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 7)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 7)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaUnloc" name="Unlock Psionics" description="The astral suit is able to emit energy that resonates with psionic items, helping the aegis use them. The aegis gains a +2 bonus to Use Magic Device checks while wearing his astral suit. If the aegis has 10 ranks in Use Magic Device, this bonus increases to +4." compset="RaceCustom" uniqueness="useronce">
@@ -8940,7 +9059,13 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
       <assignval field="abValue" value="30"/>
       </bootstrap>
     <prereq message="Aegis level 9+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 9)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBurro" name="Burrow" description="The aegis gains a burrow speed equal to 1/2 his base speed. He can use this speed to move through dirt, clay, sand, and earth. He does not leave a hole behind, nor is his passage marked on the surface. The aegis must be at least 9th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -8949,12 +9074,19 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="Final" priority="14000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="Final" priority="14000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abValue].value, hero.child[Speed].field[tSpeed].value)]]></eval>
+      hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abValue].value, hero.child[Speed].field[tSpeed].value)]]></eval>
     <prereq message="Aegis level 9+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 9)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 9)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaDieha" name="Diehard" description="When the aegis&apos;s hit point total is below 0, but he is not dead, he automatically stabilizes. He does not need to make a Constitution check each round to avoid losing additional hit points. He may choose to act as if disabled, rather than dying. He must make this decision as soon as he is reduced to negative hit points (even if it isn&apos;t his turn). If he does not choose to act as if disabled, he immediately falls unconscious. When under this effect, the aegis is staggered. He can take a move action without further injuring himself, but if he performs any standard action (or any other action deemed as strenuous, including some swift actions, such as manifesting a quickened power) he takes 1 point of damage after completing the act. If his negative hit points are equal to or greater than his Constitution score, he immediately dies." compset="RaceCustom" uniqueness="useronce">
@@ -8977,12 +9109,19 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="StandardDC" tag="aCHA"/>
-    <eval phase="PostLevel" priority="1000">var dcBonus as number 
-dcBonus = round(#levelcount[Aegis]/2,0,-1)
+    <eval phase="PostLevel" priority="1000">
+      var dcBonus as number 
+      dcBonus = round(#levelcount[Aegis]/2,0,-1)
 
-field[abDC].value += dcBonus</eval>
+      field[abDC].value += dcBonus</eval>
     <prereq message="Aegis level 11+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 11)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 11)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaHaPSG" name="Harness Power Stone, Greater" description="As Improved Harness Power Stone, except the power is 3rd level or lower, and the effective manifester level increase is +5. The aegis must be at least 11th level and have the Power Stone Repository customization to take this customization, and be 13th level to take this customization a second time." compset="RaceCustom">
@@ -8992,27 +9131,37 @@ field[abDC].value += dcBonus</eval>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Power Stone Repository customization required."><![CDATA[#hasability[rcPUaPwrSR] <> 0]]></exprreq>
     <prereq message="Aegis level 11+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 11)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-if (#levelcount[Aegis] <= 12 ) then
-  allowed = 1
-else
-  allowed = 2
-endif
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        var allowed as number
+        if (levels <= 12 ) then
+          allowed = 1
+        else
+          allowed = 2
+        endif
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaHaPSG] <= allowed)
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaHaPSG] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaHaPSG] < allowed)
+        endif
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaHaPSG] < allowed)
-  endif
-
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+         @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaQuick" name="Quickened Attacks" description="When the aegis makes a full attack, he gains one additional attack at his highest attack bonus.{br}{br}This customization does not stack with other sources of extra attacks, such as {i}haste{/i}. The aegis must be at least 10th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9028,7 +9177,13 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
    perform eachpick.assign[Helper.ExtraHigh]
    nexteach]]></eval>
     <prereq message="Aegis level 10+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 10)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 10)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaReach" name="Reach" description="The aegis&apos;s reach increases by 5 feet. The aegis must be at least 7th level before selecting this customization." compset="RaceCustom">
@@ -9037,7 +9192,13 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <prereq message="Aegis level 7+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 7)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 7)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBlinS" name="Blindsight" description="The astral suit massively augments the aegis&apos;s senses, giving him blindsight out to a range of 30 feet. The aegis can maneuver and attack as normal, ignoring darkness, invisibility, and most forms of concealment as long as he has line of effect to the target.{br}{br}The aegis must possess the blindsense customization to take this customization. The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9050,7 +9211,13 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
       <assignval field="abValue" value="30"/>
       </bootstrap>
     <prereq message="Aegis level 11+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 11)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 11)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEnerI" name="Energy Immunity" description="The aegis gains immunity to his active energy type as long as he is wearing his astral suit.{br}{br}The aegis must be at least 15th level before selecting this customization." compset="RaceCustom">
@@ -9060,7 +9227,13 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="fShowWhat" tag="Energy"/>
     <prereq message="Aegis level 15+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 15)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 15)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExPas" name="Extra Passenger" description="The aegis can carry one creature of the same size or smaller as the aegis&apos;s base size (powers and effects that increase the aegis&apos;s size do not allow him to carry larger creatures, although Increased Size and Improved Increased Size customizations do allow the aegis to carry larger passengers). The carried creature is treated as if it has total concealment and he gains the damage reduction of the astral suit, as well as any environmental customization options, such as that granted from the Energy Resistance or Underwater Breath customization. The creature carried using this ability remains adjacent to the aegis and moves with the aegis&apos;s move actions. A creature can be loaded and unloaded into the astral suit as a free action by the aegis, but the creature can take no actions until its next turn.{br}{br}The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9069,7 +9242,13 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
     <tag group="CustomCost" tag="4"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <prereq message="Aegis level 11+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 11)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 11)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaHaPSS" name="Harness Power Stone, Superior" description="As Improved Harness Power Stone, except the power is 4th level or lower, and the effective manifester level increase is +7. The aegis must be at least 16th level and have the Power Stone Repository customization to take this customization, and be 18th level to take this customization a second time." compset="RaceCustom">
@@ -9079,27 +9258,37 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Power Stone Repositor customization required."><![CDATA[#hasability[rcPUaPwrSR] <> 0]]></exprreq>
     <prereq message="Aegis level 16+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 16)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 16)
+        ]]></validate>
       </prereq>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-if (#levelcount[Aegis] <= 17 ) then
-  allowed = 1
-else
-  allowed = 2
-endif
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+      
+        var allowed as number
+        if (levels <= 17 ) then
+          allowed = 1
+        else
+          allowed = 2
+        endif
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaHaPSS] <= allowed)
-
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaHaPSS] < allowed)
-  endif
-
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaHaPSS] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaHaPSS] < allowed)
+        endif
+        @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIEvad" name="Improved Evasion" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Reflex save for half damage, he takes no damage if he makes a successful saving throw and only half damage if the saving throw fails. The aegis must be at least 12th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9111,7 +9300,13 @@ else
       <containerreq phase="First" priority="500"><![CDATA[count:hero#Custom.WearAstS <> 0]]></containerreq>
       </bootstrap>
     <prereq message="Aegis level 12+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 12)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 12)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIStal" name="Improved Stalwart" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Fortitude or Will save for a reduced or partial effect, he can expend his psionic focus as an immediate action to ignore the effect if he makes a successful saving throw and suffers the reduced effect if the saving throw fails. The aegis must be at least 16th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9120,7 +9315,13 @@ else
     <tag group="CustomCost" tag="4"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <prereq message="Aegis level 16+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 16)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 16)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIISiz" name="Increased Size, Improved" description="The astral suit grows in size and the aegis is treated as two size categories larger as if affected by an augmented {i}expansion{/i}. The aegis must be at least 15th level and have selected the increased size customization to select this customization. This customization does not stack with the increased size customization." compset="RaceCustom" uniqueness="useronce">
@@ -9130,7 +9331,13 @@ else
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Increased Size customization required."><![CDATA[#hasability[rcPUaInSiz] <> 0]]></exprreq>
     <prereq message="Aegis level 15+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 15)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 15)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="cPULessStr" name="Lesser Strategies" description="Tacticians learn minor powers they can use at will to aid them in coordination and tactics. The tactician gains 3 talents from the tactician talent list." compset="ClSpecial">
@@ -9767,84 +9974,86 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
 Call PsyWarPath</eval>
     </thing>
   <thing id="cPWaTraArc" name="Trance (Archer Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus on attack rolls made with a ranged or thrown weapon (natural weapons do not count for this benefit). This bonus increases by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to ranged or thrown weapons">
-    <fieldval field="actName" value="Active"/>
     <usesource source="pPsiUn"/>
-    <tag group="User" tag="Activation"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <eval phase="First" priority="10000" index="2">
+      ~ Setup this Maneuver or Trance for the Psy Warrior
+      Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ If we've been Disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Set the level bonus
-field[abValue].value += 1
-If (field[xTotalLev].value >= 7) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 11) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 15) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 19) Then
-  field[abValue].value += 1
-Endif
+      ~ Set the level bonus
+      field[abValue].value += 1
+      If (field[xTotalLev].value >= 7) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 11) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 15) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 19) Then
+        field[abValue].value += 1
+      Endif
 
-~ Set live name
-field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      ~ Set live name
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
 
       var v_focus as number
       call PUPsiFocus
       ~ If Not psionically focused get out now
       doneif (v_focus <> 1)
 
-~ If not active get out now
-doneif (field[abilActive].value <> 1)
+      ~ If not active get out now
+      doneif (field[abilActive].value <> 1)
 
-~ Give bonus to attack rolls for 
-foreach pick in hero from BaseWep where "wCategory.RangeThrow | wCategory.RangeProj"  
-  eachpick.field[wAttRanged].value += field[abValue].value
-  nexteach]]></eval>
-    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
-Call PsyWarTrMa</eval>
+      ~ Give competence bonus to attack rolls for ranged weapons
+      #applybonus[atrBonComp,hero.child[Attack],field[abValue].value]
+      ]]></eval>
     </thing>
   <thing id="cPWaTraSur" name="Trance (Survivor Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain DR 2/-. This damage reduction improves by 1 every four psychic warrior levels thereafter. In addition, you suffer no harm from being in a hot or cold environment. You can exist comfortably in conditions between –50 and 140 degrees Fahrenheit without having to make Fortitude saves. Your equipment is likewise protected. This doesn’t provide any protection from fire or cold damage, nor does it protect against other environmental hazards such as smoke, lack of air, and so forth." compset="ClSpecial" summary="When psi-focused you gain DR and hot or cold environment endurance.">
     <usesource source="pPsiUn"/>
     <tag group="abAction" tag="PUManFocus"/>
     <bootstrap thing="xDamRd"></bootstrap>
+    <eval phase="First" priority="10000" index="2">
+      ~ Setup this Maneuver or Trance for the Psy Warrior
+      Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ If we've been Disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Set the level bonus
-field[abValue].value += 2
-If (field[xTotalLev].value >= 7) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 11) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 15) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 19) Then
-  field[abValue].value += 1
-Endif
+      ~ Set the level bonus
+      field[abValue].value += 2
+      If (field[xTotalLev].value >= 7) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 11) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 15) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 19) Then
+        field[abValue].value += 1
+      Endif
 
-~ Set live name
-~field[livename].text = field[thingname].text & " " & signed(field~[abValue].value)
+      ~ Set live name
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
 
       var v_focus as number
       call PUPsiFocus
       ~ If Not psionically focused get out now
       doneif (v_focus <> 1)
-~ Give bonus to DR 
-hero.child[xDamRd].field[abValue].value = maximum(hero.child[xDamRd].field[abValue].value, field[abValue].value)]]></eval>
-    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
-Call PsyWarTrMa</eval>
+
+      ~ Give bonus to DR 
+      #applydr[xDamRd,field[abValue].value]
+      ]]></eval>
     </thing>
   <thing id="cPWaManArc" name="Maneuver (Archer Path)" description="Beginning at 3rd level, you can expend your psionic focus and make a ranged trip attack as a standard action. If your target is flying, they are instead staggered for one round. At 7th level and every four psychic warrior levels thereafter, you gain a +1 bonus to your CMB when using this maneuver." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -9860,179 +10069,172 @@ Call PsyWarTrMa</eval>
 Call PsyWarTrMa</eval>
     </thing>
   <thing id="cPWaTraDer" name="Trance (Dervish Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus on attack rolls made when you wield two weapons. This bonus increases by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to attack rolls when using two weapons.">
-    <fieldval field="actName" value="Active"/>
     <usesource source="pPsiUn"/>
-    <tag group="User" tag="Activation"/>
     <tag group="abAction" tag="PUExpFocus"/>
-    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
-Call PsyWarTrMa</eval>
+    <eval phase="First" priority="10000" index="2">
+      ~ Setup this Maneuver or Trance for the Psy Warrior
+      Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ If we've been Disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Set the level bonus
-field[abValue].value += 1
-If (field[xTotalLev].value >= 7) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 11) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 15) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 19) Then
-  field[abValue].value += 1
-Endif
+      ~ Set the level bonus
+      field[abValue].value += 1
+      If (field[xTotalLev].value >= 7) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 11) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 15) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 19) Then
+        field[abValue].value += 1
+      Endif
 
-~ Set live name
-field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      ~ Set live name
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
 
       var v_focus as number
       call PUPsiFocus
       ~ If Not psionically focused get out now
       doneif (v_focus <> 1)
+      ~ If not duel wielding weapons get out now!
+      doneif (tagexpr[(count:hero#Hero.EquipWep = 2) | hero#Hero.EquipDbl] = 0)
 
-~ If not active get out now
-doneif (field[abilActive].value <> 1)
-
-~ Give bonus to attack rolls for 
-~foreach pick in hero from BaseWep where "wCategory.RangeThrow | ~wCategory.RangeProj"  
-~  eachpick.field[wAttRanged].value += field[abValue].value
-~  nexteach]]></eval>
+      #applybonus[atmBonComp,hero.child[Attack],field[abValue].value]
+      ]]></eval>
     </thing>
   <thing id="cPWaTraGla" name="Trance (Gladiator Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus to your CMB and a +2 competence bonus to your CMD. These bonuses increase by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to CMB and CMD.">
-    <fieldval field="actName" value="Active"/>
     <usesource source="pPsiUn"/>
-    <tag group="User" tag="Activation"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
-Call PsyWarTrMa</eval>
+    <eval phase="First" priority="10000" index="2">
+      ~ Setup this Maneuver or Trance for the Psy Warrior
+      Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ If we've been Disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Set the level bonus
-field[abValue].value += 1
-If (field[xTotalLev].value >= 7) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 11) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 15) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 19) Then
-  field[abValue].value += 1
-Endif
+      ~ Set the level bonus
+      field[abValue].value += 1
+      If (field[xTotalLev].value >= 7) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 11) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 15) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 19) Then
+        field[abValue].value += 1
+      Endif
 
-~ Set live name
-field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      ~ Set live name
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
 
       var v_focus as number
       call PUPsiFocus
       ~ If Not psionically focused get out now
       doneif (v_focus <> 1)
 
-~ If not active get out now
-doneif (field[abilActive].value <> 1)
-
-~ Give bonus to attack rolls for 
-~foreach pick in hero from BaseWep where "wCategory.RangeThrow | ~wCategory.RangeProj"  
-~  eachpick.field[wAttRanged].value += field[abValue].value
-~  nexteach]]></eval>
+      ~ competence bonus to CMB/CMD
+      #applybonus[BonComp,hero.child[Maneuver],field[abValue].value]
+      ]]></eval>
     </thing>
   <thing id="cPWaTraInf" name="Trance (Infiltrator Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +2 competence bonus on Disguise checks and a +1 competence bonus on damage rolls made with natural weapons. These bonuses increase by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to Disguise checks and damage with natural weapons.">
-    <fieldval field="actName" value="Active"/>
     <usesource source="pPsiUn"/>
-    <tag group="User" tag="Activation"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <eval phase="First" priority="10000" index="2">
+      ~ Setup this Maneuver or Trance for the Psy Warrior
+      Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ If we've been Disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Set the level bonus
-field[abValue].value += 1
-If (field[xTotalLev].value >= 7) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 11) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 15) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 19) Then
-  field[abValue].value += 1
-Endif
+      ~ Set the level bonus
+      field[abValue].value += 1
+      If (field[xTotalLev].value >= 7) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 11) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 15) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 19) Then
+        field[abValue].value += 1
+      Endif
 
-~ Set live name
-field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      ~ Set live name
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
 
       var v_focus as number
       call PUPsiFocus
       ~ If Not psionically focused get out now
       doneif (v_focus <> 1)
 
-~ If not active get out now
-doneif (field[abilActive].value <> 1)
+      ~ Bonus to disguise skill
+      #applybonus[ModCirc,hero.childfound[skDisguise],field[abValue].value]
 
-~ Give bonus to attack rolls for 
-~foreach pick in hero from BaseWep where "wCategory.RangeThrow | ~wCategory.RangeProj"  
-~  eachpick.field[wAttRanged].value += field[abValue].value
-~  nexteach]]></eval>
-    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
-Call PsyWarTrMa</eval>
+      ~ Bonus to natural attack damage      
+      foreach pick in hero from BaseWep where "wGroup.Natural"  
+        #applybonus[dmmBonComp,eachpick,field[abValue].value]
+        #applybonus[dmrBonComp,eachpick,field[abValue].value]
+      nexteach
+      ]]></eval>
     </thing>
   <thing id="cPWaTraInt" name="Trance (Interceptor Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus on attack and damage rolls made against any opponent that threatens any of your allies. This bonus increases by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to attack and damage rolls against opponents who threaten your allies.">
-    <fieldval field="actName" value="Active"/>
+    <fieldval field="actName" value="Threatens Ally"/>
     <usesource source="pPsiUn"/>
     <tag group="User" tag="Activation"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
-Call PsyWarTrMa</eval>
+    <eval phase="First" priority="10000" index="2">
+      ~ Setup this Maneuver or Trance for the Psy Warrior
+      Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ If we've been Disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Set the level bonus
-field[abValue].value += 1
-If (field[xTotalLev].value >= 7) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 11) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 15) Then
-  field[abValue].value += 1
-Endif
-If (field[xTotalLev].value >= 19) Then
-  field[abValue].value += 1
-Endif
+      ~ Set the level bonus
+      field[abValue].value += 1
+      If (field[xTotalLev].value >= 7) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 11) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 15) Then
+        field[abValue].value += 1
+      Endif
+      If (field[xTotalLev].value >= 19) Then
+        field[abValue].value += 1
+      Endif
 
-~ Set live name
-field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      ~ Set live name
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
 
       var v_focus as number
       call PUPsiFocus
       ~ If Not psionically focused get out now
       doneif (v_focus <> 1)
+      ~ If not activated get out now!
+      doneif (field[abilActive].value = 0)
 
-~ If not active get out now
-doneif (field[abilActive].value <> 1)
-
-~ Give bonus to attack rolls for 
-~foreach pick in hero from BaseWep where "wCategory.RangeThrow | ~wCategory.RangeProj"  
-~  eachpick.field[wAttRanged].value += field[abValue].value
-~  nexteach]]></eval>
+      ~ Competence bonus to attack & damage
+      #applybonus[BonComp,hero.child[Attack],field[abValue].value]
+      #applybonus[BonComp,hero.child[Damage],field[abValue].value]
+      ]]></eval>
     </thing>
   <thing id="cPWaManDer" name="Maneuver (Dervish Path)" description="Beginning at 3rd level, you can expend your psionic focus as part of a full attack when you fight with two weapons to take a 5-foot step between your attacks, even if you have already taken a 5-foot step, but not if you have moved normally (such as by using hustle). At 8th level and every five psychic warrior levels thereafter, you gain one additional 5-foot step, but each of these 5-foot steps must be made after an attack in your full attack." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -11469,7 +11671,13 @@ field[abSumm].text &= " Bonus HP " & signed(field[abValue].value)]]></eval>
       <assignval field="abValue" value="30"/>
       </bootstrap>
     <prereq message="Aegis level 9+ required">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 9)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 9)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBliS2" name="Blindsight" description="The astral suit massively augments the aegis&apos;s senses, giving him blindsight out to a range of 30 feet. The aegis can maneuver and attack as normal, ignoring darkness, invisibility, and most forms of concealment as long as he has line of effect to the target.{br}{br}The aegis must possess the blindsense customization to take this customization. The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11477,33 +11685,45 @@ field[abSumm].text &= " Bonus HP " & signed(field[abValue].value)]]></eval>
     <tag group="CustomCost" tag="4"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <prereq message="Aegis level 11+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 11)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 11)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBraw2" name="Brawn" description="The aegis gains a +2 enhancement bonus to Strength while he is transformed. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Strength is increased by +2." compset="RaceCustom" maxlimit="">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PostLevel"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-var Taken as number
-Taken = hero.tagcount[Ability.rcPUaBraw2] * 2
+      var Taken as number
+      Taken = hero.tagcount[Ability.rcPUaBraw2] * 2
 
-#enhancementbonus[hero.child[aSTR], Taken]]]></eval>
+      #enhancementbonus[hero.child[aSTR], Taken]]]></eval>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-allowed = minimum(round(#levelcount[Aegis]/5,0,-1)+1,3)
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaBraw2] <= allowed)
+        var allowed as number
+        allowed = minimum(round(levels/5,0,-1)+1,3)
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaBraw2] < allowed)
-  endif]]></validate>
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaBraw2] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaBraw2] < allowed)
+        endif]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBurr2" name="Burrow" description="The aegis gains a burrow speed equal to 1/2 his base speed. He can use this speed to move through dirt, clay, sand, and earth. He does not leave a hole behind, nor is his passage marked on the surface. The aegis must be at least 9th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11516,45 +11736,64 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
 
 hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abValue].value, hero.child[Speed].field[tSpeed].value)]]></eval>
     <prereq message="Aegis level 9+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 9)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 9)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaCha2" name="Chameleon" description="The aegis gains a +4 circumstance bonus to Stealth checks. The aegis must be at least 5th level before selecting this customization and this customization can be taken once for every five levels the aegis possesses." compset="RaceCustom">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PreLevel" priority="1000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PreLevel" priority="1000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-#skillbonus[skStealth] += 4]]></eval>
+      #skillbonus[skStealth] += 4]]></eval>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-allowed = round(#levelcount[Aegis]/5,0,-1)
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaCha2] <= allowed)
+        var allowed as number
+        allowed = round(levels/5,0,-1)
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaCha2] < allowed)
-  endif
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaCha2] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaCha2] < allowed)
+        endif
 
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+       @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaClim2" name="Climb" description="The aegis gains a climb speed equal to 1/2 of his base land speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="Final" priority="14000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="Final" priority="14000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.child[xClimb].field[abValue].value = maximum(hero.child[xClimb].field[abValue].value, hero.child[Speed].field[tSpeed].value)]]></eval>
+      hero.child[xClimb].field[abValue].value = maximum(hero.child[xClimb].field[abValue].value, hero.child[Speed].field[tSpeed].value)]]></eval>
     </thing>
   <thing id="rcPUaDieh2" name="Diehard" description="When the aegis&apos;s hit point total is below 0, but he is not dead, he automatically stabilizes. He does not need to make a Constitution check each round to avoid losing additional hit points. He may choose to act as if disabled, rather than dying. He must make this decision as soon as he is reduced to negative hit points (even if it isn&apos;t his turn). If he does not choose to act as if disabled, he immediately falls unconscious. When under this effect, the aegis is staggered. He can take a move action without further injuring himself, but if he performs any standard action (or any other action deemed as strenuous, including some swift actions, such as manifesting a quickened power) he takes 1 point of damage after completing the act. If his negative hit points are equal to or greater than his Constitution score, he immediately dies." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -11567,7 +11806,13 @@ hero.child[xClimb].field[abValue].value = maximum(hero.child[xClimb].field[abVal
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <tag group="fShowWhat" tag="Energy"/>
     <prereq message="Aegis level 15+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 15)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 15)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEneR2" name="Energy Resistance" description="The aegis gains resist 5 against his active energy type. This resistance increases by 5 for every 5 levels the aegis possesses, to a maximum of 15 at 10th level. This customization can be selected multiple times. Each time beyond the first, the aegis selects an energy type (cold, electricity, fire, or sonic) to gain resistance to, in addition to his active energy type. If the aegis&apos;s active energy type is the same as one he has selected, the effects do not stack." compset="RaceCustom">
@@ -11578,40 +11823,47 @@ hero.child[xClimb].field[abValue].value = maximum(hero.child[xClimb].field[abVal
     <tag group="Helper" tag="SpecUp"/>
     <tag group="CustomCost" tag="1"/>
     <tag group="ChooseSrc1" tag="Thing"/>
-    <eval phase="PostLevel" priority="1000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="1000"><![CDATA[
+    ~ If we're not wearling the Astral Suit, get out now
+    doneif (hero.tagcount[Custom.WearAstS] = 0)
+    ~ if nothing's been selected, there's nothing we can do
+    doneif (field[usrChosen1].ischosen = 0)
 
-~if nothing's been selected, there's nothing we can do
-doneif (field[usrChosen1].ischosen = 0)
+    var res as number
+    res = round(#levelcount[Aegis]/5,0,-1)*5
+    res = minimum(res,10)
+    res += 5
 
-var res as number
-res = round(#levelcount[Aegis]/5,0,-1)*5
-res = minimum(res,10)
-res += 5
- 
-if (field[usrChosen1].chosen.tagis[BloodEner.Cold] <> 0) then
-  #applyresist[xDamRsCold, res]
-elseif (field[usrChosen1].chosen.tagis[BloodEner.Elec] <> 0) then
-  #applyresist[xDamRsElec, res] 
-elseif (field[usrChosen1].chosen.tagis[BloodEner.Fire] <> 0) then
-  #applyresist[xDamRsFire, res]
-elseif (field[usrChosen1].chosen.tagis[BloodEner.Sonic] <> 0) then
-  #applyresist[xDamRsSoni, res]
-  endif]]></eval>
+    if (field[usrChosen1].chosen.tagis[BloodEner.Cold] <> 0) then
+      #applyresist[xDamRsCold, res]
+    elseif (field[usrChosen1].chosen.tagis[BloodEner.Elec] <> 0) then
+      #applyresist[xDamRsElec, res] 
+    elseif (field[usrChosen1].chosen.tagis[BloodEner.Fire] <> 0) then
+      #applyresist[xDamRsFire, res]
+    elseif (field[usrChosen1].chosen.tagis[BloodEner.Sonic] <> 0) then
+      #applyresist[xDamRsSoni, res]
+      endif]]></eval>
     </thing>
   <thing id="rcPUaIEnR2" name="Energy Resistance, Improved" description="The energy resistance gained from the Energy Resistance customization doubles. The aegis must have the Energy Resistance customization and be at least 6th level to select this customization." compset="RaceCustom">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PostLevel" priority="950"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="950"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-var val as number
-val = hero.child[rcPUaEneR2].field[abValue].value 
-hero.child[rcPUaEneR2].field[abValue].value += val]]></eval>
+      var val as number
+      val = hero.child[rcPUaEneR2].field[abValue].value 
+      hero.child[rcPUaEneR2].field[abValue].value += val]]></eval>
     <exprreq message="Energy Resistence cstomization required."><![CDATA[#hasability[rcPUaEneR2] <> 0]]></exprreq>
     <prereq message="Aegis level 6+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 6)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEvad2" name="Evasion" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Reflex save for half damage, he takes no damage if he makes a successful saving throw. The aegis must be at least 2nd level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11624,7 +11876,13 @@ hero.child[rcPUaEneR2].field[abValue].value += val]]></eval>
       <containerreq phase="First" priority="500"><![CDATA[count:hero#Custom.WearAstS <> 0]]></containerreq>
       </bootstrap>
     <prereq message="Aegis level 2+">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 2)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 2)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExAr2" name="Extra Arms" description="The extra arms on the aegis&apos;s astral suit gain improved functionality. The aegis gains a +2 circumstance bonus to Climb checks and CMD against grapple attempts for each extra arm that is not holding anything. In addition, one of the arms can wield and use a light or one-handed weapon, a shield, or any other item that can be used with one hand. Attacks made with this additional arm suffer a -2 penalty to attack rolls in addition to any penalties for using two weapons.{br}{br}These extra arms do not grant any additional attacks, only alternate arms with which to make the standard attacks. The aegis must be at least 5th level and have the Lesser Extra Arms customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11633,7 +11891,13 @@ hero.child[rcPUaEneR2].field[abValue].value += val]]></eval>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <exprreq message="Extra Arms, Lesser customization required."><![CDATA[#hasability[rcPUaEArL2] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEArG2" name="Extra Arms, Greater" description="The extra arms on the aegis&apos;s astral suit function at nearly the same capacity as his normal arms. Each arm can now wield or use a light or one-handed weapon, shield, or any other item that he could normally use. Alternatively, the aegis can use one or both arms when wielding a two-handed weapon, possibly allowing him to wield a pair of two-handed weapons. The circumstance bonus on Climb checks and CMD against grapple attempts increases to +3 per extra arm that is not holding anything. The aegis must be 8th level and have the Extra Arms and Lesser Extra Arms customizations before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11652,62 +11916,74 @@ hero.child[rcPUaEneR2].field[abValue].value += val]]></eval>
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="Final" priority="14000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="Final" priority="14000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.child[xFly].field[abValue].value = maximum(hero.child[xFly].field[abValue].value, hero.child[Speed].field[tSpeed].value)
+      #applybonus[abValue,hero.child[xFly],hero.child[Speed].field[tSpeed].value]
 
-if (hero.tagis[Size.Small] <> 0) then
-   perform hero.child[xFly].assign[Maneuver.Good]
-elseif (hero.tagis[Size.Medium] <> 0) then
-   perform hero.child[xFly].assign[Maneuver.Good]
-elseif (hero.tagis[Size.Large] <> 0) then
-   perform hero.child[xFly].assign[Maneuver.Average]
-elseif (hero.tagis[Size.Huge] <> 0) then
-   perform hero.child[xFly].assign[Maneuver.Poor]
-endif]]></eval>
+      if (hero.tagis[Size.Small] <> 0) then
+         perform hero.child[xFly].assign[Maneuver.Good]
+      elseif (hero.tagis[Size.Medium] <> 0) then
+         perform hero.child[xFly].assign[Maneuver.Good]
+      elseif (hero.tagis[Size.Large] <> 0) then
+         perform hero.child[xFly].assign[Maneuver.Average]
+      elseif (hero.tagis[Size.Huge] <> 0) then
+         perform hero.child[xFly].assign[Maneuver.Poor]
+      endif]]></eval>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFort2" name="Fortification" description="The aegis gains 25% chance to negate critical hits or sneak attacks (so damage is rolled normally instead). This does not stack with armor with the same special ability. This ability can be selected again starting at 8th level and at 12th level, increasing the chance to negate critical hits or sneak attacks by an additional 25% for every additional time it is taken." compset="RaceCustom">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="5000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-var crit as number
+      var crit as number
 
-crit = 25 * hero.tagcount[Ability.rcPUaFort2]
+      crit = 25 * hero.tagcount[Ability.rcPUaFort2]
 
-#applyfort[crit]
+      #applyfort[crit]
 
-~ step through each armor equipped and add the fortification
-~foreach pick in hero from BaseArmor where "fieldval:gIsEquip = 1"
-~  #applyfort[crit]
-~nexteach]]></eval>
+      ~ step through each armor equipped and add the fortification
+      ~foreach pick in hero from BaseArmor where "fieldval:gIsEquip = 1"
+      ~  #applyfort[crit]
+      ~nexteach]]></eval>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-if (#levelcount[Aegis] <= 7 ) then
-  allowed = 1
-elseif (#levelcount[Aegis] <= 11) then
-  allowed = 2
-else
-  allowed = 3
-endif
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaFort2] <= allowed)
+        var allowed as number
+        if (levels <= 7 ) then
+          allowed = 1
+        elseif (levels <= 11) then
+          allowed = 2
+        else
+          allowed = 3
+        endif
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaFort2] < allowed)
-  endif
-
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaFort2] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaFort2] < allowed)
+        endif
+        @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFrig2" name="Frightful Presence" description="The aegis makes his astral suit unsettling to his foes, gaining the frightful presence ability. The aegis can activate this ability as part of an offensive action, such as a charge or attack. Opponents within 30 feet of the aegis must make a Will save or become shaken for 3d6 rounds. The DC of this save is equal to 10 + 1/2 the aegis&apos;s class level + the aegis&apos;s Charisma modifier. If the aegis has at least 4 more Hit Dice than an opponent, that opponent becomes frightened instead. Foes with more HD than the aegis are immune to this effect. The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11715,12 +11991,16 @@ else
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <tag group="StandardDC" tag="aCHA"/>
-    <eval phase="PostLevel" priority="1000">var dcBonus as number 
-dcBonus = round(#levelcount[Aegis]/2,0,-1)
-
-field[abDC].value += dcBonus</eval>
+    <eval phase="PostLevel" priority="1000">
+      field[abDC].value += round(#levelcount[Aegis]/2,0,-1)</eval>
     <prereq message="Aegis level 11+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 11)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 6)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaHarS2" name="Hardened Strikes" description="The aegis is considered to be armed even when unarmed, does not provoke attacks of opportunity when making unarmed strikes, and his unarmed strikes deal lethal damage. In addition, the aegis&apos;s unarmed strikes can deal slashing or piercing damage, chosen at the time the customization is selected, instead of bludgeoning damage." compset="RaceCustom" uniqueness="useronce">
@@ -11789,29 +12069,40 @@ nexteach]]></eval>
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PostLevel" priority="1000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="1000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.childfound[cPUAegDR].field[abValue2].value += 1]]></eval>
+      #value2[cPUAegDR] += 1]]></eval>
     <prereq message="">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)
-var allowed as number
-allowed = round(#levelcount[Aegis]/5,0,-1) + 1
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaIDaR2] <= allowed)
+        var allowed as number
+        allowed = round(levels/5,0,-1) + 1
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaIDaR2] < allowed)
-  endif
-
-@message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaIDaR2] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaIDaR2] < allowed)
+        endif
+        @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIEva2" name="Improved Evasion" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Reflex save for half damage, he takes no damage if he makes a successful saving throw and only half damage if the saving throw fails. The aegis must be at least 12th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11822,7 +12113,13 @@ else
       <containerreq phase="First" priority="500"><![CDATA[count:hero#Custom.WearAstS <> 0]]></containerreq>
       </bootstrap>
     <prereq message="Aegis level 12+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 12)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 12)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaISta2" name="Improved Stalwart" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Fortitude or Will save for a reduced or partial effect, he can expend his psionic focus as an immediate action to ignore the effect if he makes a successful saving throw and suffers the reduced effect if the saving throw fails. The aegis must be at least 16th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11830,7 +12127,13 @@ else
     <tag group="CustomCost" tag="4"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <prereq message="Aegis level 16+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 16)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 16)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIncS2" name="Increased Size" description="The transformed body grows in size and the aegis and all of his equipment is treated as one size category larger as if affected by {i}expansion{/i}. The aegis must be at least 9th level to select this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11839,7 +12142,13 @@ else
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <tag group="DescInfo" tag="puExpand1"/>
     <prereq message="Aegis level 9+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 9)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 9)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIISi2" name="Increased Size, Improved" description="The astral suit grows in size and the aegis is treated as two size categories larger as if affected by an augmented {i}expansion{/i}. The aegis must be at least 15th level and have selected the increased size customization to select this customization. This customization does not stack with the increased size customization." compset="RaceCustom" uniqueness="useronce">
@@ -11848,70 +12157,87 @@ else
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <exprreq message="Increased Size customization required."><![CDATA[#hasability[rcPUaIncS2] <> 0]]></exprreq>
     <prereq message="Aegis level 15+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 15)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 15)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaNimb2" name="Nimble" description="The aegis gains a +2 enhancement bonus to Dexterity while he is wearing his astral suit. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Dexterity is increased by +2." compset="RaceCustom" uniqueness="unique">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not enabled, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+        ~ If we're not enabled, get out now
+        doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-var Taken as number
-Taken = hero.tagcount[Ability.rcPUaNimb2] * 2
+        var Taken as number
+        Taken = hero.tagcount[Ability.rcPUaNimb2] * 2
 
-#enhancementbonus[hero.child[aDEX], Taken]]]></eval>
-    <prereq message="">
-      <validate><![CDATA[var allowed as number
-allowed = minimum(round(#levelcount[Aegis]/5,0,-1)+1,3)
+        #enhancementbonus[hero.child[aDEX], Taken]]]></eval>
+      <prereq message="">
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaNimb2] <= allowed)
+        var allowed as number
+        allowed = minimum(round(levels/5,0,-1)+1,3)
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaNimb2] < allowed)
-  endif
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaNimb2] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaNimb2] < allowed)
+        endif
 
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+       @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaPwR2" name="Power Resistance" description="The aegis gains power resistance 13. This customization may be selected up to 3 times. Each subsequent time increases the power resistance gained by 3. This ability can be selected again starting at 8th level and at 12th level, increasing the power resistance by 3 for every additional time it is taken." compset="RaceCustom">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="5000"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-var res as number
+      var res as number
 
-res = 10 + (3 * hero.tagcount[Ability.rcPUaPwR2])
+      res = 10 + (3 * hero.tagcount[Ability.rcPUaPwR2])
 
-#value[xPwrRes] = maximum(res,#value[xPwrRes])]]></eval>
+      #value[xPwrRes] = maximum(res,#value[xPwrRes])]]></eval>
     <prereq message="">
-      <validate><![CDATA[var allowed as number
-if (#levelcount[Aegis] <= 7 ) then
-  allowed = 1
-elseif (#levelcount[Aegis] <= 11) then
-  allowed = 2
-else
-  allowed = 3
-endif
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
 
-~ if we're a pick, then there must be complevel/5 or fewer copies of
-~ this ability
-if (@ispick <> 0) then
-  validif (tagcount[HasAbility.rcPUaPwR2] <= allowed)
+        var allowed as number
+        if (levels <= 7 ) then
+          allowed = 1
+        elseif (levels <= 11) then
+          allowed = 2
+        else
+          allowed = 3
+        endif
 
-~ otherwise, look for fewer, since we're adding this
-else
-  validif (tagcount[HasAbility.rcPUaPwR2] < allowed)
-  endif
-
- @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
+        ~ if we're a pick, then there must be complevel/5 or fewer copies of
+        ~ this ability
+        if (@ispick <> 0) then
+          validif (tagcount[HasAbility.rcPUaPwR2] <= allowed)
+        ~ otherwise, look for fewer, since we're adding this
+        else
+          validif (tagcount[HasAbility.rcPUaPwR2] < allowed)
+        endif
+        @message = "You may not have more than " & allowed & " copies of this ability."]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaPoBu2" name="Powerful Build" description="The aegis gains the powerful build trait while wearing his astral suit. Whenever the aegis is subject to a size modifier or special size modifier for a Combat Maneuver Bonus or Combat Maneuver Defense (such as during grapple checks, bull rush attempts, and trip attempts), the aegis is treated as one size larger if doing so is advantageous to him. The aegis is also considered to be one size larger when determining whether a creature&apos;s special attacks based on size (such as grab or swallow whole) can affect him. The aegis can use weapons designed for a creature one size larger without penalty. However, his space and reach remain those of a creature of his actual size. The benefits of this trait stack with the effects of powers, abilities, and spells that change the subject&apos;s size category." compset="RaceCustom">
@@ -11936,15 +12262,22 @@ else
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
-    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're not enabled, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-~ Give weapons an extra attack
-foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
-   perform eachpick.assign[Helper.ExtraHigh]
-   nexteach]]></eval>
+      ~ Give weapons an extra attack
+      foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
+        perform eachpick.assign[Helper.ExtraHigh]
+      nexteach]]></eval>
     <prereq message="Aegis level 10+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 10)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 10)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaRam2" name="Ram" description="The astral suit forms a hardened shell over the aegis&apos;s head. If the aegis makes a bull rush or overrun attempt, he gains a +2 bonus to his CMB. Alternatively, he can make a single attack with this shell as part of a charge and deal 2d6 points of damage. This attack is treated as adamantine when used to attack an object.{br}{br}This customization can be taken once for every five levels the aegis possesses, each additional selection increasing the bonus to CMB by 1 and the damage on a charge by 1d6 points of damage. The aegis must be at least 5th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11957,7 +12290,13 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <prereq message="Aegis level 7+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 7)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 7)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSpd2" name="Speed" description="The aegis&apos;s base land speed is increased by 5 feet. This customization can be selected up to five times.{br}{br}Its effects stack." compset="RaceCustom">
@@ -12014,7 +12353,13 @@ else
     <tag group="CustomCost" tag="1"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <prereq message="Aegis level 2+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 2)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 2)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSwim2" name="Swim" description="The aegis gains a swim speed equal to his base speed." compset="RaceCustom">
@@ -12036,7 +12381,13 @@ hero.child[xSwim].field[abValue].value = maximum(hero.child[xSwim].field[abValue
       <assignval field="abValue" value="30"/>
       </bootstrap>
     <prereq message="Aegis level 7+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 7)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 7)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaUndB2" name="Underwater Breath" description="The aegis can safely breathe underwater as long as he is wearing his astral suit." compset="RaceCustom" uniqueness="useronce">
@@ -12175,7 +12526,13 @@ else
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <tag group="User" tag="Activation"/>
     <prereq message="Aegis level 12+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 12)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 12)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="arPUCryWar" name="Crystal Warrior" description="Some aegii have learned to form a psicrystal and shape their astral suit around the small creature, creating a sentient suit of armor that grants them many benefits at the cost of some flexibility." compset="ClassVary" uniqueness="unique">
@@ -12286,7 +12643,13 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
     <exprreq message="Energy Blast customization required."><![CDATA[#hasability[rcPUaEneBl] <> 0]]></exprreq>
     <exprreq message="Ranged Attack customization required."><![CDATA[#hasability[rcPUaRngAt] <> 0]]></exprreq>
     <prereq message="Aegis level 4+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 4)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 4)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEneBl" name="Energy Blast" description="The ranged attack gained from the ranged attack customization becomes imbued with psionic energy. The attack is now treated as a ranged touch attack and instead deals 1d6 points of damage of your active energy type, but requires a standard action to use and cannot be used as part of a full attack. This effect can be turned on or off as a move action. The aegis must be at least 4th level and have the ranged attack customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12295,7 +12658,13 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <prereq message="Aegis level 4+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 4)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 4)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIRngA" name="Improved Ranged Attack" description="The damage of the aegis&apos;s ranged attack ability increases by an additional 1d8 points of piercing damage for every five class levels the aegis has. If the aegis is using the energy blast customization, the additional damage is instead 1d6 points of damage of your active energy type for every five class levels. The aegis must be at least 5th level and have the ranged attack customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12305,7 +12674,13 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Ranged Attack custoization required."><![CDATA[#hasability[rcPUaRngAt] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIEnBl" name="Improved Energy Blast" description="When using the energy blast customization, the attack can target up to three creatures, no two of which can be more than fifteen feet apart. Each creature may only be the target of one such attack each round. Each attack is rolled separately. The aegis must be at least 12th level and have the energy blast and ranged attack customizations before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12316,7 +12691,13 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
     <exprreq message="Energy Blast customization required."><![CDATA[#hasability[rcPUaEneBl] <> 0]]></exprreq>
     <exprreq message="Ranged Attack customization required."><![CDATA[#hasability[rcPUaRngAt] <> 0]]></exprreq>
     <prereq message="Aegis level 12+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 12)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 12)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="cPUPsCShot" name="Psicrystal Shot" description="At 7th level, when the aegis&apos;s psicrystal is consumed by the astral suit, the psicrystal can use its own actions to aid the aegis in combat. The psicrystal can use the attack options from the ranged attack customization, including any customizations that improve the ranged attack, such as energy blast. Use the crystal warrior&apos;s base attack bonus, as calculated from all his classes, and the psicrystal&apos;s Dexterity modifier to calculate the psicrystal&apos;s attack bonus. Treat its Dexterity as if it was under the self-propulsion effect. This ability replaces the daily use of reconfigure normally gained at 7th level." compset="ClSpecial">
@@ -12588,7 +12969,13 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
     <tag group="Helper" tag="Secondary"/>
     <exprreq message="Trailblazer Archetype required."><![CDATA[#hasarchetype[arPUTrailb] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFSpd" name="Flight Speed (+20&apos;)" description="The aegis&apos;s fly speed provided by the Flight customization can be increased by spending additional customization points, gaining a 20-foot increase to fly speed for each additional point spent. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom">
@@ -12597,15 +12984,23 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
     <tag group="CustomCost" tag="1"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="Final" priority="14100"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="Final" priority="14100"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.child[xFly].field[abValue].value += 20 
+      #value[xFly] += 20 
 
-hero.child[xFly].field[abValue].value = maximum(hero.child[xFly].field[abValue].value, hero.child[Speed].field[tSpeed].value)]]></eval>
+      #applybonus[abValue,hero.child[xFly],hero.child[Speed].field[tSpeed].value]
+      ]]></eval>
     <exprreq message="Flight customization required."><![CDATA[#hasability[rcPUaFligh] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFSpd2" name="Flight Speed (+20&apos;)" description="The aegis&apos;s fly speed provided by the Flight customization can be increased by spending additional customization points, gaining a 20-foot increase to fly speed for each additional point spent. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom">
@@ -12613,15 +13008,23 @@ hero.child[xFly].field[abValue].value = maximum(hero.child[xFly].field[abValue].
     <tag group="CustomCost" tag="1"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="Final" priority="14100"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="Final" priority="14100"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-hero.child[xFly].field[abValue].value += 20 
+      #value[xFly] += 20 
 
-hero.child[xFly].field[abValue].value = maximum(hero.child[xFly].field[abValue].value, hero.child[Speed].field[tSpeed].value)]]></eval>
+      #applybonus[abValue,hero.child[xFly],hero.child[Speed].field[tSpeed].value]
+      ]]></eval>
     <exprreq message="Flight customization required."><![CDATA[#hasability[rcPUaFlig2] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFMan" name="Flight Maneuverability (Perfect)" description="The aegis&apos;s fly maneuverability provided by the Flight customization can be increased to Perfect for 2 additional customization points. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12630,13 +13033,20 @@ hero.child[xFly].field[abValue].value = maximum(hero.child[xFly].field[abValue].
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="Final" priority="14100"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="Final" priority="14100"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-perform hero.child[xFly].assign[Maneuver.Perfect]]]></eval>
+      perform hero.child[xFly].assign[Maneuver.Perfect]]]></eval>
     <exprreq message="Flight customization required."><![CDATA[#hasability[rcPUaFligh] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFMan2" name="Flight Maneuverability (Perfect)" description="The aegis&apos;s fly maneuverability provided by the Flight customization can be increased to Perfect for 2 additional customization points. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12644,13 +13054,20 @@ perform hero.child[xFly].assign[Maneuver.Perfect]]]></eval>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="Final" priority="14100"><![CDATA[~ If we're not wearling the Astral Suit, get out now
-doneif (hero.tagcount[Custom.WearAstS] = 0)
+    <eval phase="Final" priority="14100"><![CDATA[
+      ~ If we're not wearling the Astral Suit, get out now
+      doneif (hero.tagcount[Custom.WearAstS] = 0)
 
-perform hero.child[xFly].assign[Maneuver.Perfect]]]></eval>
+      perform hero.child[xFly].assign[Maneuver.Perfect]]]></eval>
     <exprreq message="Flight customization required."><![CDATA[#hasability[rcPUaFlig2] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
-      <validate><![CDATA[validif (#levelcount[Aegis] >= 5)]]></validate>
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)
+        ]]></validate>
       </prereq>
     </thing>
   <thing id="arPUBruDis" name="Brutal Disruptor" description="Brutal disruptors do not simply see patterns, they focus their skills on destroying them. These cryptics tend to be imposing in demeanor and understand the patterns of their opponents to strike fear into their foes.\n\n{b}Skills:{/b} The brutal disruptor adds Intimidate (Cha) as a class skill and loses Disable Device." compset="ClassVary" uniqueness="unique">
@@ -15011,4 +15428,171 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Super"/>
     </thing>
+
+  <thing id="cHelpPUMfg" name="Metaforge" compset="Class" uniqueness="unique">
+    <fieldval field="cAbbr" value="Mfg"/>
+    <fieldval field="cSkills" value="4"/>
+    <fieldval field="cHDSides" value="10"/>
+    <fieldval field="shortname" value="Metaforge"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ClassSkill" tag="skFly"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="ClassSkill" tag="skPUKnwPsi"/>
+    <tag group="cRef" tag="Poor"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="ClassSkill" tag="skClimb"/>
+    <tag group="Classes" tag="PUMetafrg" name="Metaforge" abbrev="Metaforge"/>
+    <tag group="cFort" tag="Poor"/>
+    <tag group="cAttack" tag="Good"/>
+    <tag group="ClassSkill" tag="skPUAhypno"/>
+    <tag group="FtCountAs" tag="PUSoulArc"/>
+    <tag group="FtCountAs" tag="Soulknife"/>
+    <tag group="FtCountAs" tag="Aegis"/>
+    <tag group="ClsCountAs" tag="cHelpPU0"/>
+    <tag group="Custom" tag="AegisLvls"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cPUMfgASE">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUMfgMBE">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUMCrsMB">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUMXfrEn">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPUMDualS">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPUMXfrEn">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cPUMCrsMB">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUMXfrEn">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPUMXfrEn">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cPUMCrsMB">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cPUMSwXfr">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cPUMXfrEn">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    </thing>
+  <thing id="cPUMetafrg" name="Metaforge" description="Forming and creating items from thin air is a skill honed by many who practice the psionic arts. Some, like the soulknife, form a weapon out of psionic energy.  Others, like the aegis, form armor out of ectoplasm. A rare breed of psionic individual is capable of combining the abilities of the two, using the different techniques in a complementary fashion, where the whole is greater than the sum of its parts.\n\n{b}Role:{/b} Combining the abilities of two frontline combatants, a metaforge is most at home in the thick of battle, using his astral suit to ward off attacks, while he decimates enemies with his mind blade.\n\n{b}Alignment:{/b} Any." compset="ClassLevel" maxlimit="10">
+    <usesource source="pPsiUn"/>
+    <tag group="ClassType" tag="Prestige" name="Metaforge"/>
+    <tag group="Custom" tag="AegisLvls"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cHelpPUMfg"></bootstrap>
+    <link linkage="helper" thing="cHelpPUMfg"/>
+    <exprreq message="Enhanced Mind Blade class feature required."><![CDATA[#hasability[cSknEnhMB] <> 0]]></exprreq>
+    <exprreq message="Invigorating Suit class feature required."><![CDATA[#hasability[cPUInvigSu] <> 0]]></exprreq>
+    <prereq message="Craft (any) 3 ranks required.">
+      <validate><![CDATA[
+        ~ Valid if any craft skill is 3+ ranks
+        foreach pick in hero from BaseSkill where "Helper.SkCatCraft"
+            validif (eachpick.field[skRanks].value >= 3)
+        nexteach]]></validate>
+      </prereq>
+    </thing>
+  <thing id="cPUMfgASE" name="Astral Suit Enhancement" description="At each level, treat the metaforge as if he had gained a level of aegis for the purposes of damage reduction and customization points.  The metaforge does not gain any other benefits from an increased level (power points, bonus customizations, daily uses of reconfigure, etc.).  This does, however, allow the metaforge to qualify for customizations dependant on his aegis level, such as the Reach customization." compset="ClSpecial" summary="Increase aegis suit for DR &amp; CP purposes.">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Hide" tag="Statblock"/>
+    <eval phase="PostLevel" priority="610" name="Increase Astral Suit CP"><![CDATA[
+      ~ Need to run after Post-levels 600, as Aegis hard-codes CPs then.
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] = 0)
+
+      var V_CurrLvl as number
+      var V_NewLvl as number
+
+      V_CurrLvl = #levelcount[Aegis]
+      V_NewLvl  = #levelcount[PUMetafrg] + #levelcount[Aegis]
+
+      ~ Set Aegis Customization Points
+      Call PUSetAegCP
+      ]]></eval>
+    <eval phase="PreLevel" priority="10000" index="2" name="Handle Aegis Suit DR increase"><![CDATA[
+      ~ At each level, treat the metaforge as if he had gained a level of
+      ~ Aegis for the purposes of damage reduction.
+      ~ We're earlier than the normal test for whether we've reached the correct level, so we'll recreate that test here
+      doneif (root.field[cTotalLev].value + field[xExtraLev].value + field[xEffectLev].value < tagvalue[ClSpecWhen.?])
+
+      ~ Add our PrC levels to the Aegis DR extra levels
+      hero.childfound[cPUAegDR].field[xExtraLev].value += root.field[cTotalLev].value]]></eval>
+    </thing>
+  <thing id="cPUMfgMBE" name="Mind Blade Enhancement" description="At each level, treat the metaforge as if he had gained a level of soulknife for the purposes of Enhanced Mind Blade. The metaforge does not gain any other benefits from an increased level (blade skills, etc.)." compset="ClSpecial" summary="Increase Enhanced Mind Blade class ability">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Hide" tag="Statblock"/>
+    <eval phase="PreLevel" priority="9000"><![CDATA[
+      ~ At each level, treat the metaforge as if he had gained a level of
+      ~ Soulknife for the purposes of Enhanced Mind Blade.
+
+      ~ We're earlier than the normal test for whether we've reached the correct level, so we'll recreate that test here
+      doneif (root.field[cTotalLev].value + field[xExtraLev].value + field[xEffectLev].value < tagvalue[ClSpecWhen.?])
+
+      ~ Add our PrC levels to the Soulknife Ehanced Mind Blade extra levels
+      hero.childfound[cSknEnhMB].field[xExtraLev].value += root.field[cTotalLev].value]]>
+      <before name="Fighters Blade"/>
+      </eval>
+    </thing>
+  <thing id="cPUMCrsMB" name="Crystallized Mind Blade" description="A metaforge is able to combine the ectoplasm he uses to form his astral suit and the psionic energy he uses to shape his mind blade into a crystallized form of his mind blade.  Creating a crystallized mind blade works the same as forming a mind blade, and the weapon functions in all ways mechanically as the metaforge’s mind blade, except as  follows.  The weapon’s hardness and  hit points are increased by 1 for each level the metaforge has.  In addition,the weapon can be charged with 1 power point, increasing its enhancement bonus by 1.\n\nAt 5th level, the weapon can instead be charged with 2 power points, increasing its enhancement bonus by 2.\n\nAt 9th level, the weapon can instead be charged with 3 power points, increasing its enhancement bonus by 3.\n\n{b}Note:{/b} Hero Lab does not currently maintain Hardness or Hit Points for weapons." compset="ClSpecial" summary="Create crystallized mind blade from ectoplasm/psionic energy.">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " " & field[xIndex].value
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)]]></eval>
+    </thing>
+  <thing id="cPUMXfrEn" name="Transfer Enhancement" description="Starting at 2nd level, a metaforge can spend one minute in concentration to \nreduce his mind blade’s enhancement bonus or weapon special abilities by 1 (or a +1 equivalent ability) and gain an armor special ability of equal value added to the astral suit.  This transfer lasts until the metaforge spends another minute to either revert his mind blade to its full power or to alter the armor special ability granted to his astral suit.\n\nA metaforge may only have one such transfer in effect at any given time and may not reduce his mind blade to a +0 enhancement bonus.  Every two levels thereafter, the enhancement bonus that the metaforge can transfer is increased by 1, to a maximum of +5 at 10th level." compset="ClSpecial" summary="Transfer mind blade enhancement to astral suit.">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <eval phase="Final" priority="10000" name="Display Transfer Enhancement"><![CDATA[
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " " & signed(field[xIndex].value)
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+
+      ~ The following should only happen once on the first copy
+      doneif (tagis[Helper.FirstCopy] = 0)]]></eval>
+    </thing>
+  <thing id="cPUMDualS" name="Dual Summon" description="Upon achieving 3rd level, the metaforge has learned to bring about his weapon and armor at the same time.  While maintaining his psionic focus, the metaforge can form both mind blade and astral suit at the same time. The action needed to do this is whichever action takes the longer between the two abilities.  \n\nFor example, take a soulknife with the Quick Draw feat and using Astral Juggernaut form. Using this ability in that case requires a full-round action, as that is how long it takes to form an astral suit in Astral Juggernaut form.  If using Astral Skin form, the example would instead take a swift action.\n\nThe metaforge may alternatively expend his psionic focus to summon both his mind blade and his astral suit.  The action needed to do this is whichever action takes the shorter between the two abilities." compset="ClSpecial" summary="Can form mind blade and astral suit at the same time.">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUMSwXfr" name="Swift Transfer" description="At 10th level the metaforge can use his transfer enhancement ability as a standard action, rather than requiring one minute in concentration." compset="ClSpecial" summary="Can use transfer enhancement ability as a standard action">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    </thing>
+
+
   </document>

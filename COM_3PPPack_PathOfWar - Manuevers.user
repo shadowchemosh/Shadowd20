@@ -5769,6 +5769,18 @@ hero.child[ArmorClass].field[tACShield].value += field[abValue].value]]></eval>
     <tag group="mTarget" tag="You"/>
     <tag group="AbilType" tag="Extra"/>
     </thing>
-  <hidden id="manPWBwTw5"/>
+  <thing id="manPWLpDr1" name="Leaping Dragon" description="As a dragon takes wing, his powerful legs thrust him skyward as his wings spread out to clutch the air. The disciple of the Thrashing Dragon uses this technique to suddenly launch himself into the air as if he were attempting flight. The initiator may make an Acrobatics check to jump as a swift action, and he gains a +10 competence bonus to his Acrobatics check and is treated as if he had a running start." compset="PWManuever" summary="Make an Acrobatics check to jump as a swift action with a +10 bonus." uniqueness="useronce">
+    <usesource source="srcPathOfW"/>
+    <tag group="Discipline" tag="ThrashDrag"/>
+    <tag group="mType" tag="Boost"/>
+    <tag group="mLevel" tag="1"/>
+    <tag group="mInitAct" tag="Swift1"/>
+    <tag group="mRange" tag="Personal"/>
+    <tag group="mTarget" tag="You"/>
+    <tag group="mDuration" tag="Instant"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="PathOfWar" tag="Manuever"/>
+    </thing>
   <hidden id="manPWTaWi1"/>
+  <hidden id="manPWBwTw5"/>
   </document>
