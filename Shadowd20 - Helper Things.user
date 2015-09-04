@@ -324,6 +324,7 @@ version 1.40 - Released May 12, 2013
     <bootstrap thing="s20CastTim"></bootstrap> <!-- 1 round spells are Full-Round spells -->
     <bootstrap thing="s20SpelDmg"></bootstrap> <!-- Give Spells bonus damage --> 
     <bootstrap thing="s20DblSpls"></bootstrap> <!-- Double 9 level arcane spells per day --> 
+    <bootstrap thing="s20DblSFDC"></bootstrap> <!-- Double DC bonus for Spell Focus and Greater Spell Focus --> 
 
     <!-- Rogue Class Changes -->
     <bootstrap thing="s20Rogue"></bootstrap>   <!-- Rogue class gets Skill Tricks. Unchained does NOT. -->
@@ -332,7 +333,7 @@ version 1.40 - Released May 12, 2013
     <!-- This gives an option where XP is not needed -->
     <bootstrap thing="s20NoXP"></bootstrap>
 
-    <!-- Archetype Class Changes -->
+    <!-- Archetype Class Changes for the Unchained Rogue -->
     <bootstrap thing="s20RogueUn"></bootstrap>
    
     <eval phase="First" priority="10000">~ If not human get out now
@@ -342,6 +343,7 @@ version 1.40 - Released May 12, 2013
       Call GiveEthnic</eval>
     </thing>
 
+  <!-- 22 Point Buy Option -->
   <thing id="creaMedium" name="Medium Fantasy" compset="Creation">
     <fieldval field="creaName" value="Point Buy: Shadow d20, 22"/>
     <fieldval field="creaAttPts" value="22"/>
@@ -349,14 +351,27 @@ version 1.40 - Released May 12, 2013
     <tag group="explicit" tag="70" name="70" abbrev="70"/>
     </thing>
 
-  <thing id="s20Potions" name="Shadow d20 Potions, Scrolls, and Wands" description="Change all potions, scrolls, and Wand on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
+  <!-- ======================================================================================= -->
+  <!-- Let players type in Unique ID's for items.                                              -->
+  <!-- ======================================================================================= -->
+  <thing id="s20Potions" name="Shadow d20 Potions, Scrolls, and Wands" 
+    description="Change all potions, scrolls, and Wand on a character to have to have a Custom Text entry." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="srcPotID"/>
     <eval phase="First"><![CDATA[
+      ~ If we are a NPC then don't require ID for magic items
+      doneif (hero.tagis[CharType.typNPC] = 1) 
+
       foreach pick in hero from MyGear where "gType.OilPotion|gType.Scroll|gType.Wand"
          perform eachpick.assign[User.NeedDomain]
       nexteach]]></eval>
     </thing>
-  <thing id="s20Wondrou" name="Shadow d20 Wondrous Items" description="Change all wondrous items on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
+
+  <thing id="s20Wondrou" name="Shadow d20 Wondrous Items" 
+    description="Change all wondrous items on a character to have to have a Custom Text entry." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="Final"><![CDATA[
       ~ If we are a NPC then don't require ID for magic items
@@ -367,9 +382,16 @@ version 1.40 - Released May 12, 2013
          perform eachpick.assign[User.NeedDomain]
       nexteach]]></eval>
     </thing>
-  <thing id="s20Rods" name="Shadow d20 Rods" description="Change all rod items on a character to have to have a Custom Text entry." compset="Simple" uniqueness="useronce">
+
+  <thing id="s20Rods" name="Shadow d20 Rods" 
+    description="Change all rod items on a character to have to have a Custom Text entry." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="First"><![CDATA[
+      ~ If we are a NPC then don't require ID for magic items
+      doneif (hero.tagis[CharType.typNPC] = 1) 
+
       ~ All Rods
       foreach pick in hero from MyGear where "gType.Rod"
          perform eachpick.assign[User.NeedDomain]
@@ -378,7 +400,9 @@ version 1.40 - Released May 12, 2013
 
 
 
-
+  <!-- ======================================================================================= -->
+  <!-- Rogue Class Fixes                                                                       -->
+  <!-- ======================================================================================= -->
   <thing id="s20Rogue" name="Shadow d20 Rogue Skill Tricks" description="Give rogue Skill Tricks starting at level 1. Also change any rogue talents from 1/day to 1/encounter" compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
@@ -420,6 +444,26 @@ version 1.40 - Released May 12, 2013
       nexteach]]></eval>
     </thing>
 
+
+  <!-- ======================================================================================= -->
+  <!-- Some classes need more skill points                                                     -->
+  <!-- ======================================================================================= -->
+  <thing id="s20SkillPo" name="Shadow d20 Increase Class Skill Points" 
+    description="Give an increase to some class skill points.\n\n-Clerics increased by 2 per level." 
+    compset="Simple">
+    <usesource source="pShadowd20"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ Check to see if we have the cleric class
+      If (hero.childlives[cHelpClr] <> 0) Then
+         ~ Clerics skill points increased by 2 per level
+         hero.child[cHelpClr].field[cSkills].value += 2
+      Endif]]></eval>
+    </thing>
+
+
+  <!-- ======================================================================================= -->
+  <!-- Fixes for teamwork feats                                                                -->
+  <!-- ======================================================================================= -->
   <thing id="S20Teamwor" name="Shadow d20 Teamwork Feats" description="Add extra house rules text to all teamwork feats.  Most of the teamwork feats we are allowing them to be used within 30ft of each other." compset="Simple" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="Render" priority="200"><![CDATA[
@@ -508,8 +552,13 @@ version 1.40 - Released May 12, 2013
       ]]></eval>
     </thing>
 
-
-  <thing id="s20ActPoin" name="Shadow d20 Action Points" description="This sets the action points for NPCs to be zero." compset="Simple" uniqueness="useronce">
+  <!-- ======================================================================================= -->
+  <!-- Action Points                                                                           -->
+  <!-- ======================================================================================= -->
+  <thing id="s20ActPoin" name="Shadow d20 Action Points" 
+    description="This sets the action points for NPCs to be zero." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="PostLevel" priority="10010"><![CDATA[
       ~ If we are not a NPC then get out now
@@ -525,7 +574,10 @@ version 1.40 - Released May 12, 2013
     </thing>
 
 
-  <thing id="s20SpellCo" name="Shadow d20 Magus Spell-Combat" description="Correctly has HL calculate the TWF values of a Magus with a weapon and &quot;Touch Attack&quot;." compset="Simple" uniqueness="useronce">
+  <thing id="s20SpellCo" name="Shadow d20 Magus Spell-Combat" 
+    description="Correctly has HL calculate the TWF values of a Magus with a weapon and &quot;Touch Attack&quot;." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       ~ If Magus Spell-Combat not live
@@ -562,7 +614,9 @@ version 1.40 - Released May 12, 2013
     </thing>
 
 
-  <thing id="s20TWF" name="Shadow d20 Two-Weapon Fighting" compset="Simple" uniqueness="useronce">
+  <thing id="s20TWF" name="Shadow d20 Two-Weapon Fighting" 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="srcTWF"/>
     <eval phase="PreLevel" priority="11000"><![CDATA[
       ~ If we don't have Shadow d20 Two-Weapon Fighting get out now
@@ -616,8 +670,13 @@ version 1.40 - Released May 12, 2013
       perform hero.assign[Shadowd20.TwoWep]]]></eval>
     </thing>
 
-
-  <thing id="s20CastTim" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters." compset="Simple" uniqueness="useronce">
+  <!-- ======================================================================================= -->
+  <!-- SPELL CHANGES                                                                           -->
+  <!-- ======================================================================================= -->
+  <thing id="s20CastTim" name="Shadow d20 Cast Time" 
+    description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="srcNo1Rnd"/>
     <bootstrap thing="s2Info1Rou"></bootstrap>
     <eval phase="First" priority="1000"><![CDATA[
@@ -628,7 +687,10 @@ version 1.40 - Released May 12, 2013
     </thing>
 
 
-  <thing id="s20SpelDmg" name="Shadow d20 Spell Damage" description="Just show info about spell damage bonus if your arcane or divine caster." compset="Simple" uniqueness="useronce">
+  <thing id="s20SpelDmg" name="Shadow d20 Spell Damage" 
+    description="Just show info about spell damage bonus if your arcane or divine caster." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="srcSpelDmg"/>
     <bootstrap thing="s2InfoSpDm"></bootstrap>
     <eval phase="PostLevel" priority="15000"><![CDATA[
@@ -681,17 +743,6 @@ version 1.40 - Released May 12, 2013
       nexteach]]></eval>
     </thing>
 
-
-  <thing id="s20SkillPo" name="Shadow d20 Increase Class Skill Points" description="Give an increase to some class skill points.\n\n-Clerics increased by 2 per level." compset="Simple">
-    <usesource source="pShadowd20"/>
-    <eval phase="First" priority="1000"><![CDATA[
-      ~ Check to see if we have the cleric class
-      If (hero.childlives[cHelpClr] <> 0) Then
-         ~ Clerics skill points increased by 2 per level
-         hero.child[cHelpClr].field[cSkills].value += 2
-      Endif]]></eval>
-    </thing>
-
   <!-- ==================================================================================== -->
   <!-- Double All 9 level arcane casters spells                                             -->
   <!-- ==================================================================================== -->
@@ -742,8 +793,36 @@ version 1.40 - Released May 12, 2013
       ]]></eval>
     </thing>
 
+  <!-- ==================================================================================== -->
+  <!-- Double Spell Focus and Greater Spell Focus DC Bonus                                  -->
+  <!-- ==================================================================================== -->
+  <thing id="s20DblSFDC" name="Shadow d20 Spell Focus" 
+    description="Double the DC bonus for Spell Focus and Greater Spell Focus" 
+    compset="Simple" 
+    uniqueness="useronce">
+    <usesource source="srcSpelDmg"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If no spell focus/greater spell focus just get out now!
+      doneif (hero.tagis[Hero.SpellFocus] = 0)
 
-  <thing id="s20MiscTxt" name="Shadow d20 Misc Text Changes" description="This Thing sets the text desc on Things with house rules text." compset="Simple">
+      ~ Loop through spell schools with Spell Focus
+      foreach pick in hero from SplSchool where "Broadcast.SpellFocus"
+        ~ Add 1 to the DC field on school helper
+        eachpick.field[schDC].value += 1
+
+        ~ If we have Greater Spell Focus then give an addtional one
+        if (eachpick.tagis[Broadcast.SpellGrFoc] = 1) then
+          eachpick.field[schDC].value += 1
+        endif          
+      nexteach
+      ]]></eval>
+    </thing>
+
+
+
+  <thing id="s20MiscTxt" name="Shadow d20 Misc Text Changes" 
+    description="This Thing sets the text desc on Things with house rules text." 
+    compset="Simple">
     <usesource source="s20PFCamp"/>
     <eval phase="Render" priority="200"><![CDATA[
       ~ This has to be added this way as they are doing strange things
