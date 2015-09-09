@@ -333,10 +333,10 @@ January 26th 2012</comment>
     </thing>
   <thing id="xxDRGooCha" name="Damage Reduction, Good or Chaotic" description="You have Damage Reduction against all except Good or Chaotic attacks." compset="Ability" uniqueness="unique">
     <fieldval field="shortname" value="good or chaotic"/>
-    <tag group="SpecType" tag="DR" name="Damage Reduction" abbrev="Damage Reduction"/>
-    <tag group="Universal" tag="Universal" name="Universal Monster Ability or Core Rulebook ability" abbrev="Universal Monster Ability or Core Rulebook ability"/>
-    <tag group="Helper" tag="BaseAbil" name="Base Ability" abbrev="Base Ability"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="SpecType" tag="DR"/>
+    <tag group="Universal" tag="Universal"/>
+    <tag group="Helper" tag="BaseAbil"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="10000"><![CDATA[
       call CalcValue
@@ -344,6 +344,76 @@ January 26th 2012</comment>
       ~ Use our value field as the amount of damage we can resist
       field[livename].text = "Damage Reduction (" & field[abValue].value & "/good or chaotic)"
       field[shortname].text = field[abValue].value & "/good or chaotic"]]></eval>
+    </thing>
+
+  <thing id="xxDRGold" name="Damage Reduction, Gold" description="You have Damage Reduction against all except weapons made from gold." compset="Ability" uniqueness="unique">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="DR"/>
+    <tag group="Universal" tag="Universal"/>
+    <tag group="Helper" tag="BaseAbil"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      call CalcValue
+
+      ~ Use our value field as the amount of damage we can resist
+      field[livename].text = "Damage Reduction (" & field[abValue].value & "/gold)"
+      field[shortname].text = field[abValue].value & "/gold"]]></eval>
+    </thing>
+  <thing id="xxImmNecro" name="Immune to Necromancy" description="Creature is immune to all spells of the Necromancy school." compset="Ability">
+    <fieldval field="shortname" value="necromancy"/>
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xxImmuTime" name="Immune to Temporal Effects" description="Creature is immune to all time-related spells and effects (including time stop, temporal stasis, and the like)." compset="Ability">
+    <fieldval field="shortname" value="temporal effects"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xuVulnWate" name="Vulnerability to Water" description="Unless otherwise noted in the creature&apos;s description, a water-based effect or spell deals 1d4 points of damage per spell level to a creature with this subtype. The creature usually receives a save (Fortitude or Reflex) for half damage." compset="Ability">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xuImmSlow" name="Immune to Slow" description="You are immune to slow effects." compset="Ability" uniqueness="unique">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xuImmHaste" name="Immune to Haste" description="You are immune to haste effects." compset="Ability" uniqueness="unique">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xImmuRust" name="Immune to Rust" description="Immune to rusting effects." compset="Ability" uniqueness="unique">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xImmElemT" name="Immune to Elemental Traits" description="Immune to elemental traits and effects." compset="Ability" uniqueness="unique">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xImmChaoti" name="Immune to Chaotic Effects" description="Immune to spells and effects with chaotic descriptor." compset="Ability" uniqueness="unique">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xImmChnEng" name="Immune to Channel Energy" description="Creature takes no damage from the channel energy ability, and is not affected by effects that mimic channel energy or are based on the channel energy ability (such as turn undead and command undead)." compset="Ability" summary="You are immune to channel energy effects.">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xImmHold" name="Immune to Holds" description="Immune to hold effects." compset="Ability">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="xuImmEnchm" name="Immune to Enchantment" description="Immune to enchantment spells and effects." compset="Ability">
+    <tag group="SpecType" tag="Immune"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
 
 

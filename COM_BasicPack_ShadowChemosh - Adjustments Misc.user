@@ -1136,65 +1136,66 @@ hero.child[raLayHnd].field[abValue3].value = herofield[tCompLevel].value]]></eva
     <tag group="Adjustment" tag="YourWep"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="FeatTrait"/>
-    <eval phase="Render" priority="99999999"><![CDATA[~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
-~ If nothing's been chosen, get out now
-doneif (field[pChosen].ischosen <> 1)
-~ If no power attack get out now
-doneif (hero.childlives[fPowerAtt] <> 1)
+    <eval phase="Render" priority="99999999"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+      ~ If no power attack get out now
+      doneif (hero.childlives[fPowerAtt] <> 1)
 
-var sText as string
-var sDmg as string
-var nHit as number
-var nDmg as number
-var iX as number
-var nTotal as number
+      var sText as string
+      var sDmg as string
+      var nHit as number
+      var nDmg as number
+      var iX as number
+      var nTotal as number
 
-~ Calc to hit
-nHit = field[pChosen].chosen.field[wAttack].value - #value[fPowerAtt]
-nTotal = field[pChosen].chosen.field[wNumAttTbl].arrayvalue[0]
-~ If more than one attack from BAB then build itertive attacks
-If (nTotal > 1) Then
-   sText = " [PA "
-   while (iX < nTotal)
-     ~ For each loop past 1st add / and subtract 5
-     If (iX > 0) Then
-        sText &= "/"
-        nHit += -5
-     Endif
-     iX += 1
-     sText &= signed(nHit)
-   loop
-   ~ Add Hit letter
-   sText &= "H "
-~..only one attack so just add it in
-Else
-  sText = " [PA " & signed(nHit) & "H "
-Endif
+      ~ Calc to hit
+      nHit = field[pChosen].chosen.field[wAttack].value - #value[fPowerAtt]
+      nTotal = field[pChosen].chosen.field[wNumAttTbl].arrayvalue[0]
+      ~ If more than one attack from BAB then build itertive attacks
+      If (nTotal > 1) Then
+         sText = " [PA "
+         while (iX < nTotal)
+           ~ For each loop past 1st add / and subtract 5
+           If (iX > 0) Then
+              sText &= "/"
+              nHit += -5
+           Endif
+           iX += 1
+           sText &= signed(nHit)
+         loop
+         ~ Add Hit letter
+         sText &= "H "
+      ~..only one attack so just add it in
+      Else
+        sText = " [PA " & signed(nHit) & "H "
+      Endif
 
-~ Calc damage
-nDmg = #value2[fPowerAtt]
-~ Figure out which hand or hands we are using the weapon and grab the correct array value
-If (field[pChosen].chosen.tagis[wClass.TwoHanded] <> 0) Then
-   sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[1]
-   nDmg = round(nDmg*1.5,0,-1)
-ElseIf (field[pChosen].chosen.field[gIsEquip].value + field[pChosen].chosen.field[wIs2nd].value >= 2) Then
-   sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[1]
-   nDmg = round(nDmg*1.5,0,-1)
-ElseIf (field[pChosen].chosen.field[wIs2nd].value <> 0) Then
-   sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[4]
-Else
-   sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[0]
-Endif
-~ Substring out the weapon damage bonus only
-sDmg = mid(sDmg,4,2)
-~ Convert string to number
-nDmg += sDmg
-~ add to text string but add a + or - sign in front
-sText &= signed(nDmg) & "D]"
-debug sText
-~ Set the live name of the weapon to include this text
-field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & sText]]></eval>
+      ~ Calc damage
+      nDmg = #value2[fPowerAtt]
+      ~ Figure out which hand or hands we are using the weapon and grab the correct array value
+      If (field[pChosen].chosen.tagis[wClass.TwoHanded] <> 0) Then
+         sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[1]
+         nDmg = round(nDmg*1.5,0,-1)
+      ElseIf (field[pChosen].chosen.field[gIsEquip].value + field[pChosen].chosen.field[wIs2nd].value >= 2) Then
+         sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[1]
+         nDmg = round(nDmg*1.5,0,-1)
+      ElseIf (field[pChosen].chosen.field[wIs2nd].value <> 0) Then
+         sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[4]
+      Else
+         sDmg = field[pChosen].chosen.field[wDamageTbl].arraytext[0]
+      Endif
+      ~ Substring out the weapon damage bonus only
+      sDmg = mid(sDmg,4,2)
+      ~ Convert string to number
+      nDmg += sDmg
+      ~ add to text string but add a + or - sign in front
+      sText &= signed(nDmg) & "D]"
+      debug sText
+      ~ Set the live name of the weapon to include this text
+      field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & sText]]></eval>
     </thing>
   <thing id="pS2wFoBRan" name="Weapon Flurry: Ranged Attack Bonus" description="Select this adjustment to change the flurry ranged attack bonus of the selected weapon." compset="InPlay">
     <usesource source="srcS2Adjus"/>
@@ -1326,30 +1327,34 @@ doneif (field[pChosen].ischosen = 0)
 #extradamage[field[pChosen].chosen,field[pDuration].text,field[name].text]]]></eval>
     </thing>
   <thing id="pS2SaveSit" name="Saving Throw, Situational" description="Select this adjustment to give your character a situation modifier that you can customize the text for.\n\n1st - Select the saving throw this modifier is meant for.\n2nd - In the {b}(Source){/b} field is where you type in what is giving you this modifier. In example for Fighter&apos;s Bravery class ability type in &quot;Bravery&quot;.\n3rd - In the {B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Fear&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Saving Throw"/>
+    <fieldval field="pDuration" value="Situational Text"/>  
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
-    <tag group="Adjustment" tag="Save" name="Saving Throws" abbrev="Saving Throws"/>
+    <tag group="Adjustment" tag="Save"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Saves"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-~ Set text onto the chosen saving throw
-#situational[field[pChosen].chosen,field[pDuration].text,field[pSource].text]]]></eval>
+      ~ Set text onto the chosen saving throw
+      #situational[field[pChosen].chosen,field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2SkilSit" name="Skill Bonus, Situational" description="Select this adjustment to add a situational bonus to one of your skill totals. Use source for the name and duration for the situational bonus text.\n\n1st - Select the skill this modifier is meant for.\n2nd - In the {b}(Source){/b} field is where you type in what is giving you this modifier. In example for Fighter&apos;s Bravery class ability type in &quot;Bravery&quot;.\n3rd - In the {B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Fear&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Skill Bonus"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Skill" name="Skills" abbrev="Skills"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="SkillProf"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-~ Assign the situational note to the skill chosen
-#situational[field[pChosen].chosen,field[pDuration].text,field[pSource].text]]]></eval>
+      ~ Assign the situational note to the skill chosen
+      #situational[field[pChosen].chosen,field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2wUAS" name="Weapon Unarmed Strike" description="This adjustment will add a 2nd unarmed strike to your character.  This is helpful if you want to setup two-weapon fighting with unarmed strikes." compset="InPlay">
     <usesource source="srcS2Adjus"/>
@@ -2140,28 +2145,32 @@ field[pUsePicks].value = 1
 field[pCandExpr].text = "component.BaseSpell & !portal.ClsBook & CasterType.?"]]></eval>
     </thing>
   <thing id="pS2AttaSit" name="Attack Bonus, Situational" description="Select this adjustment to add a situational bonus to your attacks.  This is like a Dwarves &quot;Hatred&quot; ability.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example for dwarves it would be &quot;Hatred&quot;.\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Attack Bonus"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="AttDam"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-~ Assign the situational note to the attack pick
-#situational[hero.child[Attack],field[pDuration].text,field[pSource].text]]]></eval>
+      ~ Assign the situational note to the attack pick
+      #situational[hero.child[Attack],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2ACSit" name="Armor Class, Situational" description="Select this adjustment to add a situational bonus to your armor class. This is like a Dwarves &quot;Defensive Training&quot; ability.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example for dwarves it would be &quot;Defensive Training&quot;.\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+1 vs Orcs&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Armor Class"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="AC"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-~ Assign the situational note to the armor class pick
-#situational[hero.child[ArmorClass],field[pDuration].text,field[pSource].text]]]></eval>
+      ~ Assign the situational note to the armor class pick
+      #situational[hero.child[ArmorClass],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2JourSho" name="Journal, Display" description="This adjustments forces the {b}Journal{/b} tab to appear which is useful on NPC&apos;s which has the tab hidden." compset="InPlay">
     <usesource source="srcS2Adjus"/>
@@ -2412,41 +2421,47 @@ doneif (field[pIsOn].value = 0)
     </thing>
   <thing id="pS2CmbSit" name="Combat Maneuver Bonus, Situational" description="{B}As of Pathfinder v7.16 the text does not display yet on the character or print to the sheet. This may change in a future version so I am adding this adjustment now.{/b}\n\nSelect this adjustment to add a situational bonus to your Combat Maneuver Bonus.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example you could type in &quot;Grapple&quot;\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
     <comment>Does not currently display in Pathfinder v7.16.</comment>
+    <fieldval field="pSource" value="CMB Checks"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="CMDCMB"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-~ Assign the situational note
-#situational[hero.child[ManeuvBon],field[pDuration].text,field[pSource].text]]]></eval>
+      ~ Assign the situational note
+      #situational[hero.child[ManeuvBon],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2CmdSit" name="Combat Maneuver Defense, Situational" description="{B}As of Pathfinder v7.16 the text does not display yet on the character or print to the sheet. This may change in a future version so I am adding this adjustment now.{/b}\n\nSelect this adjustment to add a situational bonus to your Combat Maneuver Defense.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example you could type in &quot;Grapple&quot;\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
     <comment>Does not currently display in Pathfinder v7.16.</comment>
+    <fieldval field="pSource" value="CMD"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="CMDCMB"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-~ Assign the situational note
-#situational[hero.child[ManeuvDef],field[pDuration].text,field[pSource].text]]]></eval>
+      ~ Assign the situational note
+      #situational[hero.child[ManeuvDef],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2CmSit" name="Combat Maneuver, Situational" description="Select this adjustment to add a situational bonus to your Combat Maneuver for both Bonus/Defense.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example you could type in &quot;Grapple&quot;\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Combat Maneuver"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="CMDCMB"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we're not enabled, get out now
-doneif (field[pIsOn].value = 0)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
 
-~ Assign the situational note
-#situational[hero.child[Maneuver],field[pDuration].text,field[pSource].text]]]></eval>
+      ~ Assign the situational note
+      #situational[hero.child[Maneuver],field[pDuration].text,field[pSource].text]]]></eval>
     </thing>
   <thing id="pS2SpChang" name="Custom Name: Spell" description="Overwrite the name of your spell using the (Source) or (Duration) field. Use this to force a spell to have a new name or custom name that will display on a printed character sheet or iPad." compset="InPlay">
     <fieldval field="pCandExpr" value="component.BaseSpell"/>
@@ -3438,6 +3453,8 @@ call S2SetName]]></eval>
       field[pChosen].chosen.field[wRangeInc].value += field[pAdjust].value]]></eval>
     </thing>
   <thing id="pS2DmgSitu" name="Damage Bonus, Situational" description="Select this adjustment to add a situational bonus to your attacks.\n\n{b}(Source){/b} field is where you type in what is giving you this modifier. In example for dwarves it would be &quot;Hatred&quot;.\n{B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Goblins&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Damage Bonus"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
@@ -3667,6 +3684,8 @@ call S2SetName]]></eval>
         loop]]></eval>
     </thing>
   <thing id="pS2SkilSiA" name="Skill Bonus, Situational-All Ability Score" description="Select this adjustment to add a situational bonus to all skills of the selected ability score. Use source for the name and duration for the situational bonus text.\n\n1st - Select the skill this modifier is meant for.\n2nd - In the {b}(Source){/b} field is where you type in what is giving you this modifier. In example for Fighter&apos;s Bravery class ability type in &quot;Bravery&quot;.\n3rd - In the {B}(Duration){/b} field is where you type in the modifier.  In example &quot;+2 vs Fear&quot;.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Skill Bonus"/>
+    <fieldval field="pDuration" value="Situational Text"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Adjustment" tag="Attribute"/>
@@ -4377,5 +4396,125 @@ call S2SetName]]></eval>
 
       perform field[pChosen2].chosen.pulltags[fIncTert.?]
       perform field[pChosen].chosen.pushtags[fIncTert.?]]]></eval>
+    </thing>
+  <thing id="pS2fFurFoc" name="Feat: Furious Focus" description="Add this adjustment to allow you to dipsplay the value of your first attack when using Power Attack and Furious Focus feat.\n\n{b}Selection options{/b}\n{b}All{/b} - Display the furious focus value as part of your weapon name, on a printed statblock, and as a situational note on the printed character sheet.\n{b}Statblock{/b} - Display the furious focus value only on a printed statblock.\n{b}Print{/b} - Display the foruious focus value as a situational note on the printed character sheet.\n{b}Weapon{/b} - Display the furious focus value as part of your weapon name which can be useful if using a custom character sheet." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
+    <tag group="OthAdjCat" tag="FeatTrait"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="AdjInfo"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Render" priority="99999999"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      var v_Bracket as string
+      var v_wAttack as number
+      
+      foreach pick in hero from BaseWep where "wCategory.Melee & wClass.TwoHanded|wClass.OneHanded"
+        v_wAttack = eachpick.field[wAttack].value
+        Call S2FurFoc
+        ~ Weapon
+        if (field[pMode].value = 3) Then
+          eachpick.field[livename].text &= v_Bracket
+        endif
+        ~ All
+        if (field[pMode].value = 0) Then
+          eachpick.field[livename].text &= v_Bracket
+        endif
+
+        ~ Statblock
+        if (field[pMode].value = 1) Then
+          eachpick.field[sbName].text &= v_Bracket
+        endif
+        ~ All
+        if (field[pMode].value = 0) Then
+          eachpick.field[sbName].text &= v_Bracket
+        endif
+      nexteach]]></eval>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+      ~ If Statblock or Weapon only get out now!
+      doneif (field[pMode].value = 1)
+      doneif (field[pMode].value = 3)
+
+      var v_Hit as string
+      var v_wAttack as number
+
+      foreach pick in hero from BaseWep where "wCategory.Melee & wClass.TwoHanded|wClass.OneHanded"
+        v_wAttack = eachpick.field[wAttack].value
+        Call S2FurFoc 
+        #situational[eachpick,v_Hit,field[name].text]
+      nexteach]]></eval>
+    <eval phase="Render" priority="6000" index="3"><![CDATA[
+      ~ Set new array of values
+      field[pModeTable].arraytext[0] = "All"
+      field[pModeTable].arraytext[1] = "Statblock"
+      field[pModeTable].arraytext[2] = "Print"
+      field[pModeTable].arraytext[3] = "Weapon"
+
+      ~ Reset the name to remove Mythic stuff
+      field[livename].text = field[thingname].text]]></eval>
+    </thing>
+  <thing id="pS2FtRmvTr" name="Feats, Remove Tracker" description="Select this adjustment to have one of your feats no longer display on the &quot;{b}In-Play{/b}&quot; tab." compset="InPlay">
+    <fieldval field="pUsePicks" value="1"/>
+    <fieldval field="pCandExpr" value="component.BaseFeat &amp; SpecSource.Feat"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="OthAdjCat" tag="FeatTrait"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="200000"><![CDATA[
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Remove Feat Uses tag
+      perform field[pChosen].chosen.delete[Helper.UsesQty]
+      ~ Remove Feat Tracker tag
+      perform field[pChosen].chosen.delete[User.Tracker]]]></eval>
+    </thing>
+  <thing id="pS2AbChkSi" name="Ability Checks, Situational" description="Select this adjustment be able to set a situational note to a specific ability score on your character.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Ability Checks"/>
+    <fieldval field="pDuration" value="Situational Text"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="OthAdjCat" tag="Attributes"/>
+    <tag group="Adjustment" tag="Attribute"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen get out now!
+      doneif (field[pChosen].ischosen = 0)
+
+      #situational[field[pChosen].chosen,field[pDuration].text,field[pSource].text]
+      ]]></eval>
+    </thing>
+  <thing id="pS2AbChkAL" name="Ability Checks-ALL, Situational" description="Select this adjustment be able to set a situational note on to all your ability scores for your character.\n\n{B}Note:{/b} This adjustment will NOT work correctly from the &quot;{b}Personal{/b}&quot; tab as you have to be able to type into the duration field to set the custom text." compset="InPlay">
+    <fieldval field="pSource" value="Ability Checks"/>
+    <fieldval field="pDuration" value="Situational Text"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="OthAdjCat" tag="Attributes"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Loop through all the attributes
+      foreach pick in hero from BaseAttr
+        #situational[eachpick,field[pDuration].text,field[pSource].text]  
+      nexteach
+      ]]></eval>
     </thing>
   </document>

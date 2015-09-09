@@ -232,17 +232,27 @@
       perform hero.childfound[cMnkP6FoBU].assign[Helper.ExtraHigh]
       perform hero.assign[Hero.FlurryBon]]]></eval>
     </thing>
+  <thing id="cMoMSP6BF" name="Bonus Feat" description="At 1st level, 2nd level, and every four levels thereafter, a master of many styles may select a bonus style feat or the Elemental Fist feat ({i}Advanced Player&apos;s Guide{/i} 158). He does not need to meet the prerequisites of that feat, except the Elemental Fist feat. Starting at 6th level, a master of many styles can choose to instead gain a wildcard style slot. Whenever he enters one or more styles, he can spend his wildcard style slots to gain feats in those styles&apos; feat paths (such as Earth Child Topple) as long as he meets the prerequisites. Each time he changes styles, he can also change these wildcard style slots. This ability replaces a monk&apos;s standard bonus feats." compset="ClSpecial"></thing>
   <thing id="arS2MoMS" name="Master of Many Styles" description="The master of many styles is a collector. For every move, he seeks a counter. For every style, he has a riposte. Ultimately, he seeks perfection through the fusion of styles.\n\n{b}Unchained:{/b} No special changes where required for this archetype.\n\n{b}Community Created:{/b} As this is a community created archetype that expands the unchained rules be sure you have your GM&apos;s approval before taking this archetype." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcBookInf" value="Ultimate Combat"/>
     <fieldval field="srcPageNum" value="59"/>
+    <fieldval field="cvSBonFtNm" value="Wildcard Feats"/>
     <usesource source="srcUnMnkAr"/>
-    <tag group="ClassVary" tag="arMnkMaMan"/>
     <tag group="AbReplace" tag="cMnkFlurUn"/>
     <tag group="AbReplace" tag="cMnkPeSeUn"/>
-    <tag group="fInclude" tag="fElemFist"/>
     <tag group="fCategory" tag="Style"/>
+    <tag group="fInclude" tag="fElemFist"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClassVary" tag="arMnkMaMan"/>
+    <tag group="fCatSec" tag="Combat"/>
+    <tag group="fIncSec" tag="fCustom"/>
+    <bootstrap thing="cMnkFuseSt">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cMoMSP6BF">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
     <bootstrap thing="cMnkFuseSt">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
@@ -250,13 +260,17 @@
       <autotag group="ClSpecWhen" tag="8"/>
       </bootstrap>
     <bootstrap thing="cMnkFuseSt">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <bootstrap thing="cMnkFuseSt">
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpMnkUn"/>
-    <eval phase="PostLevel" priority="11000">
+    <eval phase="Render" priority="999999999" index="2"><![CDATA[
+      ~ If not correctly linked to our class get out now!
+      doneif (islinkage[varies] = 0)
+
+      ~ Try and shorten the list of possible feats down as far as we can so remove
+      ~ Teamwork and Style combat feats.
+      linkage[varies].field[cSBonFtExp].text = "!Helper.Helper & !fCategory.Teamwork & !fCategory.Style & !fCategory.Critical & !fCategory.Perform & !fCategory.Panache & (fCategory.Combat|fIncSec.fCustom)"]]></eval>
+    <eval phase="PostLevel" priority="11000"><![CDATA[
       ~ If not correctly linked to our class get out now!
       doneif (islinkage[varies] = 0)
 
@@ -266,182 +280,19 @@
       perform linkage[varies].delete[BonusFor.Monk10]
       perform linkage[varies].delete[BonusFor.Monk14]
 
-      ~ Exclude the following Elemental Fist feats unless we have Elemental Fist
-      if (#hasfeat[fElemFist] = 0) then
-        perform linkage[varies].assign[fExclude.fEfreeStyl]
-        perform linkage[varies].assign[fExclude.fShaitStyl]
-        perform linkage[varies].assign[fExclude.fDjinnStyl]
-        perform linkage[varies].assign[fExclude.fMaridStyl]
-      endif
-      ~ Djinni Style
-      if (#hasfeat[fDjinnStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fDjinnSpir]
-      endif
-      if (#hasfeat[fDjinnSpir] = 1) then
-        perform linkage[varies].assign[fInclude.fDjinnSpin]
-      endif
-      ~ Shaitan Style
-      if (#hasfeat[fShaitStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fShaitSkin]
-      endif
-      if (#hasfeat[fShaitSkin] = 1) then
-        perform linkage[varies].assign[fInclude.fShaitEart]
-      endif
-      ~ Marid Style
-      if (#hasfeat[fMaridStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fMaridSpir]
-      endif
-      if (#hasfeat[fMaridSpir] = 1) then
-        perform linkage[varies].assign[fInclude.fMaridCold]
-      endif
-      ~ Efreeti Syle
-      if (#hasfeat[fEfreeStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fEfreeStan]
-      endif
-      if (#hasfeat[fEfreeStan] = 1) then
-        perform linkage[varies].assign[fInclude.fEfreeTouc]
-      endif
-      
-      if (#hasfeat[fArchonSty] = 1) then
-        perform linkage[varies].assign[fInclude.fArchonDiv]
-      endif
-      if (#hasfeat[fArchonDiv] = 1) then
-        perform linkage[varies].assign[fInclude.fArchonJus]
-      endif
+      ~ Bonus Style feats do not need to meet Pre-Reqs
+      perform linkage[varies].assign[Helper.BonFtNoPre]
 
-      if (#hasfeat[fBoarStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fBoarFero]
-      endif
-      if (#hasfeat[fBoarFero] = 1) then
-        perform linkage[varies].assign[fInclude.fBoarShre]
-      endif
+      ~ We do need to meet the Pre-Req of Elemental Fist
+      linkage[varies].field[cBonFtTxt].text ="{b}Note:{/b} You must meet the prerequisites of the Elemental Fist feat. But this is not tracked by HL correctly right now. So do not add Elemental Fist feat unless you meet the prerequisites."
 
-      if (#hasfeat[fDragoStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fDragoRoar]
-      endif
-      if (#hasfeat[fDragoRoar] = 1) then
-        perform linkage[varies].assign[fInclude.fDragoFero]
-      endif
-
-      if (#hasfeat[fCraneStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fCraneWing]
-      endif
-      if (#hasfeat[fCraneWing] = 1) then
-        perform linkage[varies].assign[fInclude.fCraneRipo]
-      endif
-
-      if (#hasfeat[fEarChlSty] = 1) then
-        perform linkage[varies].assign[fInclude.fEarChlTop]
-      endif
-      if (#hasfeat[fEarChlTop] = 1) then
-        perform linkage[varies].assign[fInclude.fEarChlBin]
-      endif
-
-      if (#hasfeat[fGrabStyle] = 1) then
-        perform linkage[varies].assign[fInclude.fGrabDrag]
-      endif
-      if (#hasfeat[fGrabDrag] = 1) then
-        perform linkage[varies].assign[fInclude.fGrabMast]
-      endif
-
-      if (#hasfeat[fJabStyle] = 1) then
-        perform linkage[varies].assign[fInclude.fJabDancer]
-      endif
-      if (#hasfeat[fJabDancer] = 1) then
-        perform linkage[varies].assign[fInclude.fJabMaster]
-      endif
-
-      if (#hasfeat[fJanniStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fJanniTemp]
-      endif
-      if (#hasfeat[fJanniTemp] = 1) then
-        perform linkage[varies].assign[fInclude.fJanniRush]
-      endif
-
-      if (#hasfeat[fKirinStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fKirinStri]
-      endif
-      if (#hasfeat[fKirinStri] = 1) then
-        perform linkage[varies].assign[fInclude.fKirinPath]
-      endif
-
-      if (#hasfeat[fMantiStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fMantiWisd]
-      endif
-      if (#hasfeat[fMantiWisd] = 1) then
-        perform linkage[varies].assign[fInclude.fMantiTorm]
-      endif
-
-      if (#hasfeat[fMonkeStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fMonkeMove]
-      endif
-      if (#hasfeat[fMonkeMove] = 1) then
-        perform linkage[varies].assign[fInclude.fMonkeShin]
-      endif
-
-      if (#hasfeat[fKoboStyle] = 1) then
-        perform linkage[varies].assign[fInclude.fKoboGroun]
-      endif
-      if (#hasfeat[fKoboGroun] = 1) then
-        perform linkage[varies].assign[fInclude.fKoboFlood]
-      endif
-
-      if (#hasfeat[fPanthStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fPanthClaw]
-      endif
-      if (#hasfeat[fPanthClaw] = 1) then
-        perform linkage[varies].assign[fInclude.fPanthParr]
-      endif
-
-      if (#hasfeat[fPumStyle] = 1) then
-        perform linkage[varies].assign[fInclude.fPumBully]
-        perform linkage[varies].assign[fInclude.fPumCharge]
-      endif
-
-      if (#hasfeat[fSnakeStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fSnakeSide]
-      endif
-      if (#hasfeat[fSnakeSide] = 1) then
-        perform linkage[varies].assign[fInclude.fSnakeFang]
-      endif
-
-      if (#hasfeat[fSnaTurSty] = 1) then
-        perform linkage[varies].assign[fInclude.fSnaTurClu]
-      endif
-      if (#hasfeat[fSnaTurClu] = 1) then
-        perform linkage[varies].assign[fInclude.fSnaTurShl]
-      endif
-
-      if (#hasfeat[fTigerStyl] = 1) then
-        perform linkage[varies].assign[fInclude.fTigerClaw]
-      endif
-      if (#hasfeat[fTigerClaw] = 1) then
-        perform linkage[varies].assign[fInclude.fTigerPoun]
-      endif
-
-      if (#hasfeat[fUnbFlFein] = 0) then
-        perform linkage[varies].assign[fExclude.fUnbFlaFis]
-      endif
-      if (#hasfeat[fPerStyleF] = 0) then
-        perform linkage[varies].assign[fExclude.fUnbFlFein]
-      endif
-      if (#hasfeat[fPerStyleW] = 0) then
-        perform linkage[varies].assign[fExclude.fUnfWindSt]
-      endif
-      if (#hasfeat[fUntIroStr] = 0) then
-        perform linkage[varies].assign[fExclude.fUntIroSki]
-      endif
-      if (#hasfeat[fUnfWindSt] = 0) then
-        perform linkage[varies].assign[fExclude.fUnfWinRus]
-      endif
-      if (#hasfeat[fWolfTrip] = 0) then
-        perform linkage[varies].assign[fExclude.fWolfSavag]
-      endif      
-      if (#hasfeat[fPerStyleI] = 0) then
-        perform linkage[varies].assign[fExclude.fUntIroStr]
-      endif
-      if (#hasfeat[fWolfStyl] = 0) then
-        perform linkage[varies].assign[fExclude.fWolfTrip]
-      endif</eval>
+      if (linkage[varies].field[cTotalLev].value >= 6) then
+        ~ Give note why we include all combat feats for wildcard feats
+        linkage[varies].field[cSBonFtTxt].text ="{b}Note:{/b} This list includes all combat feats as only showing child style feats would block custom & 3PP style feats from showing. This way future books and 3PP books are fully supported in this list."
+        ~ Secondary feats equal to Max value minus number of bonus feats taken
+        linkage[varies].field[cSBonFtMax].value += linkage[varies].field[cBonFtMax].value - linkage[varies].field[cBonFtCur].value
+        ~ Reduce bonus feats by the number of seconary taken
+        linkage[varies].field[cBonFtCur].value += linkage[varies].field[cSBonFtCur].value
+      endif]]></eval>
     </thing>
   </document>

@@ -8,6 +8,32 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.14 September 6, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Conferred (ShadowChemosh) - Really fixed "Favored Enemy" to not appear twice on the Specials tab.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed issue #29, The auto calculating spellbooks gear item was including cantrips from opposition schools of magic.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Conferred (ShadowChemosh) - Made changes to have permanent affecting adjustments not display on the iPad.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Finished enhancement #28. Added three new adjustments that allows for adding additional feat choices to classes. So in example you can use the adjustment "Class, Allowed Feats" to give Monks the ability to select the feat Vital Strike on the class tab as a bonus feat.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New adjustment "Feats, Remove Tracker" that lets you remove a feat that has a tracker/counter from the In-Play tab.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New adjustment "Feat: Furious Focus" that lets you display the Furious Focus attack value when using Power Attack feat.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Ability Checks, Situational" to add situational notes about ability scores or ability checks.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Ability Checks-ALL, Situational" to add situational notes about ability scores or ability checks to all attributes.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - To support some Psionic features in the Campaign Pack I had to move the Psi Focus procedure and Psionics.? tags out of the 3PP Pack and into the Basic Pack.</li>
+<li>(ShadowChemosh) - When either the Ranged Touch Attack or Touch Attack weapon is equipped a PackHelper Tag will be added to the hero: EquipTouch, EquipRngTo.</li>
+<li>(ShadowChemosh) - I have consolidated all the Craft and Profession skills from the different packs into the Basic Pack. Updated all the skills to work with the Unchained Rules. As they are not specific to a module/AP/Monster I have removed all source marks so they will appear for everyone.</li>
+<li>(ShadowChemosh) - Moved over universal abilities from Tome of Horrors (GM Pack) to the basic pack: DR Gold, Immune to Necromancy, Immune to Temporal Effects, Vulnerability to Water, Immune to Slow, Immune to Haste, Immune to Rust, Immune to Elemental Traits, Immune to Chaotic Effects, Immune to Channel Energy, Immune to Holds, and Immune to Enchantment.</li>
+</ul>
+
+
+
 <strong>v3.13 July 26, 2015</strong>
 
 <strong>Bug Fixes</strong>

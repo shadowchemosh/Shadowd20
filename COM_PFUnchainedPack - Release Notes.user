@@ -8,6 +8,22 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v1.4 September 6, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Unchained Monk (ShadowChemosh) - Zen Archer fixed issue #4. Feats that the zen archer was to receive for free for leveling where not appearing (ie Perfect Strike, Weapon Focus, Point Blank Master, and Weapon Specialization).  These have been chained back into the class and will now appear correctly.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Unchained Monk (ShadowChemosh) - "Master of Many Styles" updated to latest Errata Rules.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+
 <strong>v1.3 July 26, 2015</strong>
 
 <strong>Bug Fixes</strong>

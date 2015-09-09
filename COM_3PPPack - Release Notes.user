@@ -8,6 +8,37 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v1.13 September 6, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Path of War Expanded (TheIronGolem) - Fixed Twin Thunder Stance so that it grants the correct TWF feats even when deactivated/reactivated.</li>
+<li>Ultimate Psionics (TheIronGolem) - Implemented effects of Psionic Shot feat.</li>
+<li>Path of War Expanded (TheIronGolem) - Added missing bootstraps for Piercing Thunder and Tempest Gale disciplines.</li>
+<li>Path of War Expanded (TheIronGolem) - Fixed Myrmidon's bonus feat count.</li>
+<li>Ultimate Psionics (psych777) - Fixed issue #67. Updated feats: Multiple Connections, Open Door, and Terror Mastery to close.</li>
+<li>Path of War (TheIronGolem) - Added missing Leaping Dragon maneuver (fixes issue #69).</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed issue #70. Fixed the Psychic Warrior trance abilities to actually apply there bonus: Trance (Interceptor Path); Trance (Infiltrator Path); Trance (Gladiator Path); Trance (Dervish Path); Trance (Survivor Path); Trance (Archer Path)</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Path of War Expanded (TheIronGolem & radionausea) - Added the Myrmidon archetype (much credit to radionausea for this one).</li>
+<li>Path of War Expanded (TheIronGolem) - Added the Hidden Blade archetype.</li>
+<li>Ultimate Psionics (Charlie & Niccole Luce) - Added new Metaforge PrC.</li>
+<li>Ultimate Psionics (Charlie & Niccole Luce) - Added new feat "Student of the Astral Suit".</li>
+<li>LG - Ultimate Battle (ShadowChemosh) - Added more Ultimate Battle but not 100% done yet.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Ultimate Psionics (TheIronGolem) - Psionic Shot changed to no longer use a foreach loop saving allot of CPU usage.</li>
+<li>Path of War Expanded (TheIronGolem) - Moved archetypes from Classes file into a new Archetypes file.</li>
+<li>Ultimate Psionics (ShadowChemosh) - To support some Psionic features in the Campaign Pack I had to move the Psi Focus procedure and Psionics.? tags out of the 3PP Pack and into the Basic Pack.</li>
+<li>(ShadowChemosh) - Modified feats pre-req (PoW and UP) to use the new fields for testing attributes. More and more Paizo feats are coming out that allow a character to meet the pre-req's of a specific ability score.  See the new "Dirty Fighting (Combat)" on the paizo blog:http://paizo.com/paizo/blog/v5748dyo5lhtr?Your-Honor-Will-Get-You-Dead I would assume that LW put in this new pre-req field to support this in future updates. So moving us to the same standards.</li>
+<li>Ultimate Psionics (ShadowChemosh) - To support Metaforge PrC correctly I changed all the Astral suite Racial Customs to use the new PURreReq procedure instead.</li>
+<li>Ultimate Psionics (ShadowChemosh) - New Procedure add that adjusts the Customization Points on the Aegis Configurable. Enhanced feat "Fighter's Blade" to work correctly with other sources giving Extra Levels. All Aegis Racial Custom abilities modified to use the PUPreReq procedure for Aegis levels as Metaforge levels stack with Aegis.</li>
+</ul>
+
+
 <strong>v1.12 July 26, 2015</strong>
 
 <strong>Bug Fixes</strong>

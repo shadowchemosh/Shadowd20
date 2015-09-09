@@ -101,6 +101,30 @@
   </procedure>
 
 
+  <!-- =================================================================== -->
+  <!-- Calculate Furious Focus Values                                      -->
+  <!-- =================================================================== -->
+  <procedure id="S2FurFoc" context="pick"><![CDATA[
+    ~ If no power attack get out now
+    doneif (hero.childlives[fPowerAtt] <> 1)
+
+    var v_Bracket as string
+    var v_Hit as string
+    var v_wAttack as number
+    var S2Att as number
+
+    ~ Calc to hit
+    S2Att = v_wAttack + #value[fPowerAtt]
+    
+    ~ Text with brackets ie [FF +6]
+    v_Bracket  = " [FF " & signed(S2Att) & "]"
+    
+    ~ Text without brackets
+    v_Hit = signed(S2Att)
+    ]]>
+  </procedure>
+
+
 <!-- =================================================================== -->
 <!-- Set the natural attack damage for adjustments                       -->
 <!-- =================================================================== -->
