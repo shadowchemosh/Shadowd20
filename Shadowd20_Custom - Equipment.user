@@ -727,12 +727,89 @@ endif]]></eval>
     <tag group="wClass" tag="Light"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="Final" priority="1000"><![CDATA[
-      perform delete[wMain.?]
-      perform hero.child[wUnarmed].pulltags[wMain.?]
-      field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
-      field[wDamNoAttr].value = hero.child[wUnarmed].field[wDamNoAttr].value
+    <tag group="IsWeapon" tag="wUnarmed"/>
+    <eval phase="Attr" priority="200000" index="2"><![CDATA[
+      perform hero.child[wUnarmed].setfocus
+      doneif (state.isfocus = 0)
+         
+      ~ We need to pull all the bonuses
+      #applybonus[BonEnhance,this,focus.field[BonEnhance].value]
+      #applybonus[BonAlch,this,focus.field[BonAlch].value]
+      #applybonus[BonComp,this,focus.field[BonComp].value]
+      #applybonus[BonInsight,this,focus.field[BonInsight].value]
+      #applybonus[BonLuck,this,focus.field[BonLuck].value]
+      #applybonus[BonMorale,this,focus.field[BonMorale].value]
+      #applybonus[BonProfane,this,focus.field[BonProfane].value]
+      #applybonus[BonSacred,this,focus.field[BonSacred].value]
+      #applybonus[BonTrait,this,focus.field[BonTrait].value]
+      #applybonus[Bonus,this,focus.field[Bonus].value]
+      ~ Specific melee bonuses
+      #applybonus[atmBonAlch,this,focus.field[atmBonAlch].value]
+      #applybonus[atmBonComp,this,focus.field[atmBonComp].value]
+      #applybonus[atmBonEnh,this,focus.field[atmBonEnh].value]
+      #applybonus[atmBonIns,this,focus.field[atmBonIns].value]
+      #applybonus[atmBonLuck,this,focus.field[atmBonLuck].value]
+      #applybonus[atmBonMora,this,focus.field[atmBonMora].value]
+      #applybonus[atmBonProf,this,focus.field[atmBonProf].value]
+      #applybonus[atmBonSacr,this,focus.field[atmBonSacr].value]
+      #applybonus[atmBonTrt,this,focus.field[atmBonTrt].value]
+      #applybonus[atmBonus,this,focus.field[atmBonus].value]
+      #applybonus[atmModCirc,this,focus.field[atmModCirc].value]
+      #applybonus[atmRacial,this,focus.field[atmRacial].value]
+      ~ Specific melee penalties
+      #applypenalty[atmPenComp,this,focus.field[atmPenComp].value]
+      #applypenalty[atmPenLuck,this,focus.field[atmPenLuck].value]
+      #applypenalty[atmPenMora,this,focus.field[atmPenMora].value]
+      #applypenalty[atmPenProf,this,focus.field[atmPenProf].value]
+      #applypenalty[atmPenSacr,this,focus.field[atmPenSacr].value]
+      #applypenalty[atmPenTrt,this,focus.field[atmPenTrt].value]
+      #applypenalty[atmPenalty,this,focus.field[atmPenalty].value]
 
+      ~ If we're a custom/magic weapon, we need to alter our parent too
+      if (container.ishero = 0) then
+        ~ We need to pull all the bonuses
+        #applybonus[BonEnhance,container.parent,focus.field[BonEnhance].value]
+        #applybonus[BonAlch,container.parent,focus.field[BonAlch].value]
+        #applybonus[BonComp,container.parent,focus.field[BonComp].value]
+        #applybonus[BonInsight,container.parent,focus.field[BonInsight].value]
+        #applybonus[BonLuck,container.parent,focus.field[BonLuck].value]
+        #applybonus[BonMorale,container.parent,focus.field[BonMorale].value]
+        #applybonus[BonProfane,container.parent,focus.field[BonProfane].value]
+        #applybonus[BonSacred,container.parent,focus.field[BonSacred].value]
+        #applybonus[BonTrait,container.parent,focus.field[BonTrait].value]
+        #applybonus[Bonus,container.parent,focus.field[Bonus].value]
+        ~ Specific melee bonuses
+        #applybonus[atmBonAlch,container.parent,focus.field[atmBonAlch].value]
+        #applybonus[atmBonComp,container.parent,focus.field[atmBonComp].value]
+        #applybonus[atmBonEnh,container.parent,focus.field[atmBonEnh].value]
+        #applybonus[atmBonIns,container.parent,focus.field[atmBonIns].value]
+        #applybonus[atmBonLuck,container.parent,focus.field[atmBonLuck].value]
+        #applybonus[atmBonMora,container.parent,focus.field[atmBonMora].value]
+        #applybonus[atmBonProf,container.parent,focus.field[atmBonProf].value]
+        #applybonus[atmBonSacr,container.parent,focus.field[atmBonSacr].value]
+        #applybonus[atmBonTrt,container.parent,focus.field[atmBonTrt].value]
+        #applybonus[atmBonus,container.parent,focus.field[atmBonus].value]
+        #applybonus[atmModCirc,container.parent,focus.field[atmModCirc].value]
+        #applybonus[atmRacial,container.parent,focus.field[atmRacial].value]
+        ~ Specific melee penalties
+        #applypenalty[atmPenComp,container.parent,focus.field[atmPenComp].value]
+        #applypenalty[atmPenLuck,container.parent,focus.field[atmPenLuck].value]
+        #applypenalty[atmPenMora,container.parent,focus.field[atmPenMora].value]
+        #applypenalty[atmPenProf,container.parent,focus.field[atmPenProf].value]
+        #applypenalty[atmPenSacr,container.parent,focus.field[atmPenSacr].value]
+        #applypenalty[atmPenTrt,container.parent,focus.field[atmPenTrt].value]
+        #applypenalty[atmPenalty,container.parent,focus.field[atmPenalty].value]
+      endif]]></eval>
+    <eval phase="Final" priority="1000"><![CDATA[
+      perform hero.child[wUnarmed].setfocus
+      doneif (state.isfocus = 0)
+    
+      ~ Set main damage
+      perform delete[wMain.?]
+      perform focus.pulltags[wMain.?]
+      field[wDamage].value = focus.field[wDamage].value
+      field[wDamNoAttr].value = focus.field[wDamNoAttr].value
+      
       ~ If we're a custom/magic weapon, we need to alter our parent too
       if (container.ishero = 0) then
          container.parent.field[wDamage].value = hero.child[wUnarmed].field[wDamage].value
@@ -903,8 +980,7 @@ field[abValue2].value += hero.child[cWitS2ElBl].field[abValue2].value</eval>
     <tag group="Helper" tag="EquipMag"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ If not equipped get out now!
+    <eval phase="PreLevel" priority="10000">~ If not equipped get out now!
       doneif (field[gIsEquip].value = 0)
       ~ If nothing chosen get out now!
       doneif (field[usrChosen1].ischosen = 0)
@@ -926,8 +1002,7 @@ field[abValue2].value += hero.child[cWitS2ElBl].field[abValue2].value</eval>
     <tag group="Helper" tag="EquipMag"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ If not equipped get out now!
+    <eval phase="PreLevel" priority="10000">~ If not equipped get out now!
       doneif (field[gIsEquip].value = 0)
       ~ If nothing chosen get out now!
       doneif (field[usrChosen1].ischosen = 0)
@@ -949,8 +1024,7 @@ field[abValue2].value += hero.child[cWitS2ElBl].field[abValue2].value</eval>
     <tag group="Helper" tag="EquipMag"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ If not equipped get out now!
+    <eval phase="PreLevel" priority="10000">~ If not equipped get out now!
       doneif (field[gIsEquip].value = 0)
       ~ If nothing chosen get out now!
       doneif (field[usrChosen1].ischosen = 0)
@@ -972,8 +1046,7 @@ field[abValue2].value += hero.child[cWitS2ElBl].field[abValue2].value</eval>
     <tag group="Helper" tag="EquipMag"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ If not equipped get out now!
+    <eval phase="PreLevel" priority="10000">~ If not equipped get out now!
       doneif (field[gIsEquip].value = 0)
       ~ If nothing chosen get out now!
       doneif (field[usrChosen1].ischosen = 0)
@@ -995,8 +1068,7 @@ field[abValue2].value += hero.child[cWitS2ElBl].field[abValue2].value</eval>
     <tag group="Helper" tag="EquipMag"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ If not equipped get out now!
+    <eval phase="PreLevel" priority="10000">~ If not equipped get out now!
       doneif (field[gIsEquip].value = 0)
       ~ If nothing chosen get out now!
       doneif (field[usrChosen1].ischosen = 0)
