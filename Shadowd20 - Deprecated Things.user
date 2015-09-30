@@ -1355,9 +1355,70 @@ Hidden]]></comment>
       </bootstrap>
     <link linkage="varies" thing="cHelpRgr"/>
     </thing>
+  <thing id="rS2Dhampir" name="Dhampir" description="Cursed from birth, dhampirs result from the rare and unnatural union of vampires and humans. Although not driven to consume blood for survival as their undead progenitors are, dhampirs nonetheless know a lifelong desire for blood that nothing else can truly sate. Those who survive their early years face a life of fear and mistrust, their unnatural beauty and incredible reflexes marking them as scions of the night just as surely as their sensitivity to light. Although polluted by undeath, dhampirs do grow old and die, aging at a rate similar to elves.\n\n{B}Shadow d20:{/b} This removes the immunity to level drain but also removes the unplayable ability of needing to be healed by Negative Energy. This leaves the race at 11RP." compset="Race">
+    <comment>This is Hidden.</comment>
+    <fieldval field="rCON" value="-2"/>
+    <fieldval field="rCHA" value="2"/>
+    <fieldval field="rAgeMin" value="110"/>
+    <fieldval field="rHeightMnF" value="53"/>
+    <fieldval field="rWeightMnF" value="85"/>
+    <fieldval field="rHeightMnM" value="58"/>
+    <fieldval field="rWeightMnM" value="120"/>
+    <fieldval field="rSpCastLev" value="1"/>
+    <fieldval field="rEnviron" value="Any land"/>
+    <fieldval field="rOrgan" value="Solitary, pair, or court (3-8 and 1 vampire)"/>
+    <fieldval field="rTreasure" value="Npc gear (chain shirt, rapier, other treasure)"/>
+    <fieldval field="rDescript" value="This unnaturally graceful man moves without a sound, his gaze just as piercing as the needle-sharp blade he effortlessly wields."/>
+    <fieldval field="rSpecSing" value="Dhampir Heritage"/>
+    <fieldval field="rDEX" value="2"/>
+    <usesource source="srcDhampir"/>
+    <tag group="AgeC3Size" tag="6"/>
+    <tag group="HasType" tag="tpHumanoid"/>
+    <tag group="HeightDice" tag="2"/>
+    <tag group="HeightSize" tag="10"/>
+    <tag group="Helper" tag="OptCustom"/>
+    <tag group="Language" tag="Any"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="RaceType" tag="Feature"/>
+    <tag group="WeightMult" tag="5"/>
+    <tag group="AgeC1Dice" tag="4"/>
+    <tag group="AgeC1Size" tag="6"/>
+    <tag group="AgeC2Dice" tag="6"/>
+    <tag group="AgeC2Size" tag="6"/>
+    <tag group="Shadowd20" tag="Race"/>
+    <tag group="AgeC3Dice" tag="10" name="10" abbrev="10"/>
+    <bootstrap thing="stDhampir"></bootstrap>
+    <bootstrap thing="fcAlcDha"></bootstrap>
+    <bootstrap thing="fcClrDha"></bootstrap>
+    <bootstrap thing="fcFtrDha"></bootstrap>
+    <bootstrap thing="fcInqDha"></bootstrap>
+    <bootstrap thing="fcRogDha"></bootstrap>
+    <bootstrap thing="fcSorDha"></bootstrap>
+    <bootstrap thing="fcWizDha"></bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="raDhDetUnd"></bootstrap>
+    <bootstrap thing="raDarkVis">
+      <autotag group="Value" tag="60"/>
+      </bootstrap>
+    <bootstrap thing="raLightSen"></bootstrap>
+    <bootstrap thing="raDhaManip"></bootstrap>
+    <bootstrap thing="raDhaUndRe"></bootstrap>
+    <eval phase="First" index="2"><![CDATA[
+      ~ If Advanced Race Guide not active get out now
+      doneIf (hero.tagis[source.ARG] <> 1)
 
-
-
+      ~ set that we are the ARG Dhampir
+      perform hero.assignstr["Race.rDhampir"]
+      perform hero.assignstr["IsRace.rDhampir"]
+      perform hero.assignstr["RaceEquip.rDhampir"]]]></eval>
+    <eval phase="First" priority="10000"><![CDATA[
+      ~ If we have the Blood of the Night source enabled, we have special
+      ~ abilities.
+      If (hero.tagis[source.PCBldNight] <> 0) then
+          ~we get one heritage pick
+          ~field[rGiveSpec].value = 1
+      Endif]]></eval>
+    </thing>
 
 
 
@@ -1402,6 +1463,7 @@ Hidden]]></comment>
   <hidden id="pS2ProtEne"/>
   <hidden id="cS2SneakUn"/>
   <hidden id="arRgrSpell"/>
+  <hidden id="rS2Dhampir"/>
 
 
 </document>

@@ -513,10 +513,10 @@ endif]]></eval>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="SingleAtt"/>
-    <tag group="PackHelper" tag="Touch"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="abS2EldBla"></bootstrap>
-    <eval phase="PostAttr" priority="10000" index="2">~ Give a Int bonus to the Eldritch Blast Weapon
+    <eval phase="PostAttr" priority="10000" index="2">
+      ~ Give a Int bonus to the Eldritch Blast Weapon
       field[wDamBonus].value += #attrmod[aINT]</eval>
     <eval phase="Final" priority="11000"><![CDATA[
       ~ Set the Fix Ranged Damage amount text

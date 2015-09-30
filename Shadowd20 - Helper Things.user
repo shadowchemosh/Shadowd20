@@ -989,7 +989,6 @@ version 1.40 - Released May 12, 2013
   <preclude id="raS2CatSce" source="ARG"/>
   <preclude id="raS2CatCle" source="ARG"/>
   <preclude id="raS2CatCli" source="ARG"/>
-  <preclude id="rDhampir" source="srcNoRaces"/>
   <preclude id="rKitsune" source="srcNoRaces"/>
   <preclude id="rTengu" source="srcNoRaces"/>
   <preclude id="rcMwangi" source="srcCatFolk"/>

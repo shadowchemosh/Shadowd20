@@ -987,44 +987,56 @@ doneif (tagis[Helper.SpcReplace] <> 0)
     </thing>
   <thing id="raDBbrthw" name="Breath Weapon" description="One time per day you can breathe for 1d8 damage per 3 levels (ie 2d8 at 4th, 3d8 at 7th...) in a line. The line&apos;s length is 5ft per character level. Your breath weapon damage type (Acid, Cold, Electricity, or Fire) is chosen at character creation and can not be changed. A successful reflex save vs DC (10 + Half the dragonborn&apos;s character level + her Con Modifier) halves the damage." compset="RaceSpec">
     <fieldval field="trkMax" value="1"/>
-    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Attack"/>
-    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
-    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
     <tag group="Usage" tag="Day"/>
     <tag group="fShowWhat" tag="EnergyBase"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="StandardDC" tag="aCON"/>
-    <eval phase="First"><![CDATA[~if we've been replaced, get out now
-doneif (tagis[Helper.SpcReplace] <> 0)
-~ If nothing chosen get out now
-doneif (field[usrChosen1].ischosen <> 1)
+    <eval phase="First" priority="25000"><![CDATA[
+      ~ if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If nothing chosen get out now
+      doneif (field[usrChosen1].ischosen + tagcount[BloodEner.?] = 0)
+      
+      ~ If we don't already have a Blood Energy tag then use the one
+      ~ chosen.
+      if (tagcount[BloodEner.?] = 0) then
+        ~ Pull the Blood Energy tag from the selector thing
+        perform field[usrChosen1].chosen.pulltags[BloodEner.?]
 
-~ Pull the Blood Energy tag from the selector thing
-perform field[usrChosen1].chosen.pulltags[BloodEner.?]
+      ~..Else we don't get a choice so delete the chooser
+      else
+        perform delete[fShowWhat.?]
+        perform delete[ChooseSrc1.?]
+      endif
 
-~ Push the tags to the dragonborn race
-perform root.pushtags[BloodEner.?]]]></eval>
-    <eval phase="Final" priority="20000" index="2"><![CDATA[~if we've been replaced, get out now
-doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ Push the tags to the dragonborn race
+      perform root.pushtags[BloodEner.?]
+      ]]></eval>
+    <eval phase="Final" priority="20000" index="2"><![CDATA[
+      ~ if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
 
-~ Calc DC as 10 +1/2 level + Con
-field[abDC].value += round(#totallevelcount[]/2,0,-1)
+      ~ Calc DC as 10 +1/2 level + Con
+      field[abDC].value += round(#totallevelcount[]/2,0,-1)
 
-var energy as string
-energy = "(energy)"
-~ Get the energy name from the Blood Energy tag
-if (root.tagcount[BloodEner.?] <> 0) then
-   energy = root.tagnames[BloodEner.?]
-endif
+      var energy as string
+      energy = " "
+      ~ Get the energy name from the Blood Energy tag
+      if (root.tagcount[BloodEner.?] <> 0) then
+         energy = root.tagnames[BloodEner.?]
+      endif
+      
+      ~ Calc our Breath Weapon damage and line effect
+      field[abValue].value += maximum(round(herofield[tLevel].value/3,0,1),1)
+      field[abValue2].value += 5 * herofield[tLevel].value
 
-~ Calc our Breath Weapon damage and line effect
-field[abValue].value += maximum(round(herofield[tLevel].value/3,0,1),1)
-field[abValue2].value += 5 * herofield[tLevel].value
+      field[abSumm].text = field[trkMax].value & "/day, Breath Weapon deals " & field[abValue].value & "d8 " & energy & " damage, Ref DC "& field[abDC].value & ", in a " & field[abValue2].value & "ft line."
 
-field[abSumm].text = field[trkMax].value & "/day, Breath Weapon deals " & field[abValue].value & "d8 " & energy & " damage, Ref DC "& field[abDC].value & ", in a " & field[abValue2].value & "ft line."
-
-field[livename].text = field[name].text & " " & field[abValue].value & "d8 " & field[abValue2].value & "ft line"]]></eval>
+      field[livename].text = field[name].text & " " & field[abValue].value & "d8 " & energy & " " & field[abValue2].value & "ft line"]]></eval>
     </thing>
   <thing id="raDBresist" name="Resistances" description="A dragonborn has energy resistance 5 to the same type of energy as their breath weapon." compset="RaceSpec" summary="Resistance 5 to the same type of energy as your breath weapon.">
     <tag group="SpecType" tag="Defense"/>
@@ -2909,26 +2921,27 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
       field[livename].text = signed(field[abValue].value) & " foot range"]]></eval>
     </thing>
   <thing id="rcS2Kellid" name="Kellid" description="Nomadic Kellid tribes wander northern Avistan from the arid steppes of Numeria to the snowy plains west of the Tusk Mountains following game herds, ancestral trails, omens, and the ambitions of charismatic chieftains. These bands must contend with threats from all sides, both natural and supernatural. Between the curses of the winter witches of Irrisen to the west, the savage orc hordes of Belkzen to the south, and the demonic horrors boiling from the Worldwound in the east, the Kellid people have well earned their deep distrust of outsiders, as well as of magic and those who wield it. At home in an environment where daily survival is the first - and often only - concern, their small tribes are uncomplicated by elaborate codes of etiquette and other luxuries found within city walls. Indeed, Kellid tribes thrive in brutal conditions that would break more rigidly structured societies. As unforgiving as the tundra they wander, Kellids nevertheless possess a unique code of honor, and would rather offer a hated enemy shelter from an arctic storm than allow another to suffer an undignified and grim death by exposure or starvation.\n\nThe few Kellids who abandon nomadic life settle in cities and towns where their skills as warriors and trackers are desired, or put down roots where prey, iron, or other desirable resources are relatively easy to come by year-round. Despite this, urban and settled Kellids continue to observe the practical lifestyle of their roving kin. Even in the best of times, a Kellid owns little more than he can carry or wear. It&apos;s not that Kellids disdain physical luxuries and creature comforts, but rather that they rarely have the luxury or good fortune to accumulate such things, and in many cases would not know what to do with them if they did. In the end, a typical Kellid needs nothing more than a mammoth hide across his back, a spear in his hand, and a challenge in his sight.\n\n{b}Names{/b}\nKellid names often sound brusque and harsh, with guttural sounds and hard consonants. Usually consisting of no more than two syllables, Kellid names are brief by necessity. In the unforgiving and violent wastes of the North, the half-second it takes to bark a Kellid name can often mean the difference between survival and death. Kellids make little use of second names within their own communities, though renowned figures can earn descriptive titles befitting their deeds and accomplishments. Traditionally, Kellid children go unnamed until they survive their first winter.\n\n{b}Female Names{/b}: Addit, Bevka, Dejik, Eht, Garra, Jerda, Kagur, Kanat, Larat, Medda, Renka, Serit, Telka, Vehk\n{b}Male Names{/b}: Anok, Brud, Droguk, Gotor, Jokon, Hrunga, Jod, Korut, Mortok, Nunek, Purat, Torg, Yort\n{b}Titles{/b}: Beast-Stalker, Giantkin, Long Years, Many Scars, Red Spear, Snow Mane, Trollkill, Tuskbreaker, The Unbroken" compset="RaceCustom" replaces="rcKellid" uniqueness="unique">
-    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="CSWorldGui"/>
     <usesource source="s20PFCamp"/>
     <usesource source="PCPeopNort"/>
     <tag group="AllowRCust" tag="rShifters"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <bootstrap thing="lPFHallit"></bootstrap>
-    <eval phase="First" priority="600"><![CDATA[~ First/600
-~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
-     
-~set our race's name to our own name
-focus.field[livename].text = "Kellid Shifter"]]></eval>
+    <eval phase="First" priority="600"><![CDATA[
+      ~ First/600
+      ~set our focus to the hero's race
+      perform hero.findchild[BaseRace].setfocus
+      doneif (state.isfocus = 0)
+
+      ~set our race's name to our own name
+      focus.field[livename].text = "Kellid Shifter"]]></eval>
     </thing>
   <thing id="rcS2Varisi" name="Varisian" description="Many Varisians are wanderers and nomads, traveling the land in caravans and stopping only to put on exotic shows or to swindle and seduce locals. Yet just as many Varisians settle down and form small towns or, in the case of Ustalav, entire cities and nations. Yet none can deny the stereotypical con artists or swindlers who give the Varisian people a bad name. Most respect the Varisians for their ancient traditions and vast knowledge but for the same reasons mistrust their motives.\n\nTo ordinary folk, the colorful travelers who never settle but flit about like butterflies over the land seem fascinating, but also just a little frightening.\n\nA traveler can sit down in any tavern in Avistan and overhear a story about Varisians - how they never build towns or sow crops, how they live in the wagons that carry them over the land, how they sing and dance for money, how they dress in bright colors and cover their bodies with jewelry and intricate tattoos, and how a Varisian once robbed someone&apos;s uncle&apos;s wife&apos;s brother&apos;s best friend in an elaborate scam. Conventional wisdom holds that observers should view the beautiful, exotic Varisians from a distance, as if admiring a tiger prowling through the jungle.\n\nTales of Varisian treachery and deceit usually come from interactions with the Sczarni - organized families of Varisian criminals dedicated to larceny and confidence games. The Sczarni travel less frequently than their kin, setting up shop in cities for months - even years - at a time. So long as their criminal activities go undetected, Sczarni continue to bleed their victims until their pockets are full or their neighbors grow suspicious.\n\nVarisians call the world their home, even if they&apos;ve settled down. They favor scarves of all sizes and colors, but some hold special significance. Most notable is the family scarf, or {i}kapenia{/i}. Children receive their kapenias upon maturity; to own one is to be an adult. These long, heavy scarves display elegant and complicated embroidery that is incomprehensible to most outsiders.\n\nTo Varisians, though, the scarves show their family trees. By tracing the loops and whorls of a scarf, a Varisian can trace a person&apos;s history back through her mother and father, her siblings, grandparents and great-grandparents, as far back as the family possesses knowledge.\n\nVarisians believe that certain colors carry specific powers and choose their outfits to attract the right type of energy. Pink is the color of love, kindness, and courage. Red represents lust, long life, and inner strength. Orange is the color of happiness and resourcefulness, and adventuring Varisians often wear a touch of orange while on their travels. Green enhances wisdom and self-control. Turquoise represents physical strength and nonverbal communication, and most dancing costumes feature it. Blue is the color of health, youth, and beauty. Violet enhances intuition and divine inspiration, so most fortunetellers and seers wear violet scarves. Varisians love jewelry and favor gems over coins. Most Varisians pragmatically believe that wealth is harder to steal when worn than when hidden out of sight.\n\nWhereas the Shoanti use tattoos as marks of honor and accomplishment, to a Varisian a tattoo is a work of art, one often used to enhance existing beauty. These tattoos typically incorporate various colors of significance to the person bearing the markings, and an entire method of magic revolves around certain mystic tattoos. This delight and obsession with tattoos stems from the periodic appearance of &quot;birth tattoos&quot; on newborn Varisians - birthmarks that can be extremely elaborate and colorful.\n\nSome represent physical objects, such as a sword or a unicorn, while others spell out phrases in some long-dead runic language or outline a map. The tattoos might appear as tiny, blurred marks during infancy and childhood but grow with the child until they reach a clear and detailed full size at adulthood." compset="RaceCustom" uniqueness="unique">
-    <usesource source="CSWorldGui" parent="CSHeader" name="Inner Sea World Guide"/>
+    <usesource source="CSWorldGui"/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="AllowRCust" tag="rHalfling"/>
-    <tag group="Helper" tag="Ethnicity" name="Ethnicity" abbrev="Ethnicity"/>
+    <tag group="Helper" tag="Ethnicity"/>
     <bootstrap thing="lPFVarisia"></bootstrap>
     </thing>
   <thing id="raS2DBWing" name="Wings" description="A dragonborn who selects the wings aspect hatches sporting fully formed wings. Dragonborn can use these wings to aid their jumps (granting a +10 racial bonus on Acrobatic (Jump) checks) and to glide. Those with 6 HD or more can use their wings to fly.\n\n{B}Gliding:{/b} A dragonborn can use her wings to glide, negating damage from a fall from any height and allowing 20 feet of forward travel for every 5 feet of descent. Dragonborn glide at a speed of 30 feet with average maneuverability. Even if a dragonborn&apos;s maneuverability improves, she can&apos;t hover while gliding. A dragonborn can&apos;t glide while carrying a medium or heavy load.\n\nIf a dragonborn becomes unconscious or helpless while in midair, her wings naturally unfurl, and powerful ligaments stiffen them. The dragonborn descends slowly in a tight corkscrew and takes only 1d6 points of falling damage, no matter the actual distance of the fall.\n\n{b}Flight:{/b} When a dragonborn who selected the wings aspect reaches 6 HD, she gains a fly speed of 30 feet with average maneuverability. A dragonborn can&apos;t fly while carrying a medium or heavy load or while fatigued or exhausted.\n\nA dragonborn can safely fly for a number of consecutive rounds equal to her 1/2 her level + Constitution modifier (minimum 1 round). She can double this length of flight but is fatigued by such exertion. The dragonborn is likewise fatigued after spending a total of more than 10 minutes per day flying. Because a dragonborn can glide before, after, and between rounds of actual flight, she can remain aloft for extended periods, even if she can only use flight for 1 round at a time without becoming fatigued.\n\nWhen she reaches 12 HD, a dragonborn has enough stamina and prowess to fly without tiring. She can fly at a speed of 60 feet (good maneuverability) with no more exertion than walking or running.\n\nA dragonborn with flight can make a dive attack. A dive attack works like a charge, but the dragonborn must move a minimum of 30 feet and descend at least 10 feet. A dragonborn can make a dive attack only when wielding a piercing weapon. If the dive attack hits, it deals double damage.\n\nA dragonborn with flight can use the run action while flying, provided she flies in a straight line." compset="AltRaceTrt" uniqueness="unique">
@@ -2939,25 +2952,25 @@ focus.field[livename].text = "Kellid Shifter"]]></eval>
     <tag group="RaReplace" tag="raDBbrthw"/>
     <tag group="Usage" tag="DayRound"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
-~ Plus +10 to Jump at 1 HD
-#skillbonus[skS2AcroJu] += 10
-#situational[hero.child[skAcrobat],"+10 bonus on jump checks.",field[name].text]
+      ~ Plus +10 to Jump at 1 HD
+      #skillbonus[skS2AcroJu] += 10
+      #situational[hero.child[skAcrobat],"+10 bonus on jump checks.",field[name].text]
 
-~ If 12+ HD give 60ft fly speed
-If (herofield[tHitDice].value >= 12) Then
-   ~ Give 60ft fly speed
-   #value[xFly] += 60
-   ~ Set maneuverability rating to Good
-   perform hero.child[xFly].assign[Maneuver.Good]
-~ If 6+ hit dice give 30ft and average rating
-elseIf (herofield[tHitDice].value >= 6) Then
-   perform assign[User.Tracker]
-   field[trkMax].value += maximum(round(#totallevelcount[]/2,0,0-1) + #attrmod[aCON],1)
-   ~ Give 30ft fly speed
-   #value[xFly] += 30
-   ~ Set maneuverability rating to Average
-   perform hero.child[xFly].assign[Maneuver.Average]
-endif]]></eval>
+      ~ If 12+ HD give 60ft fly speed
+      If (herofield[tHitDice].value >= 12) Then
+         ~ Give 60ft fly speed
+         #value[xFly] += 60
+         ~ Set maneuverability rating to Good
+         perform hero.child[xFly].assign[Maneuver.Good]
+      ~ If 6+ hit dice give 30ft and average rating
+      elseIf (herofield[tHitDice].value >= 6) Then
+         perform assign[User.Tracker]
+         field[trkMax].value += maximum(round(#totallevelcount[]/2,0,0-1) + #attrmod[aCON],1)
+         ~ Give 30ft fly speed
+         #value[xFly] += 30
+         ~ Set maneuverability rating to Average
+         perform hero.child[xFly].assign[Maneuver.Average]
+      endif]]></eval>
     </thing>
   <thing id="raS2VsGian" name="Defensive Training" description="+4 dodge bonus to AC against monsters of the Giant subtype." compset="RaceSpec" summary="Gain a dodge bonus to AC vs monsters of the Giant subtype." replaces="raVsGiants">
     <comment>Added an activation ability for the iPad.</comment>
@@ -2982,38 +2995,40 @@ endif]]></eval>
     </thing>
   <thing id="raS2DwSave" name="Hardy" description="Gain a racial bonus to saves vs Poison, Spells and Spell-Like effects." compset="RaceSpec" replaces="raDwSaves">
     <tag group="SpecType" tag="Defense"/>
-    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <eval phase="Render" priority="1000"><![CDATA[
-~ We need to set the name. If value 1 and 2 are the same then only list bonus.
-if (field[abValue].value = field[abValue2].value) then
-   field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
-   #situational[hero.child[svAll],"+2 vs. poison, spells, and spell-like abilities",field[name].text]
-      ~ Otherwise split it up 
-else
-    field[livename].text = field[thingname].text & " " & signed(field[abValue].value) & " Poison/" & signed(field[abValue2].value) & " Spells or Spell-like Effects"
-    #situational[hero.child[svAll],"+2 vs. poison",field[name].text]
-    #situational[hero.child[svAll],"+2 vs. spells and spell-like abilities",field[name].text]
-endif
+      ~ We need to set the name. If value 1 and 2 are the same then only list bonus.
+      if (field[abValue].value = field[abValue2].value) then
+         field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+         #situational[hero.child[svAll],"+2 vs. poison, spells, and spell-like abilities",field[name].text]
+            ~ Otherwise split it up 
+      else
+          field[livename].text = field[thingname].text & " " & signed(field[abValue].value) & " Poison/" & signed(field[abValue2].value) & " Spells or Spell-like Effects"
+          #situational[hero.child[svAll],"+2 vs. poison",field[name].text]
+          #situational[hero.child[svAll],"+2 vs. spells and spell-like abilities",field[name].text]
+      endif
 
-field[shortname].text = field[livename].text]]></eval>
-    <eval phase="PreLevel" priority="10000" index="2">~ Our value defaults to +2 for both Poison and Spells.
-field[abValue].value += 2
-field[abValue2].value += 2</eval>
+      field[shortname].text = field[livename].text]]></eval>
+    <eval phase="PreLevel" priority="10000" index="2">
+      ~ Our value defaults to +2 for both Poison and Spells.
+      field[abValue].value += 2
+      field[abValue2].value += 2</eval>
     </thing>
   <thing id="raS2Sturdy" name="Slow and Steady" description="Your base speed is never modified by encumbrance." compset="RaceSpec" replaces="raSturdy">
     <comment>For Shadow d20 games we never apply a penalty to Dwarves with slow and steady. So simply make Light/Medium equal to Max carry weight.</comment>
-    <tag group="RaceSort" tag="Movement" name="Movement" abbrev="Movement"/>
-    <tag group="SpecialTab" tag="Movement" name="Movement" abbrev="Movement"/>
-    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
-    <eval phase="PostAttr" priority="1950" index="2">~For Shadow d20 games we never apply a penalty to Dwarves with 
-~slow and steady. So simply make Light/Medium equal to Max carry
-~weight.
-herofield[tEncumLgt].value = herofield[tEncumHvy].value 
-herofield[tEncumMed].value = herofield[tEncumHvy].value
+    <tag group="RaceSort" tag="Movement"/>
+    <tag group="SpecialTab" tag="Movement"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PostAttr" priority="1950" index="2">
+      ~For Shadow d20 games we never apply a penalty to Dwarves with 
+      ~slow and steady. So simply make Light/Medium equal to Max carry
+      ~weight.
+      herofield[tEncumLgt].value = herofield[tEncumHvy].value 
+      herofield[tEncumMed].value = herofield[tEncumHvy].value
 
-~if (herofield[tEncumLev].value = 1) then
-~  herofield[tEncumLev].value = 0
-~endif</eval>
+      ~if (herofield[tEncumLev].value = 1) then
+      ~  herofield[tEncumLev].value = 0
+      ~endif</eval>
     <eval phase="PreLevel" priority="10000"><![CDATA[
       ~if we've been replaced, get out now
       doneif (tagis[Helper.SpcReplace] <> 0)
@@ -3022,10 +3037,11 @@ herofield[tEncumMed].value = herofield[tEncumHvy].value
     </thing>
   <thing id="raS2Stabil" name="Stability" description="+4 CMD against bull rushes and trips while standing on the ground." compset="RaceSpec" summary="+4 to avoid being bull rushed or tripped while standing." replaces="raStabil">
     <comment>Even though this only works when on the ground that will happen 99% of the time.  So for players like Jen show this in the correct Pick on the character.</comment>
-    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
-    <eval phase="Final">~ For our games show the bonus to the CMD scores
-hero.child[manBullRus].field[manCMD].value += field[abValue].value
-hero.child[manTrip].field[manCMD].value += field[abValue2].value</eval>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="Final">
+      ~ For our games show the bonus to the CMD scores
+      hero.child[manBullRus].field[manCMD].value += field[abValue].value
+      hero.child[manTrip].field[manCMD].value += field[abValue2].value</eval>
     <eval phase="Render" priority="1000" index="2"><![CDATA[
       ~ We need to set the name. If value 1 and 2 are the same then only list bonus.
       if (field[abValue].value = field[abValue2].value) then
@@ -3034,240 +3050,278 @@ hero.child[manTrip].field[manCMD].value += field[abValue2].value</eval>
       else
         field[livename].text = field[thingname].text & " " & signed(field[abValue].value) & " vs Bull Rush/" & signed(field[abValue2].value) & " vs Trip"
         endif]]></eval>
-    <eval phase="PreLevel" priority="10000" index="3"><![CDATA[~ Our value defaults to +4 for both Bull Rush and Trip.
-field[abValue].value += 4
-field[abValue2].value += 4
-      
-#situational[hero.child[manBullRus],signed(field[abValue2].value) & " CMD while standing on the ground",field[name].text]
-#situational[hero.child[manTrip],signed(field[abValue2].value) & " CMD while standing on the ground",field[name].text]]]></eval>
+    <eval phase="PreLevel" priority="10000" index="3"><![CDATA[
+      ~ Our value defaults to +4 for both Bull Rush and Trip.
+      field[abValue].value += 4
+      field[abValue2].value += 4
+
+      #situational[hero.child[manBullRus],signed(field[abValue2].value) & " CMD while standing on the ground",field[name].text]
+      #situational[hero.child[manTrip],signed(field[abValue2].value) & " CMD while standing on the ground",field[name].text]]]></eval>
     </thing>
   <thing id="raS2ElfEnc" name="Elven Immunities" description="+2 save bonus vs Enchantments." compset="RaceSpec" replaces="raElImmune">
     <fieldval field="shortname" value="+2 vs Enhantments"/>
-    <tag group="SpecType" tag="Resist" name="Resistance" abbrev="Resistance"/>
-    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    <tag group="SpecType" tag="Resist"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
-~if we've been replaced, get out now
-doneif (tagis[Helper.SpcReplace] <> 0)
-      
-#situational[hero.child[svAll],"+2 vs. enchantments",field[name].text]]]></eval>
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      #situational[hero.child[svAll],"+2 vs. enchantments",field[name].text]]]></eval>
     </thing>
   <thing id="rcDBBlack" name="Black" description="Lording over the darkest swamps and marshes, black dragons are the undisputed masters of their domain, ruling through cruelty and intimidation. Those who dwell within a black dragon&apos;s reach live in fear. Black dragons tend to make their lairs in remote parts of the swamp, preferably in caves at the bottom of dark and fetid pools. Inside, they pile up their filthy treasure and sleep amid the roots and muck. Black dragons prefer their food a bit rotten and will often allow a meal to sit in a pool for days before consuming it. Black dragons prefer treasures that do not rot or decay, making their hoard, full of coins, gemstones, jewelry, and other objects made from stone or metal.\n{b}Ancestry{/b} Black Dragons\n{b}Typical Alignment{/b} CE\n{b}Breath Weapon:{/b} Acid\n{b}Ability Modifiers{/b} +2 Dex, +2 Con, -2 Cha" compset="RaceCustom" summary="+2 Dex, +2 Con, -2 Cha" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Acid"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Dex, +2 Con, -2 Cha
+      X1_dex = 2
+      X1_con = 2
+      X1_cha = -2
 
-~ Set new ability scores +2 Dex, +2 Con, -2 Cha
-focus.field[rSTR].value += 0
-focus.field[rDEX].value += 2
-focus.field[rCON].value += 2
-focus.field[rINT].value += 0
-focus.field[rWIS].value += 0
-focus.field[rCHA].value += -2]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBBlue" name="Blue" description="Blue dragons are consummate schemers and obsessively orderly. In combat, blue dragons prefer to surprise foes if possible, and are not above retreating if the odds turn against them. They prefer to lair near those that they control, sometimes even within the confines of a city.\n{b}Ancestry{/b} Blue Dragons\n{b}Typical Alignment{/b} LE\n{b}Breath Weapon:{/b} Electricity\n{b}Ability Modifiers{/b} +2 Wis, +2 Int, -2 Dex" compset="RaceCustom" summary="+2 Wis, +2 Int, -2 Dex" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Elec"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_dex as number
+      var X1_int as number
+      var X1_wis as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Wis, +2 Int, -2 Dex
+      X1_wis = 2
+      X1_int = 2
+      X1_dex = -2
 
-~ Set new ability scores +2 Wis, +2 Int, -2 Dex
-focus.field[rSTR].value += 0
-focus.field[rDEX].value += -2
-focus.field[rCON].value += 0
-focus.field[rINT].value += 2
-focus.field[rWIS].value += 2
-focus.field[rCHA].value += 0]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBGreen" name="Green" description="Green dragons dwell in the ancient forests of the world, prowling under towering canopies in search of prey. Of all the chromatic dragons, green dragons are perhaps the easiest to deal with diplomatically.\n{b}Ancestry{/b} Green Dragons\n{b}Typical Alignment{/b} LE\n{b}Breath Weapon:{/b} Acid\n{b}Ability Modifiers{/b} +2 Cha, +2 Str, -2 Dex" compset="RaceCustom" summary="+2 Cha, +2 Str, -2 Dex" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Acid"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Cha, +2 Str, -2 Dex
+      X1_cha = 2
+      X1_str = 2
+      X1_dex = -2
 
-~ Set new ability scores +2 Cha, +2 Str, -2 Dex
-focus.field[rSTR].value += 2
-focus.field[rDEX].value += -2
-focus.field[rCON].value += 0
-focus.field[rINT].value += 0
-focus.field[rWIS].value += 0
-focus.field[rCHA].value += 2]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBRed" name="Red" description="Few creatures are more cruel and fearsome than the mighty red dragon. King of the chromatics, this terrible beast brings ruin and death to the lands that fall under its shadow.\n{b}Ancestry{/b} Red Dragons\n{b}Typical Alignment{/b} CE\n{b}Breath Weapon:{/b} Fire\n{b}Ability Modifiers{/b} +2 Str, +2 Con, -2 Dex" compset="RaceCustom" summary="+2 Str, +2 Con, -2 Dex" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Fire"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Str, +2 Con, -2 Dex
+      X1_str = 2
+      X1_con = 2
+      X1_dex = -2
 
-~ Set new ability scores +2 Str, +2 Con, -2 Dex
-focus.field[rSTR].value += 2
-focus.field[rDEX].value += -2
-focus.field[rCON].value += 2
-focus.field[rINT].value += 0
-focus.field[rWIS].value += 0
-focus.field[rCHA].value += 0]]></eval>
+      call X1RaceAttr
+
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBWhite" name="White" description="Although most consider it to be the weakest and most feral of the chromatic dragons, the white dragon makes up for its lack of cunning with sheer ferocity. White dragons dwell on remote, frozen mountaintops and in arctic lowlands, making their home in glittering caves full of ice and snow. They prefer their meals completely frozen.\n{b}Ancestry{/b} White Dragons\n{b}Typical Alignment{/b} CE\n{b}Breath Weapon:{/b} Cold\n{b}Ability Modifiers{/b} +2 Dex, +2 Con, -2 Int" compset="RaceCustom" summary="+2 Dex, +2 Con, -2 Int" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Cold"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Dex, +2 Con, -2 Int
+      X1_dex = 2
+      X1_con = 2
+      X1_int = -2
 
-~ Set new ability scores +2 Dex, +2 Con, -2 Int
-focus.field[rSTR].value += 0
-focus.field[rDEX].value += 2
-focus.field[rCON].value += 2
-focus.field[rINT].value += -2
-focus.field[rWIS].value += 0
-focus.field[rCHA].value += 0]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBBrass" name="Brass" description="Consummate conversationalists, brass dragons prefer to talk instead of fight. Brass dragons lair near humanoid settlements, where they can hear the most recent news and gossip.\n{b}Ancestry{/b} Brass Dragons\n{b}Typical Alignment{/b} CG\n{b}Breath Weapon:{/b} Fire\n{b}Ability Modifiers{/b} +2 Cha, +2 Dex, -2 Str" compset="RaceCustom" summary="+2 Cha, +2 Dex, -2 Str" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Fire"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Cha, +2 Dex, -2 Str
+      X1_cha = 2
+      X1_dex = 2
+      X1_str = -2
 
-~ Set new ability scores +2 Cha, +2 Dex, -2 Str
-focus.field[rSTR].value += -2
-focus.field[rDEX].value += 2
-focus.field[rCON].value += 0
-focus.field[rINT].value += 0
-focus.field[rWIS].value += 0
-focus.field[rCHA].value += 2]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBBronze" name="Bronze" description="Bronze dragons have been known to ally with travelers and adventurers if the cause and reward is right and just. \n{b}Ancestry{/b} Bronze Dragons\n{b}Typical Alignment{/b} LG\n{b}Breath Weapon:{/b} Electricity\n{b}Ability Modifiers{/b} +2 Cha, +2 Int, -2 Con" compset="RaceCustom" summary="+2 Cha, +2 Int, -2 Con" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Elec"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Cha, +2 Int, -2 Con
+      X1_cha = 2
+      X1_int = 2
+      X1_con = -2
 
-~ Set new ability scores +2 Cha, +2 Int, -2 Con
-focus.field[rSTR].value += 0
-focus.field[rDEX].value += 0
-focus.field[rCON].value += -2
-focus.field[rINT].value += 2
-focus.field[rWIS].value += 0
-focus.field[rCHA].value += 2]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBCopper" name="Copper" description="This whimsical dragon spends most of its time in combat trying to annoy and frustrate its enemies.\n{b}Ancestry{/b} Copper Dragons\n{b}Typical Alignment{/b} CG\n{b}Breath Weapon:{/b} Acid\n{b}Ability Modifiers{/b} +2 Wis, +2 Int, -2 Con" compset="RaceCustom" summary="+2 Wis, +2 Int, -2 Con" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Acid"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Wis, +2 Int, -2 Con
+      X1_wis = 2
+      X1_int = 2
+      X1_con = -2
 
-~ Set new ability scores +2 Wis, +2 Int, -2 Con
-focus.field[rSTR].value += 0
-focus.field[rDEX].value += 0
-focus.field[rCON].value += -2
-focus.field[rINT].value += 2
-focus.field[rWIS].value += 2
-focus.field[rCHA].value += 0]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBGold" name="Gold" description="Gold dragons are the epitome of virtue. Other metallic dragons revere their gold cousins as the agents of divine forces and the paragons of dragonkind, and often seek them for advice or aid.\n{b}Ancestry{/b} Gold Dragons\n{b}Typical Alignment{/b} LG\n{b}Breath Weapon:{/b} Fire\n{b}Ability Modifiers{/b} +2 Str, +2 Wis, -2 Dex" compset="RaceCustom" summary="+2 Str, +2 Wis, -2 Dex" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Fire"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Str, +2 Wis, -2 Dex
+      X1_str = 2
+      X1_wis = 2
+      X1_dex = -2
 
-~ Set new ability scores +2 Str, +2 Wis, -2 Dex
-focus.field[rSTR].value += 2
-focus.field[rDEX].value += -2
-focus.field[rCON].value += 0
-focus.field[rINT].value += 0
-focus.field[rWIS].value += 2
-focus.field[rCHA].value += 0]]></eval>
+      call X1RaceAttr
+      
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="rcDBSilver" name="Silver" description="Of all the dragons, silvers are the most courageous, holding themselves to a chivalrous code to help the weak, defeat evil, and behave in an honorable manner.\n{b}Ancestry{/b} Silver Dragons\n{b}Typical Alignment{/b} LG\n{b}Breath Weapon:{/b} Cold\n{b}Ability Modifiers{/b} +2 Str, +2 Cha, -2 Wis" compset="RaceCustom" summary="+2 Str, +2 Cha, -2 Wis" uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="BloodEner" tag="Cold"/>
     <tag group="AllowRCust" tag="rDragBorn"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600"><![CDATA[~set our focus to the hero's race
-perform hero.findchild[BaseRace].setfocus
-doneif (state.isfocus = 0)
+    <eval phase="First" priority="600"><![CDATA[
+      var X1_str as number
+      var X1_dex as number
+      var X1_con as number
+      var X1_int as number
+      var X1_wis as number
+      var X1_cha as number
 
-~ Base ability moidifers back to zero
-focus.field[rCHA].value = 0
-focus.field[rCON].value = 0
-focus.field[rDEX].value = 0
+      ~ Set new ability scores +2 Str, +2 Cha, -2 Wis
+      X1_str = 2
+      X1_cha = 2
+      X1_wis = -2
 
-~ Set new ability scores +2 Str, +2 Cha, -2 Wis
-focus.field[rSTR].value += 2
-focus.field[rDEX].value += 0
-focus.field[rCON].value += 0
-focus.field[rINT].value += 0
-focus.field[rWIS].value += -2
-focus.field[rCHA].value += 2]]></eval>
+      call X1RaceAttr
+
+      ~ Set the breath weapon type of damage
+      perform hero.childfound[raDBbrthw].pushtags[BloodEner.?]]]></eval>
     </thing>
   <thing id="raS2Stubbo" name="Stubborn" description="Members of this race gain a +2 racial bonus on Will saving throws to resist spells and spell-like abilities of the enchantment (charm) and enchantment (compulsion) subschools. In addition, if a member of this race fails such a save, it receives another save 1 round later to prematurely end the effect (assuming the spell or spell-like ability has a duration greater than 1 round). This second save is made at the same DC as the first.\n\nIf the member of the race has a similar ability from another source (such as a rogue&apos;s slippery mind class feature), it can only use one of these abilities per round, but can try one on the second round it the first reroll ability fails." compset="RaceSpec" summary="+2 to Will saves vs Enchantment (charm or compulsion). If fail can reroll 1 rd later.">
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="Final" priority="25000"><![CDATA[
-~ If we have been replaced then get out now
-doneif (tagis[Helper.SpcReplace] <> 0)
+      ~ If we have been replaced then get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
 
-#situational[hero.child[svWill],"+2 vs spells of enchantment (charm) and enchantment (compulsion) subschools",field[thingname].text]]]></eval>
+      #situational[hero.child[svWill],"+2 vs spells of enchantment (charm) and enchantment (compulsion) subschools",field[thingname].text]]]></eval>
     </thing>
   <thing id="raS2MinAC" name="Tough Hides" description="Ulfen Minotaurs have exceptionally tough hides, which gives them a +2 natural armor bonus to AC. This ability replaces a Minotaurs gore attack and powerful charge." compset="AltRaceTrt" uniqueness="unique">
     <usesource source="s20PFCamp"/>
@@ -3276,27 +3330,28 @@ doneif (tagis[Helper.SpcReplace] <> 0)
     <tag group="RaReplace" tag="raPowCharg"/>
     <tag group="Helper" tag="SpecUp"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ Set to +2 bonus
-field[abValue].value += 2
-~ +2 bonus to Natural AC
-hero.child[mNatural].field[Bonus].value += field[abValue].value
-~ Set summary text
-field[abSumm].text = signed(field[abValue].value) & " natural armor bonus to AC."]]></eval>
+      ~ Set to +2 bonus
+      field[abValue].value += 2
+      ~ +2 bonus to Natural AC
+      hero.child[mNatural].field[Bonus].value += field[abValue].value
+      ~ Set summary text
+      field[abSumm].text = signed(field[abValue].value) & " natural armor bonus to AC."]]></eval>
     <eval phase="First" priority="50" index="2"><![CDATA[
-~ Set ART tag on hero so we don't bootstrap the horns
-perform hero.assign[Shadowd20.raS2MinAC]]]></eval>
+      ~ Set ART tag on hero so we don't bootstrap the horns
+      perform hero.assign[Shadowd20.raS2MinAC]]]></eval>
     </thing>
   <thing id="raS2MinNaS" name="Natural Sailor" description="Ulfen Minotaurs are people familiar with the sea, and are naturally adept at skills useful among seafarers.  They receive a +2 racial bonus on Intimidate, Swim and Acrobatic checks. This ability replaces Stubborn." compset="AltRaceTrt" uniqueness="unique">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="Rd20Mino"/>
     <tag group="RaReplace" tag="raS2Stubbo"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="PreLevel" priority="10000">~ Set to +2 bonus
-field[abValue].value += 2
-~ Give a racial bonus
-#racialbonus[skAcrobat] += field[abValue].value
-#racialbonus[skIntim] += field[abValue].value
-#racialbonus[skSwim] += field[abValue].value</eval>
+    <eval phase="PreLevel" priority="10000">
+      ~ Set to +2 bonus
+      field[abValue].value += 2
+      ~ Give a racial bonus
+      #racialbonus[skAcrobat] += field[abValue].value
+      #racialbonus[skIntim] += field[abValue].value
+      #racialbonus[skSwim] += field[abValue].value</eval>
     </thing>
   <thing id="raS2MinEnd" name="Endurance" description="Ulfen Minotaurs are people of extreme conditions and receive the Endurance feat as a bonus feat. This ability replaces Hulking Brute." compset="AltRaceTrt" uniqueness="unique">
     <usesource source="s20PFCamp"/>
@@ -3311,36 +3366,36 @@ field[abValue].value += 2
     <tag group="RaReplace" tag="raS2Stubbo"/>
     <tag group="Helper" tag="SpecUp"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
-~ Set to +2 bonus
-field[abValue].value += 2
+      ~ Set to +2 bonus
+      field[abValue].value += 2
 
-#racialsituational[hero.child[aWIS],signed(field[abValue].value) & " to all Wisdom checks",field[name].text]
-var nValid as number
+      #racialsituational[hero.child[aWIS],signed(field[abValue].value) & " to all Wisdom checks",field[name].text]
+      var nValid as number
 
-~ Give penalty to Wis based skills
-foreach pick in hero from BaseSkill
-  nValid = 0
-  ~ If we have a skill override then process here
-  if (eachpick.tagcount[SkillOver.?] <> 0) then
-     ~ Check Skill Overrides
-     if (eachpick.tagis[SkillOver.aWIS] <> 0) then
-        nValid += 1
-     endif
-  ~ if we don't have a skill override then process here
-  else
-     ~ Check normal skill attributes
-     if (eachpick.islinkage[skillattr] <> 0) then
-        if (eachpick.linkage[skillattr].tagis[thingid.aWIS] <> 0) then
-           nValid += 1
+      ~ Give penalty to Wis based skills
+      foreach pick in hero from BaseSkill
+        nValid = 0
+        ~ If we have a skill override then process here
+        if (eachpick.tagcount[SkillOver.?] <> 0) then
+           ~ Check Skill Overrides
+           if (eachpick.tagis[SkillOver.aWIS] <> 0) then
+              nValid += 1
+           endif
+        ~ if we don't have a skill override then process here
+        else
+           ~ Check normal skill attributes
+           if (eachpick.islinkage[skillattr] <> 0) then
+              if (eachpick.linkage[skillattr].tagis[thingid.aWIS] <> 0) then
+                 nValid += 1
+              endif
+           endif
         endif
-     endif
-  endif
 
-  ~ If nValid skill then apply the bonus
-  if (nValid <> 0) then
-     eachpick.field[Bonus].value += field[abValue].value
-  endif
-nexteach]]></eval>
+        ~ If nValid skill then apply the bonus
+        if (nValid <> 0) then
+           eachpick.field[Bonus].value += field[abValue].value
+        endif
+      nexteach]]></eval>
     </thing>
   <thing id="fcInqS2Min" name="Ulfen Minotaur Inquisitor" description="+1/2 on Sense Motive and Survival checks." compset="FavClass" summary="+1/2 on Sense Motive and Survival checks." uniqueness="unique">
     <fieldval field="fcName" value="+½ Sense and Survival"/>
@@ -3349,13 +3404,13 @@ nexteach]]></eval>
     <tag group="IsRace" tag="Rd20Mino"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ Calc bonus
-field[abValue].value += round(field[fcCount].value/2,0,-1)
+      ~ Calc bonus
+      field[abValue].value += round(field[fcCount].value/2,0,-1)
 
-field[livename].text = "+" & field[abValue].value & " on Sense Motive and Survival checks."
+      field[livename].text = "+" & field[abValue].value & " on Sense Motive and Survival checks."
 
-#skillbonus[skSenseMot] += field[abValue].value
-#skillbonus[skSurvival] += field[abValue].value]]></eval>
+      #skillbonus[skSenseMot] += field[abValue].value
+      #skillbonus[skSurvival] += field[abValue].value]]></eval>
     </thing>
   <thing id="fcMnkS2Min" name="Ulfen Minotaur Monk" description="+1/3 to CMD." compset="FavClass" summary="+1/3 to CMD." uniqueness="unique">
     <fieldval field="fcName" value="+1/3 CMD"/>
@@ -3363,73 +3418,11 @@ field[livename].text = "+" & field[abValue].value & " on Sense Motive and Surviv
     <tag group="IsRace" tag="Rd20Mino"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <tag group="FavClass" tag="cMonk"/>
-    <eval phase="PostLevel" priority="10000">~ Calc bonus
-field[abValue].value += round(field[fcCount].value/3,0,-1)
-~ Give bonus to CMD only
-hero.child[ManeuvDef].field[Bonus].value += field[abValue].value</eval>
-    </thing>
-  <thing id="rS2Dhampir" name="Dhampir" description="Cursed from birth, dhampirs result from the rare and unnatural union of vampires and humans. Although not driven to consume blood for survival as their undead progenitors are, dhampirs nonetheless know a lifelong desire for blood that nothing else can truly sate. Those who survive their early years face a life of fear and mistrust, their unnatural beauty and incredible reflexes marking them as scions of the night just as surely as their sensitivity to light. Although polluted by undeath, dhampirs do grow old and die, aging at a rate similar to elves.\n\n{B}Shadow d20:{/b} This removes the immunity to level drain but also removes the unplayable ability of needing to be healed by Negative Energy. This leaves the race at 11RP." compset="Race">
-    <fieldval field="rDEX" value="2"/>
-    <fieldval field="rCON" value="-2"/>
-    <fieldval field="rCHA" value="2"/>
-    <fieldval field="rAgeMin" value="110"/>
-    <fieldval field="rHeightMnF" value="53"/>
-    <fieldval field="rWeightMnF" value="85"/>
-    <fieldval field="rHeightMnM" value="58"/>
-    <fieldval field="rWeightMnM" value="120"/>
-    <fieldval field="rSpCastLev" value="1"/>
-    <fieldval field="rEnviron" value="Any land"/>
-    <fieldval field="rOrgan" value="Solitary, pair, or court (3-8 and 1 vampire)"/>
-    <fieldval field="rTreasure" value="Npc gear (chain shirt, rapier, other treasure)"/>
-    <fieldval field="rDescript" value="This unnaturally graceful man moves without a sound, his gaze just as piercing as the needle-sharp blade he effortlessly wields."/>
-    <fieldval field="rSpecSing" value="Dhampir Heritage"/>
-    <usesource source="srcDhampir"/>
-    <tag group="AgeC3Dice" tag="10" name="10" abbrev="10"/>
-    <tag group="AgeC3Size" tag="6" name="d6" abbrev="d6"/>
-    <tag group="HasType" tag="tpHumanoid" name="Humanoid" abbrev="Humanoid"/>
-    <tag group="HeightDice" tag="2" name="2" abbrev="2"/>
-    <tag group="HeightSize" tag="10" name="d10" abbrev="d10"/>
-    <tag group="Helper" tag="OptCustom" name="OptCustom" abbrev="OptCustom"/>
-    <tag group="Language" tag="Any" name="Any" abbrev="Any"/>
-    <tag group="RaceSize" tag="Medium0" name="Medium" abbrev="Medium"/>
-    <tag group="RaceType" tag="Feature"/>
-    <tag group="WeightMult" tag="5" name="5" abbrev="5"/>
-    <tag group="AgeC1Dice" tag="4" name="4" abbrev="4"/>
-    <tag group="AgeC1Size" tag="6" name="d6" abbrev="d6"/>
-    <tag group="AgeC2Dice" tag="6" name="6" abbrev="6"/>
-    <tag group="AgeC2Size" tag="6" name="d6" abbrev="d6"/>
-    <tag group="Shadowd20" tag="Race" name="Shadow d20 Race"/>
-    <bootstrap thing="raDhaUndRe"></bootstrap>
-    <bootstrap thing="stDhampir"></bootstrap>
-    <bootstrap thing="fcAlcDha"></bootstrap>
-    <bootstrap thing="fcClrDha"></bootstrap>
-    <bootstrap thing="fcFtrDha"></bootstrap>
-    <bootstrap thing="fcInqDha"></bootstrap>
-    <bootstrap thing="fcRogDha"></bootstrap>
-    <bootstrap thing="fcSorDha"></bootstrap>
-    <bootstrap thing="fcWizDha"></bootstrap>
-    <bootstrap thing="raLowLight"></bootstrap>
-    <bootstrap thing="raDhDetUnd"></bootstrap>
-    <bootstrap thing="raDarkVis">
-      <autotag group="Value" tag="60"/>
-      </bootstrap>
-    <bootstrap thing="raLightSen"></bootstrap>
-    <bootstrap thing="raDhaManip"></bootstrap>
-    <eval phase="First" priority="10000"><![CDATA[
-~ If we have the Blood of the Night source enabled, we have special
-~ abilities.
-If (hero.tagis[source.PCBldNight] <> 0) then
-    ~we get one heritage pick
-    ~field[rGiveSpec].value = 1
-Endif]]></eval>
-    <eval phase="First" index="2"><![CDATA[
-~ If Advanced Race Guide not active get out now
-doneIf (hero.tagis[source.ARG] <> 1)
-
-~ set that we are the ARG Dhampir
-perform hero.assignstr["Race.rDhampir"]
-perform hero.assignstr["IsRace.rDhampir"]
-perform hero.assignstr["RaceEquip.rDhampir"]]]></eval>
+    <eval phase="PostLevel" priority="10000">
+      ~ Calc bonus
+      field[abValue].value += round(field[fcCount].value/3,0,-1)
+      ~ Give bonus to CMD only
+      hero.child[ManeuvDef].field[Bonus].value += field[abValue].value</eval>
     </thing>
   <thing id="raShifting" name="Shifting" description="A shifter can tap into her lycanthropic heritage to gain short bursts of physical power. A shifter can enter a state that is superficially similar to a barbarian’s rage. Each shifter has one of six shifter traits-characteristics that manifest themselves when a character is shifting. Each shifter trait provides a +2 bonus to one of the character’s physical ability scores (Strength, Dexterity, or Constitution) and grants some other advantage as well. Shifter traits are described in the following section.\n\nA shifter can shift for a number of rounds per day equal to 3 + Constitution modifier + half her character level. Starting a shift or ending is a free action that can only happen on a characters turn. Every shifter feat a character takes allows her to shift for 1 additional round per day.  For every two shifter feats a character takes, the shifter gains a bonus 1 round per day on top of the one gained for the shifter feat itself. In example if a shifter has two shifter feats they can shift for 3 additional rounds per day not 2." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
@@ -3784,5 +3777,13 @@ hero.childfound[cAlcMutage].field[abDuration].value += field[abValue].value</eva
 
       #situational[hero.childfound[ArmorClass],signed(field[abValue].value) & " Dodge bonus vs. aberrations",field[thingname].text]
       #situational[hero.childfound[manGrapple],signed(field[abValue2].value) & " bonus to CMB vs. aberrations",field[thingname].text]]]></eval>
+    </thing>
+  <thing id="raS2Dhamp1" name="More Human than Dead" description="You are actually more human than dead and lose your &quot;Negative Energy Affinity&quot; racial ability allowing you to be healed like a living person." compset="AltRaceTrt" summary="You react to channel energy like a living person." uniqueness="unique">
+    <usesource source="s20PFCamp"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="AllowRCust" tag="rDhampir"/>
+    <tag group="RaReplace" tag="raNegAffin"/>
+    <tag group="AbilType" tag="Extra"/>
     </thing>
   </document>
