@@ -363,7 +363,7 @@ version 1.40 - Released May 12, 2013
       ~ If we are a NPC then don't require ID for magic items
       doneif (hero.tagis[CharType.typNPC] = 1) 
 
-      foreach pick in hero from MyGear where "gType.OilPotion|gType.Scroll|gType.Wand"
+      foreach pick in hero from MyGear where "gType.OilPotion|gType.Scroll|gType.Wand & !Shadowd20.SkipDomain"
          perform eachpick.assign[User.NeedDomain]
       nexteach]]></eval>
     </thing>
@@ -378,7 +378,7 @@ version 1.40 - Released May 12, 2013
       doneif (hero.tagis[CharType.typNPC] = 1) 
 
       ~ All Wondrous items EXCEPT for the Shadow d20 -Custom Magic Item-
-      foreach pick in hero from MyGear where "(gType.Wonder|gType.Ring) & !thingid.ioS2Custom"
+      foreach pick in hero from MyGear where "(gType.Wonder|gType.Ring) & !thingid.ioS2Custom & !Shadowd20.SkipDomain"
          perform eachpick.assign[User.NeedDomain]
       nexteach]]></eval>
     </thing>
@@ -393,7 +393,7 @@ version 1.40 - Released May 12, 2013
       doneif (hero.tagis[CharType.typNPC] = 1) 
 
       ~ All Rods
-      foreach pick in hero from MyGear where "gType.Rod"
+      foreach pick in hero from MyGear where "gType.Rod & !Shadowd20.SkipDomain"
          perform eachpick.assign[User.NeedDomain]
       nexteach]]></eval>
     </thing>

@@ -18,6 +18,7 @@
     <value id="SAP"         name="Standard Adventuring Pack Item"/>       <!-- Shadow d20 SAP kit item tag -->
     <value id="TwoWep"      name="Shadow d20 Two-Weapon Fighting"/>
     <value id="DwfSubRace"  name="Dwarven Sub-Race"/>
+    <value id="SkipDomain"  name="Dont User.NeedDomain tag Item"/>
 
     <!-- PHB2 Druid Feral Archetype Tags -->
     <value id="FeralLevel"  name="Feral Extra Level"/>
@@ -31,7 +32,7 @@
     <value id="Predator9"   name="Predator 9th"/>
     <value id="Predator10"  name="Predator 10th"/>
     <value id="PredatorMo"  name="Predator Form Mobility"/>               <!-- PHB2 Druid Varient Predator Form 4th level -->
-    <value id="Ferocious"   name="Ferocious Predator Form"/>                <!-- PHB2 Druid Varient Ferocious Slayer Form -->
+    <value id="Ferocious"   name="Ferocious Predator Form"/>              <!-- PHB2 Druid Varient Ferocious Slayer Form -->
     <value id="FerImpCrit"  name="Ferocious Slayer Improved Critical"/>   <!-- PHB2 Druid Varient Ferocious Slayer Form 10th-->
     <value id="Aerial"      name="Aerial Form"/>                          <!-- PHB2 Druid Varient Aerial Form -->
     <value id="Aerial6"     name="Aerial 6th"/>

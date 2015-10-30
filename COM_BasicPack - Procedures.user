@@ -90,6 +90,52 @@
     ]]>
   </procedure>
 
+  <!-- =================================================================== -->
+  <!-- Correct set the Custom Magic Weapon or Armor name                   -->
+  <!-- =================================================================== -->
+  <procedure id="X1MagName" context="pick"><![CDATA[
+    ~ Should run at Render/99999999 and run on the "Weapon, Magic" 
+    ~ or "Armor, Magic" pick.
+
+    ~ Correct the Weapon or Armor name which
+    ~ is lost when any item power or made MW is added.
+    If (tagis[EquipType.Masterwork] <> 0) Then
+       ~ Reset the live name as it gets destroyed
+       field[livename].text &= " " & lowercase(field[thingname].text)
+    Endif
+    ]]>
+  </procedure>
+
+  <!-- =================================================================== -->
+  <!-- Set race ability scores for a new alternate heritage.               -->
+  <!-- =================================================================== -->
+  <procedure id="X1RaceAttr" context="pick"><![CDATA[
+    ~ Must run at at First/600 to change ability scores
+    var X1_str as number
+    var X1_dex as number
+    var X1_con as number
+    var X1_int as number
+    var X1_wis as number
+    var X1_cha as number
+
+    ~ Set our focus to the hero's race
+    perform hero.findchild[BaseRace].setfocus
+    doneif (state.isfocus = 0)
+    
+    ~ Set new ability scores values here and default the
+    ~ attributes not set to zero.
+    focus.field[rSTR].value = X1_str
+    focus.field[rDEX].value = X1_dex
+    focus.field[rCON].value = X1_con
+    focus.field[rINT].value = X1_int
+    focus.field[rWIS].value = X1_wis
+    focus.field[rCHA].value = X1_cha
+    ]]>
+  </procedure>
+
+
+
+
 
   <procedure id="IncSwarm" context="pick"><![CDATA[
     ~ this increases the number of dice damage in a swarm attack by one.

@@ -310,4 +310,42 @@
         endif
       next]]></eval>
     </thing>
+  <thing id="ioS2TatDra" name="Tattoo, Dragon" description="A special tattoo that appeared on the hero&apos;s after discovering a dragon egg." compset="Wondrous" summary="+2 Bonus on a single skill.">
+    <fieldval field="abValue" value="2"/>
+    <usesource source="srcUndDark"/>
+    <tag group="Hero" tag="EqpPFRune"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="fShowWhat" tag="Skills"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Shadowd20" tag="SkipDomain"/>
+    <bootstrap thing="ioS2TatDr2"></bootstrap>
+    <eval phase="PreLevel" priority="4000">
+     ~ Give +2 bonus to skill
+     field[usrChosen1].chosen.field[Bonus].value += field[abValue].value</eval>
+    </thing>
+  <thing id="ioS2TatDr2" name="Tattoo, Dragon" description="A special tattoo that appeared on the hero&apos;s after discovering a dragon egg. You gain access to a spell-like ability with a caster level equal your character level.  You can use either spell one time per day." compset="Wondrous" summary="Spell-Like ability usable 1/day.">
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="usrCandid1" value="component.BaseSpell &amp; (sLevel.1|sLevel.2) &amp; (sClass.cHelpWiz|sClass.cHelpClr) &amp; !thingid.spS2Pearl? &amp; !thingid.spUnused?"/>
+    <fieldval field="trkMax" value="1"/>
+    <fieldval field="usrCandid2" value="component.BaseSpell &amp; (sLevel.1|sLevel.2) &amp; (sClass.cHelpWiz|sClass.cHelpClr) &amp; !thingid.spS2Pearl? &amp; !thingid.spUnused?"/>
+    <usesource source="srcUndDark"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Shadowd20" tag="SkipDomain"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="Hero" tag="EqpPFRune"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <eval phase="PostLevel" priority="10000">
+      perform field[usrChosen1].chosen.pulltags[SpInfo.?]
+      perform field[usrChosen2].chosen.pulltags[SpInfo.?]</eval>
+    </thing>
   </document>
