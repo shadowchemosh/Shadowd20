@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="iS2KitsKag" name="Armor of the Kitsune-kage" description="Whenever the wearer of this black suit of +2 Lamellar (leather) armor is in dim light or less, you enjoy an additional +2 dodge bonus, an increased base speed of 10 ft. per round, and a +8 bonus to Stealth checks." compset="MagicArmor">
+    <fieldval field="gSizeCost" value="210"/>
+    <fieldval field="gCost" value="15300"/>
+    <fieldval field="BonEnhance" value="2"/>
+    <fieldval field="iCL" value="9"/>
+    <fieldval field="actName" value="Dim Light"/>
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="abValue2" value="10"/>
+    <fieldval field="abValue3" value="8"/>
+    <usesource source="src1Shot"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If not activated get out now!
+      doneif (field[abilActive].value = 0)
+
+      hero.child[ArmorClass].field[tACDodge].value += field[abValue].value
+      hero.child[Speed].field[Bonus].value += field[abValue2].value
+      #skillbonus[skStealth] += field[abValue3].value</eval>
+    <child entity="mSpecMagic">
+      <bootstrap thing="mLamLeathe"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iS2KumoKag" name="Armor of the Kumo-kage" description="Whenever the wearer of this black suit of +2 Lamellar (leather) armor is in dim light or less, you enjoy an additional +8 bonus to all Climb, Escape Artist and Stealth checks." compset="MagicArmor">
+    <fieldval field="gSizeCost" value="210"/>
+    <fieldval field="gCost" value="13600"/>
+    <fieldval field="BonEnhance" value="2"/>
+    <fieldval field="iCL" value="9"/>
+    <fieldval field="actName" value="Dim Light"/>
+    <fieldval field="abValue3" value="8"/>
+    <usesource source="src1Shot"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ If not equipped get out now!
+      doneif (field[gIsEquip].value = 0)
+      ~ If not activated get out now!
+      doneif (field[abilActive].value = 0)
+
+      #skillbonus[skClimb] += field[abValue3].value
+      #skillbonus[skEscape] += field[abValue3].value
+      #skillbonus[skStealth] += field[abValue3].value</eval>
+    <child entity="mSpecMagic">
+      <bootstrap thing="mLamLeathe"></bootstrap>
+      </child>
+    </thing>
+  </document>

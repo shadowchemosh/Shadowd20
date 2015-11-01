@@ -33,5 +33,13 @@
     sortorder="10"
     description="Brians Underdark/Drow campaign.">
     </source>
+  <source
+    id="src1Shot"
+    name="Special One Shot Games"
+    selectable="yes"
+    parent="pS20Camp"
+    sortorder="20"
+    description="Special one shot games (ie Halloween).">
+    </source>
     
 </document>
