@@ -315,6 +315,16 @@
       ~ Metaforg PrC
       levels += #levelcount[PUMetafrg]
 
+      ~ As Aegis doesn't account for xExtraLev, if we have the Student of the 
+      ~ Astral Suit feat, calculate our Aegis level as being 4 higher (not to
+      ~ exceede total character level). This needs to run after taking any 
+      ~ Metaforge levels into account.
+      if (#hasfeat[fPUStdntAS] = 1) then
+        levels += 4
+        if (levels > #totallevelcount[]) then
+          levels = #totallevelcount[]
+        endif
+      endif
     endif
     ]]>
   </procedure>

@@ -150,5 +150,25 @@
     ]]>
   </procedure>
 
+  <procedure id="X1HaveMate" scripttype="validate"><![CDATA[
+    ~ This procedure tests if suite of armor already has a specific type of material
+    var X1HaveMate as number
+    X1HaveMate = 0
+    
+    ~ If not a pick then we are valid
+    if (@ispick <> 1) then
+      X1HaveMate = 1
+    endif
+    
+    ~ If we are a not a custom armor we are valid
+    if (tagis[portal.mMagChoose] <> 1) then
+      X1HaveMate = 1
+    endif
+    ~ We can't have any other special material
+    if (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1) then
+      X1HaveMate = 1
+    endif
+    ]]>
+  </procedure>
 
 </document>

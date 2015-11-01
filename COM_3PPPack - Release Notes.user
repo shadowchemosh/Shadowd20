@@ -8,6 +8,26 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v1.14 October 31, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (Charlie & Niccole Luce) - Fix Student of the Astral Suite feat. In addition to the suit customization point adds, the Student of the Astral Suit feat should also add 4 effective Ageis levels for purposes of what customizations the character can put on the suit.</li>
+<li>Ultimate Psionics (psych777) - Misc fixes to feats: Knockdown Shot & Lingering Power.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (delawless) - Added new tactician archetypes: Amplifier, Battle Medic, Commander, Fear Projector and Metanexus.</li>
+<li>Ultimate Psionics (delawless) - Added Missing Powers: Ardent Legion, Baleful Mind Trap, Shield Wall & Shift the Tide</li>
+<li>Ultimate Psionics (psych777) - Added new feats: Killer's Vitality, Knightmare & Levitative Transport.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) To support different packages with the same need of the "Half-Construct" subtype I moved the subtype from the 3PP Pack (Ultimate Psionics) into the Basic Pack. This will allow me to use it across packs. To support a new Legendary Players guide I moved some of the .1st parent values from the 3PP Pack to the Basic Pack.</li>
+<li>Ultimate Psionics (Charlie & Niccole Luce) - Updated the PUPreReqs procedure to take these 4 levels into account.</li>
+</ul>
+
+
 <strong>v1.13 September 6, 2015</strong>
 
 <strong>Bug Fixes</strong>

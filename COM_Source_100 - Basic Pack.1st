@@ -11,7 +11,7 @@
   <!-- ============================================== -->
   <source
     id="pBasicPack"
-    name="Basic Pack (v3.14)"
+    name="Basic Pack (v3.15)"
     selectable="no"
     parent="pComPacks"
     sortorder="10"

@@ -219,8 +219,7 @@
         perform assign[Hide.Special]
         done
       endif]]></eval>
-    <eval phase="PostLevel" priority="20050" index="2">
-      ~ If we are NOT active get out now
+    <eval phase="PostLevel" priority="20050" index="2">~ If we are NOT active get out now
       doneif (field[abilAct2].value = 0)
       ~ If the combat Flanking is already active get out now
       doneif (hero.tagis[Condition.pstFlankin] = 1)
@@ -254,5 +253,45 @@
       foreach pick in hero from BaseWep
          #extradamage[eachpick, sSneak ,field[name].text]
       nexteach]]></eval>
+    </thing>
+  <thing id="pS2wBane" name="Inquisitor: Bane" description="At 5th level, an inquisitor can imbue one of her weapons with the bane weapon special ability as a swift action. She must select one creature type when she uses this ability (and a subtype if the creature type selected is humanoid or outsider). Once selected, the type can be changed as a swift action. This ability only functions while the inquisitor wields the weapon. If dropped or taken, the weapon resumes granting this ability if it is returned to the inquisitor before the duration expires. This ability lasts for a number of rounds per day equal to the inquisitor’s level. These rounds do not need to be consecutive.\n\n{b}Calculated Effects:{/b} Gives the Bane weapon enhacement of +2 bonus on to hit and damage and +2d6 vs text next to the weapon. Enter in the creature type into the &quot;(Source)&quot; section. \n\n{B}Note:{/b} If you see this adjustment twice then remove it and re-add it under the Adjust-&gt;Convferred abiltity section." compset="InPlay">
+    <fieldval field="pSource" value="Bane"/>
+    <fieldval field="pMaximum" value="2"/>
+    <fieldval field="pMinimum" value="2"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="AdjInfo"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="Adjustment" tag="YourWep"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~if nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen = 0)
+
+      ~ Give a +2 bonus to hit and damage
+      field[pChosen].chosen.field[Bonus].value += field[pAdjust].value
+      ~ Display extra damage on the chosen weapon
+      #extradamage[field[pChosen].chosen,"+2d6 vs. " & field[pSource].text,field[name].text]]]></eval>
+    </thing>
+  <thing id="pS2wGrBane" name="Inquisitor: Greater Bane" description="At 5th level, an inquisitor can imbue one of her weapons with the bane weapon special ability as a swift action. She must select one creature type when she uses this ability (and a subtype if the creature type selected is humanoid or outsider). Once selected, the type can be changed as a swift action. This ability only functions while the inquisitor wields the weapon. If dropped or taken, the weapon resumes granting this ability if it is returned to the inquisitor before the duration expires. This ability lasts for a number of rounds per day equal to the inquisitor’s level. These rounds do not need to be consecutive.\n\nAt 12th level, whenever an inquisitor uses her bane ability, the amount of bonus damage dealt by the weapon against creatures of the selected type increases to 4d6.\n\n{b}Calculated Effects:{/b} Gives the Bane weapon enhacement of +2 bonus on to hit and damage and +4d6 vs text next to the weapon. Enter in the creature type into the &quot;(Source)&quot; section. \n\n{B}Note:{/b} If you see this adjustment twice then remove it and re-add it under the Adjust-&gt;Convferred abiltity section." compset="InPlay">
+    <fieldval field="pSource" value="Bane"/>
+    <fieldval field="pMaximum" value="2"/>
+    <fieldval field="pMinimum" value="2"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="AdjInfo"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <tag group="Adjustment" tag="YourWep"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="PreLevel" priority="10000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~if nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen = 0)
+
+      ~ Give a +2 bonus to hit and damage
+      field[pChosen].chosen.field[Bonus].value += field[pAdjust].value
+      ~ Display extra damage on the chosen weapon
+      #extradamage[field[pChosen].chosen,"+4d6 vs. " & field[pSource].text,field[name].text]]]></eval>
     </thing>
   </document>

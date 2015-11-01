@@ -1777,72 +1777,81 @@ call multTarget]]></eval>
     </thing>
   <thing id="xCBBreathW" name="Breath Weapon" description="Some creatures can exhale a cone, line, or cloud of energy or other magical effects. A breath weapon attack usually deals damage and is often based on some type of energy. Breath weapons allow a Reflex save for half damage (DC 10 + 1/2 breathing creature&apos;s racial HD + breathing creature&apos;s Con modifier; the exact DC is given in the creature&apos;s descriptive text). A creature is immune to its own breath weapon unless otherwise noted. Some breath weapons allow a Fortitude save or a Will save instead of a Reflex save. Each breath weapon also includes notes on how often it can be used, even if this number is limited in times per day." compset="RaceSpec" uniqueness="useronce">
     <comment>Set the tag BloodEner.? for the appropiate energy type
-field[abValue] is the # of dice
-field[abValue2] is the type of dice
-field[abRange] is the range
-
-we use the tags BreathShp.Line or BreathShp.Cone for breath shape
-
-BreathSve.Fortitude, Will, or Reflex for save type
-
-SaveEff.Half or Negates for save effect</comment>
+      field[abValue] is the # of dice
+      field[abValue2] is the type of dice
+      field[abRange] is the range
+      we use the tags BreathShp.Line or BreathShp.Cone for breath shape
+      BreathSve.Fortitude, Will, or Reflex for save type
+      SaveEff.Half or Negates for save effect</comment>
     <fieldval field="trkMax" value="1"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
-    <tag group="StandardDC" tag="aCON" name="Constitution" abbrev="Constitution"/>
-    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
-    <tag group="Custom" tag="BreathWep" name="Breath Weapon"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="StandardDC" tag="aCON"/>
+    <tag group="AbilType" tag="Super"/>
     <tag group="User" tag="Tracker"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
-    <eval phase="Render" priority="90000"><![CDATA[~ Generate our livename. 
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="SbNameBase" tag="FieldShort"/>
+    <tag group="SbNameBase" tag="CaseKeep"/>
+    <bootstrap thing="aaBreathWp"></bootstrap>
+    <eval phase="Final" priority="15000"><![CDATA[
+      ~ generate breath weapon 
+      ~ we store this in abSumm to begin with
+      ~ we write to livenamte at render 90000
 
-field[livename].text = "Breath Weapon (" & field[abSumm].text & ")"
+      ~ field[abValue] is the # of dice
+      ~ field[abValue2] is the type of dice
+      ~ field[abRange] is the range
+      ~ we use the tags BreathShp.Line or BreathShp.Cone for breath shape
+      ~ BreathSve.Fortitude, Will, or Reflex for save type
+      ~ SaveEff.Half or Negates for save effect
 
-call abilLabel]]></eval>
-    <eval phase="Final" priority="15000" index="2"><![CDATA[~ generate breath weapon 
-~ we store this in abSumm to begin with
-~ we write to livenamte at render 90000
+      ~ set damage
+      ~ if we have override tag damage is given by livename
+      var damType as string
 
-~ field[abValue] is the # of dice
-~ field[abValue2] is the type of dice
-~ field[abRange] is the range
-~ we use the tags BreathShp.Line or BreathShp.Cone for breath shape
-~ BreathSve.Fortitude, Will, or Reflex for save type
-~ SaveEff.Half or Negates for save effect
+      if (tagis[UnivAbil.Override] = 0) then
+       if (field[abValue2].value > 0) then
+         damType = field[abValue].value & "d" & field[abValue2].value
+       else
+         damType = field[abValue].value
+       endif
 
-~ set damage
-~ if we have override tag damage is given by livename
-var damType as string
+      ~ set damage type + any extras
+        if (tagis[BloodEner.?] <> 0) then
+           damType &= " " & lowercase(tagabbrevs[BloodEner.?]) & field[abText].text
+        else
+           damType &= field[abText].text
+        endif
+      else
+        damType = field[livename].text
+      endif
 
-if (tagis[UnivAbil.Override] = 0) then
- if (field[abValue2].value > 0) then
-   damType = field[abValue].value & "d" & field[abValue2].value & " " 
- else
-   damType = field[abValue].value & " "
- endif
-   
-~ set damage type + any extras
-  if (tagis[BloodEner.?] <> 0) then
-     damType &= lowercase(tagnames[BloodEner.?]) & field[abText].text
-  else
-     damType &= field[abText].text
-  endif
-else
-  damType = field[livename].text
+      ~ put things together
+      ~ shape and range
+      field[abSumm].text = field[abRange].value & "ft " & lowercase(tagnames[BreathShp.?]) & "," 
+      ~ damage
+      field[abSumm].text &= damType & "," 
+      ~ save
+      field[abSumm].text &= tagabbrevs[BreathSve.?] & " DC" & field[abDC].value & " " & lowercase(tagnames[SaveEff.?]) 
+      ~ rate
+      field[abSumm].text &= "," & field[trkMax].value & tagnames[Usage.?]
+      
+      ~ Statblock uses the shortfield so build short name here
+      field[shortname].text = "Breath Weapon (DC" & field[abDC].value & " " & tagabbrevs[BreathSve.?] & "," & damType & ")"]]></eval>
+    <eval phase="Render" priority="99999999" index="2"><![CDATA[
+      ~ Generate our livename. 
+      field[livename].text = "Breath Weapon (" & field[abSumm].text & ")"
+      call abilLabel
+      
+      ~ Set statblock name here so we we can see it in debug
+      field[sbName].text = field[livename].text
 
-endif
-
-~ put things together
-~ shape and range
-field[abSumm].text = field[abRange].value & "-ft. " & lowercase(tagnames[BreathShp.?]) & ", " 
-~ damage
-field[abSumm].text &= damType & ", " 
-~ save
-field[abSumm].text &= tagnames[BreathSve.?] & " DC " & field[abDC].value & " " & lowercase(tagnames[SaveEff.?]) 
-~ rate
-field[abSumm].text &= ", " & field[trkMax].value & tagnames[Usage.?]
-
-field[sbName].text = "breath weapon (" & field[abSumm].text & ")"]]></eval>
+      ~ If generating the statblock text then change live name to 
+      ~ Breath weapon so we don't display details twice!
+      If (state.istext <> 0) Then    
+        field[livename].text = "Breath Weapon"
+        call abilLabel
+      endif]]></eval>
     </thing>
   <thing id="xCBBurn" name="Burn" description="A creature with the burn special attack deals fire damage in addition to damage dealt on a successful hit in melee. Those affected by the burn ability must also succeed on a Reflex save or catch fire, taking the listed damage for an additional 1d4 rounds at the start of its turn (DC 10 + 1/2 burning creature&apos;s racial HD + burning creature&apos;s Con modifier). A burning creature can attempt a new save as a full-round action. Dropping and rolling on the ground grants a +4 bonus on this save. Creatures that hit a burning creature with natural weapons or unarmed attacks take fire damage as though hit by the burning creature and must make a Reflex save to avoid catching on fire (see Pathfinder RPG Core Rulebook, page 444)." compset="RaceSpec" summary="If you hit an opponent or they touch you, you inflict fire damage.">
     <comment>damage is abValue d abvalue2</comment>
@@ -2502,15 +2511,13 @@ field[shortname].text = lowercase(field[livename].text) & " (" & dam & ")"]]></e
       doneif (tagis[Helper.SpcDisable] <> 0)
 
       ~ Applly the affect to multipile Target.? picks
-      call multTarget
-      ]]></eval>
+      call multTarget]]></eval>
     <eval phase="Final" priority="1000" index="2"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.SpcDisable] <> 0)
     
       field[livename].text = "Bleed (" & field[abText].text & ")"
-      field[sbName].text = "bleed (" & field[abText].text & ")"
-      ]]></eval>
+      field[sbName].text = "bleed (" & field[abText].text & ")"]]></eval>
     </thing>
   <thing id="xCBHeat" name="Heat" description="The creature generates intense heat that its mere touch deals additional fire damage. The creature&apos;s metallic melee weapons also conduct this heat. Those attacking creature unarmed or with natural weapon takes this fire damage each time one of their attacks hit." compset="RaceSpec" summary="Do extra fire damage on attacks and to those striking you with natural attacks.">
     <comment>This version of heat allows user to select the amount of fire damage.  
@@ -3073,4 +3080,20 @@ call ChosenProf]]></eval>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Weakness"/>
     </thing>
+  <thing id="raX1MulArm" name="Multi-Armed" description="This creature possesses four arms. One hand is considered its primary hand; all others are considered off hands. It can use any of its hands for other purposes that require free hands." compset="RaceSpec" summary="Has one primary and 3 off hands.">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="raX1NatArm" name="Natural Armor" description="You gain a +1 natural armor bonus to their Armor Class." compset="RaceSpec">
+    <fieldval field="abValue" value="1"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we are disabled get out now!
+      doneif (tagis[Helper.SpcDisable] = 1)
+      
+      ~ & Increase the natural armor of the race
+      hero.child[ArmorClass].field[tACNatural].value += field[abValue].value]]></eval>
+    </thing>
+
   </document>

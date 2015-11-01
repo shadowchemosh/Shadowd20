@@ -296,6 +296,55 @@
     <tag group="Value" tag="20"/>
   </thing>
 
+  <!-- Breath Weapon Shape Selections -->
+  <thing id="selS2BrWe1" name="Line" compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Selection" tag="S2BreWepSh" name="Breath Weapon Shapes"/>
+    <tag group="Selection" tag="S2BreWepB2" name="Breath Weapon Shape (Base 2)"/>
+    <tag group="BreathShp" tag="Line"/>
+  </thing>
+  <thing id="selS2BrWe2" name="Cone" compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Selection" tag="S2BreWepSh"/>
+    <tag group="Selection" tag="S2BreWepB2"/>
+    <tag group="BreathShp" tag="Cone"/>
+  </thing>
+  <thing id="selS2BrWe3" name="Cloud" compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Selection" tag="S2BreWepSh"/>
+    <tag group="BreathShp" tag="Cloud"/>
+  </thing>
+  <thing id="selS2BrWe4" name="Radius" compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Selection" tag="S2BreWepSh"/>
+    <tag group="BreathShp" tag="Radius"/>
+  </thing>
+  <thing id="selS2BrWe5" name="Cube" compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Selection" tag="S2BreWepSh"/>
+    <tag group="BreathShp" tag="Cube"/>
+  </thing>
+
+  <!-- Weapon Damage Type Selections -->
+  <thing id="zSCSlashin" name="Slashing" compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AdjustType" tag="Selector"/>
+    <tag group="AdjustType" tag="Slashing" name="Slashing"/>
+    <tag group="wType" tag="S" name="Slashing"/>
+    </thing>
+  <thing id="zSCPiercin" name="Piercing" compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AdjustType" tag="Selector"/>
+    <tag group="AdjustType" tag="Piercing" name="Piercing"/>
+    <tag group="wType" tag="P" name="Piercing"/>
+    </thing>
+  <thing id="zSCBludgeo" name="Bludgeoning" compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AdjustType" tag="Selector"/>
+    <tag group="AdjustType" tag="Bludgeonin" name="Bludgeoning"/>
+    <tag group="wType" tag="B" name="Bludgeoning"/>
+    </thing>
+
    
   <!-- ============================================================================================ -->
   <!-- Equipment Item Slots                                                                         -->

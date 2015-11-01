@@ -2425,8 +2425,9 @@ field[gCost].value += field[abValue2].value]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Hero" tag="EqpWrist"/>
-    <tag group="ProductId" tag="PUProdID"/>
-    <eval phase="PreLevel" priority="10000">~ if not equipped get out now!
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10000">
+      ~ if not equipped get out now!
       doneif (field[gIsEquip].value = 0)
       
       ~ Increase the number of dice of the disrupt pattern

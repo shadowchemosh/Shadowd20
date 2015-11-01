@@ -6398,8 +6398,7 @@ if (hero.childlives[cfgPUAstSu] <> 0) then
       doneif (hero.tagcount[Custom.WearAstS] = 0)
       
       ~ Apply DR to hero
-      #applydr[xDamRd,field[abValue].value]
-      ]]></eval>
+      #applydr[xDamRd,field[abValue].value]]]></eval>
     </thing>
   <thing id="cPUInvigSu" name="Invigorating Suit" description="An aegis of at least 3rd level wearing his astral suit gains a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -8317,8 +8316,7 @@ else
       elseif (field[usrChosen1].chosen.tagis[BloodEner.Sonic] <> 0) then
         #applyresist[xDamRsSoni, field[abValue].value]
       endif]]></eval>
-    <eval phase="PostLevel" priority="900" index="2">
-      var res as number
+    <eval phase="PostLevel" priority="900" index="2">var res as number
       res = round(#levelcount[Aegis]/5,0,-1)*5
       res = minimum(res,10)
       res += 5
@@ -8340,8 +8338,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 2)
-        ]]></validate>
+        validif (levels >= 2)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExArL" name="Extra Arms, Lesser" description="The aegis&apos;s astral suit has an extra pair of arms with limited function. Each arm can hold, but not use, any one item that can normally be held in one hand. Items held in this way count toward the aegis&apos;s carrying capacity. The aegis can retrieve any item held by his extra arms as a swift action. The aegis does not gain any mechanical benefit from items held by these arms, such as a shield bonus to armor class." compset="RaceCustom" uniqueness="useronce">
@@ -8392,8 +8389,7 @@ endif]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 3)
-        ]]></validate>
+        validif (levels >= 3)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[var allowed as number
@@ -8443,8 +8439,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaPwrSR" name="Power Stone Repository" description="The aegis may absorb power stones into his astral suit, causing them to appear and disappear whenever the suit does. The aegis may choose to have the absorbed power stones visible (much like embedded gems), or may decide to keep any or all of them concealed. The aegis may store one power stone per class level in this fashion; adding or removing a power stone takes 1 minute per stone (any power stone that is completely flushed and powerless dissolves immediately and is not counted against the aegis&apos;s limit).{br}{br}The aegis may activate any power stone stored in his repository as if he were holding it in hand; this follows all of the standard rules for using power stones, except the aegis gets a bonus equal to the number of stored power stones to any Use Magic Device checks he makes for this purpose. If the aegis loses this customization for any reason, any power stones stored in the astral suit are inert but unharmed until removed or this customization is regained." compset="RaceCustom">
@@ -8476,8 +8471,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaPull" name="Pull" description="The aegis&apos;s astral suit envelopes his weapon and grants him the ability to pull creatures closer with a successful melee attack. Whenever the aegis makes a successful melee attack, he can attempt a free combat maneuver check. If successful, the target of the attack is pulled 5 feet closer to the aegis. This ability only works on creatures of a size equal to or smaller than the aegis.{br}{br}Creatures pulled in this way do not provoke attacks of opportunity. The aegis must have a reach of 10 feet or more to select this customization. If there is insufficient room for the target to move closer to the aegis, the attempt automatically fails." compset="RaceCustom" uniqueness="useronce">
@@ -8509,8 +8503,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 8)
-        ]]></validate>
+        validif (levels >= 8)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSpikC" name="Spiked Carapace" description="The astral suit is covered in sharp spikes as if equipped with armor spikes." compset="RaceCustom" uniqueness="useronce">
@@ -8530,8 +8523,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 2)
-        ]]></validate>
+        validif (levels >= 2)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSwim" name="Swim" description="The aegis gains a swim speed equal to his base speed." compset="RaceCustom" uniqueness="useronce">
@@ -8577,8 +8569,7 @@ hero.child[xSwim].field[abValue].value = maximum(hero.child[xSwim].field[abValue
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBrawn" name="Brawn" description="The aegis gains a +2 enhancement bonus to Strength while he is wearing his astral suit. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Strength is increased by +2." compset="RaceCustom">
@@ -8621,8 +8612,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -8680,8 +8670,7 @@ hero.child[xClimb].field[abValue].value = maximum(hero.child[xClimb].field[abVal
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExtAr" name="Extra Arms" description="The extra arms on the aegis&apos;s astral suit gain improved functionality. The aegis gains a +2 circumstance bonus to Climb checks and CMD against grapple attempts for each extra arm that is not holding anything. In addition, one of the arms can wield and use a light or one-handed weapon, a shield, or any other item that can be used with one hand. Attacks made with this additional arm suffer a -2 penalty to attack rolls in addition to any penalties for using two weapons.{br}{br}These extra arms do not grant any additional attacks, only alternate arms with which to make the standard attacks. The aegis must be at least 5th level and have the Lesser Extra Arms customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -8696,8 +8685,7 @@ hero.child[xClimb].field[abValue].value = maximum(hero.child[xClimb].field[abVal
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFligh" name="Flight" description="The aegis uses psychokinetic energy to gain a fly speed equal to its base speed. The aegis&apos;s maneuverability depends on his size. Medium or smaller aegii have good maneuverability. Large aegii have average maneuverability, while Huge aegii have poor maneuverability. For 2 additional customization points, the aegis&apos;s maneuverability increases to perfect. The aegis&apos;s fly speed can be increased by spending additional customization points, gaining a 20-foot increase to fly speed for each additional point spent. The aegis must be at least 5th level before selecting this customization." compset="RaceCustom">
@@ -8724,8 +8712,7 @@ endif]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaForti" name="Fortification" description="The aegis gains 25% chance to negate critical hits or sneak attacks (so damage is rolled normally instead). This does not stack with armor with the same special ability. This ability can be selected again starting at 8th level and at 12th level, increasing the chance to negate critical hits or sneak attacks by an additional 25% for every additional time it is taken." compset="RaceCustom">
@@ -8811,8 +8798,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -8875,8 +8861,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -8912,8 +8897,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 9)
-        ]]></validate>
+        validif (levels >= 9)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaNimbl" name="Nimble" description="The aegis gains a +2 enhancement bonus to Dexterity while he is wearing his astral suit. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Dexterity is increased by +2." compset="RaceCustom" uniqueness="unique">
@@ -9008,8 +8992,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 16)
-        ]]></validate>
+        validif (levels >= 16)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaTrem" name="Tremorsense" description="The aegis gains tremorsense out to a range of 30 feet. This allows the aegis to pinpoint the location of creatures that it cannot see without having to make a Perception check as long as the creature and the aegis are in contact with the ground, but such creatures still have total concealment from the aegis. Visibility still affects the aegis&apos;s movement and he is still denied his Dexterity bonus to Armor Class against attacks from creatures he cannot see. The aegis must be at least 7th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9028,8 +9011,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 7)
-        ]]></validate>
+        validif (levels >= 7)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaUnloc" name="Unlock Psionics" description="The astral suit is able to emit energy that resonates with psionic items, helping the aegis use them. The aegis gains a +2 bonus to Use Magic Device checks while wearing his astral suit. If the aegis has 10 ranks in Use Magic Device, this bonus increases to +4." compset="RaceCustom" uniqueness="useronce">
@@ -9064,8 +9046,7 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBurro" name="Burrow" description="The aegis gains a burrow speed equal to 1/2 his base speed. He can use this speed to move through dirt, clay, sand, and earth. He does not leave a hole behind, nor is his passage marked on the surface. The aegis must be at least 9th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9085,8 +9066,7 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 9)
-        ]]></validate>
+        validif (levels >= 9)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaDieha" name="Diehard" description="When the aegis&apos;s hit point total is below 0, but he is not dead, he automatically stabilizes. He does not need to make a Constitution check each round to avoid losing additional hit points. He may choose to act as if disabled, rather than dying. He must make this decision as soon as he is reduced to negative hit points (even if it isn&apos;t his turn). If he does not choose to act as if disabled, he immediately falls unconscious. When under this effect, the aegis is staggered. He can take a move action without further injuring himself, but if he performs any standard action (or any other action deemed as strenuous, including some swift actions, such as manifesting a quickened power) he takes 1 point of damage after completing the act. If his negative hit points are equal to or greater than his Constitution score, he immediately dies." compset="RaceCustom" uniqueness="useronce">
@@ -9109,8 +9089,7 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <tag group="StandardDC" tag="aCHA"/>
-    <eval phase="PostLevel" priority="1000">
-      var dcBonus as number 
+    <eval phase="PostLevel" priority="1000">var dcBonus as number 
       dcBonus = round(#levelcount[Aegis]/2,0,-1)
 
       field[abDC].value += dcBonus</eval>
@@ -9120,8 +9099,7 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 11)
-        ]]></validate>
+        validif (levels >= 11)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaHaPSG" name="Harness Power Stone, Greater" description="As Improved Harness Power Stone, except the power is 3rd level or lower, and the effective manifester level increase is +5. The aegis must be at least 11th level and have the Power Stone Repository customization to take this customization, and be 13th level to take this customization a second time." compset="RaceCustom">
@@ -9136,8 +9114,7 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -9182,8 +9159,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 10)
-        ]]></validate>
+        validif (levels >= 10)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaReach" name="Reach" description="The aegis&apos;s reach increases by 5 feet. The aegis must be at least 7th level before selecting this customization." compset="RaceCustom">
@@ -9197,8 +9173,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 7)
-        ]]></validate>
+        validif (levels >= 7)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBlinS" name="Blindsight" description="The astral suit massively augments the aegis&apos;s senses, giving him blindsight out to a range of 30 feet. The aegis can maneuver and attack as normal, ignoring darkness, invisibility, and most forms of concealment as long as he has line of effect to the target.{br}{br}The aegis must possess the blindsense customization to take this customization. The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9216,8 +9191,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 11)
-        ]]></validate>
+        validif (levels >= 11)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEnerI" name="Energy Immunity" description="The aegis gains immunity to his active energy type as long as he is wearing his astral suit.{br}{br}The aegis must be at least 15th level before selecting this customization." compset="RaceCustom">
@@ -9232,8 +9206,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 15)
-        ]]></validate>
+        validif (levels >= 15)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExPas" name="Extra Passenger" description="The aegis can carry one creature of the same size or smaller as the aegis&apos;s base size (powers and effects that increase the aegis&apos;s size do not allow him to carry larger creatures, although Increased Size and Improved Increased Size customizations do allow the aegis to carry larger passengers). The carried creature is treated as if it has total concealment and he gains the damage reduction of the astral suit, as well as any environmental customization options, such as that granted from the Energy Resistance or Underwater Breath customization. The creature carried using this ability remains adjacent to the aegis and moves with the aegis&apos;s move actions. A creature can be loaded and unloaded into the astral suit as a free action by the aegis, but the creature can take no actions until its next turn.{br}{br}The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9247,8 +9220,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 11)
-        ]]></validate>
+        validif (levels >= 11)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaHaPSS" name="Harness Power Stone, Superior" description="As Improved Harness Power Stone, except the power is 4th level or lower, and the effective manifester level increase is +7. The aegis must be at least 16th level and have the Power Stone Repository customization to take this customization, and be 18th level to take this customization a second time." compset="RaceCustom">
@@ -9263,8 +9235,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 16)
-        ]]></validate>
+        validif (levels >= 16)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -9305,8 +9276,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 12)
-        ]]></validate>
+        validif (levels >= 12)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIStal" name="Improved Stalwart" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Fortitude or Will save for a reduced or partial effect, he can expend his psionic focus as an immediate action to ignore the effect if he makes a successful saving throw and suffers the reduced effect if the saving throw fails. The aegis must be at least 16th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -9320,8 +9290,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 16)
-        ]]></validate>
+        validif (levels >= 16)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIISiz" name="Increased Size, Improved" description="The astral suit grows in size and the aegis is treated as two size categories larger as if affected by an augmented {i}expansion{/i}. The aegis must be at least 15th level and have selected the increased size customization to select this customization. This customization does not stack with the increased size customization." compset="RaceCustom" uniqueness="useronce">
@@ -9336,8 +9305,7 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 15)
-        ]]></validate>
+        validif (levels >= 15)]]></validate>
       </prereq>
     </thing>
   <thing id="cPULessStr" name="Lesser Strategies" description="Tacticians learn minor powers they can use at will to aid them in coordination and tactics. The tactician gains 3 talents from the tactician talent list." compset="ClSpecial">
@@ -9755,8 +9723,7 @@ perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
   <thing id="cPUVitKnac" name="Knacks" description="Vitalists of all forms learn to manipulate the energy of body and mind in minor ways. A vitalist gains two talents from the vitalist power list, as well as one talent from his method power list.\n\n{b}Note:{/b} After selecting your Method&apos;s talent power from the drop down you must still add the power on the class tab.  This is needed to correctly get the power onto your character and have it calculate all the values correctly. Until you add this power you will get a validation error." compset="ClSpecial">
     <tag group="Helper" tag="SpecUp"/>
     <tag group="ChooseSrc1" tag="Thing"/>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
-~ If not Psi Class tag then get out now!
+    <eval phase="UserFinal" priority="1000"><![CDATA[~ If not Psi Class tag then get out now!
 doneif (tagcount[psiClass.?] = 0)
 
 ~ Set the custom expression
@@ -9976,8 +9943,7 @@ Call PsyWarPath</eval>
   <thing id="cPWaTraArc" name="Trance (Archer Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus on attack rolls made with a ranged or thrown weapon (natural weapons do not count for this benefit). This bonus increases by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to ranged or thrown weapons">
     <usesource source="pPsiUn"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="First" priority="10000" index="2">
-      ~ Setup this Maneuver or Trance for the Psy Warrior
+    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
       Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -10012,15 +9978,13 @@ Call PsyWarPath</eval>
       doneif (field[abilActive].value <> 1)
 
       ~ Give competence bonus to attack rolls for ranged weapons
-      #applybonus[atrBonComp,hero.child[Attack],field[abValue].value]
-      ]]></eval>
+      #applybonus[atrBonComp,hero.child[Attack],field[abValue].value]]]></eval>
     </thing>
   <thing id="cPWaTraSur" name="Trance (Survivor Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain DR 2/-. This damage reduction improves by 1 every four psychic warrior levels thereafter. In addition, you suffer no harm from being in a hot or cold environment. You can exist comfortably in conditions between –50 and 140 degrees Fahrenheit without having to make Fortitude saves. Your equipment is likewise protected. This doesn’t provide any protection from fire or cold damage, nor does it protect against other environmental hazards such as smoke, lack of air, and so forth." compset="ClSpecial" summary="When psi-focused you gain DR and hot or cold environment endurance.">
     <usesource source="pPsiUn"/>
     <tag group="abAction" tag="PUManFocus"/>
     <bootstrap thing="xDamRd"></bootstrap>
-    <eval phase="First" priority="10000" index="2">
-      ~ Setup this Maneuver or Trance for the Psy Warrior
+    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
       Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -10052,8 +10016,7 @@ Call PsyWarPath</eval>
       doneif (v_focus <> 1)
 
       ~ Give bonus to DR 
-      #applydr[xDamRd,field[abValue].value]
-      ]]></eval>
+      #applydr[xDamRd,field[abValue].value]]]></eval>
     </thing>
   <thing id="cPWaManArc" name="Maneuver (Archer Path)" description="Beginning at 3rd level, you can expend your psionic focus and make a ranged trip attack as a standard action. If your target is flying, they are instead staggered for one round. At 7th level and every four psychic warrior levels thereafter, you gain a +1 bonus to your CMB when using this maneuver." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -10071,8 +10034,7 @@ Call PsyWarTrMa</eval>
   <thing id="cPWaTraDer" name="Trance (Dervish Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus on attack rolls made when you wield two weapons. This bonus increases by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to attack rolls when using two weapons.">
     <usesource source="pPsiUn"/>
     <tag group="abAction" tag="PUExpFocus"/>
-    <eval phase="First" priority="10000" index="2">
-      ~ Setup this Maneuver or Trance for the Psy Warrior
+    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
       Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -10105,14 +10067,12 @@ Call PsyWarTrMa</eval>
       ~ If not duel wielding weapons get out now!
       doneif (tagexpr[(count:hero#Hero.EquipWep = 2) | hero#Hero.EquipDbl] = 0)
 
-      #applybonus[atmBonComp,hero.child[Attack],field[abValue].value]
-      ]]></eval>
+      #applybonus[atmBonComp,hero.child[Attack],field[abValue].value]]]></eval>
     </thing>
   <thing id="cPWaTraGla" name="Trance (Gladiator Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus to your CMB and a +2 competence bonus to your CMD. These bonuses increase by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to CMB and CMD.">
     <usesource source="pPsiUn"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="First" priority="10000" index="2">
-      ~ Setup this Maneuver or Trance for the Psy Warrior
+    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
       Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -10144,14 +10104,12 @@ Call PsyWarTrMa</eval>
       doneif (v_focus <> 1)
 
       ~ competence bonus to CMB/CMD
-      #applybonus[BonComp,hero.child[Maneuver],field[abValue].value]
-      ]]></eval>
+      #applybonus[BonComp,hero.child[Maneuver],field[abValue].value]]]></eval>
     </thing>
   <thing id="cPWaTraInf" name="Trance (Infiltrator Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +2 competence bonus on Disguise checks and a +1 competence bonus on damage rolls made with natural weapons. These bonuses increase by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to Disguise checks and damage with natural weapons.">
     <usesource source="pPsiUn"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="First" priority="10000" index="2">
-      ~ Setup this Maneuver or Trance for the Psy Warrior
+    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
       Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -10189,16 +10147,14 @@ Call PsyWarTrMa</eval>
       foreach pick in hero from BaseWep where "wGroup.Natural"  
         #applybonus[dmmBonComp,eachpick,field[abValue].value]
         #applybonus[dmrBonComp,eachpick,field[abValue].value]
-      nexteach
-      ]]></eval>
+      nexteach]]></eval>
     </thing>
   <thing id="cPWaTraInt" name="Trance (Interceptor Path)" description="Beginning at 3rd level, while maintaining psionic focus, you gain a +1 competence bonus on attack and damage rolls made against any opponent that threatens any of your allies. This bonus increases by 1 every four psychic warrior levels thereafter." compset="ClSpecial" summary="When psi-focused you gain a competence bonus to attack and damage rolls against opponents who threaten your allies.">
     <fieldval field="actName" value="Threatens Ally"/>
     <usesource source="pPsiUn"/>
     <tag group="User" tag="Activation"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="First" priority="10000" index="2">
-      ~ Setup this Maneuver or Trance for the Psy Warrior
+    <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
       Call PsyWarTrMa</eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -10233,8 +10189,7 @@ Call PsyWarTrMa</eval>
 
       ~ Competence bonus to attack & damage
       #applybonus[BonComp,hero.child[Attack],field[abValue].value]
-      #applybonus[BonComp,hero.child[Damage],field[abValue].value]
-      ]]></eval>
+      #applybonus[BonComp,hero.child[Damage],field[abValue].value]]]></eval>
     </thing>
   <thing id="cPWaManDer" name="Maneuver (Dervish Path)" description="Beginning at 3rd level, you can expend your psionic focus as part of a full attack when you fight with two weapons to take a 5-foot step between your attacks, even if you have already taken a 5-foot step, but not if you have moved normally (such as by using hustle). At 8th level and every five psychic warrior levels thereafter, you gain one additional 5-foot step, but each of these 5-foot steps must be made after an attack in your full attack." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -11255,6 +11210,7 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
     <tag group="Usage" tag="Day"/>
     <tag group="StandardDC" tag="aWIS"/>
     <tag group="abSave" tag="FortNeg"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[var myCnt as number
 var myTimes as number
 
@@ -11273,14 +11229,14 @@ elseif (myCnt = 4) then
   endif
 
 ~These calculations should only happen for the first copy
-doneif (tagis[Helper.FirstCopy] = 0)
+~doneif (tagis[Helper.FirstCopy] = 0)
 
 ~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] = 0)
+~doneif (tagis[Helper.ShowSpec] = 0)
 
-field[abValue].value += field[xCount].value
+~field[abValue].value += field[xCount].value
 
-field[CustDesc].text = "Transfer Wounds (" & field[abValue].value & "d6)"]]></eval>
+~field[CustDesc].text = "Transfer Wounds (" & field[abValue].value & "d6)"]]></eval>
     </thing>
   <thing id="arPUEnlMnk" name="Enlightened Monk" description="A monk&apos;s ki and psionic power have long thought to be linked. Enlightened monks learn how to use their ki to fuel their psionic abilities and ways to harness their psionic power.{br}{br}{b}Class Skills:{/b} The enlightened monk adds Autohypnosis (Wis) as a class skill." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="292"/>
@@ -11676,8 +11632,7 @@ field[abSumm].text &= " Bonus HP " & signed(field[abValue].value)]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 9)
-        ]]></validate>
+        validif (levels >= 9)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBliS2" name="Blindsight" description="The astral suit massively augments the aegis&apos;s senses, giving him blindsight out to a range of 30 feet. The aegis can maneuver and attack as normal, ignoring darkness, invisibility, and most forms of concealment as long as he has line of effect to the target.{br}{br}The aegis must possess the blindsense customization to take this customization. The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11690,8 +11645,7 @@ field[abSumm].text &= " Bonus HP " & signed(field[abValue].value)]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 11)
-        ]]></validate>
+        validif (levels >= 11)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaBraw2" name="Brawn" description="The aegis gains a +2 enhancement bonus to Strength while he is transformed. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Strength is increased by +2." compset="RaceCustom" maxlimit="">
@@ -11741,8 +11695,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 9)
-        ]]></validate>
+        validif (levels >= 9)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaCha2" name="Chameleon" description="The aegis gains a +4 circumstance bonus to Stealth checks. The aegis must be at least 5th level before selecting this customization and this customization can be taken once for every five levels the aegis possesses." compset="RaceCustom">
@@ -11760,8 +11713,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -11811,8 +11763,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 15)
-        ]]></validate>
+        validif (levels >= 15)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEneR2" name="Energy Resistance" description="The aegis gains resist 5 against his active energy type. This resistance increases by 5 for every 5 levels the aegis possesses, to a maximum of 15 at 10th level. This customization can be selected multiple times. Each time beyond the first, the aegis selects an energy type (cold, electricity, fire, or sonic) to gain resistance to, in addition to his active energy type. If the aegis&apos;s active energy type is the same as one he has selected, the effects do not stack." compset="RaceCustom">
@@ -11862,8 +11813,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEvad2" name="Evasion" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Reflex save for half damage, he takes no damage if he makes a successful saving throw. The aegis must be at least 2nd level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11881,8 +11831,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 2)
-        ]]></validate>
+        validif (levels >= 2)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaExAr2" name="Extra Arms" description="The extra arms on the aegis&apos;s astral suit gain improved functionality. The aegis gains a +2 circumstance bonus to Climb checks and CMD against grapple attempts for each extra arm that is not holding anything. In addition, one of the arms can wield and use a light or one-handed weapon, a shield, or any other item that can be used with one hand. Attacks made with this additional arm suffer a -2 penalty to attack rolls in addition to any penalties for using two weapons.{br}{br}These extra arms do not grant any additional attacks, only alternate arms with which to make the standard attacks. The aegis must be at least 5th level and have the Lesser Extra Arms customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11896,8 +11845,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEArG2" name="Extra Arms, Greater" description="The extra arms on the aegis&apos;s astral suit function at nearly the same capacity as his normal arms. Each arm can now wield or use a light or one-handed weapon, shield, or any other item that he could normally use. Alternatively, the aegis can use one or both arms when wielding a two-handed weapon, possibly allowing him to wield a pair of two-handed weapons. The circumstance bonus on Climb checks and CMD against grapple attempts increases to +3 per extra arm that is not holding anything. The aegis must be 8th level and have the Extra Arms and Lesser Extra Arms customizations before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11937,8 +11885,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFort2" name="Fortification" description="The aegis gains 25% chance to negate critical hits or sneak attacks (so damage is rolled normally instead). This does not stack with armor with the same special ability. This ability can be selected again starting at 8th level and at 12th level, increasing the chance to negate critical hits or sneak attacks by an additional 25% for every additional time it is taken." compset="RaceCustom">
@@ -11991,16 +11938,14 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
     <tag group="CustomCost" tag="3"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <tag group="StandardDC" tag="aCHA"/>
-    <eval phase="PostLevel" priority="1000">
-      field[abDC].value += round(#levelcount[Aegis]/2,0,-1)</eval>
+    <eval phase="PostLevel" priority="1000">field[abDC].value += round(#levelcount[Aegis]/2,0,-1)</eval>
     <prereq message="Aegis level 11+ required.">
       <validate><![CDATA[
         var classcheck as string
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)
-        ]]></validate>
+        validif (levels >= 6)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaHarS2" name="Hardened Strikes" description="The aegis is considered to be armed even when unarmed, does not provoke attacks of opportunity when making unarmed strikes, and his unarmed strikes deal lethal damage. In addition, the aegis&apos;s unarmed strikes can deal slashing or piercing damage, chosen at the time the customization is selected, instead of bludgeoning damage." compset="RaceCustom" uniqueness="useronce">
@@ -12101,8 +12046,7 @@ nexteach]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIEva2" name="Improved Evasion" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Reflex save for half damage, he takes no damage if he makes a successful saving throw and only half damage if the saving throw fails. The aegis must be at least 12th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12118,8 +12062,7 @@ nexteach]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 12)
-        ]]></validate>
+        validif (levels >= 12)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaISta2" name="Improved Stalwart" description="As long as the aegis is wearing the astral suit, if the aegis is subjected to an attack that normally allows a Fortitude or Will save for a reduced or partial effect, he can expend his psionic focus as an immediate action to ignore the effect if he makes a successful saving throw and suffers the reduced effect if the saving throw fails. The aegis must be at least 16th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12132,8 +12075,7 @@ nexteach]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 16)
-        ]]></validate>
+        validif (levels >= 16)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIncS2" name="Increased Size" description="The transformed body grows in size and the aegis and all of his equipment is treated as one size category larger as if affected by {i}expansion{/i}. The aegis must be at least 9th level to select this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12147,8 +12089,7 @@ nexteach]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 9)
-        ]]></validate>
+        validif (levels >= 9)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIISi2" name="Increased Size, Improved" description="The astral suit grows in size and the aegis is treated as two size categories larger as if affected by an augmented {i}expansion{/i}. The aegis must be at least 15th level and have selected the increased size customization to select this customization. This customization does not stack with the increased size customization." compset="RaceCustom" uniqueness="useronce">
@@ -12162,8 +12103,7 @@ nexteach]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 15)
-        ]]></validate>
+        validif (levels >= 15)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaNimb2" name="Nimble" description="The aegis gains a +2 enhancement bonus to Dexterity while he is wearing his astral suit. This customization can be selected a second time beginning at 5th level, and a third time starting at 10th level. Each subsequent time it is taken, the enhancement bonus to Dexterity is increased by +2." compset="RaceCustom" uniqueness="unique">
@@ -12178,7 +12118,7 @@ nexteach]]></eval>
         Taken = hero.tagcount[Ability.rcPUaNimb2] * 2
 
         #enhancementbonus[hero.child[aDEX], Taken]]]></eval>
-      <prereq message="">
+    <prereq message="">
       <validate><![CDATA[
         var classcheck as string
         var levels as number
@@ -12276,8 +12216,7 @@ nexteach]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 10)
-        ]]></validate>
+        validif (levels >= 10)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaRam2" name="Ram" description="The astral suit forms a hardened shell over the aegis&apos;s head. If the aegis makes a bull rush or overrun attempt, he gains a +2 bonus to his CMB. Alternatively, he can make a single attack with this shell as part of a charge and deal 2d6 points of damage. This attack is treated as adamantine when used to attack an object.{br}{br}This customization can be taken once for every five levels the aegis possesses, each additional selection increasing the bonus to CMB by 1 and the damage on a charge by 1d6 points of damage. The aegis must be at least 5th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12295,8 +12234,7 @@ nexteach]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 7)
-        ]]></validate>
+        validif (levels >= 7)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSpd2" name="Speed" description="The aegis&apos;s base land speed is increased by 5 feet. This customization can be selected up to five times.{br}{br}Its effects stack." compset="RaceCustom">
@@ -12358,8 +12296,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 2)
-        ]]></validate>
+        validif (levels >= 2)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaSwim2" name="Swim" description="The aegis gains a swim speed equal to his base speed." compset="RaceCustom">
@@ -12386,8 +12323,7 @@ hero.child[xSwim].field[abValue].value = maximum(hero.child[xSwim].field[abValue
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 7)
-        ]]></validate>
+        validif (levels >= 7)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaUndB2" name="Underwater Breath" description="The aegis can safely breathe underwater as long as he is wearing his astral suit." compset="RaceCustom" uniqueness="useronce">
@@ -12531,8 +12467,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 12)
-        ]]></validate>
+        validif (levels >= 12)]]></validate>
       </prereq>
     </thing>
   <thing id="arPUCryWar" name="Crystal Warrior" description="Some aegii have learned to form a psicrystal and shape their astral suit around the small creature, creating a sentient suit of armor that grants them many benefits at the cost of some flexibility." compset="ClassVary" uniqueness="unique">
@@ -12648,8 +12583,7 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 4)
-        ]]></validate>
+        validif (levels >= 4)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEneBl" name="Energy Blast" description="The ranged attack gained from the ranged attack customization becomes imbued with psionic energy. The attack is now treated as a ranged touch attack and instead deals 1d6 points of damage of your active energy type, but requires a standard action to use and cannot be used as part of a full attack. This effect can be turned on or off as a move action. The aegis must be at least 4th level and have the ranged attack customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12663,8 +12597,7 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 4)
-        ]]></validate>
+        validif (levels >= 4)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIRngA" name="Improved Ranged Attack" description="The damage of the aegis&apos;s ranged attack ability increases by an additional 1d8 points of piercing damage for every five class levels the aegis has. If the aegis is using the energy blast customization, the additional damage is instead 1d6 points of damage of your active energy type for every five class levels. The aegis must be at least 5th level and have the ranged attack customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12679,8 +12612,7 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaIEnBl" name="Improved Energy Blast" description="When using the energy blast customization, the attack can target up to three creatures, no two of which can be more than fifteen feet apart. Each creature may only be the target of one such attack each round. Each attack is rolled separately. The aegis must be at least 12th level and have the energy blast and ranged attack customizations before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -12696,8 +12628,7 @@ hero.childfound[cPUAegHelp].field[abValue2].value -=1]]></eval>
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 12)
-        ]]></validate>
+        validif (levels >= 12)]]></validate>
       </prereq>
     </thing>
   <thing id="cPUPsCShot" name="Psicrystal Shot" description="At 7th level, when the aegis&apos;s psicrystal is consumed by the astral suit, the psicrystal can use its own actions to aid the aegis in combat. The psicrystal can use the attack options from the ranged attack customization, including any customizations that improve the ranged attack, such as energy blast. Use the crystal warrior&apos;s base attack bonus, as calculated from all his classes, and the psicrystal&apos;s Dexterity modifier to calculate the psicrystal&apos;s attack bonus. Treat its Dexterity as if it was under the self-propulsion effect. This ability replaces the daily use of reconfigure normally gained at 7th level." compset="ClSpecial">
@@ -12974,8 +12905,7 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFSpd" name="Flight Speed (+20&apos;)" description="The aegis&apos;s fly speed provided by the Flight customization can be increased by spending additional customization points, gaining a 20-foot increase to fly speed for each additional point spent. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom">
@@ -12990,8 +12920,7 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
 
       #value[xFly] += 20 
 
-      #applybonus[abValue,hero.child[xFly],hero.child[Speed].field[tSpeed].value]
-      ]]></eval>
+      #applybonus[abValue,hero.child[xFly],hero.child[Speed].field[tSpeed].value]]]></eval>
     <exprreq message="Flight customization required."><![CDATA[#hasability[rcPUaFligh] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
       <validate><![CDATA[
@@ -12999,8 +12928,7 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFSpd2" name="Flight Speed (+20&apos;)" description="The aegis&apos;s fly speed provided by the Flight customization can be increased by spending additional customization points, gaining a 20-foot increase to fly speed for each additional point spent. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom">
@@ -13014,8 +12942,7 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
 
       #value[xFly] += 20 
 
-      #applybonus[abValue,hero.child[xFly],hero.child[Speed].field[tSpeed].value]
-      ]]></eval>
+      #applybonus[abValue,hero.child[xFly],hero.child[Speed].field[tSpeed].value]]]></eval>
     <exprreq message="Flight customization required."><![CDATA[#hasability[rcPUaFlig2] <> 0]]></exprreq>
     <prereq message="Aegis level 5+ required.">
       <validate><![CDATA[
@@ -13023,8 +12950,7 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFMan" name="Flight Maneuverability (Perfect)" description="The aegis&apos;s fly maneuverability provided by the Flight customization can be increased to Perfect for 2 additional customization points. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -13045,8 +12971,7 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFMan2" name="Flight Maneuverability (Perfect)" description="The aegis&apos;s fly maneuverability provided by the Flight customization can be increased to Perfect for 2 additional customization points. The aegis must be at least 5th level and have the Flight customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -13066,8 +12991,7 @@ doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 5)
-        ]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="arPUBruDis" name="Brutal Disruptor" description="Brutal disruptors do not simply see patterns, they focus their skills on destroying them. These cryptics tend to be imposing in demeanor and understand the patterns of their opponents to strike fear into their foes.\n\n{b}Skills:{/b} The brutal disruptor adds Intimidate (Cha) as a class skill and loses Disable Device." compset="ClassVary" uniqueness="unique">
@@ -15311,7 +15235,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
   <thing id="arPUNightC" name="Nightmare Constructor" description="Where most dreads use fear as something to manipulate in creatures, nightmare constructors turn fears into reality. These individuals form horrors created from the energy of nightmares and send them into battle. Enemies of nightmare constructors must truly face their deepest fears when confronted by the creatures created from terror.\n\n{b}Telepathic Lash:{/b} The nightmare constructor gains telepathic lash as a talent. This ability replaces talents.\n\n{b}Horror (Su):{/b} A nightmare constructor is able to form a creature created from distilled fears and nightmares. Creating a horror takes one minute of concentration to complete and the horror remains until dismissed by the nightmare constructor.\nThis horror functions as a summoner’s eidolon using the nightmare constructor’s class level as the summoner level, with the following exceptions. A horror is treated as a construct for the purposes of effects related to its type, such as favored enemy. Commanding a horror is the same as commanding an astral construct. A horror disperses if the nightmare constructor is rendered unconscious or dies.\nThe nightmare constructor can allow his horror to use his terrors, but such uses still count against his daily limit. At 3rd level, the nightmare constructor can also allow his horror to utilize his channel terrors ability.\nThis ability replaces devastating touch.\n\n{b}Reinvigorate Horror:{/b} The nightmare constructor is able to channel his own energy to restore the nightmarish form of his horror. As a standard action that provokes attacks of opportunity, the nightmare constructor can touch his horror and restore 5 hit points per power point spent. The nightmare constructor cannot spend more power points on this ability than his manifester level.\n\n{b}Devastating Touch:{/b} At 2nd level, the nightmare constructor’s horror gains the devastating touch ability of a dread, using the nightmare constructor’s class level to determine the total damage dealt. This also allows the nightmare constructor to select terrors that modify\ndevastating touch, but these terrors only apply to the horror’s use of devastating touch. This ability replaces the power known gained at 2nd level.\n\n{b}Fear Surge (Su):{/b} When the horror of a 3rd level or higher nightmare constructor is within 30 ft. of a creature that suffers from the shaken, frightened, or panicked condition, the nightmare constructor gains an additional evolution point to spend on the horror. This evolution point only lasts while there is a creature within 30 ft. of the horror with the shaken, frightened, or panicked condition. This ability replaces channel terror.\n\n{b}Improved Fear Surge:{/b} At 6th level, when the nightmare constructor gains an evolution point from fear surge, he instead gains two evolution points. This ability replaces the terror normally gained at 6th level.\n\n{b}Greater Fear Surge:{/b} A nightmare constructor of 9th level gains three evolution points when his fear surge is activated. This ability replaces the bonus feat normally gained at 9th level.\n\n{b}Horrific Infusion (Su):{/b} Starting at 11th level, the nightmare constructor can merge with his horror as a standard action. The nightmare constructor wears the horror like translucent and undulating armor. The horror mimics all of the nightmare constructor’s movements, and the nightmare constructor perceives through the horror’s senses and speaks through its voice, as the two are now one creature. The nightmare constructor directs all of the horror’s actions while merged. While merged with his horror, the nightmare constructor uses the horror’s Strength, Dexterity, and Constitution, but retains his own Intelligence, Wisdom, and Charisma. The nightmare constructor\ngains the horror’s hit points as temporary hit points. When these hit points reach 0, the horror is killed and sent back to its home plane. The nightmare constructor uses the horror’s base attack bonus, and gains the horror’s armor and natural armor bonuses and modifiers to ability scores. The nightmare constructor also gains access to the horror’s special abilities and the horror’s evolutions. The nightmare\nconstructor is still limited to the horror’s maximum number of natural attacks. The horror has no skills or feats of its own. The horror must be at least the same size as the nightmare constructor. The horror must have limbs for the nightmare constructor to cast spells with somatic components (should the nightmare constructor have spellcasting ability).\nWhile fused, the nightmare constructor loses the benefits of his armor. He counts both as his original type and as a construct for any effect related to type, whichever is worse for the nightmare constructor. Powers such as dismiss ectoplasm work on the horror,\nbut the nightmare constructor is unaffected. Neither the nightmare constructor nor his horror can be targeted separately, as they are fused into one creature. The nightmare constructor and horror cannot take separate actions. While fused with his horror, the nightmare\nconstructor can use all of his own abilities and gear, except for his armor. In all other cases, this ability functions as the normal horror ability. \nThis ability replaces shadow twin.\n\n{b}Empowered in Fear (Su):{/b} At 11th level, the nightmare constructor’s horror is treated as if under the effect of physical acceleration any time it is within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions.\nAt 15th level, the horror is also treated as if under the form of doom power when within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions. This effect allows the horror to have more natural attacks than its normal eidolon form limit.\nThis ability replaces twin fear." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="268"/>
     <fieldval field="cvEidStar" value="1"/>
-    <arrayval field="cvBonFtMod" index="8" value="-1"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
     <arrayval field="cvCustTot" index="5" value="-1"/>
     <arrayval field="cvCustTot" index="7" value="-1"/>
     <arrayval field="cvCustTot" index="9" value="-1"/>
@@ -15321,17 +15245,15 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <arrayval field="cvCustTot" index="17" value="-1"/>
     <arrayval field="cvCustTot" index="19" value="-1"/>
     <arrayval field="cvPsiPowTo" index="1" value="-1"/>
+    <arrayval field="cvBonFtMod" index="8" value="-1"/>
     <usesource source="pPsiUn"/>
-    <tag group="AbReplace" tag="cPUTwinFea"/>
     <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cPUChanTer"/>
     <tag group="AbReplace" tag="cPUDevaTou"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbReplace" tag="cPUShaTwin"/>
     <tag group="AbReplace" tag="cPUDreTal"/>
-    <bootstrap thing="cPUEmpFear">
-      <autotag group="ClSpecWhen" tag="11"/>
-      </bootstrap>
+    <tag group="AbReplace" tag="cPUTwinFea"/>
     <bootstrap thing="cPUTelLash">
       <autotag group="ClSpecWhen" tag="1"/>
       </bootstrap>
@@ -15357,6 +15279,9 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
       <autotag group="ClSpecWhen" tag="15"/>
       </bootstrap>
     <bootstrap thing="cPUHorrInf">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cPUEmpFear">
       <autotag group="ClSpecWhen" tag="11"/>
       </bootstrap>
     <link linkage="varies" thing="cHelpPU2"/>
@@ -15428,7 +15353,6 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Super"/>
     </thing>
-
   <thing id="cHelpPUMfg" name="Metaforge" compset="Class" uniqueness="unique">
     <fieldval field="cAbbr" value="Mfg"/>
     <fieldval field="cSkills" value="4"/>
@@ -15523,8 +15447,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
       V_NewLvl  = #levelcount[PUMetafrg] + #levelcount[Aegis]
 
       ~ Set Aegis Customization Points
-      Call PUSetAegCP
-      ]]></eval>
+      Call PUSetAegCP]]></eval>
     <eval phase="PreLevel" priority="10000" index="2" name="Handle Aegis Suit DR increase"><![CDATA[
       ~ At each level, treat the metaforge as if he had gained a level of
       ~ Aegis for the purposes of damage reduction.
@@ -15593,6 +15516,312 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbilType" tag="Super"/>
     </thing>
-
-
+  <thing id="arPUAmplif" name="Amplifier" description="Amplifiers use the collective bond to boost the abilities of their allies, allowing them increased accuracy, speed, and prowess. These tacticians do so at the cost of their ability to turn their collective into a coordinated combat unit. Amplifiers can help turn a dangerous fighter into a deadly killing machine." compset="ClassVary" uniqueness="unique">
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cPUCoorStr"/>
+    <tag group="AbReplace" tag="cPUImpShar"/>
+    <tag group="AbReplace" tag="cPUTacCoor"/>
+    <tag group="AbReplace" tag="cPUTeamFt"/>
+    <bootstrap thing="cPUInStrik">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUHiMove">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUAugOff">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPUEmpAtt">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU4"/>
+    </thing>
+  <thing id="cPUInStrik" name="Inevitable Strike" description="The amplifier can grant the members of his collective the increased insight needed to make successful attacks. A number of times per day equal to 3 + the amplifier’s Intelligence modifier, the amplifier can grant one member of his collective a +5 insight bonus to its next single attack roll made before the end of its next turn. At 3rd level and every 2 levels thereafter, this insight bonus increases by 1. This ability replaces coordinated strike." compset="ClSpecial">
+    <usesource source="pDscar"/>
+    <tag group="Helper" tag="MultiCopy"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ChargeCalc" tag="AttrUses3"/>
+    <tag group="ChargeAttr" tag="aINT"/>
+    <tag group="abAction" tag="Standard"/>
+    </thing>
+  <thing id="cPUHiMove" name="Heightened Movement" description="  An amplifier of 5th level has gained the ability to accelerate the movements of members of the collective, allowing them to avoid danger and increase their movement speed. As a swift action, the amplifier can grant one member of his collective a +1 insight bonus to AC and Reflex saves, as well as a 5 ft. bonus to movement speed. This effect lasts a number of rounds equal to the amplifier’s Intelligence modifier and counts as a use of the amplifier’s strategies ability.\n  At 11th level, the insight bonus increases to +2 and the bonus to speed increases to 10 ft. \n  At 17th level, the insight bonus increases to +3 and the bonus to speed increases to 15 ft.\n  This ability replaces improved share." compset="ClSpecial">
+    <tag group="abAction" tag="Swift"/>
+    <tag group="Usage" tag="Rounds"/>
+    <tag group="User" tag="Tracker"/>
+    </thing>
+  <thing id="cPUAugOff" name="Augmented Offense" description="An amplifier of 6th level can grant a member of his collective a boost to offensive abilities for a short duration. As a standard action, the amplifier can grant one member of his collective a +1 insight bonus to attack rolls and to the DC of the next\nsingle power or spell the collective member manifests or casts that has a save DC, and a +2 insight bonus to damage rolls. At 9th level and every 3 levels thereafter, the insight bonus to attack rolls and DCs increases by 1 and the insight bonus to damage rolls increases by 2. This effect lasts a number of rounds equal to the amplifier’s Intelligence modifier. This ability replace teamwork feats." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abAction" tag="Standard"/>
+    <tag group="ChargeCalc" tag="AttrOnly"/>
+    <tag group="ChargeAttr" tag="aINT"/>
+    <tag group="Usage" tag="Rounds"/>
+    <tag group="User" tag="Tracker"/>
+    </thing>
+  <thing id="cPUEmpAtt" name="Empowered Attack" description="As an immediate action, an amplifier of 6th level can expend his psionic focus and pay two power points to treat one attack made by a member of his collective as empowered. An empowered attack deals 50% additional damage. The attack to be empowered cannot be modified by a similar effect such as Empower Power. This ability replaces coordinate." compset="ClSpecial">
+    <tag group="abAction" tag="Immediate"/>
+    <tag group="abAction" tag="PUExpFocus"/>
+    </thing>
+  <thing id="arPUBtMed" name="Battle Medic" description="Getting wounded allies back into the fight is a part of combat that some tacticians embrace, sacrificing some of their strategic options to learn techniques to mend wounds and guard against attacks. These battle medics are not as skilled at healing as vitalists, but offer a mixture of tactical and healing abilities to help turn the tide of battle." compset="ClassVary" uniqueness="unique">
+    <arrayval field="cvCustTot" index="3" value="-1"/>
+    <tag group="AbReplace" tag="cPULessStr"/>
+    <tag group="AbReplace" tag="cPUCoorStr"/>
+    <tag group="ClVaryName" tag="AppParen" name="Append (in Parentheses)" abbrev="Append (in Parentheses)"/>
+    <tag group="AbReplace" tag="cPUTacCoor"/>
+    <tag group="AbReplace" tag="cPUTeamFt"/>
+    <bootstrap thing="cPUBMPwrK">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitKnac">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitTraW">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitTraW">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitTraW">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitTraW">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitTraW">
+      <autotag group="ClSpecWhen" tag="16"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitTraW">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="cPUVitTraW">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUBMHBnd">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cPUBMBitF">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="fPUCushBlo">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="fPUICushBl">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="fPUGCushBl">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU4"/>
+    </thing>
+  <thing id="cPUBMPwrK" name="Battle Healer Additional Powers Known" compset="ClSpecial">
+    <eval phase="UserFinal" priority="10100"><![CDATA[
+hero.child[cHelpPU4].field[cPsiExpr].text = "(" & hero.child[cHelpPU4].field[cPsiExpr].text & ") | (psiClass.cHelpPU5 & psiSubdisc.psdPUHeali)"]]></eval>
+    </thing>
+  <thing id="cPUGBPwrK" name="Gifted Blade Powers" compset="ClSpecial">
+    <eval phase="UserFinal" priority="10100"><![CDATA[
+hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPsiExpr].text & ") | (psiClass.arPUGiftBl)"]]></eval>
+    </thing>
+  <thing id="cPUBMHBnd" name="Healing Bond" description="A battle medic of 4th level has learned how to share healing over his network. When manifesting a power of the Healing subdiscipline with a range of personal, the battle medic can choose to change the target to a member of his collective. This ability replaces the strategy normally gained at 4th level." compset="ClSpecial">
+    <tag group="abAction" tag="None"/>
+    </thing>
+  <thing id="cPUBMBitF" name="Back into the Fray" description="A battle medic of 6th level has learned to channel additional healing energy when it is most needed. When manifesting a power of the Healing subdiscipline on a member of his collective, and the target is below 50% of its total hit points, the battle medic can expend his psionic focus to treat that power as if affected by the Empower Power feat. This ability replaces coordinate." compset="ClSpecial"></thing>
+  <thing id="cPUFrcPart" name="Forced Participant" description="A 1st level commander gains the Unwilling Participant* feat as a bonus feat. At 5th level and every 4 levels thereafter, the DC to resist being unwillingly added to the collective is increased by 1. \nThis ability replaces coordinated strike." compset="ClSpecial" summary="Any creature in the collective against their will makes a save against an effect from over the collective, they suffer a -2 penalty on the save to resist the effect.">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="fPUUnwillP">
+      <containerreq phase="First" priority="500"><![CDATA[
+      count:Classes.Vitalist>= 2 & !AbReplace.cPUUnwPart]]></containerreq>
+      </bootstrap>
+    </thing>
+  <thing id="cPUIssOrdr" name="Issue Order" description="A commander of 4th level can, as a swift action, direct one member of his collective to  take an action that requires either a standard or move  action. On that member’s next turn, they must perform that command unless they make a successful Will saving throw at the same DC as that of the commander’s Unwilling Participant* DC. This ability replaces the strategy normally gained at 4th level, but functions like a strategy, including using the same pool of 3 + the tactican’s Charisma modifier limited uses per day." compset="CustomSpec" uniqueness="unique">
+    <usesource source="pPsiUn" parent="pDscar" name="DSP - Ultimate Psionics"/>
+    <tag group="SpecSource" tag="cHelpPU4" name="Tactician" abbrev="Tactician"/>
+    </thing>
+  <thing id="arPUComm" name="Commander" description="For some tacticians, it is not enough to direct their allies and coordinate battle tactics, they need to ensure that the members of their collective are doing exactly as told. These commanders can force individuals into their collective and force members within the collective to take actions by using telepathic force, rather than diplomatic measures." compset="ClassVary" uniqueness="unique">
+    <arrayval field="cvBonFtMod" index="11" value="-1"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <bootstrap thing="cPUThrall">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cPUFrcPart">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU4"/>
+    </thing>
+  <thing id="cPUThrall" name="Thrall" description="Once a commander has reached 12th level, he can treat one member of his collective as if a thrall and that member will follow any instruction given by the commander. Like a thrall, if this member of the collective dies while under this effect, the commander suffers one negative level for one day. This thrall effect can be ended by the commander as a free action, but otherwise is treated as a permanent effect. The targeted collective member may make a Will save at the same DC as the commander’s Unwilling Participant DC if the commander gives any commands that would cause the thrall to harm itself or obviously suicidal orders. This ability replaces the teamwork feat normally gained at 12th level." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="arPUFrProj" name="Fear Projector" description="Fear is a powerful emotion, and in the midst of battle, it can stop even the strongest warrior in his tracks. Fear projectors tap into these ubiquitous phobias and channel them into the minds of their enemies, even using the members of their collective to expand their influence." compset="ClassVary" uniqueness="unique">
+    <arrayval field="cvBonFtMod" index="5" value="-1"/>
+    <arrayval field="cvCustTot" index="9" value="-1"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cPULessStr"/>
+    <tag group="AbReplace" tag="cPUTacCoor"/>
+    <link linkage="varies" thing="cHelpPU4"/>
+    </thing>
+  <thing id="arPUMtaNex" name="Metanexus" description="The sum is greater than its parts, and never has it been more true than with the metanexus. Their ability to harness their allies and redefine them as needed makes them highly flexible in the field of battle and using his allies as nodes to target others makes him capable of literally being everywhere at the same time." compset="ClassVary" uniqueness="unique">
+    <arrayval field="cvPsiPowTo" index="8" value="-1"/>
+    <arrayval field="cvCustTot" index="15" value="-1"/>
+    <tag group="AbReplace" tag="cPUImpShar"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <bootstrap thing="cPUBrdgPow">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUPoolTrt">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cPUHrnAlly">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUCollKno">
+      <autotag group="ClSpecWhen" tag="16"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU4"/>
+    </thing>
+  <thing id="cPUBrdgPow" name="Bridged Power" description="A metanexus of 5th level has learned to use members of his collective as a link to alter the source of powers he manifests. Any time the metanexus manifests a power with a range greater than touch, he can choose a member of his collective and treat that member as the source for determining eligible targets or areas for the power. The metanexus must still himself have line of sight to the target or area to be affected to manifest the power. For example, a metanexus of 6th level who was manifesting a power of Short range (40 foot range) could use a member of his collective 100 feet away to target a creature within 40 feet of the collective member that would otherwise be beyond the Short range of the power. This ability replaces improved share (1)." compset="ClSpecial"></thing>
+  <thing id="cPUPoolTrt" name="Pooled Traits" description="Starting at 8th level, a metanexus has learned to distribute the special abilities of the members of his collective. Any member of the collective can choose to use one of the racial traits of another willing member of the collective. Using this racial trait counts as a use for the member with the ability to be used and the benefiting collective member must spend the appropriate action to use the ability. Only racial traits that are limited in use per day, such as the xeph’s burst ability, or that require a power point cost, such as the elan’s resilience ability, can be distributed in this way, but if the ability has a power point cost, the benefiting member must pay double the normal power point cost. This ability replaces the power known normally gained at 8th level." compset="ClSpecial"></thing>
+  <thing id="cPUHrnAlly" name="Harness Ally" description="Beginning at 11th level, the metanexus has learned not only to use his ally as a link for his powers, but to actually tap into the senses of that member of the collective. As a swift action, the metanexus can expend his psionic focus and use the visual and auditory senses of one member of his collective for one round. In that round, the metanexus can manifest a power and can select a target for the power if it is eligible to the chosen member of the collective. The power then uses that collective member’s line of sight and line of effect to determine eligible targets. The member of the collective selected must be within 100 feet of the metanexus to use this ability. The metanexus can cease using the collective member’s senses at any time as a free action. The metanexus otherwise manifests the power as normal. This ability replaces improved share (2)." compset="ClSpecial"></thing>
+  <thing id="cPUCollKno" name="Collective Knowledge" description="Once a metanexus has reached level 16, he is able to tap into the collected psionic knowledge of all members of his collective. By taking a full-round action, the metanexus can manifest any power known by a member of his collective as if\nit was on the metanexus’s list of powers known. If the power’s manifesting time is longer than a standard action, that manifesting time is added to the time it takes to use this ability. If the power is not on the tactician power list, using this ability costs one daily use of the strategy ability. This ability replaces the strategy normally gained at 16th level." compset="ClSpecial"></thing>
+  <thing id="cPUPrjFear" name="Project Fear" description="A fear projector is capable of projecting horrifying images into the minds of his enemies. As a standard action, the fear projector targets one creature within 30 ft. and projects these terrifying images into that creature’s mind unless the creature makes a successful Will save (DC 10 + 1/2 the projector’s level + the projector’s Charisma modifier). A failed save means the creature is shaken for a number of rounds equal to the fear projector’s Charisma modifier. This ability\nreplaces lesser strategies." compset="ClSpecial">
+    <fieldval field="abRange" value="30"/>
+    <tag group="abRange" tag="Feet"/>
+    <tag group="abSave" tag="WillNeg"/>
+    </thing>
+  <thing id="cPUCllFear" name="Collective Fear" description="The fear projector at 6th level has learned to channel his powers over fear through his collective. The fear projector can choose one member of his collective and treat that as the source for any fearbased effect he uses, including his project fear ability, by expending his psionic focus while creating the effect to be redirected. This ability includes altering what creatures can be targeted by an effect, what creatures are affected by an effect, and the like. \n  In addition, the member of his collective selected is shrouded in frightening images that provide a +1 deflection bonus to AC until the end of its next turn. This ability replaces coordinate." compset="ClSpecial"></thing>
+  <thing id="cPUPwrFear" name="Power from Fear" description="Once a projector has reached 6th level, his allies are able to tap into his fear-based power. When a member of the collective causes a creature to have the shaken, panicked, or frightened condition, that collective member gains a +1 morale\nbonus to attack rolls and saving throws for a number of rounds equal to the fear projector’s Charisma modifier. Every four levels thereafter (9th, 13th, 17), this morale bonus improves by 1. This ability replaces the teamwork feat normally gained at 6th level." compset="ClSpecial"></thing>
+  <thing id="cPUPrmFear" name="Permeating Fear" description="At 10th level, the fear projector can expend his psionic focus to channel his project fear ability through his collective and target all creatures within 30 ft. of any member of his collective. The fear projector must wait ten minutes after using this ability before he can use it again. This ability replaces the strategy normally gained at 10th level." compset="ClSpecial"></thing>
+  <thing id="arPUMiasmi" name="Miasmic" description="Most vitalists have some understanding of how to cure poisons or diseases, but there are some vitalists that take a unique interest in understanding poisons and diseases and how to use these afflictions in a more offensive nature. These miasmic vitalists can then use this knowledge to cause sickness instead of curing it." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="289"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <usesource source="pPsiUn"/>
+    <tag group="AbReplace" tag="cPUStealHT"/>
+    <tag group="AbReplace" tag="cPUVitTraW"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cPUVitKnac"/>
+    <tag group="AbReplace" tag="cPUVitReqA"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cPUNoxTale">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUSickTou">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUSickTou">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUSickTou">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cPUSickTou">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cPUDisMast">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPUDisMast">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPUBlkToxn">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU5"/>
+    </thing>
+  <thing id="cPUNoxTale" name="Noxious Talent" description="*Not implemented yet\nThe miasmic gains sense poison* and sicken body* as 0th level talents. This ability replaces knacks." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUDisMast" name="Disease Mastery" description="At 3rd level, a miasmic is immune to all diseases, including supernatural, magical, and psionic diseases, including mummy rot.\nAt 7th level, with a touch and by expending his psionic focus, the miasmic can absorb any mundane or supernatural disease affecting the target. The miasmic immediately suffers the effect of the disease unless he makes a successful save against the disease’s save (if a save is normally allowed). A successful save negates the disease’s effect, while on a failed save, the miasmic suffers the effects of the disease until the end of his next turn, after which he becomes immune to that application of the disease.\nThis ability replaces steal health." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUBlkToxn" name="Block Toxin" description="Starting at 5th level, members of the miasmic’s collective can request assistance against poisons or diseases. As an immediate action, the collective member can request the miasmic grant immunity to a specific disease or poison that they are currently affected by. The miasmic can grant this immunity by spending 5 power points as a free action even if it is not his turn and making a manifester level check against the save DC of the poison or disease. If the check is successful, the collective member is treated as immune to that specific application of poison or disease. This does not cure any damage suffered prior to the request being made. A miasmic can do this a number of times per day equal to 3 + his Wisdom modifier. This ability replaces request aid." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="ChargeCalc" tag="AttrUses3"/>
+    <tag group="ChargeAttr" tag="aWIS"/>
+    <tag group="Usage" tag="Day"/>
+    </thing>
+  <thing id="cPUExqAgny" name="Exquisite Agony" description="When a member of the sadist’s collective dies, instead of needing to make a save to avoid taking damage, the sadist gains a number of temporary power points equal to the Hit Die of the creature killed. These power points last a number of rounds equal to the sadist’s Wisdom modifier and do not stack with each other or other temporary power points. This ability replaces knacks." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPULingrPn" name="Lingering Pain" description="A sadist of 3rd level learns to make wounds more painful than usual. Any time the sadist inflicts hit point damage on a creature and the\nsadist is maintaining psionic focus, it also causes bleed damage equal to half the sadist’s level unless the target makes a successful Fortitude save (DC 10 + 1/2 the sadist’s class level + the sadist’s Wisdom modifier). This ability replaces the power known normally gained at 3rd level; the sadist does not learn a new vitalist power until 5th level." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <tag group="abSave" tag="FortNeg"/>
+    <tag group="StandardDC" tag="aWIS"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUEmpInPn" name="Empowered in Pain" description="A sadist of 5th level can treat any power he manifests of the healing subdiscipline as if affected by the Empower Power feat by expending\nhis psionic focus and causing a number of hit points in damage to one member of his collective equal to the total number of power points spent on the power. The member targeted by this damage cannot be the recipient of the healing (whether directly or through effects such\nas collective healing) and may attempt a Will save (DC 10 + 1/2 the sadist’s class level + the vitalist’s Wisdom modifier) to negate the effect, but doing so means the power is not empowered and psionic focus is still expended. The sadist cannot inflict this damage upon\nhimself. This ability replaces request aid." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="abSave" tag="WillNeg"/>
+    <tag group="StandardDC" tag="aWIS"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="arPUSadist" name="Sadist" description="While most vitalists focus on healing wounds or siphoning off healing energy, some relish the pain their collective members feel. These sadists are able to empower their abilities when others feel pain, making them less predictable in how they will handle the wounds of their allies." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <fieldval field="srcPageNum" value="289"/>
+    <arrayval field="cvPsiPowTo" index="2" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="3" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="4" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="5" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="6" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="7" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="8" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="9" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="10" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="11" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="12" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="13" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="14" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="15" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="16" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="17" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="18" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="19" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="20" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="21" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="22" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="23" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="24" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="25" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="26" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="27" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="28" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="29" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="30" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="31" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="32" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="33" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="34" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="35" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="36" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="37" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="38" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="39" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="40" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="41" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="42" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="43" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="44" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="45" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="46" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="47" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="48" value="-1"/>
+    <arrayval field="cvPsiPowTo" index="49" value="-1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="AbReplace" tag="cPUVitKnac"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cPUVitReqA"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cPUExqAgny">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPULingrPn">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPUEmpInPn">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU5"/>
+    </thing>
   </document>

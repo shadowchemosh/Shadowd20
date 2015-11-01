@@ -1520,11 +1520,6 @@ foreach pick in hero from BaseSkill where "Helper.SkCatPerf"
     <bootstrap thing="raPUNatArm"></bootstrap>
     <bootstrap thing="raPUSouCry"></bootstrap>
     </thing>
-  <thing id="stPUHalfCo" name="Half-construct" description="A half-construct race is a group of creatures that are artificially enhanced or have parts replaced by constructed mechanisms, be they magical or mechanical. A half-construct race has the following features.\n\n• Half-constructs gain a +2 racial bonus on saving throws against disease, mind-affecting effects, poison, and effects that cause either exhaustion or fatigue.\n• Half-constructs cannot be raised or resurrected.\n• Half-constructs do not breathe, eat, or sleep, unless they want to gain some beneficial effect from one of these activities. This means that a half-construct can drink potions and can sleep in order to regain spells, but neither is required to survive or stay in good health." compset="Subtype" uniqueness="unique">
-    <usesource source="pPsiUn"/>
-    <bootstrap thing="raPUConRes"></bootstrap>
-    <exprreq message="Construct/Undead type forbidden">#hastype[tpUndead] + #hastype[tpConst] = 0</exprreq>
-    </thing>
   <thing id="lPUForgeB" name="Forgeborn" compset="Language" uniqueness="useronce">
     <usesource source="pPsiUn" parent="pDscar" name="Ultimate Psionics"/>
     </thing>
@@ -1676,19 +1671,6 @@ hero.child[svWill].field[Bonus].value += field[abValue].value]]></eval>
       <autotag group="Usage" tag="Day"/>
       <assignval field="trkMax" value="1"/>
       </bootstrap>
-    </thing>
-  <thing id="raPUConRes" name="Construct Resistance" description="You gain a +2 racial bonus on saving throws against disease, mind-affecting effects, poison, and effects that cause either exhaustion or fatigue." compset="RaceSpec">
-    <fieldval field="abValue" value="2"/>
-    <tag group="SpecType" tag="Resist"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="Helper" tag="ShowSpec"/>
-    <eval phase="Final" priority="50000" index="2"><![CDATA[
-~if we've been replaced, get out now
-doneif (tagis[Helper.SpcReplace] <> 0)
-~if we've been replaced, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
-
-#situational[hero.childfound[svAll],signed(field[abValue].value) & " bonus vs. disease, mind-affecting effects, poison, and effects that cause either exhaustion or fatigue.",field[thingname].text]]]></eval>
     </thing>
   <thing id="rcMnuAArSp" name="Armor Spikes" description="The construct’s body is covered in spikes, allowing the construct to deal an extra 1d6 points of piercing damage with a successful trample, constrict, bull rush, or grapple attack. The construct also can make a regular melee attack with the spikes, dealing 1d6 points of damage." compset="RaceCustom" uniqueness="useronce">
     <fieldval field="abValue" value="5"/>

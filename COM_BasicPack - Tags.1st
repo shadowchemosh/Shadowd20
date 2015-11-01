@@ -108,29 +108,29 @@
   </group>
   -->
 
-  <group id="BreathShp" width="7" visible="no">
-    <value id="Line" name="Line"/>
-    <value id="Cone" name ="Cone"/>
-    <value id="Cloud" name ="Cloud"/>
+  <group id="BreathShp" name="Breath Weapon Shape">
+    <value id="Line"   name="Line"/>
+    <value id="Cone"   name="Cone"/>
+    <value id="Cloud"  name="Cloud"/>
     <value id="Radius" name="Radius"/>
-    <value id="Cube" name="Cube"/>
+    <value id="Cube"   name="Cube"/>
   </group>
 
-  <group id="DragType" width="7" visible="no">
+  <group id="DragType" name="Dragon Type">
     <value id="Chromatic" name="Dragon, Chromatic"/>
-    <value id="Metallic" name="Dragon, Metallic"/>
-    <value id="Primal" name="Dragon, Primal"/>
-    <value id="Imperial" name="Dragon, Imperial"/>
+    <value id="Metallic"  name="Dragon, Metallic"/>
+    <value id="Primal"    name="Dragon, Primal"/>
+    <value id="Imperial"  name="Dragon, Imperial"/>
   </group>
 
-  <group id="BreathSve" width="7" visible="no">
-    <value id="Fortitude" name="Fortitude"/>
-    <value id="Will" name="Will"/>
-    <value id="Reflex" name="Reflex"/>
+  <group id="BreathSve" name="Breath Weapon Save">
+    <value id="Fortitude" name="Fortitude" abbrev="Fort"/>
+    <value id="Will"      name="Will"      abbrev="Will"/>
+    <value id="Reflex"    name="Reflex"    abbrev="Ref"/>
   </group>
 
-  <group id="SaveEff" width="7" visible="no">
-    <value id="Half" name="Half"/>
+  <group id="SaveEff" name="Saving Throw Effect">
+    <value id="Half"    name="Half"/>
     <value id="Negates" name="Negates"/>
   </group>
 

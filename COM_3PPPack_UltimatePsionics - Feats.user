@@ -1636,21 +1636,25 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <exprreq message="Wisdom 13+ required."><![CDATA[child[aWIS].field[aFinalVal].value >= 13]]></exprreq>
     <exprreq message="Psionic Shot feat required."><![CDATA[#hasfeat[fPUPsiShot] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUKnocSho" name="Knockdown Shot" description="You are capable of knocking down your enemies by psionically empowering your attacks.\n\n{b}Prerequisites:{/b} Dex 15, Point-Blank Shot, Psionic Shot \n\n{b}Benefit:{/b} You can expend your psionic focus and make a single ranged attack as a standard action. If your attack hits, it deals damage normally and the target must make a Reflex save (DC 10 + half your character level + your Wisdom modifier) or be knocked prone." compset="Feat" maxlimit="2">
+  <thing id="fPUKnocSho" name="Knockdown Shot" description="You are capable of knocking down your enemies by psionically empowering your attacks.\n\n{b}Prerequisites:{/b} Dex 15, Point-Blank Shot, Psionic Shot \n\n{b}Benefit:{/b} You can expend your psionic focus and make a single ranged attack as a standard action. If your attack hits, it deals damage normally and the target must make a Reflex save (DC 10 + half your character level + your Wisdom modifier) or be knocked prone." compset="Feat" maxlimit="" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="Standard"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abSave" tag="RefNeg"/>
+    <tag group="StandardDC" tag="aWIS"/>
     <exprreq message="Psionic Shot feat required."><![CDATA[#hasfeat[fPUPsiShot] <> 0]]></exprreq>
     <exprreq message="Dexterity 15+ required."><![CDATA[child[aDEX].field[aFinalVal].value >= 15]]></exprreq>
     <exprreq message="Point Blank Shot feat required."><![CDATA[#hasfeat[fPointBlnk] <> 0]]></exprreq>
     </thing>
-  <thing id="fPULingPwr" name="Lingering Power" description="Your power clings to existence, slowly fading from the world.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. You may cause an instantaneous power that affects an area to persist until the beginning of your next turn. Those already in the area suffer no additional harm, but other creatures or objects entering the area are subject to its effects. A lingering power with a visual manifestation obscures vision, providing concealment (20% miss chance) beyond 5 feet and total concealment (50% miss chance) beyond 20 feet. Using this feat does not increase the power point cost of the power. Powers that do not affect an area cannot be used with this feat." compset="Feat">
+  <thing id="fPULingPwr" name="Lingering Power" description="Your power clings to existence, slowly fading from the world.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. You may cause an instantaneous power that affects an area to persist until the beginning of your next turn. Those already in the area suffer no additional harm, but other creatures or objects entering the area are subject to its effects. A lingering power with a visual manifestation obscures vision, providing concealment (20% miss chance) beyond 5 feet and total concealment (50% miss chance) beyond 20 feet. Using this feat does not increase the power point cost of the power. Powers that do not affect an area cannot be used with this feat." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Metapsion"/>
     <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="fPUMallPwr" name="Malleable Power" description="You are able to shape the effect of your power to exclude targets.{br}{br}{b}Prerequisites:{/b} Selective Power, Spellcraft 10 ranks.{br}{br}{b}Benefit:{/b} To use this feat, you must spend your psionic focus. Doing so lets you manifest a malleable power.{br}{br}This power may exclude any number of 5-foot cubes (5&apos; long by 5&apos; wide by 5&apos; high). The cubes you exclude do not otherwise hamper the power.{br}{br}For example, you may shoot an energy bolt from your fingertips and exclude the first two cubes of the power.{br}{br}The other 110&apos; of the energy bolt would be manifest as normal.{br}{br}Manifesting a malleable power increases the power point cost of the power by 2. The total cost cannot exceed your manifester level.{br}{br}Powers that do not affect an area cannot be used with this feat." compset="Feat">
     <usesource source="pPsiUn"/>
@@ -2649,7 +2653,6 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Disengage class feature required"><![CDATA[#hasability[cPUDisenga] <> 0]]></exprreq>
     </thing>
-
   <thing id="fPUStdntAS" name="Student of the Astral Suit" description="Your studies in other areas has not hindered your skill with astral suits.\n\n{b}Prerequisite:{/b}  Invigorating suit class feature.\n\n{b}Benefit:{/b}  Treat  your  class  level  as  four  higher  to determine  your  number  of  customization  points  and which customizations you can select for your astral suit, to a maximum of your character level." compset="Feat" summary="Your studies in other areas has not hindered your skill with astral suits." uniqueness="useronce">
     <usesource source="pPsiUn" parent="pDscar" name="DSP - Ultimate Psionics"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
@@ -2678,9 +2681,36 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
         V_NewLvl = 20
       endif
       ~ Set Aegis Customization Points
-      Call PUSetAegCP
-      ]]></eval>
+      Call PUSetAegCP]]></eval>
     <exprreq message="Invigorating Suit class ability required."><![CDATA[#hasability[cPUInvigSu] <> 0]]></exprreq>
     </thing>
-
+  <thing id="fPUKillVit" name="Killer&apos;s Vitality" description="You are skilled with stealing the health of those you strike.\n\n{b}Prerequisite:{/b} Soulthief method, sneak attack +1d6 \n\n{b}Benefit:{/b} Any time you make a successful sneak attack against a living creature, you can expend your psionic focus to gain 3 temporary hit points per die of sneak attack dealt. You can divide these temporary hit points between yourself and members of your collective in any\nratio.\n\n{b}Special:{/b} If your attack reduces the target to fewer than 0 hit points, you gain double the temporary hit points." compset="Feat" summary="You are skilled with stealing the health of those you strike." uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Soulthief Method required"><![CDATA[#hasability[cPUVitSoul] <> 0]]></exprreq>
+    <prereq message="Sneak Attack 1d6 required.">
+      <validate><![CDATA[
+        var sneakatt as number
+        call NumSnkDice   
+        validif (sneakatt >= 1)
+        ]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fPUKngtmre" name="Knightmare" description="*Not fully implemented yet\nYou are a roving horror that strikes terror into the hearts of others.\n\n{b}Prerequisites:{/b} Terrors class feature, cavalier’s charge class feature\n\n{b}Benefit:{/b} Your manifester level which granted you the terrors class feature gains a +2 bonus as long as this bonus doesn’t raise your manifester level above your current Hit Dice. In addition, for the purpose of terrors level requirements and order benefits, add your dread\nand cavalier levels together. In addition, when declaring your challenge, you can make a free Intimidate check against the target." compset="Feat" summary="You are a roving horror that strikes terror into the hearts of others." uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Terrors class feature required"><![CDATA[#hasability[cPUTerrors] <> 0]]></exprreq>
+    <exprreq message="Cavalier&apos;s Charge class feature required"><![CDATA[#hasability[cCavCharge] <> 0]]></exprreq>
+    </thing>
+  <thing id="fPULevTran" name="Levitative Transport" description="You can share your gravity-defying abilities.\n\n{b}Prerequisites:{/b} Elocater level 5th, Gravitic Stability*\n\n{b}Benefit:{/b} When you gain psionic focus, you may choose to share the benefit of your personal gravity, scorn earth, and terminal velocity abilities with all adjacent allies. When you move, all affected allies move with you on your turn. Allies may move around you\nfreely on their own turns (for example, an ally in front of you could move to stand behind you), but if any ally moves more than 5 ft. away from you, the effect ends immediately for that ally. If you are attacked, you must make a concentration check as if concentrating on a\n2nd-level power to maintain this effect. If subjected to harsh environmental effects which would disrupt concentration (such as strong winds), you must make a concentration check once per hour of overland travel in such conditions.\nIn addition, your speed is no longer reduced to 10 ft. when wearing medium or heavy armor or carrying a medium load while using personal gravity or scorn earth, although your base land speed is still reduced as normal for such, unless you have an ability or trait\nsuch as a fighter’s armor training or a dwarf’s slow and steady. You may use personal gravity and scorn earth while heavily encumbered, but your movement speed is reduced to 10 ft. plus any applicable speed bonuses." compset="Feat" summary="You can share your gravity-defying abilities." uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Elocator level 5 required"><![CDATA[#featlevelcount[Elocator] >= 5]]></exprreq>
+    <exprreq message="Gravitic Stability feat required"><![CDATA[#hasfeat[fPUGravSta] <> 0]]></exprreq>
+    </thing>
   </document>

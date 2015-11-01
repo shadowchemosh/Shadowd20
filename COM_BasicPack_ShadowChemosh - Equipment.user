@@ -94,13 +94,20 @@
     </thing>
   <thing id="iS2ArmRazo" name="Armor Razors" description="Armor razors deal extra slashing damage (see &quot;spiked armor&quot; on Table: Weapons) on a successful grapple attack. The razors count as a martial weapon. If you are not proficient with them, you take a -4 penalty on grapple checks when you try to use them. You can also make a regular melee attack (or off-hand attack) with the razors, and they count as a light weapon in this case. (You can&apos;t also make an attack with armor razors if you have already made an attack with another off-hand weapon, and vice versa.) An enhancement bonus to a suit of armor does not improve the razors&apos; effectiveness, but the razors can be made into magic weapons in their own right." compset="MagicWep" buytemplate="BuyMoney" xactspecial="2">
     <comment>Copying this item to make anything other than the weapon stats for a magic weapon is not recommended. There are settings that cannot be changed in the editor, which will be carried along with your copy.</comment>
+    <usesource source="srcS2Gear"/>
     <tag group="Helper" tag="CustomItem"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Helper" tag="NoSelect"/>
     <tag group="Helper" tag="Shadow"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PreLevel" priority="5000">call iMagWeapon</eval>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ Manually call HL Gizmo setup for magic & weapons
+      call iMagWeapon]]></eval>
+    <eval phase="Render" priority="99999999" index="2"><![CDATA[
+      ~ Correct the armor razor's name & text which 
+      ~ is lost when any item power is added.
+      Call X1MagName]]></eval>
     <child entity="gMagWeapon">
       <tag group="Helper" tag="NoSelChild"/>
       <bootstrap thing="wS2ArmRazo">
@@ -221,14 +228,16 @@
       ~ Set the live name to include the Number of Books
       field[livename].text = field[thingname].text & ", " & Books & " Books"]]></eval>
     </thing>
-  <thing id="ioS2Custom" name="- Custom Magic Item -" description="Add this to have a customizable magic item where you can set the name, weight and value yourself." compset="Wondrous">
+  <thing id="ioS2Custom" name="- Custom Magic Item -" description="Add this to have a magic item where you can set the name, weight and value yourself." compset="Wondrous">
     <usesource source="srcS2Gear"/>
+    <tag group="GearVlSort" tag="Other"/>
+    <tag group="gType" tag="Custom"/>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Helper" tag="Custom"/>
     <tag group="Helper" tag="EquipMag"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="wImp1d4" name="Improvised Weapon" description="This is a generic &quot;improvised Weapon&quot; that can be used to represent anything from a broken bottle to a chair leg.\n\n{B}Note:{/b} To change the damage die size go to the &quot;Adjust&quot; tab, then &quot;Other Adjustments&quot; and add &quot;Weapon Size&quot;.\n\n{B}Note2:{/b} To turn any normal weapon into a Improvised Weapon you can make a custom weapon and add the &quot;Improvised&quot; item power." compset="Weapon">
     <usesource source="srcS2Gear"/>
@@ -318,6 +327,11 @@
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="GearNoSize"/>
     <tag group="wClass" tag="OneHanded"/>
+    <tag group="Helper" tag="SingleAtt"/>
+    <eval phase="Final" priority="11000"><![CDATA[
+      ~ Remove any extra high tags as we can't ever 
+      ~ more than a single attack.
+      perform delete[Helper.ExtraHigh]]]></eval>
     </thing>
   <thing id="gS2FormB" name="Formula book" description="A formula book has 100 pages of parchment, and each alchemical extract formula takes up one page per extract level. A newly purchased formula book contains no extract formulas. An alchemist character begins play with a formula book containing the extract formulae he knows. This is the alchemist equivalent of a spellbook for wizards (a spellbook and a formula book are essentially the same item).\n\n{B}Note:{/b} This gear item will calculate its gp value and number of pages based on the selected class. You should still purchase a Formula book to account for weight and cost. This is very useful for GM with a NPC with a Formula book to quickly calculate the pages and book cost." compset="Gear">
     <usesource source="srcS2Gear"/>
@@ -431,7 +445,47 @@
           ~ Apply the Extra Hight Attack tag to ourself
           perform assign[Helper.ExtraHigh]
         loop      
-      endif
+      endif]]></eval>
+    </thing>
+  <thing id="ipS2Bane" name="Bane" description="A bane weapon excels at attacking one type or subtype of creature. Against its designated foe, its effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2d6 points of damage against the foe. Bows, crossbows, and slings so crafted bestow the bane quality upon their ammunition.\n\n{B}Note:{/b} This verison of bane allows for the bane bonuses to be activated on the {b}In-Play{/b} tab instead of always being on.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Magic Arms and Armor, {i}summon monster I{/i}; {b}Cost{/b} +1 Bonus" compset="ItemPower" summary="+2 &amp; +2d6 damage vs. chosen type" uniqueness="useronce">
+    <fieldval field="iPrice" value="1"/>
+    <fieldval field="iCL" value="8"/>
+    <usesource source="srcS2Gear"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="User" tag="OptDomain"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="Helper" tag="CustomSpec"/>
+    <tag group="Helper" tag="Shadow"/>
+    <tag group="PowerType" tag="Weapon"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10000" index="1"><![CDATA[
+      ~ If not active get out now!    
+      doneif (field[abilActive].value = 0) 
+
+      if (parent.tagis[component.BaseWep] <> 0) then
+        #extradamage[parent," plus 2d6 vs. " & field[iCustSpec].text,field[thingname].text]
+        parent.field[Bonus].value += 2
+      else
+        foreach pick in hero from BaseWep where container.child[gCustMagic].field[gWeapExpr].text
+          #extradamage[eachpick," plus 2d6 vs. " & field[iCustSpec].text,field[thingname].text]
+          eachpick.field[Bonus].value += 2
+        nexteach
+      endif]]></eval>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      ~ Only proceed if we are a type of ammunition like arrows/bolts
+      doneif (parent.tagis[wCategory.Ammunition] = 0)
+    
+      ~ We want to always show the activation button as this is really
+      ~ useful for arrows/bolts. So even if not equipped show us.
+      perform delete[Helper.SpcDisable]
+      perform delete[Hide.Activation]
       ]]></eval>
+    <eval phase="Render" priority="10000" index="3"><![CDATA[    
+      ~ Correct set the statblock name for printing
+      if (field[iCustSpec].isempty = 0) then
+        field[sbName].text = lowercase(field[iCustSpec].text & "-" & field[thingname].text)
+      endif]]></eval>
     </thing>
   </document>

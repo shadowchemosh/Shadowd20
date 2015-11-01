@@ -3,22 +3,13 @@
   <loadonce key="COM_Source_210 - Legendary Games"/>
 
   <!--
-  December 23, 2014 Tim Shadow
-  -Created New.
+    September 12, 2015 Tim Shadow
+    -Moved the parent source to the Basic Pack to support the Legendary Plant players guide.
 
+    December 23, 2014 Tim Shadow
+    -Created New.
   -->
 
-  <!-- ============================================== -->
-  <!-- New Parent Sources                             -->
-  <!-- ============================================== -->
-  <source
-    id="pLegeGames"
-    name="Legendary Games"
-    selectable="no"
-    parent="p3PPPack"
-    sortorder="10"
-    description="Legendary Games Pathfinder Compatible Books.">
-    </source>
 
   <!-- ============================================== -->
   <!-- New Child Sources                              -->
@@ -29,7 +20,7 @@
     selectable="yes"
     parent="pLegeGames"
     sortorder="10"
-    description="Treasury of the Macabre for pathfinder. Copyright XML and HL Scripts 2014.">
+    description="Treasury of the Macabre for pathfinder. Copyright Tim Shadow - XML and HL Scripts 2014.">
     </source>
   <source
     id="srcLGUltBa"
@@ -37,6 +28,6 @@
     selectable="yes"
     parent="pLegeGames"
     sortorder="10"
-    description="Ultimate Battle for pathfinder. Copyright XML and HL Scripts 2015.">
+    description="Ultimate Battle for pathfinder. Copyright Tim Shadow - XML and HL Scripts 2015.">
     </source>
   </document>

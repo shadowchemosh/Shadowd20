@@ -8,6 +8,35 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.15 October 31, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Prevent touch attacks & ranged touch attacks from getting multiple attacks.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fix Armor Razor equipment names when made magical.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added in the missing Dragonhide armor types (Banded Mail and Half-Plate).</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed wording on the Bane and Greater Bane adjustments. In addition moved these over to the "Conferred" section as they really are meant for Inquisitors.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new generic metamagic "- Lower Spell Level -". Fixes issue #33.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Changed the "- Custom Magic Item -" thing to appear at the top of the list on the "Magic" tab instead of the bottom.</li>
+<li>Legendary Games (ShadowChemosh) - Added the "Legendary Planet AP Players Guide" crunch details into HL. Please note allot of the fluff information was left out as it was not covered by the OGL.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Unchained Background Skills, Total" which lets you do a one time adjustment to the total number of background skills your character has.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Unchained Background Skills, Level" which lets you change the normal 2 backgrounds skills gained a level. In example setting this to 1 lets you gain 3 background skills per level.</li>
+<li>ShadowChemosh Archetypes (ShadowChemosh) - Added new "Ability Score" archetype for Cleric class that lets you change which attribute is used for spells and abilities.</li>
+<li>ShadowChemosh Archetypes (ShadowChemosh) - Added new "Ability Score" archetype for Monk class that lets you change which attribute is used for class abilities (ie AC and Ki Pool).</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added a new version of Bane item power under "ShadowChemosh Equipment".  When added to a weapon and equipped you will get an activation button on the "In-Play" tab that can be turn the +2H/D & +2d6 dmg bonus On/Off. This will make it easier to use for those on iPads and using HL software at the game table.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) To support different packages with the same need of the "Half-Construct" subtype I moved the subtype from the 3PP Pack (Ultimate Psionics) into the Basic Pack. This will allow me to use it across packs.</li>
+<li>(ShadowChemosh) To support a new Legendary Players guide I moved some of the .1st parent values from the 3PP Pack to the Basic Pack.</li>
+<li>(ShadowChemosh) Added new universal racial specials: Multi-armed and Natural Armor.</li>
+<li>(ShadowChemosh) Added the new procedure "X1RaceAttr" which is used for alternate heritages to set new ability score modifiers.</li>
+</ul>
+
+
 <strong>v3.14 September 6, 2015</strong>
 
 <strong>Bug Fixes</strong>

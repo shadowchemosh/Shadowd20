@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="COM_Source_110 - Legendary Games"/>
+
+  <!--
+  December 23, 2014 Tim Shadow
+  -Created New.
+
+  -->
+
+  <!-- ============================================== -->
+  <!-- New Parent Sources                             -->
+  <!-- ============================================== -->
+  <source
+    id="pLegeGames"
+    name="Legendary Games"
+    selectable="no"
+    parent="pBasicPack"
+    sortorder="15"
+    description="Legendary Games Pathfinder Compatible Books.">
+    </source>
+
+  <!-- ============================================== -->
+  <!-- New Child Sources                              -->
+  <!-- ============================================== -->
+  <source
+    id="srcLegPlAP"
+    name="LG - Legendary Planet AP"
+    selectable="yes"
+    parent="pLegeGames"
+    sortorder="10"
+    description="Legendary Planet Adventure Path for pathfinder. Copyright Tim Shadow - XML and HL Scripts 2015.">
+    </source>
+
+  </document>

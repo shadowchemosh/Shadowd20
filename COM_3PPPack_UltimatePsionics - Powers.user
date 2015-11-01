@@ -8466,4 +8466,86 @@
     <tag group="sResist" tag="Yes"/>
     <tag group="sSave" tag="WillNeg"/>
     </thing>
+  <thing id="puArdLegT" name="Ardent Legion, T&apos;Nail&apos;s" description="You send a summon out across your collective calling all of the members to aid you. All members of the collective that are located on the same plane and that are willing are then summoned to the closest available space to you and are given one of three options.\n- +3 competence bonus on attack and damage rolls\n- +3 competence bonus on saving throws and AC\nThe competence bonuses last for one round per manifester level. If this power is used during combat and the creatures summoned had not yet rolled initiative, they immediately roll initiative. If their initiative is higher than yours, they may immediately take this round’s actions and then resume normal initiative order the next round.  Creatures summoned immediately receive their bonus.\nAugment: This power may be augmented in one or more of the following ways.\n1. By spending 2 additional power points, the power can summon members, including the manifester, to a particular member of the collective instead of to the manifester.\n2. By spending 2 additional power points, this power can summon members of the collective across planar boundaries.\n3. By spending 4 additional power points, this power’s manifesting time becomes an immediate action." compset="PsiPower" uniqueness="useronce">
+    <fieldval field="sRange" value="Unlimited; see text"/>
+    <fieldval field="sTarget" value="Willing members of your collective"/>
+    <fieldval field="sDuration" value="Instantaneous; see text"/>
+    <fieldval field="sSave" value="Will negates"/>
+    <fieldval field="sResist" value="No"/>
+    <fieldval field="shortname" value="Ardent Legion"/>
+    <usesource source="pPsiUn"/>
+    <tag group="sRange" tag="SeeText"/>
+    <tag group="sRange" tag="Unlimited"/>
+    <tag group="sLevel" tag="9"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sDuration" tag="SeeText"/>
+    <tag group="psiDiscip" tag="pdPUPsyPor"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="psiClass" tag="cHelpPU4"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="psiClass" tag="cHelpPU5"/>
+    <tag group="psiDisplay" tag="Mental"/>
+    <tag group="psiDisplay" tag="Auditory"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="puBMToSrtr" name="Baleful Mind Trap of Surtr" description="You set up a trap in your mind against mental intruders. Anyone who attacks you with a telepathy power or mindaffecting effect immediately loses 1d6 power points. This power’s effect does not negate the power that is currently being used against you. You can manifest this power instantly, quickly enough to gain its benefit in an emergency. Creatures that do not have power points must make a Fortitude save or be nauseated for 1 round. Manifesting the power is an immediate action. You can use this power even when it is not your turn. \nAugment: For every additional power point you spend, this power’s duration increases by 1 round." compset="PsiPower" uniqueness="useronce">
+    <fieldval field="sRange" value="Personal"/>
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sDuration" value="1 round"/>
+    <fieldval field="sSave" value="None; see text"/>
+    <fieldval field="sResist" value="Yes"/>
+    <fieldval field="shortname" value="Baleful Mind Trap"/>
+    <usesource source="pPsiUn"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sLevel" tag="3"/>
+    <tag group="sCastTime" tag="Immed1"/>
+    <tag group="sDuration" tag="Round"/>
+    <tag group="psiDiscip" tag="pdPUTelepa"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sSave" tag="SeeText"/>
+    <tag group="sDescript" tag="MindAffect"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="psiClass" tag="cHelpPsi"/>
+    <tag group="psiDisplay" tag="Auditory"/>
+    <tag group="psiClass" tag="cHelpWld"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="puShldWll" name="Shield Wall, Krakatal&apos;s" description="You will the held tower shield to become a natural extension of your arm; it blocks attacks with but a mere thought from you. Your skin appears to burn, like red-hot embers briefly illuminating 5-feet away from you, before it dissipates.\nDuring the duration of this power you are considered proficient with tower shields. If you actually have proficiency in tower shields you increase the AC bonus granted by any tower shield you wield by +1.\nAugment: This power may be augmented in one or more of the following ways.\n1. For every 4 additional power points you spend, you may decrease the tower shield’s attack penalty due to encumbrance by 1.\n2. For every 4 additional power points you spend, the tower shield’s bonus to Armor Class improves by 1.\n3. For every 4 additional power points you spend, reduce the tower shield’s armor check penalty by 1." compset="PsiPower" uniqueness="useronce">
+    <fieldval field="sTarget" value="You"/>
+    <fieldval field="sDuration" value="1 min./level (D)"/>
+    <usesource source="pPsiUn"/>
+    <tag group="psiClass" tag="cHelpPWa"/>
+    <tag group="psiDisplay" tag="Visual"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Dismiss"/>
+    <tag group="psiDiscip" tag="pdPUPsyMet"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="puShTide" name="Shift the Tide" description="You see the flow of battle and are able to make a single correction to shift the outcome of events. You force one creature in range to reroll a single check. This could be an attack roll, saving throw, opposed check, skill check, or any other d20 roll. The creature must take the result of the second roll. You can choose to use this power after the result of a roll has already been determined - such as to force an enemy who has hit an ally to reroll, or to allow an ally to reroll a failed saving throw. \nIf you target an enemy who makes a successful Will save, their action is not altered, but they are instead staggered for one round.\nAugment: For every two additional power points spent, the power’s save DC increases by 1." compset="PsiPower" uniqueness="useronce">
+    <fieldval field="sRange" value="Medium (100 ft. + 10 ft./level)"/>
+    <fieldval field="sTarget" value="One creature"/>
+    <fieldval field="sDuration" value="Instantaneous (see text)"/>
+    <fieldval field="sSave" value="Will negates (harmless) or Will partial (see"/>
+    <fieldval field="sResist" value="Yes"/>
+    <usesource source="pPsiUn"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sCastTime" tag="Immed1"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sDuration" tag="SeeText"/>
+    <tag group="psiDiscip" tag="pdPUClairs"/>
+    <tag group="psiClass" tag="cHelpPU4"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sSave" tag="SeeText"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sSave" tag="WillPart"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="psiDisplay" tag="Auditory"/>
+    <tag group="sRange" tag="Medium"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
   </document>

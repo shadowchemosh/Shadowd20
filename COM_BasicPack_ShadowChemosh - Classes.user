@@ -334,4 +334,84 @@
         </bootstrap>
       </minion>
     </thing>
+  <thing id="cS2AbilSco" name="Ability Score" description="This is a helper ability that will not display or print anywhere. But it allows for selecting a new attribute score this class will use for its abilities and spells." compset="ClSpecial" summary="Select the new attribute this class will use for abilities and spells.">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="fShowWhat" tag="Attributes"/>
+    <tag group="Hide" tag="Statblock"/>
+    <tag group="Hide" tag="ClSpecList"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <eval phase="First" priority="1000"><![CDATA[
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      perform field[usrChosen1].chosen.pulltags[SplAttr.?]
+      perform field[usrChosen1].chosen.pulltags[StandardDC.?]
+      perform field[usrChosen1].chosen.pulltags[ChargeAttr.?]
+      perform field[usrChosen1].chosen.pulltags[UseAttr.?]
+      perform root.linkage[varies].pulltags[SpecSource.?]
+
+      perform root.linkage[varies].pushtags[SplAttr.?]]]></eval>
+    <eval phase="PostLevel" priority="25000" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      var searchexpr as string
+      searchexpr = tagids[SpecSource.?] & " & (StandardDC.?|ChargeAttr.?) & !thingid.cS2AbilSco"
+      foreach pick in hero from Ability where searchexpr
+        perform eachpick.delete[StandardDC.?]
+        perform eachpick.pushtags[StandardDC.?]
+        perform eachpick.delete[ChargeAttr.?]
+        perform eachpick.pushtags[ChargeAttr.?]
+      nexteach]]></eval>
+    </thing>
+  <thing id="arS2ClrAtt" name="Ability Score" description="This archetype modifies the ability score of the Cleric class from Wisdom to any other attribute score of your choice. After adding this archetype look on your the Cleric class tab for a class ability that lets you choose your new attribute.\n\n{b}Note:{/b} This modifies a base class in a non-standard way and should ONLY be used with permission from your GM." compset="ClassVary" uniqueness="unique">
+    <usesource source="srcS2Arche"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <bootstrap thing="cS2AbilSco">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpClr"/>
+    </thing>
+  <thing id="arS2MnkAtt" name="Ability Score" description="This archetype modifies the ability score of the Monk class from Wisdom to any other attribute score of your choice.  After adding this archetype look on your the Monk class tab for a class ability that lets you choose your new attribute.\n\n{b}Note:{/b} This modifies a base class in a non-standard way and should ONLY be used with permission from your GM." compset="ClassVary" uniqueness="unique">
+    <usesource source="srcS2Arche"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <bootstrap thing="cS2AbilSco">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpMnk"/>
+    <eval phase="PostAttr" priority="8000">
+      ~ If no attribute chosen then get out now!
+      doneif (hero.childfound[cS2AbilSco].tagcount[ChargeAttr.?] = 0)
+
+      var searchexpr as string
+      var sName as string
+
+      ~ Remove wisdom bonus from "AC Bonus" class ability
+      #value[cMnkAC] -= #attrbonus[aWIS]
+
+      ~ Setup a search expression using the Charge Attribute tag
+      searchexpr = hero.childfound[cS2AbilSco].tagids[ChargeAttr.?]
+
+      ~ Set focus to our selected attribute score
+      perform hero.findchild[BaseAttr,searchexpr].setfocus
+      doneif (state.isfocus = 0)
+     
+      ~ Add in the attribute value that was selected
+      #value[cMnkAC] += focus.field[aModBonus].value</eval>
+    <eval phase="PreLevel" priority="10000" index="2">
+      ~ If no attribute chosen then get out now!
+      doneif (hero.childfound[cS2AbilSco].tagcount[ChargeAttr.?] = 0)
+
+      ~ Set Monk Ki Pool to use a the new selected attribute
+      perform hero.childfound[cS2AbilSco].pulltags[UseAttr.?]
+      perform hero.childfound[cMnkKiPool].pushtags[UseAttr.?]</eval>
+    </thing>
   </document>
