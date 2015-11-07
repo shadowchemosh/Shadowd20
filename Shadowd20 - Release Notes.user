@@ -6,6 +6,39 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.6 November 7, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Shadow d20 - Fix "Spell Focus" that was giving a +3 bonus after v12.2</li>
+<li>Shadow d20 - Fix "Greater Spell Focus" that was giving another +3 bonus after v12.2.</li>
+<li>Shadow d20 - Future proofed myself against future changes to the way that DC is calculated for spells.</li>
+<li>Shadow d20 Equipment - Fixed Brass Knuckles to correctly pick up bonuses that apply to Unarmed Strike.</li>
+<li>Shadow d20 races - Fixed some of the Dragonborn Heritages.</li>
+<li>Shadow d20 races - Added a new Art for the Dhampir race to allow them to remove the negative energy issue.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Prevent touch attacks & ranged touch attacks from getting multiple attacks.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fix Armor Razor equipment names when made magical.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed wording on the Bane and Greater Bane adjustments. In addition moved these over to the "Conferred" section as they really are meant for Inquisitors.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merge in latest released 3PP Pack, Basic Pack, and Unchained Pack.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added in the missing Dragonhide armor types (Banded Mail and Half-Plate).</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new generic metamagic "- Lower Spell Level -". Fixes issue #33.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Changed the "- Custom Magic Item -" thing to appear at the top of the list on the "Magic" tab instead of the bottom.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Unchained Background Skills, Total" which lets you do a one time adjustment to the total number of background skills your character has.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Unchained Background Skills, Level" which lets you change the normal 2 backgrounds skills gained a level. In example setting this to 1 lets you gain 3 background skills per level.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added a new version of Bane item power under "ShadowChemosh Equipment". When added to a weapon and equipped you will get an activation button on the "In-Play" tab that can be turn the +2H/D & +2d6 dmg bonus On/Off. This will make it easier to use for those on iPads and using HL software at the game table.</li>
+<li>Darklands Campaign - Added new generic "Tattoo, Dragon" that is on the Magic tab.  Once added you can select the skill that gets the +2 bonus and then the two spells that your tattoo provides.</li>
+<li>Shadow d20 - Added new campaign source "Special One Shot". Added unique items for Halloween game.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) Added new universal racial specials: Multi-armed and Natural Armor.</li>
+<li>(ShadowChemosh) Added the new procedure "X1RaceAttr" which is used for alternate heritages to set new ability score modifiers.</li>
+</ul>
+
+
 <strong>v2.5 August 29, 2015</strong>
 
 <strong>Bug Fixes</strong>
