@@ -1174,7 +1174,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
       foreach pick in hero from BaseCustSp where "SpecSource.cHelpWit"
          perform eachpick.delete[Helper.SpecUp]
       nexteach]]></eval>
-    <eval phase="Final" priority="50000" index="2"><![CDATA[
+    <eval phase="PostLevel" priority="90000" index="2"><![CDATA[
       ~ If we're not shown, just get out now
       doneif (tagis[Helper.ShowSpec] <> 1)
       ~ if we've been disabled, get out now
@@ -1211,6 +1211,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
             perform eachpick.assign[Helper.SpellLike]
             perform eachpick.assign[SpecType.SpellLike]
             perform eachpick.assign[Usage.Day]
+            perform eachpick.assign[StandardDC.aCHA]
             eachpick.field[sDC].value = field[abDC].value
             eachpick.field[sCL].value = field[xAllLev].value
             eachpick.field[trkMax].value += 1
