@@ -424,8 +424,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
     <tag group="SpecType" tag="Defense"/>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
     <tag group="abCategory" tag="BbnRagePow"/>
-    <eval phase="UserPreLv" priority="10001">
-      ~ If grappled condition not enabled, get out now
+    <eval phase="UserPreLv" priority="10001">~ If grappled condition not enabled, get out now
       doneif (hero.child[pcnGrapple].field[pIsOn].value + hero.isidentity[Condition] = 0)
 
       ~ +2 Attack to Cancel out Grappled Condition
@@ -1211,9 +1210,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
             perform eachpick.assign[Helper.SpellLike]
             perform eachpick.assign[SpecType.SpellLike]
             perform eachpick.assign[Usage.Day]
-            perform eachpick.assign[StandardDC.aCHA]
-            eachpick.field[sDC].value = field[abDC].value
-            eachpick.field[sCL].value = field[xAllLev].value
+            perform eachpick.assign[StandardDC.aINT]
             eachpick.field[trkMax].value += 1
          nexteach
       Endif]]></eval>
@@ -2070,8 +2067,7 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
     <fieldval field="actName" value="vs Evil"/>
     <fieldval field="abValue" value="1"/>
     <fieldval field="abValue2" value="6"/>
-    <fieldval field="usrCandid1" value="component.BaseWep &amp; !Helper.Helper"/>
-    <tag group="abRange" tag="Touch"/>
+    <fieldval field="usrCandid1" value="(component.BaseWep| (component.Ability &amp; Helper.WeaponSpec)) &amp; !Helper.Static"/>
     <tag group="abAction" tag="Standard"/>
     <tag group="User" tag="Activation"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -2080,6 +2076,7 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
     <tag group="AbilType" tag="Super"/>
     <tag group="abCategory" tag="WaPBlMiPow"/>
     <tag group="abDuration" tag="Minute"/>
+    <tag group="abRange" tag="Touch"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If not active get out now!
       doneif (field[abilActive].value = 0)
