@@ -76,7 +76,13 @@
     <bootstrap thing="zPWBlkSrph"></bootstrap>
     <bootstrap thing="zPWSlvrCrn"></bootstrap>
     <bootstrap thing="zPWIronTrt"></bootstrap>
-    <eval phase="First" priority="25000"><![CDATA[
+    <eval phase="First" priority="25000" name="PoW Build Maneuvers Text"><![CDATA[
+    
+      ~ The below logic costs huge amount of CPU. To lessen this for
+      ~ those not using the Path of War adding we are going to only
+      ~ do the below when the Path of War source is turned on.
+      doneif (hero.tagis[source.srcPathOfW] + hero.tagis[source.srcPOWEx] = 0)
+    
       ~ Set text fields
       var sBreak  as string
       var sText   as string

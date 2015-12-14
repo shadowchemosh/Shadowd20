@@ -77,45 +77,47 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <tag group="SubSkill" tag="skAcrobat" name="Acrobatics Sub-skill"/>
     <link linkage="skillattr" thing="aDEX"/>
     <eval phase="Final" priority="50000"><![CDATA[
-var SpeedMod as number
-var ACP as number
-var arACP as number
-~Figure out if we have a bonus or penalty do to speed being
-~faster/slower than 30ft
-SpeedMod = ((hero.child[Speed].field[tSpeedMod].value - 30)/10)*4
+      var SpeedMod as number
+      var ACP as number
+      var arACP as number
+      ~ Figure out if we have a bonus or penalty do to speed being
+      ~ faster/slower than 30ft
+      SpeedMod = ((hero.child[Speed].field[tSpeedMod].value - 30)/10)*4
 
-~ Find any worn armor and check to see if it has a specific Jump skill bonus
-foreach pick in hero from BaseArmor
-  If (eachpick.field[gIsEquip].value <> 0) then
-    If (eachpick.tagis[ImpArmChk1.skS2AcroJu] <> 0) then
-       ACP += 1
-    elseIf (eachpick.tagis[ImpArmChk2.skS2AcroJu] <> 0) then
-       ACP += 2
-    elseIf (eachpick.tagis[ImpArmChk3.skS2AcroJu] <> 0) then
-       ACP += 3
-    elseIf (eachpick.tagis[ImpArmChk4.skS2AcroJu] <> 0) then
-       ACP += 4
-    elseIf (eachpick.tagis[ImpArmChk5.skS2AcroJu] <> 0) then
-       ACP += 5
-    endif
-    ~ Make sure we are not greater than the armors ACP
-    arACP += eachpick.field[arArmorChk].value * -1
-    If (ACP > arACP) then
-       ACP = arACP
-    Endif
-  endif
-nexteach
+      ~ Set our focus to the hero's current armor worn
+      perform hero.findchild[BaseArmor,"Helper.CurrArmor"].setfocus     
+      If (state.isfocus <> 0) then
+        If (focus.tagis[ImpArmChk1.skS2AcroJu] <> 0) then
+           ACP += 1
+        elseIf (focus.tagis[ImpArmChk2.skS2AcroJu] <> 0) then
+           ACP += 2
+        elseIf (focus.tagis[ImpArmChk3.skS2AcroJu] <> 0) then
+           ACP += 3
+        elseIf (focus.tagis[ImpArmChk4.skS2AcroJu] <> 0) then
+           ACP += 4
+        elseIf (focus.tagis[ImpArmChk5.skS2AcroJu] <> 0) then
+           ACP += 5
+        endif
+        ~ Make sure we are not greater than the armors ACP
+        arACP += focus.field[arArmorChk].value * -1
+        If (ACP > arACP) then
+           ACP = arACP
+        Endif
+      endif
 
-~ Calculte External Parents Skill Total
-call CalcSubSk
-~ Add in the speed modification and ACP values to the jump skill
-field[skTotal].value += SpeedMod + ACP]]></eval>
-    <eval phase="First" priority="10000" index="2">~ Do setup for Sub-Skills
-call SetupSubSk</eval>
-    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">~Error if user put any ranks into this skill.
-validif (field[skRanks].value = 0)
+      ~ Calculte External Parents Skill Total
+      call CalcSubSk
+      ~ Add in the speed modification and ACP values to the jump skill
+      field[skTotal].value += SpeedMod + ACP
+      ]]></eval>
+    <eval phase="First" priority="10000" index="2">
+      ~ Do setup for Sub-Skills
+      call SetupSubSk</eval>
+    <evalrule phase="Validation" priority="5000" message="Sub-skills can NOT have ranks.">
+      ~Error if user put any ranks into this skill.
+      validif (field[skRanks].value = 0)
 
-hero.panelvalid[skills] = 0</evalrule>
+      hero.panelvalid[skills] = 0</evalrule>
     </thing>
   <thing id="skS2AcroSh" name="Acrobatics (Ship)" description="Your balance and other acrobatic skill checks are increased while on board a ship.\n\n{B}NOTE:{/b} This skill is auto-calculated and you should NOT put ranks into as it will have no affect." compset="Skill" uniqueness="unique">
     <usesource source="CampRazorC"/>

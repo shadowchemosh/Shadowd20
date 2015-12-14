@@ -318,7 +318,10 @@ version 1.40 - Released May 12, 2013
     <bootstrap thing="s20SkillPo"></bootstrap> <!-- Specific classes get bonus skill points -->
     <bootstrap thing="s20MiscTxt"></bootstrap> <!-- Update Things with Shadow d20 house rule notes -->
     <bootstrap thing="s20MythTxt"></bootstrap> <!-- Update Mythic Things with Shadow d20 house rule notes -->
-    <bootstrap thing="S20Teamwor"></bootstrap> <!-- House rule note for Team Work feats -->
+    
+    <!-- Removed this for now as its costing a HIGH amount of CPU and no one still takes
+         any team work feats. -->
+    <!-- <bootstrap thing="S20Teamwor"></bootstrap>  House rule note for Team Work feats  -->
 
     <!-- Spell Casting -->
     <bootstrap thing="s20CastTim"></bootstrap> <!-- 1 round spells are Full-Round spells -->
