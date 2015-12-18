@@ -318,6 +318,7 @@ version 1.40 - Released May 12, 2013
     <bootstrap thing="s20SkillPo"></bootstrap> <!-- Specific classes get bonus skill points -->
     <bootstrap thing="s20MiscTxt"></bootstrap> <!-- Update Things with Shadow d20 house rule notes -->
     <bootstrap thing="s20MythTxt"></bootstrap> <!-- Update Mythic Things with Shadow d20 house rule notes -->
+    <bootstrap thing="s20UAETxt"></bootstrap>  <!-- Update Text for Unchained Action Economy -->
     
     <!-- Removed this for now as its costing a HIGH amount of CPU and no one still takes
          any team work feats. -->
@@ -503,6 +504,9 @@ version 1.40 - Released May 12, 2013
         doneif (#totallevelcount[] >= 6)
       endif
 
+      ~ Under the Unchained Action Economy we don't want to use this rule
+      doneif (hero.tagis[source.PURevActi] = 1)
+
       var penalty as number
       var nPower  as number
 
@@ -621,7 +625,25 @@ version 1.40 - Released May 12, 2013
     compset="Simple" 
     uniqueness="useronce">
     <usesource source="srcTWF"/>
-    <eval phase="PreLevel" priority="11000"><![CDATA[
+
+    <eval phase="PreLevel" priority="10050" index="1"><![CDATA[
+      ~ Give note on the feat
+      #appenddesc[fTwoWep,"{b}Shadow d20:{/b} TWF now offsets the penalty down to zero instead of -2 but you lose this bonus if you take the Improved Two-Weapon fighting feat or TWF with a two-handed weapon."]
+
+      ~ If we don't have the Two-Weapon Fighting get out now
+      doneif (hero.tagis[Hero.TwoWep] <> 1)
+      ~ If we have Improved Two-Weapon Fighting get out now
+      doneif (#hasfeat[fImpTwoWep] <> 0)
+      ~ If we have a two-handed weapon then we don't get the bonus
+      doneif (hero.tagcount[Hero.EquipOff] >= 2)
+      ~ Under the Unchained Action Economy we don't want to lower the TWF penalty
+      doneif (hero.tagis[source.PURevActi] = 1)
+
+      ~ If we passed the above tests set the Shadow d20 Two-Weapon Fighting Tag
+      perform hero.assign[Shadowd20.TwoWep]
+      ]]></eval>
+
+    <eval phase="PreLevel" priority="11000" index="2"><![CDATA[
       ~ If we don't have Shadow d20 Two-Weapon Fighting get out now
       doneif (hero.tagis[Shadowd20.TwoWep] <> 1)
       ~remove the attack penalties (This allows for one-handed weapons in the off-hand)
@@ -657,20 +679,9 @@ version 1.40 - Released May 12, 2013
          if (eachpick.field[wIsDouble].value <> 0) Then     
             eachpick.field[wAttMelee].value += Bonus
          Endif
-      nexteach]]></eval>
-    <eval phase="PreLevel" priority="10050" index="2"><![CDATA[
-      ~ Give note on the feat
-      #appenddesc[fTwoWep,"{b}Shadow d20:{/b} TWF now offsets the penalty down to zero instead of -2 but you lose this bonus if you take the Improved Two-Weapon fighting feat or TWF with a two-handed weapon."]
+      nexteach
+      ]]></eval>
 
-      ~ If we don't have the Two-Weapon Fighting get out now
-      doneif (hero.tagis[Hero.TwoWep] <> 1)
-      ~ If we have Improved Two-Weapon Fighting get out now
-      doneif (#hasfeat[fImpTwoWep] <> 0)
-      ~ If we have a two-handed weapon then we don't get the bonus
-      doneif (hero.tagcount[Hero.EquipOff] >= 2)
-
-      ~ If we passed the above tests set the Shadow d20 Two-Weapon Fighting Tag
-      perform hero.assign[Shadowd20.TwoWep]]]></eval>
     </thing>
 
   <!-- ======================================================================================= -->
@@ -822,7 +833,9 @@ version 1.40 - Released May 12, 2013
     </thing>
 
 
-
+  <!-- ==================================================================================== -->
+  <!-- Shadow d20 misc text changes                                                         -->
+  <!-- ==================================================================================== -->
   <thing id="s20MiscTxt" name="Shadow d20 Misc Text Changes" 
     description="This Thing sets the text desc on Things with house rules text." 
     compset="Simple">
@@ -885,6 +898,57 @@ version 1.40 - Released May 12, 2013
         ~ Set message
         perform eachthing.amendthing[description,sText]
       nexteach            
+      ]]></eval>
+    </thing>
+
+
+  <!-- ==================================================================================== -->
+  <!-- Shadow d20 Unchained Action Economy text changes                                     -->
+  <!-- ==================================================================================== -->
+  <thing id="s20UAETxt" name="Shadow d20 Unchained Action Economy Text Changes" 
+    description="This Thing sets the text desc on Things with house rules text." 
+    compset="Simple">
+    <usesource source="PURevActi"/>
+
+    <eval phase="Render" priority="200"><![CDATA[
+      ~ Rapid Shot
+      #appenddesc[fRapidShot,"{b}Shadow d20 UAE:{/b} Works the exact same way as Two-Weapon Fighting/Flurry of Blows."]
+
+      ~ Vital Strike
+      #appenddesc[fVitStr,"{b}Shadow d20 UAE:{/b} Can only be used on the first attack action each round."]
+      #appenddesc[fGrtVitStr,"{b}Shadow d20 UAE:{/b} Can only be used on the first attack action each round."]
+      #appenddesc[fImpVitStr,"{b}Shadow d20 UAE:{/b} Can only be used on the first attack action each round."]
+
+      ~ Manyshot
+      #appenddesc[fManyshot,"{B}Shadow d20 UAE:{/b} Manyshot is only used on the first attack action each round."]
+
+      ~ Quick Channel
+      #appenddesc[fQuickChan,"{b}Shadow d20 UAE:{/b} This feat allows you to use Channel Energy twice a round instead of only once."]
+
+      ~ Channel Energy
+      #appenddesc[xChannel,"{b}Shadow d20 UAE [Channel Energy (1 Act)]:{/b} 1 Action to use NOT 2 but you still can only use this ability once per round. Unless you take the feat Quick Channel which allows you to use Channel Energy twice per round."]
+
+      ~ Warlock Eldritch Blast
+      #appenddesc[cWitS2ElBl,"{b}Shadow d20 UAE [Warlock Eldritch Blast (Variable)]:{/b} Standard Eldritch Blast is 1 act but by adding any Hex that alters the Eldritch Blast the action type is changed to a complex action and costs 2 acts."]  
+
+      ~ Pounce
+      #appenddesc[raPounce,"{b}Shadow d20 UAE [Pounce (3 Acts)]:{/b} A creature with this special attack can move up to double its base movement speed by taking a -2 AC penalty and at the end of its movement it can make all its natural attacks vs a single target."]
+
+      ~ Total Defense
+      perform state.thing[pstTotDef].amendthing[description,"{b}(2 Acts){/b} You concentrate on defense rather than attacking. Until the start of your next turn, you can't take actions with the attack subtype, and you gain a +4 dodge bonus to AC.  If you have at least 3 ranks in Acrobatics the bonus increases to +6."]
+
+      ~ Staggered
+      perform state.thing[pcnStagger].amendthing[description,"A staggered creature may take only a single action each round. A creature with nonlethal damage exactly equal to its current hit points gains the staggered condition."]
+
+      ~ Nauseated
+      perform state.thing[pcnNausea].amendthing[description,"Creatures with the nauseated condition experience stomach distress. Nauseated creatures are unable to attack, cast spells, concentrate on spells, or do anything else requiring attention. When nauseated you have a single action per round which can only used for simply actions without the 'attack' subtype. In addition you can not cast or begin to cast any spells."]
+
+      ~ Disabled
+      perform state.thing[pcnDisable].amendthing[description,"A character with 0 hit points, or one who has negative hit points but has become stable and conscious, is disabled. A disabled character may take a single action each round and moves at half speed. Taking subtype actions of 'move' doesn't risk further injury, but performing any other subtype of action (or any other action the GM deems strenuous, including some swift actions such as casting a Quicken Spell spell) deals 1 point of damage after the completion of the act. Unless the action increased the disabled character's hit points, he is now in negative hit points and dying.\n\nA disabled character with negative hit points recovers hit points naturally if he is being helped. Otherwise, each day he can attempt a DC 10 Constitution check after resting for 8 hours, to begin recovering hit points naturally. The character takes a penalty on this roll equal to his negative hit point total. Failing this check causes the character to lose 1 hit point, but this does not cause the character to become unconscious. Once a character makes this check, he continues to heal naturally and is no longer in danger of losing hit points naturally."]
+
+      ~ Nauseated
+      perform state.thing[pcnNausea].amendthing[description,"Creatures with the nauseated condition experience stomach distress. Nauseated creatures are unable to attack, cast spells, concentrate on spells, or do anything else requiring attention. When nauseated you have only a single simple action a round that may only be used on actions without the 'attack' subtype or for casting a spell."]
+
       ]]></eval>
     </thing>
    
@@ -958,7 +1022,7 @@ version 1.40 - Released May 12, 2013
          perform assign[Helper.ShowSpec]
       Endif]]></eval>
     </thing>
-  <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a bonus on damage equal to your caster level. This should help some with how little damage spellcasters do vs melee characters." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a bonus on damage.">
+  <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a damage bonus equal to your caster level (CL). This bonus only applies once to a spell, not once per missile or ray, and cannot be split between multiple missiles or rays. This bonus damage is not increased by Empower Spell or similar effects. This damage is of the same type as the spell." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a damage bonus.">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Final" priority="10000">
@@ -970,7 +1034,7 @@ version 1.40 - Released May 12, 2013
     </thing>
   <thing id="s2InfoDbSp" 
     name="Shadow d20 Double Spells" 
-    description="The number of spells per day for Arcanists, Sorcerers, and Wizards have been doubled. This allows these classes to keep up with the melee classes. Shadow d20 games combats run way longer than 3 rounds and easily have 4-6 encoutners per day. Spellcasters where running out of spells which is not fun." 
+    description="The number of spells per day for Arcanists, Sorcerers, and Wizards have been doubled. This allows these classes to keep up with the melee classes. Shadow d20 games combats run way longer than 3 rounds and easily have 4-6 encoutners per day. Spellcasters where running out of spells way too quickly." 
     summary="Spells per day have been doubled."
     compset="Ability">
     <usesource source="s20PFCamp"/>
