@@ -6,6 +6,25 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.7 December 19, 2015</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Shadow d20 Warlock - Fixed issue where the Warlock archetype was tossing component errors when trying to turn patron spells into spell-like abilities.</li>
+<li>Shadow d20 - Fixed war priest ability "Holy Strike" to allow access to all types of weapons.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merge in latest community Packs.</li>
+<li>Unchained Shadow d20 - Added or changed ability description to match OUR groups Unchained Rules. This includes Conditions, feats, and combat abilities.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Shadow d20 - Made changes to scripts to have better performance.  This should reduce some overhead on load for the iPads.</li>
+<li>Path of War (ShadowChemosh) - Made changes to have some of the PoW mechanic scripts only run "when" the PoW source is activated.  This speeds up the current load of HL by a huge amount. </li>
+</ul>
+
+
 <strong>v2.6 November 7, 2015</strong>
 
 <strong>Bug Fixes</strong>
