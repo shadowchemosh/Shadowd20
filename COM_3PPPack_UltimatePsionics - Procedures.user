@@ -49,48 +49,14 @@
     ~ Add thingid to the spell id passed us
     PowerID = "thingid." & PowerID
     ~ replace the | with |thingid. tag groups
-    PowerID  = replace(PowerID,"|","|thingid.",0)
+    PowerID = replace(PowerID,"|","|thingid.",0) & " & !Hide.Power"
 
-    ~ Get the classes that are valid for the spell ID(s) passed to us
-    foreach thing in BasePower where PowerID
-       ~ only do anything if we a spell with classes
-       if (eachthing.tagis[sClass.?] <> 0) then
-          ~ if loop counter not zero then add a seperator between strings
-          if ( X <> 0) then
-             ~ add a seperator between each loop
-             s2classes &= "|"
-          endif    
-          ~ Build a search sting of all class tags
-          s2classes = eachthing.tagids[sClass.?,"|"]
-          ~ increment loop counter
-          X += 1
-       endif
-    nexteach
-
-    ~ Get the classes that are valid for the spell ID(s) passed to us
-    foreach pick in hero where PowerID
-       ~ only do anything if we a spell with classes
-       if (eachpick.tagis[sClass.?] <> 0) then
-          ~ if loop counter not zero then add a seperator between strings
-          if ( X <> 0) then
-             ~ add a seperator between each loop
-             s2classes &= "|"
-          endif    
-          ~ Build a search sting of all class tags
-          s2classes = eachpick.tagids[sClass.?,"|"]
-          ~ increment loop counter
-          X += 1
-       endif
-    nexteach
-
-    ~ replace the sClass tags with thingid tag groups
-    s2search = replace(s2classes,"sClass","thingid",0)
-
-    ~ Loop through classes and see if we have one of the classes
-    ~ valid for casting CLW spells
-    foreach pick in hero where s2search
-       HavePower = 1
-    nexteach
+    ~ Set focus to the power and based on if we got the pointer
+    ~ or not set the validation flag. Make sure at the end to
+    ~ clear the focus so we don't affect any other setfocus going on.
+    perform hero.findchild[BasePower,PowerID].setfocus
+    HavePower = state.isfocus
+    perform state.clearfocus
     ]]>
   </procedure>
 

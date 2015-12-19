@@ -409,13 +409,14 @@
     <exprreq message="Wisdom 13+ required." iserror="no"><![CDATA[child[aWIS].field[aFinalVal].value >= 13]]></exprreq>
     <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUMaxPow" name="Maximize Power" description="You can manifest powers to maximum effect.\n\n{b}Benefit:{/b} To use this feat, you must expend your psionic focus. You can maximize a power. All variable, numeric effects of a power modified by this feat are maximized. A maximized power deals maximum damage, cures the maximum number of hit points, affects the maximum number of targets, and so on, as appropriate. Saving throws and opposed checks are not affected, nor are powers without random variables.\n\nAugmented powers can be maximized; a maximized augmented power deals the maximum damage (or cures the maximum hit points, and so on) of the augmented power.\n\nAn empowered and maximized power gains the separate benefits of each feat: the maximum result plus one-half the normally rolled result.\n\nUsing this feat increases the power point cost of the power by 4. The power&apos;s total cost cannot exceed your manifester level." compset="Feat" summary="Expend focus to maximize a power. All variable, numeric effects are maximized." uniqueness="useronce">
+  <thing id="fPUMaxPow" name="Maximize Power" description="You can manifest powers to maximum effect.\n\n{b}Benefit:{/b} To use this feat, you must expend your psionic focus. You can maximize a power. All variable, numeric effects of a power modified by this feat are maximized. A maximized power deals maximum damage, cures the maximum number of hit points, affects the maximum number of targets, and so on, as appropriate. Saving throws and opposed checks are not affected, nor are powers without random variables.\n  Augmented powers can be maximized; a maximized augmented power deals the maximum damage (or cures the maximum hit points, and so on) of the augmented power.\n  An empowered and maximized power gains the separate benefits of each feat: the maximum result plus one-half the normally rolled result.\n  Using this feat increases the power point cost of the power by 4. The power&apos;s total cost cannot exceed your manifester level." compset="Feat" summary="Expend focus to maximize a power. All variable, numeric effects are maximized." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Metapsion"/>
     <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="fPUMenLeap" name="Mental Leap" description="{b}Prerequisites:{/b} Str 13, Acrobatics 2 ranks.\n\n{b}Benefit:{/b}  While you maintain psionic focus, you gain a +2 enhancement bonus on Acrobatics checks made to jump.  If you have at least 10 ranks in Acrobatics, this bonus increases to +4.  Additionally, if you expend your psionic focus, you gain a +10 enhancement bonus on an Acrobatics check made to jump.  If you have at least 10 ranks in Acrobatics, this bonus increases to +20." compset="Feat" summary="You are skilled at using optical tricks to make yourself seem to be where you are not." uniqueness="useronce">
+  <thing id="fPUMenLeap" name="Mental Leap" description="You can make amazing jumps.\n\n{b}Prerequisites:{/b} Dex OR Str 13, Acrobatics 2 ranks.\n\n{b}Benefit:{/b}  While you maintain psionic focus, you gain a +2 enhancement bonus on Acrobatics checks made to jump.  If you have at least 10 ranks in Acrobatics, this bonus increases to +4.\n   Additionally, if you expend your psionic focus, you gain a +10 enhancement bonus on an Acrobatics check made to jump.  If you have at least 10 ranks in Acrobatics, this bonus increases to +20." compset="Feat" uniqueness="useronce">
     <fieldval field="abValue" value="2"/>
     <fieldval field="abValue2" value="4"/>
     <fieldval field="abValue3" value="10"/>
@@ -427,6 +428,7 @@
     <tag group="fCategory" tag="Psionic"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostAttr"><![CDATA[      ~Stop now if we're disabled
       doneif (tagis[Helper.FtDisable] <> 0)
 
@@ -458,8 +460,8 @@
       doneif (bon < 1)
 
       #situational[hero.child[skAcrobat],signed(bon) & " to jump", field[thingname].text]]]></eval>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     <exprreq message="Acrobatics 2 ranks required." iserror="no"><![CDATA[#skillranks[skAcrobat] >= 2]]></exprreq>
+    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     <prereq message="Dex 13 OR Str 13 required.">
       <validate><![CDATA[
         ~ Valid if a Dex or Str 13+
@@ -467,14 +469,16 @@
         validif (hero.child[aDEX].field[aFinalVal].value >= 13)]]></validate>
       </prereq>
     </thing>
-  <thing id="fPUMindBod" name="Mind Over Body" description="{b}Prerequisites:{/b} Con 13.\n\n{b}Benefit:{/b}  You heal ability damage and ability burn damage more quickly than normal. You heal a number of ability points per day equal to 1 + your Constitution bonus.  \n\n{b}Normal{/b}: You heal ability damage and ability burn damage at a rate of 1 point per day." compset="Feat" summary="Your ability damage heals more rapidly." uniqueness="useronce">
+  <thing id="fPUMindBod" name="Mind Over Body" description="Your ability damage heals more rapidly.\n\n{b}Prerequisites:{/b} Con 13.\n\n{b}Benefit:{/b}  You heal ability damage and ability burn damage more quickly than normal. You heal a number of ability points per day equal to 1 + your Constitution bonus.  \n\n{b}Normal{/b}: You heal ability damage and ability burn damage at a rate of 1 point per day." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Constitution 13+ required." iserror="no"><![CDATA[child[aCON].field[aFinalVal].value >= 13]]></exprreq>
     </thing>
-  <thing id="fPUOpenMn" name="Open Minded" description="{b}Benefit:{/b}  You gain 1 skill point for every Hit Die you possess. You gain 1 skill point whenever you gain a Hit Die (such as when you gain a level). You spend these skill points as normal. You cannot exceed the normal maximum ranks for your level in any skill." compset="Feat" summary="You are naturally able to reroute your memory, mind, and skill expertise." uniqueness="useronce">
+  <thing id="fPUOpenMn" name="Open Minded" description="You are naturally able to reroute your memory, mind, and skill expertise.\n\n{b}Benefit:{/b}  You gain 1 skill point for every Hit Die you possess. You gain 1 skill point whenever you gain a Hit Die (such as when you gain a level). You spend these skill points as normal. You cannot exceed the normal maximum ranks for your level in any skill." compset="Feat" summary="You are naturally able to reroute your memory, mind, and skill expertise." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -482,10 +486,11 @@
       ~ Increase skill points per hit dice     
       #resmax[resSkill] += herofield[tHitDice].value]]></eval>
     </thing>
-  <thing id="fPUOverch" name="Overchannel" description="{b}Benefit{/b}: While manifesting a power, you can increase your effective manifester level by one, but in so doing you take 1d8 points of damage. At 8th level, you can choose to increase your effective manifester level by two, but you take 3d8 points of damage. At 15th level, you can increase your effective manifester level by three, but you take 5d8 points of damage.  \nThe effective increase in manifester level increases the number of power points you can expend on a single power manifestation, as well as increasing all manifester level-dependent effects, such as range, duration, and overcoming power resistance.\n\n{b}Normal{/b}: Your manifester level is equal to your total levels in classes that manifest powers." compset="Feat" summary="You burn your life force to strengthen your powers." uniqueness="useronce">
+  <thing id="fPUOverch" name="Overchannel" description="You burn your life force to strengthen your powers.\n\n{b}Benefit{/b}: While manifesting a power, you can increase your effective manifester level by one, but in so doing you take 1d8 points of damage. At 8th level, you can choose to increase your effective manifester level by two, but you take 3d8 points of damage. At 15th level, you can increase your effective manifester level by three, but you take 5d8 points of damage.  \nThe effective increase in manifester level increases the number of power points you can expend on a single power manifestation, as well as increasing all manifester level-dependent effects, such as range, duration, and overcoming power resistance.\n\n{b}Normal{/b}: Your manifester level is equal to your total levels in classes that manifest powers." compset="Feat" summary="You burn your life force to strengthen your powers." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="10000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)      
@@ -536,10 +541,11 @@
     <exprreq message="manifester level 4th required."><![CDATA[hero.tagcount[Hero.Manifester] >= 4]]></exprreq>
     <exprreq message="Weapon Focus (ray) required."><![CDATA[hero.tagis[WepFocus.wRay] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsicry" name="Psicrystal Affinity" description="You have created a psicrystal\n\n{b}Prerequisites{/b}: Manifester level 1st.  \n\n{b}Benefit{/b}: This feat allows you to gain a psicrystal.  Should your psicrystal be destroyed, you gain a new one after 24 hours.   A new psicrystal must have the same personality as the original.\n\n{b}Note:{/b} Psicrystals are located on the &quot;Other&quot; tab and added as a Psicrystal minion. This helps prevent conflicts with classes that have Arcane Familiars. Once added switch to your psicrystal minion and select its Personality type." compset="Feat" summary="You have created a psicrystal" uniqueness="useronce">
+  <thing id="fPUPsicry" name="Psicrystal Affinity" description="You have created a psicrystal\n\n{b}Prerequisites{/b}: Manifester level 1st.  \n\n{b}Benefit{/b}: This feat allows you to gain a psicrystal.  Should your psicrystal be destroyed, you gain a new one after 24 hours.   A new psicrystal must have the same personality as the original.\n\n{b}Note:{/b} Psicrystals are located on the &quot;Other&quot; tab and added as a Psicrystal minion. This helps prevent conflicts with classes that have Arcane Familiars. Once added switch to your psicrystal minion and select its Personality type.\n\n{b}Personality              Benefit to Owner{/b}\nArtiste                  +3 bonus on Craft checks\nBully                    +3 bonus on Intimidate checks\nFocused               +3 bonus on Autohypnosis checks\nFriendly                +3 bonus on Diplomacy checks\nHero                     +2 bonus on Fortitude saves\nLiar                       +3 bonus on Bluff checks\nMeticulous            +3 bonus on Perception checks\nNimble                  +2 bonus on Initiative checks\nPoised                  +3 bonus on Acrobatics checks\nResolved               +2 bonus on Will saves\nSage                     +3 bonus on checks involving any\n                                 one Knowledge skill owner\n                                 already knows; once chosen,\n                                 this does not vary\nSingle-minded        +3 bonus on concentration checks\nSneaky                 +3 bonus on Stealth checks\nSympathetic          +3 bonus on Sense Motive checks" compset="Feat" summary="You have created a psicrystal" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -873,30 +879,41 @@
     <exprreq message="Base attack bonus +8 required."><![CDATA[child[Attack].field[tAtkBase].value >= 8]]></exprreq>
     <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUMstrFrm" name="Master of All Forms" description="{b}Prerequisites:{/b} Swift Shapeshifter, ability to manifest {i}metamorphosis{/i}\n\n{b}Benefit:{/b}  When you manifest {i}minor metamorphosis{/i}, {i}major metamorphosis{/i} or {i}metamorphosis{/i} the manifestation time is a swift action instead of a standard action." compset="Feat" summary="No longer inhibited by a single form, you are able to\ninstantly change into the perfect shape for your current\ndilemma." uniqueness="useronce">
+  <thing id="fPUMstrFrm" name="Master of All Forms" description="No longer inhibited by a single form, you are able to instantly change into the perfect shape for your current dilemma.\n\n{b}Prerequisites:{/b} Swift Shapeshifter, ability to manifest {i}metamorphosis{/i}\n\n{b}Benefit:{/b}  When you manifest {i}minor metamorphosis{/i}, {i}major metamorphosis{/i} or {i}metamorphosis{/i} the manifestation time is a swift action instead of a standard action." compset="Feat" summary="No longer inhibited by a single form, you are able to \ninstantly change into the perfect shape for your current\n dilemma." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <exprreq message="Psionic character required."><![CDATA[#hasability[cPsiEgoist] <> 0]]></exprreq>
     <exprreq message="Swift Shapeshifter feat required."><![CDATA[#hasfeat[fPUSwftSha]<> 0]]></exprreq>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
+    <prereq message="Ability to manifest {i}metamorphosis{/i}">
+      <validate><![CDATA[    var PowerID as String
+    var HavePower as number
+    PowerID = "puMetamor3"
+    Call HavePower
+    @valid = HavePower]]></validate>
+      </prereq>
     </thing>
-  <thing id="fPUMstrRef" name="Master&apos;s Refuge" description="{b}Prerequisites:{/b} Twofold Master class feature.\n\n{b}Benefit:{/b}  When you die, your mind instantly transfers to one of your living thralls. While inside your thrall, their mind submerges into a comatose state and you take over their body. You retain the body&apos;s Strength, Constitution and Dexterity, but you keep your Intelligence, Wisdom and Charisma, as well as all other relevant statistics. Each day you remain in your thralls body, you must make a Will-save or die (DC 20 +1 for each day spent in the body). If your body is recreated, you can relocate to your body at will, or you can find alternate means of surviving (via the mind switch power, for example)." compset="Feat" summary="Your thralls are also your final resort if death comes\ncalling." uniqueness="useronce">
+  <thing id="fPUMstrRef" name="Master&apos;s Refuge" description="Your thralls are also your final resort if death comes calling.\n\n{b}Prerequisites:{/b} Twofold Master class feature.\n\n{b}Benefit:{/b}  When you die, your mind instantly transfers to one of your living thralls. While inside your thrall, their mind submerges into a comatose state and you take over their body. You retain the body&apos;s Strength, Constitution and Dexterity, but you keep your Intelligence, Wisdom and Charisma, as well as all other relevant statistics. Each day you remain in your thralls body, you must make a Will-save or die (DC 20 +1 for each day spent in the body). If your body is recreated, you can relocate to your body at will, or you can find alternate means of surviving (via the mind switch power, for example)." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <exprreq message="Twofold master class feature required."><![CDATA[#hasability[cTwofoldMa] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUMstrVoi" name="Master&apos;s Voice" description="{b}Prerequisites:{/b} Thrallherd class feature.\n\n{b}Benefit:{/b}  Each of your thralls is always under the effect of a permanent {i}mindlink{/i} with you. You can always communicate instantly with them and you do not need to spend power points to manifest this power." compset="Feat" summary="You are always present in the mind of your thrall." uniqueness="useronce">
+  <thing id="fPUMstrVoi" name="Master&apos;s Voice" description="You are always present in the mind of your thrall.\n\n{b}Prerequisites:{/b} Thrallherd class feature.\n\n{b}Benefit:{/b}  Each of your thralls is always under the effect of a permanent {i}mindlink{/i} with you. You can always communicate instantly with them and you do not need to spend power points to manifest this power." compset="Feat" summary="You are always present in the mind of your thrall." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <exprreq message="Thrallherd class feature required."><![CDATA[#hasability[cThrall] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUOppPwr" name="Opportunity Power" description="{b}Benefit{\b}: To use this feat, you must expend your psionic focus. When you make an attack of opportunity, you can use any power you know with a range of touch, if you have at least one hand free.\n\nManifesting this power is an immediate action.\n\nYou cannot use this feat with a touch power whose manifesting time is longer than 1 full-round action. \n\nUsing this feat increases the power point cost of the power by 6. The power&apos;s total cost cannot exceed your manifester level.\n\n{b}Normal:{/b} Attacks of opportunity can be made only with melee weapons. \nAugmented powers can be maximized; a maximized augmented power deals the maximum damage (or cures the maximum hit points, and so on) of the augmented power.  \nAn empowered and maximized power gains the separate benefits of each feat: the maximum result plus one-half the normally rolled result.  \nUsing this feat increases the power point cost of the power by 4. The power&apos;s total cost cannot exceed your manifester level." compset="Feat" summary="You can make power-enhanced\nattacks of opportunity." uniqueness="useronce">
+  <thing id="fPUOppPwr" name="Opportunity Power" description="You can make power-enhanced attacks of opportunity.\n\n{b}Benefit:{/b} To use this feat, you must expend your psionic focus. When you make an attack of opportunity, you can use any power you know with a range of touch, if you have at least one hand free.\nManifesting this power is an immediate action.\nYou cannot use this feat with a touch power whose manifesting time is longer than 1 full-round action. \nUsing this feat increases the power point cost of the power by 6. The power&apos;s total cost cannot exceed your manifester level.\n\n{b}Normal:{/b} Attacks of opportunity can be made only with melee weapons. \nAugmented powers can be maximized; a maximized augmented power deals the maximum damage (or cures the maximum hit points, and so on) of the augmented power.  \nAn empowered and maximized power gains the separate benefits of each feat: the maximum result plus one-half the normally rolled result.  \nUsing this feat increases the power point cost of the power by 4. The power&apos;s total cost cannot exceed your manifester level." compset="Feat" summary="You can make power-enhanced\nattacks of opportunity." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Metapsion"/>
     <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="fPUSurAur" name="Surging Aura" description="{b}Prerequisites:{/b} Wild Surge +1. \n\n{b}Benefit:{/b} You gain a 10&apos; surging aura. When you use your wild surge class feature, you can designate one ally for every +1 of your wild surge within the surging aura to gain an insight bonus to attack rolls equal to your wild surge until the end of their next turn." compset="Feat" summary="Your wild surge enhances the aim of nearby allies." uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -912,11 +929,18 @@
       field[livename].text = field[thingname].text & " " & #value[cWldWildSu] & " allies; " & field[abValue].value & "ft"]]></eval>
     <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUSwftSha" name="Swift Shapeshifter" description="{b}Prerequisites:{/b} Ability to manifest {i}metamorphosis{/i}.\n\n{b}Benefit:{/b} When you manifest {i}minor metamorphosis{/i}, {i}major metamorphosis{/i} or {i}metamorphosis{/i} the manifestation time is a move action instead of a standard action." compset="Feat" summary="You are naturally confident with different shapes and\nforms, and years of training have allowed your body to\nmore easily flow into new shapes." uniqueness="useronce">
+  <thing id="fPUSwftSha" name="Swift Shapeshifter" description="You are naturally confident with different shapes and forms, and years of training have allowed your body to more easily flow into new shapes.\n\n{b}Prerequisites:{/b} Ability to manifest {i}metamorphosis{/i}.\n\n{b}Benefit:{/b} When you manifest {i}minor metamorphosis{/i}, {i}major metamorphosis{/i} or {i}metamorphosis{/i} the manifestation time is a move action instead of a standard action." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <prereq message="Ability to manifest {i}metamorphosis{/i}">
+      <validate><![CDATA[    var PowerID as String
+    var HavePower as number
+    PowerID = "puMetamor3"
+    Call HavePower
+    @valid = HavePower]]></validate>
+      </prereq>
     </thing>
   <thing id="fPUWepPsi" name="Psion Weapon Proficiencies" description="{b}Benefit{/b}: You are proficient with the club, dagger, heavy crossbow, light crossbow, quarterstaff, and shortspear.\n\n{b}Normal{/b}: When using a weapon with which you are not proficient, you are at -4 to attack rolls." compset="Feat" summary="You are proficient with the club, dagger, heavy crossbow, light\ncrossbow, quarterstaff, and shortspear." uniqueness="unique">
     <fieldval field="shortname" value="Psion Weapons"/>
@@ -1098,6 +1122,13 @@ validif (hero.tagcount[Hero.Manifester] >= 10)]]></validate>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <prereq message="Able to manifest {i}astral construct{/i}">
+      <validate><![CDATA[    var PowerID as String
+    var HavePower as number
+    PowerID = "puAstCons1"
+    Call HavePower
+    @valid = HavePower]]></validate>
+      </prereq>
     </thing>
   <thing id="fPUAdDerPa" name="Advanced Dervish Path" description="You seem to float between enemies, a blur of destruction.{br}{br}{b}Prerequisites:{/b} Dex 15, Double Slice, Two-Weapon Fighting, Dervish path class feature, manifester level 10th, base attack bonus +6 \n\n{b}Benefit:{/b} When using the Dervish trance, the competence bonus applies to your damage as well as your attack rolls. In addition, you can use the Dervish maneuver even if you moved before your attack and you have no limit of how many 5-foot steps you can take while using the Dervish maneuver, as long as you make at least one attack before each 5-foot step. The maximum distance you can move in this round is that of a double move." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -1541,11 +1572,18 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
       #value3[cPUDisPatt] += #value[cPUEnhDisr] + #value[cPUDisPatt]]]></eval>
     <exprreq message="Disrupt pattern class feature required."><![CDATA[#hasability[cPUDisPatt] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUImpMetm" name="Improved Metamorphosis" description="*Not completely implemented\nYou gain more versatility when changing your form.\n\n{b}Prerequisite:{/b} Ability to manifest {i}minor metamorphosis{/i}, {i}metamorphosis{/i}, {i}greater metamorphosis{/i}, or {i}true metamorphosis{/i}.\n\n{b}Benefit:{/b} Any time you manifest {i}minor metamorphosis{/i}, {i}metamorphosis{/i}, {i}greater metamorphosis{/i}, or {i}true metamorphosis{/i}, you gain one additional menu option from either the Ability Menu or Enhancement Menu of the relevant power." compset="Feat" uniqueness="useronce">
+  <thing id="fPUImpMetm" name="Improved Metamorphosis" description="You gain more versatility when changing your form.\n\n{b}Prerequisite:{/b} Ability to manifest {i}minor metamorphosis{/i}, {i}metamorphosis{/i}, {i}major metamorphosis{/i}, or {i}true metamorphosis{/i}.\n\n{b}Benefit:{/b} Any time you manifest {i}minor metamorphosis{/i}, {i}metamorphosis{/i}, {i}major metamorphosis{/i}, or {i}true metamorphosis{/i}, you gain one additional menu option from either the Ability Menu or Enhancement Menu of the relevant power." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <prereq message="Ability to manifest {i}minor metamorphosis{/i}, {i}metamorphosis{/i}, {i}major metamorphosis{/i}, or {i}true metamorphosis{/i}">
+      <validate><![CDATA[    var PowerID as String
+    var HavePower as number
+    PowerID = "puMetamor1|puMetamor2|puMetamor3|puMetamor6|puMetamor9"
+    Call HavePower
+    @valid = HavePower]]></validate>
+      </prereq>
     </thing>
   <thing id="fPUImpPsiA" name="Improved Psi-like Ability" description="You can manifest your racial psionic abilities more often.{br}{br}{b}Prerequisite:{/b} Racial psi-like ability.{br}{br}{b}Benefit:{/b} Choose one psi-like ability gained from your race. You can use that racial psi-like ability an additional two times per day.{br}{br}{b}Special:{/b} You can take this feat multiple times, either choosing an additional psi-like ability or to gain an additional two uses per day of the same psi-like ability." compset="Feat">
     <fieldval field="usrCandid1" value="Helper.PsiLike"/>
@@ -1656,48 +1694,52 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="fPUMallPwr" name="Malleable Power" description="You are able to shape the effect of your power to exclude targets.{br}{br}{b}Prerequisites:{/b} Selective Power, Spellcraft 10 ranks.{br}{br}{b}Benefit:{/b} To use this feat, you must spend your psionic focus. Doing so lets you manifest a malleable power.{br}{br}This power may exclude any number of 5-foot cubes (5&apos; long by 5&apos; wide by 5&apos; high). The cubes you exclude do not otherwise hamper the power.{br}{br}For example, you may shoot an energy bolt from your fingertips and exclude the first two cubes of the power.{br}{br}The other 110&apos; of the energy bolt would be manifest as normal.{br}{br}Manifesting a malleable power increases the power point cost of the power by 2. The total cost cannot exceed your manifester level.{br}{br}Powers that do not affect an area cannot be used with this feat." compset="Feat">
+  <thing id="fPUMallPwr" name="Malleable Power" description="You are able to shape the effect of your power to exclude targets.\n\n{b}Prerequisites:{/b} Selective Power, Spellcraft 10 ranks.\n\n{b}Benefit:{/b} To use this feat, you must spend your psionic focus. Doing so lets you manifest a malleable power. This power may exclude any number of 5-foot cubes (5&apos; long by 5&apos; wide by 5&apos; high). The cubes you exclude do not otherwise hamper the power.\nFor example, you may shoot an energy bolt from your fingertips and exclude the first two cubes of the power. The other 110&apos; of the energy bolt would be manifest as normal.\nManifesting a malleable power increases the power point cost of the power by 2. The total cost cannot exceed your manifester level.\nPowers that do not affect an area cannot be used with this feat." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Metapsion"/>
     <tag group="abAction" tag="PUExpFocus"/>
-    <exprreq message="Selective Power feat required."><![CDATA[#hasfeat[fPUSelePwr] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Spellcraft 10+ ranks required."><![CDATA[#skillranks[skSpellcr] >= 10]]></exprreq>
+    <exprreq message="Selective Power feat required."><![CDATA[#hasfeat[fPUSelePwr] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUMercPwr" name="Merciful Power" description="Your damaging powers subdue rather than kill.{br}{br}{b}Benefit:{/b} To use this feat, you must maintain your psionic focus, rather than expend it. You can alter powers that inflict hit point damage to inflict nonlethal damage instead. Powers that inflict hit point damage of a particular type (such as fire) inflict nonlethal damage of that same type. Using this feat does not increase the power point cost of the power.{br}{br}Powers that do not deal hit point damage cannot be used with this feat." compset="Feat">
+  <thing id="fPUMercPwr" name="Merciful Power" description="Your damaging powers subdue rather than kill.\n\n{b}Benefit:{/b} To use this feat, you must maintain your psionic focus, rather than expend it. You can alter powers that inflict hit point damage to inflict nonlethal damage instead. Powers that inflict hit point damage of a particular type (such as fire) inflict nonlethal damage of that same type. Using this feat does not increase the power point cost of the power.\n\nPowers that do not deal hit point damage cannot be used with this feat." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Metapsion"/>
     <tag group="abAction" tag="PUManFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="fPUMerDesi" name="Merge Designs" description="Your tattoo designs are altered to disguise their nature and to be more compact.{br}{br}{b}Prerequisites:{/b} Scribe Tattoo, pattern designs class feature.{br}{br}{b}Benefit:{/b} Your tattoos cannot be interpreted to determine your powers known. In addition, you can safely wear one additional psionic tattoo on your body.{br}{br}{b}Normal:{/b} Tattoos for the pattern designs class feature can be identified by a Spellcraft check. A character can only safely wear twenty psionic tattoos." compset="Feat" maxlimit="2">
+  <thing id="fPUMerDesi" name="Merge Designs" description="Your tattoo designs are altered to disguise their nature and to be more compact.{br}{br}{b}Prerequisites:{/b} Scribe Tattoo, pattern designs class feature.{br}{br}{b}Benefit:{/b} Your tattoos cannot be interpreted to determine your powers known. In addition, you can safely wear one additional psionic tattoo on your body.{br}{br}{b}Normal:{/b} Tattoos for the pattern designs class feature can be identified by a Spellcraft check. A character can only safely wear twenty psionic tattoos." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
-    <exprreq message="Scribe Tattoo feat required."><![CDATA[#hasfeat[fPUScrTatt] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Pattern Designs class feature required."><![CDATA[#hasability[cPUPattern] <> 0]]></exprreq>
+    <exprreq message="Scribe Tattoo feat required."><![CDATA[#hasfeat[fPUScrTatt] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUMpsiMas" name="Metapsionic Mastery" description="You have mastered applying a metapsionic feat to a particular power.\n\n{b}Prerequisites:{/b} Manifester level 3rd, one metapsionic feat \n\n{b}Benefit:{/b} Select one psionic power you can manifest. You can manifest this power while applying any number of metapsionic feats you possess without having to expend your psionic focus, but for each metapsionic feat you apply without expending your psionic focus, the power&apos;s cost is increased by 2 power points. The power&apos;s total cost cannot exceed your manifester level.\n\n{b}Special:{/b} You can select this feat multiple times. Each time, it applies to a different psionic power." compset="Feat" maxlimit="2">
+  <thing id="fPUMpsiMas" name="Metapsionic Mastery" description="You have mastered applying a metapsionic feat to a particular power.\n\n{b}Prerequisites:{/b} Manifester level 3rd, one metapsionic feat \n\n{b}Benefit:{/b} Select one psionic power you can manifest. You can manifest this power while applying any number of metapsionic feats you possess without having to expend your psionic focus, but for each metapsionic feat you apply without expending your psionic focus, the power&apos;s cost is increased by 2 power points. The power&apos;s total cost cannot exceed your manifester level.\n\n{b}Special:{/b} You can select this feat multiple times. Each time, it applies to a different psionic power." compset="Feat">
     <fieldval field="usrCandid1" value="component.BasePower"/>
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <prereq message="One metapsionic feat required">
+      <validate><![CDATA[   validif (hero.tagis[fCategory.Metapsion] <> 0)]]></validate>
+      </prereq>
     <prereq message="Manifester level 3+ required.">
-      <validate><![CDATA[~check for Manifester level 3
-validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
+      <validate><![CDATA[   ~check for Manifester level 3
+   validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
       </prereq>
     </thing>
-  <thing id="fPUMixComb" name="Mixed Combat" description="You are trained at using ranged and melee attacks at the same time.\n\n{b}Prerequisites:{/b} Quick Draw, base attack bonus +6 \n\n{b}Benefit:{/b} You can sheathe your weapons as free actions that do not provoke attacks of opportunity.\n\nIf you use this feat to change from a melee attack to a ranged attack against the same target, your ranged attacks do not provoke attacks of opportunity from that target.\n\n{b}Normal{/b}: Sheathing weapons is a move action that provokes attacks of opportunity. Ranged attacks provoke attacks of opportunity." compset="Feat" maxlimit="" uniqueness="useronce">
+  <thing id="fPUMixComb" name="Mixed Combat" description="You are trained at using ranged and melee attacks at the same time.\n\n{b}Prerequisites:{/b} Quick Draw, base attack bonus +6 \n\n{b}Benefit:{/b} You can sheathe your weapons as free actions that do not provoke attacks of opportunity.\n  If you use this feat to change from a melee attack to a ranged attack against the same target, your ranged attacks do not provoke attacks of opportunity from that target.\n\n{b}Normal{/b}: Sheathing weapons is a move action that provokes attacks of opportunity. Ranged attacks provoke attacks of opportunity." compset="Feat" maxlimit="" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Quick Draw feat required."><![CDATA[#hasfeat[fQuickDraw] <> 0]]></exprreq>
     <exprreq message="Base Attack Bonus 6+ required."><![CDATA[child[Attack].field[tAtkBase].value >= 6]]></exprreq>
     </thing>
-  <thing id="fPUModBlst" name="Modified Blast" description="You have learned to alter the nature of your surge blast by spending your psionic power.\n\n{b}Prerequisites:{/b} Surge blast class feature, manifester level 3rd.\n\n{b}Benefit:{/b} When you activate your surge blast, you gain the following augment options. Like augmenting a power, augmenting a surge blast is limited to your manifester level. You can also choose to invoke a wild surge when using your surge blast, using the power from the wild surge to pay for augments to the surge blast, but suffer the standard risk of psychic enervation for invoking a wild surge.\n\n{b}Augment:{/b} You can augment your surge blast in one of the following ways.\n\n1. If you spend 2 additional power points, your surge blast deals splash damage.\n\n2. If you spend 3 additional power points, your surge blast is instead a 5 ft. emanation centered on you and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage.\n\n3. If you spend 4 additional power points, your surge blast deals half damage, but damages all creatures in a 30 ft. line.\n\n4. If you spend 4 additional power points, your surge blast is empowered, dealing 50% additional damage.\n\n5. If you spend 4 additional power points, your surge blast is a 15 ft. cone effect instead of a ranged touch attack, and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage.\n\n6. If you spend 4 additional power points, your surge blast affects all creatures within a 10 ft. radius of the targeted creature and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage.\n\n7. If you spend 6 additional power points, your surge blast is instead a 10 ft. emanation centered on you and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage." compset="Feat" maxlimit="2">
+  <thing id="fPUModBlst" name="Modified Blast" description="You have learned to alter the nature of your surge blast by spending your psionic power.\n\n{b}Prerequisites:{/b} Surge blast class feature, manifester level 3rd.\n\n{b}Benefit:{/b} When you activate your surge blast, you gain the following augment options. Like augmenting a power, augmenting a surge blast is limited to your manifester level. You can also choose to invoke a wild surge when using your surge blast, using the power from the wild surge to pay for augments to the surge blast, but suffer the standard risk of psychic enervation for invoking a wild surge.\n\n{b}Augment:{/b} You can augment your surge blast in one of the following ways.\n\n1. If you spend 2 additional power points, your surge blast deals splash damage.\n\n2. If you spend 3 additional power points, your surge blast is instead a 5 ft. emanation centered on you and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage.\n\n3. If you spend 4 additional power points, your surge blast deals half damage, but damages all creatures in a 30 ft. line.\n\n4. If you spend 4 additional power points, your surge blast is empowered, dealing 50% additional damage.\n\n5. If you spend 4 additional power points, your surge blast is a 15 ft. cone effect instead of a ranged touch attack, and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage.\n\n6. If you spend 4 additional power points, your surge blast affects all creatures within a 10 ft. radius of the targeted creature and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage.\n\n7. If you spend 6 additional power points, your surge blast is instead a 10 ft. emanation centered on you and creatures in the affected area gain a Reflex save (DC 10 + 1/2 your manifester level + your Charisma modifier) to take half damage." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Surge Blast class feature required."><![CDATA[#hasability[cWldSurBla] <> 0]]></exprreq>
     <prereq message="Manifester level 3+ required.">
       <validate><![CDATA[~check for Manifester level 3
@@ -1715,22 +1757,22 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Collective class feature required."><![CDATA[(#hasability[cPUCollect] + #hasability[cPUTacColl] + #hasability[cPUVitColl] + #hasability[cPW5Collec]) <> 0]]></exprreq>
     <prereq message="Manifester level 3+ required.">
       <validate><![CDATA[~check for Manifester level 3
 validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
       </prereq>
     </thing>
-  <thing id="fPUNightVe" name="Nightmare Veil" description="You wrap your form in the fears of your opponents.{br}{br}{b}Prerequisites:{/b} Devastating touch class feature, Improved Unarmed Strike, Broken Dreams Style, Shattered Dream Strike, Intimidate 9 ranks.{br}{br}{b}Benefit:{/b} While in the broken dreams style, any target that is shaken treats you as concealed. In addition, while in the broken dreams style, you treat shaken targets as flat-footed for unarmed attacks." compset="Feat" maxlimit="2">
+  <thing id="fPUNightVe" name="Nightmare Veil" description="You wrap your form in the fears of your opponents.\n\n{b}Prerequisites:{/b} Devastating touch class feature, Broken Dreams Style, Improved Unarmed Strike, Shattered Dream Strike, Intimidate 9 ranks.\n\n{b}Benefit:{/b} While in the broken dreams style, any target that is shaken treats you as concealed. In addition, while in the broken dreams style, you treat shaken targets as flat-footed for unarmed attacks." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
-    <exprreq message="Devastating Touch class feature required."><![CDATA[#hasability[cPUDevaTou] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
     <exprreq message="Broken Dreams Style feat required."><![CDATA[#hasfeat[fPUBroDrea] <> 0]]></exprreq>
     <exprreq message="Shattered Dreams Strike feat required."><![CDATA[#hasfeat[fPUShatDre] <> 0]]></exprreq>
     <exprreq message="Intimidate 9+ ranks required."><![CDATA[#skillranks[skIntim] >= 9]]></exprreq>
+    <exprreq message="Devastating Touch class feature required."><![CDATA[#hasability[cPUDevaTou] <> 0]]></exprreq>
     </thing>
   <thing id="fPUOpeDoor" name="Open Door" description="Once you have pried the gates open into another mind, you can always return there no matter how long it has been.{br}{br}{b}Prerequisite:{/b} Mindlock class feature.{br}{br}{b}Benefit:{/b} Once an individual has failed a Will save to avoid being mindlocked by you, you can attune yourself to that creature. You can only be attuned to one creature in such a way at any given time. You can reactivate the mindlock to your attuned creature at any time by spending 1 power point as a free action, regardless of the time since you first mindlocked the target. This means that they count as having failed their Will save again." compset="Feat" maxlimit="" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -1738,30 +1780,31 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Mindlock class feture required."><![CDATA[#hasability[cPUTerMndl] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPeneFea" name="Penetrating Fear" description="Your terrors are able to affect those normally immune.{br}{br}{b}Prerequisite:{/b} Terrors class feature, 10th level dread\n\n{b}Benefit:{/b} You can expend your psionic focus when activating a terror to allow it to affect those normally immune to fear effects or mind-affecting effects. The target gets a +4 bonus to any applicable save against the effect." compset="Feat" maxlimit="2">
+  <thing id="fPUPeneFea" name="Penetrating Fear" description="Your terrors are able to affect those normally immune.{br}{br}{b}Prerequisite:{/b} Terrors class feature, 10th level dread\n\n{b}Benefit:{/b} You can expend your psionic focus when activating a terror to allow it to affect those normally immune to fear effects or mind-affecting effects. The target gets a +4 bonus to any applicable save against the effect." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Dread level 10+ required."><![CDATA[#featlevelcount[Dread] >= 10]]></exprreq>
     <exprreq message="Terrors class feature required."><![CDATA[#hasability[cPUTerrors] > 0]]></exprreq>
     </thing>
-  <thing id="fPUPersPwr" name="Persistent Power" description="You can modify a power to become more tenacious when its targets resist its effect.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. Whenever a creature targeted by a persistent power or within its area succeeds on its saving throw against the power, it must make another saving throw against the effect. If a creature fails this second saving throw, it suffers the full effects of the power, as if it had failed its first saving throw.{br}{br}Using this feat increases the power point cost of the power by 2. The power&apos;s total cost cannot exceed your manifester level.{br}{br}Powers that do not require a saving throw to resist or lessen the power&apos;s effect cannot be used with this feat." compset="Feat">
+  <thing id="fPUPersPwr" name="Persistent Power" description="You can modify a power to become more tenacious when its targets resist its effect.\n\n{b}Benefit:{/b} To use this feat, you must expend your psionic focus. Whenever a creature targeted by a persistent power or within its area succeeds on its saving throw against the power, it must make another saving throw against the effect. If a creature fails this second saving throw, it suffers the full effects of the power, as if it had failed its first saving throw.\nUsing this feat increases the power point cost of the power by 2. The power&apos;s total cost cannot exceed your manifester level.\nPowers that do not require a saving throw to resist or lessen the power&apos;s effect cannot be used with this feat." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Metapsion"/>
     <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="fPUPierPwr" name="Piercing Power" description="Your studies have helped you develop methods to overcome power resistance.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. When you manifest a piercing power against a target with power resistance, it treats the power resistance of the target as 5 lower than its actual PR. Using this feat does not increase the power point cost of the power." compset="Feat">
+  <thing id="fPUPierPwr" name="Piercing Power" description="Your studies have helped you develop methods to overcome power resistance.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. When you manifest a piercing power against a target with power resistance, it treats the power resistance of the target as 5 lower than its actual PR. Using this feat does not increase the power point cost of the power." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Metapsion"/>
     <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="fPUPiranha" name="Piranha Strike" description="You make a combination of quick strikes, sacrificing accuracy for multiple, minor wounds that prove exceptionally deadly.\n\n{b}Prerequisites:{/b} Weapon Finesse, base attack bonus +1.\n\n{b}Benefit:{/b} When wielding a light weapon, you can choose to take a –1 penalty on all melee attack rolls and combat maneuver checks to gain a +2 bonus on all melee damage rolls. This bonus to damage is halved (–50%) if you are making an attack with an off-hand weapon or secondary natural weapon. When your base attack bonus reaches +4, and for every 4 points thereafter, the penalty increases by –1 and the bonus on damage rolls increases by +2. You must choose to use this feat before the attack roll, and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage. This feat cannot be used in conjunction with the Power Attack feat." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="HasFeat" tag="fPiranStr"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="User" tag="Activation"/>
@@ -1787,11 +1830,11 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <exprreq message="Base Attack bonus +1 required."><![CDATA[#BAB[] >= 1]]></exprreq>
     <exprreq message="Weapon Finesse required."><![CDATA[#hasfeat[fWepFin] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPwrChan" name="Power Channeller" description="You have learned how to channel your powers through your weaponry, allowing you to make melee attacks and channel offensive powers at the same time.\n\n{b}Benefit:{/b} You can channel a touch range power through a melee weapon. You can make a single melee attack during the same action in which you manifest a touch power with a manifesting time of one standard action; if this melee attack hits, it triggers the power as if you had succeeded on a touch attack and deals damage as normal. If you miss, the power fizzles and the charge is lost. The attack made is against standard AC and not touch AC." compset="Feat" maxlimit="2">
+  <thing id="fPUPwrChan" name="Power Channeller" description="You have learned how to channel your powers through your weaponry, allowing you to make melee attacks and channel offensive powers at the same time.\n\n{b}Benefit:{/b} You can channel a touch range power through a melee weapon. You can make a single melee attack during the same action in which you manifest a touch power with a manifesting time of one standard action; if this melee attack hits, it triggers the power as if you had succeeded on a touch attack and deals damage as normal. If you miss, the power fizzles and the charge is lost. The attack made is against standard AC and not touch AC." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
     </thing>
   <thing id="fPUPsiBull" name="Psionic Bull Rush" description="You can use psionic energy to carry the force of a bull rush through your foe.{br}{br}{b}Prerequisite:{/b} Improved Bull Rush.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a bull rush combat maneuver, you also deal damage equal to half your level to the creature bull rushed.{br}{br}If you expend your psionic focus when you successfully make a bull rush maneuver, you can also knock the target of your bull rush prone." compset="Feat" maxlimit="2">
     <usesource source="pPsiUn"/>
@@ -2045,14 +2088,27 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostLevel" priority="11000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~ Set our focus to the Psywarrior's Path Power Prevenom or Prevenom Weapon
+      perform hero.findchild[BasePower,"PsyWarrior.PathPower & (thingid.puPrevenm1|thingid.puPreVenW1)"].setfocus
+      doneif (state.isfocus = 0)      
+      
+      ~ Increase Power DC by the Trance Class feature bonus
+      focus.field[sDCMisc].value += #value[cPWaTraAss]]]>
+      <after name="Trance Assassins Path Setup"/>
+      </eval>
     <exprreq message="Assassin path class feature required."><![CDATA[#hasability[cWPaAssPri] <> 0]]></exprreq>
     <exprreq message="Base Attack Bonus 3+ required"><![CDATA[child[Attack].field[tAtkBase].value >= 3]]></exprreq>
     <prereq message="Prevenom or Prevenom Weapon Path Powers required.">
-      <validate><![CDATA[
-        ~set our focus to the Psywarrior's Path Power Prevenom 
-        ~or Prevenom Weapon
-        perform hero.findchild[BasePower,"PsyWarrior.PathPower & (thingid.puPrevenm1|thingid.puPreVenW1)"].setfocus
-        validif (state.isfocus <> 0)]]></validate>
+      <validate><![CDATA[    
+        var PowerID as String
+        var HavePower as number
+        PowerID = "puPrevenm1|puPreVenW1"
+        Call HavePower
+        @valid = HavePower]]></validate>
       </prereq>
     </thing>
   <thing id="cfgPUUnTal" name="Unlocked Talent" compset="Configure" uniqueness="unique">
@@ -2390,11 +2446,13 @@ field[abValue].value += 1
       hero.child[fWepFoc].field[actName].text = "Weapon Focus: MindBolt"]]></eval>
     <exprreq message="Weapon Focus: Mind Bolt already taken.">hero.tagis[WepFocus.wMindBlade] = @ispick</exprreq>
     </thing>
-  <thing id="fPUOnePatt" name="One Pattern" description="Your adventures have taught you that all creatures have a common thread to their patterns, and that they also all have that one loose thread to pull. \n\n{b}Prerequisites:{/b} Disrupt pattern class feature, Knowledge (arcane) 5 ranks, Knowledge (dungeoneering) 5 ranks, Knowledge (nature) 5 ranks, Knowledge (planes) 5 ranks, Knowledge (psionics), and Knowledge (religion) 5 ranks.\n\n{b}Benefit:{/b} Your target no longer needs to match your active creature type to deal full damage with your disrupt pattern ability. If your target does match your active creature type, you inflict an extra 1 point of damage per dice of damage dealt with disrupt pattern. This extra damage is not multiplied on a critical hit." compset="Feat" summary="Add damage to Disrupt Pattern when target is chosen creature type" uniqueness="useronce">
+  <thing id="fPUOnePatt" name="One Pattern" description="Your adventures have taught you that all creatures have a common thread to their patterns, and that they also all have that one loose thread to pull. \n\n{b}Prerequisites:{/b} Disrupt pattern class feature, Knowledge (arcane) 5 ranks, Knowledge (dungeoneering) 5 ranks, Knowledge (nature) 5 ranks, Knowledge (planes) 5 ranks, Knowledge (psionics) 5 ranks, and Knowledge (religion) 5 ranks.\n\n{b}Benefit:{/b} Your target no longer needs to match your active creature type to deal full damage with your disrupt pattern ability. If your target does match your active creature type, you inflict an extra 1 point of damage per dice of damage dealt with disrupt pattern. This extra damage is not multiplied on a critical hit." compset="Feat" summary="Add damage to Disrupt Pattern when target is chosen creature type" uniqueness="useronce">
     <fieldval field="actName" value="One Pattern: If target is active creature type add dmg to Disrupt Pattern"/>
-    <tag group="fCategory" tag="Psionic"/>
+    <usesource source="pPsiUn"/>
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="10001"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -2406,12 +2464,13 @@ field[abValue].value += 1
 
       ~ Display the extra dmg
       #extradamage[hero.childfound[cPUDisPatt],field[abText].text & "+" & field[abValue].value,field[name].text]]]></eval>
-    <exprreq message="Knowledge (planes) 5 ranks required"><![CDATA[#skillranks[skKnowPlan] >= 5]]></exprreq>
-    <exprreq message="Knowledge (psionics) 5 ranks required"><![CDATA[#skillranks[skPUKnwPsi] >= 5]]></exprreq>
     <exprreq message="Knowledge (religion) 5 ranks required"><![CDATA[#skillranks[skKnowRel] >= 5]]></exprreq>
     <exprreq message="Knowledge (arcana) 5 ranks required"><![CDATA[#skillranks[skKnowArca] >= 5]]></exprreq>
     <exprreq message="Knowledge (nature) 5 ranks required"><![CDATA[#skillranks[skKnowNat] >= 5]]></exprreq>
     <exprreq message="Knowledge (dungeoneering) 5 ranks required"><![CDATA[#skillranks[skKnowDun] >= 5]]></exprreq>
+    <exprreq message="Knowledge (psionics) 5 ranks required"><![CDATA[#skillranks[skPUKnwPsi] >= 5]]></exprreq>
+    <exprreq message="Knowledge (planes) 5 ranks required"><![CDATA[#skillranks[skKnowPlan] >= 5]]></exprreq>
+    <exprreq message="Disrupt pattern class feature required"><![CDATA[#hasability[cPUDisPatt] <> 0]]></exprreq>
     </thing>
   <thing id="fPUFgtBlad" name="Fighter&apos;s Blade" description="Your training with a mind blade is not hindered by dabbling in other studies.\n\n{b}Prerequisite:{/b} Enhanced Mind Blade class feature\n\n{b}Benefit:{/b} Treat your class level as four higher to determine your enhanced mind blade class feature and which blade skills you can select, to a maximum of your character level." compset="Feat" summary="Your training with a mind blade is not hindered by dabbling in other studies." uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -2694,8 +2753,7 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
       <validate><![CDATA[
         var sneakatt as number
         call NumSnkDice   
-        validif (sneakatt >= 1)
-        ]]></validate>
+        validif (sneakatt >= 1)]]></validate>
       </prereq>
     </thing>
   <thing id="fPUKngtmre" name="Knightmare" description="*Not fully implemented yet\nYou are a roving horror that strikes terror into the hearts of others.\n\n{b}Prerequisites:{/b} Terrors class feature, cavalier’s charge class feature\n\n{b}Benefit:{/b} Your manifester level which granted you the terrors class feature gains a +2 bonus as long as this bonus doesn’t raise your manifester level above your current Hit Dice. In addition, for the purpose of terrors level requirements and order benefits, add your dread\nand cavalier levels together. In addition, when declaring your challenge, you can make a free Intimidate check against the target." compset="Feat" summary="You are a roving horror that strikes terror into the hearts of others." uniqueness="useronce">
@@ -2712,5 +2770,46 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Elocator level 5 required"><![CDATA[#featlevelcount[Elocator] >= 5]]></exprreq>
     <exprreq message="Gravitic Stability feat required"><![CDATA[#hasfeat[fPUGravSta] <> 0]]></exprreq>
+    </thing>
+  <thing id="fPUMdBldKn" name="Mind Blade Knight" description="You have gained additional flexibility with your summoned weapons.\n\n{b}Prerequisites:{/b} Mind knight warrior path, expanded path class feature.\n\n{b}Benefit:{/b} As long as you maintain focus, when you wield a weapon created by {i}call weaponry{/i}, you may choose to forgo some or all of the mind knight trance bonus to attack and damage rolls, and instead add an equal value of weapon special abilities to the weapon. These special abilities must be selected from the soulknife’s list of weapon special abilities, and your effective soulknife level for determining which abilities you can select is equal to half your psychic warrior level (rounded down). Once you have selected weapon special abilities to apply, you must spend 8 hours in meditation to change the selected special abilities, or to dismiss the special abilities and keep the normal trance bonus.\n  If you have levels in a class that grants you a mindblade or similar weapon (such as a mind bolt or mind arrow), you may add those class levels to your psychic warrior levels to determine your manifester level for {i}call weaponry{/i} and your mind knight trance bonus." compset="Feat" uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Mind knight warrior path required"><![CDATA[#hasability[cWPaMKnPri] <> 0]]></exprreq>
+    <exprreq message="Expanded path class feature required"><![CDATA[#hasability[cPWaExpPat] <> 0]]></exprreq>
+    </thing>
+  <thing id="fPUMdKnArs" name="Mind Knights&apos;s Arsenal" description="Your skill with a particular weapon makes your summoned weapons more powerful.\n\n{b}Prerequisites:{/b} Base attack bonus +3, mind knight warrior path, {i}call weaponry{/i} path power, Weapon Focus with selected weapon.\n\n{b}Benefit:{/b} When you summon a weapon with the {i}call weaponry{/i} path power with which you have the Weapon Focus feat, the weapon’s enhancement bonus is increased by 1 and it gains a single predetermined weapon special ability with a +1 base price modifier. The weapon special ability must be appropriate for the weapon you choose and must be selected from those weapon special abilities available to the soulknife. You can meditate for 8 hours to change which predetermined special ability it gets.\n\n{b}Special:{/b} You may take this feat multiple times, its effect does not stack. Each time, choose a new weapon for which you have the Weapon Focus feat to apply the benefits of this feat." compset="Feat">
+    <usesource source="pPsiUn"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <exprreq message="Base attack bonus +3 required"><![CDATA[#BAB[] >= 3]]></exprreq>
+    <exprreq message="Mind knight warrior path required"><![CDATA[#hasability[cWPaMKnPri] <> 0]]></exprreq>
+    <exprreq message="Weapon Focus required"><![CDATA[(#hasfeat[fWepFoc] + #hasfeat[fWepFocMB] + #hasfeat[fWepFocMBt]) <> 0]]></exprreq>
+    <prereq message="{i}Call weaponry{/i} path power required">
+      <validate><![CDATA[    var PowerID as String
+    var HavePower as number
+    PowerID = "puPUCalWe1"
+    Call HavePower
+    @valid = HavePower]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fPUNomJmp" name="Nomad&apos;s Jump" description="Your ability to teleport short distances is not hindered by your new studies.\n\n{b}Prerequisite:{/b} Aerial acrobatics class ability, nomad’s step class ability\n\n{b}Benefit:{/b} Your levels of elocater stack with your levels of nomad for the purposes of determining the range of nomad’s step.\n  In addition, when you use nomad’s step, you may split your distance traveled into two steps and determine your line of sight at the end of the first step. The total distance traveled must not exceed your maximum range for nomad’s step and you may perform no other actions\nduring the steps." compset="Feat" uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Aerial acrobatics class ability required"><![CDATA[#hasability[cAirAcro] <> 0]]></exprreq>
+    <exprreq message="Nomad&apos;s step class ability required"><![CDATA[#hasability[cPsiNomSte] <> 0]]></exprreq>
+    </thing>
+  <thing id="fPUPwrPerf" name="Power Perfection" description="You are unequaled at the manifesting of one particular power.\n\n{b}Prerequisites:{/b} Spellcraft 15 ranks, at least three metapsionic feats.\n\n{b}Benefit:{/b} Pick one power which you have the ability to manifest. Whenever you manifest that power you may apply any one metapsionic feat you have to that power without expending psionic focus or affecting its level or manifesting time, as long as the total power point cost of the power, including the metapsionic feat cost and any augmentation, does not exceed 17 power points. In addition, if you have other feats which allow you to apply a set numerical bonus to any aspect of this power (such as Power Penetration, Psionic Endowment, Weapon Focus [ray], and so on), double the bonus granted by that feat when applied to this power." compset="Feat" uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Must have 3 Metapsionic feats"><![CDATA[hero.tagcount[fCategory.Metapsion] >= 3]]></exprreq>
+    <exprreq message="Spellcraft 15 ranks required"><![CDATA[#skillranks[skSpellcr] >= 15]]></exprreq>
     </thing>
   </document>

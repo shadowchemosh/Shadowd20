@@ -3921,7 +3921,21 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       ~ Remove the Hide Power Tag from the power chosen
       perform field[usrChosen1].chosen.delete[Hide.Power]
       ~ Set Livename to include Path so gamers know this is a path power
-      field[usrChosen1].chosen.field[livename].text = field[usrChosen1].chosen.field[name].text & " (Path)"]]></eval>
+      field[usrChosen1].chosen.field[livename].text = field[usrChosen1].chosen.field[name].text & " (Path)"
+      ]]></eval>
+    <eval phase="PostAttr" priority="10000" index="2" name="PsiWar Path Power set DC"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we have not chosen then get out now
+      doneif (field[usrChosen1].ischosen <> 1)
+
+      ~ These Bootstrapped powers are not getting the attribute bonus
+      ~ when calculating the DC. So we need to manually add in the attribute
+      ~ value for Wisdom here ourself.
+      field[usrChosen1].chosen.field[sDC].value += #attrmod[aWIS]
+      ]]></eval>
     </thing>
   <thing id="cWPaAssPri" name="Assassin&apos;s Path" description="While others prefer to stand boldly in the face of danger, your preferred weapon is stealth and silence. When you attack, your enemy is bound to fall.\n\n{b}Bonus Class Skill{/b}: Stealth\n\n{b}Powers{/b}: {i}Distract, prevenom{/i} or {i}prevenom weapon{/i}\n\n{b}Skills{/b}: Acrobatics, Perception, Stealths\n\n{b}Note:{/b} You need to correctly set one of the Path&apos;s selected as your Primary path and the 2nd one as the Secondary path to have everthing calc correctly." compset="CustomSpec" summary="You are a follower of the Assassin&apos;s Path" uniqueness="useronce">
     <comment><![CDATA[PathSkill - This tag group is used to setup the skills associated to the Path. These skills will only be allowed to be selection from the "PathSkill" class ability.
@@ -3966,7 +3980,7 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
     <tag group="abAction" tag="PUManFocus"/>
     <eval phase="First" priority="10000" index="2">~ Setup this Maneuver or Trance for the Psy Warrior
 Call PsyWarTrMa</eval>
-    <eval phase="PostLevel" priority="10000"><![CDATA[
+    <eval phase="PostLevel" priority="10000" name="Trance Assassins Path Setup"><![CDATA[
       ~ If we're not shown, just get out now
       doneif (tagis[Helper.ShowSpec] <> 1)
       ~ If we've been Disabled, get out now

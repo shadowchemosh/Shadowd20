@@ -8272,14 +8272,14 @@
     <tag group="sCastTime" tag="Action1"/>
     <tag group="sResist" tag="Yes"/>
     </thing>
-  <thing id="puHeaIn6" name="Heal Injuries" description="When death is about to claim you because of a lethal attack of any sort, you instead enter a state of suspended animation. While fatality is deferred, you do not age, breathe, grow hungry, sleep, or regain power points. You are unaware of your surroundings and cannot use subconscious powers. Outside forces can damage your body, but as long as your head remains attached to your torso and your brain remains intact, the physical damage can be healed. A coup de&apos;grace still forces you to make a Fortitude save or die.\n\nYou can manifest this power quickly enough to avoid complete destruction if you are unexpectedly affected by a lethal melee or ranged attack or effect. You cannot manifest this power if you are unconscious.\n\nYou remain in a state of deferred fatality until some third party provides you with magical or psionic healing in the amount equal to 10 points + the amount of damage your body originally (and subsequently) sustained which dropped you into this deferred state. When so cured, you become conscious, possess 1 hp, 1 power point, and sustain 1d4+1 points of temporary ability damage on each of your six ability scores. (If this brings your Constitution score to 0, you die normally.)" compset="PsiPower" summary="Heal large amount of damage.">
+  <thing id="puHeaIn6" name="Heal Injuries" description="You psionically augment the healing ability of the targets with your power. The targets heal 110 points of damage total, divided among the targets at your discretion." compset="PsiPower" summary="Heal large amount of damage.">
     <fieldval field="sRange" value="Touch"/>
     <fieldval field="sDuration" value="Instantaneous"/>
     <fieldval field="sTarget" value="Living creature touched"/>
     <fieldval field="sSave" value="Fort negates (harmless)"/>
     <fieldval field="sResist" value="Yes"/>
+    <fieldval field="psiAugText" value="You can augment this power in one or both of the following ways.{br}{br}1 For every additional power point you spend, the total amount healed increases by 10 points of damage.{br}{br}2 If you spend 6 additional power points, you can heal all living creatures within 20 feet of you."/>
     <usesource source="pPsiUn"/>
-    <tag group="psiClass" tag="cHelpPU5"/>
     <tag group="psiDiscip" tag="pdPUPsyMet"/>
     <tag group="sDuration" tag="Instant"/>
     <tag group="psiSubdisc" tag="psdPUHeali"/>
@@ -8289,6 +8289,8 @@
     <tag group="sSave" tag="Harmless"/>
     <tag group="sCastTime" tag="Action1"/>
     <tag group="sResist" tag="Yes"/>
+    <tag group="psiClass" tag="cHelpPU5"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="puConOn3" name="Concussive Onslaught" description="You direct wave after wave of concussive kinetic energy at a specific location, pulverizing any and all creatures within the area of effect. All creatures within the area take 3d6 force damage, or half on a successful Fortitude save. The damage continues each round in the same area until the power expires.\n\n{b}Augment{/b}: This power may be augmented in one or more of the following ways.\n\n1. For every two additional power points spent, the damage done each round increases by 1d6 and the save DC increases by 1.\n\n2. By spending an additional 4 power points, you can redirect what area is affected as a standard action that does not provoke attacks of opportunity. The newly chosen area must be within the power&apos;s range, even if you have moved beyond the range of the initial area." compset="PsiPower" summary="Pummel an area for 3d6 points of force damage each round.">
     <fieldval field="sRange" value="Long (400 ft. + 40 ft./level)"/>
