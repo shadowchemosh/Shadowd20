@@ -555,20 +555,21 @@
       Perform hero.assign[Psicrystal.Allowed]]]></eval>
     <exprreq message="Manifester level 1st required."><![CDATA[hero.tagcount[Hero.Manifester] >= 1]]></exprreq>
     </thing>
-  <thing id="fPUPsicryC" name="Psicrystal Containment" description="{b}Prerequisites{/b}: Psicrystal Affinity, manifester level 3rd.  \n\n{b}Benefit{/b}: You can spend a full-round action attempting to psionically focus your psicrystal. At any time when you need to expend your psionic focus, you can expend your psicrystal&apos;s psionic focus instead, as long as the crystal is within 5 feet of you. Psionically focusing your psicrystal works just like focusing yourself. The psicrystal cannot focus itself-only the owner can spend the time to focus the crystal.\n\n{b}Note:{/b} Their is a check box on the &quot;In-Play&quot; tab to allow you to keep track of when your psicrystal is psionically focused." compset="Feat" summary="Your psicrystal has advanced enough that it can hold a psionic focus that you store within it." uniqueness="useronce">
+  <thing id="fPUPsicryC" name="Psicrystal Containment" description="Your psicrystal has advanced enough that it can hold a psionic focus that you store within it.\n\n{b}Prerequisites{/b}: Psicrystal Affinity, manifester level 3rd.  \n\n{b}Benefit{/b}: You can psionically focus your psicrystal in the same manner in which you gain psionic focus. At any time when you need to expend your psionic focus, you can expend your psicrystal&apos;s psionic focus instead, as long as the crystal is within 5 feet of you. \nPsionically focusing your psicrystal works just like focusing yourself. The psicrystal cannot focus itself-only the owner can spend the time to focus the crystal.\n\n{b}Note:{/b} Their is a check box on the &quot;In-Play&quot; tab to allow you to keep track of when your psicrystal is psionically focused." compset="Feat" summary="Your psicrystal has advanced enough that it can hold a psionic focus that you store within it." uniqueness="useronce">
     <fieldval field="actName" value="Psionically Focus Psicrystal"/>
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
-    <exprreq message="Manifester level 3rd required."><![CDATA[hero.tagcount[Hero.Manifester] >= 3]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Psicrystal Affinity required."><![CDATA[#hasfeat[fPUPsicry] <> 0]]></exprreq>
+    <exprreq message="Manifester level 3rd required."><![CDATA[hero.tagcount[Hero.Manifester] >= 3]]></exprreq>
     </thing>
   <thing id="fPUPsiBody" name="Psionic Body" description="Your mind reinforces your body.\n\n{b}Benefit:{/b} When you take this feat, you gain 2 hit points for each psionic feat you have (including this one). Whenever you take a new psionic feat, you gain 2 more hit points." compset="Feat" summary="Each Psionic Feat gives you 2 bonus HP." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -581,16 +582,16 @@
       field[abSumm].text &= " Bonus HP " & signed(field[abValue].value)]]></eval>
     <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiChrg" name="Psionic Charge" description="{b}Prerequisites:{/b} Dex 13, Speed of Thought. \n\n{b}Benefit:{/b} To use this feat, you must expend your psionic focus. When you charge, you can make one turn of up to 90 degrees during your movement. All other restrictions on charges still apply; for instance, you cannot pass through a square that blocks or slows movement, or that contains a creature. You must have line of sight to the opponent at the start of your turn." compset="Feat" summary="You can charge in a crooked line." uniqueness="useronce">
+  <thing id="fPUPsiChrg" name="Psionic Charge" description="You can charge in a crooked line.\n\n{b}Prerequisites:{/b} Dex 13, Speed of Thought. \n\n{b}Benefit:{/b} To use this feat, you must expend your psionic focus. When you charge, you can make one turn of up to 90 degrees during your movement. All other restrictions on charges still apply; for instance, you cannot pass through a square that blocks or slows movement, or that contains a creature. You must have line of sight to the opponent at the start of your turn." compset="Feat" summary="You can charge in a crooked line." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
-    <exprreq message="Dexterity 13+ required." iserror="no"><![CDATA[child[aDEX].field[aFinalVal].value >= 13]]></exprreq>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Speed of Thought required."><![CDATA[#hasfeat[fPUSpdThgt] <> 0]]></exprreq>
+    <exprreq message="Dexterity 13+ required." iserror="no"><![CDATA[child[aDEX].field[aFinalVal].value >= 13]]></exprreq>
     </thing>
-  <thing id="fPUPsiDodg" name="Psionic Dodge" description="{b}Prerequisites{/b}: Dex 13, Dodge.\n\n{b}Benefit{/b}: You must be psionically focused to use this feat. You receive a +1 dodge bonus to your Armor Class. This bonus stacks with the bonus from the Dodge feat. You may expend your psionic focus as an immediate action to increase this bonus to a +4 dodge bonus to your Armor Class for a single attack made against you." compset="Feat" summary="+1 AC when psi-focused, expend focus for +4 vs. one attack" uniqueness="useronce">
+  <thing id="fPUPsiDodg" name="Psionic Dodge" description="You are proficient at dodging blows.\n\n{b}Prerequisites{/b}: Dex 13, Dodge.\n\n{b}Benefit{/b}: You must be psionically focused to use this feat. You receive a +1 dodge bonus to your Armor Class. This bonus stacks with the bonus from the Dodge feat. You may expend your psionic focus as an immediate action to increase this bonus to a +4 dodge bonus to your Armor Class for a single attack made against you." compset="Feat" summary="+1 AC when psi-focused, expend focus for +4 vs. one attack" uniqueness="useronce">
     <fieldval field="abValue" value="1"/>
     <fieldval field="abValue2" value="4"/>
     <fieldval field="actName" value="Expended Focus (+4 vs one attack)"/>
@@ -600,6 +601,7 @@
     <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
     <tag group="User" tag="Activation"/>
     <tag group="fCategory" tag="Psionic" name="Psionic" abbrev="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~don't proceed if we're disabled
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -609,8 +611,8 @@
       elseif (hero.tagis[Hero.PsiFocus] + tagis[Psionics.PsiFocus] <> 0) then
         hero.child[ArmorClass].field[tACDodge].value += field[abValue].value
       endif]]></eval>
-    <exprreq message="Dexterity 13 required." iserror="no"><![CDATA[child[aDEX].field[aFinalVal].value >= 13]]></exprreq>
     <exprreq message="Dodge required." iserror="no"><![CDATA[#hasfeat[fDodge] <> 0]]></exprreq>
+    <exprreq message="Dexterity 13 required." iserror="no"><![CDATA[child[aDEX].field[aFinalVal].value >= 13]]></exprreq>
     </thing>
   <thing id="fPUPsiEnd" name="Psionic Endowment" description="You can endow your manifestations with more concentrated focus.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. You add 1 to the save DC of a power you manifest." compset="Feat" summary="Expend your psionic focus to add 1 to the save DC of a power you manifest." uniqueness="useronce">
     <fieldval field="abValue" value="1"/>
@@ -618,7 +620,7 @@
     <tag group="fCategory" tag="Psionic"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <tag group="abAction" tag="PUManFocus"/>
+    <tag group="abAction" tag="PUExpFocus"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -626,9 +628,8 @@
       field[abSumm].text = "Expend your psionic focus to add " & field[abValue].value & " to the save DC of a power you manifest."
 
       field[livename].text = field[name].text & " " & signed(field[abValue].value) & " DC"]]></eval>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiFist" name="Psionic Fist" description="You can charge your unarmed strike or natural weapon with additional damage potential.\n\n{b}Prerequisite:{/b} Str 13.\n\n{b}Benefit:{/b} While you maintain psionic focus, your unarmed strikes or attacks with a natural weapon deal an extra 1 point of damage.\n\nAdditionally, if you expend your psionic focus as part of an unarmed strike or an attack with a natural weapon, that attack instead deals an extra 2d6 points of damage.\n\nYou must decide whether or not to use this option prior to making an attack. If your attack misses, you still expend your psionic focus." compset="Feat" summary="With focus your natural &amp; unarmed attacks +1 dmg. Expend focus for +2d6 damage." uniqueness="useronce">
+  <thing id="fPUPsiFist" name="Psionic Fist" description="You can charge your unarmed strike or natural weapon with additional damage potential.\n\n{b}Prerequisite:{/b} Str 13.\n\n{b}Benefit:{/b} While you maintain psionic focus, your unarmed strikes or attacks with a natural weapon deal an extra 1 point of damage.\n  Additionally, if you expend your psionic focus as part of an unarmed strike or an attack with a natural weapon, that attack instead deals an extra 2d6 points of damage. You must decide whether or not to use this option prior to making an attack. If your attack misses, you still expend your psionic focus." compset="Feat" summary="With focus your natural &amp; unarmed attacks +1 dmg. Expend focus for +2d6 damage." uniqueness="useronce">
     <comment>abValue = Damage Bonus (+1),abValue2 = # of Dice (Xd6),abValue3 = Die Size (2dX)</comment>
     <fieldval field="abValue" value="1"/>
     <fieldval field="abValue2" value="2"/>
@@ -640,6 +641,8 @@
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
     <tag group="abAction" tag="PUManFocus"/>
+    <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -656,10 +659,11 @@
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
-    <exprreq message="Wisdom 13+ required." iserror="no"><![CDATA[child[aWIS].field[aFinalVal].value >= 13]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="You need 4 or more ranks in Autohypnosis." iserror="no"><![CDATA[#skillranks[skPUAhypno] >= 4]]></exprreq>
+    <exprreq message="Wisdom 13+ required." iserror="no"><![CDATA[child[aWIS].field[aFinalVal].value >= 13]]></exprreq>
     </thing>
-  <thing id="fPUPsiShot" name="Psionic Shot" description="You can charge your ranged attacks with additional damage potential.\n\n{b}Prerequisite:{/b} Point Blank Shot.\n\n{b}Benefit:{/b} While you maintain psionic focus, your attacks with a ranged weapon deal an extra 1 point of damage. \n\nAdditionally, if you expend your psionic focus as part of an attack with a ranged weapon, that attack instead deals an extra 2d6 points of damage. You must decide whether or not to use this feat prior to making an attack. If your attack misses, you still expend your psionic focus." compset="Feat" summary="You can charge your ranged attacks with additional damage potential." uniqueness="useronce">
+  <thing id="fPUPsiShot" name="Psionic Shot" description="You can charge your ranged attacks with additional damage potential.\n\n{b}Prerequisite:{/b} Point Blank Shot.\n\n{b}Benefit:{/b} While you maintain psionic focus, your attacks with a ranged weapon deal an extra 1 point of damage. \n  Additionally, if you expend your psionic focus as part of an attack with a ranged weapon, that attack instead deals an extra 2d6 points of damage. You must decide whether or not to use this feat prior to making an attack. If your attack misses, you still expend your psionic focus." compset="Feat" summary="You can charge your ranged attacks with additional damage potential." uniqueness="useronce">
     <fieldval field="abValue" value="1"/>
     <fieldval field="abValue2" value="2"/>
     <usesource source="pPsiUn"/>
@@ -686,16 +690,16 @@
 
       hero.childfound[Damage].field[dmrBonus].value += field[abValue].value]]></eval>
     <exprreq message="Point Blank Shot required." iserror="no"><![CDATA[#hasfeat[fPointBlnk] <> 0]]></exprreq>
-    <exprreq message="Psionic character required."><![CDATA[hero.tagis[Hero.Psionic] <> 0]]></exprreq>
     </thing>
   <thing id="fPUPsiTal" name="Psionic Talent" description="You gain additional power points to supplement those you already had.\n\n{b}Prerequisite{/b}: Having a power point reserve.  \n\n{b}Benefit{/b}: When you take this feat for the first time, you gain 2 power points.  \n\n{b}Special{/b}: You can take this feat multiple times. Each time you take the feat after the first time, the number of power points you gain increases by 1." compset="Feat" summary="Gain 2 or 1 extra power points.">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="abPUPsiTal"></bootstrap>
     <exprreq message="A power point reserve required."><![CDATA[#resmax[resPowerPt] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiWep" name="Psionic Weapon" description="You can charge your melee weapon with additional damage potential.\n\n{b}Prerequisite:{/b} Str 13.\n\n{b}Benefit:{/b} While you maintain psionic focus, your attacks with a melee weapon deal an extra 1 point of damage.\n\nAdditionally, if you expend your psionic focus as part of an attack with a melee weapon, that attack instead deals an extra 2d6 points of damage. You must decide whether or not to use this feat prior to making an attack. If your attack misses, you still expend your psionic focus." compset="Feat" summary="While focused melee attacks do +1 dmg and expend to deal +2d6 dmg." uniqueness="useronce">
+  <thing id="fPUPsiWep" name="Psionic Weapon" description="You can charge your melee weapon with additional damage potential.\n\n{b}Prerequisite:{/b} Str 13.\n\n{b}Benefit:{/b} While you maintain psionic focus, your attacks with a melee weapon deal an extra 1 point of damage.\n  Additionally, if you expend your psionic focus as part of an attack with a melee weapon, that attack instead deals an extra 2d6 points of damage. You must decide whether or not to use this feat prior to making an attack. If your attack misses, you still expend your psionic focus." compset="Feat" summary="While focused melee attacks do +1 dmg and expend to deal +2d6 dmg." uniqueness="useronce">
     <comment>abValue = Damage Bonus (+1),abValue2 = # of Dice (Xd6),abValue3 = Die Size (2dX)</comment>
     <fieldval field="abValue" value="1"/>
     <fieldval field="abValue2" value="2"/>
@@ -942,10 +946,11 @@
     @valid = HavePower]]></validate>
       </prereq>
     </thing>
-  <thing id="fPUWepPsi" name="Psion Weapon Proficiencies" description="{b}Benefit{/b}: You are proficient with the club, dagger, heavy crossbow, light crossbow, quarterstaff, and shortspear.\n\n{b}Normal{/b}: When using a weapon with which you are not proficient, you are at -4 to attack rolls." compset="Feat" summary="You are proficient with the club, dagger, heavy crossbow, light\ncrossbow, quarterstaff, and shortspear." uniqueness="unique">
+  <thing id="fPUWepPsi" name="Psion Weapon Proficiencies" description="You are proficient with the club, dagger, heavy crossbow, light crossbow, quarterstaff, and shortspear.\n\n{b}Benefit{/b}: You are proficient with the club, dagger, heavy crossbow, light crossbow, quarterstaff, and shortspear.\n\n{b}Normal{/b}: When using a weapon with which you are not proficient, you are at -4 to attack rolls." compset="Feat" summary="You are proficient with the club, dagger, heavy crossbow, light\ncrossbow, quarterstaff, and shortspear." uniqueness="unique">
     <fieldval field="shortname" value="Psion Weapons"/>
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="Helper" name="Helper" abbrev="Helper"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="fSknMndBld" name="Mindblade Proficiency" description="{b}Benefit{/b}: You are proficient with the mind blade no matter it&apos;s form.\n\n{b}Normal{/b}: When using a weapon with which you are not proficient, you are at -4 to attack rolls." compset="Feat" summary="You are proficient with the mind blade no matter it&apos;s form." uniqueness="useronce">
     <fieldval field="shortname" value="Mind Blade Prof."/>
@@ -1836,57 +1841,52 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
-  <thing id="fPUPsiBull" name="Psionic Bull Rush" description="You can use psionic energy to carry the force of a bull rush through your foe.{br}{br}{b}Prerequisite:{/b} Improved Bull Rush.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a bull rush combat maneuver, you also deal damage equal to half your level to the creature bull rushed.{br}{br}If you expend your psionic focus when you successfully make a bull rush maneuver, you can also knock the target of your bull rush prone." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiBull" name="Psionic Bull Rush" description="You can use psionic energy to carry the force of a bull rush through your foe.\n\n{b}Prerequisite:{/b} Improved Bull Rush.\n\n{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a bull rush combat maneuver, you also deal damage equal to half your level to the creature bull rushed.\n  If you expend your psionic focus when you successfully make a bull rush maneuver, you can also knock the target of your bull rush prone." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="PUManFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Improved Bull Rush feat required."><![CDATA[#hasfeat[fImpBull] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiCrit" name="Psionic Critical" description="You can add psionic energy to a perfect weapon strike.{br}{br}{b}Prerequisite:{/b} Improved Critical.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully score a critical hit, you deal +1d8 bonus damage. If you expend your psionic focus, you deal an additional +1d8 bonus damage." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiCrit" name="Psionic Critical" description="You can add psionic energy to a perfect weapon strike.{br}{br}{b}Prerequisite:{/b} Improved Critical.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully score a critical hit, you deal +1d8 bonus damage. If you expend your psionic focus, you deal an additional +1d8 bonus damage." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="PUManFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Improved Critical feat required."><![CDATA[#hasfeat[fImpCrit] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiDisa" name="Psionic Disarm" description="You can psionically carry your disarm maneuver&apos;s force through your foe.{br}{br}{b}Prerequisite:{/b} Improved Disarm.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a disarm combat maneuver, you also deal damage equal to half your level to the creature disarmed.{br}{br}If you expend your psionic focus when you make a successful disarm combat maneuver, you can also send the disarmed object into any space of your choosing within 25 ft. +5 ft./2 levels. If a creature is in the selected space and has a hand free, it can grab the disarmed object as an immediate action." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiDisa" name="Psionic Disarm" description="You can psionically carry your disarm maneuver&apos;s force through your foe.\n\n{b}Prerequisite:{/b} Improved Disarm.\n\n{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a disarm combat maneuver, you also deal damage equal to half your level to the creature disarmed.\n  If you expend your psionic focus when you make a successful disarm combat maneuver, you can also send the disarmed object into any space of your choosing within 25 ft. +5 ft./2 levels. If a creature is in the selected space and has a hand free, it can grab the disarmed object as an immediate action." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUManFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Improved Disarm feat required."><![CDATA[#hasfeat[fImpDis] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiOver" name="Psionic Overrun" description="You can draw on your psionic power to boost the power of an overrun attack.{br}{br}{b}Prerequisites:{/b} Str 13, Improved Overrun, Power Attack, base attack bonus +1.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform an overrun combat maneuver, you also deal damage equal to half your level to the creature you overrun.{br}{br}If you expend your psionic focus when you perform a successful overrun combat maneuver, you can also push your target up to 5 feet, +5 feet for every four levels you possess." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiOver" name="Psionic Overrun" description="You can draw on your psionic power to boost the power of an overrun attack.\n\n{b}Prerequisites:{/b} Str 13, Improved Overrun, Power Attack, base attack bonus +1.\n\n{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform an overrun combat maneuver, you also deal damage equal to half your level to the creature you overrun.\n  If you expend your psionic focus when you perform a successful overrun combat maneuver, you can also push your target up to 5 feet, +5 feet for every four levels you possess." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUManFocus"/>
     <tag group="abAction" tag="PUExpFocus"/>
-    <exprreq message="Power Attack feat required."><![CDATA[#hasfeat[fPowerAtt] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Base Attack Bonus 1+ required."><![CDATA[child[Attack].field[tAtkBase].value >= 1]]></exprreq>
     <exprreq message="Strength 13+ required."><![CDATA[child[aSTR].field[aFinalVal].value >= 13]]></exprreq>
     <exprreq message="Improved Overrun feat required."><![CDATA[#hasfeat[fImpOver] <> 0]]></exprreq>
+    <exprreq message="Power Attack feat required."><![CDATA[#hasfeat[fPowerAtt] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiPrec" name="Psionic Precise Shot" description="Your ranged attacks sometimes bypass barriers.\n\n{b}Prerequisites:{/b} Dex 19, Improved Precise Shot, Point-Blank Shot, Precise Shot, base attack bonus +11.\n\n{b}Benefits:{/b} To use this feat, you must expend your psionic focus. You can attempt to make a single ranged attack as a standard action against a target that is sheltered behind a wall, wall of force effect, or similar barrier. Your attack briefly skips through the Astral Plane to bypass the barrier. You must still have line of sight to the target." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiPrec" name="Psionic Precise Shot" description="Your ranged attacks sometimes bypass barriers.\n\n{b}Prerequisites:{/b} Dex 19, Improved Precise Shot, Point-Blank Shot, Precise Shot, base attack bonus +11.\n\n{b}Benefits:{/b} To use this feat, you must expend your psionic focus. You can attempt to make a single ranged attack as a standard action against a target that is sheltered behind a wall, wall of force effect, or similar barrier. Your attack briefly skips through the Astral Plane to bypass the barrier. You must still have line of sight to the target." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
-    <exprreq message="Precise Shot feat required."><![CDATA[#hasfeat[fPrecShot] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Improved Precise Shot feat required."><![CDATA[#hasfeat[fImpPrec] <> 0]]></exprreq>
     <exprreq message="Point Blank Shot feat required."><![CDATA[#hasfeat[fPointBlnk] <> 0]]></exprreq>
     <exprreq message="Base Attack Bonus 11+ required."><![CDATA[child[Attack].field[tAtkBase].value >= 11]]></exprreq>
     <exprreq message="Dexterity 19+ required."><![CDATA[child[aDEX].field[aFinalVal].value >= 19]]></exprreq>
+    <exprreq message="Precise Shot feat required."><![CDATA[#hasfeat[fPrecShot] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiShiB" name="Psionic Shield Bash" description="Your shield bash attacks can strike both the body and mind of a foe.\n\n{b}Prerequisites:{/b} Improved Shield Bash, Shield Proficiency.\n\n{b}Benefit:{/b} While maintaining psionic focus, when you successfully strike a foe with a shield bash attack, the foe must also make a Will save (DC 10 + one-half your base attack bonus + your Wisdom modifier) or be shaken for 1 round. This is a mind-affecting fear effect.\n\nIf you expend your psionic focus when you make a shield bash, on a successfully attack roll you can instead force the target to make a Will saving throw or be stunned for 1 round." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiShiB" name="Psionic Shield Bash" description="Your shield bash attacks can strike both the body and mind of a foe.\n\n{b}Prerequisites:{/b} Improved Shield Bash, Shield Proficiency.\n\n{b}Benefit:{/b} While maintaining psionic focus, when you successfully strike a foe with a shield bash attack, the foe must also make a Will save (DC 10 + one-half your base attack bonus + your Wisdom modifier) or be shaken for 1 round. This is a mind-affecting fear effect.\n  If you expend your psionic focus when you make a shield bash, on a successfully attack roll you can instead force the target to make a Will saving throw or be stunned for 1 round." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
@@ -1895,39 +1895,36 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <exprreq message="Improved Shield Bash feat required."><![CDATA[#hasfeat[fImpShBash] <> 0]]></exprreq>
     <exprreq message="Shield Proficiency required."><![CDATA[#hasfeat[fArmShield] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiSund" name="Psionic Sunder" description="You can draw on your psionic power to boost the power of a sunder attack.{br}{br}{b}Prerequisites:{/b} Str 13, Improved Sunder, Power Attack, base attack bonus +1.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a sunder combat maneuver, you also deal damage equal to half your level to the creature holding the item sundered.{br}{br}If you expend your psionic focus when you perform a successful sunder maneuver, you ignore half the hardness of the object you are sundering." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiSund" name="Psionic Sunder" description="You can draw on your psionic power to boost the power of a sunder attack.\n\n{b}Prerequisites:{/b} Str 13, Improved Sunder, Power Attack, base attack bonus +1.\n\n{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a sunder combat maneuver, you also deal damage equal to half your level to the creature holding the item sundered.\n  If you expend your psionic focus when you perform a successful sunder maneuver, you ignore half the hardness of the object you are sundering." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <exprreq message="Power Attack feat required."><![CDATA[#hasfeat[fMyPowAtta] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Base Attack Bonus 1+ required."><![CDATA[child[Attack].field[tAtkBase].value >= 1]]></exprreq>
     <exprreq message="Strength 13+ required."><![CDATA[child[aSTR].field[aFinalVal].value >= 13]]></exprreq>
     <exprreq message="Improved Sunder feat required."><![CDATA[#hasfeat[fImpSunder] <> 0]]></exprreq>
+    <exprreq message="Power Attack feat required."><![CDATA[#hasfeat[fMyPowAtta] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiTrip" name="Psionic Trip" description="You can draw on your psionic power to boost the power of a trip attack.{br}{br}{b}Prerequisites:{/b} Int 13, Combat Expertise, Improved Trip.{br}{br}{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a trip combat maneuver, you also deal damage equal to half your level to the creature tripped.{br}{br}If you expend your psionic focus when you perform a successful trip combat maneuver, you can also throw your target up to 5 feet, +5 feet for every four levels you possess, although the creature thrown may not be more than one size category larger than you." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiTrip" name="Psionic Trip" description="You can draw on your psionic power to boost the power of a trip attack.\n\n{b}Prerequisites:{/b} Int 13, Combat Expertise, Improved Trip.\n\n{b}Benefit:{/b} While maintaining psionic focus, when you successfully perform a trip combat maneuver, you also deal damage equal to half your level to the creature tripped.\n  If you expend your psionic focus when you perform a successful trip combat maneuver, you can also throw your target up to 5 feet, +5 feet for every four levels you possess, although the creature thrown may not be more than one size category larger than you." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="abAction" tag="PUManFocus"/>
-    <exprreq message="Improved Trip feat required."><![CDATA[#hasfeat[fImpTrip] <> 0]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Intelligence 13+ required."><![CDATA[child[aINT].field[aFinalVal].value >= 13]]></exprreq>
     <exprreq message="Combat Expertise feat required."><![CDATA[#hasfeat[fComExpert] <> 0]]></exprreq>
+    <exprreq message="Improved Trip feat required."><![CDATA[#hasfeat[fImpTrip] <> 0]]></exprreq>
     </thing>
-  <thing id="fPUPsiUnar" name="Psionic Unarmed Strike" description="Your unarmed attacks sometimes bypass barriers.{br}{br}{b}Prerequisites:{/b} Dex 13, Wis 13, Improved Unarmed Strike, Stunning Fist.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. You can attempt to make a single unarmed melee attack as a standard action against a target that is sheltered behind a wall, wall of force effect, or similar barrier. Your attack briefly skips through the Astral Plane to bypass the barrier. This does not grant you line of sight or extra reach, requiring you to make the attack without being able to see the target or use some other method of seeing the target (such as clairaudience/ clairvoyance) and be within your normal reach for your unarmed attack." compset="Feat" maxlimit="2">
+  <thing id="fPUPsiUnar" name="Psionic Unarmed Strike" description="Your unarmed attacks sometimes bypass barriers.{br}{br}{b}Prerequisites:{/b} Dex 13, Wis 13, Improved Unarmed Strike, Stunning Fist.{br}{br}{b}Benefit:{/b} To use this feat, you must expend your psionic focus. You can attempt to make a single unarmed melee attack as a standard action against a target that is sheltered behind a wall, wall of force effect, or similar barrier. Your attack briefly skips through the Astral Plane to bypass the barrier. This does not grant you line of sight or extra reach, requiring you to make the attack without being able to see the target or use some other method of seeing the target (such as clairaudience/ clairvoyance) and be within your normal reach for your unarmed attack." compset="Feat" uniqueness="useronce">
     <usesource source="pPsiUn"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="fShowWhat" tag="WeaponsNat"/>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="abAction" tag="PUExpFocus"/>
-    <exprreq message="Wisdom 13+ required."><![CDATA[child[aWIS].field[aFinalVal].value >= 13]]></exprreq>
+    <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Improved Unarmed Strike feat required."><![CDATA[#hasfeat[fImpUnarm] <> 0]]></exprreq>
     <exprreq message="Stunning Fist feat required."><![CDATA[#hasfeat[fStunFist] <> 0]]></exprreq>
     <exprreq message="Dexterity 13+ required."><![CDATA[child[aDEX].field[aFinalVal].value >= 13]]></exprreq>
+    <exprreq message="Wisdom 13+ required."><![CDATA[child[aWIS].field[aFinalVal].value >= 13]]></exprreq>
     </thing>
   <thing id="fPUReadyRe" name="Ready Response" description="You can move yourself more quickly through sheer willpower.\n\n{b}Benefit:{/b} At the beginning of a surprise round, if you would not normally take an action, you can expend your psionic focus to roll initiative and take a standard action or a move action. If you do move normally in a surprise round, you can expend your psionic focus to take a full-round of action, rather than only a standard or move action.\n\n{b}Normal:{/b} A character that is allowed to act in a surprise round can take only a standard action or a move action, not both." compset="Feat" maxlimit="2">
     <usesource source="pPsiUn"/>
@@ -2811,5 +2808,45 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Must have 3 Metapsionic feats"><![CDATA[hero.tagcount[fCategory.Metapsion] >= 3]]></exprreq>
     <exprreq message="Spellcraft 15 ranks required"><![CDATA[#skillranks[skSpellcr] >= 15]]></exprreq>
+    </thing>
+  <thing id="fPUPsiStam" name="Psionic Stamina" description="Your psionic power reinforces your physical form. \n\n{b}Prerequisites:{/b} Psionic Body, soulknife level 3\n\n{b}Benefit:{/b} As long as you maintain psionic focus, you gain a +1 bonus to your Fortitude saves for each psionic feat you have (including this one), to a maximum bonus of 1/3 of your soulknife class level (rounded down, minimum +1).\n  You can expend your psionic focus as an immediate action to also add your Wisdom bonus to your Fortitude saves instead of your Constitution bonus until the beginning of your next turn." compset="Feat" uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Psionic Body feat required"><![CDATA[#hasfeat[fPUPsiBody] <> 0]]></exprreq>
+    <exprreq message="Soulknife level 3+ required"><![CDATA[#featlevelcount[Soulknife] >= 3]]></exprreq>
+    </thing>
+  <thing id="fPUPsyPath" name="Psychoportive Pathfinder" description="Your expertise in dimensional movement has made you the perfect guide for others.\n\n{b}Prerequisites:{/b} Nomad, ability to manifest {i}trace psychoport{/i} and either {i}psychoport{/i} or {i}greater psychoport{/i}.\n\n{b}Benefit:{/b} Any time you manifest {i}psychoport{/i}, you may, as a free action, choose to leave a marker for someone else to follow. This marker has a duration of one round. If another person casts {i}teleport{/i} or {i}greater teleport{/i} or manifests {i}psychoport{/i} or {i}greater psychoport{/i} in the space you left from, they can choose as part of casting the spell or manifesting the power to appear adjacent to you in a safe, uninhabited space even if they would normally fail due to lack of familiarity or lack of range." compset="Feat" uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="fCategory" tag="Psionic"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Nomad ability required"><![CDATA[(#hasability[cPUJaunNom] + #hasability[cPsiNomad]) <> 0]]></exprreq>
+    <prereq message="Ability to manifest either {i}psychoport{/i} or {i}greater psychoport{/i}">
+      <validate><![CDATA[    var PowerID as String
+    var HavePower as number
+    PowerID = "puPsyport3|puPsyport5|puPsyporG8"
+    Call HavePower
+    @valid = HavePower]]></validate>
+      </prereq>
+    <prereq message="Ability to manifest {i}trace psychoport{/i}">
+      <validate><![CDATA[    var PowerID as String
+    var HavePower as number
+    PowerID = "puTracePs4"
+    Call HavePower
+    @valid = HavePower]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fPUPyroman" name="Pyromaniac" description="Your weapons of fire complement each other.\n\nPrerequisites: Bomb 2d6 class feature, fire lash class feature.\n\nBenefits: Add your alchemist and pyrokineticist levels together to determine the damage done by your bombs and the number of bombs you can create each day. Additionally, when you apply your weapon afire ability to your bombs, all creatures in the splash area also take\nthe extra damage from your weapon afire ability." compset="Feat" uniqueness="useronce">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Fire Lash class feature required"><![CDATA[#hasability[cFireLash] <> 0]]></exprreq>
+    <prereq message="Bomb 2d6 required">
+      <validate><![CDATA[      validif (#value[cAlcBomb] >= 2)]]></validate>
+      </prereq>
     </thing>
   </document>
