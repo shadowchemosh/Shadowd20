@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document signature="Hero Lab Data">
-  <thing id="pBrokenWea" name="Deprecated" description="Use &quot;{b}Equipment Broken{/b}&quot; instead.\n\nIf the item is a weapon, any attacks made with the item suffer a –2 penalty on attack and damage rolls. Such weapons only score a critical hit on a natural 20 and only deal x2 damage on a confirmed critical hit." compset="InPlay">
+  <thing id="pBrokenWea" name="(Deprecated) Deprecated" description="Use &quot;{b}Equipment Broken{/b}&quot; instead.\n\nIf the item is a weapon, any attacks made with the item suffer a –2 penalty on attack and damage rolls. Such weapons only score a critical hit on a natural 20 and only deal x2 damage on a confirmed critical hit." compset="InPlay">
     <fieldval field="pWhat" value="Broken"/>
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="AdjInfo"/>
@@ -14,7 +14,7 @@
       field[pChosen].chosen.field[wAttBonus].value -= 2
       field[pChosen].chosen.field[wDamBonus].value -= 2]]></eval>
     </thing>
-  <thing id="pBrokenArm" name="Deprecated" description="Use &quot;{b}Equipment Broken{/b}&quot; instead.\n\nIf the item is a suit of armor or a shield, the bonus it grants to AC is halved, rounding down. Broken armor doubles its armor check penalty on skills." compset="InPlay">
+  <thing id="pBrokenArm" name="(Deprecated) Deprecated" description="Use &quot;{b}Equipment Broken{/b}&quot; instead.\n\nIf the item is a suit of armor or a shield, the bonus it grants to AC is halved, rounding down. Broken armor doubles its armor check penalty on skills." compset="InPlay">
     <fieldval field="pWhat" value="Broken"/>
     <usesource source="s20PFCamp"/>
     <tag group="Adjustment" tag="YourArmor"/>
@@ -30,7 +30,7 @@
       field[pChosen].chosen.field[Penalty].value -= penalty
       field[pChosen].chosen.field[arArmorChk].value *= 2]]></eval>
     </thing>
-  <thing id="pS2MirrIma" name="Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nThis spell creates a number of illusory doubles of you that inhabit your square. These doubles make it difficult for enemies to precisely locate and attack you.\n\nWhen mirror image is cast, 1d4 images plus one image per three caster levels (maximum eight images total) are created. These images remain in your space and move with you, mimicking your movements, sounds, and actions exactly. Whenever you are attacked or are the target of a spell that requires an attack roll, there is a possibility that the attack targets one of your images instead. If the attack is a hit, roll randomly to see whether the selected target is real or a figment. If it is a figment, the figment is destroyed. If the attack misses by 5 or less, one of your figments is destroyed by the near miss. Area spells affect you normally and do not destroy any of your figments. Spells and effects that do not require an attack roll affect you normally and do not destroy any of your figments. Spells that require a touch attack are harmlessly discharged if used to destroy a figment.\n\nAn attacker must be able to see the figments to be fooled. If you are invisible or the attacker is blind, the spell has no effect (although the normal miss chances still apply).\n\n{B}Note{/b} Set the number of images and then a tracker on the {b}In-Play{/b} tab will allow you to mark those images off." compset="InPlay">
+  <thing id="pS2MirrIma" name="(Deprecated) Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nThis spell creates a number of illusory doubles of you that inhabit your square. These doubles make it difficult for enemies to precisely locate and attack you.\n\nWhen mirror image is cast, 1d4 images plus one image per three caster levels (maximum eight images total) are created. These images remain in your space and move with you, mimicking your movements, sounds, and actions exactly. Whenever you are attacked or are the target of a spell that requires an attack roll, there is a possibility that the attack targets one of your images instead. If the attack is a hit, roll randomly to see whether the selected target is real or a figment. If it is a figment, the figment is destroyed. If the attack misses by 5 or less, one of your figments is destroyed by the near miss. Area spells affect you normally and do not destroy any of your figments. Spells and effects that do not require an attack roll affect you normally and do not destroy any of your figments. Spells that require a touch attack are harmlessly discharged if used to destroy a figment.\n\nAn attacker must be able to see the figments to be fooled. If you are invisible or the attacker is blind, the spell has no effect (although the normal miss chances still apply).\n\n{B}Note{/b} Set the number of images and then a tracker on the {b}In-Play{/b} tab will allow you to mark those images off." compset="InPlay">
     <comment>Hidden as it was offically added.</comment>
     <fieldval field="pMaximum" value="8"/>
     <fieldval field="pDuration" value="1 min./level"/>
@@ -48,7 +48,7 @@
       ~ Set tracker max value
       #trkmax[trkS2MirIm] += field[pAdjust].value]]></eval>
     </thing>
-  <thing id="pS2MyHaste" name="Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nThe transmuted creatures move and act more quickly than normal. This extra speed has several effects.\n\nWhen making a full attack action, a hasted creature may make one extra attack with any weapon he is holding. The attack is made using the creature’s full base attack bonus, plus any modifiers appropriate to the situation. (This effect is not cumulative with similar effects, such as that provided by a {i}speed{/i} weapon, nor does it actually grant an extra action, so you can’t use it to cast a second spell or otherwise take an extra action in the round.) A hasted creature gains a +1 bonus on attack rolls and a +1 dodge bonus to AC and Reflex saves. Any condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses.\n\nAll of the hasted creature’s modes of movement (including land movement, burrow, climb, fly, and swim) increase by 30 feet, to a maximum of twice the subject’s normal speed using that form of movement. This increase counts as an enhancement bonus, and it affects the creature’s jumping distance as normal for increased speed. Multiple haste effects don’t stack. Haste dispels and counters slow.\n\n{b}Mythic{/b}\nAffected creatures gain an additional move action each round. The movement speed increase changes to 50 feet, to a maximum of three times the creature&apos;s normal speed for that movement type." compset="InPlay">
+  <thing id="pS2MyHaste" name="(Deprecated) Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nThe transmuted creatures move and act more quickly than normal. This extra speed has several effects.\n\nWhen making a full attack action, a hasted creature may make one extra attack with any weapon he is holding. The attack is made using the creature’s full base attack bonus, plus any modifiers appropriate to the situation. (This effect is not cumulative with similar effects, such as that provided by a {i}speed{/i} weapon, nor does it actually grant an extra action, so you can’t use it to cast a second spell or otherwise take an extra action in the round.) A hasted creature gains a +1 bonus on attack rolls and a +1 dodge bonus to AC and Reflex saves. Any condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses.\n\nAll of the hasted creature’s modes of movement (including land movement, burrow, climb, fly, and swim) increase by 30 feet, to a maximum of twice the subject’s normal speed using that form of movement. This increase counts as an enhancement bonus, and it affects the creature’s jumping distance as normal for increased speed. Multiple haste effects don’t stack. Haste dispels and counters slow.\n\n{b}Mythic{/b}\nAffected creatures gain an additional move action each round. The movement speed increase changes to 50 feet, to a maximum of three times the creature&apos;s normal speed for that movement type." compset="InPlay">
     <fieldval field="pDuration" value="1 round/level"/>
     <usesource source="MythicAdv"/>
     <tag group="Helper" tag="AdjSpell"/>
@@ -84,11 +84,11 @@
 
       call HasteComb]]></eval>
     </thing>
-  <thing id="pS2MyHastA" name="Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nThe transmuted creatures move and act more quickly than normal. This extra speed has several effects.\n\nWhen making a full attack action, a hasted creature may make one extra attack with any weapon he is holding. The attack is made using the creature’s full base attack bonus, plus any modifiers appropriate to the situation. (This effect is not cumulative with similar effects, such as that provided by a {i}speed{/i} weapon, nor does it actually grant an extra action, so you can’t use it to cast a second spell or otherwise take an extra action in the round.) A hasted creature gains a +1 bonus on attack rolls and a +1 dodge bonus to AC and Reflex saves. Any condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses.\n\nAll of the hasted creature’s modes of movement (including land movement, burrow, climb, fly, and swim) increase by 30 feet, to a maximum of twice the subject’s normal speed using that form of movement. This increase counts as an enhancement bonus, and it affects the creature’s jumping distance as normal for increased speed. Multiple haste effects don’t stack. Haste dispels and counters slow.\n\n{b}Mythic{/b}\nAffected creatures gain an additional move action each round. The movement speed increase changes to 50 feet, to a maximum of three times the creature&apos;s normal speed for that movement type.\n\n{b}Augmented (3rd){/b}: If you expend two uses of mythic power, the movement speed increase changes to 70 feet, with no limit based on the creature&apos;s normal speed. If an affected creature moves at least 30 feet on its turn, it can travel across liquid as if the liquid were solid. If the liquid deals damage on contact, the creature takes only half damage from moving across it." compset="InPlay">
+  <thing id="pS2MyHastA" name="(Deprecated) Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nThe transmuted creatures move and act more quickly than normal. This extra speed has several effects.\n\nWhen making a full attack action, a hasted creature may make one extra attack with any weapon he is holding. The attack is made using the creature’s full base attack bonus, plus any modifiers appropriate to the situation. (This effect is not cumulative with similar effects, such as that provided by a {i}speed{/i} weapon, nor does it actually grant an extra action, so you can’t use it to cast a second spell or otherwise take an extra action in the round.) A hasted creature gains a +1 bonus on attack rolls and a +1 dodge bonus to AC and Reflex saves. Any condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses.\n\nAll of the hasted creature’s modes of movement (including land movement, burrow, climb, fly, and swim) increase by 30 feet, to a maximum of twice the subject’s normal speed using that form of movement. This increase counts as an enhancement bonus, and it affects the creature’s jumping distance as normal for increased speed. Multiple haste effects don’t stack. Haste dispels and counters slow.\n\n{b}Mythic{/b}\nAffected creatures gain an additional move action each round. The movement speed increase changes to 50 feet, to a maximum of three times the creature&apos;s normal speed for that movement type.\n\n{b}Augmented (3rd){/b}: If you expend two uses of mythic power, the movement speed increase changes to 70 feet, with no limit based on the creature&apos;s normal speed. If an affected creature moves at least 30 feet on its turn, it can travel across liquid as if the liquid were solid. If the liquid deals damage on contact, the creature takes only half damage from moving across it." compset="InPlay">
     <fieldval field="pDuration" value="1 round/level"/>
     <usesource source="MythicAdv"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
-    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr" name="(Deprecated) NoIncr" abbrev="NoIncr"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Final" priority="9900" index="2"><![CDATA[
       ~ if we're not active, just get out now
@@ -117,7 +117,7 @@
 
       call HasteComb]]></eval>
     </thing>
-  <thing id="pS2AblaBar" name="Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nInvisible layers of solid force surround and protect the target, granting that target a +2 armor bonus to AC.\n\nAdditionally, the first 5 points of lethal damage the target takes from each attack are converted into nonlethal damage. Against attacks that already deal nonlethal damage, the target gains DR 5/—. Once this spell has converted 5 points of damage to nonlethal damage per caster level (maximum 50 points), the spell is discharged.\n\n{b}Note:{/b} Use the counter to set the caster level of the spell so that the amount of damage can be calculated.\n\n{b}Mythic{/b}\nAdd half your tier to the spell&apos;s armor bonus. Add half your tier to the amount of lethal damage from each attack that is converted to nonlethal damage and to the DR against nonlethal damage. Add half your tier to your caster level when determining how much damage the spell converts before it&apos;s discharged.\n\n{b}Note:{/b} Set the mythic augmented value to set the mythic tier value correctly." compset="InPlay">
+  <thing id="pS2AblaBar" name="(Deprecated) Deprecated" description="{B}Please remove this deprecated adjustment and add the current one.{/b}\n\nInvisible layers of solid force surround and protect the target, granting that target a +2 armor bonus to AC.\n\nAdditionally, the first 5 points of lethal damage the target takes from each attack are converted into nonlethal damage. Against attacks that already deal nonlethal damage, the target gains DR 5/—. Once this spell has converted 5 points of damage to nonlethal damage per caster level (maximum 50 points), the spell is discharged.\n\n{b}Note:{/b} Use the counter to set the caster level of the spell so that the amount of damage can be calculated.\n\n{b}Mythic{/b}\nAdd half your tier to the spell&apos;s armor bonus. Add half your tier to the amount of lethal damage from each attack that is converted to nonlethal damage and to the DR against nonlethal damage. Add half your tier to your caster level when determining how much damage the spell converts before it&apos;s discharged.\n\n{b}Note:{/b} Set the mythic augmented value to set the mythic tier value correctly." compset="InPlay">
     <comment>Removed - Hidden as officially ADDED</comment>
     <fieldval field="pDuration" value="1 hour/level (D)"/>
     <fieldval field="pMinimum" value="1"/>
@@ -136,7 +136,7 @@
     <tag group="MythAdjAvl" tag="Augment8"/>
     <tag group="MythAdjAvl" tag="Augment9"/>
     <tag group="MythAdjAvl" tag="Augment10"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
     <bootstrap thing="trkS2AbBar">
       <containerreq phase="First" priority="450"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
       </bootstrap>
@@ -151,22 +151,22 @@
       ~ Set tracker max value
       #trkmax[trkS2AbBar] += field[pAdjust].value * 5]]></eval>
     </thing>
-  <thing id="trkS2AbBar" name="Ablative Barrier" description="." compset="Tracker" uniqueness="useronce">
+  <thing id="trkS2AbBar" name="(Deprecated) Ablative Barrier" description="." compset="Tracker" uniqueness="useronce">
     <usesource source="UltCombat"/>
     <tag group="SpInfo" tag="spAblaBar2"/>
-    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="User" tag="Tracker" name="(Deprecated) Modern Action Points" abbrev="Modern Action Points"/>
     <tag group="ProductId" tag="Shadowd20"/>
     </thing>
-  <thing id="trkS2MirIm" name="Mirror Image" description="." compset="Tracker" uniqueness="useronce">
-    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+  <thing id="trkS2MirIm" name="(Deprecated) Mirror Image" description="." compset="Tracker" uniqueness="useronce">
+    <tag group="User" tag="Tracker" name="(Deprecated) Modern Action Points" abbrev="Modern Action Points"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="SpInfo" tag="spMinoIma2"/>
     </thing>
-  <thing id="pS2UAna1Me" name="Undead Anatomy 1 (Medium)" description="When you cast this spell, you can assume the form of any Small or Medium corporeal creature of the undead type, which must be vaguely humanoid-shaped (like a ghoul, skeleton, or zombie). You gain a bite attack (1d6 for Medium forms, 1d4 for Small forms), two claw or slam attacks (1d6 for Medium forms, 1d4 for Small forms), and darkvision 60 feet. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, low-light vision, and scent.{br}{br}In this form, you detect as an undead creature (such as with {i}detect undead{/i}, but not with magic that reveals your true form, such as {i}true seeing{/i}) and are treated as undead for the purposes of channeled energy, {i}cure{/i} spells, and {i}inflict{/i} spells, but not for other effects that specifically target or react differently to undead (such as {i}searing light{/i}).{br}{br}{i}Small undead{/i}: If the form you take is that of a Small undead, you gain a +2 size bonus to your Dexterity and a +1 natural armor bonus.{br}{br}{i}Medium undead{/i}: If the form you take is that of a Medium undead, you gain a +2 size bonus to your Strength and a +2 natural armor bonus." compset="InPlay" replaces="pUndAna1Me">
+  <thing id="pS2UAna1Me" name="(Deprecated) Undead Anatomy 1 (Medium)" description="When you cast this spell, you can assume the form of any Small or Medium corporeal creature of the undead type, which must be vaguely humanoid-shaped (like a ghoul, skeleton, or zombie). You gain a bite attack (1d6 for Medium forms, 1d4 for Small forms), two claw or slam attacks (1d6 for Medium forms, 1d4 for Small forms), and darkvision 60 feet. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, low-light vision, and scent.{br}{br}In this form, you detect as an undead creature (such as with {i}detect undead{/i}, but not with magic that reveals your true form, such as {i}true seeing{/i}) and are treated as undead for the purposes of channeled energy, {i}cure{/i} spells, and {i}inflict{/i} spells, but not for other effects that specifically target or react differently to undead (such as {i}searing light{/i}).{br}{br}{i}Small undead{/i}: If the form you take is that of a Small undead, you gain a +2 size bonus to your Dexterity and a +1 natural armor bonus.{br}{br}{i}Medium undead{/i}: If the form you take is that of a Medium undead, you gain a +2 size bonus to your Strength and a +2 natural armor bonus." compset="InPlay" replaces="pUndAna1Me">
     <fieldval field="pDuration" value="1 min/level (D)"/>
-    <usesource source="UltMagic" parent="UMHeader" name="Ultimate Magic"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
-    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <usesource source="UltMagic" parent="UMHeader" name="(Deprecated) Ultimate Magic"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr" name="(Deprecated) NoIncr" abbrev="NoIncr"/>
     <tag group="Shadowd20" tag="UndeadAnat"/>
     <bootstrap thing="wBite">
       <containerreq phase="First" priority="99"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
@@ -211,11 +211,11 @@ var sizetarget as number
 sizetarget = 0
 call SetSizeTo]]></eval>
     </thing>
-  <thing id="pS2UAna1Sm" name="Undead Anatomy 1 (Small)" description="When you cast this spell, you can assume the form of any Small or Medium corporeal creature of the undead type, which must be vaguely humanoid-shaped (like a ghoul, skeleton, or zombie). You gain a bite attack (1d6 for Medium forms, 1d4 for Small forms), two claw or slam attacks (1d6 for Medium forms, 1d4 for Small forms), and darkvision 60 feet. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, low-light vision, and scent.{br}{br}In this form, you detect as an undead creature (such as with {i}detect undead{/i}, but not with magic that reveals your true form, such as {i}true seeing{/i}) and are treated as undead for the purposes of channeled energy, {i}cure{/i} spells, and {i}inflict{/i} spells, but not for other effects that specifically target or react differently to undead (such as {i}searing light{/i}).{br}{br}{i}Small undead{/i}: If the form you take is that of a Small undead, you gain a +2 size bonus to your Dexterity and a +1 natural armor bonus.{br}{br}{i}Medium undead{/i}: If the form you take is that of a Medium undead, you gain a +2 size bonus to your Strength and a +2 natural armor bonus." compset="InPlay" replaces="pUndAna1Sm">
+  <thing id="pS2UAna1Sm" name="(Deprecated) Undead Anatomy 1 (Small)" description="When you cast this spell, you can assume the form of any Small or Medium corporeal creature of the undead type, which must be vaguely humanoid-shaped (like a ghoul, skeleton, or zombie). You gain a bite attack (1d6 for Medium forms, 1d4 for Small forms), two claw or slam attacks (1d6 for Medium forms, 1d4 for Small forms), and darkvision 60 feet. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, low-light vision, and scent.{br}{br}In this form, you detect as an undead creature (such as with {i}detect undead{/i}, but not with magic that reveals your true form, such as {i}true seeing{/i}) and are treated as undead for the purposes of channeled energy, {i}cure{/i} spells, and {i}inflict{/i} spells, but not for other effects that specifically target or react differently to undead (such as {i}searing light{/i}).{br}{br}{i}Small undead{/i}: If the form you take is that of a Small undead, you gain a +2 size bonus to your Dexterity and a +1 natural armor bonus.{br}{br}{i}Medium undead{/i}: If the form you take is that of a Medium undead, you gain a +2 size bonus to your Strength and a +2 natural armor bonus." compset="InPlay" replaces="pUndAna1Sm">
     <fieldval field="pDuration" value="1 min/level (D)"/>
-    <usesource source="UltMagic" parent="UMHeader" name="Ultimate Magic"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
-    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <usesource source="UltMagic" parent="UMHeader" name="(Deprecated) Ultimate Magic"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr" name="(Deprecated) NoIncr" abbrev="NoIncr"/>
     <tag group="Shadowd20" tag="UndeadAnat"/>
     <bootstrap thing="wBite">
       <containerreq phase="First" priority="99"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
@@ -261,11 +261,11 @@ var sizetarget as number
 sizetarget = -1
 call SetSizeTo]]></eval>
     </thing>
-  <thing id="pS2UAna2Ti" name="Undead Anatomy 2 (Tiny)" description="This spell functions as {i}undead anatomy I{/i}, except it also allows you to assume the form of a Tiny or Large corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: climb 60 feet, fly 60 feet (good maneuverability), swim 60 feet, darkvision 60 feet, low-light vision, blood drain, DR 5/bludgeoning, scent, freeze, grab, mimicry, pounce, shadowless, sound mimicry, and trip. In this form, you gain a +4 bonus on saves against mindaffecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Tiny undead{/i}: If the form you take is that of a Tiny undead, you gain a +4 size bonus to your Dexterity, a -2 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Large undead{/i}: If the form you take is that of a Large undead, you gain a +4 size bonus to your Strength, a -2 penalty to your Dexterity, and a +4 natural armor bonus." compset="InPlay" replaces="pUndAna2Ti">
+  <thing id="pS2UAna2Ti" name="(Deprecated) Undead Anatomy 2 (Tiny)" description="This spell functions as {i}undead anatomy I{/i}, except it also allows you to assume the form of a Tiny or Large corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: climb 60 feet, fly 60 feet (good maneuverability), swim 60 feet, darkvision 60 feet, low-light vision, blood drain, DR 5/bludgeoning, scent, freeze, grab, mimicry, pounce, shadowless, sound mimicry, and trip. In this form, you gain a +4 bonus on saves against mindaffecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Tiny undead{/i}: If the form you take is that of a Tiny undead, you gain a +4 size bonus to your Dexterity, a -2 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Large undead{/i}: If the form you take is that of a Large undead, you gain a +4 size bonus to your Strength, a -2 penalty to your Dexterity, and a +4 natural armor bonus." compset="InPlay" replaces="pUndAna2Ti">
     <fieldval field="pDuration" value="1 min/level (D)"/>
-    <usesource source="UltMagic" parent="UMHeader" name="Ultimate Magic"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
-    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <usesource source="UltMagic" parent="UMHeader" name="(Deprecated) Ultimate Magic"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr" name="(Deprecated) NoIncr" abbrev="NoIncr"/>
     <tag group="Shadowd20" tag="UndeadAnat"/>
     <tag group="Shadowd20" tag="UndeadAna2"/>
     <bootstrap thing="wClaw">
@@ -315,11 +315,11 @@ doneif (field[pIsOn].value = 0)
 perform hero.pushtags[Shadowd20.?]
 perform hero.pushtags[Condition.?]]]></eval>
     </thing>
-  <thing id="pS2UAna2La" name="Undead Anatomy 2 (Large)" description="This spell functions as {i}undead anatomy I{/i}, except it also allows you to assume the form of a Tiny or Large corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: climb 60 feet, fly 60 feet (good maneuverability), swim 60 feet, darkvision 60 feet, low-light vision, blood drain, DR 5/bludgeoning, scent, freeze, grab, mimicry, pounce, shadowless, sound mimicry, and trip. In this form, you gain a +4 bonus on saves against mindaffecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Tiny undead{/i}: If the form you take is that of a Tiny undead, you gain a +4 size bonus to your Dexterity, a -2 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Large undead{/i}: If the form you take is that of a Large undead, you gain a +4 size bonus to your Strength, a -2 penalty to your Dexterity, and a +4 natural armor bonus." compset="InPlay" replaces="pUndAna2La">
+  <thing id="pS2UAna2La" name="(Deprecated) Undead Anatomy 2 (Large)" description="This spell functions as {i}undead anatomy I{/i}, except it also allows you to assume the form of a Tiny or Large corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: climb 60 feet, fly 60 feet (good maneuverability), swim 60 feet, darkvision 60 feet, low-light vision, blood drain, DR 5/bludgeoning, scent, freeze, grab, mimicry, pounce, shadowless, sound mimicry, and trip. In this form, you gain a +4 bonus on saves against mindaffecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Tiny undead{/i}: If the form you take is that of a Tiny undead, you gain a +4 size bonus to your Dexterity, a -2 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Large undead{/i}: If the form you take is that of a Large undead, you gain a +4 size bonus to your Strength, a -2 penalty to your Dexterity, and a +4 natural armor bonus." compset="InPlay" replaces="pUndAna2La">
     <fieldval field="pDuration" value="1 min/level (D)"/>
-    <usesource source="UltMagic" parent="UMHeader" name="Ultimate Magic"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
-    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <usesource source="UltMagic" parent="UMHeader" name="(Deprecated) Ultimate Magic"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr" name="(Deprecated) NoIncr" abbrev="NoIncr"/>
     <tag group="Shadowd20" tag="UndeadAnat"/>
     <tag group="Shadowd20" tag="UndeadAna2"/>
     <bootstrap thing="wClaw">
@@ -370,11 +370,11 @@ doneif (field[pIsOn].value = 0)
 perform hero.pushtags[Shadowd20.?]
 perform hero.pushtags[Condition.?]]]></eval>
     </thing>
-  <thing id="pS2UAna3Hu" name="Undead Anatomy 3 (Huge)" description="This spell functions as {i}undead anatomy II{/i}, except it also allows you to assume the form of a Diminutive or Huge corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: burrow 30 feet, climb 90 feet, fly 90 feet (good maneuverability), swim 90 feet, all-around vision, blindsense 30 feet, darkvision 60 feet, low-light vision, scent, constrict, disease, DR 5/ - , fear aura, grab, jet, natural cunning, overwhelming, poison, pounce, rake, trample, trip, unnatural aura, and web.{br}{br}If the creature has immunity or resistance to any energy types, you gain resistance 20 to those energy types. If the creature has vulnerability to an energy type, you gain that vulnerability. In this form, you gain a +8 bonus on saves against mind-affecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Diminutive undead{/i}: If the form you take is that of a Diminutive undead, you gain a +6 size bonus to your Dexterity, a -4 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Huge undead{/i}: If the form you take is that of a Huge undead, you gain a +6 size bonus to your Strength, a -4 penalty to your Dexterity, and a +6 natural armor bonus." compset="InPlay" replaces="pUndAna3Hu">
+  <thing id="pS2UAna3Hu" name="(Deprecated) Undead Anatomy 3 (Huge)" description="This spell functions as {i}undead anatomy II{/i}, except it also allows you to assume the form of a Diminutive or Huge corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: burrow 30 feet, climb 90 feet, fly 90 feet (good maneuverability), swim 90 feet, all-around vision, blindsense 30 feet, darkvision 60 feet, low-light vision, scent, constrict, disease, DR 5/ - , fear aura, grab, jet, natural cunning, overwhelming, poison, pounce, rake, trample, trip, unnatural aura, and web.{br}{br}If the creature has immunity or resistance to any energy types, you gain resistance 20 to those energy types. If the creature has vulnerability to an energy type, you gain that vulnerability. In this form, you gain a +8 bonus on saves against mind-affecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Diminutive undead{/i}: If the form you take is that of a Diminutive undead, you gain a +6 size bonus to your Dexterity, a -4 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Huge undead{/i}: If the form you take is that of a Huge undead, you gain a +6 size bonus to your Strength, a -4 penalty to your Dexterity, and a +6 natural armor bonus." compset="InPlay" replaces="pUndAna3Hu">
     <fieldval field="pDuration" value="1 min/level (D)"/>
-    <usesource source="UltMagic" parent="UMHeader" name="Ultimate Magic"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
-    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <usesource source="UltMagic" parent="UMHeader" name="(Deprecated) Ultimate Magic"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr" name="(Deprecated) NoIncr" abbrev="NoIncr"/>
     <tag group="Shadowd20" tag="UndeadAnat"/>
     <tag group="Shadowd20" tag="UndeadAna3"/>
     <bootstrap thing="wClaw">
@@ -425,11 +425,11 @@ doneif (field[pIsOn].value = 0)
 perform hero.pushtags[Shadowd20.?]
 perform hero.pushtags[Condition.?]]]></eval>
     </thing>
-  <thing id="pS2UAna3Di" name="Undead Anatomy 3 (Diminutive)" description="This spell functions as {i}undead anatomy II{/i}, except it also allows you to assume the form of a Diminutive or Huge corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: burrow 30 feet, climb 90 feet, fly 90 feet (good maneuverability), swim 90 feet, all-around vision, blindsense 30 feet, darkvision 60 feet, low-light vision, scent, constrict, disease, DR 5/ - , fear aura, grab, jet, natural cunning, overwhelming, poison, pounce, rake, trample, trip, unnatural aura, and web.{br}{br}If the creature has immunity or resistance to any energy types, you gain resistance 20 to those energy types. If the creature has vulnerability to an energy type, you gain that vulnerability. In this form, you gain a +8 bonus on saves against mind-affecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Diminutive undead{/i}: If the form you take is that of a Diminutive undead, you gain a +6 size bonus to your Dexterity, a -4 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Huge undead{/i}: If the form you take is that of a Huge undead, you gain a +6 size bonus to your Strength, a -4 penalty to your Dexterity, and a +6 natural armor bonus." compset="InPlay" replaces="pUndAna3Di">
+  <thing id="pS2UAna3Di" name="(Deprecated) Undead Anatomy 3 (Diminutive)" description="This spell functions as {i}undead anatomy II{/i}, except it also allows you to assume the form of a Diminutive or Huge corporeal creature of the undead type. If the form you assume has any of the following abilities, you gain the listed ability: burrow 30 feet, climb 90 feet, fly 90 feet (good maneuverability), swim 90 feet, all-around vision, blindsense 30 feet, darkvision 60 feet, low-light vision, scent, constrict, disease, DR 5/ - , fear aura, grab, jet, natural cunning, overwhelming, poison, pounce, rake, trample, trip, unnatural aura, and web.{br}{br}If the creature has immunity or resistance to any energy types, you gain resistance 20 to those energy types. If the creature has vulnerability to an energy type, you gain that vulnerability. In this form, you gain a +8 bonus on saves against mind-affecting effects, disease, poison, sleep, and stunning. If the form has a vulnerability to an attack (such as sunlight), you gain that vulnerability.{br}{br}{i}Diminutive undead{/i}: If the form you take is that of a Diminutive undead, you gain a +6 size bonus to your Dexterity, a -4 penalty to your Strength, and a +1 natural armor bonus.{br}{br}{i}Huge undead{/i}: If the form you take is that of a Huge undead, you gain a +6 size bonus to your Strength, a -4 penalty to your Dexterity, and a +6 natural armor bonus." compset="InPlay" replaces="pUndAna3Di">
     <fieldval field="pDuration" value="1 min/level (D)"/>
-    <usesource source="UltMagic" parent="UMHeader" name="Ultimate Magic"/>
-    <tag group="Helper" tag="AdjSpell" name="Spell Adjustment" abbrev="Spell Adjustment"/>
-    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <usesource source="UltMagic" parent="UMHeader" name="(Deprecated) Ultimate Magic"/>
+    <tag group="Helper" tag="AdjSpell" name="(Deprecated) Spell Adjustment" abbrev="Spell Adjustment"/>
+    <tag group="Helper" tag="NoIncr" name="(Deprecated) NoIncr" abbrev="NoIncr"/>
     <tag group="Shadowd20" tag="UndeadAnat"/>
     <tag group="Shadowd20" tag="UndeadAna3"/>
     <bootstrap thing="wClaw">
@@ -480,10 +480,10 @@ doneif (field[pIsOn].value = 0)
 perform hero.pushtags[Shadowd20.?]
 perform hero.pushtags[Condition.?]]]></eval>
     </thing>
-  <thing id="cfgS2UnAna" name="Undead Anatomy" compset="Configure" uniqueness="unique">
+  <thing id="cfgS2UnAna" name="(Deprecated) Undead Anatomy" compset="Configure" uniqueness="unique">
     <fieldval field="cfgObject1" value="Undead Anatomy Abilities"/>
     </thing>
-  <thing id="rcS2UA0004" name="Low-Light Vision" description="You gain low-light vision." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0004" name="(Deprecated) Low-Light Vision" description="You gain low-light vision." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -492,7 +492,7 @@ perform hero.pushtags[Condition.?]]]></eval>
       <autotag group="Helper" tag="NoRootName"/>
       </bootstrap>
     </thing>
-  <thing id="rcS2UA0005" name="Swim 30ft" description="You gain a 30ft swim speed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0005" name="(Deprecated) Swim 30ft" description="You gain a 30ft swim speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -502,7 +502,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 
 #value[xSwim] += 30]]></eval>
     </thing>
-  <thing id="rcS2UA0001" name="Climb 30ft" description="You gain a 30ft climb speed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0001" name="(Deprecated) Climb 30ft" description="You gain a 30ft climb speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -512,7 +512,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 
 #value[xClimb] += 30]]></eval>
     </thing>
-  <thing id="rcS2UA0002" name="Fly 30ft" description="You gain a 30ft fly speed with average maneuverability." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0002" name="(Deprecated) Fly 30ft" description="You gain a 30ft fly speed with average maneuverability." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -523,7 +523,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #value[xFly] += 30
 perform hero.childfound[xFly].assign[Maneuver.Average]]]></eval>
     </thing>
-  <thing id="rcS2UA0006" name="Scent" description="You gain the scent Universal Monster ability." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0006" name="(Deprecated) Scent" description="You gain the scent Universal Monster ability." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -532,7 +532,7 @@ perform hero.childfound[xFly].assign[Maneuver.Average]]]></eval>
       <autotag group="Helper" tag="NoRootName"/>
       </bootstrap>
     </thing>
-  <thing id="rcS2UA0007" name="Climb 60ft" description="You gain a 60ft climb speed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0007" name="(Deprecated) Climb 60ft" description="You gain a 60ft climb speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -543,7 +543,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #value[xClimb] += 60]]></eval>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0008" name="Fly 60ft" description="You gain a 60ft fly speed with good maneuverability." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0008" name="(Deprecated) Fly 60ft" description="You gain a 60ft fly speed with good maneuverability." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -555,7 +555,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 perform hero.childfound[xFly].assign[Maneuver.Good]]]></eval>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0009" name="Darkivsion 60ft" description="You gain 60ft darkvision." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0009" name="(Deprecated) Darkivsion 60ft" description="You gain 60ft darkvision." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -565,7 +565,7 @@ perform hero.childfound[xFly].assign[Maneuver.Good]]]></eval>
       </bootstrap>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0010" name="Swim 60ft" description="You gain a 60ft swim speed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0010" name="(Deprecated) Swim 60ft" description="You gain a 60ft swim speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -576,7 +576,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #value[xSwim] += 60]]></eval>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0011" name="Blood Drain" description="You gain blood drain Universal Monster ability.\n\nThe creature drains blood at the end of its turn if it grapples a foe, inflicting 1d2 Constitution damage." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0011" name="(Deprecated) Blood Drain" description="You gain blood drain Universal Monster ability.\n\nThe creature drains blood at the end of its turn if it grapples a foe, inflicting 1d2 Constitution damage." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -587,11 +587,11 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="raS2UndAna" name="Undead Anatomy" description="In this form, you detect as an undead creature (such as with detect undead, but not with magic that reveals your true form, such as true seeing) and are treated as undead for the purposes of channeled energy, cure spells, and inflict spells, but not for other effects that specifically target or react differently to undead (such as searing light)." compset="RaceSpec" summary="You are affected by the Undead Anatomy spell.">
+  <thing id="raS2UndAna" name="(Deprecated) Undead Anatomy" description="In this form, you detect as an undead creature (such as with detect undead, but not with magic that reveals your true form, such as true seeing) and are treated as undead for the purposes of channeled energy, cure spells, and inflict spells, but not for other effects that specifically target or react differently to undead (such as searing light)." compset="RaceSpec" summary="You are affected by the Undead Anatomy spell.">
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
-  <thing id="rcS2UA0012" name="DR 5/bludgeoning" description="You gain a DR 5/bludgeoning." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0012" name="(Deprecated) DR 5/bludgeoning" description="You gain a DR 5/bludgeoning." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -602,7 +602,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #applydr[xDamRdB,5]]]></eval>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0013" name="Freeze" description="You gain freeze Universal Monster ability.\n\nThe creature can hold itself so still it appears to be an inanimate object of the appropriate shape (a statue, patch of fungus, and so on). The creature can take 20 on its Stealth check to hide in plain sight as this kind of inanimate object." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0013" name="(Deprecated) Freeze" description="You gain freeze Universal Monster ability.\n\nThe creature can hold itself so still it appears to be an inanimate object of the appropriate shape (a statue, patch of fungus, and so on). The creature can take 20 on its Stealth check to hide in plain sight as this kind of inanimate object." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -612,7 +612,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0014" name="Grab" description="You gain grab Universal Monster ability.\n\nIf a creature with this special attack hits with the indicated attack (usually a claw or bite attack), it deals normal damage and attempts to start a grapple as a free action without provoking an attack of opportunity. Unless otherwise noted, grab can only be used against targets of a size equal to or smaller than the creature with this ability. If the creature can use grab on creatures of other sizes, it is noted in the creature&apos;s Special Attacks line. The creature has the option to conduct the grapple normally, or simply use the part of its body it used in the grab to hold the opponent. If it chooses to do the latter, it takes a –20 penalty on its CMB check to make and maintain the grapple, but does not gain the grappled condition itself. A successful hold does not deal any extra damage unless the creature also has the constrict special attack. If the creature does not constrict, each successful grapple check it makes during successive rounds automatically deals the damage indicated for the attack that established the hold. Otherwise, it deals constriction damage as well (the amount is given in the creature’s descriptive text).\n\nCreatures with the grab special attack receive a +4 bonus on combat maneuver checks made to start and maintain a grapple." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0014" name="(Deprecated) Grab" description="You gain grab Universal Monster ability.\n\nIf a creature with this special attack hits with the indicated attack (usually a claw or bite attack), it deals normal damage and attempts to start a grapple as a free action without provoking an attack of opportunity. Unless otherwise noted, grab can only be used against targets of a size equal to or smaller than the creature with this ability. If the creature can use grab on creatures of other sizes, it is noted in the creature&apos;s Special Attacks line. The creature has the option to conduct the grapple normally, or simply use the part of its body it used in the grab to hold the opponent. If it chooses to do the latter, it takes a –20 penalty on its CMB check to make and maintain the grapple, but does not gain the grappled condition itself. A successful hold does not deal any extra damage unless the creature also has the constrict special attack. If the creature does not constrict, each successful grapple check it makes during successive rounds automatically deals the damage indicated for the attack that established the hold. Otherwise, it deals constriction damage as well (the amount is given in the creature’s descriptive text).\n\nCreatures with the grab special attack receive a +4 bonus on combat maneuver checks made to start and maintain a grapple." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -622,7 +622,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 2-3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0015" name="Sound Mimicry" description="You gain sound mimicry Universal Monster ability.\n\nThe creature perfectly imitates certain sounds or even specific voices. The creature makes a Bluff check opposed by the listener’s Sense Motive check to recognize the mimicry, although if the listener isn’t familiar with the person or type of creatures mimicked, it takes a –8 penalty on its Sense Motive check. The creature has a +8 racial bonus on its Bluff check to mimic sounds (including accents and speech patterns, if a voice mimic) it has listened to for at least 10 minutes. The creature cannot duplicate the effects of magical abilities (such as bardic performance or a harpy’s captivating song), though it may be able to mimic the sound of those abilities. This ability does not allow the creature to speak or understand languages it doesn’t know." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0015" name="(Deprecated) Sound Mimicry" description="You gain sound mimicry Universal Monster ability.\n\nThe creature perfectly imitates certain sounds or even specific voices. The creature makes a Bluff check opposed by the listener’s Sense Motive check to recognize the mimicry, although if the listener isn’t familiar with the person or type of creatures mimicked, it takes a –8 penalty on its Sense Motive check. The creature has a +8 racial bonus on its Bluff check to mimic sounds (including accents and speech patterns, if a voice mimic) it has listened to for at least 10 minutes. The creature cannot duplicate the effects of magical abilities (such as bardic performance or a harpy’s captivating song), though it may be able to mimic the sound of those abilities. This ability does not allow the creature to speak or understand languages it doesn’t know." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -632,7 +632,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0016" name="Pounce" description="You gain pounce Universal Monster ability.\n\nWhen a creature with this special attack makes a charge, it can make a full attack (including rake attacks if the creature also has the rake ability)." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0016" name="(Deprecated) Pounce" description="You gain pounce Universal Monster ability.\n\nWhen a creature with this special attack makes a charge, it can make a full attack (including rake attacks if the creature also has the rake ability)." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -642,11 +642,11 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 2-3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="raS2UAShLe" name="Shadowless" description="You cast no shadows and shows no reflection in a mirror." compset="RaceSpec">
+  <thing id="raS2UAShLe" name="(Deprecated) Shadowless" description="You cast no shadows and shows no reflection in a mirror." compset="RaceSpec">
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
-  <thing id="rcS2UA0017" name="Shadowless" description="You gain pounce Universal Monster ability.\n\nYou cast no shadows and shows no reflection in a mirror." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0017" name="(Deprecated) Shadowless" description="You gain pounce Universal Monster ability.\n\nYou cast no shadows and shows no reflection in a mirror." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -656,7 +656,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 2 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0018" name="Trip" description="You gain trip Universal Monster ability.\n\nA creature with the trip special attack can attempt to trip its opponent as a free action without provoking an attack of opportunity if it hits with the specified attack. If the attempt fails, the creature is not tripped in return." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0018" name="(Deprecated) Trip" description="You gain trip Universal Monster ability.\n\nA creature with the trip special attack can attempt to trip its opponent as a free action without provoking an attack of opportunity if it hits with the specified attack. If the attempt fails, the creature is not tripped in return." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -666,7 +666,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 2-3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna2] + hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0019" name="Burrow 30ft" description="You gain a 30ft burrow speed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0019" name="(Deprecated) Burrow 30ft" description="You gain a 30ft burrow speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -677,7 +677,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #value[xBurrow] += 60]]></eval>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0020" name="Climb 90ft" description="You gain a 90ft climb speed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0020" name="(Deprecated) Climb 90ft" description="You gain a 90ft climb speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -688,7 +688,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #value[xClimb] += 90]]></eval>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0021" name="Fly 90ft" description="You gain a 90ft fly speed with good maneuverability." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0021" name="(Deprecated) Fly 90ft" description="You gain a 90ft fly speed with good maneuverability." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -700,7 +700,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 perform hero.childfound[xFly].assign[Maneuver.Good]]]></eval>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0022" name="Swim 90ft" description="You gain a 90ft swim speed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0022" name="(Deprecated) Swim 90ft" description="You gain a 90ft swim speed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -711,7 +711,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #value[xSwim] += 90]]></eval>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0023" name="All-Around Vision" description="You gain all-around vision Universal Monster ability.\n\nThe creature sees in all directions at once. It cannot be flanked." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0023" name="(Deprecated) All-Around Vision" description="You gain all-around vision Universal Monster ability.\n\nThe creature sees in all directions at once. It cannot be flanked." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -721,7 +721,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0024" name="Blindsense 30ft" description="You gain blindsense 30 feet Universal Monster ability.\n\nUsing nonvisual senses, such as acute smell or hearing, a creature with blindsense notices things it cannot see. The creature usually does not need to make Perception checks to pinpoint the location of a creature within range of its blindsense ability, provided that it has line of effect to that creature. Any opponent the creature cannot see still has total concealment against the creature with blindsense, and the creature still has the normal miss chance when attacking foes that have concealment. Visibility still affects the movement of a creature with blindsense. A creature with blindsense is still denied its Dexterity bonus to Armor Class against attacks from creatures it cannot see." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0024" name="(Deprecated) Blindsense 30ft" description="You gain blindsense 30 feet Universal Monster ability.\n\nUsing nonvisual senses, such as acute smell or hearing, a creature with blindsense notices things it cannot see. The creature usually does not need to make Perception checks to pinpoint the location of a creature within range of its blindsense ability, provided that it has line of effect to that creature. Any opponent the creature cannot see still has total concealment against the creature with blindsense, and the creature still has the normal miss chance when attacking foes that have concealment. Visibility still affects the movement of a creature with blindsense. A creature with blindsense is still denied its Dexterity bonus to Armor Class against attacks from creatures it cannot see." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -732,7 +732,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0025" name="Constrict" description="You gain constrict Universal Monster ability.\n\nA creature with this special attack can crush an opponent, dealing bludgeoning damage, when it makes a successful grapple check (in addition to any other effects caused by a successful check, including additional damage). The amount of damage is given in the creature&apos;s entry and is typically equal to the amount of damage caused by the creature&apos;s melee attack." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0025" name="(Deprecated) Constrict" description="You gain constrict Universal Monster ability.\n\nA creature with this special attack can crush an opponent, dealing bludgeoning damage, when it makes a successful grapple check (in addition to any other effects caused by a successful check, including additional damage). The amount of damage is given in the creature&apos;s entry and is typically equal to the amount of damage caused by the creature&apos;s melee attack." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -742,7 +742,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="raS2UACons" name="Constrict" description="A creature with this special attack can crush an opponent, dealing bludgeoning damage, when it makes a successful grapple check (in addition to any other effects caused by a successful check, including additional damage). The amount of damage is given in the creature&apos;s entry and is typically equal to the amount of damage caused by the creature&apos;s melee attack." compset="RaceSpec">
+  <thing id="raS2UACons" name="(Deprecated) Constrict" description="A creature with this special attack can crush an opponent, dealing bludgeoning damage, when it makes a successful grapple check (in addition to any other effects caused by a successful check, including additional damage). The amount of damage is given in the creature&apos;s entry and is typically equal to the amount of damage caused by the creature&apos;s melee attack." compset="RaceSpec">
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PostAttr" priority="25000"><![CDATA[
@@ -751,7 +751,7 @@ field[abValue].value = round(field[abValue].value * 1.5,0,-1)
 
 field[livename].text = field[name].text & " (Claw Dmg " & signed(field[abValue].value) &  ")"]]></eval>
     </thing>
-  <thing id="rcS2UA0026" name="DR 5/-" description="You gain a DR 5/-." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0026" name="(Deprecated) DR 5/-" description="You gain a DR 5/-." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -762,7 +762,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
 #applydr[xDamRd,5]]]></eval>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0027" name="Disease" description="You gain disease Universal Monster ability." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0027" name="(Deprecated) Disease" description="You gain disease Universal Monster ability." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -772,7 +772,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0028" name="Fear Aura 30ft" description="You gain fear aura Universal Monster ability.\n\nThe use of this ability is a free action. The aura can freeze an opponent (as in the case of a mummy’s despair) or function like the fear spell. Other effects are possible. A fear aura is an area effect." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0028" name="(Deprecated) Fear Aura 30ft" description="You gain fear aura Universal Monster ability.\n\nThe use of this ability is a free action. The aura can freeze an opponent (as in the case of a mummy’s despair) or function like the fear spell. Other effects are possible. A fear aura is an area effect." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -783,7 +783,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0029" name="Jet" description="You gain jet vision Universal Monster ability.\n\nThe creature can swim backward as a full-round action at the listed speed. It must move in a straight line while jetting, and does not provoke attacks of opportunity when it does so." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0029" name="(Deprecated) Jet" description="You gain jet vision Universal Monster ability.\n\nThe creature can swim backward as a full-round action at the listed speed. It must move in a straight line while jetting, and does not provoke attacks of opportunity when it does so." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -794,12 +794,12 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="raS2UANaCu" name="Natural Cunning" description="Although this creature is especially intelligent, it possess innate cunning and logical ability. This gives them immunity to {i}maze{/i} spells and prevents them from ever becoming lost. Further, they are never caught flat-footed." compset="RaceSpec">
+  <thing id="raS2UANaCu" name="(Deprecated) Natural Cunning" description="Although this creature is especially intelligent, it possess innate cunning and logical ability. This gives them immunity to {i}maze{/i} spells and prevents them from ever becoming lost. Further, they are never caught flat-footed." compset="RaceSpec">
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
-    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="Helper" tag="ShowSpec" name="(Deprecated) Show Spec" abbrev="Show Spec"/>
+    <tag group="AbilType" tag="Extra" name="(Deprecated) Extraordinary Ability" abbrev=" (Ex)"/>
     </thing>
-  <thing id="rcS2UA0030" name="Natural Cunning" description="You gain natural cunning vision Universal Monster ability.\n\nAlthough this creature is especially intelligent, it possess innate cunning and logical ability. This gives them immunity to {i}maze{/i} spells and prevents them from ever becoming lost. Further, they are never caught flat-footed." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0030" name="(Deprecated) Natural Cunning" description="You gain natural cunning vision Universal Monster ability.\n\nAlthough this creature is especially intelligent, it possess innate cunning and logical ability. This gives them immunity to {i}maze{/i} spells and prevents them from ever becoming lost. Further, they are never caught flat-footed." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -809,7 +809,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0031" name="Poison" description="You gain poison Universal Monster ability." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0031" name="(Deprecated) Poison" description="You gain poison Universal Monster ability." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -819,7 +819,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0032" name="Rake" description="You gain rake vision Universal Monster ability.\n\nA creature with this special attack gains extra natural attacks under certain conditions, typically when it grapples its foe. In addition to the options available to all grapplers, a monster with the rake ability gains two free claw attacks that it can use only against a grappled foe. The bonus and damage caused by these attacks is included in the creature’s description. A monster with the rake ability must begin its turn already grappling to use its rake—it can’t begin a grapple and rake in the same turn." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0032" name="(Deprecated) Rake" description="You gain rake vision Universal Monster ability.\n\nA creature with this special attack gains extra natural attacks under certain conditions, typically when it grapples its foe. In addition to the options available to all grapplers, a monster with the rake ability gains two free claw attacks that it can use only against a grappled foe. The bonus and damage caused by these attacks is included in the creature’s description. A monster with the rake ability must begin its turn already grappling to use its rake—it can’t begin a grapple and rake in the same turn." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -829,7 +829,7 @@ doneif (hero.tagis[Shadowd20.UndeadAnat] <> 1)
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="raS2UARake" name="Rake" description="A creature with this special attack gains extra natural attacks under certain conditions, typically when it grapples its foe. In addition to the options available to all grapplers, a monster with the rake ability gains two free claw attacks that it can use only against a grappled foe. The bonus and damage caused by these attacks is included in the creature’s description. A monster with the rake ability must begin its turn already grappling to use its rake—it can’t begin a grapple and rake in the same turn." compset="RaceSpec">
+  <thing id="raS2UARake" name="(Deprecated) Rake" description="A creature with this special attack gains extra natural attacks under certain conditions, typically when it grapples its foe. In addition to the options available to all grapplers, a monster with the rake ability gains two free claw attacks that it can use only against a grappled foe. The bonus and damage caused by these attacks is included in the creature’s description. A monster with the rake ability must begin its turn already grappling to use its rake—it can’t begin a grapple and rake in the same turn." compset="RaceSpec">
     <usesource source="s20PFCamp"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -838,7 +838,7 @@ field[abValue].value += #attrmod[aSTR]
 
 field[livename].text = field[name].text & " (Claw Dmg " & signed(field[abValue].value) &  ")"]]></eval>
     </thing>
-  <thing id="rcS2UA0033" name="Trample" description="You gain trample Universal Monster ability.\n\nAs a full-round action, a creature with the trample ability can attempt to overrun any creature that is at least one size category Smaller than itself. This works just like the overrun combat maneuver, but the trampling creature does not need to make a check, it merely has to move over opponents in its path. Targets of a trample take an amount of damage equal to the trampling creature’s slam damage + 1-1/2 times its Str modifier. Targets of a trample can make an attack of opportunity, but at a –4 penalty. If targets forgo an attack of opportunity, they can attempt to avoid the trampling creature and receive a Reflex save to take half damage. The save DC against a creature’s trample attack is 10 + 1/2 the creature’s HD + the creature’s Str modifier (the exact DC is given in the creature’s descriptive text). A trampling creature can only deal trampling damage to each target once per round, no matter how many times its movement takes it over a target creature." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0033" name="(Deprecated) Trample" description="You gain trample Universal Monster ability.\n\nAs a full-round action, a creature with the trample ability can attempt to overrun any creature that is at least one size category Smaller than itself. This works just like the overrun combat maneuver, but the trampling creature does not need to make a check, it merely has to move over opponents in its path. Targets of a trample take an amount of damage equal to the trampling creature’s slam damage + 1-1/2 times its Str modifier. Targets of a trample can make an attack of opportunity, but at a –4 penalty. If targets forgo an attack of opportunity, they can attempt to avoid the trampling creature and receive a Reflex save to take half damage. The save DC against a creature’s trample attack is 10 + 1/2 the creature’s HD + the creature’s Str modifier (the exact DC is given in the creature’s descriptive text). A trampling creature can only deal trampling damage to each target once per round, no matter how many times its movement takes it over a target creature." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -848,7 +848,7 @@ field[livename].text = field[name].text & " (Claw Dmg " & signed(field[abValue].
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="raS2UATram" name="Trample" description="As a full-round action, a creature with the trample ability can attempt to overrun any creature that is at least one size category Smaller than itself. This works just like the overrun combat maneuver, but the trampling creature does not need to make a check, it merely has to move over opponents in its path. Targets of a trample take an amount of damage equal to the trampling creature’s slam damage + 1-1/2 times its Str modifier. Targets of a trample can make an attack of opportunity, but at a –4 penalty. If targets forgo an attack of opportunity, they can attempt to avoid the trampling creature and receive a Reflex save to take half damage. The save DC against a creature’s trample attack is 10 + 1/2 the creature’s HD + the creature’s Str modifier (the exact DC is given in the creature’s descriptive text). A trampling creature can only deal trampling damage to each target once per round, no matter how many times its movement takes it over a target creature." compset="RaceSpec">
+  <thing id="raS2UATram" name="(Deprecated) Trample" description="As a full-round action, a creature with the trample ability can attempt to overrun any creature that is at least one size category Smaller than itself. This works just like the overrun combat maneuver, but the trampling creature does not need to make a check, it merely has to move over opponents in its path. Targets of a trample take an amount of damage equal to the trampling creature’s slam damage + 1-1/2 times its Str modifier. Targets of a trample can make an attack of opportunity, but at a –4 penalty. If targets forgo an attack of opportunity, they can attempt to avoid the trampling creature and receive a Reflex save to take half damage. The save DC against a creature’s trample attack is 10 + 1/2 the creature’s HD + the creature’s Str modifier (the exact DC is given in the creature’s descriptive text). A trampling creature can only deal trampling damage to each target once per round, no matter how many times its movement takes it over a target creature." compset="RaceSpec">
     <usesource source="s20PFCamp"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -858,7 +858,7 @@ field[abValue].value = round(field[abValue].value * 1.5,0,-1)
 
 field[livename].text = field[name].text & " (Claw Dmg " & signed(field[abValue].value) &  ")"]]></eval>
     </thing>
-  <thing id="rcS2UA0034" name="Unnatural Aura" description="You gain unnatural aura Universal Monster ability.\n\nAnimals do not willingly approach the creature unless the animal&apos;s master makes a DC 25 Handle Animal, Ride, or wild empathy check." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0034" name="(Deprecated) Unnatural Aura" description="You gain unnatural aura Universal Monster ability.\n\nAnimals do not willingly approach the creature unless the animal&apos;s master makes a DC 25 Handle Animal, Ride, or wild empathy check." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -869,7 +869,7 @@ field[livename].text = field[name].text & " (Claw Dmg " & signed(field[abValue].
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0035" name="Web" description="You gain unnatural aura Universal Monster ability.\n\nCreatures with the web ability can use webs to support themselves and up to one additional creature of the same size. In addition, such creatures can throw a web up to eight times per day. This is similar to an attack with a net but has a maximum range of 50 feet, with a range increment of 10 feet, and is effective against targets up to one size category larger than the web spinner. An entangled creature can escape with a successful Escape Artist check or burst the web with a Strength check. Both are standard actions with a DC equal to 10 + 1/2 the creature’s HD + the creature’s Con modifier. Attempts to burst a web by those caught in it take a –4 penalty." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0035" name="(Deprecated) Web" description="You gain unnatural aura Universal Monster ability.\n\nCreatures with the web ability can use webs to support themselves and up to one additional creature of the same size. In addition, such creatures can throw a web up to eight times per day. This is similar to an attack with a net but has a maximum range of 50 feet, with a range increment of 10 feet, and is effective against targets up to one size category larger than the web spinner. An entangled creature can escape with a successful Escape Artist check or burst the web with a Strength check. Both are standard actions with a DC equal to 10 + 1/2 the creature’s HD + the creature’s Con modifier. Attempts to burst a web by those caught in it take a –4 penalty." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="AllowRCust" tag="cfgS2UnAna"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -879,7 +879,7 @@ field[livename].text = field[name].text & " (Claw Dmg " & signed(field[abValue].
       </bootstrap>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="rcS2UA0036" name="Resistance 20" description="If the creature has immunity or resistance to any energy types, you gain resistance 20 to those energy types." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2UA0036" name="(Deprecated) Resistance 20" description="If the creature has immunity or resistance to any energy types, you gain resistance 20 to those energy types." compset="RaceCustom" uniqueness="useronce">
     <fieldval field="usrCandid1" value="component.Ability &amp; Ability.xDamRs?"/>
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="SpecUp"/>
@@ -895,7 +895,7 @@ doneif (field[usrChosen1].ischosen <> 1)
 field[usrChosen1].chosen.field[abValue].value += 20]]></eval>
     <exprreq message="Undead Anatomy 3 spell adjustment required."><![CDATA[hero.tagis[Shadowd20.UndeadAna3] <> 0]]></exprreq>
     </thing>
-  <thing id="wRcGunPist" name="Firearm, Pistol" description="Description: The single-shot, rifled-bore pistol is relatively easy to conceal. You gain a +2 bonus on Sleight of Hand checks made to conceal a pistol.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+  <thing id="wRcGunPist" name="(Deprecated) Firearm, Pistol" description="Description: The single-shot, rifled-bore pistol is relatively easy to conceal. You gain a +2 bonus on Sleight of Hand checks made to conceal a pistol.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gWeight" value="4"/>
     <fieldval field="gSizeCost" value="50"/>
@@ -915,7 +915,7 @@ field[usrChosen1].chosen.field[abValue].value += 20]]></eval>
     <tag group="Helper" tag="BucklerOK"/>
     <tag group="wCritMin" tag="20"/>
     </thing>
-  <thing id="wRcGunRifl" name="Firearm, Rifle" description="Description: Firing small-caliber rounds at high velocity from a rifled barrel, a rifle makes for an excellent long-range weapon and is favored by snipers.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+  <thing id="wRcGunRifl" name="(Deprecated) Firearm, Rifle" description="Description: Firing small-caliber rounds at high velocity from a rifled barrel, a rifle makes for an excellent long-range weapon and is favored by snipers.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gWeight" value="20"/>
     <fieldval field="gSizeCost" value="450"/>
@@ -926,7 +926,7 @@ field[usrChosen1].chosen.field[abValue].value += 20]]></eval>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="Helper" tag="NoDblStr"/>
     <tag group="wClass" tag="TwoHanded"/>
-    <tag group="wRangeInc" tag="150" name="150"/>
+    <tag group="wRangeInc" tag="150"/>
     <tag group="wMaxStrBon" tag="0"/>
     <tag group="wCritMin" tag="19"/>
     <tag group="wType" tag="B"/>
@@ -935,7 +935,7 @@ field[usrChosen1].chosen.field[abValue].value += 20]]></eval>
     <tag group="wCritMult" tag="3"/>
     <tag group="EquipType" tag="Metal"/>
     </thing>
-  <thing id="wRcGunBlun" name="Firearm, Blunderbuss" description="Description: This firearm fires lead shot from its bell-shaped muzzle, making it effective as a fowling-piece or as a personal defense weapon. However, the blunderbuss loses its effectiveness with distance.\n{B}Special:{/b} This firearm deals 1 die less damage per range increment beyond the first. It cannot deal precision-based damage, such as from a sneak attack or from attacking a favored enemy.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+  <thing id="wRcGunBlun" name="(Deprecated) Firearm, Blunderbuss" description="Description: This firearm fires lead shot from its bell-shaped muzzle, making it effective as a fowling-piece or as a personal defense weapon. However, the blunderbuss loses its effectiveness with distance.\n{B}Special:{/b} This firearm deals 1 die less damage per range increment beyond the first. It cannot deal precision-based damage, such as from a sneak attack or from attacking a favored enemy.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
     <comment>wRcGunBlun</comment>
     <fieldval field="gSizeCost" value="200"/>
     <fieldval field="gWeight" value="8"/>
@@ -956,83 +956,83 @@ field[usrChosen1].chosen.field[abValue].value += 20]]></eval>
     <tag group="EquipType" tag="Wood"/>
     <tag group="wCritMult" tag="3"/>
     </thing>
-  <thing id="wRcGunBulM" name="Firearm, Bullets" description="Although each type of firearm fires differently sized bullets, individual bullets cost the same, regardless of the firearm they are used for. A pouch of 10 bullets costs 1 gp." compset="Weapon">
+  <thing id="wRcGunBulM" name="(Deprecated) Firearm, Bullets" description="Although each type of firearm fires differently sized bullets, individual bullets cost the same, regardless of the firearm they are used for. A pouch of 10 bullets costs 1 gp." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gSizeCost" value="0.1"/>
     <fieldval field="gWeight" value="0.1"/>
     <usesource source="CampRazorC"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="EquipType" tag="Metal"/>
     <tag group="Helper" tag="MagicOnly"/>
     <tag group="Helper" tag="MagicAmmo"/>
     <tag group="wClass" tag="Light"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCritMult" tag="2"/>
-    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wCategory" tag="Ammunition"/>
     </thing>
-  <thing id="wRcGunBul" name="Firearm, Bullets" description="Although each type of firearm fires differently sized bullets, individual bullets cost the same, regardless of the firearm they are used for. A pouch of 10 bullets costs 1 gp." compset="Weapon" lotsize="10" stacking="merge">
+  <thing id="wRcGunBul" name="(Deprecated) Firearm, Bullets" description="Although each type of firearm fires differently sized bullets, individual bullets cost the same, regardless of the firearm they are used for. A pouch of 10 bullets costs 1 gp." compset="Weapon" lotsize="10" stacking="merge">
     <comment>Hidden</comment>
     <fieldval field="gWeight" value="0.1"/>
     <fieldval field="gSizeCost" value="0.1"/>
     <usesource source="CampRazorC"/>
-    <tag group="Helper" tag="NormalOnly" name="NormalOnly" abbrev="NormalOnly"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="NormalOnly"/>
+    <tag group="EquipType" tag="Metal"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wCritMult" tag="2"/>
     <tag group="wClass" tag="Light"/>
-    <tag group="wCategory" tag="Ammunition" name="Ammunition" abbrev="Ammunition"/>
+    <tag group="wCategory" tag="Ammunition" name="(Deprecated) Ammunition" abbrev="Ammunition"/>
     </thing>
-  <thing id="wRcBayKnif" name="Firearm Bayonet, Knife" description="Bayonets easily fit onto rifles, attaching to the stock below the barrel. Firearm bayonets come in two kinds: knife and sword. A knife bayonet attached to a firearm functions as a shortspear, while a sword bayonet attached to a firearm is treated as a spear. A rifle with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+  <thing id="wRcBayKnif" name="(Deprecated) Firearm Bayonet, Knife" description="Bayonets easily fit onto rifles, attaching to the stock below the barrel. Firearm bayonets come in two kinds: knife and sword. A knife bayonet attached to a firearm functions as a shortspear, while a sword bayonet attached to a firearm is treated as a spear. A rifle with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gSizeCost" value="2"/>
     <fieldval field="gWeight" value="1"/>
     <usesource source="CampRazorC"/>
-    <tag group="wClass" tag="OneHanded" name="One-Handed" abbrev="One-Handed"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
-    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
-    <tag group="wMain" tag="1d6_5" name="1d6" abbrev="1d6"/>
-    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
-    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="wClass" tag="OneHanded"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wType" tag="P"/>
+    <tag group="EquipType" tag="Metal"/>
     <tag group="wFtrGroup" tag="Firearms"/>
     <tag group="wCategory" tag="Firearm"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
-    <eval phase="PreLevel" priority="1000" name="Thing Crossbow Bayonet, Knife: Eval Script #1"><![CDATA[
+    <tag group="wCategory" tag="Melee"/>
+    <eval phase="PreLevel" priority="1000" name="(Deprecated) Thing Crossbow Bayonet, Knife: Eval Script #1"><![CDATA[
       field[wAttBonus].value -= 2
       ~if we're a custom/magic weapon, we need to alter our parent, too
       if (container.ishero = 0) then
         container.parent.field[wAttBonus].value -= 2
       endif]]></eval>
     </thing>
-  <thing id="wRcBayPist" name="Firearm Bayonet, Pistol" description="Adding a short blade to the front of a pistol allows you to defend yourself in melee combat without having to draw a different weapon. The blade functions as a dagger.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+  <thing id="wRcBayPist" name="(Deprecated) Firearm Bayonet, Pistol" description="Adding a short blade to the front of a pistol allows you to defend yourself in melee combat without having to draw a different weapon. The blade functions as a dagger.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gSizeCost" value="4"/>
     <fieldval field="gWeight" value=".5"/>
     <usesource source="CampRazorC"/>
-    <tag group="IsWeapon" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="OverCrit" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="Target" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="WepEpFoc" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="WepEpSpec" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="WepFocus" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="WepGrFoc" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="WepGrSpec" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="WepProf" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="WepSpec" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="thingid" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
-    <tag group="wClass" tag="Light" name="Light" abbrev="Light"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
-    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
-    <tag group="wFtrGroup" tag="Close" name="Close" abbrev="Close"/>
-    <tag group="wMain" tag="1d4_4" name="1d4" abbrev="1d4"/>
-    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
-    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
-    <tag group="Activated" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="DevCrit" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
-    <tag group="ImpCrit" tag="wXbBayHand" name="Hand Crossbow Blade" abbrev="Hand Crossbow Blade"/>
-    <eval phase="PreLevel" priority="1000" name="Thing Hand Crossbow Blade: Eval Script #1"><![CDATA[
+    <tag group="IsWeapon" tag="wXbBayHand"/>
+    <tag group="OverCrit" tag="wXbBayHand"/>
+    <tag group="Target" tag="wXbBayHand"/>
+    <tag group="WepEpFoc" tag="wXbBayHand"/>
+    <tag group="WepEpSpec" tag="wXbBayHand"/>
+    <tag group="WepFocus" tag="wXbBayHand"/>
+    <tag group="WepGrFoc" tag="wXbBayHand"/>
+    <tag group="WepGrSpec" tag="wXbBayHand"/>
+    <tag group="WepProf" tag="wXbBayHand"/>
+    <tag group="WepSpec" tag="wXbBayHand"/>
+    <tag group="thingid" tag="wXbBayHand"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wFtrGroup" tag="Close"/>
+    <tag group="wMain" tag="1d4_4"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Activated" tag="wXbBayHand"/>
+    <tag group="DevCrit" tag="wXbBayHand"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="ImpCrit" tag="wXbBayHand"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[
       field[wAttBonus].value -= 2
 
       ~if we're a custom/magic weapon, we need to alter our parent, too
@@ -1040,42 +1040,43 @@ field[usrChosen1].chosen.field[abValue].value += 20]]></eval>
         container.parent.field[wAttBonus].value -= 2
       endif]]></eval>
     </thing>
-  <thing id="wRcBaySwor" name="Firearm Bayonet, Sword" description="Bayonets easily fit onto rifles, attaching to the stock below the barrel. Firearm bayonets come in two kinds: knife and sword. A knife bayonet attached to a firearm functions as a shortspear, while a sword bayonet attached to a firearm is treated as a spear. A rifle with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
+  <thing id="wRcBaySwor" name="(Deprecated) Firearm Bayonet, Sword" description="Bayonets easily fit onto rifles, attaching to the stock below the barrel. Firearm bayonets come in two kinds: knife and sword. A knife bayonet attached to a firearm functions as a shortspear, while a sword bayonet attached to a firearm is treated as a spear. A rifle with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gSizeCost" value="4"/>
     <fieldval field="gWeight" value="2"/>
     <usesource source="PathCounTh"/>
     <usesource source="CampRazorC"/>
-    <tag group="Target" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="WepEpFoc" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="WepEpSpec" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="WepFocus" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="WepGrFoc" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="WepGrSpec" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="WepProf" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="WepSpec" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="thingid" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="Target" tag="wXbBayKnif"/>
+    <tag group="WepEpFoc" tag="wXbBayKnif"/>
+    <tag group="WepEpSpec" tag="wXbBayKnif"/>
+    <tag group="WepFocus" tag="wXbBayKnif"/>
+    <tag group="WepGrFoc" tag="wXbBayKnif"/>
+    <tag group="WepGrSpec" tag="wXbBayKnif"/>
+    <tag group="WepProf" tag="wXbBayKnif"/>
+    <tag group="WepSpec" tag="wXbBayKnif"/>
+    <tag group="thingid" tag="wXbBayKnif"/>
+    <tag group="wCategory" tag="Melee"/>
     <tag group="wClass" tag="TwoHanded"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMin" tag="20"/>
     <tag group="wCritMult" tag="3"/>
-    <tag group="wFtrGroup" tag="Spears" name="Spears" abbrev="Spears"/>
+    <tag group="wFtrGroup" tag="Spears"/>
     <tag group="wMain" tag="1d8_6"/>
-    <tag group="wProfReq" tag="Simple" name="Simple" abbrev="Simple"/>
-    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
-    <tag group="Activated" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="DevCrit" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
-    <tag group="ImpCrit" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <tag group="OverCrit" tag="wXbBayKnif" name="Crossbow Bayonet, Knife" abbrev="Crossbow Bayonet, Knife"/>
-    <eval phase="PreLevel" priority="1000" name="Thing Crossbow Bayonet, Knife: Eval Script #1"><![CDATA[field[wAttBonus].value -= 2
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wType" tag="P"/>
+    <tag group="Activated" tag="wXbBayKnif"/>
+    <tag group="DevCrit" tag="wXbBayKnif"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="ImpCrit" tag="wXbBayKnif"/>
+    <tag group="OverCrit" tag="wXbBayKnif"/>
+    <eval phase="PreLevel" priority="1000"><![CDATA[
+      field[wAttBonus].value -= 2
 
-~if we're a custom/magic weapon, we need to alter our parent, too
-if (container.ishero = 0) then
-  container.parent.field[wAttBonus].value -= 2
-endif]]></eval>
+      ~if we're a custom/magic weapon, we need to alter our parent, too
+      if (container.ishero = 0) then
+        container.parent.field[wAttBonus].value -= 2
+      endif]]></eval>
     </thing>
-  <thing id="wRcGunMrif" name="Firearm, Minotaur Rifle" description="Firing large-caliber rounds at high velocity from a rifled barrel, a minotaur rifle makes for an excellent long-range weapon and is favored by Ulfen Minotaur hunters." compset="Weapon">
+  <thing id="wRcGunMrif" name="(Deprecated) Firearm, Minotaur Rifle" description="Firing large-caliber rounds at high velocity from a rifled barrel, a minotaur rifle makes for an excellent long-range weapon and is favored by Ulfen Minotaur hunters." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gSizeCost" value="550"/>
     <fieldval field="wMisfire" value="1"/>
@@ -1104,7 +1105,7 @@ endif]]></eval>
     <tag group="wMain" tag="2d6_104"/>
     <tag group="wFtrGroup" tag="RcGun"/>
     </thing>
-  <thing id="wS2GunMiRi" name="Firearm, Minotaur Rifle" description="Firing large-caliber rounds at high velocity from a rifled barrel, a minotaur rifle makes for an excellent long-range weapon and is favored by Ulfen Minotaur hunters.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+  <thing id="wS2GunMiRi" name="(Deprecated) Firearm, Minotaur Rifle" description="Firing large-caliber rounds at high velocity from a rifled barrel, a minotaur rifle makes for an excellent long-range weapon and is favored by Ulfen Minotaur hunters.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
     <comment><![CDATA[Special version for "Council of Thieves".
 
 Hidden]]></comment>
@@ -1135,7 +1136,7 @@ Hidden]]></comment>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="SpecGroup" tag="FireEarly"/>
     </thing>
-  <thing id="wRcGunMusk" name="Firearm, Musket" description="Description: This smooth-bore longarm fires large-caliber bullets. What it lacks in accuracy it makes up for in high damage potential.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
+  <thing id="wRcGunMusk" name="(Deprecated) Firearm, Musket" description="Description: This smooth-bore longarm fires large-caliber bullets. What it lacks in accuracy it makes up for in high damage potential.\n\n{b}Reloading:{/b} A standard firearm requires one standard action to reload (much like a crossbow) with shot and powder. For firearms with multiple chambers or barrels, each takes an additional standard action to reload.\n{b}Exploding Dice:{/b} Whenever you deal damage with a firearm and roll maximum on any damage die, reroll that die and add that roll to the total as well. If you roll maximum on rerolls, continue to reroll, adding to the damage each time.\n{b}Misfire:{/b} Whenever you roll a natural 1 on an attack roll made with a firearm, your firearm might misfire. Immediately roll 1d20. On a 1, the firearm is damaged and the powder explodes out the breech, dealing the weapon’s damage to you; on a 2-7, the firearm is damaged; on a 8-18, the firearm jams; and on a 19-20, you simply miss. A damaged firearm requires a DC 20 Craft (gunsmithing) check and 1 hour to repair. A jammed firearm requires 1 round to clear before it can be reloaded. A jammed revolver requires 1 round to clear, but as long as at least one chamber holds a bullet it can be fired immediately." compset="Weapon">
     <comment>Hidden</comment>
     <fieldval field="gSizeCost" value="250"/>
     <fieldval field="gWeight" value="9"/>
@@ -1147,7 +1148,7 @@ Hidden]]></comment>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="Helper" tag="NoDblStr"/>
     <tag group="wClass" tag="TwoHanded"/>
-    <tag group="wRangeInc" tag="90" name="90"/>
+    <tag group="wRangeInc" tag="90"/>
     <tag group="wMaxStrBon" tag="0"/>
     <tag group="wCritMin" tag="20"/>
     <tag group="wType" tag="B"/>
@@ -1155,7 +1156,7 @@ Hidden]]></comment>
     <tag group="Helper" tag="Always2H"/>
     <tag group="wCritMult" tag="3"/>
     </thing>
-  <thing id="fS2FavEne" name="Additional Favored Enemy" description="{i}You have additional favored enemies.{/i}\n\n{b}Prerequisite:{/b} favored enemy class ability\n\n{b}Benefit:{/b} You may choose one additional favored enemy. All bonuses are at base amounts but may be increased following the favored enemy ability rules." compset="Feat" uniqueness="useronce">
+  <thing id="fS2FavEne" name="(Deprecated) Additional Favored Enemy" description="{i}You have additional favored enemies.{/i}\n\n{b}Prerequisite:{/b} favored enemy class ability\n\n{b}Benefit:{/b} You may choose one additional favored enemy. All bonuses are at base amounts but may be increased following the favored enemy ability rules." compset="Feat" uniqueness="useronce">
     <comment>KQ#11</comment>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PostLevel" priority="100000"><![CDATA[
@@ -1167,7 +1168,7 @@ Hidden]]></comment>
       endif]]></eval>
     <evalrule phase="PostLevel" priority="50000" message="Favored enemy class ability required." summary="Favored enemy class ability required."><![CDATA[validif (#resmax[resEnemSel] <> 0)]]></evalrule>
     </thing>
-  <thing id="fS2FavTerr" name="Additional Favored Terrain" description="{i}You have additional favored terrains.{/i}\n\n{b}Prerequisite:{/b} favored terrain class ability\n\n{b}Benefit:{/b} You may choose one additional favored terrain. All bonuses are at base amounts but may be increased following the favored terrain ability rules." compset="Feat" uniqueness="useronce">
+  <thing id="fS2FavTerr" name="(Deprecated) Additional Favored Terrain" description="{i}You have additional favored terrains.{/i}\n\n{b}Prerequisite:{/b} favored terrain class ability\n\n{b}Benefit:{/b} You may choose one additional favored terrain. All bonuses are at base amounts but may be increased following the favored terrain ability rules." compset="Feat" uniqueness="useronce">
     <comment>KQ#11</comment>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PostLevel" priority="100000"><![CDATA[
@@ -1178,7 +1179,7 @@ Hidden]]></comment>
       hero.child[resTerrSel].field[resMax].value += 1]]></eval>
     <exprreq message="You need to be a Ranger take this feat." iserror="no"><![CDATA[#levelcount[Ranger] >= 1]]></exprreq>
     </thing>
-  <thing id="fS2TerrExp" name="Favored Terrain Expert" description="{i}You are especially at home in a specific favored terrain.{/i}\n\n{b}Prerequisite:{/b} favored terrain class ability\n\n{b}Benefit:{/b} You may specify one of your favored terrains. While in that terrain, you gain an additional +2 bonus to initiative and to Knowledge (geography), Perception, Stealth, and Survival skill checks." compset="Feat" uniqueness="useronce">
+  <thing id="fS2TerrExp" name="(Deprecated) Favored Terrain Expert" description="{i}You are especially at home in a specific favored terrain.{/i}\n\n{b}Prerequisite:{/b} favored terrain class ability\n\n{b}Benefit:{/b} You may specify one of your favored terrains. While in that terrain, you gain an additional +2 bonus to initiative and to Knowledge (geography), Perception, Stealth, and Survival skill checks." compset="Feat" uniqueness="useronce">
     <tag group="Helper" tag="ShowSpec"/>
     <bootstrap thing="resTerrUpg"></bootstrap>
     <eval phase="PostLevel" priority="100000"><![CDATA[
@@ -1189,7 +1190,7 @@ Hidden]]></comment>
       hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <exprreq message="You need to be at least a 3rd level Ranger take this feat." iserror="no"><![CDATA[#levelcount[Ranger] >= 3]]></exprreq>
     </thing>
-  <thing id="wS2RaTouch" name="Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
+  <thing id="wS2RaTouch" name="(Deprecated) Ranged Touch Attack" description="Add this weapon if you have any ranged touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixRanDam" value="As Spell"/>
     <usesource source="s20PFCamp"/>
     <tag group="wCritMin" tag="20"/>
@@ -1204,7 +1205,7 @@ Hidden]]></comment>
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wClass" tag="Light"/>
     </thing>
-  <thing id="wS2Touch" name="Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
+  <thing id="wS2Touch" name="(Deprecated) Touch Attack" description="Add this weapon if you have any touch attack spells or abilities." compset="Weapon">
     <fieldval field="wFixDamage" value="As Spell"/>
     <usesource source="s20PFCamp"/>
     <tag group="wClass" tag="Light"/>
@@ -1220,7 +1221,7 @@ Hidden]]></comment>
     <tag group="Shadowd20" tag="TouchWep"/>
     <tag group="Helper" tag="SingleAtt"/>
     </thing>
-  <thing id="pS2ProtEne" name="Protection from Energy" description="Protection from energy grants temporary immunity to the type of energy you specify when you cast it (acid, cold, electricity, fire, or sonic). When the spell absorbs 12 points per caster level of energy damage (to a maximum of 120 points at 10th level), it is discharged.\n\nProtection from energy overlaps (and does not stack with) resist energy. If a character is warded by protection from energy and resist energy, the protection spell absorbs damage until its power is exhausted.{br}{br}{b}Note:{/b} The counter is used to set your Caster Level. Then the total protection value will (12 x CL) will be calculated for you on a tracker that will display on the {b}In-Play{/b} tab. Go to the In-Play tab and press Reset and it will be set the maximum value. This way as you take damage you can lower the amount." compset="InPlay">
+  <thing id="pS2ProtEne" name="(Deprecated) Protection from Energy" description="Protection from energy grants temporary immunity to the type of energy you specify when you cast it (acid, cold, electricity, fire, or sonic). When the spell absorbs 12 points per caster level of energy damage (to a maximum of 120 points at 10th level), it is discharged.\n\nProtection from energy overlaps (and does not stack with) resist energy. If a character is warded by protection from energy and resist energy, the protection spell absorbs damage until its power is exhausted.{br}{br}{b}Note:{/b} The counter is used to set your Caster Level. Then the total protection value will (12 x CL) will be calculated for you on a tracker that will display on the {b}In-Play{/b} tab. Go to the In-Play tab and press Reset and it will be set the maximum value. This way as you take damage you can lower the amount." compset="InPlay">
     <fieldval field="pDuration" value="1 hour/level (D)"/>
     <fieldval field="abValue" value="20"/>
     <fieldval field="abValue2" value="10"/>
@@ -1251,7 +1252,7 @@ Hidden]]></comment>
       ~ Set the tracker counter
       field[pChosen2].chosen.field[trkMax].value += field[pAdjust].value]]></eval>
     </thing>
-  <thing id="trkS2ProtE" name="Protection from Energy" description="." compset="Tracker" uniqueness="useronce">
+  <thing id="trkS2ProtE" name="(Deprecated) Protection from Energy" description="." compset="Tracker" uniqueness="useronce">
     <tag group="User" tag="Tracker"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="SpInfo" tag="spProtfro3"/>
@@ -1263,9 +1264,9 @@ Hidden]]></comment>
       field[livename].text = field[name].text & " (" & tagnames[BloodEner.?]  & ")"]]></eval>
     </thing>
 
-  <thing id="cS2SneakUn" name="Sneak Attack (Unchained)" description="If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.{br}{br}The rogue’s attack deals extra damage anytime her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and increases by 1d6 every 2 rogue levels thereafter. Ranged attacks can count as sneak attacks only if the target is within 30 feet. This additional damage is precision damage and is not multiplied on a critical hit.{br}{br}With a weapon that deals nonlethal damage (such as a sap, unarmed strike, or whip), a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack—not even with the usual –4 penalty.{br}{br}The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with total concealment." compset="ClSpecial" summary="Attacks deal extra dam if flank foe or if foe is flat-footed.">
-    <tag group="Helper" tag="UseOwnLev" name="UseOwnLev" abbrev="UseOwnLev"/>
-    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
+  <thing id="cS2SneakUn" name="(Deprecated) Sneak Attack (Unchained)" description="If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.{br}{br}The rogue’s attack deals extra damage anytime her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and increases by 1d6 every 2 rogue levels thereafter. Ranged attacks can count as sneak attacks only if the target is within 30 feet. This additional damage is precision damage and is not multiplied on a critical hit.{br}{br}With a weapon that deals nonlethal damage (such as a sap, unarmed strike, or whip), a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack—not even with the usual –4 penalty.{br}{br}The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with total concealment." compset="ClSpecial" summary="Attacks deal extra dam if flank foe or if foe is flat-footed.">
+    <tag group="Helper" tag="UseOwnLev"/>
+    <tag group="SpecType" tag="Attack"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="User" tag="Activation"/>
     <tag group="SneakDmg" tag="1d6_5"/>
@@ -1315,7 +1316,7 @@ Hidden]]></comment>
       Endif]]></eval>
     </thing>
 
-  <thing id="arRgrSpell" name="Spellless" description="{b}Kobold Quartly#11{/b}\n\nThe following variant class has no spell casting ability. To compensate for this, the class gains specialized ranger talents (similar to Rogue talents) and a stealth attack which can be used only in a favored terrain or against a favored enemy. A few additional class abilities are also included, most notably nature’s healing, which allows the ranger to use his Heal skill with better results when in a favored environment." compset="ClassVary" uniqueness="unique">
+  <thing id="arRgrSpell" name="(Deprecated) Spellless" description="{b}Kobold Quartly#11{/b}\n\nThe following variant class has no spell casting ability. To compensate for this, the class gains specialized ranger talents (similar to Rogue talents) and a stealth attack which can be used only in a favored terrain or against a favored enemy. A few additional class abilities are also included, most notably nature’s healing, which allows the ranger to use his Heal skill with better results when in a favored environment." compset="ClassVary" uniqueness="unique">
     <comment>HIDDEN</comment>
     <fieldval field="cvSpec3rdS" value="Ranger Talent"/>
     <arrayval field="cvCustTTot" index="6" value="2"/>
@@ -1355,7 +1356,7 @@ Hidden]]></comment>
       </bootstrap>
     <link linkage="varies" thing="cHelpRgr"/>
     </thing>
-  <thing id="rS2Dhampir" name="Dhampir" description="Cursed from birth, dhampirs result from the rare and unnatural union of vampires and humans. Although not driven to consume blood for survival as their undead progenitors are, dhampirs nonetheless know a lifelong desire for blood that nothing else can truly sate. Those who survive their early years face a life of fear and mistrust, their unnatural beauty and incredible reflexes marking them as scions of the night just as surely as their sensitivity to light. Although polluted by undeath, dhampirs do grow old and die, aging at a rate similar to elves.\n\n{B}Shadow d20:{/b} This removes the immunity to level drain but also removes the unplayable ability of needing to be healed by Negative Energy. This leaves the race at 11RP." compset="Race">
+  <thing id="rS2Dhampir" name="(Deprecated) Dhampir" description="Cursed from birth, dhampirs result from the rare and unnatural union of vampires and humans. Although not driven to consume blood for survival as their undead progenitors are, dhampirs nonetheless know a lifelong desire for blood that nothing else can truly sate. Those who survive their early years face a life of fear and mistrust, their unnatural beauty and incredible reflexes marking them as scions of the night just as surely as their sensitivity to light. Although polluted by undeath, dhampirs do grow old and die, aging at a rate similar to elves.\n\n{B}Shadow d20:{/b} This removes the immunity to level drain but also removes the unplayable ability of needing to be healed by Negative Energy. This leaves the race at 11RP." compset="Race">
     <comment>This is Hidden.</comment>
     <fieldval field="rCON" value="-2"/>
     <fieldval field="rCHA" value="2"/>
@@ -1386,7 +1387,7 @@ Hidden]]></comment>
     <tag group="AgeC2Dice" tag="6"/>
     <tag group="AgeC2Size" tag="6"/>
     <tag group="Shadowd20" tag="Race"/>
-    <tag group="AgeC3Dice" tag="10" name="10" abbrev="10"/>
+    <tag group="AgeC3Dice" tag="10" name="(Deprecated) 10" abbrev="10"/>
     <bootstrap thing="stDhampir"></bootstrap>
     <bootstrap thing="fcAlcDha"></bootstrap>
     <bootstrap thing="fcClrDha"></bootstrap>
@@ -1418,6 +1419,81 @@ Hidden]]></comment>
           ~we get one heritage pick
           ~field[rGiveSpec].value = 1
       Endif]]></eval>
+    </thing>
+
+  <thing id="ioS2BtStri" name="(Deprecated) Boots of Striding and Springing" description="These boots increase the wearer&apos;s base land speed by 10 feet. In addition to this striding ability (considered an enhancement bonus), these boots Allow the wearer to make great leaps. She can jump with a +5 competence bonus on Acrobatics checks." compset="Wondrous">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="5500"/>
+    <fieldval field="iCL" value="3"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpFoot"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <eval phase="PreLevel" priority="5000">
+      ~ If not equiped then get out now
+      doneif (field[gIsEquip].value = 0)
+
+      #enhancementbonus[hero.child[Speed], 10]
+      #competencebonus[hero.childfound[skS2AcroJu], 5]</eval>
+    </thing>
+  <thing id="irS2Jump" name="(Deprecated) Ring of Jumping" description="This ring continually allows the wearer to leap about, providing a +5 competence bonus on all his Jump checks.{br}{br}Faint transmutation; CL 2nd; Forge Ring, creator must have 5 ranks in the Jump skill; Price 2,500 gp." compset="Ring">
+    <fieldval field="gCost" value="2500"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we are not worn get out now
+      doneif (field[gIsEquip].value <> 1)
+
+      ~ Apply bonus to Acrobatics Jump
+      #applybonus[BonComp,hero.child[skS2AcroJu],5]]]></eval>
+    </thing>
+  <thing id="irS2JumImp" name="(Deprecated) Ring of Jumping, Improved" description="As jumping, except it grants a +10 competence bonus on its wearer&apos;s Jump check.{br}{br}Moderate transmutation; CL 7th; Forge Ring, creator must have 10 ranks in the Jump skill; Price 10,000 gp." compset="Ring">
+    <fieldval field="gCost" value="10000"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we are not worn get out now
+      doneif (field[gIsEquip].value <> 1)
+
+      ~ Apply bonus to Acrobatics Jump
+      #applybonus[BonComp,hero.child[skS2AcroJu],10]]]></eval>
+    </thing>
+  <thing id="cMnkS2HiJu" name="(Deprecated) High Jump" description="At 5th level, a monk adds his level to all Acrobatics checks made to jump, both for vertical jumps and horizontal jumps. In addition, he always counts as having a running start when making jump checks using Acrobatics. By spending 1 point from his ki pool as a swift action, a monk gains a +20 bonus on Acrobatics checks made to jump for 1 round." compset="ClSpecial" summary="You add your monk level to acrobatics checks made to jump">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="User" tag="Activation"/>
+    <eval phase="Render" priority="10000"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      var total as number
+      total = field[abValue].value + field[abValue2].value
+
+      field[livename].text = field[name].text & " (" & signed(field[abValue].value) & "/" & signed(total) & " with Ki point)"
+
+      if (field[abilActive].value <> 0) then
+          field[abValue].value += field[abValue2].value
+      endif
+
+      field[abSumm].text = "+" & field[abValue].value & " to Acrobatics checks made to jump."
+      field[actName].text = "High Jump: 1 Ki: +" & field[abValue2].value
+
+      #situational[hero.child[skAcrobat],signed(field[abValue].value) & " to jump",field[thingname].text]]]></eval>
+    <eval phase="PostLevel" priority="20000" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      field[abValue].value += field[xAllLev].value
+      ~ We set our actname to a value so that it can be added to by the Gnome 
+      ~ Monk Favored class ability. Default value is 20.
+      field[abValue2].value += 20
+      ~ Give Level bonus
+      #skillbonus[skS2AcroJu] += field[abValue].value
+      ~ If ability active add in 2nd bonus to jump
+      if (field[abilActive].value <> 0) then
+          #skillbonus[skS2AcroJu] += field[abValue2].value
+      endif]]></eval>
     </thing>
 
 
@@ -1464,6 +1540,10 @@ Hidden]]></comment>
   <hidden id="cS2SneakUn"/>
   <hidden id="arRgrSpell"/>
   <hidden id="rS2Dhampir"/>
+  <hidden id="ioS2BtStri"/>
+  <hidden id="irS2Jump"/>
+  <hidden id="irS2JumImp"/>
+  <hidden id="cMnkS2HiJu"/>
 
 
 </document>
