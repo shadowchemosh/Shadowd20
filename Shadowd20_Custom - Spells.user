@@ -837,6 +837,7 @@
     <usesource source="pShadowd20"/>
     <tag group="sCastTime" tag="FullAction" name="1 Full Action"/>
     <tag group="sLevel" tag="9"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     </thing>
   <thing id="spS2Pearl1" name=" -Pearl of Power 1-" description="Add this spell to your character to help you track the use of a Pearl of Power on the spell tab instead of the &quot;In-Play&quot; tab. This spell will not count against your memorized total. Then on the Spell tab you can simply mark off a charge of this thing to show you using your Pearl of Power." compset="Spell">
     <usesource source="s20PFCamp"/>
@@ -1106,5 +1107,23 @@
     <tag group="DescInfo" tag="spCureLig5" name="Cure Light Wounds, Mass" abbrev="Cure Light Wounds, Mass"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    </thing>
+  <thing id="spS2CorWe1" name="Corrupt Weapon" description="This transmutation makes a weapon strike true against good foes. The weapon is treated as having a +1 enhancement bonus for the purpose of bypassing the DR of good creatures or striking good incorporeal creatures (though the spell doesn&apos;t grant an actual enhancement bonus). The weapon also becomes evil-aligned, which means it can bypass the DR of certain creatures. (This effect overrides and suppresses any other alignment the weapon might have.) Individual arrows or bolts can be transmuted, but affected projectile weapons (such as bows) don&apos;t confer the benefit to the projectiles they shoot.\n\nIn addition, all critical hit rolls against good foes are automatically successful, so every threat is a critical hit. This last effect does not apply to any weapon that already has a magical effect related to critical hits, such as a keen weapon or a vorpal sword." compset="Spell" summary="Corrupt a weapon to be evil.">
+    <fieldval field="sRange" value="weapon touched"/>
+    <fieldval field="sDuration" value="1 min./level"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="sSubschool" tag="Evil"/>
+    <tag group="sClass" tag="cHelpAPa"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="None"/>
+    <tag group="sResist" tag="No"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sSchool" tag="Transmutat"/>
     </thing>
   </document>
