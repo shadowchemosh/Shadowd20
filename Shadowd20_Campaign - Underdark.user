@@ -322,8 +322,10 @@
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Shadowd20" tag="SkipDomain"/>
     <bootstrap thing="ioS2TatDr2"></bootstrap>
-    <eval phase="PreLevel" priority="4000">
-     ~ Give +2 bonus to skill
+    <bootstrap thing="ioS2TatDr3">
+      <containerreq phase="First" priority="495"><![CDATA[count:Classes.? >= 6]]></containerreq>
+      </bootstrap>
+    <eval phase="PreLevel" priority="4000">~ Give +2 bonus to skill
      field[usrChosen1].chosen.field[Bonus].value += field[abValue].value</eval>
     </thing>
   <thing id="ioS2TatDr2" name="Tattoo, Dragon" description="A special tattoo that appeared on the hero&apos;s after discovering a dragon egg. You gain access to a spell-like ability with a caster level equal your character level.  You can use either spell one time per day." compset="Wondrous" summary="Spell-Like ability usable 1/day.">
@@ -344,8 +346,132 @@
     <tag group="Usage" tag="Day"/>
     <tag group="ChooseSrc2" tag="Thing"/>
     <tag group="Helper" tag="AlwaysAvl"/>
-    <eval phase="PostLevel" priority="10000">
-      perform field[usrChosen1].chosen.pulltags[SpInfo.?]
+    <eval phase="PostLevel" priority="10000">perform field[usrChosen1].chosen.pulltags[SpInfo.?]
       perform field[usrChosen2].chosen.pulltags[SpInfo.?]</eval>
+    </thing>
+  <thing id="spS2BolSp0" name="Bolster Spirits" description="You instill courage in any shaken, frightened, or panicked subject, speaking words to hearten and strengthen their spirits. If the subject is under the influence of a fear effect when receiving the spell, the subject may roll a second save against that effect." compset="Spell" summary="Target receives a second Will save against a fear effect it is suffering.">
+    <fieldval field="sTarget" value="One creature"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <fieldval field="sMythic" value="The target receives a +1 bonus on its new save versus a fear effect."/>
+    <usesource source="srcUndDark"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sComp" tag="DF"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sDuration" tag="Instant"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sSave" tag="WillNeg"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="Abjur"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    </thing>
+  <thing id="spS2ShaBl1" name="Shadow&apos;s Blessing" description="The recipient of this spell enjoys several benefits depending on the illumination level. In bright light, the recipient gains no bonuses from {I}shadow&apos;s blessing{/I}. In normal light, the recipient gains a +2 morale bonus on Stealth checks and imposes a 10% miss chance on other creatures that attack the recipient, as the spell provides a lesser form of concealment.\n\nIn dim light, the recipient gains a +4 morale bonus on Stealth checks and increases the miss chance from concealment with respect to him to 30%. In darkness, the recipient gains a +6 morale bonus on Stealth checks and imposes a 10% miss chance on creatures with darkvision that attack the recipient (there is no additional miss chance for creatures without darkvision)." compset="Spell" summary="Creature gains bonuses to Stealth and concealment depending on light level.">
+    <fieldval field="sTarget" value="Creature touched"/>
+    <fieldval field="sDuration" value="10 minutes/level"/>
+    <fieldval field="sSave" value="Fortitude negates (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <fieldval field="sMythic" value="The morale bonuses provided by the spell increase by +2. The spell increases all miss chances imposed by it by 5%. If you spend one use of mythic power when casting this spell, the target treats all illumination levels as one lower for purposes of this spell."/>
+    <usesource source="srcUndDark"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sClass" tag="cHelpBrd"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpSor"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpWiz"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSchool" tag="KPIllumina"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sDuration" tag="10Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sResist" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    </thing>
+  <thing id="spS2ShiLi1" name="Shieldlight" description="You enspell an existing shield (of any size and material, as long as you can hold and use it) to give off a steady, gentle, translucent, pearly-white light in a 20-ft. radius, and increasing the light level for an additiona 20 ft. by one step, up to normal light (darkness becomes dim light, and dim light becomes normal light). As long as you are alive, this light persists even in your absence until the spell expires. While a shield is affected by {I}shieldlight{/I}, it gains a +1 bonus (both as a weapon, and in augmenting a bearer&apos;s AC)." compset="Spell" summary="Causes shield to glow with magical sunlight.">
+    <fieldval field="sTarget" value="One shield"/>
+    <fieldval field="sDuration" value="10 minutes/level (D)"/>
+    <fieldval field="sMythic" value="The light&apos;s radius increases to 30 feet. The light given off by the shield dispels non-mythic darkness spells or effects of 2nd level or lower. Any ally in the light&apos;s radius gains a +1 morale bonus on attack rolls and saves against fear."/>
+    <usesource source="srcUndDark"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Swift1"/>
+    <tag group="sDuration" tag="10Minute"/>
+    <tag group="sDuration" tag="Dismiss"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sSchool" tag="Evocation"/>
+    </thing>
+  <thing id="spS2BatMi2" name="Battlemight" description="You or a touched creature gain a flickering aura of countless tiny, whirling, gold-and-silver bolts that provides a + 2 armor bonus to AC (this aura doesn&apos;t slow or hamper movement). You can confer this protection directly to another touched individual, or you can enjoy it yourself for part of the spell duration and then transfer it (as a swift action) by touching another creature and passing it to them.\n\nYou can regain the aura at the end of any round during which you touch an affected creature, though only one creature can claim the effect at any time. Unlike normal armor bonuses, the bonus to AC that {I}battlemight{/I} provides stacks with other AC bonuses, but the bonus does not stack with itself. If you or any recipient of {I}battlemight{/I} is wielding a magical weapon in combat, {I}battlemight{/I} grants you a +2 morale bonus to attack rolls." compset="Spell" summary="Creates a transferable aura that provides +2 armor bonus to AC.">
+    <fieldval field="sTarget" value="You or creature touched"/>
+    <fieldval field="sDuration" value="1 minute/level"/>
+    <fieldval field="sMythic" value="The armor bonus to AC increases to +3, and the morale bonus to attack rolls increases to +3."/>
+    <usesource source="srcUndDark"/>
+    <tag group="sSchool" tag="Evocation"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    <tag group="sClass" tag="cHelpOra"/>
+    <tag group="sClass" tag="cHelpPal"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    </thing>
+  <thing id="spS2Panac4" name="Panacea" description="{i}You kneel next to your afflicted comrade and speak the soft words of this spell. At your touch a golden radiance infuses your companion. {/i}\n\nThis spell channels positive energy into a creature to wipe away its afflictions. It immediately ends any of the following conditions affecting the subject: blinded, {i}confused{/i}, dazed, dazzled, deafened, diseased, exhausted, fatigued, frightened, nauseated, panicked, paralyzed, shaken, sickened, and stunned. It negates sleep effects and the effect of the {i}feeblemind{/i} spell, and ends any additional effects from poison, as the {i}neutralize poison{/i} spell. It also cures 1d8 points of damage + 1 point per caster level (maximum +20).\n\n{i}Panacea{/i} does not remove ability damage, negative levels, or drained levels.\n\nUsed against an undead creature, {i}panacea{/i} deals damage instead of curing the creature (which takes half damage if it makes a Will saving throw), but it has no other effect." compset="Spell" summary="Removes most afflictions.">
+    <comment>This spell added for the Darklands campaign to be added to a single magic item.</comment>
+    <fieldval field="sSave" value="Will half (harmless); see text"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <fieldval field="sTarget" value="Creature touched"/>
+    <usesource source="srcUndDark"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="Harmless" name="Harmless" abbrev="Harmless"/>
+    <tag group="sSave" tag="SeeText" name="See Text" abbrev="See Text"/>
+    <tag group="sSave" tag="WillHalf" name="Will Half" abbrev="Will Half"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Healing" name="Healing" abbrev="Healing"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="S"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="V"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sLevel" tag="4" name="4" abbrev="4"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="sClass" tag="cHelpClr"/>
+    </thing>
+  <thing id="ioS2TatDr3" name="Tattoo, Dragon" description="A special tattoo that appeared on the hero&apos;s after discovering a dragon egg. You gain access to a spell-like ability with a caster level equal your character level.  You can this spell one time per day." compset="Wondrous" summary="Spell-Like ability usable 1/day.">
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="usrCandid1" value="component.BaseSpell &amp; (sLevel.1|sLevel.2|sLevel.3|sLevel.4) &amp; (sClass.cHelpWiz|sClass.cHelpClr) &amp; !thingid.spS2Pearl? &amp; !thingid.spUnused?"/>
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="srcUndDark"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Shadowd20" tag="SkipDomain"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="Hero" tag="EqpPFRune"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <eval phase="PostLevel" priority="10000">
+      perform field[usrChosen1].chosen.pulltags[SpInfo.?]</eval>
     </thing>
   </document>
