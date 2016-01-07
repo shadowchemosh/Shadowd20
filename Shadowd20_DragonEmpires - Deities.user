@@ -50,6 +50,7 @@ December 30, 2011
     <tag group="AllowDom" tag="cdSeasons"/>
     <tag group="AllowDom" tag="cdSun"/>
     <tag group="AllowDom" tag="cdToil"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     </thing>
   <thing id="deiS2Fumei" name="Fumeiyoshi" description="The Lord of Envy, is the god of graves, envy, and dishonor, and is the patron of oni and undead. He was banished to undeath by Shizuru after killing his brother Tsukiyo, and grieving Tians sometimes make offerings to him in hopes of placating the Lord of Envy, lest he cause their loved ones to rise once more as undead horrors." compset="Deity" uniqueness="unique">
     <fieldval field="deiPortfol" value="dishonor, envy, graves, undead"/>
@@ -76,6 +77,7 @@ December 30, 2011
     <tag group="AllowDom" tag="cdTactics"/>
     <tag group="AllowDom" tag="cdTorture"/>
     <tag group="AllowDom" tag="cdUndead"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     </thing>
   <thing id="deiS2GenSu" name="General Susumu" description="Is the patron god of samurai who dedicate their lives to pursuing war and glory rather than honor and heroism, and his influence can be felt most on the battlefield, where he sometimes leads his massive army of ghostly warriors just to feel the rush of battle once more." compset="Deity" uniqueness="unique">
     <fieldval field="deiPortfol" value="archery, horses, personal glory, war"/>
@@ -103,6 +105,7 @@ December 30, 2011
     <tag group="AllowDom" tag="cdSlavery"/>
     <tag group="AllowDom" tag="cdBlood"/>
     <tag group="AllowDom" tag="cdTactics"/>
+    <tag group="ProductId" tag="Shadowd20"/>
     </thing>
   <thing id="deiS2HeiFe" name="Hei Feng" description="Duke of Thunder, is the god of the sea, storms, wind, and tengus. He is worshiped by sailors praying for safe voyage as well as by farmers hoping for rain, but he is an unpredictable and chaotic god, and his gentle breeze can just as quickly turn into a violent tempest." compset="Deity" uniqueness="unique">
     <fieldval field="deiPortfol" value="sea, storms, thunder, wind"/>
@@ -187,6 +190,7 @@ December 30, 2011
     <tag group="AllowDom" tag="cdRage"/>
     <tag group="AllowDom" tag="cdSmoke"/>
     <tag group="AllowDom" tag="cdTorture"/>
+    <tag group="explicit" tag="10"/>
     </thing>
   <thing id="deiS2LaShP" name="Lao Shu Po" description="Lao Shu Po, appearing as an immense, six-legged rat, is often worshiped by thieves, wayangs, and any others who seek to hide their doings in the dark of night. Many who seek to gain power through theft find their way to Old Rat Woman&apos;s cults." compset="Deity" uniqueness="unique">
     <fieldval field="deiEpithet" value="Old Rat Woman"/>
