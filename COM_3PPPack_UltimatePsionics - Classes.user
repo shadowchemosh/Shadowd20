@@ -15838,4 +15838,206 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
       </bootstrap>
     <link linkage="varies" thing="cHelpPU5"/>
     </thing>
+  <thing id="cHelpBSn" name="Body Snatcher" description="A body snatcher is a telepath of no small skill, capable of jumping from body to body with the ease an actor shifts between roles. Although the discipline developed as a way to truly know other’s minds, it rapidly developed into a means of “borrowing” another’s body and eventually progressed to more permanent means. Most body snatchers are telepaths, although occasionally other manifesters will spend the time to learn the techniques to become a body snatcher.\n\n  {b}Role{/b}: With their ability to switch bodies with others, body snatchers can make for difficult opponents to defeat. The biggest threat to a body snatcher is an opponent who is immune to mind-affecting powers, so constructs, undead, and similar enemies can be particularly difficult foes.\n\n  {b}Alignment{/b}: Although the act of stealing a body has an evil connotation, body snatchers can be of any alignment." compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="6"/>
+    <fieldval field="cAbbr" value="BSn"/>
+    <fieldval field="cSkills" value="2"/>
+    <arrayval field="cMagLevTot" index="1" value="1"/>
+    <arrayval field="cMagLevTot" index="2" value="2"/>
+    <arrayval field="cMagLevTot" index="3" value="3"/>
+    <arrayval field="cMagLevTot" index="4" value="4"/>
+    <arrayval field="cMagLevTot" index="5" value="5"/>
+    <tag group="AgeColumn" tag="3"/>
+    <tag group="cFort" tag="Poor"/>
+    <tag group="ClassSkill" tag="Perform"/>
+    <tag group="ClassSkill" tag="skPUAhypno"/>
+    <tag group="ClassSkill" tag="skBluff"/>
+    <tag group="ClassSkill" tag="skDiplo"/>
+    <tag group="ClassSkill" tag="skSenseMot"/>
+    <tag group="ClassSkill" tag="skSpellcr"/>
+    <tag group="cRef" tag="Poor"/>
+    <tag group="cWill" tag="Good"/>
+    <tag group="Classes" tag="cHelpBSn" name="Body Snatcher"/>
+    <tag group="cAttack" tag="Poor"/>
+    <tag group="ClassRole" tag="Special"/>
+    <bootstrap thing="cPUBdyTh">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUExtXfer">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUMldExch">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUTFlRem">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPUTrmXfer">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPUMimMnd">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPURpdXfer">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cPUSlHost">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cPUMLCont">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUGMldEx">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUDIOTB">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPUTrMndSw">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    </thing>
+  <thing id="cHelpPU6" name="Body Snatcher" compset="ClassLevel" maxlimit="6">
+    <usesource source="pPsiUn"/>
+    <tag group="ClassType" tag="Prestige"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cHelpBSn"></bootstrap>
+    <link linkage="helper" thing="cHelpBSn"/>
+    <exprreq message="Extend Power feat required"><![CDATA[#hasfeat[fPUExtPow] <> 0]]></exprreq>
+    <exprreq message="Manifester level 10 required."><![CDATA[tagcount[Hero.Manifester] >= 10]]></exprreq>
+    <exprreq message="Two metapsionic feats required"><![CDATA[tagcount[fCategory.Metapsion] >= 2]]></exprreq>
+    <exprreq message="Bluff 10 ranks required."><![CDATA[#skillranks[skBluff] >= 10]]></exprreq>
+    <exprreq message="Perform (Acting) 3 ranks required."><![CDATA[#skillranks[skPerfAct] >= 3]]></exprreq>
+    <exprreq message="Sense Motive 3 ranks required"><![CDATA[#skillranks[skSenseMot] >= 3]]></exprreq>
+    <prereq message="Ability to manifest Brain Lock required.">
+      <validate><![CDATA[
+        var PowerID as String
+        var HavePower as number
+
+        PowerID = "puBraiLck2"
+        Call HavePower
+        @valid = HavePower]]></validate>
+      </prereq>
+    <prereq message="Ability to manifest Conceal Thoughts required.">
+      <validate><![CDATA[
+        var PowerID as String
+        var HavePower as number
+
+        PowerID = "puConTho0|puConTho1"
+        Call HavePower
+        @valid = HavePower]]></validate>
+      </prereq>
+    </thing>
+  <thing id="cPUBdyTh" name="Body Thief" description="At 1st level, a body snatcher adds mind switch to her powers known. A body snatcher’s manifester level for mind switch is equal to her normal manifester level plus her class level, which may allow her to manifest it even if she could not normally do so. This improves its level-dependent parameters, including the limit on Hit Dice it can affect and the amount of power points that can be spent manifesting it. For example, Valis, a telepath 11 / body snatcher 4, has a manifester\nlevel of 14 normally, but manifests mind switch in all ways as if her manifester level were 18.\n\nThis has not been implemented.  Use Adjustments to implement" compset="ClSpecial">
+    <fieldval field="usrCandid1" value="component.Class &amp; Psionics.Class"/>
+    <fieldval field="usrCandid2" value="component.BasePower"/>
+    <usesource source="pPsiUn"/>
+    <tag group="DescInfo" tag="puMindSwt6"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If nothing chosen get out now
+      doneif (field[usrChosen1].ischosen <> 1)
+      ~ If nothing chosen get out now
+      doneif (field[usrChosen2].ischosen <> 1)
+
+      ~ Get spell level from selection
+      perform field[usrChosen2].chosen.pulltags[ClsAllowPs.?]
+      perform field[usrChosen1].chosen.pushtags[ClsAllowPs.?]
+
+      ~ Increase the powers known known field by one]]></eval>
+    <prereq message="You must choose your new power from your class tab.">
+      <validate><![CDATA[
+        ~ Valid if we are not a pick
+        validif (@ispick = 0)
+        ~ If nothing chosen then we are valid
+        validif (altpick.tagcount[ClsAllowPs.?] = 0)
+
+        var sTag as string
+        sTag = altpick.tagids[ClsAllowPs.?]
+        ~ See if we can find the power live on hero
+        perform hero.findchild[BasePower,sTag].setfocus
+        ~ We are valid if we got a hit
+        validif (state.isfocus <> 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="cPUExtXfer" name="Extended Transfer" description="A body snatcher may apply her Extend Power feat to her mind switch power without spending additional power points. She still needs to expend her psionic focus to use this ability." compset="ClSpecial">
+  <tag group="ProductId" tag="HLCommunit"/>
+  </thing>
+  <thing id="cPUMldExch" name="Melding Exchange" description="During a mind switch, a body snatcher’s mind briefly interfaces with that of her target, resulting in a one-way exchange of information.  In addition to rudimentary or instinctive knowledge of the subject as normal for the power, she also learns the subject’s name, where he lives, and who his principle associates and enemies are. While she remains in the subject’s body, she also gains knowledge of all of the subject’s languages (written and spoken), treats any Knowledge check made with a skill with which the subject had ranks as a trained check, and gains a +2 competence bonus per class level on any skill check used to impersonate the subject." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUTFlRem" name="The Flesh Remembers" description="At 2nd level, a body snatcher can connect with a host’s kinaesthetic memories (“muscle memories”) and draw upon learned physical capabilities. While under the influence of mind switch, she gains the host body’s weapon and armor proficiencies. Additionally, she may choose to use her host’s ranks in skills keyed to Strength, Dexterity, or Constitution instead of her own. Her training limits how completely she can draw upon her host, though – she cannot emulate a higher rank than her class level + her Intelligence modifier. For instance, Valis (a 4th level body snatcher with an Intelligence modifier of +6) could use her host’s ranks in a physical skill such as Climb, but if the host has more than 10 ranks in Climb, she behaves as if the host had only 10 ranks." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUTrmXfer" name="Traumatic Transfer" description="When manifesting mind switch, a body snatcher of 2nd level or higher may elect to make the process traumatic and disorienting to the other mind. The subject is stunned for 1 round upon arriving in the body snatcher’s body, and is dazed for\n1d4 rounds thereafter." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUMimMnd" name="Mimic Mind" description="A 3rd-level body snatcher may use conceal thoughts to create a false set of surface thoughts appropriate for the body she currently occupies. If the body snatcher succeeds on a saving throw against an attempt to read her mind while under conceal thoughts, the intruder reads only the decoy thoughts. While the body snatcher does not need to specify the nature of these thoughts (although she may choose to do so), they will reflect what the prying party might expect to find were the body’s normal mind in residence. In addition, while under conceal thoughts, a body snatcher may emulate the alignment of the subject for purposes of fooling abilities that detect alignment.\n  At 5th level, this ability extends to include false memories, foiling effects such as mind probe." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPURpdXfer" name="Rapid Transfer" description="At 4th level, a body snatcher manifests mind switch as a standard action instead of a full-round action." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUSlHost" name="Seal the Host" description="At 4th level, a body snatcher learns to augment her mind switch power in a unique fashion, potentially sealing the subject’s higher mind from taking control of her body. She adds the following augment to mind switch:\nIf you spend 2 additional power points, the subject’s higher mind may be sealed away when it arrives in your body. If your mind switch is successful, the subject must make a second Will save or be dazed for as long as it remains in your body, similar to the brain lock power.  This is in addition to your traumatic transfer ability." compset="ClSpecial">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUMLCont" name="Mindleap Contingency" description="At 5th level, a body snatcher unlocks the ability to use a unique metapsionic effect known as a mindleap contingency. Powers that specify a single target and can affect the body snatcher’s current form can be made into mindleap contingent\npowers. A mindleap contingent power, once manifest, lies dormant, undetectable and undispellable, for up to five minutes (after which time it fades harmlessly), or until the body snatcher leaves her current body via mind switch (either to return to her original body or to possess another). Immediately after the switch occurs, the mindleap contingency triggers, and the linked power takes effect on the body she was in when she established the contingency. Any choices to be made about the effect must be made when the power is manifest, not when it triggers. Saving throws made against a mindleap contingent power suffer a -5 penalty due to the sudden shift in bodies.\n  For example, Valis the telepath/body snatcher has already mind switched with a subject and is about to shift her mind back to her body. She manifests memory modification (opting to erase the memory of her time in the body) on her current (host) body as a mindleap contingency, after which she returns her mind to her native body. The subject, upon return to its body, is affected by the memory modification power, and must make a Will save (at -5) or be forced to forget the experience.\n  Using this ability is akin to using a metapsionic feat – a body snatcher must expend her psionic focus when establishing a mindleap contingency, and establishing one increases the power’s power point cost by 4." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUGMldEx" name="Greater Melding Exchange" description="When a 5th level body snatcher uses her melding exchange ability, she draws far more knowledge from her target than usual. She may use the subject’s ranks in Knowledge skills in place of her own, and she learns the command words\nor thoughts for any items the subject has (provided they were known to the subject). Additionally, as a standard action, she may expend her psionic focus to mentally “ask” her newfound memories one question, typically about the subject’s past or personality. She learns the answer to that question to the best of the subject’s knowledge. Asking about rote facts is often unnecessary, due to the granting of Knowledge ranks – this ability extends beyond the Knowledge skill." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUDIOTB" name="Death Is Only The Beginning" description="Common folklore suggests that many people see their lives flash before their eyes just before they die. In some ways, this is literal truth for a body snatcher, although she tends to see only opportunity. Immediately upon being reduced to -1 hit points or lower, or failing a saving throw against an effect that would kill her, a 6th level body snatcher may expend her psionic focus to manifest true mind switch as an immediate action at the same manifester level she manifests mind switch. She may only target her killer with this effect (thus, if the killer is out of range, this ability is worthless), and the save DC is reduced by 4 due to the desperate nature of this technique. If successful, her mind immediately switches places with\nher killer’s and her old body dies. She suffers level loss as normal for losing her previous body after a true mind switch." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUTrMndSw" name="True Mind Switch" description="A 6th level body snatcher adds true mind switch to her powers known at 6th level, even if she is incapable of manifesting 9th level powers. She may apply all her body snatcher class features (except seal the host and rapid transfer) to any manifestation of true mind switch, even one made at the moment of death through the use of death is only the beginning. \n\nThis has not been implemented.  Use Adjustments to implement" compset="ClSpecial">
+    <fieldval field="usrCandid1" value="component.Class &amp; Psionics.Class"/>
+    <fieldval field="usrCandid2" value="component.BasePower"/>
+    <usesource source="pPsiUn"/>
+    <tag group="DescInfo" tag="puMindSwt6"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="ChooseSrc1" tag="Hero"/>
+    <tag group="ChooseSrc2" tag="Thing"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If nothing chosen get out now
+      doneif (field[usrChosen1].ischosen <> 1)
+      ~ If nothing chosen get out now
+      doneif (field[usrChosen2].ischosen <> 1)
+
+      ~ Get spell level from selection
+      perform field[usrChosen2].chosen.pulltags[ClsAllowPs.?]
+      perform field[usrChosen1].chosen.pushtags[ClsAllowPs.?]
+
+      ~ Increase the powers known known field by one]]></eval>
+    <prereq message="You must choose your new power from your class tab.">
+      <validate><![CDATA[
+        ~ Valid if we are not a pick
+        validif (@ispick = 0)
+        ~ If nothing chosen then we are valid
+        validif (altpick.tagcount[ClsAllowPs.?] = 0)
+
+        var sTag as string
+        sTag = altpick.tagids[ClsAllowPs.?]
+        ~ See if we can find the power live on hero
+        perform hero.findchild[BasePower,sTag].setfocus
+        ~ We are valid if we got a hit
+        validif (state.isfocus <> 0)]]></validate>
+      </prereq>
+    </thing>
   </document>

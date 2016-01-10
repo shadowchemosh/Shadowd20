@@ -303,62 +303,6 @@ January 26th 2012</comment>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
-  <thing id="xxDREviCha" name="Damage Reduction, Evil or Chaotic" description="You have Damage Reduction against all except Evil or Chaotic attacks." compset="Ability" uniqueness="unique">
-    <fieldval field="shortname" value="evil or chaotic"/>
-    <tag group="SpecType" tag="DR" name="Damage Reduction" abbrev="Damage Reduction"/>
-    <tag group="Universal" tag="Universal" name="Universal Monster Ability or Core Rulebook ability" abbrev="Universal Monster Ability or Core Rulebook ability"/>
-    <tag group="Helper" tag="BaseAbil" name="Base Ability" abbrev="Base Ability"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="Final" priority="10000"><![CDATA[
-      call CalcValue
-
-      ~ Use our value field as the amount of damage we can resist
-      field[livename].text = "Damage Reduction (" & field[abValue].value & "/evil or chaotic)"
-      field[shortname].text = field[abValue].value & "/evil or chaotic"]]></eval>
-    </thing>
-  <thing id="xxDREviLaw" name="Damage Reduction, Evil or Lawful" description="You have Damage Reduction against all except Evil or Lawful attacks." compset="Ability" uniqueness="unique">
-    <fieldval field="shortname" value="evil or lawful"/>
-    <tag group="SpecType" tag="DR" name="Damage Reduction" abbrev="Damage Reduction"/>
-    <tag group="Universal" tag="Universal" name="Universal Monster Ability or Core Rulebook ability" abbrev="Universal Monster Ability or Core Rulebook ability"/>
-    <tag group="Helper" tag="BaseAbil" name="Base Ability" abbrev="Base Ability"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="Final" priority="10000"><![CDATA[
-      call CalcValue
-
-      ~ Use our value field as the amount of damage we can resist
-      field[livename].text = "Damage Reduction (" & field[abValue].value & "/evil or lawful)"
-      field[shortname].text = field[abValue].value & "/evil or lawful"]]></eval>
-    </thing>
-  <thing id="xxDRGooCha" name="Damage Reduction, Good or Chaotic" description="You have Damage Reduction against all except Good or Chaotic attacks." compset="Ability" uniqueness="unique">
-    <fieldval field="shortname" value="good or chaotic"/>
-    <tag group="SpecType" tag="DR"/>
-    <tag group="Universal" tag="Universal"/>
-    <tag group="Helper" tag="BaseAbil"/>
-    <tag group="Helper" tag="ShowSpec"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="Final" priority="10000"><![CDATA[
-      call CalcValue
-
-      ~ Use our value field as the amount of damage we can resist
-      field[livename].text = "Damage Reduction (" & field[abValue].value & "/good or chaotic)"
-      field[shortname].text = field[abValue].value & "/good or chaotic"]]></eval>
-    </thing>
-
-  <thing id="xxDRGold" name="Damage Reduction, Gold" description="You have Damage Reduction against all except weapons made from gold." compset="Ability" uniqueness="unique">
-    <tag group="Helper" tag="ShowSpec"/>
-    <tag group="SpecType" tag="DR"/>
-    <tag group="Universal" tag="Universal"/>
-    <tag group="Helper" tag="BaseAbil"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="Final" priority="10000"><![CDATA[
-      call CalcValue
-
-      ~ Use our value field as the amount of damage we can resist
-      field[livename].text = "Damage Reduction (" & field[abValue].value & "/gold)"
-      field[shortname].text = field[abValue].value & "/gold"]]></eval>
-    </thing>
   <thing id="xxImmNecro" name="Immune to Necromancy" description="Creature is immune to all spells of the Necromancy school." compset="Ability">
     <fieldval field="shortname" value="necromancy"/>
     <tag group="SpecType" tag="Immune"/>
@@ -417,5 +361,75 @@ January 26th 2012</comment>
     </thing>
 
 
+    
+  <thing id="xxDREviCha" name="Damage Reduction, Evil or Chaotic" description="You have Damage Reduction against all except Evil or Chaotic attacks." compset="Ability" uniqueness="unique">
+    <fieldval field="shortname" value="evil or chaotic"/>
+    <tag group="SpecType"   tag="DR"/>
+    <tag group="Universal"  tag="Universal"/>
+    <tag group="Helper"     tag="BaseAbil"/>
+    <tag group="Helper"     tag="ShowSpec"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      call CalcValue
+
+      ~ Use our value field as the amount of damage we can resist
+      field[livename].text = "Damage Reduction (" & field[abValue].value & "/evil or chaotic)"
+      field[shortname].text = field[abValue].value & "/evil or chaotic"]]></eval>
+    </thing>
+  <thing id="xxDREviLaw" name="Damage Reduction, Evil or Lawful" description="You have Damage Reduction against all except Evil or Lawful attacks." compset="Ability" uniqueness="unique">
+    <fieldval field="shortname" value="evil or lawful"/>
+    <tag group="SpecType"   tag="DR"/>
+    <tag group="Universal"  tag="Universal"/>
+    <tag group="Helper"     tag="BaseAbil"/>
+    <tag group="Helper"     tag="ShowSpec"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      call CalcValue
+
+      ~ Use our value field as the amount of damage we can resist
+      field[livename].text = "Damage Reduction (" & field[abValue].value & "/evil or lawful)"
+      field[shortname].text = field[abValue].value & "/evil or lawful"]]></eval>
+    </thing>
+  <thing id="xxDRGooCha" name="Damage Reduction, Good or Chaotic" description="You have Damage Reduction against all except Good or Chaotic attacks." compset="Ability" uniqueness="unique">
+    <fieldval field="shortname" value="good or chaotic"/>
+    <tag group="SpecType"   tag="DR"/>
+    <tag group="Universal"  tag="Universal"/>
+    <tag group="Helper"     tag="BaseAbil"/>
+    <tag group="Helper"     tag="ShowSpec"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      call CalcValue
+
+      ~ Use our value field as the amount of damage we can resist
+      field[livename].text = "Damage Reduction (" & field[abValue].value & "/good or chaotic)"
+      field[shortname].text = field[abValue].value & "/good or chaotic"]]></eval>
+    </thing>
+  <thing id="xxDRGold" name="Damage Reduction, Gold" description="You have Damage Reduction against all except weapons made from gold." compset="Ability" uniqueness="unique">
+    <tag group="Helper"     tag="ShowSpec"/>
+    <tag group="SpecType"   tag="DR"/>
+    <tag group="Universal"  tag="Universal"/>
+    <tag group="Helper"     tag="BaseAbil"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      call CalcValue
+
+      ~ Use our value field as the amount of damage we can resist
+      field[livename].text = "Damage Reduction (" & field[abValue].value & "/gold)"
+      field[shortname].text = field[abValue].value & "/gold"]]></eval>
+    </thing>
+  <thing id="xxDRBlOrSl" name="Damage Reduction, Bludgeoning or Slashing" description="You have Damage Reduction against all except Bludgeoning or Slashing attacks." compset="Ability" summary="You have Damage Reduction against all except Bludgeoning or Slashing attacks." uniqueness="unique">
+    <fieldval field="shortname" value="bludgeoning or slashing"/>
+    <tag group="Helper"     tag="ShowSpec"/>
+    <tag group="SpecType"   tag="DR"/>
+    <tag group="Universal"  tag="Universal"/>
+    <tag group="Helper"     tag="BaseAbil"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      call CalcValue
+
+      ~ Use our value field as the amount of damage we can resist
+      field[livename].text = "Damage Reduction (" & field[abValue].value & "/bludgeoning or slashing)"
+      field[shortname].text = field[abValue].value & "/bludgeoning or slashing"]]></eval>
+    </thing>
 
   </document>

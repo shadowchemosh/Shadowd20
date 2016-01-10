@@ -20,6 +20,7 @@
     <value id="Manuever"    name="Manuever"/>
     <value id="ManueverOn"  name="Manuever Readied"/>
     <value id="Class"       name="Class"/>
+    <value id="PrCIndMan"   name="PrC Independent Maneuvers"/>
     <value id="Stance"      name="Stance"/>
     <value id="StanceOn"    name="Stance Activated"/>    
     <value id="StanceUp"    name="Stance Allowed Up"/>

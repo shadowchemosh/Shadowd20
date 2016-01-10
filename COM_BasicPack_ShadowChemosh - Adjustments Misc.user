@@ -4269,11 +4269,11 @@ call S2SetName]]></eval>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CustomMeta"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PreLevel" priority="50000"><![CDATA[
+    <eval phase="PreLevel" priority="50000">
       ~ Change the final spell level down by 2. This compensates for the
       ~ increased spell level and the additional level we want to bring
       ~ it down for.
-      parent.field[sLevel].value += -2 * field[mmLevel].value]]></eval>
+      parent.field[sLevel].value += -2 * field[mmLevel].value</eval>
     </thing>
   <thing id="pS2ClsSpl1" name="Class, Spells Change Lvl" description="Select this adjustment to be able to move spell uses per day from one level to another.  This is useful if you wish to use higher level slots to power lower level spells.\n\n{b}Note:{/b} In the first drop down select your class.  The second drop down is the &quot;from&quot; spell level and the final/third drop down is the &quot;to&quot; spell level." compset="InPlay">
     <fieldval field="pCandExpr" value="component.Class | (component.BaseRace &amp; SplLookup.?)"/>
@@ -4509,5 +4509,20 @@ call S2SetName]]></eval>
 
       ~ Increase/Decrease background skill resource
       #resmax[resBackSkl] += (field[pAdjust].value * #totallevelcount[])]]></eval>
+    </thing>
+  <thing id="pS2RceDC01" name="Race, DC Uses Total Class Level" description="Select this adjustment to have the selected ability use &quot;total class level&quot; instead of &quot;racial hit dice&quot; when calculating its DC." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.RaceAbil"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="OthAdjCat" tag="Race"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <eval phase="First" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      perform field[pChosen].chosen.assign[Helper.DCUseTotHD]]]></eval>
     </thing>
   </document>

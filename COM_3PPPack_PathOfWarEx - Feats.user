@@ -683,16 +683,6 @@ Email: mail@theirongolem.com</info_author>
     <exprreq message="Perception 3+ ranks required"><![CDATA[#skillranks[skPercep] >= 3]]></exprreq>
     <exprreq message="Must know one or more Silver Crane stances"><![CDATA[hero.tagcount[HasStance.SilvrCrane] > 0]]></exprreq>
     </thing>
-  <thing id="pPWSCStyle" name="Silver Crane Style" description="You gain a bonus to your Armor Class and Reflex save from an ally&apos;s use of Silver Crane Style" compset="InPlay">
-    <fieldval field="pMinimum" value="1"/>
-    <usesource source="srcPOWEx"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ Stop now if we're not activated
-      doneif (field[pIsOn].value = 0)
-
-      hero.child[ArmorClass].field[Bonus].value += field[pAdjust].value
-      hero.child[svRef].field[Bonus].value += field[pAdjust].value]]></eval>
-    </thing>
   <thing id="fPWSCFthrs" name="Silver Crane Feathers" description="You sacrifice yourself for others.\n\n{b}Prerequisites:{/b} Silver Crane Style, Perception 7 ranks\n\n{b}Benefit:{/b} As an immediate action, in response to one of your allies within 30 ft. taking ability damage or hit point damage, you may expend one of your readied counters. If you do, you suffer the ability damage and/or hit point damage in place of that ally." compset="Feat" uniqueness="useronce">
     <usesource source="srcPOWEx"/>
     <tag group="Helper" tag="ShowSpec"/>

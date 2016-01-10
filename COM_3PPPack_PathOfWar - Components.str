@@ -85,14 +85,14 @@
       type="user"
       maxlength="100">
     </field>
-	
-	<!-- mExValue is an "overflow" field for cases where we need more than 5 abValue fields -->
-	<field
-	  id="mExValue"
-	  name="Extra Value"
-	  type="derived"
-	  maxlength="0">
-	</field>
+  
+  <!-- mExValue is an "overflow" field for cases where we need more than 5 abValue fields -->
+  <field
+    id="mExValue"
+    name="Extra Value"
+    type="derived"
+    maxlength="0">
+  </field>
 
     <!-- TAGS -->
     <tag group="Usage" tag="PWEncounte"/>
@@ -215,9 +215,11 @@
     <!-- 
         This setups the IL information on the Configurable
     -->
-    <eval phase="PostLevel" priority="10" index="2"><![CDATA[
+    <eval phase="PostLevel" priority="10" index="2" name="PoW Calc IL"><![CDATA[
       ~ If this is a prestige class, stop now, because we're going to inherit our IL from another configurable in the next script
-      doneif (linkage[powClass].tagis[ClassType.Prestige] + linkage[powClass].tagis[PathOfWar.Class] = 2)
+      ~ NOTE: To support special "houserules" from the community we added a new PrCIndMan tag to represent a PrC
+      ~       class that does not inherit any of its IL values from another PoW class.
+      doneif (linkage[powClass].tagis[ClassType.Prestige] + linkage[powClass].tagis[PathOfWar.Class] - linkage[powClass].tagis[PathOfWar.PrCIndMan] = 2)
 
       var otherlev as number
       var miPrc as number
@@ -246,8 +248,11 @@
     <eval phase="Final" priority="11000" index="3"><![CDATA[
       var level as number
 
-      ~ If we're a prestige class, make sure we have chosen an existing maneuver list to work from, otherwise don't allow picking any maneuvers yet
-      if (linkage[powClass].tagis[ClassType.Prestige] = 1) then
+      ~ If we're a normal prestige class, make sure we have chosen an existing maneuver list to work 
+      ~ from, otherwise don't allow picking any maneuvers yet.
+      ~ NOTE: To support special "houserules" from the community we added a new PrCIndMan tag to represent a PrC
+      ~       class that does not inherit any of its IL values from another PoW class.
+      if (linkage[powClass].tagis[ClassType.Prestige] - linkage[powClass].tagis[PathOfWar.PrCIndMan] = 1) then
         if (hero.childfound[cPWP1Man].field[usrChosen1].ischosen = 0) then
           linkage[powCfg].field[cfgMax1].value = 0
           linkage[powCfg].field[cfgMax2].value = 0

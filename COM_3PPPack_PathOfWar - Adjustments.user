@@ -31,8 +31,7 @@ November 27, 2014</info_author>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
     <tag group="OthAdjCat" tag="Class"/>
-    <eval phase="First" priority="5000">      
-      ~ Do nothing if not activated, or if either selection not made
+    <eval phase="First" priority="5000">~ Do nothing if not activated, or if either selection not made
       doneif (field[pIsOn].value = 0)
       doneif (field[pChosen].ischosen = 0)
       doneif (field[pChosen2].ischosen = 0)
@@ -91,5 +90,34 @@ November 27, 2014</info_author>
       foreach pick in hero from BaseWep
         #extradamage[eachpick, signed(field[pAdjust].value) & "d6",field[thingname].text]
       nexteach]]></eval>
+    </thing>
+  <thing id="pPWSCStyle" name="Silver Crane Style" description="You gain a bonus to your Armor Class and Reflex save from an ally&apos;s use of Silver Crane Style." compset="InPlay">
+    <fieldval field="pMinimum" value="1"/>
+    <usesource source="srcPOWEx"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      
+      ~ Stop now if we're not activated
+      doneif (field[pIsOn].value = 0)
+
+      hero.child[ArmorClass].field[Bonus].value += field[pAdjust].value
+      hero.child[svRef].field[Bonus].value += field[pAdjust].value]]></eval>
+    </thing>
+  <thing id="pPWInitLvl" name="Initiator level" description="Select this adjustment to grant an initiating class access to a particular martial discipline that isn&apos;t normally on its list.  For example, you could use this to grant the Iron Tortoise discipline to a Stalker." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.PWManList"/>
+    <usesource source="srcPathOfW"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="OthAdjCat" tag="Class"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <eval phase="PostLevel" priority="15">
+      ~ Do nothing if not activated, or if either selection not made
+      doneif (field[pIsOn].value = 0)
+      doneif (field[pChosen].ischosen = 0)
+
+      ~ Increase/Decrease IL level
+      field[pChosen].chosen.field[cIL].value += field[pAdjust].value
+      <after name="PoW Calc IL"/>
+      </eval>
     </thing>
   </document>
