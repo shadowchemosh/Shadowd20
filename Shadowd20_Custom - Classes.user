@@ -2131,4 +2131,49 @@ hero.child[cCavChalle].field[abSumm].text &amp;= &quot;, DR &quot; &amp; field[a
       perform hero.assign[Ability.cMnkKiPool]
       perform hero.assign[HasAbility.cMnkKiPool]]]></eval>
     </thing>
+  <thing id="arS2Blackg" name="Blackguard" description="The blackguard epitomized evil. He is nothing short of a mortal fiend. The quintessential black knight, this villain carries a reputation of the foulest sort thet is very well deserved. Consorting with demons and devils and serving dark deities, the blackguard is hated and feared by all.\n\nThe blackguard has many options available to him but attacking with stealth and honorless guile is his perfered method. Blackguards are experts at eliminating targets for there dark purposes.  More than simple trained assassin blackguards actually believe in the deaths and corruption they cause and will not stop until there spread of evil is successful." compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="6"/>
+    <fieldval field="cvSpec5thS" value="Rage Power"/>
+    <arrayval field="cvCust5Tot" index="3" value="1"/>
+    <arrayval field="cvCust5Tot" index="5" value="2"/>
+    <arrayval field="cvCust5Tot" index="7" value="3"/>
+    <arrayval field="cvCust5Tot" index="9" value="4"/>
+    <arrayval field="cvCust5Tot" index="11" value="5"/>
+    <arrayval field="cvCust5Tot" index="13" value="6"/>
+    <arrayval field="cvCust5Tot" index="15" value="7"/>
+    <arrayval field="cvCust5Tot" index="17" value="8"/>
+    <arrayval field="cvCust5Tot" index="19" value="9"/>
+    <usesource source="s20PFCamp"/>
+    <tag group="Helper" tag="RemoveCast"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="PreReqCaP1" tag="BbnRagePow"/>
+    <tag group="PreReqCaP1" tag="BbnRaPowUn"/>
+    <bootstrap thing="cSlaFavTar">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="cSlaFavTar">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cAsnPoison">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSlaFavTar">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cSlaFavTar">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cSlaFavTar">
+      <autotag group="ClSpecWhen" tag="16"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpAPa"/>
+    <eval phase="Render" priority="99999"><![CDATA[
+      linkage[varies].field[cCstS5Expr].text = "component.BaseCustSp & !Helper.Obsolete & !Helper.Helper & abCategory.BbnRagePow"]]></eval>
+    <eval phase="First" priority="250" index="2"><![CDATA[
+      ~ If Smite Good not activated get out now! &
+      doneif (hero.childfound[cAPaSmite].field[abilActive].value = 0)
+
+      perform hero.assign[Hero.Raging]]]></eval>
+    </thing>
   </document>

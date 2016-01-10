@@ -254,15 +254,35 @@
     <fieldval field="gSizeCost" value="8"/>
     <fieldval field="gCost" value="35300"/>
     <arrayval field="iScaleText" index="2" value="When in the hands of a dwarf Iron Glory ignites with the flames of the forge and causes an extra 1d4 fire damage."/>
+    <arrayval field="iScaleText" index="5" value="Iron Glory acts as a {i}Flaming{/i} weapon and provides 10 Fire Resistance to its holder."/>
+    <arrayval field="iScaleText" index="8" value="Iron Glory becomes a +2 weapon and gains the {i}Flaming Burst{/I} weapon property."/>
     <usesource source="srcUndDark"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="RaceEquip" tag="rDwarf"/>
+    <tag group="iSchool" tag="Universal"/>
     <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    <tag group="iSchool" tag="Universal"/>
-    <tag group="Helper" tag="EquipAvail"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+
+      ~ If equipped & in hand
+      doneif (field[gIsEquip].value + field[wIs2nd].value = 0)
+
+      #applyvalue[xDamRsFire,10]]]></eval>
+    <eval phase="First" priority="10000" index="2"><![CDATA[      
+      ~ Changes to the base weapon & item as it levels
+      if (#totallevelcount[] >= 6) then
+        field[BonEnhance].value += 1
+      endif]]></eval>
     <child entity="wSpecMagic">
       <bootstrap thing="wAxeThrow"></bootstrap>
       <bootstrap thing="ipS2FlamMi">
-        <containerreq phase="First" priority="1000"><![CDATA[(count:hero#Classes.? >= 3)]]></containerreq>
+        <containerreq phase="First" priority="1000"><![CDATA[count:hero#Classes.? >= 3 & count:hero#Classes.? < 6]]></containerreq>
+        </bootstrap>
+      <bootstrap thing="iFlaming">
+        <containerreq phase="First" priority="1000"><![CDATA[count:hero#Classes.? >= 6 & count:hero#Classes.? < 8]]></containerreq>
+        </bootstrap>
+      <bootstrap thing="iFlamBurst">
+        <containerreq phase="First" priority="1000"><![CDATA[count:hero#Classes.? >= 8]]></containerreq>
         </bootstrap>
       </child>
     </thing>
@@ -471,7 +491,6 @@
     <tag group="Usage" tag="Day"/>
     <tag group="ChooseSrc2" tag="Thing"/>
     <tag group="Helper" tag="AlwaysAvl"/>
-    <eval phase="PostLevel" priority="10000">
-      perform field[usrChosen1].chosen.pulltags[SpInfo.?]</eval>
+    <eval phase="PostLevel" priority="10000">perform field[usrChosen1].chosen.pulltags[SpInfo.?]</eval>
     </thing>
   </document>
