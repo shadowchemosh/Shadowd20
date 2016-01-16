@@ -6,6 +6,33 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.8 January 16, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Shadow d20 - Reported official bug about the Situational note on Acrobatics skill is wrong when wearing Agile Breastplate.  Please note the Shadow d20 "Acrobatics (Jump)" sub-skill is correctly calculating the value.</li>
+<li>Shadow d20 (ShadowChemosh) - Note: Jump magic items and class features that I had customized for Acrobatics (Jump) sub-skill have deprecated. If you find one these items on your character please remove it and re-add the item.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Shadow d20 - Optimized the scripts running on Acrobatics (Jump) skill.</li>
+<li>Shadow d20 - New Blackgard archetype for Antipaladin class added.</li>
+<li>Shadow d20 - New spell "Corrupt Weapon" is a antipaladin version of the Bless Weapon spell.</li>
+<li>Shadow d20 - Moved allowed Deep Magic spells over to Darklands source.</li>
+<li>Shadow d20 Underdark Campaign - Tattoo now allows for a 3rd spell-like ability to be chosen.</li>
+<li>Shadow d20 Underdark Campaign - Fixes to race abilities.</li>
+<li>Shadow d20 Underdark Campaign - Ironglory given its 6th level and 9th level abilities.</li>
+<li>Merged in latest Community Packs.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New adjustment to change a racial ability DC calculation from "racial hit dice" to "total class level" instead.</li>
+<li>ShadowChemosh Archetypes (ShadowChemosh) - Added two new archetypes for the Paladin and Antipaladin classes.  These new archetypes (Freedom & Tyranny) allow the Paladin & Antipaladin to be "any" good or evil alignment.  This can be useful for groups playing in the new paizo adventure paths "Hell's Vengeance & Hell's Rebels".  A CG paladin for Hell's Rebels and a LE Antipaladin for Hell's Vengeance is wanted by some groups and this allows this to easily happen. THESE ARE FOR DM USE ONLY!</li>
+<li></li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+
 <strong>v2.7 December 19, 2015</strong>
 
 <strong>Bug Fixes</strong>
