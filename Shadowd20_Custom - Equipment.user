@@ -44,7 +44,9 @@ Feb 17, 2013
     <autoadd thing="fTorch">
       <assignval field="stackQty" value="2"/>
       </autoadd>
-    <autoadd thing="ipCureLW" portal="iTable"></autoadd>
+    <autoadd thing="ipCureLW" portal="iTable">
+      <assignval field="domDomain" value="SAP"/>
+      </autoadd>
     <autoadd thing="fBedroll"></autoadd>
     <autoadd thing="fFlintStl"></autoadd>
     </thing>
@@ -515,8 +517,7 @@ endif]]></eval>
     <tag group="Helper" tag="SingleAtt"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="abS2EldBla"></bootstrap>
-    <eval phase="PostAttr" priority="10000" index="2">
-      ~ Give a Int bonus to the Eldritch Blast Weapon
+    <eval phase="PostAttr" priority="10000" index="2">~ Give a Int bonus to the Eldritch Blast Weapon
       field[wDamBonus].value += #attrmod[aINT]</eval>
     <eval phase="Final" priority="11000"><![CDATA[
       ~ Set the Fix Ranged Damage amount text
