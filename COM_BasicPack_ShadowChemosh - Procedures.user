@@ -1044,5 +1044,15 @@
     ]]>
     </procedure>
 
+  <!-- =================================================================== -->
+  <!-- This procedure sets the weight of a gear item to zero.              -->
+  <!-- =================================================================== -->
+  <procedure id="GearZerolb" context="pick"><![CDATA[
+    ~ Set the item weight to zero
+    field[gWeight].value = 0
+    ~ Set the item weight to zero
+    field[gearWeight].value = 0
+    ]]>
+    </procedure>
 
 </document>

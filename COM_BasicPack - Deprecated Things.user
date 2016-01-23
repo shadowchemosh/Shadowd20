@@ -1103,6 +1103,71 @@ field[pCandExpr].text = "component.SplSchool & !sDescript.? & !sWordCat.? & !sSu
       </child>
     </thing>
 
+  <thing id="pS2wUAS" name="DEPRECATED" description="This adjustment is no longer needed as the core Unarmed Strike allows for two-weapon fighting." compset="InPlay">
+    <comment>HIDDEN!</comment>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="OthAdjCat" tag="Race"/>
+    <bootstrap thing="wS2Unarmed">
+      <containerreq phase="First" priority="99"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      </bootstrap>
+    </thing>
+  <thing id="wS2Unarmed" name="DEPRECATED" description="This weapon is no longer needed as the core Unarmed Strike allows for two-weapon fighting." compset="Weapon">
+    <comment>HIDDEN!</comment>
+    <usesource source="srcS2Adjus"/>
+    <usesource source="srcS2Gear"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wCategory" tag="Unarmed"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wFtrGroup" tag="Close"/>
+    <tag group="wFtrGroup" tag="Monk"/>
+    <tag group="wFtrGroup" tag="Natural"/>
+    <tag group="wMain" tag="1d3"/>
+    <tag group="wProfReq" tag="Simple"/>
+    <tag group="wSpecial" tag="Nonlethal"/>
+    <tag group="wType" tag="B"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="IsWeapon" tag="wUnarmed"/>
+    <tag group="Helper" tag="NoSelect"/>
+    <eval phase="Final" priority="10010"><![CDATA[
+      ~ Try and find the base race
+      perform hero.findchild[BaseWep,"thingid.wUnarmed"].setfocus
+      ~ if can't find then get out now!
+      doneif (state.isfocus = 0)
+
+      ~ if wUnarmed does lethal damage than so do we
+      if (focus.tagis[wSpecial.Nonlethal] = 0) then
+        perform delete[wSpecial.Nonlethal]
+      endif
+
+      ~ Set damage
+      perform delete[wMain.?]
+      perform focus.pulltags[wMain.?]
+
+      ~ Set all the helper tags
+      perform focus.pulltags[Helper.?]
+      
+      ~ If the number of extra attacks is mismatched between the core
+      ~ unarmed strike and ourself then redo the tags.
+      if (focus.tagcount[Helper.ExtraHigh] <> tagcount[Helper.ExtraHigh]) then
+        perform delete[Helper.ExtraHigh]
+        var iX as number
+        iX = 0
+        while (iX < focus.tagcount[Helper.ExtraHigh])
+          iX += 1
+          ~ Apply the Extra Hight Attack tag to ourself
+          perform assign[Helper.ExtraHigh]
+        loop      
+      endif]]></eval>
+    </thing>
+
 
 
 
@@ -1162,12 +1227,13 @@ field[pCandExpr].text = "component.SplSchool & !sDescript.? & !sWordCat.? & !sSu
   <hidden id="pS2SaveAlc"/>
   <hidden id="pS2SaveCir"/>
   <hidden id="pS2AttrDra"/>
-  
   <hidden id="aruElvenCh"/>
   <hidden id="mS2MithShi"/>
   <hidden id="mS2DrPlate"/>
   <hidden id="mS2DwPlate"/>
   <hidden id="mS2ElvChai"/>
   <hidden id="ioCBGoodbe"/>
+  <hidden id="wS2Unarmed"/>
+  <hidden id="pS2wUAS"/>
 
   </document>
