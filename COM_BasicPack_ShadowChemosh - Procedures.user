@@ -980,6 +980,9 @@
     ~ The Value.? tag on the Thing stores the number of pages the spellbook can hold.
     ~ The weight is set once to figure out what the base weight of the spellbook is.
 
+    ~ If nothing chosen then get out now!
+    doneif (field[usrChosen1].ischosen = 0)
+
     ~ Parms in and out of the procedure
     var Cost   as number
     var Pages  as number
