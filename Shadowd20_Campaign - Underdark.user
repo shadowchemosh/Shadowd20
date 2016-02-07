@@ -476,7 +476,7 @@
     </thing>
   <thing id="ioS2TatDr3" name="Tattoo, Dragon" description="A special tattoo that appeared on the hero&apos;s after discovering a dragon egg. You gain access to a spell-like ability with a caster level equal your character level.  You can this spell one time per day." compset="Wondrous" summary="Spell-Like ability usable 1/day.">
     <fieldval field="abValue" value="2"/>
-    <fieldval field="usrCandid1" value="component.BaseSpell &amp; (sLevel.1|sLevel.2|sLevel.3|sLevel.4) &amp; (sClass.cHelpWiz|sClass.cHelpClr&amp; sClass.cHelpDrd) &amp; !thingid.spS2Pearl? &amp; !thingid.spUnused?"/>
+    <fieldval field="usrCandid1" value="component.BaseSpell &amp; (sLevel.1|sLevel.2|sLevel.3|sLevel.4) &amp; (sClass.cHelpWiz|sClass.cHelpClr|sClass.cHelpDrd) &amp; !thingid.spS2Pearl? &amp; !thingid.spUnused?"/>
     <fieldval field="trkMax" value="1"/>
     <usesource source="srcUndDark"/>
     <tag group="ProductId" tag="Shadowd20"/>
