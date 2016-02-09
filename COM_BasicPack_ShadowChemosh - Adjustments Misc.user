@@ -1350,7 +1350,7 @@ doneif (field[pChosen].ischosen = 0)
     <tag group="Adjustment" tag="Attribute" name="Attributes" abbrev="Attributes"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="Attributes"/>
-    <eval phase="PreLevel" priority="1000"><![CDATA[
+    <eval phase="PreAttr" priority="10000"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
 
