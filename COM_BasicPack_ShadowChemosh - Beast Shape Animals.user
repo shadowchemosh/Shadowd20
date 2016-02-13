@@ -5,8 +5,7 @@
     <info_author><![CDATA[
       Author:  Tim Shadow
       Email: shadowchemosh@yahoo.com
-      File Name changed from PFRPG_Adjustments_BeastShape.user => COM_BasicPack_ShadowChemosh - Beast Shape Animals.user      
-      ]]></info_author>
+      File Name changed from PFRPG_Adjustments_BeastShape.user => COM_BasicPack_ShadowChemosh - Beast Shape Animals.user]]></info_author>
     <info_history/>
     </fileinfo>
   <thing id="zSCAntelop" name="Antelope" description="Polymorph into an Antelope (Bestiary 3, pg 147)\n\nSmall size\nLow-light vision\nGore 1d4\nSpeed 60" compset="PolyHelp" uniqueness="useronce">
@@ -913,5 +912,69 @@ bodrinbarlow@gmail.com</comment>
     <tag group="wBite" tag="1d3_3"/>
     <tag group="PolySpell" tag="Beast3"/>
     <tag group="PolySpell" tag="Beast4"/>
+    </thing>
+  <thing id="zSCBeaMu01" name="Climb 30ft" description="Improved Beastform Mutagen (Climb)" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phClimb" value="30"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="1"/>
+    </thing>
+  <thing id="zSCBeaMu02" name="Fly 30ft" description="Improved Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phFly" value="30"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="1"/>
+    </thing>
+  <thing id="zSCBeaMu03" name="Swim 30ft" description="Improved Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phSwim" value="30"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="1"/>
+    </thing>
+  <thing id="zSCBeaMu04" name="Darkvision 60 ft" description="Improved Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phDarkvis" value="60"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="1"/>
+    <tag group="Value" tag="2"/>
+    <tag group="PolyAdjust" tag="Darkvision"/>
+    </thing>
+  <thing id="zSCBeaMu05" name="Low-Light Vision" description="Improved Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="1"/>
+    <tag group="Value" tag="2"/>
+    <tag group="PolyAdjust" tag="LowLight"/>
+    </thing>
+  <thing id="zSCBeaMu06" name="Scent" description="Improved Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="1"/>
+    <tag group="Value" tag="2"/>
+    <tag group="PolyAdjust" tag="Scent"/>
+    </thing>
+  <thing id="zSCBeaMu07" name="Climb 60ft" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phClimb" value="60"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="2"/>
+    </thing>
+  <thing id="zSCBeaMu08" name="Fly 60ft" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phFly" value="60"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="2"/>
+    </thing>
+  <thing id="zSCBeaMu09" name="Swim 60ft" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phSwim" value="60"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="2"/>
+    </thing>
+  <thing id="zSCBeaMu10" name="Grab" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="2"/>
+    <tag group="PolyAdjust" tag="Grab"/>
+    </thing>
+  <thing id="zSCBeaMu11" name="Trip" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="2"/>
+    <tag group="PolyAdjust" tag="Trip"/>
+    </thing>
+  <thing id="zSCBeaMu12" name="Pounce" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="2"/>
+    <tag group="PolyAdjust" tag="Pounce"/>
     </thing>
   </document>

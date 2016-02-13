@@ -9,17 +9,18 @@
     </fileinfo>
   <thing id="mechS2PU" name="Ultimate Psionics Mechanic" compset="Mechanics">
     <usesource source="pPsiUn"/>
-    <tag group="wRangeInc" tag="15" name="15"/>
-    <tag group="psiClass" tag="PUVitMetGu" name="Vitalist Method - Guardian"/>
-    <tag group="psiClass" tag="PUVitMetMe" name="Vitalist Method - Mender"/>
-    <tag group="psiClass" tag="PUVitMetSo" name="Vitalist Method - Soulthief"/>
-    <tag group="wFtrGroup" tag="WPMndBld" name="Weapon Proficiency - Mind Blade" abbrev="WP - Mind Blade"/>
-    <tag group="IsWeapon" tag="wMindBlade" name="Mind Blade"/>
-    <tag group="WepFocus" tag="wMindBlade" name="Mind Blade"/>
-    <tag group="Target" tag="wMindBlade" name="Mind Blade"/>
-    <tag group="abAction" tag="PUExpFocus" name="Expend Psionic Focus"/>
-    <tag group="abCategory" tag="PUBladeSk" name="Soulknife Blade Skill" abbrev="Blade Skill"/>
-    <tag group="abAction" tag="PUManFocus" name="Maintain Psionic Focus"/>
+    <tag group="wRangeInc"  tag="15" name="15"/>
+    <tag group="psiClass"   tag="PUVitMetGu"  name="Vitalist Method - Guardian"/>
+    <tag group="psiClass"   tag="PUVitMetMe"  name="Vitalist Method - Mender"/>
+    <tag group="psiClass"   tag="PUVitMetSo"  name="Vitalist Method - Soulthief"/>
+    <tag group="wFtrGroup"  tag="WPMndBld"    name="Weapon Proficiency - Mind Blade" abbrev="WP - Mind Blade"/>
+    <tag group="IsWeapon"   tag="wMindBlade"  name="Mind Blade"/>
+    <tag group="WepFocus"   tag="wMindBlade"  name="Mind Blade"/>
+    <tag group="Target"     tag="wMindBlade"  name="Mind Blade"/>
+    <tag group="abAction"   tag="PUExpFocus"  name="Expend Psionic Focus"/>
+    <tag group="abCategory" tag="PUBladeSk"   name="Soulknife Blade Skill" abbrev="Blade Skill"/>
+    <tag group="abAction"   tag="PUManFocus"  name="Maintain Psionic Focus"/>
+    <tag group="wGroup"     tag="cSknMindBl"  name="Soulknife Mind Blade"/>
     <bootstrap thing="PUPathSk"></bootstrap>
     <bootstrap thing="PUClassFnd"></bootstrap>
     <bootstrap thing="zPUArtiste"></bootstrap>

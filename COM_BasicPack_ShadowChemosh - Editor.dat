@@ -39,6 +39,11 @@ File named changed from PFRPG_Adjustments_Editor.dat => COM_BasicPack_ShadowChem
       <it_taglist group="PolySpell" tag="?" />
     </inputthing>
     <inputthing
+      name="Mutagen Special Ability Only?"
+      helptext="Theck this is if this is not a polymorph creature but a special selector used for Mutagens.">
+      <it_tagcheck group="AdjShadow" tag="Mutagen"/>
+    </inputthing>
+    <inputthing
       name="Creature Type"
       helptext="Select the creature type.">
       <it_tagpick group="PolyCreTy" tag="?" />

@@ -326,4 +326,91 @@
     <tag group="ProductId" tag="HLCommunit"/>
     <bootstrap thing="abS2OvrHan"></bootstrap>
     </thing>
+    
+  <thing id="pS2ImBeMu" name="Alchemist: Improved Beastform Mutagen" description="At 6th level, a beastmorph's mutagen grants him additional abilities and options. The alchemist gains his choice of two of the abilities listed in the beast shape I spell, which persist as long as the mutagen. He may select two different abilities each time he creates a mutagen." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.PolyHelp &amp; AdjShadow.Mutagen &amp; Value.1"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <bootstrap thing="xScent">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.Scent]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raLowLight">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.LowLight]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raDarkVis">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.Darkvision]]></containerreq>
+      <assignval field="abValue" value="60"/>
+      </bootstrap>
+    <eval phase="First" priority="450"><![CDATA[
+        ~ Polymorph Adjustment & Setup scripts
+        perform field[pChosen].chosen.pulltags[PolyAdjust.?]
+        perform hero.pushtags[PolyAdjust.?]
+        ]]></eval>
+    <eval phase="First" priority="1000" index="2"><![CDATA[
+        ~ If we're not enabled, get out now
+        doneif (field[pIsOn].value <> 1)
+        ~ If nothing's been chosen, get out now
+        doneif (field[pChosen].ischosen <> 1)
+
+        #value[xSwim]  += field[pChosen].chosen.field[phSwim].value
+        #value[xClimb] += field[pChosen].chosen.field[phClimb].value
+        #value[xFly]   += field[pChosen].chosen.field[phFly].value
+        ]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[
+        ~ Set custom expression to "All Things on Hero"
+        field[pUsePicks].value = 0
+        ]]></eval>
+    </thing>
+
+  <thing id="pS2GrBeMu" name="Alchemist: Greater Beastform Mutagen" description="At 10th level, a beastmorph's mutagen grants him three of the abilities listed in the beast shape II spell, which persist as long as the mutagen. He may select three different abilities each time he creates a mutagen." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.PolyHelp &amp; AdjShadow.Mutagen &amp; Value.2"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Helper" tag="AdjConfer"/>
+    <bootstrap thing="xScent">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.Scent]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raLowLight">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.LowLight]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raDarkVis">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.Darkvision]]></containerreq>
+      <assignval field="abValue" value="60"/>
+      </bootstrap>
+
+    <bootstrap thing="raGrab">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.Grab]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raPounce">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.Pounce]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="raTrip">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0 & PolyAdjust.Trip]]></containerreq>
+      </bootstrap>
+
+    <eval phase="First" priority="450"><![CDATA[
+        ~ Polymorph Adjustment & Setup scripts
+        perform field[pChosen].chosen.pulltags[PolyAdjust.?]
+        perform hero.pushtags[PolyAdjust.?]
+        ]]></eval>
+    <eval phase="First" priority="1000" index="2"><![CDATA[
+        ~ If we're not enabled, get out now
+        doneif (field[pIsOn].value <> 1)
+        ~ If nothing's been chosen, get out now
+        doneif (field[pChosen].ischosen <> 1)
+
+        #value[xSwim]  += field[pChosen].chosen.field[phSwim].value
+        #value[xClimb] += field[pChosen].chosen.field[phClimb].value
+        #value[xFly]   += field[pChosen].chosen.field[phFly].value
+        ]]></eval>
+    <eval phase="PreLevel" priority="11000" index="3"><![CDATA[
+        ~ Set custom expression to "All Things on Hero"
+        field[pUsePicks].value = 0
+        ]]></eval>
+    </thing>
+
+
   </document>

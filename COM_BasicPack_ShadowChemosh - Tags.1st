@@ -60,6 +60,7 @@ v2.1 11/27/2012
     <value id="SpWeapon"    name="Spell Weapon"/>
     <value id="Name"        name="Custom Name"/>
     <value id="Text"        name="Custom Text"/>
+    <value id="Mutagen"     name="Mutagen"/>
   </group>
 
   <!-- Group Adjustment Skill custom tags -->

@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <loadonce key="COM_3PPPack_UltimatePsionics - Classes"/>
-  <fileinfo>
-    <info_author>TCArknight</info_author>
-    <info_history>February 16, 2015 - Thomas Clegg (TCArknight)
-- Soulknife: Nimble Blade Archetype
-
-January 3, 2015 - Tim Shadow
--Merged in Classes 2 file into this one.
-    
-November 2, 2014 - Bill Taylor
--Fixed Deadly Blow to modify Critical Multiplier instead of the Crit Range.
--Fixed Powerful Blow to correctly apply its bonus.
--Added Focused Offense and Focused Defense 
-
-April 2, 2014 - Tim Shadow
--Fixed Wilder surges and updated all text to Ultimate Psionics.
-    
-15/03/2014 - Matteo Tirelli (Screetch1979)
-- Wilder: Added talents
-- Wilder: Fixed Elude Attack Progression
-- Wilder: Fixed Improved Surge Bond Progression
-- Wilder: Fixed Skill points, Class Skills
-- War Mind: Fixed attack progression, save and skill points.
-- Cerebremancer: Fixed Extra Spell per Day/Powers Known restriction</info_history>
-    </fileinfo>
   <thing id="cPUPsiWar" name="Psychic Warrior" description="Where the psion spends his days studying the intricacies of psionic power and unlocking the mysteries of the mind, others choose to use their internal power to augment their physical form. These psychic warriors use their psionic potential as a way to improve their natural abilities, becoming fierce and deadly in their chosen path.{br}{br}{b}Role:{/b} The psychic warrior&apos;s path determines his strengths and weaknesses within a party. Whether he is the epitome of unleashing the beast within, or a stealthy combatant who strikes from the shadows, the psychic warrior&apos;s primary focus is typically battlefield control and dealing or blocking damage.{br}{br}{b}Alignment:{/b} Any." compset="ClassLevel" maxlimit="20">
     <usesource source="pPsiUn"/>
     <tag group="ClassType" tag="Normal"/>
@@ -3921,8 +3897,7 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       ~ Remove the Hide Power Tag from the power chosen
       perform field[usrChosen1].chosen.delete[Hide.Power]
       ~ Set Livename to include Path so gamers know this is a path power
-      field[usrChosen1].chosen.field[livename].text = field[usrChosen1].chosen.field[name].text & " (Path)"
-      ]]></eval>
+      field[usrChosen1].chosen.field[livename].text = field[usrChosen1].chosen.field[name].text & " (Path)"]]></eval>
     <eval phase="PostAttr" priority="10000" index="2" name="PsiWar Path Power set DC"><![CDATA[
       ~ If we're not shown, just get out now
       doneif (tagis[Helper.ShowSpec] <> 1)
@@ -3934,8 +3909,7 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       ~ These Bootstrapped powers are not getting the attribute bonus
       ~ when calculating the DC. So we need to manually add in the attribute
       ~ value for Wisdom here ourself.
-      field[usrChosen1].chosen.field[sDC].value += #attrmod[aWIS]
-      ]]></eval>
+      field[usrChosen1].chosen.field[sDC].value += #attrmod[aWIS]]]></eval>
     </thing>
   <thing id="cWPaAssPri" name="Assassin&apos;s Path" description="While others prefer to stand boldly in the face of danger, your preferred weapon is stealth and silence. When you attack, your enemy is bound to fall.\n\n{b}Bonus Class Skill{/b}: Stealth\n\n{b}Powers{/b}: {i}Distract, prevenom{/i} or {i}prevenom weapon{/i}\n\n{b}Skills{/b}: Acrobatics, Perception, Stealths\n\n{b}Note:{/b} You need to correctly set one of the Path&apos;s selected as your Primary path and the 2nd one as the Secondary path to have everthing calc correctly." compset="CustomSpec" summary="You are a follower of the Assassin&apos;s Path" uniqueness="useronce">
     <comment><![CDATA[PathSkill - This tag group is used to setup the skills associated to the Path. These skills will only be allowed to be selection from the "PathSkill" class ability.
@@ -15966,8 +15940,8 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
       </prereq>
     </thing>
   <thing id="cPUExtXfer" name="Extended Transfer" description="A body snatcher may apply her Extend Power feat to her mind switch power without spending additional power points. She still needs to expend her psionic focus to use this ability." compset="ClSpecial">
-  <tag group="ProductId" tag="HLCommunit"/>
-  </thing>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
   <thing id="cPUMldExch" name="Melding Exchange" description="During a mind switch, a body snatcher’s mind briefly interfaces with that of her target, resulting in a one-way exchange of information.  In addition to rudimentary or instinctive knowledge of the subject as normal for the power, she also learns the subject’s name, where he lives, and who his principle associates and enemies are. While she remains in the subject’s body, she also gains knowledge of all of the subject’s languages (written and spoken), treats any Knowledge check made with a skill with which the subject had ranks as a trained check, and gains a +2 competence bonus per class level on any skill check used to impersonate the subject." compset="ClSpecial">
     <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="HLCommunit"/>
@@ -16007,11 +15981,11 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
   <thing id="cPUTrMndSw" name="True Mind Switch" description="A 6th level body snatcher adds true mind switch to her powers known at 6th level, even if she is incapable of manifesting 9th level powers. She may apply all her body snatcher class features (except seal the host and rapid transfer) to any manifestation of true mind switch, even one made at the moment of death through the use of death is only the beginning. \n\nThis has not been implemented.  Use Adjustments to implement" compset="ClSpecial">
     <fieldval field="usrCandid1" value="component.Class &amp; Psionics.Class"/>
     <fieldval field="usrCandid2" value="component.BasePower"/>
-    <usesource source="pPsiUn"/>
     <tag group="DescInfo" tag="puMindSwt6"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="ChooseSrc1" tag="Hero"/>
     <tag group="ChooseSrc2" tag="Thing"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="5000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -16039,5 +16013,116 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
         ~ We are valid if we got a hit
         validif (state.isfocus <> 0)]]></validate>
       </prereq>
+    </thing>
+  <thing id="cHelpPU7" name="Adaptive Warrior" description="Most masters of melee combat hone a particular fighting style over their career, learning the intricacies of a particular set of tactics to use against their opponents. But there are a select few who have learned to study the tactics, maneuvers, and style of those around them, adjusting their combat style based upon the circumstances.\nPsychic warriors and soulknives tend to be the most commonly found adaptive warriors, for their focus on combat is a natural lead in to that of the adaptive warrior. \n{b}Role:{/b} Adaptive warriors are most often found in the front lines of a battle, adjusting their fighting style to match the particular enemy of the moment. \n{b}Alignment{/b}: Adaptive warriors can be of any alignment." compset="Class" uniqueness="unique">
+    <fieldval field="cHDSides" value="10"/>
+    <fieldval field="cAbbr" value="AWr"/>
+    <fieldval field="cSkills" value="2"/>
+    <arrayval field="cMagLevTot" index="1" value="1"/>
+    <arrayval field="cMagLevTot" index="2" value="2"/>
+    <arrayval field="cMagLevTot" index="3" value="3"/>
+    <arrayval field="cMagLevTot" index="4" value="4"/>
+    <arrayval field="cMagLevTot" index="6" value="5"/>
+    <arrayval field="cMagLevTot" index="7" value="6"/>
+    <arrayval field="cMagLevTot" index="8" value="7"/>
+    <arrayval field="cMagLevTot" index="9" value="8"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ClassSkill" tag="skPUAhypno"/>
+    <tag group="ClassSkill" tag="skBluff"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="ClassSkill" tag="skPercep"/>
+    <tag group="ClassSkill" tag="skSenseMot"/>
+    <tag group="cRef" tag="Good"/>
+    <tag group="cWill" tag="Poor"/>
+    <tag group="Classes" tag="cHelpPU7"/>
+    <tag group="cAttack" tag="Poor"/>
+    <tag group="ClassRole" tag="Combat"/>
+    <tag group="AgeColumn" tag="1"/>
+    <tag group="cFort" tag="Good"/>
+    <tag group="ClassSkill" tag="skAcrobat"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="fArmLight"></bootstrap>
+    <bootstrap thing="fArmMedium"></bootstrap>
+    <bootstrap thing="fArmShLgt"></bootstrap>
+    <bootstrap thing="fWepMart"></bootstrap>
+    <bootstrap thing="fArmShield"></bootstrap>
+    <bootstrap thing="fSimple"></bootstrap>
+    <bootstrap thing="fArmHeavy"></bootstrap>
+    <bootstrap thing="cPUExTeq">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUCFiStyl">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUMimSk">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPUMimProf">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPUBlkAtk">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUAccCmbt">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPUExtMem">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPUExtExam">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cPUMimFeat">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cPUCFStyle">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    </thing>
+  <thing id="cPUAdaWar" name="Adaptive Warrior" compset="ClassLevel" maxlimit="10">
+    <usesource source="pPsiUn"/>
+    <tag group="ClassType" tag="Prestige"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cHelpPU7"></bootstrap>
+    <link linkage="helper" thing="cHelpPU7"/>
+    </thing>
+  <thing id="cPUExTeq" name="Examine Technique" description="As long as an adaptive warrior maintains psionic focus, he is able to examine and remember the techniques of any creature within line of sight once per round as a move action. An adaptive warrior may examine up to his class level in\nenemies as long as all enemies are within line of sight. An adaptive warrior may choose to use this ability on allies in order to gain the benefits of his other class abilities. Once an adaptive warrior expends his psionic focus, he loses access to any techniques he examines until he uses this ability again. At 6th level, an adaptive warrior can use this ability as a swift action.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUCFiStyl" name="Counter Fighting Style" description="As long as the adaptive warrior has examined an enemy for at least one round using Examine Technique, he gains a competence bonus on attack and damage rolls made against that opponent equal to half his class level (minimum +1). This bonus lasts for one minute after using Examine Fighting stile, or until the adaptive warrior uses his Examine Technique ability on another target or has expended his psionic focus. At 4th level, an adaptive warrior may expend his psionic focus when attacking an enemy he has examined to automatically threaten a critical hit. He must still make a successful attack roll against that enemy, and still gains the competence bonus to attack and damage rolls on that attack. Subsequent attacks do not gain the competence bonus from this ability again until the adaptive warrior once again uses the Examine Technique ability.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUMimSk" name="Mimic Skill" description="As long as an adaptive warrior of 2nd level or higher maintains psionic focus, he may mimic any skill that uses Strength, Dexterity, or Constitution as its ability score modifier that he has seen used within the past minute by a creature targeted by Examine Technique. The adaptive warrior must have seen the skill being used by someone trained in the skill. The adaptive warrior is treated as having a number of skill ranks in the skill equal to his class level.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUMimProf" name="Mimick Proficiency" description="As long as an adaptive warrior of 3rd level or higher maintains psionic focus, he may wield any weapon as if he had proficiency with that weapon as long as he has used Examine Technique on someone with proficiency and wielding the weapon within the past minute.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="User" tag="Activation"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUBlkAtk" name="Block Attack" description="As long as an adaptive warrior of 5th level maintains psionic focus, he may, as an immediate action, attempt to block any attack, but not touch attack, made by an opponent he has used his Examine Technique ability on within the past minute.\nTo successfully block the attack, the adaptive warrior makes an attack roll against the enemy’s attack roll, adding his class level to the roll. If the adaptive warrior’s attack roll is equal to or greater than the enemy’s attack, the attack is blocked and the adaptive warrior takes no damage and suffers no effects from the attack. This ability may not be used against opponents two or more size categories larger than the adaptive warrior.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+  <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUAccCmbt" name="Accelerated Combat" description="An adaptive warrior of 6th level or higher may, by expending psionic focus, rapidly speed up any fighting style he has witnessed within the past minute. Once every ten minutes, when the adaptive warrior attacks an opponent that he has used\nExamine Technique on within the past minute, he may make two additional attacks at his highest attack bonus as part of a full attack action. In addition, he gains a +2 circumstance bonus to his Armor Class until the\nbeginning of his next turn.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUExtMem" name="Extended Memory" description="Once an adaptive warrior reaches 7th level, the length of time he can choose to remember a particular fighting style, skill, proficiency, or feat is increased to one hour. In addition, the adaptive warrior may as a swift action attempt to recall\na single fighting style, skill, proficiency, or feat even after expending psionic focus by making a successful Autohypnosis roll (DC 15 + the number of rounds since witnessing the style, skill, proficiency, or feat). The adaptive warrior must currently have psionic focus to use this ability.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUExtExam" name="Extended Examination" description="An adaptive warrior of 8th level or higher is able to examine creatures for longer periods of time to pick up more subtle aspects of a creature’s fighting style or abilities. By examining a creature using Examine Technique as a full-round \naction, an adaptive warrior’s competence bonus against that enemy for the following round increases to his class level when using his Counter Fighting Style and Block Attack abilities.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/> 
+    </thing>
+  <thing id="cPUMimFeat" name="Mimic Feat" description="As long as an adaptive warrior of 9th level or higher maintains psionic focus, he may mimic any Combat, Critical, or Psionic feat that he has seen used within the past minute by a creature targeted by Examine Technique. The feat must actually be a feat that is used as part of an action, such as Deep Impact, and not a passive ability, such as Psionic Body. The adaptive warrior must meet any prerequisites the feat may have to mimic it.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUCFStyle" name="Combine Fighting Styles" description="Upon achieving 10th level, an adaptive warrior is able to combine the different fighting styles he has examined in the past hour, creating an unpredictable, yet highly effective technique that baffles his opponents. As long as the adaptive warrior maintains psionic focus, has used his Examine Technique ability on at least two creatures in the past hour, and has not expended his psionic focus since using his Examine Technique, he can, as a swift action, treat his opponents as flat-footed when making attacks against them until the start of his next turn. This ability may be used a number of times per day equal to 4 + the adaptive warrior’s Intelligence modifier.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   </document>
