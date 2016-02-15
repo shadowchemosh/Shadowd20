@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document signature="Hero Lab Data">
   <fileinfo>
     <info_history><![CDATA[
@@ -31,8 +31,11 @@ July 16, 2012 - Tim Shadow
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="Helper" tag="NoPathSoc"/>
-    <eval phase="PostLevel" priority="100000">~Post-Levels 100,000
-hero.child[resTerrSel].field[resMax].value += 1</eval>
+    <eval phase="PostLevel" priority="100000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      hero.child[resTerrSel].field[resMax].value += 1]]></eval>
     <exprreq message="Favored terrain class ability required." iserror="no"><![CDATA[#resmax[resTerrSel] <> 0]]></exprreq>
     </thing>
   <thing id="cHelpRSL" name="Ranger, Spellless" compset="Class" uniqueness="unique">
@@ -60,35 +63,35 @@ hero.child[resTerrSel].field[resMax].value += 1</eval>
     <arrayval field="cCustTeTot" index="18" value="7"/>
     <arrayval field="cBonFtTot" index="1" value="1"/>
     <usesource source="s20PFCamp"/>
-    <tag group="ClassSkill" tag="skClimb" name="Climb" abbrev="Climb"/>
-    <tag group="ClassSkill" tag="skHandleAn" name="Handle Animal" abbrev="Handle Animal"/>
-    <tag group="ClassSkill" tag="skHeal" name="Heal" abbrev="Heal"/>
-    <tag group="ClassSkill" tag="skIntim" name="Intimidate" abbrev="Intimidate"/>
-    <tag group="ClassSkill" tag="skKnowDun" name="Knowledge: Dungeoneering" abbrev="Knowledge: Dungeoneering"/>
-    <tag group="ClassSkill" tag="skKnowGeog" name="Knowledge: Geography" abbrev="Knowledge: Geography"/>
-    <tag group="ClassSkill" tag="skKnowNat" name="Knowledge: Nature" abbrev="Knowledge: Nature"/>
-    <tag group="ClassSkill" tag="skPercep" name="Perception" abbrev="Perception"/>
-    <tag group="ClassSkill" tag="skRide" name="Ride" abbrev="Ride"/>
-    <tag group="ClassSkill" tag="skStealth" name="Stealth" abbrev="Stealth"/>
-    <tag group="ClassSkill" tag="skSurvival" name="Survival" abbrev="Survival"/>
-    <tag group="ClassSkill" tag="skSwim" name="Swim" abbrev="Swim"/>
-    <tag group="Classes" tag="RangerSL" name="Ranger, Spell-Less" abbrev="Ranger"/>
-    <tag group="ClsCountAs" tag="cHelpRgr" name="Ranger" abbrev="Ranger"/>
-    <tag group="CompList" tag="cHelpRgr" name="Rangers" abbrev="Rangers"/>
-    <tag group="Helper" tag="BonFtNoPre" name="BonFtNoPre" abbrev="BonFtNoPre"/>
-    <tag group="cAttack" tag="Good" name="Good" abbrev="Good"/>
-    <tag group="cFort" tag="Good" name="Good" abbrev="Good"/>
-    <tag group="ClassSkill" tag="Craft" name="All Craft Skills" abbrev="All Craft Skills"/>
-    <tag group="cRef" tag="Good" name="Good" abbrev="Good"/>
-    <tag group="cWill" tag="Poor" name="Poor" abbrev="Poor"/>
-    <tag group="fCategory" tag="Custom" name="Custom Feat" abbrev="Custom Feat"/>
-    <tag group="AgeColumn" tag="2" name="Column 2 (Bard, Fighter, Paladin, Ranger)" abbrev="Column 2 (Bard, Fighter, Paladin, Ranger)"/>
-    <tag group="AllowCust" tag="cHelpRgr" name="Ranger" abbrev="Ranger"/>
-    <tag group="AllowC2nd" tag="cHelpRgr" name="Ranger" abbrev="Ranger"/>
+    <tag group="ClassSkill" tag="skClimb"/>
+    <tag group="ClassSkill" tag="skHandleAn"/>
+    <tag group="ClassSkill" tag="skHeal"/>
+    <tag group="ClassSkill" tag="skIntim"/>
+    <tag group="ClassSkill" tag="skKnowDun"/>
+    <tag group="ClassSkill" tag="skKnowGeog"/>
+    <tag group="ClassSkill" tag="skKnowNat"/>
+    <tag group="ClassSkill" tag="skPercep"/>
+    <tag group="ClassSkill" tag="skRide"/>
+    <tag group="ClassSkill" tag="skStealth"/>
+    <tag group="ClassSkill" tag="skSurvival"/>
+    <tag group="ClassSkill" tag="skSwim"/>
     <tag group="ClassSkill" tag="skAcrobat"/>
+    <tag group="ClassSkill" tag="Profession"/>
+    <tag group="Classes" tag="RangerSL"/>
+    <tag group="ClsCountAs" tag="cHelpRgr"/>
+    <tag group="CompList" tag="cHelpRgr"/>
+    <tag group="Helper" tag="BonFtNoPre"/>
+    <tag group="ClassSkill" tag="Craft"/>
+    <tag group="cAttack" tag="Good"/>
+    <tag group="cFort" tag="Good"/>
+    <tag group="cRef" tag="Good"/>
+    <tag group="cWill" tag="Poor"/>
+    <tag group="fCategory" tag="Custom"/>
+    <tag group="AllowCust" tag="cHelpRgr"/>
+    <tag group="AllowC2nd" tag="cHelpRgr"/>
     <tag group="AlterClass" tag="cHelpRgr"/>
     <tag group="FtCountAs" tag="Ranger"/>
-    <tag group="ClassSkill" tag="Profession" name="All Profession Skills" abbrev="All Profession Skills"/>
+    <tag group="AgeColumn" tag="2" name="Column 2 (Bard, Fighter, Paladin, Ranger)" abbrev="Column 2 (Bard, Fighter, Paladin, Ranger)"/>
     <bootstrap thing="cEvasion">
       <autotag group="ClSpecWhen" tag="9"/>
       <autotag group="AddReq" tag="ArmorMed"/>
@@ -164,168 +167,171 @@ hero.child[resTerrSel].field[resMax].value += 1</eval>
       <autotag group="ClSpecWhen" tag="12"/>
       </bootstrap>
     <eval phase="First" priority="400"><![CDATA[
-#appenddesc[cRgrComp,"{B}Spell-less Ranger:{/b} Your effective druid level is equal to your full spell-less ranger level."]
+      #appenddesc[cRgrComp,"{B}Spell-less Ranger:{/b} Your effective druid level is equal to your full spell-less ranger level."]
 
-~ If Animal Companion not chosen then get out now
-doneif (hero.childlives[cRgrComp] = 0) 
-~ Spellless ranger no longer gets -3 adjustment to animal
-hero.child[cAnimClass].field[CompClAdj].value = 0]]></eval>
+      ~ If Animal Companion not chosen then get out now
+      doneif (hero.childlives[cRgrComp] = 0) 
+      
+      ~ Spellless ranger no longer gets -3 adjustment to animal
+      hero.child[cAnimClass].field[CompClAdj].value = 0]]></eval>
     </thing>
   <thing id="cRangerSL" name="Ranger, Spellless" description="The spell-less ranger is an alternate class, much like the samurai, ninja, and anti-paladin. Alternate classes are standalone classes whose basic ideas are very close to an established base class, yet whose required alterations would be too expansive to detail in an archetype. An alternate class operates exactly like a base class, except that a character who takes a level in an alternate class can never take a level in its associated class - in this case, a spell-less ranger cannot also take levels in the {i}Pathfinder RPG Core Rulebook{/i} ranger class." compset="ClassLevel" maxlimit="20">
     <usesource source="s20PFCamp"/>
     <tag group="ClassType" tag="Normal"/>
     <bootstrap thing="cHelpRSL"></bootstrap>
     <link linkage="helper" thing="cHelpRSL"/>
-    <eval phase="First" priority="500">~ We need to trick the Combat Styles (xxx) to see use as a
+    <eval phase="First" priority="500"><![CDATA[
+      ~ We need to trick the Combat Styles (xxx) to see use as a
       ~ ranger levels so we will temp add the classes here and then
       ~ remove them after the First/1000 when the Combat Style 
       ~ Things check for ranger levels.
-      perform hero.assign[Classes.Ranger]</eval>
-    <eval phase="First" priority="10050" index="2">~ Here we remove the tags now that the combat style has
+      perform hero.assign[Classes.Ranger]]]></eval>
+    <eval phase="First" priority="10050" index="2"><![CDATA[
+      ~ Here we remove the tags now that the combat style has
       ~ run at First/1000.
-      perform hero.delete[Classes.Ranger]</eval>
+      perform hero.delete[Classes.Ranger]]]></eval>
     </thing>
-  <thing id="cRslStAtt" name="Stealth Attack" description="If a ranger can catch an opponent when he is unable to defend himself effectively from his attack, he can strike a vital spot for extra damage. The ranger&#146;s attack deals extra damage any time his target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the ranger flanks his target. This extra damage is 1d6 at 2nd level, and it increases by 1d6 every four ranger levels thereafter. Should the ranger score a critical hit with a stealth attack, this extra damage is not multiplied. Ranged attacks can count as stealth attacks only if the target is within 30 ft. \n\nStealth attacks are possible only when the ranger wears light or no armor. A ranger may only use this ability while in a favored terrain or against a favored enemy." compset="ClSpecial">
+  <thing id="cRslStAtt" name="Stealth Attack" description="If a ranger can catch an opponent when he is unable to defend himself effectively from his attack, he can strike a vital spot for extra damage. The ranger’s attack deals extra damage any time his target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the ranger flanks his target. This extra damage is 1d6 at 2nd level, and it increases by 1d6 every four ranger levels thereafter. Should the ranger score a critical hit with a stealth attack, this extra damage is not multiplied. Ranged attacks can count as stealth attacks only if the target is within 30 ft. \n\nStealth attacks are possible only when the ranger wears light or no armor. A ranger may only use this ability while in a favored terrain or against a favored enemy." compset="ClSpecial">
     <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
     <tag group="Helper" tag="UseOwnLev" name="UseOwnLev" abbrev="UseOwnLev"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
-~Set the list name
-field[listname].text = field[thingname].text & " +" & field[xIndex].value & "d6"
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " +" & field[xIndex].value & "d6"
 
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Calc the number of dice
-field[abValue].value += field[xCount].value
-~ Calc the dice size
-field[abValue2].value += 6
-~ Calc the dice size
-field[abValue3].value += 30
-~ Set the live name
-field[livename].text = field[thingname].text & " +" & field[abValue].value & "d" & field[abValue2].value
-~ Set the summary
-field[abSumm].text = "+" & field[abValue].value & "d" & field[abValue2].value & " damage vs Fav Enemy or in Fav Terrain."
+      ~ Calc the number of dice
+      field[abValue].value += field[xCount].value
+      ~ Calc the dice size
+      field[abValue2].value += 6
+      ~ Calc the dice size
+      field[abValue3].value += 30
+      ~ Set the live name
+      field[livename].text = field[thingname].text & " +" & field[abValue].value & "d" & field[abValue2].value
+      ~ Set the summary
+      field[abSumm].text = "+" & field[abValue].value & "d" & field[abValue2].value & " damage vs Fav Enemy or in Fav Terrain."
 
-~ If we are different than 30ft range then display the value
-If (field[abValue3].value <> 30) Then
-   field[livename].text = field[name].text & ", " & field[abValue3].value & "ft"
-Endif]]></eval>
+      ~ If we are different than 30ft range then display the value
+      If (field[abValue3].value <> 30) Then
+         field[livename].text = field[name].text & ", " & field[abValue3].value & "ft"
+      Endif]]></eval>
     </thing>
-  <thing id="cRslNatHea" name="Nature&#146;s Healing" description="Beginning at 3rd level, your extensive knowledge regarding the flora and fauna of your favored terrains gives you a +2 bonus to all Heal skill checks made when in one of those favored terrains.\n\nIn addition, as long as you are in one of your favored terrains when using the Heal skill, you also gain the following benefits: \n\n{i}Long-Term Care:{/i} If your Heal check is successful, the patient recovers hit points or ability score points lost to ability damage at three times the normal rate: 3 hp per character level for a full eight hours of rest in a day, or 6 hp per character level for each full day of complete rest; 3 ability score points for a full eight hours of rest in a day, or 6 ability score points for each full day of complete rest. The various items and supplies necessary (bandages, salves, and so on) are easy to come by in your favored terrains.\n\n{i}Treat Deadly Wounds:{/i} When treating deadly wounds in any of your favored terrains, you can restore an additional 1d6 hp plus 1 hp for every three spell-less ranger levels you possess. You don&apos;t need to use a healer&apos;s kit to treat wounds when in one of your favored terrains and receive no penalties for not having such an item.\n\n{i}Treat Poison:{/i} If your Heal check exceeds the DC of the poison by 5 or more, the patient receives a +8 competence bonus on his saving throw against the poison.\n\n{i}Treat Disease:{/i} If your Heal check exceeds the DC of the disease by 5 or more, the patient receives a +8 competence bonus on his saving throw against the disease.\n\n{B}Note:{/b} The bonus to heal is tied to the adjustment &quot;Ranger: Favored Terrain&quot; found on the &quot;Adjust&quot; tab under &quot;Conferred Ability Adjustments&quot;.  When that is turned on you will in addition get a +2 bonus to the heal skill." compset="ClSpecial">
+  <thing id="cRslNatHea" name="Nature’s Healing" description="Beginning at 3rd level, your extensive knowledge regarding the flora and fauna of your favored terrains gives you a +2 bonus to all Heal skill checks made when in one of those favored terrains.\n\nIn addition, as long as you are in one of your favored terrains when using the Heal skill, you also gain the following benefits: \n\n{i}Long-Term Care:{/i} If your Heal check is successful, the patient recovers hit points or ability score points lost to ability damage at three times the normal rate: 3 hp per character level for a full eight hours of rest in a day, or 6 hp per character level for each full day of complete rest; 3 ability score points for a full eight hours of rest in a day, or 6 ability score points for each full day of complete rest. The various items and supplies necessary (bandages, salves, and so on) are easy to come by in your favored terrains.\n\n{i}Treat Deadly Wounds:{/i} When treating deadly wounds in any of your favored terrains, you can restore an additional 1d6 hp plus 1 hp for every three spell-less ranger levels you possess. You don&apos;t need to use a healer&apos;s kit to treat wounds when in one of your favored terrains and receive no penalties for not having such an item.\n\n{i}Treat Poison:{/i} If your Heal check exceeds the DC of the poison by 5 or more, the patient receives a +8 competence bonus on his saving throw against the poison.\n\n{i}Treat Disease:{/i} If your Heal check exceeds the DC of the disease by 5 or more, the patient receives a +8 competence bonus on his saving throw against the disease.\n\n{B}Note:{/b} The bonus to heal is tied to the adjustment &quot;Ranger: Favored Terrain&quot; found on the &quot;Adjust&quot; tab under &quot;Conferred Ability Adjustments&quot;.  When that is turned on you will in addition get a +2 bonus to the heal skill." compset="ClSpecial">
     <tag group="SpecType" tag="Skill" name="Skill Modifiers" abbrev="Skill Modifiers"/>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
     <eval phase="PostLevel" priority="25000"><![CDATA[
-var Bonus as number
-Bonus = round(field[xAllLev].value/3,0,-1)
+      var Bonus as number
+      Bonus = round(field[xAllLev].value/3,0,-1)
 
-~Set the list name
-field[listname].text = field[thingname].text & " +" & field[xIndex].value & "d6"
-~ If we have a bonus add to list name
-If (Bonus <> 0) Then
-  field[listname].text &= signed(Bonus)
-Endif
+      ~Set the list name
+      field[listname].text = field[thingname].text & " +" & field[xIndex].value & "d6"
+      ~ If we have a bonus add to list name
+      If (Bonus <> 0) Then
+        field[listname].text &= signed(Bonus)
+      Endif
 
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Calc the number of dice
-field[abValue].value += 1
-~ Calc the dice size
-field[abValue2].value += 6
-~ Calc the bonus
-field[abValue3].value += round(field[xAllLev].value/3,0,-1)
-~ Set the live name
-field[livename].text = field[thingname].text & " +" & field[abValue].value & "d" & field[abValue2].value
-~ If we have a bonus add to live name
-If (field[abValue3].value <> 0) Then
-  field[livename].text = field[name].text & signed(field[abValue3].value)
-Endif]]></eval>
+      ~ Calc the number of dice
+      field[abValue].value += 1
+      ~ Calc the dice size
+      field[abValue2].value += 6
+      ~ Calc the bonus
+      field[abValue3].value += round(field[xAllLev].value/3,0,-1)
+      ~ Set the live name
+      field[livename].text = field[thingname].text & " +" & field[abValue].value & "d" & field[abValue2].value
+      ~ If we have a bonus add to live name
+      If (field[abValue3].value <> 0) Then
+        field[livename].text = field[name].text & signed(field[abValue3].value)
+      Endif]]></eval>
     <eval phase="PostLevel" priority="25000" index="2"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
-~ if favored terrain adjustmet not found get out now!
-doneif (hero.childlives[pFavorTerr] <> 1)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ if favored terrain adjustmet not found get out now!
+      doneif (hero.childlives[pFavorTerr] <> 1)
 
-~ If Ranger: Favored Terrain is on then give bonus to Heal skill
-If (hero.childfound[pFavorTerr].field[pIsOn].value = 1) Then
-  ~ +2 to Heal
-  #skillbonus[skHeal] += 2
-Endif]]></eval>
+      ~ If Ranger: Favored Terrain is on then give bonus to Heal skill
+      If (hero.childfound[pFavorTerr].field[pIsOn].value = 1) Then
+        ~ +2 to Heal
+        #skillbonus[skHeal] += 2
+      Endif]]></eval>
     </thing>
-  <thing id="cRslFastMo" name="Ranger Fast Movement" description="When in a Favored Terrain, a ranger&#146;s base speed increases by +10 ft. at 5th level. \n\nAt 12th level, this bonus increases to +20 ft. These bonuses apply only when you wear medium, light, or no armor.\n\n{B}Note:{/b} The bonus is tied to the adjustment &quot;Ranger: Favored Terrain&quot; found on the &quot;Adjust&quot; tab under &quot;Conferred Ability Adjustments&quot;.  When that is turned on you will in gain the additional movement." compset="ClSpecial">
+  <thing id="cRslFastMo" name="Ranger Fast Movement" description="When in a Favored Terrain, a ranger’s base speed increases by +10 ft. at 5th level. \n\nAt 12th level, this bonus increases to +20 ft. These bonuses apply only when you wear medium, light, or no armor.\n\n{B}Note:{/b} The bonus is tied to the adjustment &quot;Ranger: Favored Terrain&quot; found on the &quot;Adjust&quot; tab under &quot;Conferred Ability Adjustments&quot;.  When that is turned on you will in gain the additional movement." compset="ClSpecial">
     <tag group="SpecType" tag="Movement" name="Movement" abbrev="Movement"/>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-var Bonus as number
-Bonus = field[xIndex].value * 10
+      var Bonus as number
+      Bonus = field[xIndex].value * 10
 
-~Set the list name
-field[listname].text = field[thingname].text & " +" & Bonus & "ft"
+      ~Set the list name
+      field[listname].text = field[thingname].text & " +" & Bonus & "ft"
 
-~ If we have on heavy armor then disable ourself
-if (hero.tagis[Hero.HeavyArmor] = 1) then
-  perform assign[Helper.SpcDisable]
-endif
+      ~ If we have on heavy armor then disable ourself
+      if (hero.tagis[Hero.HeavyArmor] = 1) then
+        perform assign[Helper.SpcDisable]
+      endif
 
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Calc the movement bonus
-field[abValue].value += field[xCount].value * 10
-~ Set the live name
-field[livename].text = field[thingname].text & " +" & field[abValue].value & "ft"
+      ~ Calc the movement bonus
+      field[abValue].value += field[xCount].value * 10
+      ~ Set the live name
+      field[livename].text = field[thingname].text & " +" & field[abValue].value & "ft"
 
-~ only perform the rest on the first copy
-doneif (tagis[Helper.FirstCopy] <> 1)
-~ if favored terrain adjustmet not found get out now!
-doneif (hero.childlives[pFavorTerr] <> 1)
+      ~ only perform the rest on the first copy
+      doneif (tagis[Helper.FirstCopy] <> 1)
+      ~ if favored terrain adjustmet not found get out now!
+      doneif (hero.childlives[pFavorTerr] <> 1)
 
-~ If Ranger: Favored Terrain is on then give bonus to Heal skill
-If (hero.childfound[pFavorTerr].field[pIsOn].value = 1) Then
-  ~ Bonus to Movement
-  hero.child[Speed].field[tSpeed].value += field[abValue].value
-Endif]]></eval>
+      ~ If Ranger: Favored Terrain is on then give bonus to Heal skill
+      If (hero.childfound[pFavorTerr].field[pIsOn].value = 1) Then
+        ~ Bonus to Movement
+        hero.child[Speed].field[tSpeed].value += field[abValue].value
+      Endif]]></eval>
     </thing>
   <thing id="cRslFavCri" name="Favored Enemy Critical" description="When scoring a critical threat on one of your favored enemies, gain +4 bonus to the roll made to confirm the critical." compset="CustomSpec" summary="+4 to confirm a critical vs favored enemy." uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="Tertiary" name="Tertiary" abbrev="Tertiary"/>
+    <tag group="Helper" tag="Tertiary"/>
     <tag group="SpecSource" tag="cHelpRSL"/>
-    <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
-    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="SpecType" tag="Attack"/>
+    <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="KoboldPres"/>
     </thing>
   <thing id="cRslLowLig" name="Low-Light Vision" description="A ranger with this ability gains low-light vision. If he already has low-light vision, this ability has no additional effect." compset="CustomSpec" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="Tertiary" name="Tertiary" abbrev="Tertiary"/>
+    <tag group="Helper" tag="Tertiary"/>
     <tag group="SpecSource" tag="cHelpRSL"/>
-    <tag group="SpecType" tag="Sense" name="Sense" abbrev="Sense"/>
-    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
+    <tag group="SpecType" tag="Sense"/>
+    <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <bootstrap thing="raLowLight"></bootstrap>
     </thing>
   <thing id="cRslBonFea" name="Ranger Feat" description="Instead of a talent, you may choose a feat for which you qualify from your chosen combat style or from the following list: Additional Favored Terrain*, Additional Favored Enemy*, Animal Affinity, Athletic, Coordinated Companion*, Dodge, Diehard, Favored Defense**, Favored Terrain Expert*, Favored Terrain Master*, Greater Animal Companion*, Improved Animal Companion*, Improved Nature&apos;s Healing*, Increased Devotion*, Invulnerable Animal Companion*, Natural Tracker*, Nimble Moves, Run, Savage Terrain Warrior*, Self-Sufficient, Slayer&apos;s Knack***, Stealthy, Sudden Strike*, Toughness." compset="CustomSpec" summary="You gain a bonus ranger feat." uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="Tertiary" name="Tertiary" abbrev="Tertiary"/>
+    <tag group="Helper" tag="Tertiary"/>
     <tag group="SpecSource" tag="cHelpRSL"/>
-    <tag group="fInclude" tag="fAnimAff" name="Animal Affinity" abbrev="Animal Affinity"/>
-    <tag group="fInclude" tag="fAthletic" name="Athletic" abbrev="Athletic"/>
-    <tag group="fInclude" tag="fDiehard" name="Diehard" abbrev="Diehard"/>
-    <tag group="fInclude" tag="fDodge" name="Dodge" abbrev="Dodge"/>
-    <tag group="fInclude" tag="fNimbMove" name="Nimble Moves" abbrev="Nimble Moves"/>
-    <tag group="fInclude" tag="fRun" name="Run" abbrev="Run"/>
-    <tag group="fInclude" tag="fSelfSuff" name="Self-sufficient" abbrev="Self-sufficient"/>
-    <tag group="fInclude" tag="fStealthy" name="Stealthy" abbrev="Stealthy"/>
-    <tag group="fInclude" tag="fToughness" name="Toughness" abbrev="Toughness"/>
-    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="fInclude" tag="fAnimAff"/>
+    <tag group="fInclude" tag="fAthletic"/>
+    <tag group="fInclude" tag="fDiehard"/>
+    <tag group="fInclude" tag="fDodge"/>
+    <tag group="fInclude" tag="fNimbMove"/>
+    <tag group="fInclude" tag="fRun"/>
+    <tag group="fInclude" tag="fSelfSuff"/>
+    <tag group="fInclude" tag="fStealthy"/>
+    <tag group="fInclude" tag="fToughness"/>
+    <tag group="Helper" tag="SpecUp"/>
     <tag group="fInclude" tag="fKQAddFavE"/>
     <tag group="fInclude" tag="fKQAddFavT"/>
     <tag group="fInclude" tag="fKQCordAC"/>
@@ -342,8 +348,9 @@ Endif]]></eval>
     <tag group="fInclude" tag="fSlayeKnac"/>
     <tag group="fInclude" tag="fKQSudnStr"/>
     <tag group="ProductId" tag="KoboldPres"/>
-    <eval phase="PreLevel" priority="10000">~ Add to Ranger feats allowed
-linkage[table].field[cBonFtMax].value +=1</eval>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ Add to Ranger feats allowed & 
+      linkage[table].field[cBonFtMax].value +=1]]></eval>
     </thing>
   <thing id="cRslTrapFi" name="Trap Finding" description="When in a favored terrain, a ranger with this ability can use the Perception skill to locate traps (see rogue)." compset="CustomSpec" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
@@ -353,12 +360,12 @@ linkage[table].field[cBonFtMax].value +=1</eval>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ Calc bonus at 1/2 level
-field[abValue].value += round(field[xTotalLev].value/2,0,-1) 
-~ Set situational text on Perception skill
-#situational[hero.childfound[skPercep],"+" & field[abValue].value & " to locate traps in your favored terrain",field[name].text]
-~ Set the live name
-field[livename].text = field[name].text & " " & signed(field[abValue].value)]]></eval>
+      ~ Calc bonus at 1/2 level
+      field[abValue].value += round(field[xTotalLev].value/2,0,-1) 
+      ~ Set situational text on Perception skill
+      #situational[hero.childfound[skPercep],"+" & field[abValue].value & " to locate traps in your favored terrain",field[name].text]
+      ~ Set the live name
+      field[livename].text = field[name].text & " " & signed(field[abValue].value)]]></eval>
     </thing>
   <thing id="fKQFavTerr" name="Favored Terrain Expert" description="You are especially at home in a specific favored terrain.\n\n{b}Prerequisite:{/b} Favored terrain class ability\n\n{b}Benefit:{/b} You may specify one of your favored terrains. While in that terrain, you gain an additional +2 bonus to initiative and to Knowledge (geography), Perception, Stealth, and Survival skill checks.\n\n{b}Note:{/b} The scripting for this only gives you an upgrade to apply to your Favored Terrain.  You must manually choose the Favored Terrain to upgrade." compset="Feat" summary="Gain an additional +2 bonus to a favored terrain." uniqueness="useronce">
     <comment>KQ#11</comment>
@@ -367,11 +374,11 @@ field[livename].text = field[name].text & " " & signed(field[abValue].value)]]><
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Give a terrain upgrade
-hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
+      ~ Give a terrain upgrade
+      hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <exprreq message="Favored terrain class ability required." iserror="no"><![CDATA[#resmax[resTerrSel] <> 0]]></exprreq>
     </thing>
   <thing id="cRslTrack" name="Track" description="A ranger adds half his level (minimum 1) to Survival skill checks made to follow or identify tracks." compset="ClSpecial" summary="Bonus to all survival checks made to follow or identify tracks.">
@@ -409,8 +416,11 @@ hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="Helper" tag="NoPathSoc"/>
-    <eval phase="PostLevel" priority="100000">~Post-Levels 100,000
-hero.child[resEnemSel].field[resMax].value += 1</eval>
+    <eval phase="PostLevel" priority="100000"><![CDATA[
+      ~ If we're disabled, do nothing & 
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      hero.child[resEnemSel].field[resMax].value += 1]]></eval>
     <exprreq message="Favored enemy class ability required." iserror="no"><![CDATA[#resmax[resEnemSel] <> 0]]></exprreq>
     </thing>
   <thing id="arKQDuaRSL" name="Dual-Style" description="Not all rangers spend the majority of their time learning about and hunting down favored enemies.  Dual-style rangers instead dedicate untold hours to mastering a second combat style.  Such rangers are therefore extremely well prepared to hunt down and combat any foe that might cross their path, not just a select group of favored enemies." compset="ClassVary" uniqueness="unique">
@@ -483,29 +493,11 @@ hero.child[resEnemSel].field[resMax].value += 1</eval>
       </bootstrap>
     <link linkage="varies" thing="cHelpRSL"/>
     <eval phase="Final" priority="50000"><![CDATA[
-#appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 11th level, your animal companion can benefit from your quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability.  The animal companion must remain within 30 ft. of you, and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]
+      #appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 11th level, your animal companion can benefit from your quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability.  The animal companion must remain within 30 ft. of you, and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]
 
-#appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 19th level, your animal companion may also benefit from the improved quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability. The animal companion must remain within 30 ft. of you and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]]]></eval>
+      #appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 19th level, your animal companion may also benefit from the improved quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability. The animal companion must remain within 30 ft. of you and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]]]></eval>
     </thing>
   <thing id="fKQCordAC" name="Coordinated Companion" description="You are able to coordinate with your animal companion extraordinarily well during combat.\n\n{b}Prerequisite:{/b} Hunter&apos;s bond or nature&apos;s bond class feature, animal companion.\n\n{b}Benefit{/b}: Your animal companion is considered to have any teamwork feat you possess.  Your animal companion must remain within 30ft. of you and must be able to see you, hear you, or otherwise be aware of your position in order to be treated as having your teamwork feats.  Your animal companion can only coordinate with you in this way.\n\n{b}Note:{/b} You must manually add the Teamwork feat to your animal companion, this simply gives it an additional feat to do so.  Teamwork feats taken this way only applies between the Hero and it&apos;s Animal Companion." compset="Feat" summary="Your animal companion is considered to have any teamwork feat you possess." uniqueness="useronce">
-    <comment><![CDATA[Tim Shadow
--Note I removed the script that gives bonus feats to the AC. I just don't feel this is the right thing to do...
-
-
-
-
-
-
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
-
-~ Calc the number of team work feats we have
-field[abValue].value += hero.tagcount[fCategory.Teamwork]
-
-~ Increase the animal companions number of feat
-if (hero.childlives[cAnimComp] <> 0) then
-   hero.childfound[cAnimComp].minion.child[resFeat].field[resMax].value += field[abValue].value
-endif]]></comment>
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="Helper" tag="NoPathSoc"/>
@@ -529,15 +521,15 @@ endif]]></comment>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
-~ If we're not activated, just get out now
-doneif (field[abilActive].value = 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're not activated, just get out now
+      doneif (field[abilActive].value = 0)
 
-~ Give a -2 penalty to all range weapons
-foreach pick in hero from BaseWep where "wCategory.Range?"
-   eachpick.field[Penalty].value = -2
-nexteach]]></eval>
+      ~ Give a -2 penalty to all range weapons
+      foreach pick in hero from BaseWep where "wCategory.Range?"
+         eachpick.field[Penalty].value = -2
+      nexteach]]></eval>
     <exprreq message="Point Blank Shot required."><![CDATA[#hasfeat[fPointBlnk] <> 0]]></exprreq>
     <exprreq message="Precise Shot required."><![CDATA[#hasfeat[fPrecShot] <> 0]]></exprreq>
     </thing>
@@ -547,10 +539,11 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
-~ Give a bonus Ranger Talent
-hero.childfound[cHelpRSL].field[cGiveSp3rd].value += 1]]></eval>
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~ Give a bonus Ranger Talent
+      hero.childfound[cHelpRSL].field[cGiveSp3rd].value += 1]]></eval>
     <exprreq message="Ranger talent class feature required."><![CDATA[hero.childfound[cHelpRSL].field[cGiveSp3rd].value - #hasfeat[fExRagePow] > 0]]></exprreq>
     </thing>
   <thing id="fKQFavTerM" name="Favored Terrain Master" description="You have an intimate, almost spiritual, connection to a specific favored terrain.\n\n{b}Prerequisite{/b}: Favored Terrain Expert.\n\n{b}Benefit{/b}: The bonuses received from the Favored Terain Expert increase to +4.  You are also able to guide and direct others in this terrain.  As a standard action, you may grant all allies within 30 ft. of you that can see or hear you a +2 bonus on initiative checks and Perception, Stealth, and Survival skill checks.  Also, as long as they travel with you, your allies leave no trail and can&apos;t be tracked.  You can still choose for the group to leave a trail, or even only specific members of the group to leave a trail, if you so desire.  These benefits last a number of rounds equal to your ranger.\n\n{b}Note:{/b} The scripting for this only gives you an upgrade to apply to your Favored Terrain.  You must manually choose the Favored Terrain that you applied Favored Terrain Expert to." compset="Feat" summary="The bonuses received from the Favored Terain Expert increase to +4." uniqueness="useronce">
@@ -559,11 +552,11 @@ hero.childfound[cHelpRSL].field[cGiveSp3rd].value += 1]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Give a terrain upgrade
-hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
+      ~ Give a terrain upgrade
+      hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <exprreq message="Favored Terrain Expert feat required."><![CDATA[#hasfeat[fKQFavTerr] <> 0]]></exprreq>
     </thing>
   <thing id="fKQGrtrAC" name="Greater Animal Companion" description="Your animal companion is a truly exceptional creature.\n\n{b}Prerequisites{/b}: Improved Animal Companion feat, stealth attack and fast movement class features.\n\n{b}Benefit{/b}: Your animal companion receives a bonus feat.  This bonus feat should be selected from those listed under {i}Animal Feats: see druid{/i}.  If the animal companion has an Intelligence of 3 or higher, it can instead select any feat it is physically capable of using.\n\nYou may also spend a move action to grant your animal companion the benefits of your stealth attack and fast movement class features.  These bonuses last for a number of rounds equal to double your Wisdom modifier (minimum 1).  Your animal companion must remain within 30 ft. of you and be able to see, hear, or otherwise sense you in order to receive your stealth attack and fast movement bonuses." compset="Feat" summary="Your animal companion receives a bonus feat." uniqueness="useronce">
@@ -573,20 +566,20 @@ hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <tag group="Usage" tag="Round"/>
     <tag group="User" tag="Tracker"/>
     <eval phase="First" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Find all ranger animal companions
-foreach pick in hero from BaseCompan
-  ~ Give bonus to Devotion
-  eachpick.minion.child[resFeat].field[resMax].value += 1
-nexteach]]></eval>
+      ~ Find all ranger animal companions
+      foreach pick in hero from BaseCompan
+        ~ Give bonus to Devotion
+        eachpick.minion.child[resFeat].field[resMax].value += 1
+      nexteach]]></eval>
     <eval phase="PostAttr" priority="10000" index="2"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Double our Wis Bonus minimum of 1
-field[trkMax].value += maximum(#attrmod[aWIS] * 2,1)]]></eval>
+      ~ Double our Wis Bonus minimum of 1
+      field[trkMax].value += maximum(#attrmod[aWIS] * 2,1)]]></eval>
     <exprreq message="Stealth Attack class feature required."><![CDATA[#hasability[cRslStAtt] <> 0]]></exprreq>
     <exprreq message="Fast Movement class feature required."><![CDATA[#hasability[cRslFastMo] <> 0]]></exprreq>
     <exprreq message="Improved Animal Companion feat required."><![CDATA[#hasfeat[fKQImprAC] <> 0]]></exprreq>
@@ -604,28 +597,28 @@ field[trkMax].value += maximum(#attrmod[aWIS] * 2,1)]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fShowWhat" tag="Attributes"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Find all ranger animal companions
-foreach pick in hero from BaseCompan
-  ~ Give +2 Natural AC
-  eachpick.minion.child[ArmorClass].field[tACNatural].value += 2
-  ~ Based on the selected attribute give a +1 bonus 
-  if (field[usrChosen1].chosen.tagis[thingid.aSTR] <> 0) then
-    eachpick.minion.child[aSTR].field[aNormMod].value += 1
-  elseif (field[usrChosen1].chosen.tagis[thingid.aDEX] <> 0) then
-    eachpick.minion.child[aDEX].field[aNormMod].value += 1
-  elseif (field[usrChosen1].chosen.tagis[thingid.aCHA] <> 0) then
-    eachpick.minion.child[aCHA].field[aNormMod].value += 1
-  elseif (field[usrChosen1].chosen.tagis[thingid.aCON] <> 0) then
-    eachpick.minion.child[aCON].field[aNormMod].value += 1
-  elseif (field[usrChosen1].chosen.tagis[thingid.aINT] <> 0) then
-    eachpick.minion.child[aINT].field[aNormMod].value += 1
-  elseif (field[usrChosen1].chosen.tagis[thingid.aWIS] <> 0) then
-    eachpick.minion.child[aWIS].field[aNormMod].value += 1
-  endif
-nexteach]]></eval>
+      ~ Find all ranger animal companions
+      foreach pick in hero from BaseCompan
+        ~ Give +2 Natural AC
+        eachpick.minion.child[ArmorClass].field[tACNatural].value += 2
+        ~ Based on the selected attribute give a +1 bonus 
+        if (field[usrChosen1].chosen.tagis[thingid.aSTR] <> 0) then
+          eachpick.minion.child[aSTR].field[aNormMod].value += 1
+        elseif (field[usrChosen1].chosen.tagis[thingid.aDEX] <> 0) then
+          eachpick.minion.child[aDEX].field[aNormMod].value += 1
+        elseif (field[usrChosen1].chosen.tagis[thingid.aCHA] <> 0) then
+          eachpick.minion.child[aCHA].field[aNormMod].value += 1
+        elseif (field[usrChosen1].chosen.tagis[thingid.aCON] <> 0) then
+          eachpick.minion.child[aCON].field[aNormMod].value += 1
+        elseif (field[usrChosen1].chosen.tagis[thingid.aINT] <> 0) then
+          eachpick.minion.child[aINT].field[aNormMod].value += 1
+        elseif (field[usrChosen1].chosen.tagis[thingid.aWIS] <> 0) then
+          eachpick.minion.child[aWIS].field[aNormMod].value += 1
+        endif
+      nexteach]]></eval>
     <exprreq message="Hunter&apos;s bond or nature&apos;s bond class ability required."><![CDATA[#hasability[cDrdComp] + #hasability[cRgrComp] <> 0]]></exprreq>
     <exprreq message="Animal Companion required."><![CDATA[hero.tagis[CompAvail.cAnimComp] <> 0]]></exprreq>
     </thing>
@@ -637,15 +630,15 @@ nexteach]]></eval>
     <tag group="Helper" tag="NoPathSoc"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <eval phase="PostLevel" priority="20000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Calc bonus to number of times to use Deadly Wounds
-field[abValue].value += round(#levelcount[RangerSL]/2,0,-1)
-field[trkMax].value += field[abValue].value
+      ~ Calc bonus to number of times to use Deadly Wounds
+      field[abValue].value += round(#levelcount[RangerSL]/2,0,-1)
+      field[trkMax].value += field[abValue].value
 
-~ Increase Natures Healing to level instead of 1/3 level bonus
-#value3[cRslNatHea] += #levelcount[RangerSL] - round(#levelcount[RangerSL]/3,0,-1)]]></eval>
+      ~ Increase Natures Healing to level instead of 1/3 level bonus
+      #value3[cRslNatHea] += #levelcount[RangerSL] - round(#levelcount[RangerSL]/3,0,-1)]]></eval>
     <exprreq message="Nature&apos;s Healing class feature required."><![CDATA[#hasability[cRslNatHea] <> 0]]></exprreq>
     </thing>
   <thing id="fKQImpDA" name="Improved Deadly Accuracy" description="You have even deadlier accuracy with your ranged weapon attacks.\n\n{b}Prerequisites{/b}: Dex 15, Deadly Accuracy, base attack bonus +9.\n\n{b}Benefit{/b}: When dealing damage with a ranged weapon, you can reroll any result of 1 or 2 on your weapon&apos;s damage dice.  Only weapon attacks that require an attack roll benefit from this feat.  Any 1 or 2 resulting from the reroll should be treated as a roll of 3 instead." compset="Feat" summary="With a ranged weapon reroll any result of 1 or 2 on your weapon&apos;s damage dice." uniqueness="useronce">
@@ -664,20 +657,20 @@ field[trkMax].value += field[abValue].value
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Count half our ranger levels
-field[abValue].value += round(hero.tagcount[ClsCountAs.cHelpRgr]/2,0,-1)
+      ~ Count half our ranger levels
+      field[abValue].value += round(hero.tagcount[ClsCountAs.cHelpRgr]/2,0,-1)
 
-~ Find all ranger animal companions
-foreach pick in hero from BaseCompan
-  ~ Check to make sure we are live
-  If (eachpick.minion.childlives[cAnimDevo] <> 0) Then
-    ~ Give bonus to Devotion
-    eachpick.minion.childfound[cAnimDevo].field[abValue].value += field[abValue].value
-  Endif
-nexteach]]></eval>
+      ~ Find all ranger animal companions
+      foreach pick in hero from BaseCompan
+        ~ Check to make sure we are live
+        If (eachpick.minion.childlives[cAnimDevo] <> 0) Then
+          ~ Give bonus to Devotion
+          eachpick.minion.childfound[cAnimDevo].field[abValue].value += field[abValue].value
+        Endif
+      nexteach]]></eval>
     <exprreq message="Ranger level 6+ required."><![CDATA[#featlevelcount[Ranger] >= 6]]></exprreq>
     <exprreq message="Improved Animal Companion feat required."><![CDATA[#hasfeat[fKQImprAC] <> 0]]></exprreq>
     </thing>
@@ -687,17 +680,17 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Count half our ranger levels
-field[abValue].value += round(hero.tagcount[ClsCountAs.cHelpRgr]/2,0,-1)
+      ~ Count half our ranger levels
+      field[abValue].value += round(hero.tagcount[ClsCountAs.cHelpRgr]/2,0,-1)
 
-~ Find all ranger animal companions
-foreach pick in hero from BaseCompan
-  ~ Give our Animal Companion's DR magic
-  eachpick.minion.childfound[xDamRdMag].field[abValue].value = maximum(field[abValue].value,eachpick.minion.childfound[xDamRdMag].field[abValue].value)
-nexteach]]></eval>
+      ~ Find all ranger animal companions
+      foreach pick in hero from BaseCompan
+        ~ Give our Animal Companion's DR magic
+        eachpick.minion.childfound[xDamRdMag].field[abValue].value = maximum(field[abValue].value,eachpick.minion.childfound[xDamRdMag].field[abValue].value)
+      nexteach]]></eval>
     <exprreq message="Improved Animal Companion feat required."><![CDATA[#hasfeat[fKQImprAC] <> 0]]></exprreq>
     </thing>
   <thing id="fKQNatTrck" name="Natural Tracker" description="You have a natural gift for following or identifying tracks.\n\n{b}Prerequisite{/b}: Track class feature.\n\n{b}Benefit{/b}: You add your total ranger level to Survival skill checks made to follow or identify tracks.  If your Survival check exceeds the DC by 10 or more, you can learn a wealth of additional information about your prey (including number and type of creatures being tracked, their physical health, condition, and general status, etc).\n\n{b}Normal{/b}: A ranger adds 1/2 his level (minimum 1) to Survival skill checks made to follow or identify tracks." compset="Feat" summary="Add your ranger level to Survival to follow or id tracks." uniqueness="useronce">
@@ -706,13 +699,13 @@ nexteach]]></eval>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostLevel" priority="25000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
-~ If not past level 1 then do nothing
-doneif (hero.child[cRgrTrack].field[xAllLev].value = 1) 
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If not past level 1 then do nothing
+      doneif (hero.child[cRgrTrack].field[xAllLev].value = 1) 
 
-~ Increase the track bonus to be equal to the Class Level
-#value[cRgrTrack] += round(hero.child[cRgrTrack].field[xAllLev].value / 2,0,1)]]></eval>
+      ~ Increase the track bonus to be equal to the Class Level
+      #value[cRgrTrack] += round(hero.child[cRgrTrack].field[xAllLev].value / 2,0,1)]]></eval>
     <exprreq message="Track class feature required."><![CDATA[#hasability[cRgrTrack] <> 0]]></exprreq>
     </thing>
   <thing id="fKQSvgTerW" name="Savage Terrain Warrior" description="You attack with wild abandon when in a favored terrain, trusting in your connection to that terrain to aid you in the destruction of your enemies.\n\n{b}Prerequisites{/b}: Str 13, base attack bonus +3, favored terrain class feature.\n\n{b}Benefit{/b}: When in any of your favored terrains, you gain a +2 morale bonus on all attack rolls, damage rolls, and combat maneuver checks.  Such recklessness, however, bestows a -3 penalty to your armor class.  You must choose to use this feat before making an attack roll, and its effects last until the start of your next turn.\n\n{B}Note:{/b} The bonus is tied to the adjustment &quot;Ranger: Favored Terrain&quot; found on the &quot;Adjust&quot; tab under &quot;Conferred Ability Adjustments&quot;.  When that is turned on and this feat is activated you will gain the bonus." compset="Feat" summary="In a favored terrain take -3 AC to gain +2 morale to attack, dmg, and CMB/CMD checks." uniqueness="useronce">
@@ -722,26 +715,26 @@ doneif (hero.child[cRgrTrack].field[xAllLev].value = 1)
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
-~ If we're not enabled, get out now
-doneif (field[abilActive].value <> 1)
-~ If Ranger: Favored Terrain not on then get out now!
-doneIf (hero.childfound[pFavorTerr].field[pIsOn].value <> 1)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're not enabled, get out now
+      doneif (field[abilActive].value <> 1)
+      ~ If Ranger: Favored Terrain not on then get out now!
+      doneIf (hero.childfound[pFavorTerr].field[pIsOn].value <> 1)
 
-~ Set bonus to +2
-field[abValue].value += 2
-~ Set the penalty to AC
-field[abValue2].value += -3
+      ~ Set bonus to +2
+      field[abValue].value += 2
+      ~ Set the penalty to AC
+      field[abValue2].value += -3
 
-~ Give a Morale bonus to all melee weapon damage
-foreach pick in hero from BaseWep
-  #applybonus[BonMorale,eachpick,field[abValue].value]
-nexteach
-~ Give a morale bonus to Maneuvers
-#applybonus[BonMorale,hero.child[Maneuver],field[abValue].value]
-~ Give an AC penalty when activated
-hero.child[ArmorClass].field[Penalty].value += field[abValue2].value]]></eval>
+      ~ Give a Morale bonus to all melee weapon damage
+      foreach pick in hero from BaseWep
+        #applybonus[BonMorale,eachpick,field[abValue].value]
+      nexteach
+      ~ Give a morale bonus to Maneuvers
+      #applybonus[BonMorale,hero.child[Maneuver],field[abValue].value]
+      ~ Give an AC penalty when activated
+      hero.child[ArmorClass].field[Penalty].value += field[abValue2].value]]></eval>
     <exprreq message="Strength 13+ required."><![CDATA[#attrvalue[aSTR] >= 13]]></exprreq>
     <exprreq message="Ravored Terrain class ability required."><![CDATA[#resmax[resTerrSel] <> 0]]></exprreq>
     <exprreq message="Base attack bonus 3+ required."><![CDATA[#BAB[] >= 3]]></exprreq>
@@ -753,18 +746,18 @@ hero.child[ArmorClass].field[Penalty].value += field[abValue2].value]]></eval>
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="NoPathSoc"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
-~ If we're not enabled, get out now
-doneif (field[abilActive].value <> 1)
-~ If Ranger: Favored Terrain not on then get out now!
-doneIf (hero.childfound[pFavorTerr].field[pIsOn].value <> 1)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're not enabled, get out now
+      doneif (field[abilActive].value <> 1)
+      ~ If Ranger: Favored Terrain not on then get out now!
+      doneIf (hero.childfound[pFavorTerr].field[pIsOn].value <> 1)
 
-~ Set bonus to +2
-field[abValue].value += 2
+      ~ Set bonus to +2
+      field[abValue].value += 2
 
-~ Give an bonus to attack
-hero.child[Attack].field[Bonus].value += field[abValue].value]]></eval>
+      ~ Give an bonus to attack
+      hero.child[Attack].field[Bonus].value += field[abValue].value]]></eval>
     <exprreq message="Base attack bonus 1 required."><![CDATA[#BAB[] >= 1]]></exprreq>
     <exprreq message="Favored terrain class ability required."><![CDATA[#resmax[resTerrSel] <> 0]]></exprreq>
     <exprreq message="Dexterity 13 required."><![CDATA[#attrvalue[aDEX] >= 13]]></exprreq>
@@ -779,32 +772,33 @@ hero.child[Attack].field[Bonus].value += field[abValue].value]]></eval>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="fInclude" tag="fKQAnimFea"/>
     <tag group="fInclude" tag="fKQGrtrAC"/>
-    <eval phase="Final" priority="50000">~ We can either select a Feat or a bonus feat for the animal but 
-~ not both.
-field[cfgLeftF1].value -= field[cfgSpent1].value
-field[cfgLeft1].value -= field[cfgSpentF1].value</eval>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ We can either select a Feat or a bonus feat for the animal but 
+      ~ not both.
+      field[cfgLeftF1].value -= field[cfgSpent1].value
+      field[cfgLeft1].value -= field[cfgSpentF1].value]]></eval>
     </thing>
   <thing id="cRslTemWrk" name="Teamwork" description="At 4th level, you receive Coordinated Companion and another teamwork feat as bonus feats.  You must meet the prerequisites for the teamwork feat.  This ability replaces hunter&apos;s bond." compset="ClSpecial">
     <tag group="ProductId" tag="KoboldPres" name="Kobold Press" abbrev="Kobold Press"/>
     <bootstrap thing="fKQCordAC">
       <containerreq phase="First" priority="450"><![CDATA[
-count:ClsCountAs.cHelpRgr >= 4]]></containerreq>
+        count:ClsCountAs.cHelpRgr >= 4]]></containerreq>
       <autotag group="thing" tag="skipprereq"/>
       </bootstrap>
     <bootstrap thing="cfgRslTeam">
       <containerreq phase="First" priority="450"><![CDATA[
-count:ClsCountAs.cHelpRgr >= 4]]></containerreq>
+        count:ClsCountAs.cHelpRgr >= 4]]></containerreq>
       </bootstrap>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Add to feats allowed
-#resmax[resFeat] += 1]]></eval>
+      ~ Add to feats allowed
+      #resmax[resFeat] += 1]]></eval>
     </thing>
-  <thing id="cRslEmpLnk" name="Empathic Link" description="At 12th level, your connection with your animal companion becomes so strong that you can communicate empathically with each other to a distance of 1 mile. Because of the link&#146;s limited nature, only general emotions can be shared. Both you and the animal companion receive a +4 bonus to any skill check used to track or otherwise locate each other. This ability replaces hunter&#146;s camouflage." compset="ClSpecial" summary="Connection with your companion is so strong you can communicate empathically.">
+  <thing id="cRslEmpLnk" name="Empathic Link" description="At 12th level, your connection with your animal companion becomes so strong that you can communicate empathically with each other to a distance of 1 mile. Because of the link’s limited nature, only general emotions can be shared. Both you and the animal companion receive a +4 bonus to any skill check used to track or otherwise locate each other. This ability replaces hunter’s camouflage." compset="ClSpecial" summary="Connection with your companion is so strong you can communicate empathically.">
     <comment>Companion-Bound Ranger archetype.</comment>
     <tag group="ProductId" tag="KoboldPres" name="Kobold Press" abbrev="Kobold Press"/>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
@@ -816,10 +810,13 @@ doneif (tagis[Helper.SpcDisable] <> 0)
     <tag group="Helper" tag="Tertiary" name="Tertiary" abbrev="Tertiary"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="SpecSource" tag="cHelpRSL"/>
-    <eval phase="First" priority="10000">Perform hero.assign[Hero.MultiComp]
-Perform hero.child[cHelpRSL].assign[Hero.MultiComp]</eval>
-    <eval phase="PostLevel" priority="1000" index="2">~ Set the correct additional companion level
-hero.childfound[cAnimClass].field[CompClLev].value += field[xTotalLev].value</eval>
+    <eval phase="First" priority="10000"><![CDATA[
+      ~ & 
+      Perform hero.assign[Hero.MultiComp]
+      Perform hero.child[cHelpRSL].assign[Hero.MultiComp]]]></eval>
+    <eval phase="PostLevel" priority="1000" index="2"><![CDATA[
+      ~ Set the correct additional companion level & 
+      hero.childfound[cAnimClass].field[CompClLev].value += field[xTotalLev].value]]></eval>
     <exprreq message="This talent not allowed with the Companion-Bound Archetype.">hero.tagis[ClassVary.arKQComRSL] = 0</exprreq>
     </thing>
   <thing id="cRslCatFal" name="Cat&apos;s Fall" description="With this talent you may ignore the first 20 ft. of any fall when calculating falling damage.  If you take no damage from the fall, you do not fall prone." compset="CustomSpec" summary="Reduce fall distance by 20ft and if you no dmg your not prone." uniqueness="useronce">
@@ -848,8 +845,9 @@ hero.childfound[cAnimClass].field[CompClLev].value += field[xTotalLev].value</ev
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="Helper" tag="Tertiary" name="Tertiary" abbrev="Tertiary"/>
     <bootstrap thing="cfgRslComT"></bootstrap>
-    <eval phase="PreLevel" priority="10000">~ Add to feats allowed
-#resmax[resFeat] += 1</eval>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ Add to feats allowed & 
+      #resmax[resFeat] += 1]]></eval>
     </thing>
   <thing id="cRslDdlyRn" name="Deadly Range" description="This talent increases the range at which you can deal stealth attack damage by 10 ft.  You may take this talent more than once.  Its effects stack." compset="CustomSpec">
     <usesource source="s20PFCamp"/>
@@ -858,8 +856,9 @@ hero.childfound[cAnimClass].field[CompClLev].value += field[xTotalLev].value</ev
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="SpecSource" tag="cHelpRSL"/>
     <tag group="Helper" tag="SpecUp"/>
-    <eval phase="PostLevel" priority="10000">~ Increase Stealth Attack range by 10ft
-#value3[cRslStAtt] += 10</eval>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Increase Stealth Attack range by 10ft &
+      #value3[cRslStAtt] += 10]]></eval>
     </thing>
   <thing id="cRslEaglEy" name="Eagle Eyed" description="You gain Eagle Eyes as a bonus feat.  You do not need to meet the feat&apos;s prerequisites." compset="CustomSpec" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
@@ -885,13 +884,15 @@ hero.childfound[cAnimClass].field[CompClLev].value += field[xTotalLev].value</ev
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="SpecSource" tag="cHelpRSL"/>
     <eval phase="PreLevel" priority="50000"><![CDATA[
-~ If Ranger: Favored Terrain or Enemy is on
-If (hero.childfound[pFavorTerr].field[pIsOn].value + hero.childfound[pFavorEnem].field[pIsOn].value <> 0 ) Then
-  ~ All weapons get Keen
-  foreach pick in hero from BaseWep
-     perform eachpick.assign[Helper.Keen]
-  nexteach
-Endif]]></eval>
+      ~ If Ranger: Favored Terrain or Enemy is on
+      If (hero.childfound[pFavorTerr].field[pIsOn].value + hero.childfound[pFavorEnem].field[pIsOn].value <> 0 ) Then
+
+        ~ All weapons get Keen
+        foreach pick in hero from BaseWep
+           perform eachpick.assign[Helper.Keen]
+        nexteach
+
+      Endif]]></eval>
     </thing>
   <thing id="cRslFavDef" name="Favored Defender" description="You gain Favored Defense as a bonus feat." compset="CustomSpec" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
@@ -929,8 +930,9 @@ Endif]]></eval>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="SpecSource" tag="cHelpRSL"/>
-    <eval phase="PostLevel" priority="9000">~add an additional 1d6 to stealth attack damage.
-#value[cRslStAtt] += 1</eval>
+    <eval phase="PostLevel" priority="9000"><![CDATA[
+      ~add an additional 1d6 to stealth attack damage & 
+      #value[cRslStAtt] += 1]]></eval>
     </thing>
   <thing id="cRslSkirAt" name="Skirmishing Attack" description="With this talent, whenever you move at least 10 ft. and attack in the same round, you may also apply stealth attack damage, if applicable, to the target, as though it were flatfooted.\n\nIf you make more than one attack during the round, this ability applies only to the first attack.  Foes with uncanny dodge are immune to this ability." compset="CustomSpec" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
@@ -967,7 +969,7 @@ Endif]]></eval>
     <tag group="SpecSource" tag="cHelpRSL"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <eval phase="Final" priority="50000"><![CDATA[
-#situational[hero.childfound[skStealth],"-15 penalty (or -10 when in a favored terrain) on your snipe skill check.",field[name].text]]]></eval>
+      #situational[hero.childfound[skStealth],"-15 penalty (or -10 when in a favored terrain) on your snipe skill check.",field[name].text]]]></eval>
     </thing>
   <thing id="cRslUncSen" name="Uncanny Senses" description="As a standard action, you may gain a +5 insight bonus (or a +10 insight bonus when in a favored terrain) to Perception checks for one round." compset="CustomSpec" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
@@ -977,20 +979,20 @@ Endif]]></eval>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="User" tag="Activation"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
-~ Set bonus at +5
-field[abValue].value += 5
+      ~ Set bonus at +5
+      field[abValue].value += 5
 
-~ If Ranger: Favored Terrain or Enemy is on give +5 more
-If (hero.childfound[pFavorTerr].field[pIsOn].value <> 0) Then
-  ~ Increase by 5
-  field[abValue].value += 5
-Endif
+      ~ If Ranger: Favored Terrain or Enemy is on give +5 more
+      If (hero.childfound[pFavorTerr].field[pIsOn].value <> 0) Then
+        ~ Increase by 5
+        field[abValue].value += 5
+      Endif
 
-~ If ability is not activated get out now!
-doneif (field[abilActive].value <> 1)
+      ~ If ability is not activated get out now!
+      doneif (field[abilActive].value <> 1)
 
-~ Give insight bonus to Perception
-#applybonus[BonInsight,hero.childfound[skPercep],field[abValue].value]]]></eval>
+      ~ Give insight bonus to Perception
+      #applybonus[BonInsight,hero.childfound[skPercep],field[abValue].value]]]></eval>
     </thing>
   <thing id="cRslScent" name="Scent" description="You gain the scent special ability." compset="CustomSpec" summary="Gain Scent" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
@@ -1002,7 +1004,7 @@ doneif (field[abilActive].value <> 1)
     <tag group="HasAbility" tag="cSumScent" name="Scent" abbrev="Scent"/>
     <bootstrap thing="xScent"></bootstrap>
     </thing>
-  <thing id="cRslTrkLes" name="Trackless Step" description="When desired, you leave no trail in natural surroundings and cannot be tracked. You can track others possessing the trackless step ability when in one of your favored terrains, but you suffer a &#150;10 to the check" compset="CustomSpec" summary="Leave no Trail" uniqueness="useronce">
+  <thing id="cRslTrkLes" name="Trackless Step" description="When desired, you leave no trail in natural surroundings and cannot be tracked. You can track others possessing the trackless step ability when in one of your favored terrains, but you suffer a –10 to the check" compset="CustomSpec" summary="Leave no Trail" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="Helper" tag="Tertiary" name="Tertiary" abbrev="Tertiary"/>
     <tag group="ProductId" tag="KoboldPres" name="Kobold Press" abbrev="Kobold Press"/>
@@ -1018,56 +1020,56 @@ doneif (field[abilActive].value <> 1)
       <containerreq phase="First" priority="450"><![CDATA[count:ClsCountAs.cHelpRgr >= 7]]></containerreq>
       </bootstrap>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Every three levels past 7th we get an additional
-~ Enhanced Companion ability.
-if (field[xAllLev].value >= 19) then
-   hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
-   hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
-elseif (field[xAllLev].value >= 16) then
-   hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
-   hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
-elseif (field[xAllLev].value >= 13) then
-   hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
-   hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
-elseif (field[xAllLev].value >= 10) then
-   hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
-   hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
-endif]]></eval>
+      ~ Every three levels past 7th we get an additional
+      ~ Enhanced Companion ability.
+      if (field[xAllLev].value >= 19) then
+         hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
+         hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
+      elseif (field[xAllLev].value >= 16) then
+         hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
+         hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
+      elseif (field[xAllLev].value >= 13) then
+         hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
+         hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
+      elseif (field[xAllLev].value >= 10) then
+         hero.childfound[cfgKQEnhCo].field[cfgMaxF1].value += 1
+         hero.childfound[cfgKQEnhCo].field[cfgMax1].value += 1
+      endif]]></eval>
     </thing>
   <thing id="cRslSiFavE" name="Single Favored Enemy" description="At 1st level, you select a creature type from the ranger favored enemies table. You gain a +2 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks against creatures of the selected type. Likewise, you get a +2 bonus on weapon attack and damage rolls against them. You may make Knowledge skill checks untrained when attempting to identify these creatures.\n\nYou receive no additional favorite enemies as you gain levels. At 5th level and every five levels thereafter (10th, 15th, and 20th level), the bonuses against this single favored enemy increase by +2. This ability replaces favored enemy." compset="ClSpecial">
     <comment>Dual-Style Ranger archetype</comment>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="AbilType" tag="Extra"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Give a Favored Enemy Upgrade
-hero.child[resEnemUpg].field[resMax].value += 1]]></eval>
+      ~ Give a Favored Enemy Upgrade
+      hero.child[resEnemUpg].field[resMax].value += 1]]></eval>
     </thing>
   <thing id="cRslDuCoSt" name="Dual Combat Style" description="At 2nd level, you must select two combat styles to pursue.  Normally, these two combat styles must be archery and two weapon combat, but with the GM&apos;s permission, you may also choose from any of the additional combat styles detailed in the Pathfinder RPG Advanced Player&apos;s Guide (Crossbow, Mounted Combat, Natural Weapon, Two-Handed Weapon, Weapon and Shield).\n\nYour expertise in these two styles manifests in the form of a bonus feats at 2nd, 6th, 10th, 14th, and 18th level.  At each of these levels, choose one appropriate feat from each of your two combat style lists.\n\nYou can choose any feats from your selected combat styles, even if you do not have the normal prerequisites.\n\nThe benefits of your two style feats apply only when you wear light, medium, or no armor.  You lose all benefits from these combat style feats when wearing heavy armor.  Once a dual-style ranger selects his two combat styles, they cannot be changed.  This ability replaces combat style." compset="ClSpecial">
     <comment>Dual-Style Ranger archetype</comment>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="AbilType" tag="Extra"/>
     <eval phase="First" priority="500"><![CDATA[
-~ If we have on heavy armor then disable the
-~ combat style feats. We have to use findchild here
-~ as we have to find this very early and the Hero.HeavyArmor
-~ tag does not get placed until much later.
-if (hero.findchild[BaseArmor,"ArmorClass.Heavy & fieldval:gIsEquip <> 0"].tagis[ArmorClass.Heavy] = 1) then
-  ~ Find all spell-less ranger combat style feats
-  foreach pick in hero from BaseFeat where "portal.ClsBonFNoP"
-    ~ Disable combat style feats
-    perform eachpick.assign[Helper.FtDisable]
-  nexteach
-endif]]></eval>
+      ~ If we have on heavy armor then disable the
+      ~ combat style feats. We have to use findchild here
+      ~ as we have to find this very early and the Hero.HeavyArmor
+      ~ tag does not get placed until much later.
+      if (hero.findchild[BaseArmor,"ArmorClass.Heavy & fieldval:gIsEquip <> 0"].tagis[ArmorClass.Heavy] = 1) then
+        ~ Find all spell-less ranger combat style feats
+        foreach pick in hero from BaseFeat where "portal.ClsBonFNoP"
+          ~ Disable combat style feats
+          perform eachpick.assign[Helper.FtDisable]
+        nexteach
+      endif]]></eval>
     </thing>
   <thing id="arKQDuaRgr" name="Dual-Style" description="Not all rangers spend the majority of their time learning about and hunting down favored enemies.  Dual-style rangers instead dedicate untold hours to mastering a second combat style.  Such rangers are therefore extremely well prepared to hunt down and combat any foe that might cross their path, not just a select group of favored enemies." compset="ClassVary" uniqueness="unique">
     <arrayval field="cvBonFtMod" index="1" value="1"/>
@@ -1105,11 +1107,11 @@ endif]]></eval>
     <tag group="ProductId" tag="KoboldPres"/>
     <prereq message="The Hunter Bound (Animal Companion) class ability is required.">
       <validate><![CDATA[
-~ If we are not shown yet we are valid
-validif (altpick.tagis[Helper.ShowSpec] <> 1)
+        ~ If we are not shown yet we are valid
+        validif (altpick.tagis[Helper.ShowSpec] <> 1)
 
-~ Valid if we have the Animal Companion
-validif (#hasability[cRgrComp] <> 0)]]></validate>
+        ~ Valid if we have the Animal Companion
+        validif (#hasability[cRgrComp] <> 0)]]></validate>
       </prereq>
     </thing>
   <thing id="cRslSiFavT" name="Single Favored Terrain" description="At 3rd level, you may select a type of terrain from the favored terrains table. You gain a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival skill checks when in this terrain. A companion-bound ranger traveling through his favored terrain normally leaves no trail and cannot be tracked (though you may leave a trail if you so choose).{br}{br}You receive no additional favored terrains as you gain levels. At 8th level and every five levels thereafter, the skill bonus and initiative bonus in your single favored terrain increases by +2. This ability replaces favored terrain." compset="ClSpecial">
@@ -1117,13 +1119,13 @@ validif (#hasability[cRgrComp] <> 0)]]></validate>
     <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="KoboldPres"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ Give a Favored Terrain Upgrade
-hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
+      ~ Give a Favored Terrain Upgrade
+      hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     </thing>
   <thing id="cfgRslComT" name="Combat Trick" compset="Configure" uniqueness="unique">
     <fieldval field="cfgMaxF1" value="1"/>
@@ -1140,12 +1142,11 @@ hero.child[resTerrUpg].field[resMax].value += 1]]></eval>
     <tag group="ProductId" tag="KoboldPres"/>
     <tag group="AllowRCust" tag="cfgKQEnhCo"/>
     <eval phase="First" priority="10000"><![CDATA[
-~ Find all ranger animal companions
-foreach pick in hero from BaseCompan
-  ~ Give bonus feat
-  eachpick.minion.child[resFeat].field[resMax].value += 1
-nexteach
-]]></eval>
+      ~ Find all ranger animal companions
+      foreach pick in hero from BaseCompan
+        ~ Give bonus feat
+        eachpick.minion.child[resFeat].field[resMax].value += 1
+      nexteach]]></eval>
     </thing>
   <thing id="arKQComRgr" name="Companion-Bound" description="Some rangers form an incredibly strong bond with their animal companion.  This deep bond can become all-consuming, transforming the ranger and his animal companion into an unusually tight and focused fighting team." compset="ClassVary" uniqueness="unique">
     <fieldval field="cvSpecSing" value="Hunter&apos;s Bond"/>
@@ -1186,9 +1187,9 @@ nexteach
       </bootstrap>
     <link linkage="varies" thing="cHelpRgr"/>
     <eval phase="Final" priority="50000"><![CDATA[
-#appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 11th level, your animal companion can benefit from your quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability.  The animal companion must remain within 30 ft. of you, and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]
+      #appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 11th level, your animal companion can benefit from your quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability.  The animal companion must remain within 30 ft. of you, and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]
 
-#appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 19th level, your animal companion may also benefit from the improved quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability. The animal companion must remain within 30 ft. of you and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]]]></eval>
+      #appenddesc[cRgrQuarry,"{b}Companion-Bound{/b}: At 19th level, your animal companion may also benefit from the improved quarry ability.  The animal companion may not activate the ability or choose the quarry itself, but gains these benefits only when you activate the ability. The animal companion must remain within 30 ft. of you and must be able to see, hear, or otherwise sense you in order to benefit from this ability."]]]></eval>
     </thing>
   <hidden id="cRslTrack"/>
   </document>
