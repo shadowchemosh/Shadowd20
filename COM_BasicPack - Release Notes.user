@@ -8,6 +8,34 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v3.16 February 20, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed the spellbook/forumla books to be consistent and only source marked to ShadowChemosh Equipment.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed issue with the spellbooks tossing an error if no class selected.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed "- Custom Magic Item -" to work better if you add a tracker to it.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed "Ability Score (Restore)" as it was not always restoring an ability score. In example the "Yellow Musk Zombie".</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Archetypes (ShadowChemosh) - Added two new archetypes for the Paladin and Antipaladin classes. These new archetypes (Freedom & Tyranny) allow the Paladin & Antipaladin to be "any" good or evil alignment. This can be useful for groups playing in the new paizo adventure paths "Hell's Vengeance & Hell's Rebels".  A CG paladin for Hell's Rebels and a LE Antipaladin for Hell's Vengeance is wanted by some groups and this allows this to easily happen.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - New adjustment to change a racial ability DC calculation from "racial hit dice" to "total class level" instead.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added new gear item "Antitoxin" that can be "drank" on the In-Play tab and the situational note will appear under Fort save.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Ability Score (Temp), Type" that allows for giving a temporary specific bonus type (ie luck, morale..) to the selected ability score.</li>
+<li>ShadowChemosh Adjustments (Silveras) - Special thanks to Silveras for the two new Conditions: Bleeding & Catch on Fire. In addition the official rules text for these conditions will display to help players out.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Special thanks to Silveras for providing this Currency gear items: Platinum, Gold, Sliver, and Copper Pieces. These allow an easy method for transferring currency between characters in the same .por file. <strong>NOTE:</strong> These currency items will have zero weight if the Configure Your Hero window of "No Coin Weight" is turned on.</li>
+<li>ShadowChemosh Conferred Adjustments (ShadowChemosh) - Added the new Conferred Ability Adjustment "Fighter: Overhand Chop/Backswing".</li>
+<li>ShadowChemosh Conferred Adjustments (ShadowChemosh) - Added adjustments for the Alchemist "Beastmorph" Archetype: Improved Beastform Mutagen & Greater Beastform Mutagen.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Deprecated the second "Unarmed Strike" weapon as the ability to TWF with Unarmed Strike is now part of HL core.</li>
+<li>(ShadowChemosh) - Created a new procedure called "GearZerolb" that will zero out the weight for any gear item when called.</li>
+<li>(ShadowChemosh) - Moved the new "Bludgeoning or Slashing" DR from the 3PP Pack to the Basic Pack so that ALL packs can get access to this new DR type.</li>
+</ul>
+
+
 <strong>v3.15 October 31, 2015</strong>
 
 <strong>Bug Fixes</strong>

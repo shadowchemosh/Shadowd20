@@ -443,11 +443,6 @@
     If (hero.tagcountstr["HasTrait.trTriaxDra"] <> 0) Then
       #situational[this,"+1 trait bonus vs dragon's spell resistance.","Triaxian Dragonslayer"]    
     Endif
-
-    ~ -----------------------------------------------------
-    ~ Add in all the different "bonus" and "penalty" fields
-    ~ -----------------------------------------------------
-    field[skTotal].value += field[Bonus].value + field[Penalty].value + field[BonAlch].value + field[ModCirc].value + field[BonComp].value + field[PenComp].value + field[BonEnhance].value + field[BonInsight].value + field[BonLuck].value + field[PenLuck].value + field[BonMorale].value + field[PenMorale].value + field[BonProfane].value + field[PenProfane].value + field[BonSacred].value + field[PenSacred].value + field[BonTrait].value + field[PenTrait].value    
     ]]>
   </procedure>
 
