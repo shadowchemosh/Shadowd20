@@ -933,18 +933,21 @@ bodrinbarlow@gmail.com</comment>
     <tag group="AdjShadow" tag="Mutagen"/>
     <tag group="Value" tag="1"/>
     <tag group="Value" tag="2"/>
+    <tag group="Value" tag="3"/>
     <tag group="PolyAdjust" tag="Darkvision"/>
     </thing>
   <thing id="zSCBeaMu05" name="Low-Light Vision" description="Improved Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
     <tag group="AdjShadow" tag="Mutagen"/>
     <tag group="Value" tag="1"/>
     <tag group="Value" tag="2"/>
+    <tag group="Value" tag="3"/>
     <tag group="PolyAdjust" tag="LowLight"/>
     </thing>
   <thing id="zSCBeaMu06" name="Scent" description="Improved Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
     <tag group="AdjShadow" tag="Mutagen"/>
     <tag group="Value" tag="1"/>
     <tag group="Value" tag="2"/>
+    <tag group="Value" tag="3"/>
     <tag group="PolyAdjust" tag="Scent"/>
     </thing>
   <thing id="zSCBeaMu07" name="Climb 60ft" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
@@ -965,16 +968,81 @@ bodrinbarlow@gmail.com</comment>
   <thing id="zSCBeaMu10" name="Grab" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
     <tag group="AdjShadow" tag="Mutagen"/>
     <tag group="Value" tag="2"/>
+    <tag group="Value" tag="3"/>
     <tag group="PolyAdjust" tag="Grab"/>
     </thing>
   <thing id="zSCBeaMu11" name="Trip" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
     <tag group="AdjShadow" tag="Mutagen"/>
     <tag group="Value" tag="2"/>
+    <tag group="Value" tag="3"/>
     <tag group="PolyAdjust" tag="Trip"/>
     </thing>
   <thing id="zSCBeaMu12" name="Pounce" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
     <tag group="AdjShadow" tag="Mutagen"/>
     <tag group="Value" tag="2"/>
+    <tag group="Value" tag="3"/>
     <tag group="PolyAdjust" tag="Pounce"/>
+    </thing>
+  <thing id="zSCBeaMu13" name="Climb 90ft" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phClimb" value="90"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    </thing>
+  <thing id="zSCBeaMu14" name="Fly 120ft" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phFly" value="120"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    </thing>
+  <thing id="zSCBeaMu15" name="Swim 120ft" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phSwim" value="120"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    </thing>
+  <thing id="zSCBeaMu16" name="Burrow 30ft" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phBurrow" value="30"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    </thing>
+  <thing id="zSCBeaMu17" name="Blindsense 30ft" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="Value" tag="3"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="PolyAdjust" tag="Blindsense"/>
+    </thing>
+  <thing id="zSCBeaMu18" name="Constrict" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="Value" tag="3"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="wConstrict" tag="1d6"/>
+    </thing>
+  <thing id="zSCBeaMu19" name="Ferocity" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="Value" tag="3"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="PolyAdjust" tag="Ferocity"/>
+    </thing>
+  <thing id="zSCBeaMu20" name="Jet" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <fieldval field="phJet" value="100"/>
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="PolyAdjust" tag="Jet"/>
+    <tag group="Value" tag="3"/>
+    </thing>
+  <thing id="zSCBeaMu21" name="Poison" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    <tag group="PolyAdjust" tag="Poison"/>
+    </thing>
+  <thing id="zSCBeaMu22" name="Rake" description="Greater  Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    <tag group="PolyAdjust" tag="Pounce"/>
+    <tag group="wRake" tag="1d6"/>
+    </thing>
+  <thing id="zSCBeaMu23" name="Trample" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    <tag group="wTrample" tag="1d8_6"/>
+    </thing>
+  <thing id="zSCBeaMu24" name="Web" description="Grand Beastform Mutagen" compset="PolyHelp" uniqueness="useronce">
+    <tag group="AdjShadow" tag="Mutagen"/>
+    <tag group="Value" tag="3"/>
+    <tag group="PolyAdjust" tag="Web"/>
     </thing>
   </document>
