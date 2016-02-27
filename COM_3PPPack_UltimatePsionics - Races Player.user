@@ -1624,6 +1624,7 @@ hero.child[svWill].field[Bonus].value += field[abValue].value]]></eval>
     <bootstrap thing="raPUNorPsi"></bootstrap>
     <bootstrap thing="raPUNoSyRe"></bootstrap>
     <bootstrap thing="raPUNoSySu"></bootstrap>
+    <bootstrap thing="raPUGiftTo"></bootstrap>
     </thing>
   <thing id="stPUNoral" name="Noral" compset="Subtype" uniqueness="unique">
     <usesource source="pPsiUn"/>
@@ -1682,7 +1683,7 @@ hero.child[svWill].field[Bonus].value += field[abValue].value]]></eval>
   <thing id="raPUNorFeE" name="Feral Erliss" description="While a noral bonding with an erliss typically results in improved mental abilities, sometimes it results in the noral taking on more feral aspects. A noral with this trait gains two claw attacks that deal 1d4 points of damage and gains a +2 racial bonus on Survival checks. This replaces gift of tongues and symbiotic resistance." compset="AltRaceTrt" uniqueness="unique">
     <usesource source="pPsiUn"/>
     <tag group="AllowRCust" tag="rPUNorals"/>
-    <tag group="RaReplace" tag="raGifTongu"/>
+    <tag group="RaReplace" tag="raPUGiftTo"/>
     <tag group="RaReplace" tag="raPUNoSyRe"/>
     <bootstrap thing="wClaw">
       <autotag group="wMain" tag="1d4_4"/>
@@ -1719,5 +1720,26 @@ hero.child[svWill].field[Bonus].value += field[abValue].value]]></eval>
     <tag group="AllowRCust" tag="rPUNorals"/>
     <tag group="RaReplace" tag="raPUNoSyRe"/>
     <tag group="RaReplace" tag="raPUNoSySu"/>
+    </thing>
+  <thing id="raPUGiftTo" name="Gift of Tongues" description="You are naturally skilled at social interactions and understanding other cultures. You gain a +1 racial bonus on Bluff and Diplomacy checks, and you learn one additional language every time you put a rank in the Linguistics skill." compset="RaceSpec" summary="Learn one additional language every time you put a rank in the Linguistics skill.">
+    <fieldval field="abValue" value="1"/>
+    <tag group="abDuration" tag="Constant" name="Constant" abbrev="cons"/>
+    <tag group="abRange" tag="Personal" name="Personal" abbrev="pers"/>
+    <tag group="abAction" tag="None" name="No action" abbrev="None"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="ShowStatbl"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ +1 to Bluff/Diplomancy
+      #racialbonus[skBluff] += field[abValue].value
+      #racialbonus[skDiplo] += field[abValue].value]]></eval>
+    <eval phase="PostAttr" priority="5000" index="2"><![CDATA[
+      ~ If we're disabled, just get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ Add in additional allowed languages
+      herofield[tLangsSpk].value += #skillranks[skLinguist]]]></eval>
     </thing>
   </document>

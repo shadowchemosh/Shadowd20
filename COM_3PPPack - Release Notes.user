@@ -8,6 +8,36 @@
       ]]>
       </info_author>
     <info_history><![CDATA[
+<strong>v1.15 Feburary 20, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (psych777) - Updated the following feat text and scripts: Malleable Power, Master of All Forms, Master's Refuge, Advanced Constructs, Assassin's Venom, Improved Metamorphosis, Master of All Forms, Master's Refuge, Master's Voice, Maximize Power,Mental Leap, Swift Shapeshifter, Merciful Power, Merge Designs, Metapsionic Mastery, Mind Over Body, Mixed Combat, Modified Blast, Network Power, Nightmare Veil, One Pattern, Open Minded, Opportunity Power, Overchannel, Penetrating Fear, Persistent Power, Piercing Power, Piranha Strike, Power Channeler, Psicrystal Affinity, Psicrystal Containment, Psion Weapon Proficiencies, Psionic Body, Psionic Bull Rush, Psionic Charge, Psionic Critical, Psionic Disarm, Psionic Dodge, Psionic Endowment, Psionic Fist, Psionic Meditation, Psionic Overrun, Psionic Precise Shot, Psionic Shield Bash, Psionic Shot, Psionic Sunder, Psionic Talent, Psionic Trip, Psionic Unarmed Strike, Psionic Weapon, Quicken Power, Rapid Metabolism, Ready Response, Rebounding Throw, Reckless Offense, Redirect Power, Return Shot, Returning Throw, Ricochet, Rime Power, Scribe Tattoo, Selective Power, Shared Power, Shattered Dream Strike, Sickening Power, Sidestep Charge, Speed of Thought, Split Psionic Ray, Staggering Shot, Surging Aura, Talented, Resonance Mastery, Thundering Power, Toppling Power, Touch of Terror, Twin Power, Twin Throw, Unavoidable Strike, Unconditional Power, Unlocked Talent, Unwilling Participant, Up The Walls, Urban Tracking, Weapon Focus (Mind Blade), Weapon Focus (Mind Bolt), Widen Power, Wild Talent, & Wounding Attack.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Updated the power "Heal Injuries" description text to the latest from the Ultimate Psionics book. Fixes issue #77.</li>
+<li>Ultimate Psionics (psych777) - Updated Conceal Thoughts powers to correct classes.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed issue #81 (Soulbolt Damage). The Long/Medium Soulbolt Damage should not have been getting a Str bonus and the Short range Soulbolt Damage should have only been equal to Str not 1.5x Str damage.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed issue #82 (Unwilling Participant). DC is now calculated based on 10 + half manifester level + Wisdom modifier.</li>
+<li>Ultimate Psionics (psych777) - Added Knockdown shot to specials tab and removed unneeded selection box on feat tab.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed issue #83. The Noral race was missing the "Gift of Tongues" racial ability. In addition fixed the ART "Feral Erliss" that replaces this ability.</li>
+<li>Path of War (ShadowChemosh) - Moved "Silver Crane Style" adjustment to the "Conferred ability Adjustment" section of the Adjust </ul>
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (psych777) - Added new feats: Mind Blade Knight, Mind Knight's Arsenal, Nomad's Jump, Power Perfection, Psionic Stamina, Psychoportive Pathfinder, Pyromaniac, Quick Suit, Raging Hulk, Rapid Augmentation, Rapid Draw, Resonance Mastery - just text (needs a PrC that isn't made yet), Scholarly Discipline, Soul Warrior, Split Headed Lash, Telepathic Link, Tomb Raider, Toughened Suit, & Wildblood Mage.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Add new adjustment "Powers Cost" to change the point cost of a power either up or down.</li>
+<li>Ultimate Psionics (Quintain) - Added new PrC's: Body Snatcher & Adaptive Warrior.</li>
+<li>Minotaur Games (Bodrin) - Added some of Monster Focus Series: Monster Focus - Gravelings & Monster Focus - Skeletons.</li>
+<li>Path of War (ShadowChemosh) - Added new adjustment "Initiator Level" that allows for adjusting a classes IL up or down.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Moved the new "Bludgeoning or Slashing" DR from the 3PP Pack to the Basic Pack so that ALL packs can get access to this new DR type.</li>
+<li>(ShadowChemosh) - Fixed "HavePower" procedure to correctly validate if a character has a selected power or not.</li>
+<li>Path of War (ShadowChemosh) - Made changes to some of the PoW mechanic scripts to only run "when" the PoW source is activated. This speeds up the current load of HL by a huge amount. This should be a big help to those on slower computers that are not using Path of War.</li>
+<li>Path of War (ShadowChemosh)- Added the ability to have a PrC class that uses it's own "Independent" IL and Maneuver information instead of "having" to inherit its abilities from another PoW class.  This is accomplished by placing the tag "PathOfWar.PrCIndMan" onto the PrC Class Helper (in the editor its the "Class->Class" tab.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Changed the script logic of "Unwilling Participant" feat so that the ability score it uses to calc the DC value can be changed by modifying the "UseAttr.?" tag before Final/25000.</li>
+</ul>
+
+
 <strong>v1.14 October 31, 2015</strong>
 
 <strong>Bug Fixes</strong>
