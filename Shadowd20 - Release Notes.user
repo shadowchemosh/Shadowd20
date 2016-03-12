@@ -6,6 +6,25 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.11 March 12, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ranger Spellless - Fixed some of the scripts.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed issue with the sub-skill "CL vs SR" skill to not gain double the bonus when using a Skill-Bonus adjustment.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in latest Basic & 3PP Pack.</li>
+<li>ShadowChemosh Conferred Adjustments (ShadowChemosh) - Added the "Grand Beastform Mutagen" adjustment in.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - "Race, Size Category" adjustment added that lets you increase/decrease your size category for the race only.  This adjustment is different than the official "Size Category" adjustment in that it does NOT change your gear size.  Meaning you can use it to make a small or large sized human or other races.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+
 <strong>v2.10 February 13, 2016</strong>
 
 <strong>Bug Fixes</strong>
