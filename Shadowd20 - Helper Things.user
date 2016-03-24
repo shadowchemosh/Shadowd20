@@ -70,6 +70,101 @@
     </thing>
 
   <!-- ======================================================================================= -->
+  <!-- Automatic level bonus mechanic.                                                         -->
+  <!--     mechTrait = Resistance Bonus to save progression table.                             -->
+  <!--     mechFlaw  = Natural Armor Bonus progression table.                                  -->
+  <!--     mechDrawb = Deflection Armor Bonus progression table.                               -->
+  <!-- ======================================================================================= -->
+  <thing id="mecS2ALvlB" name="Shadow d20 Automatic Level Bonus" compset="Mechanics" uniqueness="unique">
+    <comment>Trait = Resistance bonus to saves; Flaw = Natural Armor bonus; Drawback = Deflection Armor Bonus;</comment>
+    <arrayval field="mechTrait" index="2" value="1"/>
+    <arrayval field="mechTrait" index="3" value="1"/>
+    <arrayval field="mechTrait" index="4" value="1"/>
+    <arrayval field="mechTrait" index="5" value="1"/>
+    <arrayval field="mechTrait" index="6" value="2"/>
+    <arrayval field="mechTrait" index="7" value="2"/>
+    <arrayval field="mechTrait" index="8" value="2"/>
+    <arrayval field="mechTrait" index="9" value="2"/>
+    <arrayval field="mechTrait" index="10" value="3"/>
+    <arrayval field="mechTrait" index="11" value="3"/>
+    <arrayval field="mechTrait" index="12" value="3"/>
+    <arrayval field="mechTrait" index="13" value="3"/>
+    <arrayval field="mechTrait" index="14" value="4"/>
+    <arrayval field="mechTrait" index="15" value="4"/>
+    <arrayval field="mechTrait" index="16" value="4"/>
+    <arrayval field="mechTrait" index="17" value="4"/>
+    <arrayval field="mechTrait" index="18" value="5"/>
+    <arrayval field="mechTrait" index="19" value="5"/>
+    <arrayval field="mechTrait" index="20" value="5"/>
+    <arrayval field="mechFlaw" index="3" value="1"/>
+    <arrayval field="mechFlaw" index="4" value="1"/>
+    <arrayval field="mechFlaw" index="5" value="1"/>
+    <arrayval field="mechFlaw" index="6" value="1"/>
+    <arrayval field="mechFlaw" index="7" value="2"/>
+    <arrayval field="mechFlaw" index="8" value="2"/>
+    <arrayval field="mechFlaw" index="9" value="2"/>
+    <arrayval field="mechFlaw" index="10" value="2"/>
+    <arrayval field="mechFlaw" index="11" value="3"/>
+    <arrayval field="mechFlaw" index="12" value="3"/>
+    <arrayval field="mechFlaw" index="13" value="3"/>
+    <arrayval field="mechFlaw" index="14" value="3"/>
+    <arrayval field="mechFlaw" index="15" value="4"/>
+    <arrayval field="mechFlaw" index="16" value="4"/>
+    <arrayval field="mechFlaw" index="17" value="4"/>
+    <arrayval field="mechFlaw" index="18" value="4"/>
+    <arrayval field="mechFlaw" index="19" value="5"/>
+    <arrayval field="mechFlaw" index="20" value="5"/>
+    <arrayval field="mechDrawb" index="4" value="1"/>
+    <arrayval field="mechDrawb" index="5" value="1"/>
+    <arrayval field="mechDrawb" index="6" value="1"/>
+    <arrayval field="mechDrawb" index="7" value="1"/>
+    <arrayval field="mechDrawb" index="8" value="2"/>
+    <arrayval field="mechDrawb" index="9" value="2"/>
+    <arrayval field="mechDrawb" index="10" value="2"/>
+    <arrayval field="mechDrawb" index="11" value="2"/>
+    <arrayval field="mechDrawb" index="12" value="3"/>
+    <arrayval field="mechDrawb" index="13" value="3"/>
+    <arrayval field="mechDrawb" index="14" value="3"/>
+    <arrayval field="mechDrawb" index="15" value="3"/>
+    <arrayval field="mechDrawb" index="16" value="4"/>
+    <arrayval field="mechDrawb" index="17" value="4"/>
+    <arrayval field="mechDrawb" index="18" value="4"/>
+    <arrayval field="mechDrawb" index="19" value="4"/>
+    <arrayval field="mechDrawb" index="20" value="5"/>
+    <usesource source="srcLvlBon"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ This is a test &
+      var level as number
+      var svBon as number
+      var naturalBon as number
+      var deflBon as number
+      
+      ~ Get total level so we can set the arrays
+      level = #totallevelcount[]
+      
+      ~ Set the different bonus values
+      svBon = field[mechTrait].arrayvalue[level]
+      naturalBon = field[mechFlaw].arrayvalue[level]
+      deflBon = field[mechDrawb].arrayvalue[level]
+      
+      ~ If we have a save bonus apply
+      if (svBon <> 0) then
+        #applybonus[svResist,hero.child[svAll],svBon]
+      endif
+      
+      ~ If we have a natural armor bonus apply
+      if (naturalBon <> 0) then
+        #enhancementbonus[hero.child[mNatural],naturalBon]
+      endif
+        
+      ~ If we have a deflection bonus apply
+      if (deflBon <> 0) then
+        #applybonus[tACDeflect,hero.child[ArmorClass],deflBon]
+      endif]]></eval>
+    </thing>
+
+
+  <!-- ======================================================================================= -->
   <!-- Let players type in Unique ID's for items.                                              -->
   <!-- ======================================================================================= -->
   <thing id="s20Potions" name="Shadow d20 Potions, Scrolls, and Wands" 

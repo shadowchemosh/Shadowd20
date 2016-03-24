@@ -46,7 +46,7 @@
     name="Shadow d20 - Races"
     selectable="no"
     parent="pShadowd20"
-    sortorder="7"
+    sortorder="20"
     description="http://shadowd20.pbworks.com/ - Shadow d20 wiki house rules for Pathfinder.">
     </source>
 
@@ -56,7 +56,7 @@
     name="Shadow d20 - Campaigns"
     selectable="no"
     parent="pShadowd20"
-    sortorder="8"
+    sortorder="30"
     description="Campaigns">
     </source>
 
@@ -66,7 +66,7 @@
     name="Shadow d20 - 3.5 Books"
     selectable="no"
     parent="pShadowd20"
-    sortorder="9"
+    sortorder="40"
     description="This is converted DnD 3.5 rules converted to pathfinder.">
     </source> 
 
