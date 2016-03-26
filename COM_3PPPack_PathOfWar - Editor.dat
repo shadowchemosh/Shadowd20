@@ -144,6 +144,11 @@
         <match><![CDATA[PathOfWar.Config]]></match>
       </it_linkage>
     </inputthing>
+    <inputthing
+      name="Additional Linked Classes"
+      helptext="This section allows you to select additional classes this archetype can be linked too. This will mostly be used for Uchained classes. For example if we are setup for Rogue we need to select Unchained Rogue here.">
+      <it_taglist group="ArchCntAs" tag="?"/>
+    </inputthing>
 
     <!-- Tags -->
     <inputthing
@@ -166,7 +171,7 @@
       helptext="Select the highest level of maneuvers this class can initiate.">
       <it_tagpick group="mLevel" tag="?" />
     </inputthing>-->
-	
+  
     <!-- Arrays -->
     <inputthing
       name="Maneuvers List"
@@ -188,12 +193,12 @@
       helptext="Setup the list of Stances for this class.">
       <it_field field="cStances"/>
     </inputthing>
-	<inputthing
-	  name="Custom Maneuver Progression"
-	  helptext="Check this if this class uses its own progression of maximum maneuver level per initiator level.  If left unchecked, it will use the standard progression defined on page 26 of Path of War">
-	  <it_tagcheck group="PathOfWar" tag="CstManProg"/>
-	</inputthing>
-	<inputthing
+  <inputthing
+    name="Custom Maneuver Progression"
+    helptext="Check this if this class uses its own progression of maximum maneuver level per initiator level.  If left unchecked, it will use the standard progression defined on page 26 of Path of War">
+    <it_tagcheck group="PathOfWar" tag="CstManProg"/>
+  </inputthing>
+  <inputthing
       name="Max Maneuver Level"
       helptext="Setup the highest level of maneuvers this class can initiate at each initiator (not class) level. This will be ignored unless you check 'Custom Maneuver Progression'.">
       <it_field field="cMaxManLvl"/>

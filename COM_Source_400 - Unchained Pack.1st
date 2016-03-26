@@ -12,7 +12,7 @@
   <!-- ============================================== -->
   <source
     id="pUnchPack"
-    name="Unchained Pack (v1.5)"
+    name="Unchained Pack (v1.6)"
     selectable="no"
     parent="pComPacks"
     sortorder="10"

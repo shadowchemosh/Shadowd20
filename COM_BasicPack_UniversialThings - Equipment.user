@@ -184,6 +184,7 @@
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoDblStr"/>
     <tag group="Helper" tag="SingleAtt"/>
+    <tag group="Helper" tag="Static"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="PackHelper" tag="Touch"/>
     <eval phase="First" priority="50000"><![CDATA[
@@ -213,6 +214,7 @@
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="SingleAtt"/>
+    <tag group="Helper" tag="Static"/>
     <tag group="PackHelper" tag="Touch"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="First" priority="50000"><![CDATA[

@@ -65,6 +65,7 @@
     <arrayval field="mechFeat" index="20" value="9"/>
     <tag group="Usage" tag="PWEncounte" name="/Encounter"/>
     <tag group="fCategory" tag="PWStyle" name="Style"/>
+    <tag group="abCategory" tag="PWStalkArt" name="Stalker Art" abbrev="Stalker Art"/>
     <bootstrap thing="zPWPriFur"></bootstrap>
     <bootstrap thing="zPWGolLio"></bootstrap>
     <bootstrap thing="zPWScaThr"></bootstrap>

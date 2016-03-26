@@ -43,9 +43,11 @@
     <usesource source="pPsiUn"/>
     <tag group="PowerReq" tag="Armor"/>
     <tag group="PowerType" tag="Armor"/>
-    <eval phase="PreLevel" priority="10000">doneif (field[gIsEquip].value = 0)
-   ~ +2 to Swim
-   #skillbonus[skSwim] += 4</eval>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+     ~ If not equipped get out now! & 
+      doneif (field[gIsEquip].value = 0)
+
+      #skillbonus[skSwim] += 4]]></eval>
     </thing>
   <thing id="ipPUGleam" name="Gleaming" description="This kind of armor is usually made of crystal, though it doesn&apos;t have to be. Gleams and flashes from the armor give the wearer and his armor a “fuzzy” appearance, granting the wearer concealment. \n\nFaint metacreativity; ML 5th; Craft Magic Arms and Armor, concealing amorpha; Price +3 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="3"/>
@@ -154,134 +156,197 @@
   <thing id="ipPUBodyF" name="Bodyfeeder" description="All feeder weapons have a special ability that functions only upon scoring a successful critical hit. A bodyfeeder weapon grants its wielder temporary hit points equal to the total damage dealt by a successful critical hit. These temporary hit points last for 10 minutes. Thus, if the wielder of a bodyfeeder weapon successfully scores a critical hit while the wielder still enjoys temporary hit points from a previous critical hit, the wielder gains only the better of the two values: either his current number of temporary hit points, or the new influx of temporary hit points, whichever is higher.\n\nStrong psychometabolism; ML 12th; Craft Magic Arms and Armor, claws of the vampire; Price +3 bonus." compset="ItemPower" summary="Gain 10 Temporary HP on a critical hit.">
     <fieldval field="iPrice" value="3"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
     </thing>
-  <thing id="ipPUCollis" name="Collision" description="Collision weapons psionically increase their own mass at the end point of each swing or shot. Such weapons deal an extra 5 points of damage on each successful strike, in addition to the weapon&apos;s enhancement bonus. Bows, crossbows, and slings bestow the extra damage upon their ammunition.\n\nModerate metacreativity; ML 10th; Craft Magic Arms and Armor, matter manipulation; Price +2 bonus." compset="ItemPower">
+  <thing id="ipPUCollis" name="Collision" description="Collision weapons psionically increase their own mass at the end point of each swing or shot. Such weapons deal an extra 5 points of damage on each successful strike, in addition to the weapon’s enhancement bonus. Bows, crossbows, and slings bestow the extra damage upon their ammunition.\n\nModerate metacreativity; ML 10th; Craft Magic Arms and Armor, matter manipulation; Price +2 bonus." compset="ItemPower" summary="Deals an extra 5 points of damage on each successful strike">
     <fieldval field="iPrice" value="2"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      if (parent.tagis[component.BaseWep] <> 0) then
+        #extradamage[parent,"+5",field[thingname].text]
+      else
+        foreach pick in hero from BaseWep where container.child[gCustMagic].field[gWeapExpr].text
+          #extradamage[eachpick,"+5",field[thingname].text]
+        nexteach
+      endif]]></eval>
     </thing>
   <thing id="ipPUCoupDG" name="Coup de Grace" description="Coup de grace weapons are exceptionally dangerous. On a successful critical hit, the foe must succeed on a DC 27 Will save or be paralyzed for 1 round. While this ability does work on creatures that are immune to extra damage from critical hits, it does not work on creatures without an Intelligence score. Bows, crossbows, and slings bestow this ability on their ammunition.\n\nStrong telepathy; ML 19th; Craft Magic Arms and Armor, mind control; Price +5 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="5"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
     </thing>
   <thing id="ipPUDislo" name="Dislocate" description="The wielder of this kind of weapon can attempt to dislocate a designated foe up to three times per day. On a successful hit, the foe must succeed on a DC 17 Will save or be teleported 1-100 miles in a random direction. If the weapon misses, the use is wasted. Bows, crossbows, and slings bestow this ability on their ammunition.\n\nStrong psychoportation; ML 12th; Craft Magic Arms and Armor, psychoport; Price +3 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="3"/>
+    <fieldval field="trkMax" value="3"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="User" tag="Tracker"/>
     </thing>
   <thing id="ipPUDissip" name="Dissipater" description="This kind of weapon is devastating to creatures and objects composed of or originally formed from ectoplasm (such as astral constructs, walls of ectoplasm, creatures in ectoplasmic form, and items created using the metacreativity discipline). Against qualifying targets, a dissipater weapon ignores damage reduction and hardness, and treats all successful hits as critical hits.\n\nStrong metacreativity; ML 12th; Craft Magic Arms and Armor, dismiss ectoplasm; Price +1 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="1"/>
     <usesource source="pPsiUn"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     </thing>
   <thing id="ipPUGDislo" name="Great Dislocater" description="The wielder of this kind of weapon can attempt to greatly dislocate a designated foe up to three times per day. On a successful hit, the foe must succeed on a DC 20 Will save or be cast into a random alternate plane of existence. If the weapon misses, the use is wasted. Bows, crossbows, and slings bestow this ability upon their ammunition.\n\nStrong psychoportation; ML 12th; Craft Magic Arms and Armor, planar travel; Price +4 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="4"/>
+    <fieldval field="trkMax" value="3"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerType" tag="Weapon"/>
     <tag group="PowerReq" tag="Ranged"/>
     <tag group="PowerReq" tag="Melee"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="PowerType" tag="Weapon"/>
+    <tag group="Usage" tag="Day"/>
     </thing>
-  <thing id="ipPULucky" name="Lucky" description="A lucky weapon offers a second chance at success. Once per day, the wielder can reroll a failed attack roll (whether a single attack or one in a series of multiple attacks) as a free action. The rerolled attack uses the same bonuses or penalties as the missed roll.\n\nModerate clairsentience; ML 8th; Craft Magic Arms and Armor, fate of one; Price +1 bonus." compset="ItemPower">
+  <thing id="ipPULucky" name="Lucky" description="A lucky weapon offers a second chance at success. Once per day, the wielder can reroll a failed attack roll (whether a single attack or one in a series of multiple attacks) as a free action. The rerolled attack uses the same bonuses or penalties as the missed roll.\n\nModerate clairsentience; ML 8th; Craft Magic Arms and Armor, fate of one; Price +1 bonus." compset="ItemPower" summary="1/day re-roll a failed save.">
     <fieldval field="iPrice" value="1"/>
+    <fieldval field="trkMax" value="1"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
+    <tag group="User" tag="Tracker"/>
     <tag group="PowerType" tag="Weapon"/>
+    <tag group="Usage" tag="Day"/>
     </thing>
   <thing id="ipPUManiW" name="Manifester" description="This kind of weapon generates 5 power points once per day that the wearer can use when manifesting a power he knows. These power points must all be used on the same power. As usual, a psionic character cannot pay a power&apos;s cost with power points from more than one source, so the power points in the weapon must be used for discrete manifestations.\n\nModerate clairsentience; ML 8th; Craft Magic Arms and Armor, knowledge of any 3rd-level power; Price +16,000 gp." compset="ItemPower">
     <fieldval field="iPriceCash" value="16000"/>
+    <fieldval field="trkMax" value="5"/>
     <usesource source="pPsiUn"/>
+    <tag group="User" tag="Tracker"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Melee"/>
-    <tag group="PowerReq" tag="Ranged"/>
+    <tag group="Usage" tag="UsesPerDay"/>
     </thing>
   <thing id="ipPUMindCr" name="Mindcrusher" description="Any psionic creature struck in combat by a mindcrusher weapon loses a number of power points equal to half the amount of hit point damage the weapon deals (only the base damage of the weapon contributes to the power point loss; additional damage from high Strength or other sources does not cause additional power point loss). A psionic creature that is out of power points (or has none) must succeed on a DC 17 Will save or take 1d2 points of Wisdom damage.\n\nStrong psychometabolism; ML 12th; Craft Magic Arms\nand Armor, psychic vampire; Price +2 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="2"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Melee"/>
-    <tag group="PowerReq" tag="Ranged"/>
     <tag group="PowerType" tag="Weapon"/>
     </thing>
   <thing id="ipPUMindFe" name="Mindfeeder" description="All feeder weapons have a special ability that functions only upon scoring a successful critical hit. \n\nOnce per day, a mindfeeder weapon grants its wielder temporary power points equal to the total lethal damage dealt by a successful critical hit. The wielder must decide to use the mindfeeder ability after successfully confirming a critical hit, but prior to rolling critical hit damage. These temporary power points last for 10 minutes. The wielder may not exceed his natural maximum power points per day using the mindfeeder ability. The wielder gains power points even if the target has none (effectively, its hit point damage is converted to power points). Constructs and undead are not subject to mindfeeder weapons. As with temporary hit points, temporary power points do not stack with each other; they overlap. Thus, if a mindfeeder weapon successfully scores a critical hit while the wielder still enjoys temporary power points from a previous critical hit, the wielder gains only the better of the two values: either her current number of temporary power points, or the new influx of temporary power points, whichever is higher.\n\nStrong psychometabolism; ML 15th; Craft Magic Arms and Armor, psychic vampire; Price +3 bonus." compset="ItemPower" summary="Gain temporary Power Points on a critical hit.">
     <fieldval field="iPrice" value="3"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
     </thing>
   <thing id="ipPUParry" name="Parrying" description="A parrying weapon perceives an instant into the future, and of its own accord resists melee and ranged attacks aimed at the wielder, granting a +1 insight bonus to the wielder&apos;s Armor Class. The weapon is so adept at parrying that it even affects incoming powers, granting the wielder a +1 insight bonus on saving throws. The bonuses are granted whenever the wielder holds the weapon, even if flat-footed.\n\nFaint clairsentience; ML 5th; Craft Magic Arms and Armor, defensive precognition; Price +8,000 gp." compset="ItemPower">
     <fieldval field="iPriceCash" value="8000"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If not equipped get out now! &
+      doneif (field[gIsEquip].value = 0)
+
+      #applybonus[BonLuck,hero.child[ArmorClass],1]
+      #applybonus[BonLuck,hero.child[svAll],1]]]></eval>
     </thing>
   <thing id="ipPUPwrSto" name="Power Storing" description="A power storing weapon allows a manifester to store a single targeted power of up to 5 power points in the weapon. (The power must have a manifesting time of 1 standard action.) Any time the weapon strikes a creature and the creature takes damage from it, the weapon can immediately manifest the power on that creature as a swift action if the wielder desires. (This ability is an exception to the rule that manifesting a power from an item takes at least as long as manifesting that power normally.) Once the power is manifested, the weapon is empty, and a manifester can imbed any other targeted power of up to 5 power points into it. The weapon telepathically whispers to the wearer the name of the power currently stored within it. A randomly generated power storing weapon has a 50% chance to have a power stored in it already.\n\nStrong psychokinesis; ML 12th; Craft Magic Arms and Armor, creator must be a manifester of at least 12th level; Price +1 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="1"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
     </thing>
-  <thing id="ipPUPsiBan" name="Psibane" description="A psibane weapon is crafted to oppose psionic beings. When used against such creatures, its effective enhancement bonus is 2 higher than its actual enhancement bonus. It deals an extra 2d6 points of damage against psionic opponents. It bestows one negative level on any psionic creature attempting to wield it. This negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level never results in actual level loss, but it cannot be overcome in any way while the weapon is wielded. Psibane bows, crossbows, and slings bestow this ability upon their ammunition.\n\nStrong clairsentience; ML 15th; Craft Magic Arms and Armor, bend reality; Price +2 bonus." compset="ItemPower">
+  <thing id="ipPUPsiBan" name="Psibane" description="A psibane weapon is crafted to oppose psionic beings. When used against such creatures, its effective enhancement bonus is 2 higher than its actual enhancement bonus. It deals an extra 2d6 points of damage against psionic opponents. It bestows one negative level on any psionic creature attempting to wield it. This negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level never results in actual level loss, but it cannot be overcome in any way while the weapon is wielded. Psibane bows, crossbows, and slings bestow this ability upon their ammunition.\n\nStrong clairsentience; ML 15th; Craft Magic Arms and Armor, bend reality; Price +2 bonus." compset="ItemPower" summary="+2 higher bonus &amp; +2d6 dmg vs Psionic creatures.">
     <fieldval field="iPrice" value="2"/>
     <usesource source="pPsiUn"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
+    <tag group="Helper" tag="Shadow"/>
+    <tag group="User" tag="Activation"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If not active get out now!    
+      doneif (field[abilActive].value = 0) 
+    
+      if (parent.tagis[component.BaseWep] <> 0) then
+        #extradamage[parent,"+2d6 vs. Psionic",field[thingname].text]
+        parent.field[Bonus].value += 2
+      else
+        foreach pick in hero from BaseWep where container.child[gCustMagic].field[gWeapExpr].text
+          #extradamage[eachpick,"+2d6 vs. Psionic",field[thingname].text]
+          eachpick.field[Bonus].value += 2
+        nexteach
+      endif]]></eval>
     </thing>
-  <thing id="ipPUPsych" name="Psychic" description="A psychic weapon&apos;s power depends on its wielder. In the hands of a nonpsionic creature, the weapon possesses the qualities of a nonmagical, nonpsionic masterwork weapon. When wielded by a psionic creature, this weapon has an enhancement bonus based on the wielder&apos;s current power point reserve, as shown on the following table. The weapon&apos;s enhancement bonus decreases as the wielder spends power points, and it increases whenever the wielder gains enough power points (by any means) to put his power point reserve into the next higher category. \n\nPower Point Reserve  Enhancement Bonus\n1-4                                    +1\n5-29                                  +2\n30-79                                +3\n80-129                              +4\n130 or higher                  +5\n\nStrong clairsentience; ML 17th; Craft Magic Arms and Armor, reality revision; Price +35,000." compset="ItemPower">
+  <thing id="ipPUPsych" name="Psychic" description="A psychic weapon&apos;s power depends on its wielder. In the hands of a nonpsionic creature, the weapon possesses the qualities of a nonmagical, nonpsionic masterwork weapon. When wielded by a psionic creature, this weapon has an enhancement bonus based on the wielder&apos;s current power point reserve, as shown on the following table. The weapon&apos;s enhancement bonus decreases as the wielder spends power points, and it increases whenever the wielder gains enough power points (by any means) to put his power point reserve into the next higher category. \n\nPower Point Reserve  Enhancement Bonus\n1-4                                    +1\n5-29                                  +2\n30-79                                +3\n80-129                              +4\n130 or higher                  +5\n\nStrong clairsentience; ML 17th; Craft Magic Arms and Armor, {i}reality revision{/i}" compset="ItemPower" summary="Bonus is equal to your power point reserve.">
     <fieldval field="iPriceCash" value="35000"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
+    <eval phase="Final" priority="5000"><![CDATA[
+      var bonus as number
+      var plus as number
+      var points as number
+      
+      ~ We are sooner than resLEFT is calculated so calc it ourself
+      points = hero.child[resPowerPt].field[resMax].value - hero.child[resPowerPt].field[resSpent].value
+      
+      ~ Calculate the plus of the weapon      
+      if (points >= 130) then
+        bonus = 5
+      elseif (points >= 80) then
+        bonus = 4
+      elseif (points >= 30) then
+        bonus = 3
+      elseif (points >= 5) then
+        bonus = 2
+      elseif (points >= 1) then
+        bonus = 1
+      endif
+
+      ~ Save off the current plus of the weapon
+      plus = parent.field[BonEnhance].value
+
+      ~ Give the correct bonus to the weapon            
+      parent.field[BonEnhance].value -= plus
+      parent.field[atmBonEnh].value -= plus
+      parent.field[dmmBonEnh].value -= plus
+      parent.field[atrBonEnh].value -= plus
+      parent.field[dmrBonEnh].value -= plus
+                
+      parent.field[BonEnhance].value += bonus
+      parent.field[atmBonEnh].value += bonus
+      parent.field[dmmBonEnh].value += bonus
+      parent.field[atrBonEnh].value += bonus
+      parent.field[dmrBonEnh].value += bonus]]></eval>
     </thing>
-  <thing id="ipPUKine" name="Psychokinetic" description="Upon command, a psychokinetic weapon glows from the inside with lethal psionic energy. The energy does not harm the hands that hold the weapon. Such a weapon deals an extra 1d4 points of damage on a successful hit. This extra damage is ectoplasmic in nature and is not affected by damage reduction. Bows, crossbows, and slings bestow this ability upon their ammunition.\n\nModerate psychokinesis; ML 10th; Craft Magic Arms and Armor, concussion blast; Price +1 bonus." compset="ItemPower">
+  <thing id="ipPUKine" name="Psychokinetic" description="Upon command, a psychokinetic weapon glows from the inside with lethal psionic energy. The energy does not harm the hands that hold the weapon. Such a weapon deals an extra 1d4 points of damage on a successful hit. This extra damage is ectoplasmic in nature and is not affected by damage reduction. Bows, crossbows, and slings bestow this ability upon their ammunition.\n\nModerate psychokinesis; ML 10th; Craft Magic Arms and Armor, concussion blast; Price +1 bonus." compset="ItemPower" summary="+1d4 ectoplasmic damage on a hit.">
     <fieldval field="iPrice" value="1"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
+    <eval phase="Final" priority="10000"><![CDATA[   
+      if (parent.tagis[component.BaseWep] <> 0) then
+        #extradamage[parent,"+1d4 ectoplasmic",field[thingname].text]
+      else
+        foreach pick in hero from BaseWep where container.child[gCustMagic].field[gWeapExpr].text
+          #extradamage[eachpick,"+1d4 ectoplasmic",field[thingname].text]
+        nexteach
+      endif]]></eval>
     </thing>
-  <thing id="ipPUKineB" name="Psychokinetic Burst" description="This weapon functions as a psychokinetic weapon that also releases a blast of destructive psionic energy upon scoring a successful critical hit. In addition to the extra damage of the psychokinetic ability (see above), a psychokinetic burst weapon deals an extra 1d8 points of damage on a successful critical hit. If the weapon&apos;s critical multiplier is ×3, add 2d8 points of extra damage instead, and if the multiplier is ×4, add 3d8 points of extra damage. This extra damage is ectoplasmic in nature and is not affected by damage reduction. Bows, crossbows, and slings bestow this ability upon their ammunition.\n\nStrong psychokinesis; ML 12th; Craft Magic Arms and Armor, concussion blast; Price +2 bonus." compset="ItemPower">
+  <thing id="ipPUKineB" name="Psychokinetic Burst" description="This weapon functions as a psychokinetic weapon that also releases a blast of destructive psionic energy upon scoring a successful critical hit. In addition to the extra damage of the psychokinetic ability (see above), a psychokinetic burst weapon deals an extra 1d8 points of damage on a successful critical hit. If the weapon&apos;s critical multiplier is ×3, add 2d8 points of extra damage instead, and if the multiplier is ×4, add 3d8 points of extra damage. This extra damage is ectoplasmic in nature and is not affected by damage reduction. Bows, crossbows, and slings bestow this ability upon their ammunition.\n\nStrong psychokinesis; ML 12th; Craft Magic Arms and Armor, concussion blast; Price +2 bonus." compset="ItemPower" summary="+1d4 ectoplasmic damage with +1d8 on a critical.">
     <fieldval field="iPrice" value="2"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      var crit as number
+
+      if (parent.tagis[component.BaseWep] <> 0) then
+        crit = parent.tagvalue[wCritMult.?] + parent.tagcount[Broadcast.CritMult] - 1
+        #extradamage[parent,"+1d4 ectoplasmic",field[thingname].text]
+        #extracrit[parent,signed(crit) & "d10 ectoplasmic",field[livename].text]
+      else
+        foreach pick in hero from BaseWep where container.child[gCustMagic].field[gWeapExpr].text
+          crit = eachpick.tagvalue[wCritMult.?] + eachpick.tagcount[Broadcast.CritMult] - 1
+          #extradamage[eachpick,"+1d4 ectoplasmic",field[thingname].text]
+          #extracrit[eachpick,signed(crit) & "d8 ectoplasmic",field[livename].text]
+        nexteach
+      endif]]></eval>
     </thing>
   <thing id="ipPUSoulB" name="Soulbreaker" description="This weapon has a special ability that functions only upon scoring a successful critical hit. On a successful critical hit, a soulbreaker weapon bestows one negative level on the foe. One day after being struck, if the negative levels have not been purged, the subject must succeed on a DC 18 Fortitude save for each negative level or it becomes a permanent negative level.\n\nStrong telepathy; ML 12th; Craft Magic Arms and Armor, mindwipe; Price +3 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="3"/>
     <usesource source="pPsiUn"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     </thing>
   <thing id="ipPUSunder" name="Sundering" description="This kind of weapon allows a wielder to attack opponents&apos; weapons as if he had the Improved Sunder feat.\n\nFaint metacreativity; ML 5th; Craft Magic Arms and Armor, Great Sunder, metaphysical weapon; Price +1 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="1"/>
     <usesource source="pPsiUn"/>
     <tag group="PowerType" tag="Weapon"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     </thing>
   <thing id="ipPUSupp" name="Suppression" description="An opponent or object struck by this kind of weapon is subject to a targeted dispel psionics power. The wielder makes a dispel check (1d20 + 5 + manifester level, maximum +15) against a DC of 11 + the manifester level of the power to be dispelled. Bows, crossbows, and slings bestow this ability upon their ammunition, but can do so only three times per day.\n\nModerate psychokinesis ML 10th; Craft Magic Arms and Armor, dispel psionics; Price +2 bonus." compset="ItemPower">
     <fieldval field="iPrice" value="2"/>
     <usesource source="pPsiUn"/>
-    <tag group="PowerReq" tag="Ranged"/>
-    <tag group="PowerReq" tag="Melee"/>
     <tag group="PowerType" tag="Weapon"/>
     </thing>
   <thing id="ipPUTelepo" name="Teleporting" description="This ability can be imbedded only in weapons that can be thrown. A teleporting weapon returns through the Astral Plane to the creature that threw it. It teleports into the throwing creature&apos;s empty hand in the round following the round when it was thrown, just before that creature&apos;s turn. It is therefore ready to use again on that turn.\n\nFaint psychoportation; ML 5th; Craft Magic Arms and Armor, fold space; Price +1 bonus." compset="ItemPower">
@@ -2401,7 +2466,6 @@ field[gCost].value += field[abValue2].value]]></eval>
     <tag group="Helper" tag="AlwaysMast"/>
     <tag group="Helper" tag="Proficient"/>
     <tag group="Helper" tag="AutoEquip"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
       ~ Work out if we're equipped, or, if we're the child of a magic item, if
       ~ our parent is equipped
@@ -2425,9 +2489,7 @@ field[gCost].value += field[abValue2].value]]></eval>
     <tag group="gType" tag="Wonder"/>
     <tag group="Helper" tag="EquipAvail"/>
     <tag group="Hero" tag="EqpWrist"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ if not equipped get out now!
+    <eval phase="PreLevel" priority="10000">~ if not equipped get out now!
       doneif (field[gIsEquip].value = 0)
       
       ~ Increase the number of dice of the disrupt pattern
@@ -2448,7 +2510,6 @@ field[gCost].value += field[abValue2].value]]></eval>
     <tag group="Helper" tag="AutoEquip"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Custom" tag="AstArmor"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="Proficient"/>
     </thing>
   <thing id="mPUAstArBr" name="Astral Breastplate" description="A breastplate protects a wearer&apos;s torso with a single piece of sculpted metal, similar to the core piece of a suit of full plate. Despite its sturdiness, its inflexibility and open back make it inferior to complete suits of metal armor, but still an improvement over most non-metal armors." compset="Armor">
@@ -2470,7 +2531,6 @@ field[gCost].value += field[abValue2].value]]></eval>
     <tag group="ArmorArcFl" tag="25"/>
     <tag group="Helper" tag="Helper"/>
     <tag group="Custom" tag="AstArmor"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="Proficient"/>
     <eval phase="PreLevel" priority="5000"><![CDATA[
       doneif (hero.tagis[source.UCPieceArm] = 0)
@@ -2497,7 +2557,6 @@ field[gCost].value += field[abValue2].value]]></eval>
     <tag group="ArmorArcFl" tag="35"/>
     <tag group="Custom" tag="AstArmor"/>
     <tag group="Helper" tag="Helper"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="Proficient"/>
     </thing>
   <thing id="mPUAstArHP" name="Astral Half-plate" description="Half-plate armor combines elements of full plate and chainmail, incorporating several sizable plates of sculpted metal with an underlying mesh of chain links. While this suit protects vital areas with several layers of armor, it is not sculpted to a single individual&apos;s frame, reducing its wearer&apos;s mobility even more than a suit of full plate. Half-plate armor includes gauntlets and a helm." compset="Armor">
@@ -2514,7 +2573,6 @@ field[gCost].value += field[abValue2].value]]></eval>
     <tag group="ArmorArcFl" tag="40"/>
     <tag group="Custom" tag="AstArmor"/>
     <tag group="Helper" tag="AutoEquip"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="Proficient"/>
     </thing>
   </document>

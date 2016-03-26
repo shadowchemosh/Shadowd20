@@ -789,7 +789,7 @@
   <thing id="cPW2CbtPcg" name="Combat Precognition" description="The stalker designates his combat senses towards his opponents and gains momentary flashes of insight into how to defend himself against them. Spending one point of ki as an immediate action forces opponents who attack the stalker to roll their attack rolls twice and take the worse of the two results due to the stalker&apos;s precognitive abilities. This art has a duration of 1 + the stalker&apos;s Wisdom modifier in rounds." compset="CustomSpec" summary="Spend 1 ki, enemies must roll twice to attack and take worse roll for 1 + WIS rnds" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="abDuration" tag="Round"/>
-    <tag group="abCategory" tag="StalkerArt" name="Stalker Art"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
     <tag group="abAction" tag="Immediate"/>
@@ -802,7 +802,7 @@
     <tag group="Helper" tag="SpecUp"/>
     <tag group="abAction" tag="None"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPW2Alcrty" name="Alacrity" description="A stalker&apos;s land speed is faster than the norm for his race, gaining a +10-ft. enhancement bonus to his base speed and he may add his Wisdom modifier to Acrobatics checks, due to his nimble and finely honed body. The stalker enjoys this benefit only when he is wearing no armor or light armor, not using a shield, and not carrying a medium or heavy load. As a swift action, the character may spend a point of ki to pour extra speed to his step to increase this bonus from 10-ft. to an additional 30-ft. for one minute, but he is fatigued afterward for 1d4 minutes as he catches his breath." compset="CustomSpec" summary="+10 ft. to base speed, spend ki for 30 ft" uniqueness="unique">
@@ -816,7 +816,7 @@
     <tag group="AbilType" tag="Extra"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="User" tag="Activation"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="LvNamePar" tag="AppText"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now
@@ -858,7 +858,7 @@
     </thing>
   <thing id="cPW2ComArt" name="Combat Art" description="A stalker that selects this art gains a bonus combat feat. The stalker must meet the prerequisites for selecting this feat. This art may be selected more than once." compset="CustomSpec" summary="You gain a bonus combat feat.">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="abAction" tag="None"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
@@ -873,7 +873,7 @@
     <tag group="abAction" tag="FullRd"/>
     <tag group="abAction" tag="Standard"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPW2CritEd" name="Critical Edge" description="The stalker&apos;s deadly efficiency in combat allows him to increase the critical threat range of any weapon he wields by +1. This bonus is applied after abilities such Improved Critical or the keen weapon property and cannot be doubled." compset="CustomSpec" summary="+1 threat range with all weapons" uniqueness="unique">
@@ -883,7 +883,7 @@
     <tag group="SpecType" tag="Attack"/>
     <tag group="abAction" tag="None"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~ If we've been Disabled, get out now
@@ -919,7 +919,7 @@
     <tag group="AbilType" tag="Extra"/>
     <tag group="abAction" tag="None"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       ~ If we've been Disabled, get out now
@@ -933,13 +933,13 @@
     <tag group="abAction" tag="None"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <exprreq message="Deadly Strike required"><![CDATA[#hasability[cPW2DeadSt] <> 0]]></exprreq>
     </thing>
   <thing id="cPW2DeadRc" name="Deadly Recovery" description="The stalker&apos;s deadly nature is reflected when he is considered to be most vulnerable. While recovering maneuvers as a full round action, the stalker gains the use of the Combat Reflexes feat (using his Wisdom modifier in place of his Dexterity modifier). He may also add his deadly strike damage to any attacks of opportunity he makes while he is recovering maneuvers." compset="CustomSpec" summary="Gain Combat Reflexes and use Deadly Strike while recovering maneuvers" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="HasAbility" tag="fComRef"/>
     <tag group="abAction" tag="FullRd"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
@@ -952,7 +952,7 @@
     <tag group="AbilType" tag="Extra"/>
     <tag group="HasAbility" tag="cEvasion"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPW2KiVmp" name="Ki Vampirism" description="The stalker&apos;s ki gains a hungry quality that expresses itself through the martial prowess of a disciple of the Path of War. If the stalker reduces a living foe to 0 or less hit points with a martial strike or scores a successful critical hit, then he may regain 1 point of ki as an immediate action. He may not use his ki vampirism more times per day than 3 + his Wisdom modifier. This ability does not function against constructs, undead, or creatures with under 1/2 HD. Minimum stalker level 11th." compset="CustomSpec" uniqueness="unique">
@@ -963,7 +963,7 @@
     <tag group="Usage" tag="Day"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       ~ If we've been Disabled, get out now
@@ -978,7 +978,7 @@
     </thing>
   <thing id="cPW2MndBnd" name="Mind Bending" description="The stalker&apos;s inner sense learns the workings of another being&apos;s mind, granting him the ability to impose his own will over those weak enough to succumb to this art. As a standard action, the character spends one ki point and must make eye contact with the target creature and begin speaking to them, using his ki to influence his target&apos;s thoughts. The target then must make a Will save (DC 13 + the stalker&apos;s Wisdom modifier) or be subject to a charm monster spell. Minimum stalker level 5th." compset="CustomSpec" summary="Spend ki to charm monster" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="SpInfo" tag="spCharMon3"/>
     <tag group="abAction" tag="Standard"/>
     <tag group="abSave" tag="WillNeg"/>
@@ -996,7 +996,7 @@
     </thing>
   <thing id="cPW2MonWep" name="Monastic Weapon Training" description="The stalker gains the Improved Unarmed Strike feat and gains proficiency with all weapons that are considered monk weapons." compset="CustomSpec" summary="Gain Improved Unarmed Strike and monk proficiencies" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="abAction" tag="None"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="AbilType" tag="Extra"/>
@@ -1044,7 +1044,7 @@
     </thing>
   <thing id="cPW2Obfusc" name="Obfuscation" description="The stalker knows how to maintain a quiet, innocuous attitude as if he were nothing more than a part of the scenery. The stalker spends a point of ki as a full round action to activate his obfuscation, and as long as he remains in a non- threatening posture (by carrying no weapons in hand moving at half his base speed) the stalker radiates a psychic field that causes others to ignore his presence for a number of minutes equal to the stalker&apos;s Wisdom modifier. Subjects who normally would react to the stalker&apos;s presence in a way that would stop or harm him must make a Will save (DC 15 + the stalker&apos;s Wisdom modifier) or be under the influence of the {i}cloud mind{/i} psionic power. For every 2 additional points of ki spent on this art, the saving throw DC increases by +1 to a maximum of the stalker&apos;s Wisdom modifier. Minimum stalker level 7th." compset="CustomSpec" summary="Force others to ignore you" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="abAction" tag="FullRd"/>
     <tag group="abDuration" tag="Minute"/>
     <tag group="AbilType" tag="Super"/>
@@ -1063,7 +1063,7 @@
     </thing>
   <thing id="cPW2PhmRch" name="Phantom Reach" description="The stalker is capable of extending the reach of melee range martial strikes by infusing ki into the maneuver, causing a phantom echo to rush towards the enemy and initiate the attack. As a swift action, the stalker may spend one ki point and initiate a melee martial strike with a range of melee attack as if it instead had a range of close (25-ft. + 5-ft. / 2 levels). Strikes with a range greater than melee attack do not function with this art." compset="CustomSpec" summary="Make martial strikes at range" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="abAction" tag="Swift"/>
     <tag group="abRange" tag="Feet"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
@@ -1077,7 +1077,7 @@
     </thing>
   <thing id="cPW2PrcStp" name="Precocious Step" description="By relying on his combat insight to steer him effortlessly through a dangerous spot, the stalker may spend one point of ki as a swift action and move without provoking attacks of opportunity for a number rounds equal to his Wisdom modifier (min 1)." compset="CustomSpec" summary="Spend ki to move without AoO" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="abAction" tag="Swift"/>
     <tag group="abDuration" tag="Round"/>
     <tag group="User" tag="Activation"/>
@@ -1093,7 +1093,7 @@
     </thing>
   <thing id="cPW2RogTal" name="Rogue Talent" description="Some stalkers have learned techniques that are similar to those of the rogue, and may select rogue talents instead of stalker arts. Stalkers may not learn advanced talents, nor can they gain the Ki Pool or Underhanded rogue talents. Talents that apply to a rogue&apos;s sneak attack apply to a stalker&apos;s deadly strike ability." compset="CustomSpec" summary="Gain a rogue talent" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
@@ -1318,7 +1318,7 @@
     <usesource source="srcPathOfW"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecSource" tag="cHelpPW2"/>
-    <tag group="abCategory" tag="StalkerArt"/>
+    <tag group="abCategory" tag="PWStalkArt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="abAction" tag="Swift"/>
     <tag group="abDuration" tag="Round"/>

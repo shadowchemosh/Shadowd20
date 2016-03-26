@@ -100,6 +100,38 @@
     ]]>
   </procedure>
 
+  <!-- =================================================================== -->
+  <!-- Set Adjustment Bonus Values for Pick 2                              -->
+  <!-- Procedure is used to set the bonus to the chosen pick when the      -->
+  <!-- pChosen2 is the bonus type.                                         -->
+  <!-- =================================================================== -->
+  <procedure id="S2AdjBon2" context="pick"><![CDATA[
+    ~ Figure out which 'field' to apply the adjustment too
+    If (field[pChosen2].chosen.tagis[AdjustBon.Alchemical] <> 0) Then
+       #applybonus[BonAlch,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Bonus] <> 0) Then
+       focus.field[Bonus].value += field[pAdjust].value
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Circumstan] <> 0) Then
+       focus.field[ModCirc].value += field[pAdjust].value
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Competence] <> 0) Then
+       #applybonus[BonComp,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Enhancemen] <> 0) Then
+       #applybonus[BonEnhance,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Insight] <> 0) Then
+       #applybonus[BonInsight,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Luck] <> 0) Then
+       #applybonus[BonLuck,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Morale] <> 0) Then
+       #applybonus[BonMorale,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Profane] <> 0) Then
+       #applybonus[BonProfane,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Sacred] <> 0) Then
+       #applybonus[BonSacred,focus,field[pAdjust].value]
+    ElseIf (field[pChosen2].chosen.tagis[AdjustBon.Trait] <> 0) Then
+       #applybonus[BonTrait,focus,field[pAdjust].value]
+    Endif
+      ]]>
+  </procedure>
 
   <!-- =================================================================== -->
   <!-- Calculate Furious Focus Values                                      -->
@@ -125,9 +157,9 @@
   </procedure>
 
 
-<!-- =================================================================== -->
-<!-- Set the natural attack damage for adjustments                       -->
-<!-- =================================================================== -->
+  <!-- =================================================================== -->
+  <!-- Set the natural attack damage for adjustments                       -->
+  <!-- =================================================================== -->
   <procedure id="S2SetNatDm" context="pick"><![CDATA[
     ~ If the default "Source" id is changed then attempt to use it.
     If (compare(field[pSource].text,"(source)") <> 0) Then
@@ -186,14 +218,14 @@
      ]]>
   </procedure>
 
-<!-- =================================================================== -->
-  <!-- 
-  Set the Custom Name and Custom Text adjustments logic into this single
-  procedure. We need to allow for using the Duration field or the Source
-  field for setting the name so that we are backwards compatable.
-  Timing: Render/99999999
-  -->
-<!-- =================================================================== -->
+  <!-- =================================================================== -->
+    <!-- 
+    Set the Custom Name and Custom Text adjustments logic into this single
+    procedure. We need to allow for using the Duration field or the Source
+    field for setting the name so that we are backwards compatable.
+    Timing: Render/99999999
+    -->
+  <!-- =================================================================== -->
   <procedure id="S2SetName" context="pick"><![CDATA[
     ~ 1 = Source
     ~ 2 = Duration
@@ -202,7 +234,7 @@
     ~ If the default "(duration)" text is changed then attempt to use it.
     If (compare(field[pDuration].text,"(duration)") <> 0) Then
       ~ Make sure that we are not blank either.
-      If (compare(field[pDuration].text,"") <> 0) Then
+      If (field[pDuration].isempty = 0) Then
         S2Type = 2
       Endif
     Endif
@@ -238,8 +270,39 @@
       ElseIf (S2Type = 2) Then
         field[pChosen].chosen.field[livename].text &= field[pDuration].text      
       Endif
-    Endif]]>
+    Endif
+    ]]>
   </procedure>
+
+  <!-- =================================================================== -->
+  <!-- All the PFS Adjustments do the same logic for setting the name.     -->  
+  <!-- Combined all the logic here.                                        -->
+  <!-- Timing: Render/99999999                                             -->
+  <!-- =================================================================== -->
+  <procedure id="S2PFSName" context="pick"><![CDATA[
+    ~ All PFS adjustments Append name
+    perform assign[AdjShadow.Text]
+
+    ~ 1 = Source
+    ~ 2 = Duration
+    var S2Type as number
+
+    Call S2SetName
+
+    ~ If we're in output mode change to a standard naming format for these PFS adjustments.
+    doneif (state.isoutput = 0)
+
+    ~ Append source text    
+    if (S2Type = 1) then
+      field[livename].text = "PFS Boon" & field[pSource].text
+      
+    ~..Append duration text
+    elseif (S2Type = 2) then
+      field[livename].text = "PFS Boon" & field[pDuration].text
+    endif
+    ]]>
+  </procedure>
+
 
 <!-- =================================================================== -->
    <!-- 
@@ -445,6 +508,96 @@
     Endif
     ]]>
   </procedure>
+
+
+<!-- =================================================================== -->
+<!-- 
+     This procedure calculates the correct cost and pages of a spellbook
+     based on CORE book rules.
+-->
+<!-- =================================================================== -->
+  <procedure id="CalcSpBook" context="pick"><![CDATA[
+    ~ This procedure calculates the cost, weight, and number of spellbooks needed for a selected class
+    ~ The Value.? tag on the Thing stores the number of pages the spellbook can hold.
+    ~ The weight is set once to figure out what the base weight of the spellbook is.
+
+    ~ If nothing chosen then get out now!
+    doneif (field[usrChosen1].ischosen = 0)
+
+    ~ Parms in and out of the procedure
+    var Cost   as number
+    var Pages  as number
+    var Weight as number
+    var Books  as number
+
+    ~ Work fields
+    var S2Weight as number
+    var S2Class as string
+
+    ~ Get the Spellbook Class ID
+    S2Class = field[usrChosen1].chosen.tagids[Spellbook.?,"|"]
+
+    ~ Read through all the spells on the selected class
+    foreach pick in hero from BaseSpell where "(" & S2Class & ") & !Hide.Spell"
+       ~ Total up the Cost and number of pages used at each spell level
+       If (eachpick.tagis[sLevel.0] <> 0) Then
+          Cost += 5
+          Pages += 1
+       elseIf (eachpick.tagis[sLevel.1] <> 0) Then
+          Cost += 10
+          Pages += 1
+       elseIf (eachpick.tagis[sLevel.2] <> 0) Then
+          Cost += 40
+          Pages += 2
+       elseIf (eachpick.tagis[sLevel.3] <> 0) Then
+          Cost += 90
+          Pages += 3
+       elseIf (eachpick.tagis[sLevel.4] <> 0) Then
+          Cost += 160
+          Pages += 4
+       elseIf (eachpick.tagis[sLevel.5] <> 0) Then
+          Cost += 250
+          Pages += 5
+       elseIf (eachpick.tagis[sLevel.6] <> 0) Then
+          Cost += 360
+          Pages += 6
+       elseIf (eachpick.tagis[sLevel.7] <> 0) Then
+          Cost += 490
+          Pages += 7
+       elseIf (eachpick.tagis[sLevel.8] <> 0) Then
+          Cost += 640
+          Pages += 8
+       elseIf (eachpick.tagis[sLevel.9] <> 0) Then
+          Cost += 810
+          Pages += 9
+       Endif
+    nexteach
+    ~ Calc the number of books
+    Books = round(maximum(Pages/tagvalue[Value.?],1),0,1)
+    ~ Calc books total weight based on weight of a single book
+    Weight = Books * field[gWeight].value
+    ~ Calc how much weight to add to the hero subtracting out the current weight of one book
+    S2Weight = Weight - field[gWeight].value
+    ~ Set the item weight
+    field[gWeight].value += S2Weight
+    ~ Set the item weight
+    field[gearWeight].value += S2Weight
+    
+    ~ Set the desc with info
+    field[DescAppend].text = "{B}Cost:{/B} " & digitgroup(Cost) & "gp" & "{br}" & "{B}Pages:{/B} " & Pages
+    ]]>
+    </procedure>
+
+  <!-- =================================================================== -->
+  <!-- This procedure sets the weight of a gear item to zero.              -->
+  <!-- =================================================================== -->
+  <procedure id="GearZerolb" context="pick"><![CDATA[
+    ~ Set the item weight to zero
+    field[gWeight].value = 0
+    ~ Set the item weight to zero
+    field[gearWeight].value = 0
+    ]]>
+    </procedure>
 
 
 <!-- =================================================================================== -->
@@ -963,94 +1116,5 @@
     Call SCPolyJet
     ]]>
   </procedure>
-
-<!-- =================================================================== -->
-<!-- 
-     This procedure calculates the correct cost and pages of a spellbook
-     based on CORE book rules.
--->
-<!-- =================================================================== -->
-  <procedure id="CalcSpBook" context="pick"><![CDATA[
-    ~ This procedure calculates the cost, weight, and number of spellbooks needed for a selected class
-    ~ The Value.? tag on the Thing stores the number of pages the spellbook can hold.
-    ~ The weight is set once to figure out what the base weight of the spellbook is.
-
-    ~ If nothing chosen then get out now!
-    doneif (field[usrChosen1].ischosen = 0)
-
-    ~ Parms in and out of the procedure
-    var Cost   as number
-    var Pages  as number
-    var Weight as number
-    var Books  as number
-
-    ~ Work fields
-    var S2Weight as number
-    var S2Class as string
-
-    ~ Get the Spellbook Class ID
-    S2Class = field[usrChosen1].chosen.tagids[Spellbook.?,"|"]
-
-    ~ Read through all the spells on the selected class
-    foreach pick in hero from BaseSpell where "(" & S2Class & ") & !Hide.Spell"
-       ~ Total up the Cost and number of pages used at each spell level
-       If (eachpick.tagis[sLevel.0] <> 0) Then
-          Cost += 5
-          Pages += 1
-       elseIf (eachpick.tagis[sLevel.1] <> 0) Then
-          Cost += 10
-          Pages += 1
-       elseIf (eachpick.tagis[sLevel.2] <> 0) Then
-          Cost += 40
-          Pages += 2
-       elseIf (eachpick.tagis[sLevel.3] <> 0) Then
-          Cost += 90
-          Pages += 3
-       elseIf (eachpick.tagis[sLevel.4] <> 0) Then
-          Cost += 160
-          Pages += 4
-       elseIf (eachpick.tagis[sLevel.5] <> 0) Then
-          Cost += 250
-          Pages += 5
-       elseIf (eachpick.tagis[sLevel.6] <> 0) Then
-          Cost += 360
-          Pages += 6
-       elseIf (eachpick.tagis[sLevel.7] <> 0) Then
-          Cost += 490
-          Pages += 7
-       elseIf (eachpick.tagis[sLevel.8] <> 0) Then
-          Cost += 640
-          Pages += 8
-       elseIf (eachpick.tagis[sLevel.9] <> 0) Then
-          Cost += 810
-          Pages += 9
-       Endif
-    nexteach
-    ~ Calc the number of books
-    Books = round(maximum(Pages/tagvalue[Value.?],1),0,1)
-    ~ Calc books total weight based on weight of a single book
-    Weight = Books * field[gWeight].value
-    ~ Calc how much weight to add to the hero subtracting out the current weight of one book
-    S2Weight = Weight - field[gWeight].value
-    ~ Set the item weight
-    field[gWeight].value += S2Weight
-    ~ Set the item weight
-    field[gearWeight].value += S2Weight
-    
-    ~ Set the desc with info
-    field[DescAppend].text = "{B}Cost:{/B} " & digitgroup(Cost) & "gp" & "{br}" & "{B}Pages:{/B} " & Pages
-    ]]>
-    </procedure>
-
-  <!-- =================================================================== -->
-  <!-- This procedure sets the weight of a gear item to zero.              -->
-  <!-- =================================================================== -->
-  <procedure id="GearZerolb" context="pick"><![CDATA[
-    ~ Set the item weight to zero
-    field[gWeight].value = 0
-    ~ Set the item weight to zero
-    field[gearWeight].value = 0
-    ]]>
-    </procedure>
 
 </document>

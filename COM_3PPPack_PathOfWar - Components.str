@@ -188,7 +188,7 @@
 
     <!-- 
       These linkages link the class to its configurable. This allows an easy way to setup the 
-      configurable. It also moves all the logic to background scripts intead. Meaning the 
+      configurable. It also moves all the logic to background scripts instead. Meaning the 
       proceadure call can be removed from the Configurables.
     -->    
     <linkage linkage="powCfg"/>
@@ -201,6 +201,18 @@
       ~ Name the custom ability lists
       linkage[powCfg].field[cfgObject1].text = "Maneuvers"
       linkage[powCfg].field[cfgObject2].text = "Stances"
+
+      ~ Check for additional classes we "could" be linked to.
+      ~ This is mostly going to happen with classes like the Unchained Rogue.
+      ~ We need to allow changing the linkage to the correct class.
+      if (intersect[ArchCntAs,ArchCntAs] <> 0) then
+        var searchexpr as string
+        perform pulltags[ArchCntAs.?,Classes]
+        searchexpr = tagids[Classes.?,"|"]
+        debug searchexpr
+        perform setlinkage[powClass,Class,searchexpr]
+        debug linkage[powClass].tagids[thingid.?]
+      endif
 
       ~ Pull the Class Counts As tag from the class
       perform linkage[powClass].pulltags[ClsCountAs.?]
