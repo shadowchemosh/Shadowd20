@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <extthing thing="spCureMod2" group="sClass" tag="cHelpDrd"/>
+  <extthing thing="spCureSer3" group="sClass" tag="cHelpDrd"/>
+  <extthing thing="spCureCri4" group="sClass" tag="cHelpDrd"/>
+  <extthing thing="spCureLig1" group="sClass" tag="cHelpDrd"/>
+  <extthing thing="spCureLig5" group="sClass" tag="cHelpDrd"/>
+  <extthing thing="spCureMod6" group="sClass" tag="cHelpDrd"/>
+  <extthing thing="spCureSer7" group="sClass" tag="cHelpDrd"/>
+  <extthing thing="spCureCri8" group="sClass" tag="cHelpDrd"/>
+  </document>
