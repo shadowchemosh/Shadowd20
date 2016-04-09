@@ -148,4 +148,101 @@
         #extradamage[eachpick,field[abText].text,field[name].text]
       nexteach]]></eval>
     </thing>
+  <thing id="wS2AdjSpl" name="Spell Weapon" compset="Weapon">
+    <comment>This is a helper.helper Thing to give spell adjustments a generic weapon that can be bootstrapped or used for many differnet types of spells. I added the Helper.AdjSpell tag to give me a tag to use for looping besides the Thingid.</comment>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="Shadow"/>
+    </thing>
+  <thing id="pS2ThorBod" name="Thorn Body" description="This spell causes spines to grow from your exposed skin, damaging creatures that strike you. Any creature striking you with a melee weapon, an unarmed strike, or a natural weapon takes 1d6 points of piercing damage +1 point per caster level (maximum +15). Creatures using melee weapons with reach are unaffected by this spell. Creatures that successfully grapple you take 2d6 points of piercing damage +1 point per caster level (maximum +15). In addition, your natural attacks and unarmed strikes deal an additional 1d6 points of piercing damage.\n\nThorns created by this spell persist through any new physical shape or form you assume, such as via wildshape or any polymorph effect." compset="InPlay">
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="15"/>
+    <fieldval field="abValue2" value="1"/>
+    <fieldval field="abValue3" value="6"/>
+    <usesource source="APG"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Custom" tag="pThornMle"/>
+    <tag group="Custom" tag="pThornGra"/>
+    <bootstrap thing="wS2AdjSpl">
+      <containerreq phase="First" priority="490"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      <autotag group="Custom" tag="pThornMle"/>
+      <assignval field="livename" value="Thorn Body - Melee"/>
+      </bootstrap>
+    <bootstrap thing="wS2AdjSpl">
+      <containerreq phase="First" priority="490"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      <autotag group="Custom" tag="pThornGra"/>
+      <assignval field="livename" value="Thorn Body - Grapple"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[      
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Set damage bonus +1 to +15
+      field[abValue].value += field[pAdjust].value
+    
+      ~ Loop through all natural attacks, Unarmed strike and 
+      ~ spell helper weapons.
+      ~ NOTE: Unarmed strike is part of the fighter weapon group natural.
+      foreach pick in hero from BaseWep where "wFtrGroup.Natural|Helper.AdjSpell"
+      
+        ~ If Fighter Group Natural set extra damage
+        if (eachpick.tagis[wFtrGroup.Natural] <> 0) then
+          #extradamage[eachpick,"+" & field[abValue2].value & "d" & field[abValue3].value & " piercing",field[name].text]
+
+        ~..otherwise we are a spell weapon so give damage bonus
+        else
+        
+          ~ Melee attack does 1d6 +1 per CL
+          if (eachpick.tagis[Custom.pThornMle] = 1) then
+            eachpick.field[wFixDamage].text = "1d6" & signed(field[abValue].value)
+            
+          ~ Grapple attack does 2d6 +1 per CL
+          elseif (eachpick.tagis[Custom.pThornGra] = 1) then
+            eachpick.field[wFixDamage].text = "2d6" & signed(field[abValue].value)
+            endif
+          endif
+        nexteach
+      ]]></eval>
+    </thing>
+  <thing id="pDeadJugg" name="Deadly Juggernaut" description="With every enemy life you take, you become increasingly dangerous and difficult to stop. During the duration of the spell, you gain a cumulative +1 luck bonus on melee attack rolls, melee weapon damage rolls, Strength checks, and Strength-based skill checks as well as DR 2/— each time you reduce a qualifying opponent to 0 or few hit points (maximum +5 bonus and DR 10/—) with a melee attack. A qualifying opponent has a number of Hit Dice equal to or greater than your Hit Dice –4." compset="InPlay">
+    <fieldval field="pDuration" value="1 minute/level"/>
+    <fieldval field="pMinimum" value="1"/>
+    <fieldval field="pMaximum" value="5"/>
+    <usesource source="UltCombat"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Set bonuses
+      field[abValue].value += field[pAdjust].value
+      field[abValue2].value += field[pAdjust].value * 2
+      
+      ~ DR 5/- per life taken
+      #applydr[xDamRd, field[abValue2].value]
+
+      ~ +1 cumulative luck bonus on melee attack and damage
+      #applybonus[atmBonLuck,hero.child[Attack],field[abValue].value]
+      #applybonus[dmmBonLuck,hero.child[Damage],field[abValue].value]
+
+      ~ +1 cumulative luck bonus on str checks
+      #situational[hero.child[aSTR],signed(field[abValue].value) & " luck bonus on Ability Checks.",field[thingname].text]]]></eval>
+    <eval phase="PostAttr" priority="5000" index="2"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give bonus only to STR skills
+      foreach pick in hero from BaseSkill where "SkillAbil.aSTR"
+        #applybonus[BonLuck,eachpick,field[abValue].value]
+        nexteach
+
+      ~ If initiative has been changed to be a Str check give
+      ~ a luck bonus to it
+      if (hero.child[Initiative].tagis[UseAttr.aSTR] <> 0) then
+        #applybonus[BonLuck,hero.child[Initiative],field[abValue].value]
+        endif]]></eval>
+    </thing>
+
   </document>
