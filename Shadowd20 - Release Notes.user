@@ -6,6 +6,24 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.12 April 9, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>None</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Moved all the shadow d20 houserules options to now be under the Shadow d20 parent.</li>
+<li>Created an optional "Automatic Level Bonus" that gives characters a bonus to Saves and AC at specfic levels.</li>
+<li>Added new spell adjustments: Thorn Body & Deady Juggernaut.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Changed over spells to make use of the new Extend Thing capability of the editor.  This allows me to make the Cure spells be the same level for the Druid.</li>
+</ul>
+
+
 <strong>v2.11 March 12, 2016</strong>
 
 <strong>Bug Fixes</strong>
