@@ -1271,19 +1271,19 @@ endif]]></eval>
   <thing id="fS2ZenComb" name="Zen Combat" description="Your intuition guides your hand when you use weapons.\n\n{b}Benefit{/b}: You can use your Wisdom modifier instead of your Strength modifier when using monk weapons. This bonus applies to both attack and damage.\n\n{b}Special{/b}: This feat counts as &quot;Weapon Finesse&quot; for the purposes of prerequisites." compset="Feat" summary="Use Wis instead of Str for all purposes when using Monk weapons." uniqueness="useronce">
     <comment>Maybe could help monks out I am thinking.</comment>
     <usesource source="s20PFCamp"/>
-    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="fCategory" tag="Combat"/>
     <tag group="HasFeat" tag="fWepFin"/>
     <tag group="Helper" tag="AnimCompOK"/>
     <tag group="BonusFor" tag="Monk1"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ All Monk Weapons use Wis
-foreach pick in hero from BaseWep where "wFtrGroup.Monk"
-   perform eachpick.assign[DamageOpt.aWIS]
-   perform eachpick.assign[MelAttOpt.aWIS]
-nexteach]]></eval>
+      ~ All Monk Weapons use Wis
+      foreach pick in hero from BaseWep where "wFtrGroup.Monk"
+         perform eachpick.assign[DamageOpt.aWIS]
+         perform eachpick.assign[MelAttOpt.aWIS]
+      nexteach]]></eval>
     </thing>
   <thing id="fS2EmpObed" name="Empyreal Obedience" description="{b}Prerequisites{/b}: 3 ranks in Knowledge (planes), must worship a empyreal lord.\n\n{b}Benefit{/b}: Each empyreal lord requires a different obedience, but all obediences take only an hour to perform. Once the obedience has been performed, you gain the benefit of a resistance to some element or attack associated with your empyreal lord, as indicated in the &quot;Obedience&quot; entry for the empyreal lord.\n\nIf you have at least 12 Hit Dice, you also gain the first boon granted by your empyreal lord upon undertaking your obedience. If you have at least 16 Hit Dice, you also gain the empyreal lord&apos;s second boon. If you have 20 Hit Dice or more, you also gain the empyreal lord&apos;s third and final boon. Unless a specific duration or number of uses per day is listed, a boon&apos;s effects are constant.\n\nIf you ever fail to perform a daily obedience, you lose all access to resistances and boons granted by this feat until you next perform the obedience." compset="Feat" summary="Your holy deeds prove devotion to a empyreal lord and gain benefits." uniqueness="useronce">
     <fieldval field="actName" value="Obedience Performed"/>
@@ -1292,13 +1292,14 @@ nexteach]]></eval>
     <tag group="Custom" tag="Obedience" name="Obedience" abbrev="Obedience"/>
     <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
     <bootstrap thing="cfgS2EmBoo"></bootstrap>
-    <eval phase="First"><![CDATA[~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
+    <eval phase="First"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
 
-~ Has the daily Obedience been performed? If so forward the tag to the 
-~ hero which allows the bootstraps on each of our Configurable's specials
-doneif (field[abilActive].value = 0)
-perform hero.assign[Custom.Obedience]]]></eval>
+      ~ Has the daily Obedience been performed? If so forward the tag to the 
+      ~ hero which allows the bootstraps on each of our Configurable's specials
+      doneif (field[abilActive].value = 0)
+      perform hero.assign[Custom.Obedience]]]></eval>
     <exprreq message="Must worship a Empyreal Lord."><![CDATA[tagis[DeityCat.Empyreal] <> 0]]></exprreq>
     <exprreq message="Knowledge (Planes) 3 ranks required."><![CDATA[#skillranks[skKnowPlan] >= 3]]></exprreq>
     </thing>
@@ -1334,26 +1335,26 @@ perform hero.assign[Custom.Obedience]]]></eval>
   <thing id="abS2RagaOb" name="+4 sacred bonus on saving throws against spells and effects cast by evil creatures" description="You gain a +4 sacred bonus on saving throws against spells and effects cast by evil creatures." compset="Ability" uniqueness="unique">
     <fieldval field="actName" value="Saves vs spells cast by evil"/>
     <usesource source="s20PFCamp"/>
-    <tag group="SpecType" tag="Defense" name="Defense" abbrev="Defense"/>
-    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="SpecType" tag="Defense"/>
+    <tag group="AbilType" tag="Super"/>
     <tag group="User" tag="Activation"/>
-    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~if we're not shown, just get out
-doneif (tagis[Helper.ShowSpec] = 0)
-~ If we're disabled, do nothing
-doneif (tagis[Helper.SpcDisable] <> 0)
+      ~if we're not shown, just get out
+      doneif (tagis[Helper.ShowSpec] = 0)
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.SpcDisable] <> 0)
 
-~ If active then set the bonus
-If (field[abilActive].value <> 0) Then
-   field[abValue].value += 4
-   #applybonus[BonSacred,hero.child[svFort],field[abValue].value]
-   #applybonus[BonSacred,hero.child[svRef],field[abValue].value]
-   #applybonus[BonSacred,hero.child[svWill],field[abValue].value]
-~.. If not active then set the situational text
-Else
-   #situational[hero.child[svAll],"+4 sacred bonus on saving throws against spells and effects cast by evil creatures.","Ragathiel Boon"]
-Endif]]></eval>
+      ~ If active then set the bonus
+      If (field[abilActive].value <> 0) Then
+         field[abValue].value += 4
+         #applybonus[BonSacred,hero.child[svFort],field[abValue].value]
+         #applybonus[BonSacred,hero.child[svRef],field[abValue].value]
+         #applybonus[BonSacred,hero.child[svWill],field[abValue].value]
+      ~.. If not active then set the situational text
+      Else
+         #situational[hero.child[svAll],"+4 sacred bonus on saving throws against spells and effects cast by evil creatures.","Ragathiel Boon"]
+      Endif]]></eval>
     </thing>
   <thing id="rcS2VirCo2" name="Virtuous Combat: Litany of Righteousness 2/day" description="2/day use {i}litany of righteousness{/i} as a spell like ability." compset="RaceCustom" uniqueness="useronce">
     <usesource source="s20PFCamp"/>
