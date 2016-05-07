@@ -217,16 +217,16 @@ nexteach]]></eval>
 
       field[abSumm].text = focus.field[name].text & " becomes a Wisdom-based, class skill."]]></eval>
     </thing>
-  <thing id="fS2ActBoos" name="Action Boost" description="{I}You have the ability to alter your luck drastically in dire circumstances.{/I}\n\n{B}Benefit:{/b} When you spend an action point to alter the result of an attack roll, a skill check, an ability check, a level check, or a saving throw, you roll d8s instead of d6s and add the result to the d20 roll." compset="Feat" summary="When you spend an action point roll d8s instead of d6s." uniqueness="useronce">
+  <thing id="fS2ActBoo2" name="Action Boost" description="{I}You have the ability to alter your luck drastically in dire circumstances.{/I}\n\n{B}Benefit:{/b} When you spend an action point to alter the result of an attack roll, a skill check, an ability check, a level check, or a saving throw, you roll d8s instead of d6s and add the result to the d20 roll." compset="Feat" summary="When you spend an action point roll d8s instead of d6s." uniqueness="useronce">
     <usesource source="OptAction"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
-  <thing id="fS2ActSurg" name="Action Surge" description="{I}By spending 2 action points, you can perform an additional action in a round.{/i}\n\n{B}Prerequisite:{/b} You must be level 3+\n\n{B}Benefit:{/b} You can spend 2 action points to take an extra move action or standard action in a round, either before or after your regular actions." compset="Feat" summary="Spend 2 APs to take an extra move or standard action on your turn." uniqueness="useronce">
+  <thing id="fS2ActSur2" name="Action Surge" description="{I}By spending 2 action points, you can perform an additional action in a round.{/i}\n\n{B}Prerequisite:{/b} You must be level 3+\n\n{B}Benefit:{/b} You can spend 2 action points to take an extra move action or standard action in a round, either before or after your regular actions." compset="Feat" summary="Spend 2 APs to take an extra move or standard action on your turn." uniqueness="useronce">
     <usesource source="OptAction"/>
     <tag group="Helper" tag="ShowSpec"/>
     <exprreq message="Level 3+ required."><![CDATA[#totallevelcount[] >= 3]]></exprreq>
     </thing>
-  <thing id="fS2HeroSpi" name="Heroic Spirit" description="{I}You have a larger reservoir of luck than the average hero.{/i}\n\n{B}Benefit:{/b} Your action point maximum per level is increased by 3. Thus, you now gain a number of action points equal to 8 + 1/2 your character level at each new level you attain. This number also represents the total number of action points you can have at each level.\n\n{B}Normal:{/b} Without this feat, player characters receive action points equal to 5 + 1/2 their character level at each new level they attain. \n\n{b}Special:{/b} NPCs normally do not have action points. By taking this feat, an NPC gains and can use 3 action points every level." compset="Feat" summary="Your action point maximum per level is increased by 3." uniqueness="useronce">
+  <thing id="fS2HeroSp2" name="Heroic Spirit" description="{I}You have a larger reservoir of luck than the average hero.{/i}\n\n{B}Benefit:{/b} Your action point maximum per level is increased by 3. Thus, you now gain a number of action points equal to 8 + 1/2 your character level at each new level you attain. This number also represents the total number of action points you can have at each level.\n\n{B}Normal:{/b} Without this feat, player characters receive action points equal to 5 + 1/2 their character level at each new level they attain. \n\n{b}Special:{/b} NPCs normally do not have action points. By taking this feat, an NPC gains and can use 3 action points every level." compset="Feat" summary="Your action point maximum per level is increased by 3." uniqueness="useronce">
     <usesource source="OptAction"/>
     <eval phase="PostLevel" priority="10012"><![CDATA[
       ~ If we're disabled, do nothing
@@ -235,7 +235,7 @@ nexteach]]></eval>
       ~Increase Action Point total by 3
       #trkmax[hActionPts] += 3]]></eval>
     </thing>
-  <thing id="fS2RagLuck" name="Raging Luck" description="When raging, you have a greater ability to alter your luck than most others do.\n\n{b}Prerequisite{/b}: Ability to rage or frenzy.\n\n{b}Benefit:{/b} You gain 1 temporary action point while raging. If you don’t use this action point during your rage, it disappears when your rage ends." compset="Feat" summary="You gain 1 temporary action point while raging." uniqueness="useronce">
+  <thing id="fS2RagLuc2" name="Raging Luck" description="When raging, you have a greater ability to alter your luck than most others do.\n\n{b}Prerequisite{/b}: Ability to rage or frenzy.\n\n{b}Benefit:{/b} You gain 1 temporary action point while raging. If you don’t use this action point during your rage, it disappears when your rage ends." compset="Feat" summary="You gain 1 temporary action point while raging." uniqueness="useronce">
     <usesource source="OptAction"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="General"/>
@@ -1037,7 +1037,7 @@ endif]]></eval>
 hero.childfound[raDBbrthw].field[trkMax].value += 1]]></eval>
     <exprreq message="Racial feat - You must be a Dragonborn." iserror="no"><![CDATA[#hasability[raDBbrthw]<> 0]]></exprreq>
     </thing>
-  <thing id="fShftBeEli" name="Beasthide Elite" description="Your shifter trait improves.\n\n{b}Prerequisite:{/b} Shifter with the beasthide trait.\n\n{b}Benefit:{/b} While shifting, your natural armor bonus increases to +4.\n\n{b}Normal:{/b} Without this feat, a beasthide shifter has a natural armor bonus of +2 while shifting." compset="Feat" summary="While shifting, your natural armor bonus increases to +4." uniqueness="useronce">
+  <thing id="fShftBeEl2" name="Beasthide Elite" description="Your shifter trait improves.\n\n{b}Prerequisite:{/b} Shifter with the beasthide trait.\n\n{b}Benefit:{/b} While shifting, your natural armor bonus increases to +4.\n\n{b}Normal:{/b} Without this feat, a beasthide shifter has a natural armor bonus of +2 while shifting." compset="Feat" summary="While shifting, your natural armor bonus increases to +4." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="fCategory" tag="Shifter"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -1053,7 +1053,7 @@ doneif (hero.childlives[rcS2beasth] <> 1)
 #value2[rcS2beasth] += 2]]></eval>
     <exprreq message="Must be a Beasthide shifter required."><![CDATA[hero.tagis[Shifter.Beasthide] <> 0]]></exprreq>
     </thing>
-  <thing id="fShftCwEli" name="Cliffwalk Elite" description="Your shifter trait improves.\n\n{b}Prerequisite:{/b} Shifter with the cliffwalk trait.\n\n{b}Benefit:{/b} While shifting, your climb speed improves by 10 feet. This improvement stacks with the increase for the cliffwalk trait, for a total increase of 30 feet." compset="Feat" summary="While shifting, your climb speed improves by 10 feet. This improvement stacks with the increase for the cliffwalk trait, for a total increase of 30 feet." uniqueness="useronce">
+  <thing id="fShftCwEl2" name="Cliffwalk Elite" description="Your shifter trait improves.\n\n{b}Prerequisite:{/b} Shifter with the cliffwalk trait.\n\n{b}Benefit:{/b} While shifting, your climb speed improves by 10 feet. This improvement stacks with the increase for the cliffwalk trait, for a total increase of 30 feet." compset="Feat" summary="While shifting, your climb speed improves by 10 feet. This improvement stacks with the increase for the cliffwalk trait, for a total increase of 30 feet." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="fCategory" tag="Shifter"/>
     <tag group="Helper" tag="ShowSpec"/>
@@ -1069,7 +1069,7 @@ doneif (hero.childlives[rcS2cliffw] <> 1)
 #value2[rcS2cliffw] += 10]]></eval>
     <exprreq message="Cliffwalk shifter required."><![CDATA[hero.tagis[Shifter.Cliffwalk] <> 0]]></exprreq>
     </thing>
-  <thing id="fShftExShT" name="Extra Shifter Trait" description="You manifest a second shifter trait while shifting.\n\n{b}Prerequisite:{/b} Shifter, two other shifter feats.\n\n{b}Benefit:{/b} Select a second shifter trait from those allowed for the shifter race. You manifest all the benefits of the second trait while shifting." compset="Feat" summary="Select a second shifter trait." uniqueness="useronce">
+  <thing id="fShftExSh2" name="Extra Shifter Trait" description="You manifest a second shifter trait while shifting.\n\n{b}Prerequisite:{/b} Shifter, two other shifter feats.\n\n{b}Benefit:{/b} Select a second shifter trait from those allowed for the shifter race. You manifest all the benefits of the second trait while shifting." compset="Feat" summary="Select a second shifter trait." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="fCategory" tag="Shifter"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -1085,7 +1085,7 @@ hero.findchild[BaseRace,"thingid.rShifters"].field[rGiveSp2nd].value += 1]]></ev
     <exprreq message="At least two other shifter feats required." iserror="no"><![CDATA[tagcount[fCategory.Shifter] >=2]]></exprreq>
     <exprreq message="Shifter race required." iserror="no"><![CDATA[#hasrace[rShifters] <> 0]]></exprreq>
     </thing>
-  <thing id="fShftGrBit" name="Great Bite" description="You know how to hit where it hurts with your fangs.\n\n{b}Prerequisite:{/b} Shifter with the longtooth trait, +6 base attack bonus.\n\n{b}Benefit:{/b} Your fang attacks now have a critical hit multiplier of x3.\n\n{b}Normal:{/b} Without this feat, your fang attacks have a multiplier of x2." compset="Feat" summary=" Your fang attacks now have a critical hit multiplier of x3." uniqueness="useronce">
+  <thing id="fShftGrBi2" name="Great Bite" description="You know how to hit where it hurts with your fangs.\n\n{b}Prerequisite:{/b} Shifter with the longtooth trait, +6 base attack bonus.\n\n{b}Benefit:{/b} Your fang attacks now have a critical hit multiplier of x3.\n\n{b}Normal:{/b} Without this feat, your fang attacks have a multiplier of x2." compset="Feat" summary=" Your fang attacks now have a critical hit multiplier of x3." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Shifter"/>
@@ -1105,7 +1105,7 @@ nexteach]]></eval>
     <exprreq message="Shifter with longtooth trait required."><![CDATA[hero.tagis[Shifter.Longtooth] <> 0]]></exprreq>
     <exprreq message="Must have a Base Attack Bonus of +6 or greater." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 6]]></exprreq>
     </thing>
-  <thing id="fShftGrRen" name="Great Rend" description="You know how to hit where it hurts with your claws.\n\n{b}Prerequisite:{/b}Shifter with the razorclaw trait, +4 base attack bonus.\n\n{b}Benefit:{/b} If you hit with both of your claw attacks in a round, you deal extra damage equal to 1d4 + 1 1/2 your Str modifier, plus 1 additional point for every four character levels you have." compset="Feat" summary="If you hit with both of your claw attacks in a round, you deal extra damage equal to 1d4 + 1 1/2 your Str modifier, plus 1 additional point for every four character levels you have." uniqueness="useronce">
+  <thing id="fShftGrRe2" name="Great Rend" description="You know how to hit where it hurts with your claws.\n\n{b}Prerequisite:{/b}Shifter with the razorclaw trait, +4 base attack bonus.\n\n{b}Benefit:{/b} If you hit with both of your claw attacks in a round, you deal extra damage equal to 1d4 + 1 1/2 your Str modifier, plus 1 additional point for every four character levels you have." compset="Feat" summary="If you hit with both of your claw attacks in a round, you deal extra damage equal to 1d4 + 1 1/2 your Str modifier, plus 1 additional point for every four character levels you have." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Shifter"/>
@@ -1123,7 +1123,7 @@ perform hero.assign[Shifter.Feat]]]></eval>
     <exprreq message="Shifter with razorclaw trait required."><![CDATA[hero.tagis[Shifter.Razorclaw] <> 0]]></exprreq>
     <exprreq message="Must have a Base Attack Bonus of +4 or greater." iserror="no"><![CDATA[child[Attack].field[tAtkBase].value >= 4]]></exprreq>
     </thing>
-  <thing id="fShftGrDef" name="Greater Shifter Defense" description="By delving deeper into your shifter heritage, you develop the ability to ignore some damage from every attack.\n\n{b}Prerequisite:{/b} Shifter race, Shifter Defense feat, and three other shifter feats.\n\n{b}Benefit:{/b} When shifting, your damage reduction improves to DR 4/silver." compset="Feat" summary="When shifting, your damage reduction improves to DR 4/silver." uniqueness="useronce">
+  <thing id="fShftGrDe2" name="Greater Shifter Defense" description="By delving deeper into your shifter heritage, you develop the ability to ignore some damage from every attack.\n\n{b}Prerequisite:{/b} Shifter race, Shifter Defense feat, and three other shifter feats.\n\n{b}Benefit:{/b} When shifting, your damage reduction improves to DR 4/silver." compset="Feat" summary="When shifting, your damage reduction improves to DR 4/silver." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Shifter"/>
@@ -1133,12 +1133,12 @@ doneif (tagis[Helper.FtDisable] <> 0)
 perform hero.assign[Shifter.Feat]
 
 ~ Increase DR by two more
-#value[fShftDef] += 2]]></eval>
+#value[fS2ShftDef] += 2]]></eval>
     <exprreq message="Shifter Race required." iserror="no"><![CDATA[#hasrace[rShifters] <> 0]]></exprreq>
-    <exprreq message="Shifter Defense feat required." iserror="no"><![CDATA[#hasfeat[fShftDef]<> 0]]></exprreq>
+    <exprreq message="Shifter Defense feat required." iserror="no"><![CDATA[#hasfeat[fS2ShftDef]<> 0]]></exprreq>
     <exprreq message="At least three other shifter feats required." iserror="no"><![CDATA[tagcount[fCategory.Shifter] >=3]]></exprreq>
     </thing>
-  <thing id="fShftLonEl" name="Longstride Elite" description="Your shifter trait improves.\n\n{b}Prerequisite:{/b} Shifter with the longstride trait.\n\n{b}Benefit:{/b} While shifting, your base land speed improves by 10 feet. This improvement stacks with the increase for the longstride trait, for a total increase of 20 feet." compset="Feat" summary="While shifting, your base land speed improves by 10 feet. This improvement stacks with the increase for the longstride trait, for a total increase of 20 feet." uniqueness="useronce">
+  <thing id="fShftLonE2" name="Longstride Elite" description="Your shifter trait improves.\n\n{b}Prerequisite:{/b} Shifter with the longstride trait.\n\n{b}Benefit:{/b} While shifting, your base land speed improves by 10 feet. This improvement stacks with the increase for the longstride trait, for a total increase of 20 feet." compset="Feat" summary="While shifting, your base land speed improves by 10 feet. This improvement stacks with the increase for the longstride trait, for a total increase of 20 feet." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Shifter"/>
@@ -1153,7 +1153,7 @@ doneif (hero.childlives[rcS2longst] <> 1)
 #value2[rcS2longst] += 10]]></eval>
     <exprreq message="Shifter with longstride trait required."><![CDATA[hero.tagis[Shifter.Longstride] <> 0]]></exprreq>
     </thing>
-  <thing id="fShftDef" name="Shifter Defense" description="By delving into your shifter heritage, you have developed the ability to ignore a little damage from every attack.\n\n{b}Prerequisite:{/b} Shifter, two other shifter feats.\n\n{b}Benefit:{/b} While shifting, you gain damage reduction 2/silver." compset="Feat" summary="While shifting, you gain damage reduction 2/silver." uniqueness="useronce">
+  <thing id="fS2ShftDef" name="Shifter Defense" description="By delving into your shifter heritage, you have developed the ability to ignore a little damage from every attack.\n\n{b}Prerequisite:{/b} Shifter, two other shifter feats.\n\n{b}Benefit:{/b} While shifting, you gain damage reduction 2/silver." compset="Feat" summary="While shifting, you gain damage reduction 2/silver." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Shifter"/>
@@ -1172,7 +1172,7 @@ doneif (hero.tagis[Shifter.Shifting] <> 1)
     <exprreq message="At least two other shifter feats required." iserror="no"><![CDATA[tagcount[fCategory.Shifter] >=2]]></exprreq>
     <exprreq message="Shifter Race only" iserror="no"><![CDATA[#hasability[raShifting]<> 0]]></exprreq>
     </thing>
-  <thing id="fShftFeroc" name="Shifter Ferocity" description="You are a tenacious combatant, continuing to fight when others would succumb to pain and injury.\n\n{b}Prerequisite:{/b} Shifter race, Wisdom 13.\n\n{b}Benefit:{/b} While shifting, you continue to fight without penalty if you are disabled or dying." compset="Feat" summary="While shifting, you continue to fight without penalty if you are disabled or dying." uniqueness="useronce">
+  <thing id="fS2ShfFero" name="Shifter Ferocity" description="You are a tenacious combatant, continuing to fight when others would succumb to pain and injury.\n\n{b}Prerequisite:{/b} Shifter race, Wisdom 13.\n\n{b}Benefit:{/b} While shifting, you continue to fight without penalty if you are disabled or dying." compset="Feat" summary="While shifting, you continue to fight without penalty if you are disabled or dying." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Shifter"/>
@@ -1183,7 +1183,7 @@ perform hero.assign[Shifter.Feat]]]></eval>
     <exprreq message="Wisdom 13+ required." iserror="no"><![CDATA[child[aWIS].field[aFinalVal].value >= 13]]></exprreq>
     <exprreq message="Shifter race required." iserror="no"><![CDATA[#hasrace[rShifters] <> 0]]></exprreq>
     </thing>
-  <thing id="fShftMulti" name="Shifter Multiattack" description="You are adept at using your natural attack in conjunction with another weapon.\n\n{b}Prerequisite:{/b} Shifter with the longtooth or razorclaw trait, base attack bonus +6.\n\n{b}Benefit:{/b} Your secondary attack with a natural weapon takes only a -2 penalty.\n\n{b}Normal:{/b} Without this feat, your secondary attack with a natural weapon takes a -5 penalty." compset="Feat" summary="Your secondary attack with a natural weapon takes only a -2 penalty." uniqueness="useronce">
+  <thing id="fS2ShfMult" name="Shifter Multiattack" description="You are adept at using your natural attack in conjunction with another weapon.\n\n{b}Prerequisite:{/b} Shifter with the longtooth or razorclaw trait, base attack bonus +6.\n\n{b}Benefit:{/b} Your secondary attack with a natural weapon takes only a -2 penalty.\n\n{b}Normal:{/b} Without this feat, your secondary attack with a natural weapon takes a -5 penalty." compset="Feat" summary="Your secondary attack with a natural weapon takes only a -2 penalty." uniqueness="useronce">
     <usesource source="srcShifter"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Shifter"/>

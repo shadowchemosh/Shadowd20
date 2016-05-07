@@ -18,7 +18,7 @@ File named changed from PFRPG_Adjustments_Editor.dat => COM_BasicPack_ShadowChem
   <loadonce key="COM_BasicPack_ShadowChemosh - Editor"/>
 
   <!-- Polymorph Helper editthing -->
-    <!-- parent="zCommunity" -->
+  <!-- parent="zCommunity" -->
   <editthing
     compset="PolyHelp"
     name="Adjustment, Polymorph"
@@ -419,26 +419,9 @@ File named changed from PFRPG_Adjustments_Editor.dat => COM_BasicPack_ShadowChem
     </inputthing>
 
     <!-- General Information Section -->
-    <inputthing
-      name="General Information"
-      helptext="General details that can be specified for any type of thing.">
-      <it_separator/>
-      </inputthing>
-    <inputthing
-      name="Product Identity For..."
-      helptext="Specify any companies whose Product Identity this material is. OGL books will have a &quot;Product Identity&quot; statment, usually on the title page, and you should be careful what content you do designate as Product Identity as what you don&apos;s - not everything in an OGL book will be Product Identity.">
-      <it_taglist group="ProductId" tag="?" />
-      </inputthing>
-    <inputthing
-      name="User Tags"
-      helptext="Specify any other tags you want to assign here.">
-      <it_taglist group="Custom" tag="?" />
-      </inputthing>
-    <inputthing
-      name="Not Allowed for Pathfinder Society Characters"
-      helptext="Specify whether this thing may not be selected by Pathfinder Society Characters.">
-      <it_tagcheck group="Helper" tag="NoPathSoc"/>
-      </inputthing>
+    <inputthing>
+      <it_groupref id="S2GenInfo"/>
+    </inputthing>
 
   </editthing>
 

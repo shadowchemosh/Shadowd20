@@ -70,35 +70,6 @@
     <value id="Cold"        name="Fire Damage"/>
   </group>
 
-<!-- Group Shifter Race custom tags -->
-  <group id="Shifter" name="Shifter Race">
-    <!-- Shifter feat tags -->
-    <value id="Feat"        name="Shifter Feat"/>
-    <value id="Greatrend"   name="Greatrend Feat"/>
-    <!-- Shifter shifting tags -->
-    <value id="Shifting"    name="Shifting Activated"/>
-    <value id="Hybrid"      name="Hybrid Alt Form Activated"/>
-    <!-- Shifter Types tags -->
-    <value id="Beasthide"   name="Beasthide Shifter"/>
-    <value id="Cliffwalk"   name="Cliffwalk Shifter"/>
-    <value id="Dreamsight"  name="Dreamsight Shifter"/>
-    <value id="Gorebrute"   name="Gorebrute Shifter"/>
-    <value id="Longstride"  name="Longstride Shifter"/>
-    <value id="Longtooth"   name="Longtooth Shifter"/>
-    <value id="Razorclaw"   name="Razorclaw Shifter"/>
-    <value id="Swiftwing"   name="Swiftwing Shifter"/>
-    <value id="Truedive"    name="Truedive Shifter"/>
-    <value id="Wildhunt"    name="Wildhunt Shifter"/>
-    <!-- lycanthrope heritage tags -->
-    <value id="Heritage"    name="Lycanthrope Heritage"/>
-    <value id="Bear"        name="Bear Heritage"/>
-    <value id="Boar"        name="Boar Heritage"/>
-    <value id="Rat"         name="Rat Heritage"/>
-    <value id="Tiger"       name="Tiger Heritage"/>
-    <value id="Wolf"        name="Wolf Heritage"/>
-    <value id="Wolverine"   name="Wolverine Heritage"/>
-  </group>
-
 <!-- Group Runeforged Race custom tags -->
   <group id="Runeforged" name="Ruenforged Race">
     <!-- Armor tags -->

@@ -632,15 +632,15 @@ August 13, 2013 - Tim Shadow
     <tag group="mTarget" tag="Creature1"/>
     <tag group="mDuration" tag="Instant"/>
     </thing>
-  <thing id="manPWFlKi3" name="Flash Kick" description="As part of a full attack action, the disciple may make a powerful and swift kick while his blades strike. The initiator makes an additional unarmed strike against a target as part of his full attack action at -2 penalty, if this attack hits then the attack inflicts an additional 2d6 points of damage. The character does not provoke attacks of opportunity for not possessing the Improved Unarmed Strike feat when using this strike, but damage is only considered lethal if the character does possess that feat." compset="PWManuever" summary="Strike: Make an additional unarmed attack as part of a full attack action at a -2 penalty to hit but the attack gains +2d6 points of damage." uniqueness="useronce">
+  <thing id="manPWFlKi3" name="Flash Kick" description="As part of a full attack action, the disciple may make a powerful and swift kick while his blades strike. The initiator makes an additional unarmed strike against a target as part of his full attack action at -2 penalty, if this attack hits then the attack inflicts an additional 2d6 points of damage. The character does not provoke attacks of opportunity for not possessing the Improved Unarmed Strike feat when using this strike, but damage is only considered lethal if the character does possess that feat." compset="PWManuever" summary="Boost: Make an additional unarmed attack as part of a full attack action at a -2 penalty to hit but the attack gains +2d6 points of damage." uniqueness="useronce">
     <fieldval field="mPreReq" value="0"/>
     <usesource source="srcPathOfW"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="PathOfWar" tag="Manuever"/>
     <tag group="Discipline" tag="ThrashDrag"/>
-    <tag group="mType" tag="Strike"/>
+    <tag group="mType" tag="Boost"/>
     <tag group="mLevel" tag="2"/>
-    <tag group="mInitAct" tag="Full1"/>
+    <tag group="mInitAct" tag="Swift1"/>
     <tag group="mRange" tag="Melee"/>
     <tag group="mTarget" tag="Creature1"/>
     <tag group="mDuration" tag="Instant"/>

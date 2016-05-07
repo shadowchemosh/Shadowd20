@@ -11,7 +11,7 @@
   <!-- ============================================== -->
   <source
     id="pBasicPack"
-    name="Basic Pack (v3.16)"
+    name="Player Section"
     selectable="no"
     parent="pComPacks"
     sortorder="10"

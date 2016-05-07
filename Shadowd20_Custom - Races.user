@@ -44,7 +44,7 @@ July 29, 2012
     <tag group="Helper" tag="ShowSpec"/>
     <bootstrap thing="xScent"></bootstrap>
     </thing>
-  <thing id="rS2Changel" name="Changeling" description="{b}Shapechanger Subtype:{/b} Changelings are humanoids with the shapechanger subtype.\n\nChangelings are subtle shapeshifters capable of disguising their appearance. They evolved through the union of doppelgangers and humans, eventually becoming a separate race distinct from either ancestral tree. They do not possess the full shapechanging ability of a doppelganger, but they can create effective disguises at will. This ability makes them consummate spies and criminals, and many changelings live up to that potential.\n\n{b}Personality:{/b} In general, changelings are prudent and cautious, preferring to take risks only when they feel that their chances of success are good or the payoff is worth it. They appreciate the fi ner things in life and take great pleasure in the comforts of a wealthy lifestyle when they can obtain it. They avoid direct confrontation, preferring stealthy s trikes and h asty retreats whenev er possible. In conversation, they are soft-spoken but have a gift for drawing out more information than the other party intends to reveal.\n\n{b}Physical Description:{/b} Changelings strongly resemble their doppelganger lineage, with only a passing nod to their human heritage. All changelings fall within the boundaries of Medium size, usually standing between 5 and 6 feet tall. Unlike true doppelgangers, changelings do have gender in their natural form, although they can adopt any shape they like. Changelings have pale gray skin, and their hair is thin and fair. Their limbs are long and slightly out of proportion compared to other humanoids. Their faces have slightly more distinct features than a doppelganger’s, including a hint of nose and lips, though their eyes remain blank white and the rest of their facial features don’t look quite as fi nished as those on a human.\n\n{b}Alignment:{/b} Changelings of all alignments exist, but most gravitate toward the neutral alignment. They focus on their own concerns without any meaningful regard for laws or morals. Many have their own code of honor but are also fi ercely independent. Some refuse to engage in assassination, while others embrace that path as the most perfect form of the changeling art of deception.\n\n{b}Natural Linguist:{/b} Changelings add Linguistics to their list of class skills for any class they adopt." compset="Race">
+  <thing id="rS2Change2" name="Changeling" description="{b}Shapechanger Subtype:{/b} Changelings are humanoids with the shapechanger subtype.\n\nChangelings are subtle shapeshifters capable of disguising their appearance. They evolved through the union of doppelgangers and humans, eventually becoming a separate race distinct from either ancestral tree. They do not possess the full shapechanging ability of a doppelganger, but they can create effective disguises at will. This ability makes them consummate spies and criminals, and many changelings live up to that potential.\n\n{b}Personality:{/b} In general, changelings are prudent and cautious, preferring to take risks only when they feel that their chances of success are good or the payoff is worth it. They appreciate the fi ner things in life and take great pleasure in the comforts of a wealthy lifestyle when they can obtain it. They avoid direct confrontation, preferring stealthy s trikes and h asty retreats whenev er possible. In conversation, they are soft-spoken but have a gift for drawing out more information than the other party intends to reveal.\n\n{b}Physical Description:{/b} Changelings strongly resemble their doppelganger lineage, with only a passing nod to their human heritage. All changelings fall within the boundaries of Medium size, usually standing between 5 and 6 feet tall. Unlike true doppelgangers, changelings do have gender in their natural form, although they can adopt any shape they like. Changelings have pale gray skin, and their hair is thin and fair. Their limbs are long and slightly out of proportion compared to other humanoids. Their faces have slightly more distinct features than a doppelganger’s, including a hint of nose and lips, though their eyes remain blank white and the rest of their facial features don’t look quite as fi nished as those on a human.\n\n{b}Alignment:{/b} Changelings of all alignments exist, but most gravitate toward the neutral alignment. They focus on their own concerns without any meaningful regard for laws or morals. Many have their own code of honor but are also fi ercely independent. Some refuse to engage in assassination, while others embrace that path as the most perfect form of the changeling art of deception.\n\n{b}Natural Linguist:{/b} Changelings add Linguistics to their list of class skills for any class they adopt." compset="Race">
     <usesource source="srcChangel"/>
     <tag group="ClassSkill" tag="skLinguist"/>
     <tag group="Language" tag="lAuran"/>
@@ -91,15 +91,15 @@ July 29, 2012
     <tag group="RaceType" tag="Feature"/>
     <tag group="RaceSize" tag="Medium0"/>
     <tag group="Shadowd20" tag="Race" name="Shadow d20 Race"/>
-    <bootstrap thing="raChangeSm"></bootstrap>
-    <bootstrap thing="raCHGslipm"></bootstrap>
+    <bootstrap thing="raS2ChgSm"></bootstrap>
+    <bootstrap thing="raS2Cslipm"></bootstrap>
     <bootstrap thing="stShapecha"></bootstrap>
-    <bootstrap thing="raCHGmcsha"></bootstrap>
+    <bootstrap thing="raS2Cmcsha"></bootstrap>
     <bootstrap thing="raCHNatLin"></bootstrap>
-    <bootstrap thing="raCHGintui"></bootstrap>
-    <bootstrap thing="raChangeMe"></bootstrap>
+    <bootstrap thing="raS2Cintui"></bootstrap>
+    <bootstrap thing="raS2ChgMe"></bootstrap>
     </thing>
-  <thing id="raCHGintui" name="Intuition" description="+2 racial bonus on Bluff, Intimidate, and Sense Motive checks: Changelings are inherently skilled in deception and intimidation, and though they cannot actually detect thoughts as doppelgangers can, they can intuitively read body language and attitude with surprising accuracy." compset="RaceSpec">
+  <thing id="raS2Cintui" name="Intuition" description="+2 racial bonus on Bluff, Intimidate, and Sense Motive checks: Changelings are inherently skilled in deception and intimidation, and though they cannot actually detect thoughts as doppelgangers can, they can intuitively read body language and attitude with surprising accuracy." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreLevel" priority="10000">~Pre-Levels 10,000
       ~ +2 to Bluff
@@ -109,11 +109,11 @@ July 29, 2012
       ~ +2 to Sense Motive
       #skillbonus[skSenseMot] += 2</eval>
     </thing>
-  <thing id="raCHGmcsha" name="Minor Change Shape" description="Changelings have the super natural ability to alter their appearance as though using a {i}disguise self{/i} or {i}alter self{/i} spell that affects their bodies but not their possessions. This ability is not an illusory effect, but a minor physical alteration of a changeling’s facial features, skin color and texture, and size, within the limits described for the spells. A changeling can use this ability at will, and the alteration lasts until she changes shape again. A changeling reverts to her natural form when killed. A true seeing spell reveals her natural form. When using this ability to create a disguise, a changeling receives a +10 circumstance bonus on Disguise checks. Using this ability is a full-round action." compset="RaceSpec">
+  <thing id="raS2Cmcsha" name="Minor Change Shape" description="Changelings have the super natural ability to alter their appearance as though using a {i}disguise self{/i} or {i}alter self{/i} spell that affects their bodies but not their possessions. This ability is not an illusory effect, but a minor physical alteration of a changeling’s facial features, skin color and texture, and size, within the limits described for the spells. A changeling can use this ability at will, and the alteration lasts until she changes shape again. A changeling reverts to her natural form when killed. A true seeing spell reveals her natural form. When using this ability to create a disguise, a changeling receives a +10 circumstance bonus on Disguise checks. Using this ability is a full-round action." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Super"/>
     </thing>
-  <thing id="raCHGslipm" name="Slippery Minds" description="+2 racial bonus on saving throws a gainst sleep and charm effects: Changelings have slippery minds." compset="RaceSpec">
+  <thing id="raS2Cslipm" name="Slippery Minds" description="+2 racial bonus on saving throws a gainst sleep and charm effects: Changelings have slippery minds." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
   <thing id="rS2Planeto" name="Planetouched" description="The planetouched or sometimes called the arcanetouched are humanoids that have a celestial or fiendish parent in their past. This is believed to be the most common reason, but there is talk of humans that were born on a day when one of the Planes was in contact with Golarion. The stars were in just an alignment to cause the baby to be infused with the power of the planes. The abilities that are displayed are as unique and varied as the planes themselves, but the effect that the individual is touched by something greater is never in doubt.\n\n{b}Customizable Race:{/b} Besides the abilities listed below once you select this race you will be given the ability to add two additional racial traits from a list of options.  Allowing you to personalize your planetouched character.\n\n{b}Medium Humanoid(Native):{/b} Planetouched are native to Golarion and are therefore affected by spells like Hold Person and Charm Person.\n\n{b}Character Description:{/b} Planetouched come in a wide variety of appearances. You are allowed to describe your character pretty much as you see fit except that you can not easily pass as human. Everyone knows there is something just not right about your character.\n\n{b}Alignment:{/b} Evil versions of Planetouched are for DM&apos;s use only. While a planetouched does not have to be of good alignment; neutral and evil planetouched do NOT gain access to the Aura of Good ability listed below.\n\n{b}Aura of Good:{/b} This power is only active for characters with good alignments either Lawful Good; Neutral Good; or Chaotic Good. The power of a planetouched&apos;s aura of good (see the detect good spell) is equal to her character level. Your aura of good precedes you and others are affected by it.\n-{i}Neutral{/i} NPCs always treat you with a starting value of Indifferent.\n-{i}Good{/i} NPCs always treat you with a starting value of Friendly.\n-{i}Evil{/i} NPCs always treat you with a starting value of Unfriendly." compset="Race">
@@ -618,7 +618,7 @@ July 29, 2012
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rS2Warforg" name="Runeforged" description="Built as mindless machines to fight for the Runelords, the runeforged developed sentience as a side effect of the arcane experiments that sought to make them the ultimate weapons of destruction. With each successive model that emerged from the creation runeforges of Thassilon, the runeforged evolved until they became a new kind of creature - living constructs.  After the end of Thassilon the runeforged where put into stasis for the long sleep.  These runeforged where awakened by a group of hereos trying to stop the rising of Karzoug - Runelord of greed.  The runforged freed from their 10,000 year sleep helped the giant army defeat the Rune Giants that kept them as slaves for so long.  Now free of the runelords the runeforged roam golarion trying to find their way.\n\nRuneforged are renowned for their combat prowess, their size, and their single-minded focus. They make steadfast allies and fearsome enemies. Earlier runeforged models where true constructs; some of these remnants of Thassilon&apos;s time appear in monstrous varieties, such as the runeforged titan." compset="Race">
+  <thing id="rS2Runefor" name="Runeforged" description="Built as mindless machines to fight for the Runelords, the runeforged developed sentience as a side effect of the arcane experiments that sought to make them the ultimate weapons of destruction. With each successive model that emerged from the creation runeforges of Thassilon, the runeforged evolved until they became a new kind of creature - living constructs.  After the end of Thassilon the runeforged where put into stasis for the long sleep.  These runeforged where awakened by a group of hereos trying to stop the rising of Karzoug - Runelord of greed.  The runforged freed from their 10,000 year sleep helped the giant army defeat the Rune Giants that kept them as slaves for so long.  Now free of the runelords the runeforged roam golarion trying to find their way.\n\nRuneforged are renowned for their combat prowess, their size, and their single-minded focus. They make steadfast allies and fearsome enemies. Earlier runeforged models where true constructs; some of these remnants of Thassilon&apos;s time appear in monstrous varieties, such as the runeforged titan." compset="Race">
     <fieldval field="rCON" value="2"/>
     <fieldval field="rWIS" value="-2"/>
     <fieldval field="rCHA" value="-2"/>
@@ -635,21 +635,21 @@ July 29, 2012
       <autotag group="wMain" tag="1d4_4"/>
       <autotag group="Value" tag="1"/>
       </bootstrap>
-    <bootstrap thing="fcFtrWarfo"></bootstrap>
-    <bootstrap thing="stS2Living"></bootstrap>
-    <bootstrap thing="raS2WarDie"></bootstrap>
-    <bootstrap thing="raS2WarVul"></bootstrap>
-    <bootstrap thing="raS2WarCon"></bootstrap>
+    <bootstrap thing="fcFtrRunef"></bootstrap>
+    <bootstrap thing="stRFLiving"></bootstrap>
+    <bootstrap thing="raS2RunDie"></bootstrap>
+    <bootstrap thing="raS2RunVul"></bootstrap>
+    <bootstrap thing="raS2RunCon"></bootstrap>
     </thing>
-  <thing id="rcWFBody01" name="Composite Plating" description="The plating used to build a runeforged provides a +2 armor bonus. This plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes.{br}{br}Runeforged can be enchanted just as armor can be.{br}{br}The character must be present for the entire time it takes to enchant him.{br}{br}Composite plating also provides a runeforged with a 5% arcane spell failure chance, similar to the penalty for wearing light armor. Any class ability that allows a runeforged to ignore the arcane spell failure chance for light armor lets him ignore this penalty as well." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2Body01" name="Composite Plating" description="The plating used to build a runeforged provides a +2 armor bonus. This plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes.{br}{br}Runeforged can be enchanted just as armor can be.{br}{br}The character must be present for the entire time it takes to enchant him.{br}{br}Composite plating also provides a runeforged with a 5% arcane spell failure chance, similar to the penalty for wearing light armor. Any class ability that allows a runeforged to ignore the arcane spell failure chance for light armor lets him ignore this penalty as well." compset="RaceCustom" uniqueness="useronce">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="SpecUp"/>
-    <tag group="AllowRCust" tag="rS2Warforg"/>
-    <bootstrap thing="iS2CompBod">
+    <tag group="AllowRCust" tag="rS2Runefor"/>
+    <bootstrap thing="iRFCompBod">
       <autotag group="Helper" tag="Displace"/>
       </bootstrap>
     </thing>
-  <thing id="mS2CompBod" name="Composite Plating" compset="Armor" holdable="no">
+  <thing id="mRFCompBod" name="Composite Plating" compset="Armor" holdable="no">
     <usesource source="srcWarforg"/>
     <tag group="ArmorCheck" tag="0"/>
     <tag group="ArmorArcFl" tag="5"/>
@@ -672,7 +672,7 @@ July 29, 2012
         validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 0)]]></validate>
       </prereq>
     </thing>
-  <thing id="iS2CompBod" name="Composite Plating" description="The plating used to build a runeforged provides a +2 armor bonus. This plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Composite plating also provides a runeforged with a 5% arcane spell failure chance, similar to the penalty for wearing light armor. Any class ability that allows a runeforged to ignore the arcane spell failure chance for light armor lets him ignore this penalty as well.\n\nRuneforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him.\n\n{B}Note:{/b} With the Pathfinder changes this will now count as Light armor for all purposes meaning it will not work for a Monk character.  In such a case please take the &quot;Unarmored Body&quot; instead which will apply as NO armor." compset="MagicArmor">
+  <thing id="iRFCompBod" name="Composite Plating" description="The plating used to build a runeforged provides a +2 armor bonus. This plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Composite plating also provides a runeforged with a 5% arcane spell failure chance, similar to the penalty for wearing light armor. Any class ability that allows a runeforged to ignore the arcane spell failure chance for light armor lets him ignore this penalty as well.\n\nRuneforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him.\n\n{B}Note:{/b} With the Pathfinder changes this will now count as Light armor for all purposes meaning it will not work for a Monk character.  In such a case please take the &quot;Unarmored Body&quot; instead which will apply as NO armor." compset="MagicArmor">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="CustomItem" name="CustomItem" abbrev="CustomItem"/>
     <tag group="Helper" tag="Shadow" name="Shadow" abbrev="Shadow"/>
@@ -691,26 +691,26 @@ July 29, 2012
       perform assign[Helper.Proficient]</eval>
     <child entity="gMagArmor">
       <tag group="Helper" tag="NoSelChild" name="NoSelChild"/>
-      <bootstrap thing="mS2CompBod">
+      <bootstrap thing="mRFCompBod">
         <autotag group="Helper" tag="Forward"/>
         </bootstrap>
       </child>
     </thing>
-  <thing id="raWfFortif" name="Fortification" description="When a critical hit or sneak attack is scored on a runeforged, there is a chance that the critical hit or sneak attack is negated and damage is instead rolled normally." compset="RaceSpec">
+  <thing id="raS2Fortif" name="Fortification" description="When a critical hit or sneak attack is scored on a runeforged, there is a chance that the critical hit or sneak attack is negated and damage is instead rolled normally." compset="RaceSpec">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Defense"/>
     <eval phase="Final" priority="10000"><![CDATA[field[livename].text = field[thingname].text & " " & field[abValue].value & "%"]]></eval>
     </thing>
-  <thing id="rcWFBody02" name="Adamantine Body" description="{i}At the cost of mobility, a runeforged character&apos;s body can be crafted with a layer of adamantine that provides formidable protective armor and some damage reduction.{/i}\n\nThe plating used to build a runeforged provides a +8 armor bonus and you gain damage reduction 2/adamantine. However, your base land speed is reduced to 20 feet, and you are considered to be wearing heavy armor. You have a +1 maximum Dexterity bonus to AC, a -5 armor check penalty, and an arcane spell failure chance of 35%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes.\n\nRuneforged can be enchanted just as armor can be.\n\nThe character must be present for the entire time it takes to enchant him." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2Body02" name="Adamantine Body" description="{i}At the cost of mobility, a runeforged character&apos;s body can be crafted with a layer of adamantine that provides formidable protective armor and some damage reduction.{/i}\n\nThe plating used to build a runeforged provides a +8 armor bonus and you gain damage reduction 2/adamantine. However, your base land speed is reduced to 20 feet, and you are considered to be wearing heavy armor. You have a +1 maximum Dexterity bonus to AC, a -5 armor check penalty, and an arcane spell failure chance of 35%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes.\n\nRuneforged can be enchanted just as armor can be.\n\nThe character must be present for the entire time it takes to enchant him." compset="RaceCustom" uniqueness="useronce">
     <usesource source="srcWarforg"/>
-    <tag group="AllowRCust" tag="rS2Warforg"/>
-    <bootstrap thing="iS2AdamBod">
+    <tag group="AllowRCust" tag="rS2Runefor"/>
+    <bootstrap thing="iS2AdamBo2">
       <autotag group="Helper" tag="Displace"/>
       </bootstrap>
     </thing>
-  <thing id="mS2AdamBod" name="Adamantine Body" compset="Armor" holdable="no">
+  <thing id="mS2AdamBo2" name="Adamantine Body" compset="Armor" holdable="no">
     <usesource source="srcWarforg"/>
     <tag group="ArmorCheck" tag="5"/>
     <tag group="ArmorArcFl" tag="35"/>
@@ -735,7 +735,7 @@ July 29, 2012
         validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
       </prereq>
     </thing>
-  <thing id="iS2AdamBod" name="Adamantine Body" description="The plating used to build a runeforged provides a +8 armor bonus and you gain damage reduction 2/adamantine. However, your base land speed is reduced to 20 feet, and you are considered to be wearing heavy armor. You have a +1 maximum Dexterity bonus to AC, a -5 armor check penalty, and an arcane spell failure chance of 35%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Runeforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him." compset="MagicArmor">
+  <thing id="iS2AdamBo2" name="Adamantine Body" description="The plating used to build a runeforged provides a +8 armor bonus and you gain damage reduction 2/adamantine. However, your base land speed is reduced to 20 feet, and you are considered to be wearing heavy armor. You have a +1 maximum Dexterity bonus to AC, a -5 armor check penalty, and an arcane spell failure chance of 35%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Runeforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him." compset="MagicArmor">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="CustomItem"/>
     <tag group="Helper" tag="Shadow"/>
@@ -756,20 +756,20 @@ July 29, 2012
       #applydr[xDamRdAdam,2]</eval>
     <child entity="gMagArmor">
       <tag group="Helper" tag="NoSelChild" name="NoSelChild"/>
-      <bootstrap thing="mS2AdamBod">
+      <bootstrap thing="mS2AdamBo2">
         <autotag group="Helper" tag="Forward"/>
         </bootstrap>
       <bootstrap thing="eAdamant"></bootstrap>
       </child>
     </thing>
-  <thing id="rcWFBody03" name="Mithral Body" description="{i}Your body is crafted with a layer of mithral that provides some protection without hindering speed or gracefulness.{/i}\n\nThe plating used to build a runeforged provides a +5, and you are considered to be wearing light armor. You now have a +5 maximum Dexterity bonus to AC, a -2 armor check penalty, and an arcane spell failure chance of 15%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes.\n\nRuneforged can be enchanted just as armor can be.\n\nThe character must be present for the entire time it takes to enchant him." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2Body03" name="Mithral Body" description="{i}Your body is crafted with a layer of mithral that provides some protection without hindering speed or gracefulness.{/i}\n\nThe plating used to build a runeforged provides a +5, and you are considered to be wearing light armor. You now have a +5 maximum Dexterity bonus to AC, a -2 armor check penalty, and an arcane spell failure chance of 15%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes.\n\nRuneforged can be enchanted just as armor can be.\n\nThe character must be present for the entire time it takes to enchant him." compset="RaceCustom" uniqueness="useronce">
     <usesource source="srcWarforg"/>
-    <tag group="AllowRCust" tag="rS2Warforg"/>
-    <bootstrap thing="iS2MithBod">
+    <tag group="AllowRCust" tag="rS2Runefor"/>
+    <bootstrap thing="iRFMithBod">
       <autotag group="Helper" tag="Displace"/>
       </bootstrap>
     </thing>
-  <thing id="mS2MithBod" name="Mithral Body" compset="Armor" holdable="no">
+  <thing id="mRFMithBod" name="Mithral Body" compset="Armor" holdable="no">
     <usesource source="srcWarforg"/>
     <tag group="ArmorCheck" tag="4"/>
     <tag group="ArmorArcFl" tag="25"/>
@@ -793,7 +793,7 @@ July 29, 2012
         validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
       </prereq>
     </thing>
-  <thing id="iS2MithBod" name="Mithral Body" description="The plating used to build a runeforged provides a +5, and you are considered to be wearing light armor. You now have a +5 maximum Dexterity bonus to AC, a -2 armor check penalty, and an arcane spell failure chance of 15%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Runeforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him." compset="MagicArmor">
+  <thing id="iRFMithBod" name="Mithral Body" description="The plating used to build a runeforged provides a +5, and you are considered to be wearing light armor. You now have a +5 maximum Dexterity bonus to AC, a -2 armor check penalty, and an arcane spell failure chance of 15%.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Runeforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him." compset="MagicArmor">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="CustomItem" name="CustomItem" abbrev="CustomItem"/>
     <tag group="Helper" tag="Shadow" name="Shadow" abbrev="Shadow"/>
@@ -810,13 +810,13 @@ July 29, 2012
       perform assign[Helper.Proficient]</eval>
     <child entity="gMagArmor">
       <tag group="Helper" tag="NoSelChild" name="NoSelChild"/>
-      <bootstrap thing="mS2MithBod">
+      <bootstrap thing="mRFMithBod">
         <autotag group="Helper" tag="Forward"/>
         </bootstrap>
       <bootstrap thing="eMithral"></bootstrap>
       </child>
     </thing>
-  <thing id="mS2IronBod" name="Ironwood Body" compset="Armor" holdable="no">
+  <thing id="mRFIronBod" name="Ironwood Body" compset="Armor" holdable="no">
     <usesource source="srcWarforg"/>
     <tag group="ArmorArcFl" tag="20"/>
     <tag group="ArmorClass" tag="Light"/>
@@ -839,7 +839,7 @@ July 29, 2012
         validif (tagcount[Ability.e?] - tagcount[Ability.eNormal] = 1)]]></validate>
       </prereq>
     </thing>
-  <thing id="iS2IronBod" name="Ironwood Body" description="The plating used to build a runeforged provides a +5, and you are considered to be wearing light armor. You now have a +5 maximum Dexterity bonus to AC, a -2 armor check penalty, and an arcane spell failure chance of 15%.  Unlike the other body feats, a runeforged druid who takes ironwood body can cast druid spells and use the druid&apos;s supernatural and spell-like abilities.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Runeforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him." compset="MagicArmor">
+  <thing id="iRFIronBod" name="Ironwood Body" description="The plating used to build a runeforged provides a +5, and you are considered to be wearing light armor. You now have a +5 maximum Dexterity bonus to AC, a -2 armor check penalty, and an arcane spell failure chance of 15%.  Unlike the other body feats, a runeforged druid who takes ironwood body can cast druid spells and use the druid&apos;s supernatural and spell-like abilities.\n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor or magic robes. Runeforged can be enchanted just as armor can be. The character must be present for the entire time it takes to enchant him." compset="MagicArmor">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="Shadow" name="Shadow" abbrev="Shadow"/>
     <tag group="Helper" tag="NoSelect" name="NoSelect" abbrev="NoSelect"/>
@@ -860,46 +860,46 @@ July 29, 2012
       field[livename].text &= " Body"]]></eval>
     <child entity="gMagArmor">
       <tag group="Helper" tag="NoSelChild" name="NoSelChild"/>
-      <bootstrap thing="mS2IronBod">
+      <bootstrap thing="mRFIronBod">
         <autotag group="Helper" tag="Forward"/>
         </bootstrap>
       <bootstrap thing="eIronwood"></bootstrap>
       </child>
     </thing>
-  <thing id="rcWFBody04" name="Ironwood Body" description="{I}Your body is crafted with a layer of hard ironwood that cushions blows{/i}\n\nThe plating used to build a runeforged provides a +3 armor bonus and you gain damage reduction 2/slashing, and you are considered to be wearing light armor. You have a +4 maximum Dexterity bonus to AC, a -3 armor check penalty, and an arcane spell failure chance of 20%. \n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor. Unlike the Adamantine Body and Mithral Body, runeforged druids who take this feat can cast druid spells and use the druid&apos;s supernatural and spell-like abilites.\n\nRuneforged can be enchanted just as armor can be.\n\nThe character must be present for the entire time it takes to enchant him." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2Body04" name="Ironwood Body" description="{I}Your body is crafted with a layer of hard ironwood that cushions blows{/i}\n\nThe plating used to build a runeforged provides a +3 armor bonus and you gain damage reduction 2/slashing, and you are considered to be wearing light armor. You have a +4 maximum Dexterity bonus to AC, a -3 armor check penalty, and an arcane spell failure chance of 20%. \n\nThis plating is not natural armor and does not stack with other effects that give an armor bonus (other than natural armor). This composite plating occupies the same space on the body as a suit of armor or a robe, and thus a runeforged cannot wear armor. Unlike the Adamantine Body and Mithral Body, runeforged druids who take this feat can cast druid spells and use the druid&apos;s supernatural and spell-like abilites.\n\nRuneforged can be enchanted just as armor can be.\n\nThe character must be present for the entire time it takes to enchant him." compset="RaceCustom" uniqueness="useronce">
     <usesource source="srcWarforg"/>
-    <tag group="AllowRCust" tag="rS2Warforg"/>
-    <bootstrap thing="iS2IronBod">
+    <tag group="AllowRCust" tag="rS2Runefor"/>
+    <bootstrap thing="iRFIronBod">
       <autotag group="Helper" tag="Displace"/>
       </bootstrap>
     </thing>
-  <thing id="rcWFBody05" name="Unarmored Body" description="{I}Your body is crafted without its normal layer of armor trading off physical strength for magical potential.{/i}\n\nYou lose the normal +2 armor bonus common to runeforged characters, but you have no inherent chance of spell failure, do not count to be wearing armor, gain a +1 natural armor bonus and can wear armor or magic robes and gain their full effects." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcS2Body05" name="Unarmored Body" description="{I}Your body is crafted without its normal layer of armor trading off physical strength for magical potential.{/i}\n\nYou lose the normal +2 armor bonus common to runeforged characters, but you have no inherent chance of spell failure, do not count to be wearing armor, gain a +1 natural armor bonus and can wear armor or magic robes and gain their full effects." compset="RaceCustom" uniqueness="useronce">
     <usesource source="srcWarforg"/>
-    <tag group="AllowRCust" tag="rS2Warforg"/>
+    <tag group="AllowRCust" tag="rS2Runefor"/>
     <eval phase="PreLevel" priority="10000">hero.child[ArmorClass].field[tACNatural].value += 1</eval>
     </thing>
-  <thing id="stS2Living" name="Living" description="Runeforged are constructs with the living construct subtype. A living construct is a created being given sentience and free will through powerful and complex creation enchantments.{br}{br}Runeforged are living constructs that combine aspects of both constructs and living creatures, as detailed below.{br}{br}{i}Features:{/i} As a living construct, a runeforged has the following features.{br}{br} - A runeforged derives its Hit Dice, base attack bonus progression, saving throws, and skill points from the class it selects.{br}{br}{i}Traits:{/i} A runeforged possesses the following traits.{br}{br} - Unlike other constructs, a runeforged has a Constitution score.{br}{br} - Unlike other constructs, a runeforged does not have low-light vision or darkvision.{br}{br} - Unlike other constructs, a runeforged is not immune to mind-affecting spells and abilities.{br}{br} - Immunity to poison, sleep effects, paralysis, disease, nausea, fatigue, exhaustion, effects that cause the sickened condition, and energy drain.{br}{br} - A runeforged cannot heal damage naturally.{br}{br} - Unlike other constructs, runeforged are subject to critical hits, nonlethal damage, stunning, ability damage, ability drain, and death effects or necromancy effects.{br}{br} - As living constructs, runeforged can be affected by spells that target living creatures as well as by those that target constructs. Damage dealt to a runeforged can be healed by a {i}cure light wounds{/i} spell or a {i}repair light damage{/i} spell, for example, and a runeforged is vulnerable to {i}disable construct{/i} and {i}harm{/i}. However, spells from the healing subschool and supernatural abilities that cure hit point damage or ability damage provide only half their normal effect to a runeforged." compset="Subtype" uniqueness="unique">
+  <thing id="stRFLiving" name="Living" description="Runeforged are constructs with the living construct subtype. A living construct is a created being given sentience and free will through powerful and complex creation enchantments.{br}{br}Runeforged are living constructs that combine aspects of both constructs and living creatures, as detailed below.{br}{br}{i}Features:{/i} As a living construct, a runeforged has the following features.{br}{br} - A runeforged derives its Hit Dice, base attack bonus progression, saving throws, and skill points from the class it selects.{br}{br}{i}Traits:{/i} A runeforged possesses the following traits.{br}{br} - Unlike other constructs, a runeforged has a Constitution score.{br}{br} - Unlike other constructs, a runeforged does not have low-light vision or darkvision.{br}{br} - Unlike other constructs, a runeforged is not immune to mind-affecting spells and abilities.{br}{br} - Immunity to poison, sleep effects, paralysis, disease, nausea, fatigue, exhaustion, effects that cause the sickened condition, and energy drain.{br}{br} - A runeforged cannot heal damage naturally.{br}{br} - Unlike other constructs, runeforged are subject to critical hits, nonlethal damage, stunning, ability damage, ability drain, and death effects or necromancy effects.{br}{br} - As living constructs, runeforged can be affected by spells that target living creatures as well as by those that target constructs. Damage dealt to a runeforged can be healed by a {i}cure light wounds{/i} spell or a {i}repair light damage{/i} spell, for example, and a runeforged is vulnerable to {i}disable construct{/i} and {i}harm{/i}. However, spells from the healing subschool and supernatural abilities that cure hit point damage or ability damage provide only half their normal effect to a runeforged." compset="Subtype" uniqueness="unique">
     <usesource source="srcWarforg"/>
     <tag group="NeedType" tag="tpConst"/>
-    <bootstrap thing="raS2WarImm"></bootstrap>
+    <bootstrap thing="raS2RunImm"></bootstrap>
     <eval phase="First" priority="510">perform hero.assign[NoTypeAbil.tpConst]</eval>
     </thing>
-  <thing id="raS2WarImm" name="Runeforged Immunity" description="Immunity to poison, sleep effects, paralysis, disease, nausea, fatigue, exhaustion, effects that cause the sickened condition, and energy drain." compset="RaceSpec">
+  <thing id="raS2RunImm" name="Runeforged Immunity" description="Immunity to poison, sleep effects, paralysis, disease, nausea, fatigue, exhaustion, effects that cause the sickened condition, and energy drain." compset="RaceSpec">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecType" tag="Immune"/>
     </thing>
-  <thing id="raS2WarVul" name="Runeforged Vulnerabilities" description="The unusual physical construction of runeforged makes them vulnerable to certain spells and effects that normally don&apos;t affect living creatures. A runeforged takes damage from {i}heat metal{/i} and {i}chill metal{/i} as if he were wearing metal armor. Likewise, a runeforged is affected by {i}repel metal or stone{/i} as if he were wearing metal armor. A runeforged is repelled by {i}repel wood.{/i} The iron in the body of a runeforged makes him vulnerable to {i}rusting grasp.{/i} The creature takes 2d6 points of damage from the spell (Refl ex half; save DC 14 + caster&apos;s ability modifier). A runeforged takes the same damage from a rust monster&apos;s touch (Refl ex DC 17 half). Spells such as {i}stone to flesh, stone shape, warp wood,{/i} and {i}wood shape{/i} affect objects only, and thus cannot be used on the stone and wood parts of a runeforged." compset="RaceSpec">
+  <thing id="raS2RunVul" name="Runeforged Vulnerabilities" description="The unusual physical construction of runeforged makes them vulnerable to certain spells and effects that normally don&apos;t affect living creatures. A runeforged takes damage from {i}heat metal{/i} and {i}chill metal{/i} as if he were wearing metal armor. Likewise, a runeforged is affected by {i}repel metal or stone{/i} as if he were wearing metal armor. A runeforged is repelled by {i}repel wood.{/i} The iron in the body of a runeforged makes him vulnerable to {i}rusting grasp.{/i} The creature takes 2d6 points of damage from the spell (Refl ex half; save DC 14 + caster&apos;s ability modifier). A runeforged takes the same damage from a rust monster&apos;s touch (Refl ex DC 17 half). Spells such as {i}stone to flesh, stone shape, warp wood,{/i} and {i}wood shape{/i} affect objects only, and thus cannot be used on the stone and wood parts of a runeforged." compset="RaceSpec">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Weakness"/>
     </thing>
-  <thing id="raS2WarDie" name="Die Hard" description="A runeforged responds slightly differently from other living creatures when reduced to 0 hit points.{br}{br}A runeforged with 0 hit points is disabled, just like a living creature. He can only take a single move action or standard action in each round, but strenuous activity does not risk further injury. When his hit points are less than 0 and greater than -10, a runeforged is inert. He is unconscious and helpless, and he cannot perform any actions. However, an inert runeforged does not lose additional hit points unless more damage is dealt to him, as with a living creature that is stable." compset="RaceSpec">
+  <thing id="raS2RunDie" name="Die Hard" description="A runeforged responds slightly differently from other living creatures when reduced to 0 hit points.{br}{br}A runeforged with 0 hit points is disabled, just like a living creature. He can only take a single move action or standard action in each round, but strenuous activity does not risk further injury. When his hit points are less than 0 and greater than -10, a runeforged is inert. He is unconscious and helpless, and he cannot perform any actions. However, an inert runeforged does not lose additional hit points unless more damage is dealt to him, as with a living creature that is stable." compset="RaceSpec">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
-  <thing id="raS2WarCon" name="Consume" description="A runeforged does not need to eat, sleep, or breathe, but he can still benefit from the effects of consumable spells and magic items such as {i}heroes&apos; feast{/i} and potions." compset="RaceSpec">
+  <thing id="raS2RunCon" name="Consume" description="A runeforged does not need to eat, sleep, or breathe, but he can still benefit from the effects of consumable spells and magic items such as {i}heroes&apos; feast{/i} and potions." compset="RaceSpec">
     <usesource source="srcWarforg"/>
     <tag group="Helper" tag="ShowSpec"/>
     </thing>
@@ -1153,7 +1153,7 @@ July 29, 2012
          perform field[usrChosen2].chosen.assign[Helper.ClassSkill]
       endif]]></eval>
     </thing>
-  <thing id="raChangeMe" name="Shape Change(Medium)" description="If the form you take is that of a Medium humanoid, you gain a +2 size bonus to your Strength." compset="RaceSpec">
+  <thing id="raS2ChgMe" name="Shape Change(Medium)" description="If the form you take is that of a Medium humanoid, you gain a +2 size bonus to your Strength." compset="RaceSpec">
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreAttr" priority="10000">
@@ -1168,7 +1168,7 @@ July 29, 2012
 
       #applybonus[ModCirc,hero.child[skDisguise],10]</eval>
     </thing>
-  <thing id="raChangeSm" name="Shape Change(Small)" description="If the form you take is that of a Small humanoid, you gain a +2 size bonus to your Dexterity." compset="RaceSpec">
+  <thing id="raS2ChgSm" name="Shape Change(Small)" description="If the form you take is that of a Small humanoid, you gain a +2 size bonus to your Dexterity." compset="RaceSpec">
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
     <eval phase="PreAttr" priority="10000">
@@ -1280,7 +1280,7 @@ July 29, 2012
     <exprreq message="You must be of Good alignment to take this racial ability."><![CDATA[hero.tagis[Alignment.Good] <> 0]]></exprreq>
     </thing>
   <thing id="stDragonBl" name="Dragonblood" description="If a race possesses the dragonblood subtype, it has a strong affinity to dragons - which means that spells, effects, powers, and abilities that affect or target dragons also affect it. The subtype qualifies a creature to use magic items normally only usable by dragons, and qualifies the creature to take feats that have the subtype as a prerequisite. The dragonblood subtype also makes creatures subject to harmful effects that affect dragons.\n\nThe dragonblood subtype does not confer the dragon type or any traits associated with that type. For instance, it does not give a creature frightful presence.\n\nDragons automatically qualify for any classes, prestige classes, racial substitution levels, feats, powers, or spells that require the dragonblood subtype. Races presented in Races of Dragon book that have the dragonblood subtype include dragonborn, spellscale, kobold, and draconic creatures. Should a creature acquire the dragon type, it loses the dragonblood subtype." compset="Subtype" uniqueness="unique"></thing>
-  <thing id="raS2ShftTA" name="Shifter TAGS" description="This thing just holds all the Shifter Tags." compset="RaceSpec">
+  <thing id="raS2ShftT2" name="Shifter TAGS" description="This thing just holds all the Shifter Tags." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Custom" tag="ShifterBH" name="Shifter Beast Hide"/>
     <tag group="Custom" tag="ShifterCW" name="Shifter Cliff Walker"/>
@@ -1623,29 +1623,29 @@ July 29, 2012
       
       field[usrChosen1].chosen.field[trkMax].value += field[abValue].value]]></eval>
     </thing>
-  <thing id="fcBbnShift" name="Shifter Barbarian" description="Add 1 to the shifter&apos;s total number of rage rounds per day." compset="FavClass" uniqueness="unique">
+  <thing id="fcBbnShif2" name="Shifter Barbarian" description="Add 1 to the shifter&apos;s total number of rage rounds per day." compset="FavClass" uniqueness="unique">
     <fieldval field="fcName" value="+1 rage round/day"/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cBarbarian" name="Barbarian" abbrev="Barbarian"/>
-    <tag group="IsRace" tag="rShifters"/>
+    <tag group="IsRace" tag="rS2Shifte"/>
     <eval phase="PostAttr" priority="10000">
       field[abValue].value += field[fcCount].value
       #trkmax[cBbnRage] += field[abValue].value</eval>
     </thing>
-  <thing id="fcRgrShift" name="Shifter Ranger" description="Add a +1/2 bonus on wild empathy checks to influence animals and magical beasts." compset="FavClass" uniqueness="unique">
+  <thing id="fcRgrShif2" name="Shifter Ranger" description="Add a +1/2 bonus on wild empathy checks to influence animals and magical beasts." compset="FavClass" uniqueness="unique">
     <fieldval field="fcName" value="+½ Wild Empathy"/>
     <usesource source="s20PFCamp"/>
-    <tag group="IsRace" tag="rShifters"/>
+    <tag group="IsRace" tag="rS2Shifte"/>
     <tag group="FavClass" tag="cRanger" name="Ranger" abbrev="Ranger"/>
     <eval phase="PostAttr" priority="10000">
       field[abValue].value += round(field[fcCount].value/2,0,-1)
       #value[cWildEmp] += field[abValue].value</eval>
     </thing>
-  <thing id="fcFtrWarfo" name="Runeforged Fighter" description="Add a +1 bonus on initiative checks." compset="FavClass" uniqueness="unique">
+  <thing id="fcFtrRunef" name="Runeforged Fighter" description="Add a +1 bonus on initiative checks." compset="FavClass" uniqueness="unique">
     <fieldval field="fcName" value="+1 initiative"/>
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cFighter"/>
-    <tag group="IsRace" tag="rS2Warforg"/>
+    <tag group="IsRace" tag="rS2Runefor"/>
     <eval phase="PostAttr" priority="10000">
       field[abValue].value += field[fcCount].value
       hero.child[Initiative].field[Bonus].value += field[abValue].value</eval>
@@ -1733,7 +1733,7 @@ July 29, 2012
       focus.field[livename].text = field[name].text]]></eval>
     <exprreq message="Only a single race type can be taken."><![CDATA[hero.tagcount[Custom.rcPTrace] <= @ispick]]></exprreq>
     </thing>
-  <thing id="rShifters" name="Shoanti Shifter" description="Shoanti Shifters, sometimes called &quot;the weretouched,&quot; are descended from humans and natural lycanthropes. Shifters cannot fully change shape but can take on animalistic features&apos;a state they call shifting. Shifters have evolved into a unique race that breeds true. They have a distinct culture with its own traditions and identity.\n\nKnown for their warlike nature and proud traditions, the Shoanti are a disparate people, bound together by honor and tradition. Shoanti history is steeped in conflict, from their brutally heroic legends to the defeats of the recent past and the harshness of their modern lives.\n\nShaped by strife, the Shoanti are stalwart, tenacious, and suspicious people, oath-sworn to regain all that was once theirs and honor-bound to avenge themselves against all schemers who would dare call them barbarians.\n\nWhen Shoanti youths reach majority, they must undergo a rite of passage to become adults. Upon completing this rite of passage, they receive their first tattoo. These tattoos are an important part of Shoanti life, and can be quite extensive and beautiful. Hundreds of different tattoo designs exist; each is chosen and traced by a tribe&apos;s shaman, drawn from an expansive traditional assortment of symbols with their own varied meanings and implications.\n\nThe Shoanti are given a birth name when born, but once they becomes adults, they are also given a full name - it is generally by this honorific (which is always a short phrase) that they are called in everyday life. These full names can change several times during a Shoanti&apos;s life. Birth names are generally used only by close family or lovers. Shoanti who abandon their clan to live among others typically revert to using their birth names as their standard name - a practice that many traditional Shoanti find shameful.\n\nThe Shoanti are not one people but rather many {i}quahs{/i} (&quot;clans&quot;) united by heritage, tradition, and lifestyle. These various quahs largely respect one another and their lands, making disagreements over resources, territory, and politics - widely held to be distasteful and duplicitous - few. When conf licts do arise, small skirmishes and individual battles between the quahs&apos; champions quickly determine whom the spirits favor. The current seven quahs are summarized below.\n\n{b}Lyrune-Quah (Moon Clan){/b}: Expert archers and hunters, these Shoanti hunt by dusk and travel by the light of the moon. They dwell in the Cinderlands of Varisia, and revere creatures that hunt by moonlight, such as bats and owls.\n\n{b}Shadde-Quah (Axe Clan){/b}: The Shadde-Quah are expert divers and fishermen, and prefer to dwell in the coastal regions along northern Varisia or the southern Lands of the Linnorm Kings. They revere creatures that rely upon the sea for their livelihood, such as fish or sea birds.\n\n{b}Shriikirri-Quah (Hawk Clan){/b}: This clan, more than any other, regards animals as holy and mystic. Few rival their skill as animal trainers. They revere all animals, but particularly favor the hawk. They range far in their travels, but can usually be found in north-central Varisia.\n\n{b}Shundar-Quah (Spire Clan){/b}: The Shundar-Quah see themselves as diplomats and storytellers - it is in large part thanks to their efforts that the seven quahs have enjoyed what peace they have with each other. Members of the Spire Clan revere the ancient Thassilonian monoliths that can be found throughout their preferred territories on the Storval Plateau or western Belkzen.\n\n{b}Sklar-Quah (Sun Clan){/b}: The most warlike of the quahs, the Sun Clan are the most intolerant of outsiders and the most likely to wage war against non-Shoanti. Their greatest warriors are the burn-riders - elite mounted cavalry who excel at using fire to win battles. They dwell in the southern Cinderlands, and revere the horse above all other animals.\n\n{b}Skoan-Quah (Skull Clan){/b}: The Skoan-Quah are the most sinister of the clans, for they associate with the dead and guard the many Shoanti burial grounds in the eastern Cinderlands and among the Mindspin Mountains. They venerate the spirits of animals and favor those associated with death, such as vultures or beetles.\n\n{b}Tamiir-Quah (Wind Clan){/b}: The Wind Clan are perhaps the most secluded of the quahs, venturing out of the mountains of northwestern Varisia or the southern Lands of the Linnorm Kings only to raid lowlanders for valuable resources. They venerate flying animals above all others.\n\n{b}Physical Description:{/b} Shoanti Shifters are basically humanoid in shape, but their bodies are exceptionally lithe. They often move in a crouched posture, springing and leaping while their companions walk normally alongside. Their faces have a bestial cast, with wide, fl at noses, large eyes and heavy eyebrows, pointed ears, and long sideburns (in both sexes). Their forearms and lower legs grow long hair, and the hair of their heads is thick and worn long.\n\n{b}Relations:{/b} Many races feel uncomfortable around Shoanti Shifters, the same way they feel around any large predator. Of course, some grow to appreciate individual shifters despite their natural aversion, and halflings in general get along well with them. For their part, shifters are accustomed to distrust and don’t expect better treatment from members of the other races, although some shifters try to earn respect and companionship through acts and deeds.\n\n{b}Alignment:{/b} Shoanti Shifters are usually neutral, viewing the struggle to survive as more important than moral or ethical concerns about how survival is maintained." compset="Race">
+  <thing id="rS2Shifte" name="Shoanti Shifter" description="Shoanti Shifters, sometimes called &quot;the weretouched,&quot; are descended from humans and natural lycanthropes. Shifters cannot fully change shape but can take on animalistic features&apos;a state they call shifting. Shifters have evolved into a unique race that breeds true. They have a distinct culture with its own traditions and identity.\n\nKnown for their warlike nature and proud traditions, the Shoanti are a disparate people, bound together by honor and tradition. Shoanti history is steeped in conflict, from their brutally heroic legends to the defeats of the recent past and the harshness of their modern lives.\n\nShaped by strife, the Shoanti are stalwart, tenacious, and suspicious people, oath-sworn to regain all that was once theirs and honor-bound to avenge themselves against all schemers who would dare call them barbarians.\n\nWhen Shoanti youths reach majority, they must undergo a rite of passage to become adults. Upon completing this rite of passage, they receive their first tattoo. These tattoos are an important part of Shoanti life, and can be quite extensive and beautiful. Hundreds of different tattoo designs exist; each is chosen and traced by a tribe&apos;s shaman, drawn from an expansive traditional assortment of symbols with their own varied meanings and implications.\n\nThe Shoanti are given a birth name when born, but once they becomes adults, they are also given a full name - it is generally by this honorific (which is always a short phrase) that they are called in everyday life. These full names can change several times during a Shoanti&apos;s life. Birth names are generally used only by close family or lovers. Shoanti who abandon their clan to live among others typically revert to using their birth names as their standard name - a practice that many traditional Shoanti find shameful.\n\nThe Shoanti are not one people but rather many {i}quahs{/i} (&quot;clans&quot;) united by heritage, tradition, and lifestyle. These various quahs largely respect one another and their lands, making disagreements over resources, territory, and politics - widely held to be distasteful and duplicitous - few. When conf licts do arise, small skirmishes and individual battles between the quahs&apos; champions quickly determine whom the spirits favor. The current seven quahs are summarized below.\n\n{b}Lyrune-Quah (Moon Clan){/b}: Expert archers and hunters, these Shoanti hunt by dusk and travel by the light of the moon. They dwell in the Cinderlands of Varisia, and revere creatures that hunt by moonlight, such as bats and owls.\n\n{b}Shadde-Quah (Axe Clan){/b}: The Shadde-Quah are expert divers and fishermen, and prefer to dwell in the coastal regions along northern Varisia or the southern Lands of the Linnorm Kings. They revere creatures that rely upon the sea for their livelihood, such as fish or sea birds.\n\n{b}Shriikirri-Quah (Hawk Clan){/b}: This clan, more than any other, regards animals as holy and mystic. Few rival their skill as animal trainers. They revere all animals, but particularly favor the hawk. They range far in their travels, but can usually be found in north-central Varisia.\n\n{b}Shundar-Quah (Spire Clan){/b}: The Shundar-Quah see themselves as diplomats and storytellers - it is in large part thanks to their efforts that the seven quahs have enjoyed what peace they have with each other. Members of the Spire Clan revere the ancient Thassilonian monoliths that can be found throughout their preferred territories on the Storval Plateau or western Belkzen.\n\n{b}Sklar-Quah (Sun Clan){/b}: The most warlike of the quahs, the Sun Clan are the most intolerant of outsiders and the most likely to wage war against non-Shoanti. Their greatest warriors are the burn-riders - elite mounted cavalry who excel at using fire to win battles. They dwell in the southern Cinderlands, and revere the horse above all other animals.\n\n{b}Skoan-Quah (Skull Clan){/b}: The Skoan-Quah are the most sinister of the clans, for they associate with the dead and guard the many Shoanti burial grounds in the eastern Cinderlands and among the Mindspin Mountains. They venerate the spirits of animals and favor those associated with death, such as vultures or beetles.\n\n{b}Tamiir-Quah (Wind Clan){/b}: The Wind Clan are perhaps the most secluded of the quahs, venturing out of the mountains of northwestern Varisia or the southern Lands of the Linnorm Kings only to raid lowlanders for valuable resources. They venerate flying animals above all others.\n\n{b}Physical Description:{/b} Shoanti Shifters are basically humanoid in shape, but their bodies are exceptionally lithe. They often move in a crouched posture, springing and leaping while their companions walk normally alongside. Their faces have a bestial cast, with wide, fl at noses, large eyes and heavy eyebrows, pointed ears, and long sideburns (in both sexes). Their forearms and lower legs grow long hair, and the hair of their heads is thick and worn long.\n\n{b}Relations:{/b} Many races feel uncomfortable around Shoanti Shifters, the same way they feel around any large predator. Of course, some grow to appreciate individual shifters despite their natural aversion, and halflings in general get along well with them. For their part, shifters are accustomed to distrust and don’t expect better treatment from members of the other races, although some shifters try to earn respect and companionship through acts and deeds.\n\n{b}Alignment:{/b} Shoanti Shifters are usually neutral, viewing the struggle to survive as more important than moral or ethical concerns about how survival is maintained." compset="Race">
     <fieldval field="rDEX" value="2"/>
     <fieldval field="rINT" value="-2"/>
     <fieldval field="rWIS" value="2"/>
@@ -1756,10 +1756,10 @@ July 29, 2012
     <tag group="Language" tag="lGnoll"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="raLowLight"></bootstrap>
-    <bootstrap thing="fcBbnShift"></bootstrap>
-    <bootstrap thing="fcRgrShift"></bootstrap>
-    <bootstrap thing="raShifting"></bootstrap>
-    <bootstrap thing="raShftAgil"></bootstrap>
+    <bootstrap thing="fcBbnShif2"></bootstrap>
+    <bootstrap thing="fcRgrShif2"></bootstrap>
+    <bootstrap thing="raS2Shifti"></bootstrap>
+    <bootstrap thing="raS2ShfAgi"></bootstrap>
     <bootstrap thing="stShapecha"></bootstrap>
     <bootstrap thing="fcAlcShift"></bootstrap>
     <eval phase="First" priority="499"><![CDATA[
@@ -1769,8 +1769,8 @@ July 29, 2012
       ~know which set of abilities to add
       ~therefore, we make the check from the class, rather than the
       ~racial special, and forward that tag to the hero
-      if (hero.findchild[RaceAbil,"thingid.raShifting"].field[usrChosen1].ischosen <> 0) then
-          perform hero.findchild[RaceAbil,"thingid.raShifting"].field[usrChosen1].chosen.forward[Shifter.?]
+      if (hero.findchild[RaceAbil,"thingid.raS2Shifti"].field[usrChosen1].ischosen <> 0) then
+          perform hero.findchild[RaceAbil,"thingid.raS2Shifti"].field[usrChosen1].chosen.forward[Shifter.?]
       endif]]></eval>
     </thing>
   <thing id="rcPtFienWe" name="Fiendish Weapon" description="Any damage you deal with a melee weapon is treated as evil for the purposes of overcoming damage reduction." compset="RaceCustom" uniqueness="useronce">
@@ -2963,7 +2963,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <usesource source="CSWorldGui"/>
     <usesource source="s20PFCamp"/>
     <usesource source="PCPeopNort"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="SpecUp"/>
     <bootstrap thing="lPFHallit"></bootstrap>
     <eval phase="First" priority="600"><![CDATA[
@@ -3458,7 +3458,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
       ~ Give bonus to CMD only
       hero.child[ManeuvDef].field[Bonus].value += field[abValue].value</eval>
     </thing>
-  <thing id="raShifting" name="Shifting" description="A shifter can tap into her lycanthropic heritage to gain short bursts of physical power. A shifter can enter a state that is superficially similar to a barbarian’s rage. Each shifter has one of six shifter traits-characteristics that manifest themselves when a character is shifting. Each shifter trait provides a +2 bonus to one of the character’s physical ability scores (Strength, Dexterity, or Constitution) and grants some other advantage as well. Shifter traits are described in the following section.\n\nA shifter can shift for a number of rounds per day equal to 3 + Constitution modifier + half her character level. Starting a shift or ending is a free action that can only happen on a characters turn. Every shifter feat a character takes allows her to shift for 1 additional round per day.  For every two shifter feats a character takes, the shifter gains a bonus 1 round per day on top of the one gained for the shifter feat itself. In example if a shifter has two shifter feats they can shift for 3 additional rounds per day not 2." compset="RaceSpec">
+  <thing id="raS2Shifti" name="Shifting" description="A shifter can tap into her lycanthropic heritage to gain short bursts of physical power. A shifter can enter a state that is superficially similar to a barbarian’s rage. Each shifter has one of six shifter traits-characteristics that manifest themselves when a character is shifting. Each shifter trait provides a +2 bonus to one of the character’s physical ability scores (Strength, Dexterity, or Constitution) and grants some other advantage as well. Shifter traits are described in the following section.\n\nA shifter can shift for a number of rounds per day equal to 3 + Constitution modifier + half her character level. Starting a shift or ending is a free action that can only happen on a characters turn. Every shifter feat a character takes allows her to shift for 1 additional round per day.  For every two shifter feats a character takes, the shifter gains a bonus 1 round per day on top of the one gained for the shifter feat itself. In example if a shifter has two shifter feats they can shift for 3 additional rounds per day not 2." compset="RaceSpec">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="User" tag="Activation"/>
     <tag group="AbilType" tag="Super"/>
@@ -3475,7 +3475,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
       ~ Set the shifting tag on to the hero
       perform hero.assign[Shifter.Shifting]</eval>
     </thing>
-  <thing id="raShftAgil" name="Shifter Agility" description="A shifter’s animalistic heritage enhances many of her physical skills. Shifters gain a +2 racial bonus on Acrobatics, Climb, and Swim checks." compset="RaceSpec">
+  <thing id="raS2ShfAgi" name="Shifter Agility" description="A shifter’s animalistic heritage enhances many of her physical skills. Shifters gain a +2 racial bonus on Acrobatics, Climb, and Swim checks." compset="RaceSpec">
     <fieldval field="abValue" value="2"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Skill"/>
@@ -3499,7 +3499,7 @@ abValue4 = Not Used</comment>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="SpecType" tag="Defense"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <tag group="Shifter" tag="Beasthide"/>
     <eval phase="PreAttr" priority="1000" index="2"><![CDATA[
@@ -3520,7 +3520,7 @@ abValue4 = Not Used</comment>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Shifter" tag="Longtooth"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <bootstrap thing="wBite">
       <containerreq phase="First" priority="500">Shifter.Shifting</containerreq>
@@ -3546,7 +3546,7 @@ abValue4 = Not Used</comment>
     <usesource source="srcShifter"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Shifter" tag="Cliffwalk"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <tag group="AbilType" tag="Super"/>
     <eval phase="First" priority="1000">~ Make climb a class skill
@@ -3570,7 +3570,7 @@ abValue4 = Not Used</comment>
     <tag group="SpecType" tag="Attack"/>
     <tag group="Shifter" tag="Razorclaw"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <bootstrap thing="wClaw">
       <containerreq phase="First" priority="500">Shifter.Shifting</containerreq>
@@ -3599,7 +3599,7 @@ abValue4 = Not Used</comment>
     <tag group="SpecType" tag="Movement"/>
     <tag group="Shifter" tag="Longstride"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <eval phase="PreAttr" priority="1000" index="2"><![CDATA[
       ~ If not shifting get out now
@@ -3620,7 +3620,7 @@ abValue4 = Not Used</comment>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Shifter" tag="Wildhunt"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <bootstrap thing="xScent">
       <containerreq phase="First" priority="500">Shifter.Shifting</containerreq>
@@ -3646,7 +3646,7 @@ abValue4 = Not Used</comment>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="Shifter" tag="Dreamsight"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <bootstrap thing="spSpeawit1">
       <containerreq phase="First" priority="250">Shifter.Shifting</containerreq>
@@ -3675,7 +3675,7 @@ abValue4 = Not Used</comment>
     <tag group="Shifter" tag="Gorebrute"/>
     <tag group="SpecType" tag="Attack"/>
     <tag group="AbilType" tag="Super"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <bootstrap thing="wGore">
       <containerreq phase="First" priority="599">Shifter.Shifting</containerreq>
@@ -3705,7 +3705,7 @@ abValue4 = Not Used</comment>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="Shifter" tag="Swiftwing"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <eval phase="PreAttr" priority="1000" index="2"><![CDATA[
       ~ If not shifting get out now
@@ -3726,7 +3726,7 @@ abValue4 = Not Used</comment>
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="Shifter" tag="Truedive"/>
-    <tag group="AllowRCust" tag="rShifters"/>
+    <tag group="AllowRCust" tag="rS2Shifte"/>
     <tag group="Helper" tag="Secondary"/>
     <eval phase="PreAttr" priority="1000" index="2"><![CDATA[
       ~ If not shifting get out now
@@ -3741,7 +3741,7 @@ abValue4 = Not Used</comment>
   <thing id="fcAlcShift" name="Shifter Alchemist" description="Add +2 minutes per alchemist level to the duration of a mutagen." compset="FavClass" uniqueness="unique">
     <fieldval field="fcName" value="+2 min mutagen"/>
     <usesource source="s20PFCamp"/>
-    <tag group="IsRace" tag="rShifters"/>
+    <tag group="IsRace" tag="rS2Shifte"/>
     <tag group="FavClass" tag="cAlchemist"/>
     <eval phase="PreLevel" priority="10000">field[abValue].value += field[fcCount].value * 2
 hero.childfound[cAlcMutage].field[abDuration].value += field[abValue].value</eval>

@@ -11,6 +11,7 @@
   <loadonce key="COM_3PPPack_PathOfWar - Editor"/>
 
   <!-- Path of War Maneuvers editthing -->
+  <!-- parent="zCommunity" -->
   <editthing
     compset="PWManuever"
     name="PoW maneuvers"
@@ -18,7 +19,6 @@
     prefix="manPW"
     description="Path of War Maneuvers"
     summary="This lets you define the maneuvers/stances for Path of War classes.">
-
 
     <!-- Manuever or Stance? -->
     <inputthing
@@ -113,6 +113,11 @@
       <it_taglist group="AbilType" tag="?" deftag="Extra"/>
     </inputthing>
 
+    <!-- General Information Section -->
+    <inputthing>
+      <it_groupref id="S2GenInfo"/>
+    </inputthing>
+
   </editthing>
 
 
@@ -204,6 +209,98 @@
       <it_field field="cMaxManLvl"/>
     </inputthing>
 
+    <!-- General Information Section -->
+    <inputthing>
+      <it_groupref id="S2GenInfo"/>
+    </inputthing>
+
+  </editthing>
+
+
+  <!-- Path of War Discipline Setup editthing -->
+  <editthing
+    compset="PWDisc"
+    name="PoW Discipline"
+    group="zCommunity"
+    prefix="dPW"
+    description="Path of War Discipline Setup"
+    summary="This lets you setup new disciplines for Path of War classes.">
+
+    <!-- Discipline Tags -->
+    <inputthing
+      name="Discipline"
+      helptext="">
+      <it_separator/>
+    </inputthing>    
+    <inputthing
+      name="Discipline"
+      helptext="Use this to create a new Discipline Tag. The tag should match the name of your new Discipline. This may seem redundent but its required for backwards compataiblity.">
+      <it_tagpick group="Discipline" tag="?" />
+    </inputthing>
+
+    <!-- Skills -->
+    <inputthing
+      name="Skills"
+      helptext="This section allows you to select the Disciplines associated skills. Always trying and use the Discipline Skill setup first as its less overhead.">
+      <it_separator/>
+    </inputthing>    
+    <inputthing
+      name="Discipline Skill 1"
+      helptext="Select the skill that is associated with this discipline.">
+      <it_linkage compset="Skill" linkage="powDiscSk1">
+        <!-- Don't show special Adjustment Skills, Consolidated skills, Background skills or Grouping Skills. -->
+        <match><![CDATA[((!Helper.ConsSkill & !Helper.BackSkill)|Helper.SkCatCraft) & !AdjSkill.? & !Helper.GroupSkill]]></match>
+      </it_linkage>
+    </inputthing>
+    <inputthing
+      name="Discipline Skill 2"
+      helptext="Select the skill that is associated with this discipline.">
+      <it_linkage compset="Skill" linkage="powDiscSk2">
+        <match><![CDATA[((!Helper.ConsSkill & !Helper.BackSkill)|Helper.SkCatCraft) & !AdjSkill.? & !Helper.GroupSkill]]></match>
+      </it_linkage>
+    </inputthing>
+    <inputthing
+      name="Discipline Skill 3"
+      helptext="Select the skill that is associated with this discipline.">
+      <it_linkage compset="Skill" linkage="powDiscSk3">
+        <match><![CDATA[((!Helper.ConsSkill & !Helper.BackSkill)|Helper.SkCatCraft) & !AdjSkill.? & !Helper.GroupSkill]]></match>
+      </it_linkage>
+    </inputthing>
+    <inputthing
+      name="Discipline Skill 4"
+      helptext="Select the skill that is associated with this discipline.">
+      <it_linkage compset="Skill" linkage="powDiscSk4">
+        <match><![CDATA[((!Helper.ConsSkill & !Helper.BackSkill)|Helper.SkCatCraft) & !AdjSkill.? & !Helper.GroupSkill]]></match>
+      </it_linkage>
+    </inputthing>
+    <inputthing
+      name="Discipline Skill 5"
+      helptext="Select the skill that is associated with this discipline.">
+      <it_linkage compset="Skill" linkage="powDiscSk5">
+        <match><![CDATA[((!Helper.ConsSkill & !Helper.BackSkill)|Helper.SkCatCraft) & !AdjSkill.? & !Helper.GroupSkill]]></match>
+      </it_linkage>
+    </inputthing>
+    <inputthing
+      name="Skills (Read The Help)"
+      helptext="ONLY USE this skill selection if you get an issue using the above Skill 1 to 5 setup. Some skills are not unique can not be setup to use linkages. But using a linked skill causes almost no CPU usage.">
+      <it_taglist group="SkillAdded" tag="?" />
+    </inputthing>
+
+    <!-- Weapons -->
+    <inputthing
+      name="Weapons"
+      helptext="This section allows you to select the Disciplines associated fighter weapon groups.">
+      <it_separator/>
+    </inputthing>    
+    <inputthing
+      name="Weapon Groups"
+      helptext="Select the different fighter weapon groups that is associated to this discipline.">
+      <it_taglist group="wFtrGroup" tag="?" />
+    </inputthing>
+
+    <inputthing>
+      <it_groupref id="S2GenInfo"/>
+    </inputthing>
   </editthing>
 
 

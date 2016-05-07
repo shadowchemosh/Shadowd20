@@ -2047,7 +2047,7 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <tag group="sLevel" tag="6" name="6" abbrev="6"/>
     <tag group="ProductId" tag="FrogGod"/>
     </thing>
-  <thing id="spDetoxif8" name="Detoxify" description="You detoxify any sort of venom within 30 feet of you.  A poisoned creature suffers no additional effects from the poison, and any temporary effects are ended, but the spell does not reverse instantaneous effects, such as hit point damage, ability damage, or effects that don&apos;t go away on their own.  This effect is instantaneous; no immunity to later poisoning is conveyed by the spell.\n\nThe venom of any creatures affected by the spell loses its potency for 10 minutes per caster level.\n\nAny poison in the air, in food, on weapons or traps, or otherwise in the radius of the spell is instantaneously neutralized." compset="Spell">
+  <thing id="spFGDetox8" name="Detoxify" description="You detoxify any sort of venom within 30 feet of you.  A poisoned creature suffers no additional effects from the poison, and any temporary effects are ended, but the spell does not reverse instantaneous effects, such as hit point damage, ability damage, or effects that don&apos;t go away on their own.  This effect is instantaneous; no immunity to later poisoning is conveyed by the spell.\n\nThe venom of any creatures affected by the spell loses its potency for 10 minutes per caster level.\n\nAny poison in the air, in food, on weapons or traps, or otherwise in the radius of the spell is instantaneously neutralized." compset="Spell">
     <comment>Tagged to Feast Domain</comment>
     <fieldval field="sTarget" value="Creatures and objects in 30-ft.-radius spread"/>
     <fieldval field="sSave" value="Will Negates"/>

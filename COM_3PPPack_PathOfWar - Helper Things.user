@@ -66,17 +66,6 @@
     <tag group="Usage" tag="PWEncounte" name="/Encounter"/>
     <tag group="fCategory" tag="PWStyle" name="Style"/>
     <tag group="abCategory" tag="PWStalkArt" name="Stalker Art" abbrev="Stalker Art"/>
-    <bootstrap thing="zPWPriFur"></bootstrap>
-    <bootstrap thing="zPWGolLio"></bootstrap>
-    <bootstrap thing="zPWScaThr"></bootstrap>
-    <bootstrap thing="zPWSolWin"></bootstrap>
-    <bootstrap thing="zPWSteSer"></bootstrap>
-    <bootstrap thing="zPWThraDra"></bootstrap>
-    <bootstrap thing="zPWBrknBld"></bootstrap>
-    <bootstrap thing="zPWVldMoon"></bootstrap>
-    <bootstrap thing="zPWBlkSrph"></bootstrap>
-    <bootstrap thing="zPWSlvrCrn"></bootstrap>
-    <bootstrap thing="zPWIronTrt"></bootstrap>
     <eval phase="First" priority="25000" name="PoW Build Maneuvers Text"><![CDATA[
     
       ~ The below logic costs huge amount of CPU. To lessen this for
@@ -148,233 +137,117 @@
         perform eachthing.amendthing[name,sName]
       nexteach]]></eval>
     </thing>
-  <thing id="dPWBlkSrph" name="Black Seraph Discipline" compset="SplSchool">
+
+  <thing id="zPWBlkSrph" name="Black Seraph" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
     <tag group="Discipline" tag="BlackSerph"/>
-    </thing>
-  <thing id="dPWBrknBld" name="Broken Blade Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="BrokenBlad"/>
-    </thing>
-  <thing id="dPWCreWin" name="Crescent Wind Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="CresceWind"/>
-    </thing>
-  <thing id="dPWGolLio" name="Golden Lion Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="GoldenLion"/>
-    </thing>
-  <thing id="dPWIronTrt" name="Iron Tortoise Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="IronTort"/>
-    </thing>
-  <thing id="dPWPriFur" name="Primal Fury Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="PrimalFury"/>
-    </thing>
-  <thing id="dPWScaThr" name="Scarlet Throne Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="ScarletThr"/>
-    </thing>
-  <thing id="dPWSlvrCrn" name="Silver Crane Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="SilvrCrane"/>
-    </thing>
-  <thing id="dPWSolWin" name="Solar Wind Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="SolarWind"/>
-    </thing>
-  <thing id="dPWSteSer" name="Steel Serpent Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="SteelSerp"/>
-    </thing>
-  <thing id="dPWThraDra" name="Thrashing Dragon Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="ThrashDrag"/>
-    </thing>
-  <thing id="dPWVldMoon" name="Veiled Moon Discipline" compset="SplSchool">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="Discipline"/>
-    <tag group="Discipline" tag="VeiledMoon"/>
-    </thing>
-  <thing id="zPWBlkSrph" name="Black Seraph" compset="Simple">
-    <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
-    <tag group="Discipline" tag="BlackSerph"/>
-    <tag group="HasMan" tag="BlackSerph"/>
-    <tag group="ClassSkill" tag="skIntim"/>
     <tag group="wFtrGroup" tag="Axes"/>
     <tag group="wFtrGroup" tag="Flails"/>
     <tag group="wFtrGroup" tag="PoleArms"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skIntim"/>
     </thing>
-  <thing id="zPWBrknBld" name="Broken Blade" compset="Simple">
+  <thing id="zPWBrknBld" name="Broken Blade" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="BrokenBlad"/>
-    <tag group="HasMan" tag="BrokenBlad"/>
-    <tag group="ClassSkill" tag="skAcrobat"/>
     <tag group="wFtrGroup" tag="Close"/>
     <tag group="wFtrGroup" tag="Monk"/>
     <tag group="wFtrGroup" tag="Natural"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skAcrobat"/>
     </thing>
-  <thing id="zPWCreWin" name="Crescent Wind" compset="Simple">
-    <tag group="PathOfWar" tag="selDisc"/>
+  <thing id="zPWCreWin" name="Crescent Wind" compset="PWDisc" uniqueness="unique">
+    <usesource source="srcPathOfW"/>
     <tag group="Discipline" tag="CresceWind"/>
-    <tag group="HasMan" tag="CresceWind"/>
-    <tag group="ClassSkill" tag="skIntim"/>
     <tag group="wFtrGroup" tag="Axes"/>
     <tag group="wFtrGroup" tag="Flails"/>
     <tag group="wFtrGroup" tag="PoleArms"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skIntim"/>
     </thing>
-  <thing id="zPWGolLio" name="Golden Lion" compset="Simple">
+  <thing id="zPWGolLio" name="Golden Lion" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="GoldenLion"/>
-    <tag group="HasMan" tag="GoldenLion"/>
-    <tag group="ClassSkill" tag="skDiplo"/>
     <tag group="wFtrGroup" tag="BladeHeavy"/>
     <tag group="wFtrGroup" tag="Hammers"/>
     <tag group="wFtrGroup" tag="PoleArms"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skAcrobat"/>
     </thing>
-  <thing id="zPWIronTrt" name="Iron Tortoise" compset="Simple">
-    <tag group="PathOfWar" tag="selDisc"/>
+  <thing id="zPWIronTrt" name="Iron Tortoise" compset="PWDisc" uniqueness="unique">
+    <usesource source="srcPathOfW"/>
     <tag group="Discipline" tag="IronTort"/>
-    <tag group="HasMan" tag="IronTort"/>
-    <tag group="ClassSkill" tag="skBluff"/>
     <tag group="wFtrGroup" tag="BladeHeavy"/>
     <tag group="wFtrGroup" tag="Axes"/>
     <tag group="wFtrGroup" tag="Close"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skBluff"/>
     </thing>
-  <thing id="zPWPriFur" name="Primal Fury" compset="Simple">
+  <thing id="zPWPriFur" name="Primal Fury" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="Discipline" tag="PrimalFury"/>
-    <tag group="HasMan" tag="PrimalFury"/>
-    <tag group="ClassSkill" tag="skSurvival"/>
     <tag group="wFtrGroup" tag="BladeHeavy"/>
     <tag group="wFtrGroup" tag="Axes"/>
     <tag group="wFtrGroup" tag="Hammers"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="PathOfWar" tag="selDisc"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skSurvival"/>
     </thing>
-  <thing id="zPWScaThr" name="Scarlet Throne" compset="Simple">
+  <thing id="zPWScaThr" name="Scarlet Throne" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="ScarletThr"/>
-    <tag group="HasMan" tag="ScarletThr"/>
-    <tag group="ClassSkill" tag="skSenseMot"/>
     <tag group="wFtrGroup" tag="BladeHeavy"/>
     <tag group="wFtrGroup" tag="BladeLight"/>
     <tag group="wFtrGroup" tag="Spears"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skSenseMot"/>
     </thing>
-  <thing id="zPWSlvrCrn" name="Silver Crane" compset="Simple">
+  <thing id="zPWSlvrCrn" name="Silver Crane" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="SilvrCrane"/>
-    <tag group="HasMan" tag="SilvrCrane"/>
-    <tag group="ClassSkill" tag="skPercep"/>
     <tag group="wFtrGroup" tag="Bows"/>
     <tag group="wFtrGroup" tag="Hammers"/>
     <tag group="wFtrGroup" tag="Spears"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skPercep"/>
     </thing>
-  <thing id="zPWSolWin" name="Solar Wind" compset="Simple">
+  <thing id="zPWSolWin" name="Solar Wind" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="SolarWind"/>
-    <tag group="HasMan" tag="SolarWind"/>
-    <tag group="ClassSkill" tag="skPercep"/>
     <tag group="wFtrGroup" tag="Bows"/>
     <tag group="wFtrGroup" tag="Crossbows"/>
     <tag group="wFtrGroup" tag="Firearms"/>
     <tag group="wFtrGroup" tag="Thrown"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skPercep"/>
     </thing>
-  <thing id="zPWSteSer" name="Steel Serpent" compset="Simple">
+  <thing id="zPWSteSer" name="Steel Serpent" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="SteelSerp"/>
-    <tag group="HasMan" tag="SteelSerp"/>
-    <tag group="ClassSkill" tag="skHeal"/>
     <tag group="wFtrGroup" tag="BladeLight"/>
     <tag group="wFtrGroup" tag="Close"/>
     <tag group="wFtrGroup" tag="Monk"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skHeal"/>
     </thing>
-  <thing id="zPWThraDra" name="Thrashing Dragon" compset="Simple">
+  <thing id="zPWThraDra" name="Thrashing Dragon" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="ThrashDrag"/>
-    <tag group="HasMan" tag="ThrashDrag"/>
-    <tag group="ClassSkill" tag="skAcrobat"/>
     <tag group="wFtrGroup" tag="BladeLight"/>
     <tag group="wFtrGroup" tag="Close"/>
     <tag group="wFtrGroup" tag="Double"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skAcrobat"/>
     </thing>
-  <thing id="zPWVldMoon" name="Veiled Moon" compset="Simple">
+  <thing id="zPWVldMoon" name="Veiled Moon" compset="PWDisc" uniqueness="unique">
     <usesource source="srcPathOfW"/>
-    <tag group="PathOfWar" tag="selDisc"/>
     <tag group="Discipline" tag="VeiledMoon"/>
-    <tag group="HasMan" tag="VeiledMoon"/>
-    <tag group="ClassSkill" tag="skStealth"/>
     <tag group="wFtrGroup" tag="BladeLight"/>
     <tag group="wFtrGroup" tag="Double"/>
     <tag group="wFtrGroup" tag="Spears"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="First" priority="50">
-      ~ Setup the Disipline Class Skill
-      Call PWsetupDSk</eval>
+    <link linkage="powDiscSk1" thing="skStealth"/>
     </thing>
+
   <thing id="PWDisLevel" name="Martial Discpline Helper" description="abValue = Max Inititor Level\nabValue2 = Max Disciple Level" compset="Ability" uniqueness="unique">
     <usesource source="srcPathOfW"/>
     <tag group="ProductId" tag="HLCommunit"/>

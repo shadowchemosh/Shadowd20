@@ -23,25 +23,6 @@
 
 
   <!-- =================================================================== -->
-  <!--                     Calculate Shifter Damage based on level         -->
-  <!-- =================================================================== -->
-  <procedure id="ShifterDmg" context="pick"><![CDATA[
-    ~ This procedure gives a Bonus on damage for every 4 levels we have
-    field[abValue3].value += round(#totallevelcount[]/4,0,-1)
-    var s2Shifter as string
-    ~ Pull all the shifter tags from the parent thing
-    s2Shifter = tagids[Shifter.?,"|"]
-    ~Only process if bonus is +1 or higher
-    if (field[abValue3].value >= 1) then
-      ~ Go through each natural attack that matchs our Shifter tags and give a bonus on damage
-      foreach pick in hero from BaseWep where s2Shifter
-         each.field[wDamBonus].value += field[abValue3].value
-      nexteach
-    endif
-    ]]>
-  </procedure>
-
-  <!-- =================================================================== -->
   <!-- Spell Free Slot - This procedure makes it so that a spell will not 
        not count against the classes daily spell limit. -->
   <!-- =================================================================== -->

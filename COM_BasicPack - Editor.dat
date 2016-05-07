@@ -9,8 +9,46 @@
 <document signature="Hero Lab Data">
   <loadonce key="COM_BasicPack - Editor"/>
 
-  <!-- Polymorph Helper editthing -->
-    <!-- parent="Campaign" -->
+  <!-- Group General Information -->
+  <inputthinggroup
+    id="S2GenInfo">
+    <inputthing>
+      <it_groupref id="GenInfo"/>
+    </inputthing>
+    <inputthing
+      name="Product Identity For..."
+      helptext="Specify any companies whose Product Identity this material is. OGL books will have a &quot;Product Identity&quot; statment, usually on the title page, and you should be careful what content you do designate as Product Identity as what you don&apos;s - not everything in an OGL book will be Product Identity.">
+      <it_taglist group="ProductId" tag="?" />
+    </inputthing>
+    <inputthing
+      name="Not Allowed for Pathfinder Society Characters"
+      helptext="Specify whether this thing may not be selected by Pathfinder Society Characters.">
+      <it_tagcheck group="Helper" tag="NoPathSoc"/>
+    </inputthing>
+    <inputthing
+      name="Allowed for Core Campaign PFS Characters"
+      helptext="Specify if this thing may be selected by Pathfinder Society Charactes, even though it has a source other than those normally allowed.">
+      <it_tagcheck group="Helper" tag="CoreCampOK"/>
+    </inputthing>
+  </inputthinggroup>
+
+  <!-- Group General Informaion with Helper Thing Only -->
+  <inputthinggroup
+    id="S2GenInfoH">
+    <inputthing>
+      <it_groupref id="S2GenInfo"/>
+    </inputthing>
+    <inputthing
+      name="Helper Thing Only?"
+      helptext="Check this if this Thing is only a helper Thing.">
+      <it_tagcheck group="Helper" tag="Helper"/>
+    </inputthing>
+  </inputthinggroup>
+
+
+
+  <!-- Army Strategy Helper editthing -->
+  <!-- parent="Campaign" -->
   <editthing
     compset="ArmyStrat"
     name="Army Strategy"
@@ -95,36 +133,10 @@
     </inputthing>
 
     <!-- General Information Section -->
-    <inputthing
-      name="General Information"
-      helptext="General details that can be specified for any type of thing.">
-      <it_separator/>
+    <inputthing>
+      <it_groupref id="S2GenInfo"/>
     </inputthing>
-    <inputthing
-      name="Product Identity For..."
-      helptext="Specify any companies whose Product Identity this material is. OGL books will have a &quot;Product Identity&quot; statment, usually on the title page, and you should be careful what content you do designate as Product Identity as what you don&apos;s - not everything in an OGL book will be Product Identity.">
-      <it_taglist group="ProductId" tag="?" />
-    </inputthing>
-    <inputthing
-      name="Custom Tags"
-      helptext="">
-    <it_taglist group="Custom" tag="?"/>
-    </inputthing>
-    <inputthing
-      name="User Tags"
-      helptext="Specify any other tags you want to assign here.">
-      <it_taglist group="Custom" tag="?" />
-    </inputthing>
-    <inputthing
-      name="Not Allowed for Pathfinder Society Characters"
-      helptext="Specify whether this thing may not be selected by Pathfinder Society Characters.">
-      <it_tagcheck group="Helper" tag="NoPathSoc"/>
-    </inputthing>
-    <inputthing
-      name="Allowed for Core Campaign PFS Characters"
-      helptext="Specify if this thing may be selected by Pathfinder Society Characters, even though it has a source other than those normally allowed.">
-      <it_tagcheck group="Helper" tag="CoreCampOK"/>
-    </inputthing>
+
   </editthing>
 
   <!-- Selection Helpers -->
@@ -240,36 +252,10 @@
     </inputthing>      
 
     <!-- General Information Section -->
-    <inputthing
-      name="General Information"
-      helptext="General details that can be specified for any type of thing.">
-      <it_separator/>
+    <inputthing>
+      <it_groupref id="S2GenInfo"/>
     </inputthing>
-    <inputthing
-      name="Product Identity For..."
-      helptext="Specify any companies whose Product Identity this material is. OGL books will have a &quot;Product Identity&quot; statment, usually on the title page, and you should be careful what content you do designate as Product Identity as what you don&apos;s - not everything in an OGL book will be Product Identity.">
-      <it_taglist group="ProductId" tag="?" />
-    </inputthing>
-    <inputthing
-      name="Custom Tags"
-      helptext="">
-    <it_taglist group="Custom" tag="?"/>
-    </inputthing>
-    <inputthing
-      name="User Tags"
-      helptext="Specify any other tags you want to assign here.">
-      <it_taglist group="Custom" tag="?" />
-    </inputthing>
-    <inputthing
-      name="Not Allowed for Pathfinder Society Characters"
-      helptext="Specify whether this thing may not be selected by Pathfinder Society Characters.">
-      <it_tagcheck group="Helper" tag="NoPathSoc"/>
-    </inputthing>
-    <inputthing
-      name="Allowed for Core Campaign PFS Characters"
-      helptext="Specify if this thing may be selected by Pathfinder Society Characters, even though it has a source other than those normally allowed.">
-      <it_tagcheck group="Helper" tag="CoreCampOK"/>
-    </inputthing>
+
   </editthing>
 
 

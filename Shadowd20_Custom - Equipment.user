@@ -384,7 +384,7 @@ endif]]></eval>
     <tag group="wClass" tag="TwoHanded"/>
     <tag group="wCritMin" tag="19"/>
     </thing>
-  <thing id="wS2ScimDbl" name="Scimitar, Osirion Double" description="The people of osirion use a dangerous and exotic double weapon with curving scimitar blades on each end. You can fight with a double weapon as if fighting with two weapons, but if you do, you incur all the normal attack penalties as if using a one-handed weapon and a light weapon. A creature using a double weapon in one hand, such as a Large creature using a Medium double scimitar, can’t use it as a double weapon." compset="Weapon">
+  <thing id="wS2ScimDb2" name="Scimitar, Osirion Double" description="The people of osirion use a dangerous and exotic double weapon with curving scimitar blades on each end. You can fight with a double weapon as if fighting with two weapons, but if you do, you incur all the normal attack penalties as if using a one-handed weapon and a light weapon. A creature using a double weapon in one hand, such as a Large creature using a Medium double scimitar, can’t use it as a double weapon." compset="Weapon">
     <fieldval field="gSizeCost" value="125"/>
     <fieldval field="gWeight" value="10"/>
     <usesource source="s20PFCamp"/>

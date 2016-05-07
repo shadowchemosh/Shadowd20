@@ -16104,7 +16104,7 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPUBlkAtk" name="Block Attack" description="As long as an adaptive warrior of 5th level maintains psionic focus, he may, as an immediate action, attempt to block any attack, but not touch attack, made by an opponent he has used his Examine Technique ability on within the past minute.\nTo successfully block the attack, the adaptive warrior makes an attack roll against the enemy’s attack roll, adding his class level to the roll. If the adaptive warrior’s attack roll is equal to or greater than the enemy’s attack, the attack is blocked and the adaptive warrior takes no damage and suffers no effects from the attack. This ability may not be used against opponents two or more size categories larger than the adaptive warrior.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
-  <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPUAccCmbt" name="Accelerated Combat" description="An adaptive warrior of 6th level or higher may, by expending psionic focus, rapidly speed up any fighting style he has witnessed within the past minute. Once every ten minutes, when the adaptive warrior attacks an opponent that he has used\nExamine Technique on within the past minute, he may make two additional attacks at his highest attack bonus as part of a full attack action. In addition, he gains a +2 circumstance bonus to his Armor Class until the\nbeginning of his next turn.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
     <tag group="AbilType" tag="Super"/>
@@ -16115,7 +16115,7 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPUExtExam" name="Extended Examination" description="An adaptive warrior of 8th level or higher is able to examine creatures for longer periods of time to pick up more subtle aspects of a creature’s fighting style or abilities. By examining a creature using Examine Technique as a full-round \naction, an adaptive warrior’s competence bonus against that enemy for the following round increases to his class level when using his Counter Fighting Style and Block Attack abilities.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
-    <tag group="ProductId" tag="HLCommunit"/> 
+    <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="cPUMimFeat" name="Mimic Feat" description="As long as an adaptive warrior of 9th level or higher maintains psionic focus, he may mimic any Combat, Critical, or Psionic feat that he has seen used within the past minute by a creature targeted by Examine Technique. The feat must actually be a feat that is used as part of an action, such as Deep Impact, and not a passive ability, such as Psionic Body. The adaptive warrior must meet any prerequisites the feat may have to mimic it.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
     <tag group="AbilType" tag="Super"/>
@@ -16123,6 +16123,273 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     </thing>
   <thing id="cPUCFStyle" name="Combine Fighting Styles" description="Upon achieving 10th level, an adaptive warrior is able to combine the different fighting styles he has examined in the past hour, creating an unpredictable, yet highly effective technique that baffles his opponents. As long as the adaptive warrior maintains psionic focus, has used his Examine Technique ability on at least two creatures in the past hour, and has not expended his psionic focus since using his Examine Technique, he can, as a swift action, treat his opponents as flat-footed when making attacks against them until the start of his next turn. This ability may be used a number of times per day equal to 4 + the adaptive warrior’s Intelligence modifier.{br}{br}{b}Note:{/b} This ability is not yet scripted." compset="ClSpecial">
     <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="arPUDeadFt" name="Deadly Fist" description="{i}{b}Not fully implemented{/i}{/b}\nSome soulknives learn to channel the psionic energy of a mind blade into their unarmed strikes, making them lethal without the need for a weapon." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <fieldval field="srcPageNum" value="280"/>
+    <arrayval field="cvBonFtMod" index="0" value="-1"/>
+    <arrayval field="cvBonFtMod" index="1" value="-1"/>
+    <arrayval field="cvBonFtMod" index="2" value="-1"/>
+    <arrayval field="cvBonFtMod" index="3" value="-1"/>
+    <arrayval field="cvBonFtMod" index="4" value="-1"/>
+    <arrayval field="cvBonFtMod" index="5" value="-1"/>
+    <arrayval field="cvBonFtMod" index="6" value="-1"/>
+    <arrayval field="cvBonFtMod" index="7" value="-1"/>
+    <arrayval field="cvBonFtMod" index="8" value="-1"/>
+    <arrayval field="cvBonFtMod" index="9" value="-1"/>
+    <arrayval field="cvBonFtMod" index="10" value="-1"/>
+    <arrayval field="cvBonFtMod" index="11" value="-1"/>
+    <arrayval field="cvBonFtMod" index="12" value="-1"/>
+    <arrayval field="cvBonFtMod" index="13" value="-1"/>
+    <arrayval field="cvBonFtMod" index="14" value="-1"/>
+    <arrayval field="cvBonFtMod" index="15" value="-1"/>
+    <arrayval field="cvBonFtMod" index="16" value="-1"/>
+    <arrayval field="cvBonFtMod" index="17" value="-1"/>
+    <arrayval field="cvBonFtMod" index="18" value="-1"/>
+    <arrayval field="cvBonFtMod" index="19" value="-1"/>
+    <usesource source="pPsiUn" parent="pDscar" name="DSP - Ultimate Psionics"/>
+    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
+    <tag group="AbReplace" tag="cSknEnhMB"/>
+    <tag group="AbReplace" tag="cSknMindBl"/>
+    <tag group="AbReplace" tag="cSknQuiDra"/>
+    <tag group="AbReplace" tag="cSknThrMB"/>
+    <tag group="PsiAttr" tag="aWIS" name="Wisdom" abbrev="Wisdom"/>
+    <tag group="ClVaryName" tag="AppParen" name="Append (in Parentheses)" abbrev="Append (in Parentheses)"/>
+    <bootstrap thing="cPUEmpStri">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhStri">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUUnarmdA">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUPsyDisc">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUQuickEm">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpSkn"/>
+    </thing>
+  <thing id="cPUEmpStri" name="Empowered Strikes" description="{i}{b}Not fully implemented{/i}{/b}\nAt 1st level, the deadly fist can, as a move action, wreath his body in psionic energy distilled from his own mind. This energy lasts until the\ndeadly fist chooses to dismiss it as a free action. When empowered strikes is active, the deadly fist’s unarmed strikes deal 1d6 points of damage if Mediumsized (or your normal unarmed strike damage, if higher) and are considered to be magic weapons for the purposes of overcoming damage reduction. Adjust unarmed damage if the deadly fist is a size other than Medium.\nThis effect is similar to a mind blade, except the deadly fist cannot change the form of empowered strikes, although he can change the damage type of his attacks between bludgeoning, piercing, and slashing, just like a normal soulknife. This effect cannot be broken like\na mind blade, and it is still considered to be unarmed attacks instead of a weapon.\nIn all other ways, empowered strikes functions as a mind blade, including using psychic strike.\nThis replaces the form mind blade class feature, but counts as form mind blade for prerequisites or requirements." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="abAction" tag="Move"/>
+    <tag group="abAction" tag="Free"/>
+    </thing>
+  <thing id="cPUEnhStri" name="Enhanced Strikes" description="{i}{b}Not fully implemented{/i}{/b}\nThe deadly fist’s empowered strikes are improved like a standard soulknife’s mind blade, except the enhancement bonus or weapon special abilities apply to the deadly fist’s unarmed attacks, rather than to a weapon.\nThis replaces the enhanced mind blade class feature, but counts as enhanced mind blade for prerequisites or requirements." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUUnarmdA" name="Unarmed Assault" description="{i}{b}Not fully implemented{/i}{/b}\nAt 1st level, the deadly fist gains the Improved Unarmed Strike feat as a bonus feat. In addition, the deadly fist gains the Flurry of Fists blade skill.\nThis ability replaces the bonus feat gained at 1st level." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUPsyDisc" name="Psychokinetic Discharge" description="{i}{b}Not fully implemented{/i}{/b}\nA deadly fist of 1st level learns how to take the energy he has charged into his unarmed strikes and release it as a blast of energy at an opponent. As a ranged attack, the deadly fist can make an unarmed attack at an opponent. The attack deals damage as normal for the deadly fist’s unarmed attacks.\nThe range increment of the attack is 10’, but is considered to be a projectile instead of a thrown weapon, so the attack has a maximum range of 10 increments instead of 5. Whether or not the attack hits, the deadly fist’s unarmed attacks are no longer empowered and he\nmust take the normal time to empower them.\nThis ability replaces throw mind blade." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUQuickEm" name="Quick Empower" description="{i}{b}Not fully implemented{/i}{/b}\nAt 5th level, the deadly fist can activate his empowered strikes ability as a free action instead of as a move action. He may only do so once per round. This ability replaces quick draw." compset="ClSpecial">
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="arPUArmBld" name="Armored Blade" description="{i}{b}Not fully implemented{/i}{/b}\nAlthough most soulknives choose to focus their psionic energy into weapons they can wield, some have chosen to channel their energy into a more defensive form, creating armor to protect themselves as well as the weapons to strike at their enemies." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="279"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <link linkage="varies" thing="cHelpSkn"/>
+    </thing>
+  <thing id="arPUCuthrt" name="Cutthroat" description="{i}{b}Not fully implemented{/i}{/b}\nWith the ability to create a blade from thin air, soulknives can be extremely effective assassins. Cutthroat soulknives work to be even better at infiltration as well as how to perfectly place strikes against their opponents." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="280"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <arrayval field="cvBonFtMod" index="0" value="-1"/>
+    <arrayval field="cvBonFtMod" index="1" value="-1"/>
+    <arrayval field="cvBonFtMod" index="2" value="-1"/>
+    <arrayval field="cvBonFtMod" index="3" value="-1"/>
+    <arrayval field="cvBonFtMod" index="4" value="-1"/>
+    <arrayval field="cvBonFtMod" index="5" value="-1"/>
+    <arrayval field="cvBonFtMod" index="6" value="-1"/>
+    <arrayval field="cvBonFtMod" index="7" value="-1"/>
+    <arrayval field="cvBonFtMod" index="8" value="-1"/>
+    <arrayval field="cvBonFtMod" index="9" value="-1"/>
+    <arrayval field="cvBonFtMod" index="10" value="-1"/>
+    <arrayval field="cvBonFtMod" index="11" value="-1"/>
+    <arrayval field="cvBonFtMod" index="12" value="-1"/>
+    <arrayval field="cvBonFtMod" index="13" value="-1"/>
+    <arrayval field="cvBonFtMod" index="14" value="-1"/>
+    <arrayval field="cvBonFtMod" index="15" value="-1"/>
+    <arrayval field="cvBonFtMod" index="16" value="-1"/>
+    <arrayval field="cvBonFtMod" index="17" value="-1"/>
+    <arrayval field="cvBonFtMod" index="18" value="-1"/>
+    <arrayval field="cvBonFtMod" index="19" value="-1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="fDisable" tag="fArmMedium"/>
+    <tag group="fDisable" tag="fArmShield"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cSknPsyStr"/>
+    <link linkage="varies" thing="cHelpSkn"/>
+    </thing>
+  <thing id="arPUFerlHt" name="Feral Heart" description="{i}{b}Not fully implemented{/i}{/b}\nMind over matter is usually viewed to be the domain of the psion, the disciplined mind ruling over the body. Yet powerful feral instincts are also part of the mind, and when these instincts are born inside one with psionic potential, a feral heart is born. Their mind reforms their\nbodies, often into bestial forms, giving rise to many misconceptions about them being werewolves." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="281"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <arrayval field="cvBonFtMod" index="0" value="-1"/>
+    <arrayval field="cvBonFtMod" index="1" value="-1"/>
+    <arrayval field="cvBonFtMod" index="2" value="-1"/>
+    <arrayval field="cvBonFtMod" index="3" value="-1"/>
+    <arrayval field="cvBonFtMod" index="4" value="-1"/>
+    <arrayval field="cvBonFtMod" index="5" value="-1"/>
+    <arrayval field="cvBonFtMod" index="6" value="-1"/>
+    <arrayval field="cvBonFtMod" index="7" value="-1"/>
+    <arrayval field="cvBonFtMod" index="8" value="-1"/>
+    <arrayval field="cvBonFtMod" index="9" value="-1"/>
+    <arrayval field="cvBonFtMod" index="10" value="-1"/>
+    <arrayval field="cvBonFtMod" index="11" value="-1"/>
+    <arrayval field="cvBonFtMod" index="12" value="-1"/>
+    <arrayval field="cvBonFtMod" index="13" value="-1"/>
+    <arrayval field="cvBonFtMod" index="14" value="-1"/>
+    <arrayval field="cvBonFtMod" index="15" value="-1"/>
+    <arrayval field="cvBonFtMod" index="16" value="-1"/>
+    <arrayval field="cvBonFtMod" index="17" value="-1"/>
+    <arrayval field="cvBonFtMod" index="18" value="-1"/>
+    <arrayval field="cvBonFtMod" index="19" value="-1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbReplace" tag="cSknMindBl"/>
+    <tag group="AbReplace" tag="cSknEnhMB"/>
+    <tag group="AbReplace" tag="cSknPsyStr"/>
+    <tag group="AbReplace" tag="cSknQuiDra"/>
+    <tag group="AbReplace" tag="cSknShaMB"/>
+    <tag group="AbReplace" tag="cSknThrMB"/>
+    <link linkage="varies" thing="cHelpSkn"/>
+    </thing>
+  <thing id="arPUShldBl" name="Shielded Blade" description="{i}{b}Not fully implemented{/i}{/b}\nSome soulknives choose to focus on both offense and defense, splitting the energy of their mind blade into a sword and a shield." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="283"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <arrayval field="cvBonFtMod" index="0" value="-1"/>
+    <arrayval field="cvBonFtMod" index="1" value="-1"/>
+    <arrayval field="cvBonFtMod" index="2" value="-1"/>
+    <arrayval field="cvBonFtMod" index="3" value="-1"/>
+    <arrayval field="cvBonFtMod" index="4" value="-1"/>
+    <arrayval field="cvBonFtMod" index="5" value="-1"/>
+    <arrayval field="cvBonFtMod" index="6" value="-1"/>
+    <arrayval field="cvBonFtMod" index="7" value="-1"/>
+    <arrayval field="cvBonFtMod" index="8" value="-1"/>
+    <arrayval field="cvBonFtMod" index="9" value="-1"/>
+    <arrayval field="cvBonFtMod" index="10" value="-1"/>
+    <arrayval field="cvBonFtMod" index="11" value="-1"/>
+    <arrayval field="cvBonFtMod" index="12" value="-1"/>
+    <arrayval field="cvBonFtMod" index="13" value="-1"/>
+    <arrayval field="cvBonFtMod" index="14" value="-1"/>
+    <arrayval field="cvBonFtMod" index="15" value="-1"/>
+    <arrayval field="cvBonFtMod" index="16" value="-1"/>
+    <arrayval field="cvBonFtMod" index="17" value="-1"/>
+    <arrayval field="cvBonFtMod" index="18" value="-1"/>
+    <arrayval field="cvBonFtMod" index="19" value="-1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="Helper" tag="RemovePrim"/>
+    <link linkage="varies" thing="cHelpSkn"/>
+    </thing>
+  <thing id="arPUBatWld" name="Battle Wilder" description="{i}{b}Not fully implemented{/i}{/b}\nThe battle wilder channels her emotions not into her manifesting ability, but into her combat prowess. While the battle wilder is still capable of and effective at using powers, she also gains improved battle capacity, as well as expanded training in weapons." compset="ClassVary" uniqueness="unique">
+    <fieldval field="srcPageNum" value="290"/>
+    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cWldWildSu"/>
+    <tag group="AbReplace" tag="raKPPriEup"/>
+    <tag group="AbReplace" tag="cWldImpSur"/>
+    <tag group="AbReplace" tag="cWldSurBla"/>
+    <tag group="AbReplace" tag="cWldSurBnd"/>
+    <tag group="AbReplace" tag="cWldPerSur"/>
+    <bootstrap thing="cPUCombFrt">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="fWepMart"></bootstrap>
+    <bootstrap thing="cPUCombSur">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUSurgAss">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUCombEup">
+      <autotag group="ClSpecWhen" tag="4"/>
+      </bootstrap>
+    <bootstrap thing="cPUPhyOver">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpWld"/>
+    </thing>
+  <thing id="cPUCombSur" name="Combat Surge" description="A battle wilder channels her emotions into a physical boost of energy that strengthens her body. A battle wilder can invoke a combat surge in two possible manners. She can invoke a combat surge while manifesting a power or by spending 1 power point as a swift action. In either case, the battle wilder gains a +2 enhancement bonus to her Strength for one round after invoking a combat surge.\n  At 3rd level, the enhancement bonus to Strength increases to +4. At 7th level, the battle wilder also gains a +2 enhancement bonus to Constitution during a combat surge. At 11th level, the enhancement bonus to Constitution increases by +2. At 15th level, the enhancement bonus to Strength increases to +6. At 19th level, the enhancement bonus to Constitution increases to +6.\n  This ability replaces wild surge. The battle wilder does not get to select a surge type." compset="ClSpecial">
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="abValue2" value="4"/>
+    <fieldval field="abValue3" value="6"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Activation"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ if ability not activated, get out now
+      doneif (tagis[Helper.Activated] = 0)
+
+      ~if activated calculate the bonus based on level
+      if (#levelcount[Wilder] >= 19) then
+         #applybonus[BonEnhance,hero.childfound[aSTR],field[abValue3].value]
+         #applybonus[BonEnhance,hero.childfound[aCON],field[abValue3].value]
+      elseif (#levelcount[Wilder] >= 15) then
+         #applybonus[BonEnhance,hero.childfound[aSTR],field[abValue3].value]
+         #applybonus[BonEnhance,hero.childfound[aCON],field[abValue2].value]
+      elseif (#levelcount[Wilder] >= 11) then
+         #applybonus[BonEnhance,hero.childfound[aSTR],field[abValue2].value]
+         #applybonus[BonEnhance,hero.childfound[aCON],field[abValue2].value]
+      elseif (#levelcount[Wilder] >= 7) then
+         #applybonus[BonEnhance,hero.childfound[aSTR],field[abValue2].value]
+         #applybonus[BonEnhance,hero.childfound[aCON],field[abValue].value]
+      elseif (#levelcount[Wilder] >= 3) then
+         #applybonus[BonEnhance,hero.childfound[aSTR],field[abValue2].value]
+      elseif (#levelcount[Wilder] >= 1) then
+         #applybonus[BonEnhance,hero.childfound[aSTR],field[abValue].value]
+      endif]]></eval>
+    </thing>
+  <thing id="cPUSurgAss" name="Surging Assault" description="A battle wilder can expend her psionic focus as part of a full attack to gain one additional attack at her highest attack bonus. This ability replaces surge blast." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUCombEup" name="Combat Euphoria" description="{i}{b}Not fully implemented{/i}{/b}\nAt 4th level. when a battle wilder uses her combat surge ability, she gains a +1 morale bonus on attack rolls, damage rolls, and saving throws for a number of rounds equal to the battle wilder’s Charisma modifier (minimum 1).\n  If a battle wilder is overcome by psychic enervation following her combat surge, she does not gain the morale bonus for this use of her combat surge ability.\n  At 12th level, the morale bonus on a battle wilder’s attack rolls, damage rolls, and saving throws increases to +2. At 20th level, the bonus increases to +3.\n  This ability replaces surging euphoria." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUCombFrt" name="Combat Fortitude" description="Starting at 5th level, the battle wilder gains a +1 bonus to Fortitude saves as long as she is maintaining psionic focus. Every four levels beyond 5th (9th, 13th, and 17th level), this bonus improves by +1.\n  Starting at 17th level, whenever the battle wilder is subject to an effect that allows a Fortitude save, the battle wilder receives a second Fortitude save to negate the effect in addition to any save the effect may allow; if the spell or power already allows a Fortitude save to\nnegate, the battle wilder makes a second one, and would need to fail both to be affected.\n  This ability replaces Improved surge bond." compset="ClSpecial">
+    <eval phase="PreAttr" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      var v_focus as number
+      call PUPsiFocus
+      ~ If not psionically focused get out now!
+      doneif (v_focus = 0)
+
+      ~if psi-focused calculate the bonus based on level
+      if (#levelcount[Wilder] >= 17) then
+         #applybonus[Bonus,hero.childfound[svFort],4]
+      elseif (#levelcount[Wilder] >= 13) then
+         #applybonus[Bonus,hero.childfound[svFort],3]
+      elseif (#levelcount[Wilder] >= 9) then
+         #applybonus[Bonus,hero.childfound[svFort],2]
+      elseif (#levelcount[Wilder] >= 5) then
+         #applybonus[Bonus,hero.childfound[svFort],1]
+      endif]]></eval>
+    </thing>
+  <thing id="cPUPhyOver" name="Physical Overload" description="{i}{b}Not fully implemented{/i}{/b}\nA battle wilder of 20th level is able to push herself and greatly increase her combat ability. Once per day, the battle wilder can invoke a combat surge and gain a +8 enhancement bonus to both Strength and Constitution for a number of rounds equal to the battle wilder’s Charisma modifier (minimum 1). In addition, while under the affects of physical overload, the battle wilder treats her base attack bonus as equal to her battle wilder level, which may grant additional iterative attacks. Invoking a physical overload comes with it a guaranteed psychic enervation that does double the normal effect when the physical overload ends and this psychic enervation cannot be modified by feats or other abilities that would mitigate or otherwise alter it. This ability replaces perfect surge." compset="ClSpecial">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   </document>

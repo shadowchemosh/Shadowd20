@@ -17,11 +17,11 @@
   <!-- Hero Lab Community Source -->
   <source
     id="pFireMoun"
-    name="Fire Mountain Games"
+    name="Fire Mountain Games Adventures"
     selectable="no"
     parent="pBasicPack"
     sortorder="15"
-    description="All the Fire Mountain Games products under this title where created by the community for the community.">
+    description="Fire Mountain Games adventures and adventure paths. Copyright Tim Shadow - XML and HL Scripts 2014.">
     </source>
 
   <!-- Way of the Wicked -->
@@ -31,7 +31,7 @@
     selectable="yes"
     parent="pFireMoun"
     sortorder="0"
-    description="Fire Mountain Games Way of the Wicked Adventure path">
+    description="Fire Mountain Games Way of the Wicked Adventure path. Copyright Tim Shadow - XML and HL Scripts 2014.">
     </source>
 
   <!-- Way of the Wicked -->
@@ -41,7 +41,7 @@
     selectable="no"
     parent="pFireMoun"
     sortorder="0"
-    description="Fire Mountain Games Throne of Night Adventure path - COMING SOON.">
+    description="Fire Mountain Games Throne of Night Adventure path - COMING SOON. Copyright Tim Shadow - XML and HL Scripts 2014.">
     </source>
 
   </document>

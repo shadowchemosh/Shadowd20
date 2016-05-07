@@ -12,10 +12,10 @@
   <!-- ============================================== -->
   <source
     id="pUnchPack"
-    name="Unchained Pack (v1.6)"
+    name="Unchained"
     selectable="no"
     parent="pComPacks"
-    sortorder="10"
+    sortorder="25"
     description="The XML and HL scripts Copy Righted 2014 Tim Shadow.">
   </source>
 

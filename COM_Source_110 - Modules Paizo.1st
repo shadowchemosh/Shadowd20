@@ -17,20 +17,22 @@
   <!-- ===================== -->
   <source
     id="pModules"
-    name="Paizo Modules"
+    name="Paizo Adventures"
     selectable="no"
     parent="pBasicPack"
     sortorder="19"
     description="Pathfinder modules.">
     </source>
+
   <source
     id="pModuSRD"
-    name="Paizo SRD Modules"
+    name="Paizo SRD Adventures"
     selectable="no"
     parent="pBasicPack"
     sortorder="20"
     description="Pathfinder SRD modules.">
     </source>
+
   <!-- ============================================= -->
   <!-- Child Modules Sources that have player Things -->
   <!-- ============================================= -->

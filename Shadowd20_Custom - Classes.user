@@ -147,29 +147,6 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
     <eval phase="First" priority="1000">~ Add to traits allowed
       hero.child[resTrait].field[resMax].value += 1</eval>
     </thing>
-  <thing id="cS20WildEm" name="Wild Empathy" description="A character can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person. The character rolls 1d20 and adds her class level and her Charisma modifier to determine the wild empathy check result.\n\nThe typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly.\n\nTo use wild empathy, the druid and the animal must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute but, as with influencing people, it might take more or less time.\n\nA character can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check." compset="ClSpecial" summary="Improve the atttitude of an animal, as if using Diplomacy." replaces="cWildEmp">
-    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
-    <tag group="Helper" tag="ClExLose" name="ClExLose" abbrev="ClExLose"/>
-    <eval phase="PostAttr" priority="10000"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      ~ Test hero tag for Wild Empathy - Wisdom tag and if found use Wis 
-      if (hero.tagis[Custom.WildEmpWis] <> 0) then
-          field[abValue].value += field[xAllLev].value + #attrmod[aWIS]
-      else
-          field[abValue].value += field[xAllLev].value + #attrmod[aCHA]
-      endif]]></eval>
-    <eval phase="Render" priority="1000" index="2"><![CDATA[
-      ~if we've been replaced, get out now
-      doneif (tagis[Helper.SpcReplace] <> 0)
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] = 0)
-
-      field[livename].text &= " " & signed(field[abValue].value)]]></eval>
-    </thing>
   <thing id="cStelthAtt" name="Stealth Attack" description="If a ranger can catch an opponent when he is unable to defend himself effectively from his attack, he can strike a vital spot for extra damage. The ranger’s attack deals extra damage any time his target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the ranger flanks his target. This extra damage is 1d6 at 2nd level, and it increases by 1d6 every four ranger levels thereafter. Should the ranger score a critical hit with a stealth attack, this extra damage is not multiplied. Ranged attacks can count as stealth attacks only if the target is within 30 ft. Stealth attacks are possible only when the ranger wears light or no armor. A ranger may only use this ability while in a favored terrain or against a favored enemy." compset="ClSpecial">
     <tag group="Helper" tag="UseOwnLev" name="UseOwnLev" abbrev="UseOwnLev"/>
     <tag group="SpecType" tag="Attack" name="Attack" abbrev="Attack"/>
@@ -1373,7 +1350,7 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
       ~ set the Fast Healing value
       #value[xFastHeal] += field[abValue].value]]></eval>
     </thing>
-  <thing id="arRgrShift" name="Shifter Ranger" description="Many shifters become rangers, both from their love of the ranger&apos;s solitude and single-minded purpose, and from their inherent connection to the natural world. Racial archetype levels allow the shifter ranger to enjoy an even stronger bond with the wilderness, enhancing his own shifting abilities and even sharing them with his animal companion." compset="ClassVary" uniqueness="unique">
+  <thing id="arS2Shift" name="Shifter Ranger" description="Many shifters become rangers, both from their love of the ranger&apos;s solitude and single-minded purpose, and from their inherent connection to the natural world. Racial archetype levels allow the shifter ranger to enjoy an even stronger bond with the wilderness, enhancing his own shifting abilities and even sharing them with his animal companion." compset="ClassVary" uniqueness="unique">
     <fieldval field="srcBookInf" value="Shadow d20"/>
     <usesource source="srcShifter"/>
     <tag group="ClVaryName" tag="Replace"/>
@@ -1387,15 +1364,6 @@ This is a houserules file for a group of gamers in Romeoville, IL.  To see the c
       </bootstrap>
     <link linkage="varies" thing="cHelpRgr"/>
     <exprreq message="Only Shifters can take this archetype."><![CDATA[#hasrace[rShifters] <> 0]]></exprreq>
-    </thing>
-  <thing id="cRgrShftEm" name="Shifter Empathy" description="Beginning at 1st level, a shifter ranger can improve the attitude of an animal. This ability functions identically to the ranger class feature of the same name, except that the shifter ranger&apos;s innate understanding of the natural world allows him to add his Wisdom modifier (instead of his Charisma modifier) to his wild empathy checks." compset="ClSpecial" summary="A shifter ranger adds his Wisdom modifier (instead of his Charisma modifier) to his wild empathy checks.">
-    <tag group="Custom" tag="WildEmpWis" name="Wild Empathy - Wisdom"/>
-    <tag group="AbilType" tag="Extra"/>
-    <eval phase="PreLevel" priority="5000">~ Push our Wild Empathy tag to the hero
-      perform hero.pushtags[Custom.WildEmp?]</eval>
-    </thing>
-  <thing id="cRgrShaShi" name="Share Shifting" description="A shifter ranger can share the benefits he gains while shifting with his animal companion. The companion must be adjacent to the ranger when he begins shifting (though any distance between them has no subsequent effect). All shared benefits end when the rangers shifting ends (or if he loses consciousness).  The animal companion gains all the benefits of shifting (including any shifter feats or class features in effect for the shifter ranger), though it does not gain any new natural weapons.  If it already has a natural weapon that the shifter ranger gains while shifting, it gains a +1 bonus on damage rolls for every four of the ranger&apos;s class levels. This replaces the standard rangers ability to share spells with his animal companion." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
     </thing>
   <thing id="cRogS2LegS" name="Leg Sweep" description="A rogue that selects this talent gains Improved Trip as a bonus feat." compset="CustomSpec" summary="You gain the Improved Trip feat as a bonus feat." uniqueness="unique">
     <usesource source="s20PFCamp"/>

@@ -14,20 +14,5 @@
   <!-- ============================================== -->
   <!-- New Child Sources                              -->
   <!-- ============================================== -->
-  <source
-    id="UmTotM"
-    name="LG - Treasury of the Macabre"
-    selectable="yes"
-    parent="pLegeGames"
-    sortorder="10"
-    description="Treasury of the Macabre for pathfinder. Copyright Tim Shadow - XML and HL Scripts 2014.">
-    </source>
-  <source
-    id="srcLGUltBa"
-    name="LG - Ultimate Battle"
-    selectable="yes"
-    parent="pLegeGames"
-    sortorder="10"
-    description="Ultimate Battle for pathfinder. Copyright Tim Shadow - XML and HL Scripts 2015.">
-    </source>
+
   </document>

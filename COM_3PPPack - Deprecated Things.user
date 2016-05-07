@@ -31,5 +31,73 @@
     </thing>
 
 
+
+  <thing id="dPWBlkSrph" name="Black Seraph Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWBrknBld" name="Broken Blade Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWCreWin" name="Crescent Wind Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWGolLio" name="Golden Lion Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWIronTrt" name="Iron Tortoise Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWPriFur" name="Primal Fury Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWScaThr" name="Scarlet Throne Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWSlvrCrn" name="Silver Crane Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWSolWin" name="Solar Wind Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWSteSer" name="Steel Serpent Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWThraDra" name="Thrashing Dragon Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWVldMoon" name="Veiled Moon Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPathOfW"/>
+    </thing>
+  <thing id="dPWCrsRazr" name="Cursed Razor Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWEtnGrdn" name="Eternal Guardian Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWMithCur" name="Mithral Current Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWSlpGods" name="Sleeping Goddess Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWRvnHgls" name="Riven Hourglass Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWElmFlux" name="Elemental Flux Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWShaMirr" name="Shattered Mirror Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWTmpGale" name="Tempest Gale Discipline" description="DEPRECATED - please see the new PWDisc Component on editor tab (zCommunity->PoW Discipline)" compset="Simple">
+    <usesource source="srcPOWEx"/>
+    </thing>
+  <thing id="dPWPrcThun" name="Piercing Thunder Discipline" compset="SplSchool">
+    <usesource source="srcPOWEx"/>
+    <tag group="PathOfWar" tag="Discipline"/>
+    <tag group="Discipline" tag="PrcThun"/>
+    </thing>
+
+
   <hidden id="puCreaSnd1"/>
 </document>
