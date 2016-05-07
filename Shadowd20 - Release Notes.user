@@ -6,6 +6,29 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.13 May 7, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh) - In some rare cases a weapon penalty was being applied to the Touch/Ranged attack weapons when it should not have been. Added the Helper.Static tag that tells HL to ignore these weapons that are not real weapons.</li>
+<li>Spell Adjustments (ShadowChemosh) - Fixed Thorn Body to allow its Spell Helper Weapons to auto-display on the iPad. Hopefully.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>NEW PATHFINDER PACK ADDED - You will find ALL the community Packs merged into this one download. This means hundreads of new options.</li>
+<li>Unchained Monk Archetypes (ShadowChemosh) - Added the "Underfoot Adept" halfling archetype for the unchained monk. Updated the "Master of Many Styles" archetype to make use of the new Monk Next feat tags making this allot more flexibility with future books.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Saving Throw Ability Score" let lets you change which ability score is used to calculate a specific saving throw. In example change Will saves to use Charisma instead of Wisdom.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - "Race, Size Category" adjustment added that lets you increase/decrease your size category for the race only. This adjustment is different than the official "Size Category" adjustment in that it does NOT change your gear size. Meaning you can use it to make a small or large sized human or other races.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Character Sheet: Specific Item" that allows for forcing a single selected gear item to print to a character sheet.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustments: "Allow Starting Language" & "Allow Domain". Fixes #44 & #45.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Fixed some mismatched Fighter Weapon Group tags.</li>
+</ul>
+
+
+
 <strong>v2.12 April 9, 2016</strong>
 
 <strong>Bug Fixes</strong>
