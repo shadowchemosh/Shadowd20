@@ -155,6 +155,7 @@
     <tag group="Helper" tag="AdjSpell"/>
     <tag group="Helper" tag="NoOutGear"/>
     <tag group="Helper" tag="Shadow"/>
+    <tag group="Helper" tag="WeaponSpec"/>
     </thing>
   <thing id="pS2ThorBod" name="Thorn Body" description="This spell causes spines to grow from your exposed skin, damaging creatures that strike you. Any creature striking you with a melee weapon, an unarmed strike, or a natural weapon takes 1d6 points of piercing damage +1 point per caster level (maximum +15). Creatures using melee weapons with reach are unaffected by this spell. Creatures that successfully grapple you take 2d6 points of piercing damage +1 point per caster level (maximum +15). In addition, your natural attacks and unarmed strikes deal an additional 1d6 points of piercing damage.\n\nThorns created by this spell persist through any new physical shape or form you assume, such as via wildshape or any polymorph effect." compset="InPlay">
     <fieldval field="pMinimum" value="1"/>
@@ -181,7 +182,7 @@
 
       ~ Set damage bonus +1 to +15
       field[abValue].value += field[pAdjust].value
-    
+
       ~ Loop through all natural attacks, Unarmed strike and 
       ~ spell helper weapons.
       ~ NOTE: Unarmed strike is part of the fighter weapon group natural.
