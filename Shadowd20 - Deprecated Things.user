@@ -1667,6 +1667,52 @@ Hidden]]></comment>
     <tag group="sDuration" tag="Instant" name="Instantaneous" abbrev="Instantaneous"/>
     </thing>
 
+  <thing id="fS2TWF" name="IF YOU SEE THIS PLEASE re-add &quot;Two-Weapon Fighting&quot;" description="If you have this feat you need to remove it and add the &quot;Two-Weapon Fighting&quot; feat back in.  In a couple of updates this Thing will get removed and you will receive an error when opening up a .por file." compset="Feat" summary="Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6." uniqueness="useronce">
+    <comment><![CDATA[This got moved to a Mechanic and Simple thing. Added "Helper.Helper" to hide from the list.]]></comment>
+    <tag group="BonusFor" tag="RgrTwoW1"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="Helper"/>
+    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[
+      ~ If Shadow d20 not activated, don't do anything
+      doneif (hero.tagis[source.CampRazorC] + hero.tagis[source.PathSkulSh] + hero.tagis[source.srcTWF] = 0)
+
+      #appenddesc[fS2TWF,"{b}Shadow d20:{/b} TWF now offsets the penalty down to zero instead of -2"]
+
+      ~ If we're in output mode, don't do anything
+      ~doneif (state.isoutput <> 0)
+
+      var Hands as number
+      Hands = 0
+      foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
+        If (eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value <> 0) Then
+           Hands += 1
+        Endif 
+      nexteach
+
+      ~ Only give a bonus if we have a weapon in main and off hand
+      If (Hands = 2) Then
+        ~ Loop through all the weapons in main and off hand but ignore double weapons
+        foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand & !wCategory.Double"
+           eachpick.field[wAttackOff].value += field[abValue].value
+        nexteach
+      Endif
+
+      ~ Loop through all double weapons
+      foreach pick in hero from BaseWep where "Hero.MainHand & Hero.OffHand & wCategory.Double"
+         ~ Only if in Double weapon mode should we give the bonus
+         if (eachpick.field[wIsDouble].value <> 0) Then     
+            eachpick.field[wAttackOff].value += field[abValue].value
+         Endif
+      nexteach]]></eval>
+          <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      perform hero.assign[Hero.TwoWep]
+
+      field[abValue].value += 2]]></eval>
+    <exprreq message="Dexterity 15 required." iserror="no"><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
+    </thing>
 
 
 
@@ -1714,6 +1760,7 @@ Hidden]]></comment>
   <hidden id="irS2Jump"/>
   <hidden id="irS2JumImp"/>
   <hidden id="cMnkS2HiJu"/>
+  <hidden id="fS2TWF"/>
 
   <hidden id="spS2CuMW2"/>
   <hidden id="spS2CuLWM5"/>

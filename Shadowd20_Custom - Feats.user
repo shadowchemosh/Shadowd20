@@ -664,54 +664,6 @@ Set feat to exactly match the CORE feat on 11/10/2011. Just can't remove the fea
       #appenddesc[pstMounted,"{b}Addition from Mounted Combat{/b}: Once per round when your mount is hit in combat, you may attempt a Ride check (as an immediate action) to negate the hit. The hit is negated if your Ride check result is greater than the opponent's attack roll."]]]></eval>
     <exprreq message="Ride rank 1 required." iserror="no"><![CDATA[#skillranks[skRide] >= 1]]></exprreq>
     </thing>
-  <thing id="fS2TWF" name="IF YOU SEE THIS PLEASE re-add &quot;Two-Weapon Fighting&quot;" description="If you have this feat you need to remove it and add the &quot;Two-Weapon Fighting&quot; feat back in.  In a couple of updates this Thing will get removed and you will receive an error when opening up a .por file." compset="Feat" summary="Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6." uniqueness="useronce">
-    <comment><![CDATA[This got moved to a Mechanic and Simple thing.
-
-Added "Helper.Helper" to hide from the list.]]></comment>
-    <tag group="BonusFor" tag="RgrTwoW1" name="Ranger Two-Weapon Style Level 1" abbrev="Ranger Two-Weapon Style Level 1"/>
-    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
-    <tag group="Helper" tag="Helper"/>
-    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[
-~ If Shadow d20 not activated, don't do anything
-doneif (hero.tagis[source.CampRazorC] + hero.tagis[source.PathSkulSh] + hero.tagis[source.srcTWF] = 0)
-
-#appenddesc[fS2TWF,"{b}Shadow d20:{/b} TWF now offsets the penalty down to zero instead of -2"]
-
-~ If we're in output mode, don't do anything
-~doneif (state.isoutput <> 0)
-
-var Hands as number
-Hands = 0
-foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
-  If (eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value <> 0) Then
-     Hands += 1
-  Endif 
-nexteach
-
-~ Only give a bonus if we have a weapon in main and off hand
-If (Hands = 2) Then
-  ~ Loop through all the weapons in main and off hand but ignore double weapons
-  foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand & !wCategory.Double"
-     eachpick.field[wAttackOff].value += field[abValue].value
-  nexteach
-Endif
-
-~ Loop through all double weapons
-foreach pick in hero from BaseWep where "Hero.MainHand & Hero.OffHand & wCategory.Double"
-   ~ Only if in Double weapon mode should we give the bonus
-   if (eachpick.field[wIsDouble].value <> 0) Then     
-      eachpick.field[wAttackOff].value += field[abValue].value
-   Endif
-nexteach]]></eval>
-    <eval phase="PreLevel" priority="10000"><![CDATA[
-~ If we're disabled, do nothing
-doneif (tagis[Helper.FtDisable] <> 0)
-
-perform hero.assign[Hero.TwoWep]
-
-field[abValue].value += 2]]></eval>
-    <exprreq message="Dexterity 15 required." iserror="no"><![CDATA[#attrvalue[aDEX] >= 15]]></exprreq>
-    </thing>
   <thing id="fS2WepFin" name="Weapon Finesse" description="You are trained in using your agility in melee combat, as opposed to brute strength.{br}{br}{b}Benefit{/b}: With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls.{br}{br}{b}Special{/b}: Natural weapons are considered light weapons." compset="Feat" summary="With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls." replaces="fWepFin" uniqueness="useronce">
     <comment>When a special House Rules source is activated then this feat will add Dex to damage on top of Str.</comment>
     <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
@@ -1831,6 +1783,7 @@ perform hero.assign[Shifter.Feat]]]></eval>
     <tag group="fCategory" tag="Combat"/>
     <tag group="HasFeat" tag="fComExpert"/>
     <tag group="HasFeat" tag="fImpUnarm"/>
+    <tag group="HasFeat" tag="fDirtyFigh"/>
     <eval phase="PreLevel" priority="10000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -1839,6 +1792,21 @@ perform hero.assign[Shifter.Feat]]]></eval>
       ~ of feat pre-reqs
       perform hero.assign[Hero.ComFtInt13]
       ~perform hero.assign[Hero.ComFtDex13]]]></eval>
+    </thing>
+  <thing id="fS2ZenArch" name="Zen Archery" description="Your intuition guides your hand when you use a ranged weapon.\n\n{b}Benefit{/b}: You can use your Wisdom modifier instead of your Dexterity modifier when making ranged attack rolls.\n\n{b}Special{/b}: This feat counts as &quot;Point-Blank Shot&quot; for the purposes of prerequisites." compset="Feat" summary="Use Wis instead of Dex for ranged attack rolls." uniqueness="useronce">
+    <usesource source="s20PFCamp"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="Helper" tag="AnimCompOK"/>
+    <tag group="HasFeat" tag="fPointBlnk"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~ Ranged Weapons use Wis to attack
+      foreach pick in hero from BaseWep where "wCategory.Range?"
+         perform eachpick.assign[RanAttOpt.aWIS]
+      nexteach]]></eval>
     </thing>
   <hidden id="fS2ComCast"/>
   </document>

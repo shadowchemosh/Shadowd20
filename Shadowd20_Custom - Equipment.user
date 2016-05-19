@@ -136,14 +136,14 @@ Feb 17, 2013
   <thing id="mFIXpfHidS" name="Hide shirt" description="Made from animal hide and giant lizard scales over a shirt of interwoven cords, these chest and shoulder coverings protect Shoanti riders without restricting their mobility. The wearer of a hide shirt can make a DC 15 Strength check as a standard action. If he succeeds, the armor gains the broken condition and drops to the ground rather than requiring the usual 1 minute it would take to remove it. The armor must be repaired as though it had taken 8 points of damage before it can be used again; a broken hide shirt grants no bonus to Armor Class." compset="Armor" replaces="mPFHideShi">
     <fieldval field="gWeight" value="18"/>
     <fieldval field="gSizeCost" value="20"/>
-    <usesource source="PathAdvent" name="Pathfinder Adventure Paths"/>
-    <usesource source="PCVarisia" parent="PCHeader" name="Varisia, Birthplace of Legends"/>
+    <usesource source="PathAdvent"/>
+    <usesource source="PCVarisia"/>
     <usesource source="s20PFCamp"/>
-    <tag group="ArmorAC" tag="3" name="3" abbrev="3"/>
-    <tag group="ArmorArcFl" tag="15" name="15" abbrev="15"/>
-    <tag group="ArmorCheck" tag="1" name="1" abbrev="1"/>
-    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
-    <tag group="ArmorMaxDx" tag="4" name="4" abbrev="4"/>
+    <tag group="ArmorAC" tag="3"/>
+    <tag group="ArmorArcFl" tag="15"/>
+    <tag group="ArmorCheck" tag="1"/>
+    <tag group="ArmorClass" tag="Light"/>
+    <tag group="ArmorMaxDx" tag="4"/>
     </thing>
   <thing id="wRcCutlass" name="Cutlass" description="A light slashing weapon especially favored by pirates and other nautical raiders, the cutlass is a heavy blade about 2 feet long with a curved edge. It is easy to wield in close quarters and can deal vicious gashes to an opponent. You receive a +2 circumstance bonus to your Combat Maneuver Defense whenever a foe attempts to disarm your cutlass due to its heavy basket hilt.\n\n{B}Note:{/b} To show the +2 bonus go to the Adjust tab and put in a Weapon Disarm CMD adjustment." compset="Weapon">
     <comment>Stromwrack pg107</comment>
@@ -175,7 +175,7 @@ Feb 17, 2013
     <tag group="wCategory" tag="RangeProj"/>
     <tag group="wClass" tag="OneHanded"/>
     <tag group="Helper" tag="BucklerOK"/>
-    <tag group="wRangeInc" tag="40" name="40" abbrev="40"/>
+    <tag group="wRangeInc" tag="40"/>
     <tag group="wMaxStrBon" tag="5"/>
     <tag group="wMaxStrPen" tag="0"/>
     <tag group="wBuyStr" tag="100"/>
@@ -229,86 +229,87 @@ Feb 17, 2013
     <tag group="wCritMin" tag="19" name="19" abbrev="19"/>
     <tag group="wFtrGroup" tag="Pirate"/>
     <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
-    <eval phase="PreAttr" priority="10000">var Penalty as number
-~Check to see if proficient or not and to apply the -4 penalty if not
-if (tagis[Helper.Proficient] = 0) then
-    Penalty = -8
-Else 
-    Penalty = -2
-endif
+    <eval phase="PreAttr" priority="10000">
+      var Penalty as number
+      ~Check to see if proficient or not and to apply the -4 penalty if not
+      if (tagis[Helper.Proficient] = 0) then
+          Penalty = -8
+      Else 
+          Penalty = -2
+      endif
 
-~ This weapon always takes a penalty
-field[wAttBonus].value += Penalty
+      ~ This weapon always takes a penalty
+      field[wAttBonus].value += Penalty
 
-~ We need to alter our parent if we are a magic item
-if (container.ishero = 0) then
-   container.parent.field[wAttBonus].value += Penalty
-endif</eval>
+      ~ We need to alter our parent if we are a magic item
+      if (container.ishero = 0) then
+         container.parent.field[wAttBonus].value += Penalty
+      endif</eval>
     </thing>
   <thing id="wd20GreatB" name="Greatbow" description="Cannot be used while mounted." compset="Weapon">
     <fieldval field="gWeight" value="6"/>
     <fieldval field="gSizeCost" value="150"/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="BucklerOK" name="BucklerOK" abbrev="BucklerOK"/>
-    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
-    <tag group="wCategory" tag="RangeProj" name="Projectile Weapon" abbrev="Projectile"/>
-    <tag group="wClass" tag="TwoHanded" name="Two-Handed" abbrev="Two-Handed"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
-    <tag group="wCritMult" tag="3" name="3" abbrev="3"/>
-    <tag group="wFtrGroup" tag="Bows" name="Bows" abbrev="Bows"/>
-    <tag group="wMain" tag="1d10_304"/>
-    <tag group="wMaxStrBon" tag="0" name="0" abbrev="0"/>
+    <tag group="Helper" tag="BucklerOK"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="Helper" tag="BracArcBow"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="wFtrGroup" tag="Bows"/>
+    <tag group="wMain" tag="1d10"/>
+    <tag group="wMaxStrBon" tag="0"/>
     <tag group="wProfReq" tag="Exotic"/>
     <tag group="wRangeInc" tag="120"/>
-    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
-    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
-    <tag group="Helper" tag="Always2H" name="Always2H" abbrev="Always2H"/>
+    <tag group="wType" tag="P"/>
+    <tag group="EquipType" tag="Wood"/>
     <tag group="wEasyRace" tag="Rd20Mino"/>
     <tag group="wGroup" tag="Rd20Mino"/>
-    <tag group="Helper" tag="BracArcBow" name="BracArcBow" abbrev="BracArcBow"/>
     </thing>
   <thing id="wd20GcomB" name="Greatbow, Composite" description="-2 to attacks if used by someone with a strength below its rating. Counts as a Greatbow for proficiency &amp; feat purposes." compset="Weapon">
     <fieldval field="gWeight" value="6"/>
     <fieldval field="gSizeCost" value="200"/>
     <fieldval field="wShortName" value="Greatbow, Comp."/>
     <usesource source="s20PFCamp"/>
-    <tag group="Helper" tag="NoDblStr" name="NoDblStr" abbrev="NoDblStr"/>
+    <tag group="Helper" tag="NoDblStr"/>
+    <tag group="Helper" tag="BucklerOK"/>
+    <tag group="Helper" tag="Always2H"/>
+    <tag group="Helper" tag="BracArcBow"/>
     <tag group="wBuyStr" tag="200"/>
-    <tag group="wCategory" tag="RangeProj" name="Projectile Weapon" abbrev="Projectile"/>
-    <tag group="wClass" tag="TwoHanded" name="Two-Handed" abbrev="Two-Handed"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
-    <tag group="wCritMult" tag="3" name="3" abbrev="3"/>
-    <tag group="wFtrGroup" tag="Bows" name="Bows" abbrev="Bows"/>
-    <tag group="wMain" tag="1d10_304"/>
+    <tag group="wCategory" tag="RangeProj"/>
+    <tag group="wClass" tag="TwoHanded"/>
+    <tag group="wCritMin" tag="20"/>
+    <tag group="wCritMult" tag="3"/>
+    <tag group="wFtrGroup" tag="Bows"/>
+    <tag group="wMain" tag="1d10"/>
     <tag group="wProfReq" tag="Exotic"/>
-    <tag group="wRangeInc" tag="110" name="110" abbrev="110"/>
-    <tag group="wType" tag="P" name="Piercing" abbrev="P"/>
-    <tag group="EquipType" tag="Wood" name="Wood" abbrev="Wood"/>
-    <tag group="Helper" tag="Always2H" name="Always2H" abbrev="Always2H"/>
-    <tag group="Helper" tag="BracArcBow" name="BracArcBow" abbrev="BracArcBow"/>
+    <tag group="wRangeInc" tag="110"/>
+    <tag group="wType" tag="P"/>
+    <tag group="EquipType" tag="Wood"/>
     <tag group="wEasyRace" tag="Rd20Mino"/>
     <tag group="IsWeapon" tag="wd20GreatB"/>
     <tag group="wGroup" tag="Rd20Mino"/>
-    <tag group="Helper" tag="BucklerOK" name="BucklerOK" abbrev="BucklerOK"/>
     <tag group="RaceEquip" tag="Rd20Mino"/>
     </thing>
   <thing id="wd20Mlaxe" name="Longaxe, Minotaure" description="A minotaur longaxe looks like a greataxe with an elongated haft. This feature makes the weapon awkward to wield by those unfamiliar with its use, but those proficient with the weapon can use the haft&apos;s extra length to attack foes more than 5 feet away as long as they are willing to forgo precision in favor of dealing extra damage. \n\nIf you are proficient with the minotaur longaxe, you can treat it as a reach weapon any time you use the Power Attack feat. When you use a longaxe in this manner, you can strike opponents 10 feet away with it, but you cannot use it against an adjacent foe. Because you determine the use of the Power Attack for an entire turn, you must wield the longaxe as either a reach weapon or a normal weapon until the beginning of your next turn once you make the decision. You cannot wield it as both a reach weapon and a normal weapon in the same turn.\n\nCharacters proficient with the longaxe can treat it as a greataxe for purposes of any of the following feats: Greater Weapon Focus, Greater Weapon Specialization, Improved Critical, Weapon Focus, and Weapon Specialization.\n\n{b}Note:{/b} The Ulfen Minotaur treats a minotaur longaxe as a martial weapon instead of an exotic weapon." compset="Weapon">
     <fieldval field="gWeight" value="15"/>
     <fieldval field="gSizeCost" value="35"/>
     <usesource source="srcShaMino"/>
-    <tag group="wFtrGroup" tag="Axes" name="Axes" abbrev="Axes"/>
-    <tag group="wMain" tag="1d12_404" name="1d12" abbrev="1d12"/>
+    <tag group="wFtrGroup" tag="Axes"/>
+    <tag group="wMain" tag="1d12"/>
     <tag group="wProfReq" tag="Exotic"/>
-    <tag group="wType" tag="S" name="Slashing" abbrev="S"/>
-    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
-    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
-    <tag group="wClass" tag="TwoHanded" name="Two-Handed" abbrev="Two-Handed"/>
+    <tag group="wType" tag="S"/>
+    <tag group="EquipType" tag="Metal"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wClass" tag="TwoHanded"/>
     <tag group="wEasyRace" tag="Rd20Mino"/>
-    <tag group="wCritMin" tag="20" name="20" abbrev="20"/>
+    <tag group="wCritMin" tag="20"/>
     <tag group="IsWeapon" tag="wGreataxe"/>
     <tag group="wGroup" tag="Rd20Mino"/>
     <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="wCritMult" tag="3" name="3" abbrev="3"/>
+    <tag group="wCritMult" tag="3"/>
     </thing>
   <thing id="wS20IceAxe" name="Axe, Ice" description="More tool than weapon, the ice axe has a sharp metal head that is perpendicular to the shaft and has a spiked handle. It grants a +1 circumstance bonus on Climb checks in mountainous and/or icy terrain, even if you do not possess the Exotic Weapon Proficiency (ice axe) feat. If you do posses this feat, the bonus increases to a +4 circumstance bonus. A climber with an ice axe can cut handholds or footholds in an ice wall. Doing so takes 1 minute per hand/foot hold, and one hand/foot hold is needed per 3 feet. As with any surface with handholds and footholds it has a climb DC of 15. An ice axe may be used as a martial weapon, but takes a -2 penalty on attack rolls in this case." compset="Weapon">
     <fieldval field="gSizeCost" value="10"/>
@@ -324,23 +325,23 @@ endif</eval>
     <tag group="wType" tag="S"/>
     <tag group="wCategory" tag="Melee"/>
     <tag group="wClass" tag="OneHanded"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[~Pre-Levels 10,000
-~ Work out if we're equipped, or, if we're the child of a magic item, if
-~ our parent is equipped
-var result as number
-result = field[gIsEquip].value
-if (container.ishero = 0) then
-    result += container.parent.field[gIsEquip].value
-endif
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ Work out if we're equipped, or, if we're the child of a magic item, if
+      ~ our parent is equipped
+      var result as number
+      result = field[gIsEquip].value
+      if (container.ishero = 0) then
+          result += container.parent.field[gIsEquip].value
+      endif
 
-~ If equipped, +4 bonus to climb
-if (result <> 0) then
-    if (#hasfeat[fExoticWep] <> 0) then
-        #skillbonus[skClimb] += 4
-    else
-        #skillbonus[skClimb] += 1
-    endif
-endif]]></eval>
+      ~ If equipped, +4 bonus to climb
+      if (result <> 0) then
+          if (#hasfeat[fExoticWep] <> 0) then
+              #skillbonus[skClimb] += 4
+          else
+              #skillbonus[skClimb] += 1
+          endif
+      endif]]></eval>
     </thing>
   <thing id="wS20BrodSw" name="Broadsword" description="Broadswords appeared in a variety of forms, but generally had a long, wide, straight, double-edged blade with a simple cross-guard (or &quot;cruciform&quot; hilt). The typical form was a single hand weapon used for hacking, shearing cuts and also for limited thrusting which evolved from the Mendev swords of late Antiquity. Over time, the sword became more tapered and rigid, to facilitate thrusting, and began to add a series of protective rings to the hilt, to defend the fingers and hand. The blade length started to grow giving birth to the &quot;Claymore&quot; or &quot;Greatsword&quot; of today that are very often used by crusaders near the Worldwound." compset="Weapon">
     <fieldval field="gWeight" value="6"/>
@@ -415,12 +416,13 @@ endif]]></eval>
     <tag group="wType" tag="P"/>
     <tag group="wClass" tag="OneHanded"/>
     <tag group="wFtrGroup" tag="Pirate"/>
-    <eval phase="PreLevel" priority="1000"><![CDATA[field[wAttBonus].value -= 2
+    <eval phase="PreLevel" priority="1000"><![CDATA[
+      field[wAttBonus].value -= 2
 
-~if we're a custom/magic weapon, we need to alter our parent, too
-if (container.ishero = 0) then
-  container.parent.field[wAttBonus].value -= 2
-endif]]></eval>
+      ~if we're a custom/magic weapon, we need to alter our parent, too
+      if (container.ishero = 0) then
+        container.parent.field[wAttBonus].value -= 2
+      endif]]></eval>
     </thing>
   <thing id="wxbBaySwor" name="Crossbow Bayonet, Sword" description="Bayonets easily fit onto light or heavy crossbows, attaching to the stock below where the bolt fires. Crossbow bayonets come in two kinds: knife and sword. A knife bayonet attached to a crossbow functions as a shortspear, while a sword bayonet attached to a crossbow is treated as a spear. A crossbow with an attached bayonet cannot be thrown as a true spear can be, though it can be set against a charge.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
     <fieldval field="gSizeCost" value="4"/>
@@ -436,12 +438,13 @@ endif]]></eval>
     <tag group="wType" tag="P"/>
     <tag group="wClass" tag="TwoHanded"/>
     <tag group="wFtrGroup" tag="Pirate"/>
-    <eval phase="PreLevel" priority="1000"><![CDATA[field[wAttBonus].value -= 2
+    <eval phase="PreLevel" priority="1000"><![CDATA[
+      field[wAttBonus].value -= 2
 
-~if we're a custom/magic weapon, we need to alter our parent, too
-if (container.ishero = 0) then
-  container.parent.field[wAttBonus].value -= 2
-endif]]></eval>
+      ~if we're a custom/magic weapon, we need to alter our parent, too
+      if (container.ishero = 0) then
+        container.parent.field[wAttBonus].value -= 2
+      endif]]></eval>
     </thing>
   <thing id="wXbBayHand" name="Hand Crossbow Blade" description="Adding a short blade to the front of a hand crossbow allows you to defend yourself in melee combat without having to draw a different weapon. The blade functions as a dagger.\n\nAttaching or removing a bayonet requires a move action. Attacking with a bayonet imposes a -2 penalty on the attack roll." compset="Weapon">
     <fieldval field="gSizeCost" value="4"/>
@@ -456,20 +459,21 @@ endif]]></eval>
     <tag group="wType" tag="P"/>
     <tag group="wFtrGroup" tag="Close"/>
     <tag group="wClass" tag="Light"/>
-    <eval phase="PreLevel" priority="1000"><![CDATA[field[wAttBonus].value -= 2
+    <eval phase="PreLevel" priority="1000"><![CDATA[
+      field[wAttBonus].value -= 2
 
-~if we're a custom/magic weapon, we need to alter our parent, too
-if (container.ishero = 0) then
-  container.parent.field[wAttBonus].value -= 2
-endif]]></eval>
+      ~if we're a custom/magic weapon, we need to alter our parent, too
+      if (container.ishero = 0) then
+        container.parent.field[wAttBonus].value -= 2
+      endif]]></eval>
     </thing>
   <thing id="wTouchFine" name="Melee Touch Attack" description="Changed so that Weapon Finesse correctly applies to touch attacks." compset="Weapon" replaces="wTouch">
-    <tag group="Helper" tag="Bootstrap" name="Bootstrap" abbrev="Bootstrap"/>
-    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
-    <tag group="Helper" tag="Helper" name="Helper" abbrev="Helper"/>
-    <tag group="Helper" tag="NatAttSpec" name="NatAttSpec" abbrev="NatAttSpec"/>
-    <tag group="Helper" tag="Proficient" name="Proficient" abbrev="Proficient"/>
-    <tag group="Helper" tag="Static" name="Static" abbrev="Static"/>
+    <tag group="Helper" tag="Bootstrap"/>
+    <tag group="Helper" tag="GearNoSize"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="Helper" tag="NatAttSpec"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="Helper" tag="Static"/>
     <tag group="Helper" tag="Finesse"/>
     <tag group="wCategory" tag="Melee"/>
     <tag group="Helper" tag="NoSelect"/>
@@ -517,8 +521,9 @@ endif]]></eval>
     <tag group="Helper" tag="SingleAtt"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="abS2EldBla"></bootstrap>
-    <eval phase="PostAttr" priority="10000" index="2">~ Give a Int bonus to the Eldritch Blast Weapon
-      field[wDamBonus].value += #attrmod[aINT]</eval>
+    <eval phase="PostAttr" priority="10000" index="2"><![CDATA[
+      ~ Give a Int bonus to the Eldritch Blast Weapon &
+      field[wDamBonus].value += #attrmod[aINT]]]></eval>
     <eval phase="Final" priority="11000"><![CDATA[
       ~ Set the Fix Ranged Damage amount text
       field[wFixRanDam].text = #value[abS2EldBla] & "d" & #value2[abS2EldBla] & signed(field[wDamBonus].value + field[dmrBonus].value)
