@@ -281,7 +281,7 @@
     <bootstrap thing="cPsiAltWav">
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Seer Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiSeer"]]></eval>
     </thing>
@@ -362,7 +362,7 @@ field[abValue].value += 2 + field[xCount].value]]></eval>
     <bootstrap thing="cPsiEctPro">
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Shaper Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiShaper"]]></eval>
     </thing>
@@ -408,7 +408,7 @@ field[abValue].value += 2 + field[xCount].value]]></eval>
     <bootstrap thing="cPsiKinAur">
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Kinetic Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiKineti"]]></eval>
     </thing>
@@ -430,7 +430,7 @@ field[abValue].value += 2 + field[xCount].value]]></eval>
     <bootstrap thing="cPsiInfFor">
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Egoist Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiEgoist"]]></eval>
     </thing>
@@ -454,7 +454,7 @@ field[abValue].value += 2 + field[xCount].value]]></eval>
     <bootstrap thing="cPsiNomSte">
       <autotag group="ClSpecWhen" tag="2"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Nomad Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiNomad"]]></eval>
     </thing>
@@ -477,7 +477,7 @@ field[abValue].value += 2 + field[xCount].value]]></eval>
     <bootstrap thing="cPsiGrdTho">
       <autotag group="ClSpecWhen" tag="20"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Telepath Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiTelepa"]]></eval>
     </thing>
@@ -3571,7 +3571,7 @@ if (field[abilActive].value <> 0) then
 
   root.field[cPsiPPMax].value += bonus
   endif]]></eval>
-    <eval phase="UserFirst" priority="1000"><![CDATA[
+    <eval phase="First" priority="1000"><![CDATA[
 ~If 
 if (field[usrIsCheck].value <> 0) then
   perform root.assign[Helper.HasExtraMg]
@@ -7381,11 +7381,11 @@ field[CustDesc].text = "Shadow Twin (" & field[abValue].value & "')"]]></eval>
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU2"/>
     <tag group="User" tag="Activation"/>
-    <eval phase="UserPreAt" priority="1000" index="2"><![CDATA[if (field[abilActive].value <> 0) then
+    <eval phase="PreAttr" priority="1000" index="2"><![CDATA[if (field[abilActive].value <> 0) then
    ~Activate Concealment condition
    perform hero.assign[Condition.pstConceal]
 endif]]></eval>
-    <eval phase="UserFinal"><![CDATA[if (hero.tagis[Ability.cPUTerCon2] <> 0) then
+    <eval phase="Final"><![CDATA[if (hero.tagis[Ability.cPUTerCon2] <> 0) then
    perform this.assign[Helper.SpecUp]
 else
    perform this.assign[User.Activation]
@@ -7408,23 +7408,26 @@ endif]]></eval>
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU2"/>
     <tag group="User" tag="Activation"/>
-    <eval phase="UserPreAt" priority="1000"><![CDATA[if (field[abilActive].value <> 0) then
-   ~Activate Concealment condition
-   perform hero.assign[Condition.pstConcTot]
-endif]]></eval>
-    <pickreq thing="cPUTerConN"/>
-    <prereq message="Nightmare Form terror required">
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If not activated get out now!
+      doneif (field[abilActive].value = 0)
+      
+      ~Activate Concealment condition
+      perform hero.assign[Condition.pstConcTot]
+      ]]></eval>
+    <prereq message="Nightmare Form terror required.">
       <validate><![CDATA[validif (#hasability[cPUTerNFor] <> 0)]]></validate>
       </prereq>
+    <prereq message="Conceale Nightmare Form terror required.">
+      <validate><![CDATA[validif (#hasability[cPUTerConN] <> 0)]]></validate>
+      </prereq>
     <prereq message="Dread level 14 or higher required for this Terror">
-      <validate><![CDATA[        var classcheck as string
+      <validate><![CDATA[        
+        var classcheck as string
         var levels as number
-
         classcheck = "Dread"
-
         call PUPreReqs
-
-        validif (levels >= 8)]]></validate>
+        validif (levels >= 14)]]></validate>
       </prereq>
     </thing>
   <thing id="cPUTerCons" name="Consuming Nightmare" description="The dread’s next attack infects the target with nightmare so overwhelming it threatens to strike the creature dead. The target must make a Will save (DC 10 + 1/2 the dread’s class level + the dread’s Charisma modifier) or die. If the target succeeds, it becomes immune to this terror for 24 hours. This is a mind-affecting fear death effect. The dread must be at least 16th level to select this option." compset="CustomSpec" summary="Kill target if they fail a WillSave." uniqueness="unique">
@@ -9711,7 +9714,7 @@ perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
   <thing id="cPUVitKnac" name="Knacks" description="Vitalists of all forms learn to manipulate the energy of body and mind in minor ways. A vitalist gains two talents from the vitalist power list, as well as one talent from his method power list.\n\n{b}Note:{/b} After selecting your Method&apos;s talent power from the drop down you must still add the power on the class tab.  This is needed to correctly get the power onto your character and have it calculate all the values correctly. Until you add this power you will get a validation error." compset="ClSpecial">
     <tag group="Helper" tag="SpecUp"/>
     <tag group="ChooseSrc1" tag="Thing"/>
-    <eval phase="UserFinal" priority="1000"><![CDATA[~ If not Psi Class tag then get out now!
+    <eval phase="Final" priority="1000"><![CDATA[~ If not Psi Class tag then get out now!
 doneif (tagcount[psiClass.?] = 0)
 
 ~ Set the custom expression
@@ -14225,15 +14228,15 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="SpecSource" tag="arPUSlbolt"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="NoPathSoc"/>
-    <pickreq thing="cPUClRngEx"/>
+    <prereq message="Close-Range Expert required.">
+      <validate><![CDATA[validif (#hasability[cPUClRngEx] <> 0)]]></validate>
+      </prereq>
     <prereq message="Soulbolt level 12+ required.">
-      <validate><![CDATA[        var classcheck as string
+      <validate><![CDATA[        
+        var classcheck as string
         var levels as number
-
         classcheck = "Soulknife"
-
         call PUPreReqs
-
         validif (levels >= 12)]]></validate>
       </prereq>
     </thing>
@@ -14284,15 +14287,15 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="abSave" tag="RefHalf"/>
     <tag group="StandardDC" tag="aWIS"/>
     <tag group="SpecType" tag="Attack"/>
-    <pickreq thing="cPUChgShot"/>
+    <prereq message="Charged shot required.">
+      <validate><![CDATA[validif (#hasability[cPUChgShot] <> 0)]]></validate>
+      </prereq>
     <prereq message="Soulbolt level 10+ required.">
-      <validate><![CDATA[        var classcheck as string
+      <validate><![CDATA[        
+        var classcheck as string
         var levels as number
-
         classcheck = "Soulknife"
-
         call PUPreReqs
-
         validif (levels >= 10)]]></validate>
       </prereq>
     </thing>
@@ -14807,7 +14810,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <bootstrap thing="cPUIConstr">
       <autotag group="ClSpecWhen" tag="8"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Shaper Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiShaper"]]></eval>
     </thing>
@@ -14892,7 +14895,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <bootstrap thing="cPUAltProb">
       <autotag group="ClSpecWhen" tag="8"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Seer Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiSeer"]]></eval>
     </thing>
@@ -14938,7 +14941,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <bootstrap thing="cPUEvac">
       <autotag group="ClSpecWhen" tag="14"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Nomad Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiNomad"]]></eval>
     </thing>
@@ -14972,7 +14975,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <bootstrap thing="cPsiTelpth">
       <autotag group="ClSpecWhen" tag="8"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Telepath Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiTelepa"]]></eval>
     </thing>
@@ -15006,7 +15009,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <bootstrap thing="cPUEmpAlt">
       <autotag group="ClSpecWhen" tag="8"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Egoist Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiEgoist"]]></eval>
     </thing>
@@ -15059,7 +15062,7 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <bootstrap thing="cPsiKinAur">
       <autotag group="ClSpecWhen" tag="8"/>
       </bootstrap>
-    <eval phase="UserFinal" priority="1000"><![CDATA[
+    <eval phase="Final" priority="1000"><![CDATA[
       ~ Give access to Kinetic Powers
       linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiKineti"]]></eval>
     </thing>
@@ -15602,11 +15605,11 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <link linkage="varies" thing="cHelpPU4"/>
     </thing>
   <thing id="cPUBMPwrK" name="Battle Healer Additional Powers Known" compset="ClSpecial">
-    <eval phase="UserFinal" priority="10100"><![CDATA[
+    <eval phase="Final" priority="10100"><![CDATA[
 hero.child[cHelpPU4].field[cPsiExpr].text = "(" & hero.child[cHelpPU4].field[cPsiExpr].text & ") | (psiClass.cHelpPU5 & psiSubdisc.psdPUHeali)"]]></eval>
     </thing>
   <thing id="cPUGBPwrK" name="Gifted Blade Powers" compset="ClSpecial">
-    <eval phase="UserFinal" priority="10100"><![CDATA[
+    <eval phase="Final" priority="10100"><![CDATA[
 hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPsiExpr].text & ") | (psiClass.arPUGiftBl)"]]></eval>
     </thing>
   <thing id="cPUBMHBnd" name="Healing Bond" description="A battle medic of 4th level has learned how to share healing over his network. When manifesting a power of the Healing subdiscipline with a range of personal, the battle medic can choose to change the target to a member of his collective. This ability replaces the strategy normally gained at 4th level." compset="ClSpecial">
@@ -16196,6 +16199,39 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <usesource source="pPsiUn"/>
     <tag group="ClVaryName" tag="AppParen"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cPUAbMndAr">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUShpMArm">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="5"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="15"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cPUEnhMArm">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpSkn"/>
     </thing>
   <thing id="arPUCuthrt" name="Cutthroat" description="{i}{b}Not fully implemented{/i}{/b}\nWith the ability to create a blade from thin air, soulknives can be extremely effective assassins. Cutthroat soulknives work to be even better at infiltration as well as how to perfectly place strikes against their opponents." compset="ClassVary" uniqueness="unique">
@@ -16222,11 +16258,20 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <arrayval field="cvBonFtMod" index="18" value="-1"/>
     <arrayval field="cvBonFtMod" index="19" value="-1"/>
     <usesource source="pPsiUn"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="fDisable" tag="fArmMedium"/>
     <tag group="fDisable" tag="fArmShield"/>
     <tag group="ClVaryName" tag="AppParen"/>
     <tag group="AbReplace" tag="cSknPsyStr"/>
+    <tag group="fDisable" tag="fArmMedium"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <bootstrap thing="cPUCunning">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPUCovTrai">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cSneakAtt">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
     <link linkage="varies" thing="cHelpSkn"/>
     </thing>
   <thing id="arPUFerlHt" name="Feral Heart" description="{i}{b}Not fully implemented{/i}{/b}\nMind over matter is usually viewed to be the domain of the psion, the disciplined mind ruling over the body. Yet powerful feral instincts are also part of the mind, and when these instincts are born inside one with psionic potential, a feral heart is born. Their mind reforms their\nbodies, often into bestial forms, giving rise to many misconceptions about them being werewolves." compset="ClassVary" uniqueness="unique">
@@ -16391,5 +16436,118 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <tag group="User" tag="Tracker"/>
     <tag group="Usage" tag="Day"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUAbMndAr" name="Form Mind Armaments" description="{i}{b}Not fully implemented{/i}{/b}\nThe armored blade can form a mind blade in the same fashion as a standard soulknife, using the normal rules under the Form Mind Blade class feature. In addition, as a separate move action, he may form mind armor.\n  Mind armor can be formed as light, medium, or heavy form. Light form is treated in all ways (except visually) as a masterwork chain shirt. Medium form is treated in all ways (except visually) as masterwork chainmail. Heavy form is treated in all ways (except visually) as masterwork splint mail. Mind armor is treated like a mind blade in all other ways (breaking, null psionics fields, etc) and can be dismissed as a free action.\n  An armored blade is always considered proficient in his mind armor.\n  This replaces the form mind blade class feature, but counts as form mind blade for prerequisites or requirements.\n\n{b}Note:{/b} From the two drop down menus you must pick the type of mind armor (ie Light, Medium, or Heavy). Because these values can be changed often and in combat they display now on the In-Play tab also." compset="ClSpecial" summary="Form a semi-solid armor composed of psychic energy distilled from your own mind.">
+    <arrayval field="usrArray" index="0" value="Light"/>
+    <arrayval field="usrArray" index="1" value="Medium"/>
+    <arrayval field="usrArray" index="2" value="Heavy"/>
+    <tag group="SpecType" tag="ArmorClass"/>
+    <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
+    <tag group="Helper" tag="ActivMenu" name="ActivMenu" abbrev="ActivMenu"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <eval phase="First" priority="50" name="Add Mind Blade Tags"><![CDATA[
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ If nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen <> 1)
+
+      perform field[usrChosen1].chosen.pulltags[MindBlade.?]
+      perform hero.pushtags[MindBlade.?]]]></eval>
+    <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ If we've not chosen anything, get out
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Bludgeoning      
+      if (field[usrIndex].value = 0) then
+        perform assign[wType.B]
+      ~ Piercing
+      elseif (field[usrIndex].value = 1) then
+        perform assign[wType.P]
+      ~ Slashing
+      elseif (field[usrIndex].value = 2) then
+        perform assign[wType.S]
+      endif
+
+      ~ Find all Mindblades and set the damage type tag      
+      foreach pick in hero from BaseWep where "IsWeapon.wMindBlade"
+        perform eachpick.delete[wType.?]
+        perform eachpick.gizmo.delete[wType.?]
+        perform eachpick.pushtags[wType.?]
+        perform eachpick.gizmo.pushtags[wType.?]
+      nexteach]]></eval>
+    </thing>
+  <thing id="cPUShpMArm" name="Shape Mind Armaments" description="The armored blade can shape his mind blade and mind armor in the same fashion as a standard soulknife shapes his mind blade. Her mind blade and mind armor must be reshaped separately.\n  This replaces the shape mind blade class feature, but counts as shape mind blade for prerequisites or requirements." compset="ClSpecial" summary="Change the form of your mind armament, or reassign its abilities">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="cPUEnhMArm" name="Enhanced Mind Armament" description="{i}{b}Not fully implemented{/i}{/b}\nThe armored blade’s mind armor and mind blade are improved like a standard soulknife’s mind blade, including if the armored blade creates two mind blades, except the enhancement bonus increases at a reduced rate, rather than every odd level, as indicated on Table: Mind Armament Progression. The enhancement bonus for mind armor is unaffected if the armored blade shapes two mind blades.\nThe armored blade can select armor special abilities from the following.\nThis replaces the enhanced mind blade class feature, but counts as enhanced mind blade for prerequisites or requirements.\n\n{b}Note:{/b}  Currently the scripts will not error check if you increase the bonus past what you should be allowed or take a invalid item power.  This will come in a future update." compset="ClSpecial" summary="You can enhance your mind armament with extra power.">
+    <usesource source="pPsiUn"/>
+    <tag group="SpecType" tag="ArmorClass"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ Set the list name
+      field[listname].text = field[thingname].text & " " & signed(field[xIndex].value)
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      field[abSumm].text = "You can enhance your Mind Armament with a total enhancement bonus of +" & field[abValue].value & "."]]></eval>
+    </thing>
+  <thing id="cPUCovTrai" name="Covert Training" description="A cutthroat gains 6 skill points + a number of skill points equal to his Intelligence modifier at each level, instead of the normal 4 skill points + Intelligence modifier at each level. This ability replaces the medium armor proficiency and shield proficiency normally gained by soulknives." compset="ClSpecial">
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      
+      ~increase hero's skill points earned from 4 to 6 per level
+      hero.child[Totals].field[tSkBonus].value += 2]]></eval>
+    </thing>
+  <thing id="cPUCunning" name="Cunning" description="A cutthroat of 2nd level gains a +1 competence bonus on Bluff and Stealth skill checks made while maintaining psionic focus.  Furthermore, Bluff is a class skill for the cutthroat. At 6th level and every four soulknife levels thereafter, this bonus increases by 1 (to\na maximum of +5 at 18th level).\n  The cutthroat can expend his psionic focus to double this bonus for a single Bluff or Stealth skill check.\n  This ability replaces the bonus feat gained at first level." compset="ClSpecial">
+    <fieldval field="abValue" value="1"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abAction" tag="PUExpFocus"/>
+    <tag group="abAction" tag="PUManFocus"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      ~ make Bluff class skill
+      #makeclassskill[skBluff]
+
+      ~ check if Psi-focused
+      var v_focus as number
+      call PUPsiFocus
+      ~ If not psionically focused get out now!
+      doneif (v_focus = 0)
+
+      ~ gain comp bonus on Bluff and Stealth when Psi-focused
+      if (#levelcount[Soulknife] >= 18) then
+        field[abValue].value = 5
+      elseif (#levelcount[Soulknife] >= 14) then
+        field[abValue].value = 4
+      elseif (#levelcount[Soulknife] >= 10) then
+        field[abValue].value = 3
+      elseif (#levelcount[Soulknife] >= 6) then
+        field[abValue].value = 2
+      endif
+
+      #applybonus[BonComp,hero.childfound[skBluff],field[abValue].value]
+      #applybonus[BonComp,hero.childfound[skStealth],field[abValue].value]]]></eval>
     </thing>
   </document>

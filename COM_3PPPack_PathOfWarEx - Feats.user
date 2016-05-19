@@ -132,53 +132,27 @@ Email: mail@theirongolem.com</info_author>
       ~ If we're disabled, do nothing & 
       doneif (tagis[Helper.FtDisable] <> 0)
 
-      var searchexpr as string
-      
-      ~ Default to Katana only
-      searchexpr = "IsWeapon.wKatana"
-      
-      ~ We have Wakizashi exotic profic then include Wakizashi
-      if (hero.tagis[WepProf.wWakizashi] = 1) then
-        searchexpr &= "|IsWeapon.wWakizashi"
-      endif
+      ~ Find all katana/Wakizashi weapons on the hero
+      foreach pick in hero from BaseWep where "IsWeapon.wKatana|IsWeapon.wWakizashi"
 
-      ~ Find all katanas/Wakizashi on the hero
-      foreach pick in hero from BaseWep where searchexpr
-      
         ~ Katana
         if (eachpick.tagis[IsWeapon.wKatana] = 1) then
-          ~ Do we have exotic weapon prof?
-          if (hero.tagis[WepProf.wKatana] = 1) then
+          ~ Do we have exotic weapon prof? or wielding it in 2 hands
+          if (eachpick.tagis[Helper.Proficient] = 1) then
             perform eachpick.assign[Helper.Finesse]
-            perform eachpick.assign[Helper.DamageUp]          
-
-          ~..No exotic weapon prof
-          else
-            ~ Check to see if we have it in two hands?
-            if (eachpick.field[gIsEquip].value + eachpick.field[wIs2nd].value = 2) then
-              perform eachpick.assign[Helper.Finesse]
-              perform eachpick.assign[Helper.DamageUp]
-            endif
+            perform eachpick.tagreplace[wMain.1d8,wMain.1d10]
           endif
   
-        ~ Wakizashi      
+        ~ Wakizashi
         elseif (eachpick.tagis[IsWeapon.wWakizashi] = 1) then
-          perform eachpick.assign[Helper.DamageUp]        
+          ~ Are we proficient with the weapon?
+          if (eachpick.tagis[Helper.Proficient] = 1) then
+            perform eachpick.tagreplace[wMain.1d6,wMain.1d8]
+          endif
         endif
         
       nexteach]]></eval>
     <exprreq message="Katana or wakizashi proficiency required"><![CDATA[#hasfeat[fWepMart] + hero.tagis[WepProf.wKatana] + hero.tagis[WepProf.wWakizashi] <> 0]]></exprreq>
-    </thing>
-  <thing id="fPWAglDncr" name="Agile Dancer" description="{b}Prerequisites:{/b} Perform (Dance) 3 ranks\n\n{b}Benefits:{/b} You can use Perform (Dance) in place of Acrobatics and can use the higher of your Dexterity or Charisma modifiers for Perform (Dance) checks." compset="Feat" uniqueness="useronce">
-    <usesource source="srcPOWEx"/>
-    <tag group="fCategory" tag="Combat"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="Helper" tag="ShowSpec"/>
-    <eval phase="First" priority="10000">~ Allow DEX to be used for Perform (Dance) if higher
-      perform hero.childfound[skPerfDanc].assign[SkillOpt.aDEX]</eval>
-    <prereq message="Perform (Dance) 3 ranks required">
-      <validate><![CDATA[      validif (#skillranks[skPerfDanc] >= 3)]]></validate>
-      </prereq>
     </thing>
   <thing id="fPWMalevol" name="Malevolence" description="Creatures you have Claimed become cursed.\n\n{b}Prerequisites:{/b} Able to Claim creatures\n\n{b}Benefit:{/b} Creatures Claimed by you are cursed and suffer a -2 penalty to their CMB and skill checks (the penalty expires when the Claim does, though the cursed condition might not)." compset="Feat" uniqueness="useronce">
     <usesource source="srcPOWEx"/>
@@ -825,7 +799,7 @@ Email: mail@theirongolem.com</info_author>
       field[abDC].value = 10
       field[abDC].value += round(herofield[tTotLevel].value/2,0,-1)
       field[abDC].value += field[usrChosen1].chosen.field[aModBonus].value]]></eval>
-    <pickreq thing="fPWSWStyle"/>
+    <exprreq message="Solar Wind Style feat required"><![CDATA[#hasfeat[fPWSWStyle] <> 0]]></exprreq>
     <exprreq message="Perception 7+ ranks required"><![CDATA[#skillranks[skPercep] >= 7]]></exprreq>
     </thing>
   <thing id="fPWSWInfrn" name="Solar Wind Inferno" description="The burning power of your arrows sears the flesh of even those immune to fire.\n\n{b}Prerequisites:{/b} Solar Wind Flash, Perception 11 ranks\n\n{b}Benefit:{/b} Your ranged attacks which deal fire damage ignore an amount of fire resistance equal to your character level.  You treat Fire Immunity as Fire Resistance 30 for purposes of this effect." compset="Feat" uniqueness="useronce">
@@ -835,7 +809,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="abAction" tag="None"/>
-    <pickreq thing="fPWSWFlash"/>
+    <exprreq message="Solar Wind Flash feat required"><![CDATA[#hasfeat[fPWSWFlash] <> 0]]></exprreq>
     <exprreq message="Perception 11+ ranks required"><![CDATA[#skillranks[skPercep] >= 11]]></exprreq>
     </thing>
   <thing id="fPWSSStyle" name="Steel Serpent Style" description="Your training lets you take advantage of weakened foes.\n\n{b}Prerequisites:{/b} 1 or more Steel Serpent stances, Heal 3 ranks\n\n{b}Benefit:{/b} Whenever you successfully attack a creature with a Steel Serpent Maneuver, the creature suffers a -1 penalty to attack rolls and AC for 2 rounds. This penalty increases by 1 for every 5 character levels." compset="Feat" uniqueness="useronce">
@@ -861,7 +835,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="SpecType" tag="Attack"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <pickreq thing="fPWSSStyle"/>
+    <exprreq message="Steel Serpent Sytle feat required"><![CDATA[#hasfeat[fPWSSStyle] <> 0]]></exprreq>
     <exprreq message="Heal 7+ ranks required"><![CDATA[#skillranks[skHeal] >= 7]]></exprreq>
     </thing>
   <thing id="fPWSSVenom" name="Steel Serpent Venom" description="You amplify the weakness of your victims.\n\n{b}Prerequisites:{/b} Steel Serpent Fangs, Heal 13 ranks\n\n{b}Benefit:{/b} Whenever you deal weapon damage to a creature suffering from ability score damage, that creature must succeed on a Fortitude Save (DC 10+½ level+Initiating Modifier) or  become nauseated for 1 round (multiple applications of this effect do not stack).\n\n{b}NOTE:{/b} The feat script has no way of knowing what your initiating modifier would be when you use this feat, so we include a dropdown that you can use to tell it which attribute is the initiating attribute." compset="Feat" uniqueness="useronce">
@@ -873,12 +847,15 @@ Email: mail@theirongolem.com</info_author>
     <tag group="abSave" tag="FortNeg"/>
     <tag group="Helper" tag="ActivMenu"/>
     <tag group="fShowWhat" tag="Attributes"/>
-    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ Save DC is 10 + 1/2 level + chosen attribute mod
+    <eval phase="PostAttr" priority="10000"><![CDATA[      
+      ~ If no attribute chosen get out now!
       doneif (field[usrChosen1].ischosen <> 1)
+
+      ~ Save DC is 10 + 1/2 level + chosen attribute mod
       field[abDC].value = 10
       field[abDC].value += round(herofield[tTotLevel].value/2,0,-1)
       field[abDC].value += field[usrChosen1].chosen.field[aModBonus].value]]></eval>
-    <pickreq thing="fPWSSFangs"/>
+    <exprreq message="Steel Serpent Fangs feat required"><![CDATA[#hasfeat[fPWSSFangs] <> 0]]></exprreq>
     <exprreq message="Heal 13+ ranks required"><![CDATA[#skillranks[skHeal] >= 13]]></exprreq>
     </thing>
   <thing id="fPWTGStyle" name="Tempest Gale Style" description="Your arrows and slings are able to strike targets in unusual ways.\n\n{b}Prerequisites:{/b} 1 or more Tempest Gale stances, Sleight of Hand 3 ranks\n\n{b}Benefit:{/b} While in this style, you can perform the following combat maneuvers with ranged weapons against any target within your first range increment: bull rush, dirty trick, disarm or trip.  Performing a combat maneuver this way is a standard action that provokes an attack of opportunity (unless you have the appropriate improved combat maneuver feat) and uses your Dexterity modifier in place of your Strength modifier on the CMB roll." compset="Feat" uniqueness="useronce">
@@ -892,14 +869,14 @@ Email: mail@theirongolem.com</info_author>
     <exprreq message="Sleight of Hand 3+ ranks required"><![CDATA[#skillranks[skSleight] >= 3]]></exprreq>
     <exprreq message="Must know one or more Tempest Gale stances"><![CDATA[hero.tagcount[HasStance.TmpGale] > 0]]></exprreq>
     </thing>
-  <thing id="fPWTGHaze" name="Tempest Gale Haze" description="While in Tempest Gale style, ranged attacks made against you suffer a 20% miss chance." compset="Feat" uniqueness="useronce">
+  <thing id="fPWTGHaze" name="Tempest Gale Haze" description="The very wind that carries your attacks to the enemy protects you from retaliation.\n\n{b}Prerequisites:{/b} Tempest Gale Style, Sleight of Hand 7 ranks.\n\n{b}Benefit:{/b} Ranged attacks against you suffer a 20% miss chance." summary="While in Tempest Gale style, ranged attacks have 20% miss chance." compset="Feat" uniqueness="useronce">
     <usesource source="srcPOWEx"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="fCategory" tag="Combat"/>
-    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="abAction" tag="None"/>
     <tag group="SpecType" tag="Defense"/>
-    <pickreq thing="fPWTGStyle"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <exprreq message="Tempest Gale Style feat required"><![CDATA[#hasfeat[fPWTGStyle] <> 0]]></exprreq>
     <exprreq message="Sleight of Hand 7+ ranks required"><![CDATA[#skillranks[skSleight] >= 7]]></exprreq>
     </thing>
   <thing id="fPWTGStorm" name="Tempest Gale Storm" description="You can fire off precisely aimed shots at rapid pace\n\n{b}Prerequisites:{/b} Tempest Gale Haze, Sleight of Hand 11 ranks\n\n{b}Benefit:{/b} While in Tempest Gale Style, you can spend a standard action to make two different combat maneuver checks with ranged weapons from the following list against any target within your first range increment: bull rush, dirty trick, disarm or trip.  Performing these combat maneuvers this way is a standard action that provokes an attack of opportunity (unless you have the appropriate improved combat maneuver feat) and uses your Dexterity modifier in place of your Strength modifier on the CMB roll." compset="Feat" uniqueness="useronce">
@@ -909,7 +886,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="fCategory" tag="Combat"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="abAction" tag="Standard"/>
-    <pickreq thing="fPWTGHaze"/>
+    <exprreq message="Tempest Gale Haze feat required"><![CDATA[#hasfeat[fPWTGHaze] <> 0]]></exprreq>
     <exprreq message="Sleight of Hand 11+ ranks required"><![CDATA[#skillranks[skSleight] >= 11]]></exprreq>
     </thing>
   <thing id="fPWTDStyle" name="Thrashing Dragon Style" description="Your skill with two weapons makes you as dangerous as foes who wield one larger weapon.\n\n{b}Prerequisites:{/b} 1 or more Thrashing Dragon Stances, Acrobatics 3 ranks\n\n{b}Benefit:{/b} When you make a standard attack against an opponent, you can make an additional attack with your off hand weapon.  If you do so, all attacks you make this round take the normal penalties for two weapon fighting." compset="Feat" uniqueness="useronce">
@@ -922,13 +899,13 @@ Email: mail@theirongolem.com</info_author>
     <exprreq message="Must know one or more Thrashing Dragon stances"><![CDATA[hero.tagcount[HasStance.ThrashDrag] > 0]]></exprreq>
     <exprreq message="Acrobatics 3+ ranks required"><![CDATA[#skillranks[skAcrobat] >= 3]]></exprreq>
     </thing>
-  <thing id="fPWTDPounc" name="Thrashing Dragon Pounce" description="Your swift movements allow you to close the gap and strike quickly against your foe.\n\n{b}Prerequisites:{/b} Thrashing Dragon Style, Acrobatics 7 ranks\n\n{b}Benefit:{/b} Whenever you an initiate a strike that allows you to make a only single melee attack, you can make an extra attack with your offhand weapon at your highest base attack bonus as a free action.  If you do so, your attacks take two weapon fighting penalties as normal for fighting with two weapons." compset="Feat" uniqueness="useronce">
+  <thing id="fPWTDPounc" name="Thrashing Dragon Pounce" description="Your swift movements allow you to close the gap and strike quickly against your foe.\n\n{b}Prerequisites:{/b} Thrashing Dragon Style, Acrobatics 7 ranks\n\n{b}Benefit:{/b} Whenever you an initiate a strike that allows you to make a only single melee attack, you can make an extra attack with your off-hand weapon at your highest base attack bonus as a free action. If you do so, your attacks take two weapon fighting penalties as normal for fighting with two weapons." compset="Feat" uniqueness="useronce">
     <usesource source="srcPOWEx"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="SpecType" tag="Attack"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <pickreq thing="fPWTDStyle"/>
+    <exprreq message="Thrashing Dragon Style feat required"><![CDATA[#hasfeat[fPWTDStyle] <> 0]]></exprreq>
     <exprreq message="Acrobatics 7+ ranks required"><![CDATA[#skillranks[skAcrobat] >= 7]]></exprreq>
     </thing>
   <thing id="fPWTDWhirl" name="Thrashing Dragon Whirlwind" description="Your fury strikes out at all enemies around you.\n\n{b}Prerequisites:{/b} Thrashing Dragon Pounce, Acrobatics 11 ranks\n\n{b}Benefit:{/b} As a full round action, you can make a single attack each against every enemy within melee range with a weapon your main hand and a weapon in your off hand. You do not take the normal penalties for fighting with two weapons while making these attacks.\n\n{b}Special:{/b} If you have more than two arms, you can use each of your off hands to make an attack, instead of just the one." compset="Feat" uniqueness="useronce">
@@ -937,7 +914,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="SpecType" tag="Attack"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <pickreq thing="fPWTDPounc"/>
+    <exprreq message="Thrashing Dragon Pounce feat required"><![CDATA[#hasfeat[fPWTDPounc] <> 0]]></exprreq>
     <exprreq message="Acrobatics 11+ ranks required"><![CDATA[#skillranks[skAcrobat] >= 11]]></exprreq>
     </thing>
   <thing id="fPWVMStyle" name="Veiled Moon Style" description="Your nights training in shadow have taught you to conceal your form when you attack.\n\n{b}Prerequisites:{/b} 1 or more Veiled Moon Stances,  Stealth 3 ranks\n\n{b}Benefit:{/b} You must declare that you are using this feat before you make your attack roll (thus, a failed attack roll ruins the attempt). If you succeed on your next melee attack, your opponent treats you as having total concealment for 1 round. You can use this ability only once per round." compset="Feat" uniqueness="useronce">
@@ -960,15 +937,15 @@ Email: mail@theirongolem.com</info_author>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="abAction" tag="Swift"/>
     <tag group="User" tag="Activation"/>
-    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're disabled, do nothing
+    <eval phase="PostAttr" priority="10000"><![CDATA[      
+      ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
-
       ~ Stop now if we're not activated
       doneif (field[abilActive].value <> 1)
 
       ~ Increase speed
       hero.child[Speed].field[Bonus].value += field[abValue].value]]></eval>
-    <pickreq thing="fPWVMStyle"/>
+    <exprreq message="Veiled Moon Style feat required"><![CDATA[#hasfeat[fPWVMStyle] <> 0]]></exprreq>
     <exprreq message="Stealth 7+ ranks required"><![CDATA[#skillranks[skStealth] >= 7]]></exprreq>
     </thing>
   <thing id="fPWVMWarp" name="Veiled Moon Warp" description="Your strikes can force an enemy into the aether for a short time\n\n{b}Prerequisites:{/b} Veiled Moon Step, Stealth 15 ranks\n\n{b}Benefit:{/b} As a standard action, you may expend one of your readied strikes and make a melee attack against an opponent. If it hits, deal weapon damage as normal and your victim must succeed at a Will save (DC 10 + 1/2 your character level + your initiation modifier) or become incorporeal for 1 round. Your victim&apos;s equipment does not become incorporeal, though it remains on their body, effectively rendering them incapable of using any items that do not have the ghost touch property or an equivalent effect." compset="Feat" uniqueness="useronce">
@@ -981,7 +958,8 @@ Email: mail@theirongolem.com</info_author>
     <tag group="abAction" tag="Swift"/>
     <tag group="User" tag="Activation"/>
     <tag group="abSave" tag="WillNeg"/>
-    <eval phase="PostAttr" priority="10000"><![CDATA[      ~ If we're disabled, do nothing
+    <eval phase="PostAttr" priority="10000"><![CDATA[      
+      ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
 
       ~ Save DC is 10 + 1/2 level + chosen attribute mod
@@ -989,7 +967,7 @@ Email: mail@theirongolem.com</info_author>
       field[abDC].value = 10
       field[abDC].value += round(herofield[tTotLevel].value/2,0,-1)
       field[abDC].value += field[usrChosen1].chosen.field[aModBonus].value]]></eval>
-    <pickreq thing="fPWVMStep"/>
+    <exprreq message="Veiled Moon Step feat required"><![CDATA[#hasfeat[fPWVMStep] <> 0]]></exprreq>
     <exprreq message="Stealth 15+ ranks required"><![CDATA[#skillranks[skStealth] >= 15]]></exprreq>
     </thing>
   <thing id="fPWRHStyle" name="Riven Hourglass Style" description="Your understanding of temporal nature can give you insight into your enemies movements\n\n{b}Prerequisites:{/b} 1 or more Riven Hourglass stances, Autohypnosis 5 ranks\n\n{b}Benefit:{/b} When you miss an attack, you can expend a readied boost maneuver as a swift action to immediately reroll the attack.  You must take the second result even if it is lower." compset="Feat" uniqueness="useronce">
@@ -1011,7 +989,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="abAction" tag="Swift"/>
     <tag group="SpecType" tag="Attack"/>
-    <pickreq thing="fPWRHStyle"/>
+    <exprreq message="Riven Hourglass Style feat required"><![CDATA[#hasfeat[fPWRHStyle] <> 0]]></exprreq>
     <exprreq message="Autohypnosis 7+ ranks required"><![CDATA[#skillranks[skPUAhypno] >= 7]]></exprreq>
     </thing>
   <thing id="fPWRHEtern" name="Riven Hourglass Eternity" description="Your grasp of time allows you to extend effects which benefit you.\n\n{b}Prerequisites:{/b} Riven Hourglass Rewind, Autohypnosis 11 ranks\n\n{b}Benefit:{/b} You can expend a readied Riven Hourglass Boost as a swift action to extend the duration of one spell, psionic power or boost currently affecting you by 1 round." compset="Feat" uniqueness="useronce">
@@ -1021,7 +999,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="abAction" tag="Swift"/>
     <tag group="SpecType" tag="Attack"/>
-    <pickreq thing="fPWRHRewnd"/>
+    <exprreq message="Riven Hourglass Rewind feat required"><![CDATA[#hasfeat[fPWRHRewnd] <> 0]]></exprreq>
     <exprreq message="Autohypnosis 11+ ranks required"><![CDATA[#skillranks[skPUAhypno] >= 11]]></exprreq>
     </thing>
   <thing id="fPWMCStyle" name="Mithral Current Style" description="Even with your weapon still sheathed, your presence is enough to threaten enemies.\n\n{b}Prerequisites:{/b} 1 or more Mithral Current stances, Quick Draw, Perform (Dance) 3 ranks\n\n{b}Benefit:{/b} As long as you have a sheathed weapon on your person, you threaten all squares within your sheathed weapon’s normal reach and may make attacks of opportunity even if you are not currently wielding a weapon. You may draw a weapon as part of making an attack of opportunity; weapons drawn this way are sheathed after the attack is resolved." compset="Feat" uniqueness="useronce">
@@ -1041,11 +1019,11 @@ Email: mail@theirongolem.com</info_author>
       ~ Assign active style tag
       perform hero.assign[Custom.ActiveStyl]]]></eval>
     <evalrule phase="Validation" priority="5000" message="Too many style feats active." summary="Too many style feats active."><![CDATA[validif (hero.tagcount[Custom.ActiveStyl] <= 1 + hero.tagcount[Custom.MaxActStyl])]]></evalrule>
-    <pickreq thing="fQuickDraw"/>
+    <exprreq message="Quick Draw feat required"><![CDATA[#hasfeat[fQuickDraw] <> 0]]></exprreq>
     <exprreq message="Perform (Dance) 3+ ranks required"><![CDATA[#skillranks[skPerfDanc] >= 3]]></exprreq>
     <exprreq message="Must know one or more Mithral Current stances"><![CDATA[hero.tagcount[HasStance.MithCurr] > 0]]></exprreq>
     </thing>
-  <thing id="fPWMCFlow" name="Mithral Current Flow" description="The heightened senses of your bloodlust are at their greatest just before you draw your weapon.\n\n{b}Prerequisites:{/b} Mithral Current Style, Perform (Dance) 7 ranks\n\n{b}Benefit:{/b} When you begin your turn with your weapon sheathed, you gain a +4 dodge bonus to AC. You lose this bonus whenever you draw your weapon, until or unless you begin a new turn with your weapon sheathed." compset="Feat" uniqueness="useronce">
+  <thing id="fPWMCFlow" name="Mithral Current Flow" description="The heightened senses of your bloodlust are at their greatest just before you draw your weapon.\n\n{b}Prerequisites:{/b} Mithral Current Style, Perform (Dance) 7 ranks\n\n{b}Benefit:{/b} Whenever an opponent misses an attack against you, you can move up to 10 feet without provoking attacks of opportunity as a free action, even if it isn’t your turn." compset="Feat" uniqueness="useronce">
     <fieldval field="abValue" value="4"/>
     <usesource source="srcPOWEx"/>
     <tag group="Custom" tag="ActiveStyl"/>
@@ -1061,16 +1039,16 @@ Email: mail@theirongolem.com</info_author>
 
       ~ Add dodge bonus to AC
       hero.child[ArmorClass].field[tACDodge].value += field[abValue].value]]></eval>
-    <pickreq thing="fPWMCStyle"/>
+    <exprreq message="Mithral Current Style feat required"><![CDATA[#hasfeat[fPWMCStyle] <> 0]]></exprreq>
     <exprreq message="Perform (Dance) 7+ ranks required"><![CDATA[#skillranks[skPerfDanc] >= 7]]></exprreq>
     </thing>
-  <thing id="fPWMCSlice" name="Mithral Current Slice" description="Drawing your weapon from its sheath as you strike allows you to hit harder and faster.\n\n{b}Prerequisites:{/b} Mithral Current Style, Perform (Dance) 11 ranks\n\n{b}Benefit:{/b} When you use Quick Draw, your first attack this round treats your opponent as having vulnerability to silver, causing them to take an additional 50% damage from silver sources." compset="Feat" uniqueness="useronce">
+  <thing id="fPWMCSlice" name="Mithral Current Slice" description="Drawing your weapon from its sheath as you strike allows you to hit harder and faster.\n\n{b}Prerequisites:{/b} Mithral Current Style, Perform (Dance) 11 ranks\n\n{b}Benefit:{/b} Your first attack in a round in which you drew a weapon deals damage to your target as if they were vulnerable to silver." compset="Feat" uniqueness="useronce">
     <fieldval field="abValue" value="4"/>
     <usesource source="srcPOWEx"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="Custom" tag="ActiveStyl"/>
-    <pickreq thing="fPWMCStyle"/>
+    <exprreq message="Mithral Current Style feat required"><![CDATA[#hasfeat[fPWMCStyle] <> 0]]></exprreq>
     <exprreq message="Perform (Dance) 11+ ranks required"><![CDATA[#skillranks[skPerfDanc] >= 11]]></exprreq>
     </thing>
   <thing id="fPWEGStyle" name="Eternal Guardian Style" description="Your combat maneuvers are empowered by psychic curses.\n\n{b}Prerequisites:{/b}1 or more Eternal Guardian Stances,  Intimidate 3 ranks\n\n{b}Benefit:{/b} Whenever you succeed on a CMB check against an opponent, they become cursed for 1 round." compset="Feat" uniqueness="useronce">
@@ -1099,7 +1077,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="fCategory" tag="Combat"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="abAction" tag="Immediate"/>
-    <pickreq thing="fPWEGStyle"/>
+    <exprreq message="Eternal Guradian Style feat required"><![CDATA[#hasfeat[fPWEGStyle] <> 0]]></exprreq>
     <exprreq message="Intimidate 7+ ranks required"><![CDATA[#skillranks[skIntim] >= 7]]></exprreq>
     </thing>
   <thing id="fPWEGEndur" name="Eternal Guardian Endurance" description="You feed on the energy of fallen foes to renew your combat abilities.\n\n{b}Prerequisites:{/b} Eternal Guardian , Intimidate 11 ranks\n\n{b}Benefit:{/b} You can recover an expended maneuver as a free action whenever you reduce a cursed enemy to 0 hit points or fewer. You can only recover one expended maneuver per round this way." compset="Feat" uniqueness="useronce">
@@ -1108,7 +1086,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="fCategory" tag="Combat"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="abAction" tag="Free"/>
-    <pickreq thing="fPWEGOath"/>
+    <exprreq message="Eternal Guardian Oath feat required"><![CDATA[#hasfeat[fPWEGOath] <> 0]]></exprreq>
     <exprreq message="Intimidate 11+ ranks required"><![CDATA[#skillranks[skIntim] >= 11]]></exprreq>
     </thing>
   <thing id="fPWEFStyle" name="Elemental Flux Style" description="Your understanding of Elemental Energies offers you defense as well as offense.\n\n{b}Prerequisites:{/b} 1 or more Elemental Flux stances, Spellcraft 3 ranks\n\n{b}Benefit:{/b} While this style is active, you gain Energy Resistance equal to ½ your level (min. 1).  This energy resistance is of the same type as your active energy type." compset="Feat" uniqueness="useronce">
@@ -1120,7 +1098,8 @@ Email: mail@theirongolem.com</info_author>
     <tag group="fCategory" tag="Style"/>
     <tag group="fCategory" tag="Combat"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <eval phase="Render" priority="20000" index="2"><![CDATA[      field[livename].text &= " (" & signed(field[abValue].value) & " bleed damage)"]]></eval>
+    <eval phase="Render" priority="20000" index="2"><![CDATA[      
+      field[livename].text &= " (" & signed(field[abValue].value) & " bleed damage)"]]></eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -1168,7 +1147,7 @@ Email: mail@theirongolem.com</info_author>
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <pickreq thing="fPUPsiChrg"/>
+    <exprreq message="Psionic Charge feat required"><![CDATA[#hasfeat[fPUPsiChrg] <> 0]]></exprreq>
     </thing>
   <thing id="fPWXtraCon" name="Extra Conviction" description="{b}Prerequisite:{/b} Conviction class feature\n\n{b}Benefit:{/b} Choose a conviction that you qualify for. You gain the benefit of that conviction.\n\n{b}Special:{/b} You can choose this feat more than once. Each time you take it, you choose a conviction you qualify for and gain its benefit." compset="Feat" summary="Gain an extra conviction" uniqueness="useronce">
     <usesource source="srcPOWEx"/>
@@ -1198,8 +1177,8 @@ Email: mail@theirongolem.com</info_author>
     <tag group="fCategory" tag="Psionic"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <pickreq thing="fPUClkDnce"/>
-    <pickreq thing="cPW5PthDed"/>
+    <exprreq message="Cloak Dance feat required"><![CDATA[#hasfeat[fPUClkDnce] <> 0]]></exprreq>
+    <exprreq message="Path of Dedication conviction required"><![CDATA[#hasability[cPW5PthDed] <> 0]]></exprreq>
     </thing>
   <thing id="fPWUnhWay" name="Unhindered Way" description="{b}Prerequisites:{/b} Collective class feature, Speed of Thought, medium armor proficiency\n\n{b}Benefit:{/b} Your speed is no longer reduced by medium or heavy armor, and you gain the benefit of your Speed of Thought feat while wearing heavy armor. In addition, as long as you maintain psionic focus, allies in your collective gain a +10 ft. insight bonus to their base movement speeds." compset="Feat" uniqueness="useronce">
     <fieldval field="abValue" value="10"/>
@@ -1208,7 +1187,8 @@ Email: mail@theirongolem.com</info_author>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="abAction" tag="PUManFocus"/>
     <tag group="fCategory" tag="Psionic"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[      ~ If we're disabled, do nothing
+    <eval phase="PreLevel" priority="10000"><![CDATA[      
+      ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
 
       ~ Remove ArmorCateg.Slows from medium/heavy armor
@@ -1223,8 +1203,15 @@ Email: mail@theirongolem.com</info_author>
 
       ~ Add insight bonus to speed
       #applybonus[BonInsight, hero.child[Speed], field[abValue].value]]]></eval>
-    <pickreq thing="fPUSpdThgt"/>
+    <exprreq message="Speed of Thought feat required"><![CDATA[#hasfeat[fPUSpdThgt] <> 0]]></exprreq>
     <exprreq message="Collective ability required"><![CDATA[(#hasability[cPUCollect] + #hasability[cPUTacColl] + #hasability[cPUVitColl] + #hasability[cPW5Collec]) <> 0]]></exprreq>
     <exprreq message="Must be proficient with medium armor"><![CDATA[hero.tagis[Ability.fArmMedium] <> 0]]></exprreq>
+    </thing>
+  <thing id="fPWIMPQDr" name="Improved Quick Draw" description="{b}Prerequisites:{/b} Quick Draw\n\n{b}Benefits:{/b} You are considered to be threatening all squares within reach of your weapon even if it is sheathed, and can draw your weapon when making an attack of opportunity. When you draw your weapon in this way, you may sheath weapon without provoking attacks of opportunity after the attack is resolved." compset="Feat" summary="Threaten all squares when weapon is sheathed, and draw weapon during an AoO." uniqueness="useronce">
+    <usesource source="srcPOWEx"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <exprreq message="Quick Draw feat required."><![CDATA[#hasfeat[fQuickDraw] <> 0]]></exprreq>
     </thing>
   </document>
