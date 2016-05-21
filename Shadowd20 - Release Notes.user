@@ -6,6 +6,27 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.14 May 21, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fixed Load Issues with HL v7.6b (Quintain) - Thing 'ruDemNysro' - Bootstrap value assignment should not be assigned more than once for field 'abValue' on bootstrapped thing 'raPoiCON'</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fix adjustment "Feat: Furious Focus" as it was not actually turning on.</li>
+<li>Mythic Bestiary (ShadowChemosh) - Misc fixes to the generic Mythic Template. Fixes to the Soltengrebbe creature from Warth of the Righteous.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed the "Unchained Background Skills, Total" as its extra skills points would fail to apply its value once you restarted HL.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Shadow d20 Feats (ShadowChemosh) - Added new feat "Zen Archery" that allows a character to use Wis instead of Dex for ranged attacks.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Because of more advanced requirements and issues we should not be using Pick Req's to do any feat Pre-Req. I have started to change feats over to use the #hasfeat[] macro.</li>
+<li>(ShadowChemosh) - Replaced all "User" timings (Pre-Level, Post-Level, Post-Attributes, Pre-Attributes, First, and Final) with normal timings. LW is going to be deprecating all the "User" timing Phases in a future update. These "User" phases serve no useful purpose and should not be used.</li>
+<li>(ShadowChemosh) - Moved NNW Liber Vampyr feat tags to central place on a mechanic.</li>
+</ul>
+
+
 <strong>v2.13 May 7, 2016</strong>
 
 <strong>Bug Fixes</strong>
