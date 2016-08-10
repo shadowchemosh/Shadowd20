@@ -207,43 +207,5 @@
         nexteach
       ]]></eval>
     </thing>
-  <thing id="pDeadJugg" name="Deadly Juggernaut" description="With every enemy life you take, you become increasingly dangerous and difficult to stop. During the duration of the spell, you gain a cumulative +1 luck bonus on melee attack rolls, melee weapon damage rolls, Strength checks, and Strength-based skill checks as well as DR 2/— each time you reduce a qualifying opponent to 0 or few hit points (maximum +5 bonus and DR 10/—) with a melee attack. A qualifying opponent has a number of Hit Dice equal to or greater than your Hit Dice –4." compset="InPlay">
-    <fieldval field="pDuration" value="1 minute/level"/>
-    <fieldval field="pMinimum" value="1"/>
-    <fieldval field="pMaximum" value="5"/>
-    <usesource source="UltCombat"/>
-    <tag group="Helper" tag="AdjSpell"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[
-      ~ If we're not enabled, get out now
-      doneif (field[pIsOn].value = 0)
-
-      ~ Set bonuses
-      field[abValue].value += field[pAdjust].value
-      field[abValue2].value += field[pAdjust].value * 2
-      
-      ~ DR 5/- per life taken
-      #applydr[xDamRd, field[abValue2].value]
-
-      ~ +1 cumulative luck bonus on melee attack and damage
-      #applybonus[atmBonLuck,hero.child[Attack],field[abValue].value]
-      #applybonus[dmmBonLuck,hero.child[Damage],field[abValue].value]
-
-      ~ +1 cumulative luck bonus on str checks
-      #situational[hero.child[aSTR],signed(field[abValue].value) & " luck bonus on Ability Checks.",field[thingname].text]]]></eval>
-    <eval phase="PostAttr" priority="5000" index="2"><![CDATA[
-      ~ If we're not enabled, get out now
-      doneif (field[pIsOn].value = 0)
-
-      ~ Give bonus only to STR skills
-      foreach pick in hero from BaseSkill where "SkillAbil.aSTR"
-        #applybonus[BonLuck,eachpick,field[abValue].value]
-        nexteach
-
-      ~ If initiative has been changed to be a Str check give
-      ~ a luck bonus to it
-      if (hero.child[Initiative].tagis[UseAttr.aSTR] <> 0) then
-        #applybonus[BonLuck,hero.child[Initiative],field[abValue].value]
-        endif]]></eval>
-    </thing>
 
   </document>
