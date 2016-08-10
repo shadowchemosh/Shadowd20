@@ -6,6 +6,23 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.15 August 10, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fixed Load Issues with Pathfinder v13.1.</li>
+<li>GM Mythic Bestiary (ShadowChemosh) - #58. Fixed issues with Arueshalae spell-like abilities.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>None</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>d20 Modern Classic Heroes (ShadowChemosh) - Fixed issue where weapons where marked as "Show Only" and where not Headers.  This is causing a load conflict in the latest version of Pathfinder (12.23).  Changed logic to use Helper.Helper instead.</li>
+</ul>
+
+
 <strong>v2.14 May 21, 2016</strong>
 
 <strong>Bug Fixes</strong>
