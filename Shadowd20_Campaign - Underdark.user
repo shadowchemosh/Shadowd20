@@ -493,4 +493,26 @@
     <tag group="Helper" tag="AlwaysAvl"/>
     <eval phase="PostLevel" priority="10000">perform field[usrChosen1].chosen.pulltags[SpInfo.?]</eval>
     </thing>
+  <thing id="iS2Ragnaro" name="Ragnarök" description="This {i}+1 flaming short sword{/i} is also called &quot;savagery of the Retched&quot;.  This weapon provides a +4 bonus on its wielder’s attack and damage rolls when he is making a sneak attack with it.\n\n{b}Campaign Details:{/b} King Yourn was cursed and twisted by this sword. Dwarves use to make packs with Devils." compset="MagicWep">
+    <fieldval field="gWeight" value="2"/>
+    <fieldval field="gSizeCost" value="10"/>
+    <fieldval field="gCost" value="26300"/>
+    <fieldval field="iCL" value="7"/>
+    <fieldval field="BonEnhance" value="1"/>
+    <fieldval field="actName" value="Sneak Attack"/>
+    <usesource source="srcUndDark"/>
+    <tag group="Helper" tag="NoPathSoc"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="iSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ If not active get out now &
+      doneif (field[abilActive].value = 0)
+
+      field[Bonus].value += 4]]></eval>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wShortswd"></bootstrap>
+      <bootstrap thing="iFlaming"></bootstrap>
+      </child>
+    </thing>
   </document>
