@@ -23,6 +23,12 @@
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Hero" tag="EqpWaist"/>
     <tag group="abAction" tag="Standard"/>
+    <eval phase="Final" priority="10000">
+      ~ To make this not display on iPads remove tracker when
+      ~ not equipped.
+      doneif (field[gIsEquip].value = 1)
+    
+      perform delete[User.Tracker]</eval>
     </thing>
   <thing id="iS2WarScep" name="Warlock&apos;s Scepter" description="This {i}+1 light mace{/i} confers a +1 profane bonus on your ranged touch attack rolls while you hold it. This is a continuous effect and requires no activation.\n\nFurthermore, a {i}warlock&apos;s scepter{/i} has 5 charges, which are renewed each day at dawn. Spending 1 or more charges improves the damage of the next {i}eldritch blast{/i} you make in that round.\n\n{i}1 charge:{/i} +1d6 damage.\n{i}3 charges:{/i} +2d6 damage.\n{i}5 charges:{/i} +4d6 damage.\n\nAfter these charges have been expended, the rod remains a {i}+1 light mace{/i}, but it no longer provides a bonus on ranged touch attack rolls until its charges are restored.\n\n{i}Prerequisites:{/i} Craft Magic Arms and Armor, Craft Rod, {i}bestow curse{/I}." compset="MagicWep" summary="This sturdy ebony rod is surmounted by a carving of a demonic, horned skull.">
     <fieldval field="iCL" value="10"/>
@@ -53,8 +59,7 @@
       ~ +1 Ranged Attack Profane Bonus to Ray weapons
       foreach pick in hero from BaseWep where "IsWeapon.wRay"
         #applybonus[atrBonProf,eachpick,1]
-      nexteach
-      ]]></eval>
+      nexteach]]></eval>
     <eval phase="Final" index="2"><![CDATA[
       ~ If not active get out now!
       doneif (field[abilActive].value <> 1)
@@ -130,5 +135,11 @@
     <tag group="ProductId" tag="Shadowd20"/>
     <tag group="Hero" tag="EqpWaist"/>
     <tag group="abAction" tag="Standard"/>
+    <eval phase="Final" priority="10000">
+      ~ To make this not display on iPads remove tracker when
+      ~ not equipped.
+      doneif (field[gIsEquip].value = 1)
+    
+      perform delete[User.Tracker]</eval>
     </thing>
   </document>
