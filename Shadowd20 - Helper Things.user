@@ -650,6 +650,9 @@
     compset="Simple">
     <usesource source="s20PFCamp"/>
     <eval phase="Render" priority="200"><![CDATA[
+      ~ Add extra text to the Scimitar
+      #appenddesc[iReturning,"{b}Shadow d20:{/b} Returning item properity is changed to cause the weapon to return immediately to your hand after being thrown. This means you can throw the same weapon multiple times in a single round if your base attack bonus is high enough."]    
+
       ~ This has to be added this way as they are doing strange things
       ~ with this items Desc in the "totals" component.
       #appenddesc[wRcHarpoon,"{b}Shadow d20:{/b} Removed the weight of the rope as most times it will not be used that way. Increased the range increment to 50ft to make having the exotic weapon harpoon feet more worth while."]
