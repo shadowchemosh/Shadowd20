@@ -515,4 +515,45 @@
       <bootstrap thing="iFlaming"></bootstrap>
       </child>
     </thing>
+  <thing id="ioS2ClCha4" name="Cloak of alluring charisma +4" description="This attractive silver lined cloak is decorated with a number of small red and orange gemstones. The cloak grants the wearer an enhancement bonus to Charisma of +4. Treat this as a temporary ability bonus for the first 24 hours the headband is worn.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Wondrous Item, {i}eagle’s splendor{/i}; {b}Cost{/b} 8,000 gp" compset="Wondrous">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="16000"/>
+    <fieldval field="iCL" value="8"/>
+    <usesource source="srcUndDark"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="iSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="Helper" tag="ABPForbid" name="Forbidden in the Automatic Bonus Progression Rule" abbrev="Forbidden in the Automatic Bonus Progression Rule"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="InnaForbid" name="Forbidden in the Innate Item Bonuses Rule" abbrev="Forbidden in the Innate Item Bonuses Rule"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Hero" tag="EqpBack"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+      ~ Items which would add enhancement bonuses to attributes 
+      ~ do not do so when we are using the Auto Bonus Progression
+      ~ rules from Pathfinder Unchained.
+      doneif (hero.tagis[source.PUAutoB?] <> 0)
+
+      doneif (field[gIsEquip].value = 0)
+
+      #enhancementbonus[hero.child[aCHA], 4]]]></eval>
+    </thing>
+  <thing id="ioS2MonIde" name="Monocle of Identify" description="These ancient gnomish monocles allow for identifing magic items.  Discovered by the party at the top of the moutain on the hag infested island.\n\n{b}Note:{/b} Each use of of this device allows 5 magic items to be identified." compset="Wondrous" summary="3/day Identify as the spell.">
+    <fieldval field="iCL" value="5"/>
+    <usesource source="srcUndDark"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="iSchool" tag="Divination"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="Hero" tag="EqpEyes"/>
+    <tag group="Shadowd20" tag="SkipDomain"/>
+    <bootstrap thing="spIdentif1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="3"/>
+      <assignval field="sCL" value="5"/>
+      </bootstrap>
+    </thing>
   </document>
