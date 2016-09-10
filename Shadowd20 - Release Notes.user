@@ -6,6 +6,28 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.16 September 10, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Touch Attacks (ShadowChemosh) - Fix issue where one can no longer select Touch/Ranged Attacks. In addition if they already existed on a character make the attack values display again.</li>
+<li>Magic Item Compendium (ShadowChemosh) - Fixed issue where the Healing Belt would still display tracker when not equipped.  This is actually a HL bug.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in v1.4 of the community Pack.</li>
+<li>Shadow d20 House Rules (ShadowChemosh) - "Returning" item power has a note that the weapon returns immediately to your hands now.<li>Darklands Campaign (ShadowChemosh) - Added "Cloak of lauring charisma +4" magic item.</li>
+<li>Darklands Campaign (ShadowChemosh) - Added "Monocle of Identify" magic item.</li>
+</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Made global change to race "Types" so that they continue to function with the next official Pathfinder update (v13.3+).</li>
+<li>(ShadowChemosh) - Added additional removal of old SGG files.</li>
+<li>(ShadowChemosh) - Add in missing Empty MODERN files to make those updating on Mac/Windows to be easier.</li>
+</ul>
+
+
 <strong>v2.15 August 10, 2016</strong>
 
 <strong>Bug Fixes</strong>
