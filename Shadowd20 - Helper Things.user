@@ -33,6 +33,7 @@
     <bootstrap thing="s20MiscTxt"></bootstrap> <!-- Update Things with Shadow d20 house rule notes -->
     <bootstrap thing="s20MythTxt"></bootstrap> <!-- Update Mythic Things with Shadow d20 house rule notes -->
     <bootstrap thing="s20UAETxt"></bootstrap>  <!-- Update Text for Unchained Action Economy -->
+    <bootstrap thing="s20UnAcEc"></bootstrap>  <!-- Unchained Action Economy to force display three attacks -->
     
     <!-- Removed this for now as its costing a HIGH amount of CPU and no one still takes
          any team work feats. -->
@@ -641,6 +642,30 @@
       ]]></eval>
     </thing>
 
+  <!-- ==================================================================================== -->
+  <!-- Unchained Action Economy to display just three attacks                               -->
+  <!-- ==================================================================================== -->
+  <thing id="s20UnAcEc" name="Shadow d20 Unchained Action Economy" 
+    description="Unchained Action Economy" 
+    compset="Simple" 
+    uniqueness="useronce">
+    <usesource source="srcUnAcEc"/>
+    <eval phase="Final" priority="12550"><![CDATA[
+      ~ Set hero to only display one attack
+      perform hero.assign[Dependant.NoIterAtk]
+
+      ~ Now set each weapon to display a total of 3 attacks
+      foreach pick in hero from BaseWep
+        perform eachpick.assign[Helper.ExtraIter]
+        perform eachpick.assign[Helper.ExtraIter]
+        
+        ~ Weapons like Daggers have a special tag to prevent additional
+        ~ attacks from displaying. With the unchained rules this does
+        ~ make sense. So display all three attacks.
+        perform eachpick.delete[Helper.SingleRAtt]
+      nexteach
+      ]]></eval>
+    </thing>
 
   <!-- ==================================================================================== -->
   <!-- Shadow d20 misc text changes                                                         -->
@@ -768,8 +793,8 @@
   <thing id="s20RogueUn" 
     name="Shadow d20 Rogue Unchained" 
     description="Auto apply specific archetypes to the Unchained Rogue class." 
-    compset="Simple" uniqueness="useronce">
-
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <bootstrap thing="arS2URog01">
       <containerreq phase="GlobalTest" priority="10050"><![CDATA[Shadowd20.arS2URog01]]></containerreq>    
@@ -784,10 +809,12 @@
     </thing>
 
     
-  <thing id="s20Tracker" name="Shadow d20 Tracker Reset to Max" description="Set all trackers and action points to reset to Max instead of 0. This way a wand will be 50/50 instead of 50/50." compset="Simple" uniqueness="useronce">
+  <thing id="s20Tracker" name="Shadow d20 Tracker Reset to Max" 
+    description="Set all trackers and action points to reset to Max instead of 0. This way a wand will be 50/50 instead of 50/50." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[
-      
+    <eval phase="PreLevel" priority="10000"><![CDATA[      
       foreach pick in hero from Tracker where "User.Tracker|thingid.hActionPts"
         perform eachpick.assign[Helper.ResetMax]
       nexteach]]></eval>
@@ -819,13 +846,21 @@
       field[livename].text = field[name].text & " " & dice & "d6"]]></eval>
     </thing>
     
-  <thing id="s20NoXP" name="Shadow d20 No XP" description="This helper script prevents the need of using XP on level up." compset="Simple" uniqueness="useronce">
+  <thing id="s20NoXP" name="Shadow d20 No XP" 
+    description="This helper script prevents the need of using XP on level up." 
+    compset="Simple" 
+    uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <eval phase="PostAttr" priority="5000">~ This tag tells HL to not use XP!
-      perform hero.assign[Hero.NoAdvance]</eval>
+    <eval phase="PostAttr" priority="5000"><![CDATA[
+      ~ This tag tells HL to not use XP!
+      perform hero.assign[Hero.NoAdvance]
+      ]]></eval>
     </thing>
 
-  <thing id="s2Info1Rou" name="Shadow d20 Cast Time" description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before." compset="Ability" summary="1 round casting time spells are now 1 Full-Round action instead.">
+  <thing id="s2Info1Rou" name="Shadow d20 Cast Time" 
+    description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before."
+    summary="1 round casting time spells are now 1 Full-Round action instead."
+    compset="Ability">
     <usesource source="srcNo1Rnd"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Final" priority="10000"><![CDATA[
@@ -834,7 +869,10 @@
          perform assign[Helper.ShowSpec]
       Endif]]></eval>
     </thing>
-  <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" description="All hit point dealing spells and spell-like abilities now gain a damage bonus equal to your caster level (CL). This bonus only applies once to a spell, not once per missile or ray, and cannot be split between multiple missiles or rays. This bonus damage is not increased by Empower Spell or similar effects. This damage is of the same type as the spell." compset="Ability" summary="Hit Point damaging Spells and Sp get your CL as a damage bonus.">
+  <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" 
+    description="All hit point dealing spells and spell-like abilities now gain a damage bonus equal to your caster level (CL). This bonus only applies once to a spell, not once per missile or ray, and cannot be split between multiple missiles or rays. This bonus damage is not increased by Empower Spell or similar effects. This damage is of the same type as the spell." 
+    summary="Hit Point damaging Spells and Sp get your CL as a damage bonus."
+    compset="Ability">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Final" priority="10000">
