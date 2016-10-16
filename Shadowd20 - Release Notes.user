@@ -6,6 +6,24 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.17 October 16, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>None</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in latest community Pack.</li>
+<li>Unchained Action Economy - Added a new option that when turned on will cause all weapons to display three attacks. This should allow a nice way of displaying what all three attacks look like under the new Unchained Acition Economy.</li>
+</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Removed Modern data files.</li>
+</ul>
+
+
 <strong>v2.16 September 10, 2016</strong>
 
 <strong>Bug Fixes</strong>
