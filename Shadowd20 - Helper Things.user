@@ -55,11 +55,12 @@
     <!-- Archetype Class Changes for the Unchained Rogue -->
     <bootstrap thing="s20RogueUn"></bootstrap>
    
-    <eval phase="First" priority="10000">~ If not human get out now
+    <eval phase="First" priority="10000"><![CDATA[
+      ~ If not human get out now
       ~#hasrace[rHuman] + #hasrace[rElf] + #hasrace[rDwarf] +
       doneif (#hasrace[rHalfling] = 0)
 
-      Call GiveEthnic</eval>
+      Call GiveEthnic]]></eval>
     </thing>
 
   <!-- 22 Point Buy Option -->
