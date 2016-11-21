@@ -416,7 +416,7 @@
       Touch = hero.tagis[PackHelper.EquipTouch]
 
       ~ If not duel wielding with a touch attack weapon then get out!
-      doneif (Hands + Touch = 2)
+      doneif (Hands + Touch <> 2)
       
       ~ Make us act like we have two-weapon fighting
       foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
