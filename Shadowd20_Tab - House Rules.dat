@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+
+  <!-- List of all currently active house rules -->
+  <portal
+    id="xTable2"
+    style="Table">
+    <table_fixed
+      component="Simple"
+      showtemplate="xPick2"
+      showpicks="yes"
+      alwaysupdate="yes"
+      showsortset="Special">
+      <list><![CDATA[
+        Shadowd20.HouseRule
+        ]]></list>
+      </table_fixed>
+    <live><![CDATA[
+      source.pShadowd20
+      ]]></live>
+    </portal>
+
+  <!-- Empty message -->
+  <portal
+    id="xEmpty2"
+    style="lblDisable">
+    <label_literal
+      text="You have no house rules activated.">
+      </label_literal>
+    <live><![CDATA[
+      !Shadowd20.HouseRule
+      ]]></live>
+    </portal>
+
+  <!-- Template for showing a Simple house rule as a pick -->
+  <template
+    id="xPick2"
+    name="Special"
+    compset="Simple"
+    left="0"
+    top="0"
+    height="40"
+    marginhorz="5"
+    marginvert="1">
+
+    <portal
+      id="xName"
+      style="lblNormal">
+      <label_field
+        field="name">
+        </label_field>
+      </portal>
+
+    <portal
+      id="xSummary"
+      style="lblSummary">
+      <label_field
+        field="summary">
+        </label_field>
+      </portal>
+
+    <portal
+      id="xInfo"
+      style="actInfo">
+      <action
+        action="info"
+        buttontext="">
+        </action>
+      <mouseinfo mousepos="middle+above"><![CDATA[
+        var v_text as string
+        ~call sSpecInfo
+
+        ~ Set name as header and align left all following text
+        v_text = "{b}" & field[name].text & "{/b}\n\n{align left}"
+
+        ~ Append the description
+        if (field[descript].isempty <> 0) then
+          v_text &= "- no description -"
+        else
+          v_text &= field[descript].text
+        endif
+
+        var sourceinfo as string
+        call SourceInfo
+        v_text = splice(v_text, sourceinfo, "\n\n")
+        @text = v_text
+        ]]></mouseinfo>
+      </portal>
+
+    <position><![CDATA[
+      width = parent.width - (marginhorz * 2) - 2
+      doneif (issizing <> 0)
+
+      var margin as number
+      margin = 15
+
+      portal[xInfo].left = width - portal[xInfo].width
+      portal[xInfo].top = (height - portal[xInfo].height) / 2
+
+      portal[xName].width = portal[xName].textwidth
+      portal[xName].height = portal[xName].fontheight
+
+      portal[xSummary].width = portal[xSummary].textwidth
+      portal[xSummary].height = portal[xSummary].fontheight
+      portal[xSummary].left = 5
+      portal[xSummary].top = portal[xName].bottom + 3
+      if (portal[xSummary].right > portal[xInfo].left) then
+        portal[xSummary].width = portal[xInfo].left - portal[xSummary].left - 5
+      endif
+
+      ~ If we're disabled, switch fonts
+      var result as number
+      if (tagis[Helper.SpcDisable] + tagis[Helper.FtDisable] = 0) then
+        portal[xSummary].visible = 1
+      else
+        perform portal[xName].setstyle[lblDisable]
+        portal[xSummary].visible = 0
+      endif
+      ]]></position>
+    </template>
+
+  <!-- House Rules title template -->
+  <template
+    id="ttlHouseRu"
+    name="House Rules Title"
+    compset="Totals">
+
+    <portal
+      id="ttlHouseRu"
+      style="lblTitle">
+      <label_literal
+        text="Shadow d20 House Rules">
+        </label_literal>
+      </portal>
+
+    <position><![CDATA[
+      portal[ttlHouseRu].width = width
+      portal[ttlHouseRu].height = portal[ttlHouseRu].fontheight
+      height = portal[ttlHouseRu].height
+      ]]></position>
+    </template>
+
+  <!-- Automatic Level Bonus title template -->
+  <template
+    id="ttlAutoLvl"
+    name="Auto Level Title"
+    compset="Totals">
+
+    <portal
+      id="ttlAutoLvl"
+      style="lblTitle">
+      <label_literal
+        text="Automatic Level Bonuses">
+        </label_literal>
+      </portal>
+
+    <position><![CDATA[
+      portal[ttlAutoLvl].width = width
+      portal[ttlAutoLvl].height = portal[ttlAutoLvl].fontheight
+      height = portal[ttlAutoLvl].height
+      ]]></position>
+    </template>
+
+
+  <!-- Automatic Level Bonus Buttons-->
+  <template
+    id="S2AutoLvl"
+    name="Automatic Level Bonus"
+    compset="Mechanics">
+
+    <portal
+      id="cAtkInfo"
+      style="actWeapons">
+      <action
+        action="info"
+        buttontext="Attack">
+        </action>
+      <mouseinfo mousepos="middle+below"><![CDATA[
+        ~ actWeapons
+        ]]></mouseinfo>
+      </portal>
+    <portal
+      id="cSaveInfo"
+      style="actSpecial">
+      <action
+        action="info"
+        buttontext="Saves">
+        </action>
+      <mouseinfo mousepos="middle+below"><![CDATA[
+        ~ actArmor
+        @text = "{b} - Resistance bonus to saves - {/b}{br}{align left}"
+        var i as number
+        var level as number
+
+        for i = 1 to 20
+          level = i
+          @text &= "{br} Level " & level & ": " & signed(field[mechTrait].arrayvalue[i])
+
+          ~ If this was the last level we got to, change the color of the rest of the text
+          If (level = 20) Then
+            @text &= "{text a0a0a0}"
+          Endif
+        next
+        ]]></mouseinfo>
+      </portal>
+    <portal
+      id="NaturalAC"
+      style="actArmor">
+      <action
+        action="info"
+        buttontext="Natural">
+        </action>
+      <mouseinfo mousepos="middle+below"><![CDATA[
+        ~ actMagic
+        @text = "{b} - Natural Armor Bonus - {/b}{br}{align left}"
+        var i as number
+        var level as number
+
+        for i = 1 to 20
+          level = i
+          @text = @text & "{br} Level " & level & ": " & signed(field[mechFlaw].arrayvalue[i])
+
+          ~ If this was the last level we got to, change the color of the rest of the text
+          If (level = 20) Then
+            @text = @text & "{text a0a0a0}"
+          Endif
+        next
+        ]]></mouseinfo>
+      </portal>
+    <portal
+      id="DeflectAC"
+      style="actArmor">
+      <action
+        action="info"
+        buttontext="Deflect">
+        </action>
+      <mouseinfo mousepos="middle+below"><![CDATA[
+        ~ actMagic
+        @text = "{b} - Deflection Armor Bonus - {/b}{br}{align left}"
+        var i as number
+        var level as number
+
+        for i = 1 to 20
+          level = i
+          @text &= "{br} Level " & level & ": " & signed(field[mechDrawb].arrayvalue[i])
+
+          ~ If this was the last level we got to, change the color of the rest of the text
+          If (level = 20) Then
+            @text &= "{text a0a0a0}"
+          Endif
+        next
+        ]]></mouseinfo>
+      </portal>
+    <portal
+      id="cSpecInfo"
+      style="actSpecial">
+      <action
+        action="info"
+        buttontext="Special">
+        </action>
+      <mouseinfo mousepos="middle+below"><![CDATA[
+        ~ actSpecial
+        @text = "{b} - Automatic Level Bonus  - {/b}{br}{align left}"
+
+        @text &= "{br} {b}Saves:{/b} Resistance Bonus to saves."
+        @text &= "{br} {b}AC:{/b} Natural Armor Bonus to armor class."
+        @text &= "{br} {b}AC:{/b} Deflection Armor Bonus to armor class."
+        @text &= "{text a0a0a0}"
+        ]]></mouseinfo>
+      </portal>
+
+    <position><![CDATA[
+      var horzspace as number
+      var nextleft as number
+      ~ 15 pixiles makes for a nice space between the buttons
+      horzspace = 15
+      ~ Try and center the buttons
+      nextleft = 160      
+      
+      portal[cAtkInfo].visible = 0
+
+      ~ Move save info over if attacks is visible
+      If (portal[cAtkInfo].visible = 1) then
+        portal[cSaveInfo].left = portal[cAtkInfo].right + horzspace
+        nextleft = portal[cAtkInfo].right + horzspace
+      Endif
+
+      portal[cSaveInfo].left = nextleft
+      nextleft = portal[cSaveInfo].right + horzspace
+      portal[NaturalAC].left = nextleft
+      nextleft = portal[NaturalAC].right + horzspace
+      portal[DeflectAC].left = nextleft
+      nextleft = portal[DeflectAC].right + horzspace
+      portal[cSpecInfo].left = nextleft
+
+      width = portal[cSpecInfo].right
+      height = portal[cSpecInfo].height
+      ]]></position>
+    </template>
+
+  <!-- Auto Level Bonus Buttons -->
+  <layout
+    id="autoLevel">
+    <templateref template="S2AutoLvl" thing="mecS2ALvlB" ispick="yes"/>
+    <templateref template="ttlAutoLvl" thing="Totals" ispick="yes"/>
+    <position><![CDATA[
+      ~ "Automatic Level Bonus" source is off do not display!
+      If (hero.tagis[source.srcLvlBon] = 0) then
+        template[S2AutoLvl].visible = 0
+        template[ttlAutoLvl].visible = 0
+
+      ~..Display the automatic level bonus section and buttons
+      Else
+        template[ttlAutoLvl].width = width
+        template[S2AutoLvl].width = width
+        perform template[S2AutoLvl].render
+        perform template[ttlAutoLvl].render
+        template[ttlAutoLvl].height += 5
+        ~perform template[S2AutoLvl].centerhorz
+        template[S2AutoLvl].top = template[ttlAutoLvl].bottom
+      Endif
+
+      ~ Set our hight to be the hight of title and buttons
+      height = template[S2AutoLvl].height + template[ttlAutoLvl].height + 5
+      ]]></position>
+    </layout>
+
+  <!-- House Rules -->
+  <layout
+    id="houseRules">
+    <portalref portal="xTable2" taborder="10"/>
+    <portalref portal="xEmpty2"/>
+    <templateref template="ttlHouseRu" thing="Totals" ispick="yes"/>
+    <prechild>
+      template[ttlHouseRu].width = width
+      portal[xTable2].width = width
+      portal[xEmpty2].width = width
+      portal[xEmpty2].height = portal[xEmpty2].textheight
+      </prechild>
+    <postchild>      
+      portal[xTable2].top = template[ttlHouseRu].bottom + 10
+      portal[xTable2].height = height - portal[xTable2].top
+      portal[xEmpty2].top = portal[xTable2].top
+      </postchild>
+    </layout>
+
+
+  <panel
+    id="Shadowd20"
+    name="Shadow d20"
+    order="2201"
+    roles="create+evolve+goal">
+    <layoutref layout="houseRules"/>
+    <layoutref layout="autoLevel"/>
+    <position><![CDATA[
+      ~ Make sure we have a decent gap between tables
+      autogap = 10
+
+      if (hero.tagis[source.srcLvlBon] = 1) then
+        perform layout[autoLevel].render
+        perform layout[houseRules].render
+
+        layout[autoLevel].top = 3
+        layout[houseRules].top = layout[autoLevel].bottom + 10
+
+      else
+        perform layout[houseRules].render
+      endif      
+      ]]>
+      </position>          
+    </panel>
+
+  </document>

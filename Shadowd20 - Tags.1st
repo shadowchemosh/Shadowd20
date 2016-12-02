@@ -19,6 +19,7 @@
     <value id="TwoWep"      name="Shadow d20 Two-Weapon Fighting"/>
     <value id="DwfSubRace"  name="Dwarven Sub-Race"/>
     <value id="SkipDomain"  name="Dont User.NeedDomain tag Item"/>
+    <value id="HouseRule"   name="House Rule Simple Helper"/>
 
     <!-- PHB2 Druid Feral Archetype Tags -->
     <value id="FeralLevel"  name="Feral Extra Level"/>
