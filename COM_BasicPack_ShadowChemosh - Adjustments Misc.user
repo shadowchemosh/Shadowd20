@@ -1183,7 +1183,6 @@ Added new natural weapon adjustments:
       nDmg += sDmg
       ~ add to text string but add a + or - sign in front
       sText &= signed(nDmg) & "D]"
-      debug sText
       ~ Set the live name of the weapon to include this text
       field[pChosen].chosen.field[livename].text = field[pChosen].chosen.field[name].text & sText]]></eval>
     </thing>
@@ -2735,9 +2734,9 @@ call S2SetName]]></eval>
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
 
-      ~ Remove Gear Uses tag
+      ~ Add Gear Uses tag
       perform field[pChosen].chosen.assign[Helper.UsesQty]
-      ~ Remove Weapon Tracker tag
+      ~ Add Weapon Tracker tag
       perform field[pChosen].chosen.assign[User.Tracker]
 
       ~ Set tracker amount
@@ -2864,7 +2863,7 @@ call S2SetName]]></eval>
       ~ Remove Activation 1 tag
       perform field[pChosen].chosen.delete[User.Activation]]]></eval>
     </thing>
-  <thing id="pS2EqInPl4" name="Equipment, Add Activation" description="Select this adjustment to have one of your pieces of equipment no longer display on the &quot;{b}In-Play{/b}&quot; activation tab. This can be useful for higher level when you don&apos;t want/need Trail Rations, Sunrods, or Daggers cluttering up the display." compset="InPlay">
+  <thing id="pS2EqInPl4" name="Equipment, Add Activation" description="Select this adjustment to force one of your pieces of equipment to display a activation option on the &quot;{b}In-Play{/b}&quot; activation tab. This can be useful for allowing you to track when you are using a specific piece of gear." compset="InPlay">
     <fieldval field="pCandExpr" value="component.MyGear &amp; !(Helper.Static|thingid.mNatural)"/>
     <usesource source="srcS2Adjus"/>
     <tag group="Helper" tag="CoreCampOK"/>
@@ -2877,8 +2876,8 @@ call S2SetName]]></eval>
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
 
-      ~ Remove Activation 1 tag
-      perform field[pChosen].chosen.delete[User.Activation]]]></eval>
+      ~ Add Activation 1 tag
+      perform field[pChosen].chosen.assign[User.Activation]]]></eval>
     </thing>
   <thing id="pS2EqArmEn" name="Equipment, Armor Enhancement" description="Use this adjustment to increase/decrease the magical enhancement bonus of armor/shields. As this is an Enhancment bonus it does not &quot;stack&quot; with an existing enhancment bonus." compset="InPlay">
     <fieldval field="pUsePicks" value="1"/>
@@ -4503,7 +4502,10 @@ call S2SetName]]></eval>
       Endif]]></eval>
     </thing>
   <thing id="pS2RceSize" name="Race, Size Category" description="Select this adjustment to change your size category but unlike the adjustment &quot;Size Category&quot; this adjustment does NOT change your equipment size." compset="InPlay">
+    <usesource source="srcS2Adjus"/>
     <tag group="OthAdjCat" tag="Race"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="First" priority="20000"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
@@ -4547,6 +4549,7 @@ call S2SetName]]></eval>
     <tag group="Adjust2nd" tag="S2Custom"/>
     <tag group="OthAdjCat" tag="Equipment"/>
     <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PreLevel" priority="50000"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
@@ -4566,6 +4569,26 @@ call S2SetName]]></eval>
     <tag group="OthAdjCat" tag="Misc"/>
     <tag group="Adjustment" tag="S2Custom"/>
     <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~ If nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+      ~ If we're not in output mode, don't do anything
+      doneif (state.isoutput = 0)
+
+      perform field[pChosen].chosen.assign[Helper.ShowSpec]
+      perform field[pChosen].chosen.delete[Helper.SpecUp]]]></eval>
+    </thing>
+  <thing id="pS2SheetCB" name="Character Sheet: Custom Abilities" description="Select this adjustment to cause the single selected Custom Abilty (Rage Power, Warpriest Blessing, Alchmist Discovery, etc) to print to your character sheet. This is useful where some class abilities like a warpriest blessing does not print its details." compset="InPlay">
+    <fieldval field="pCandExpr" value="component.BaseCustSp"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="OthAdjCat" tag="Misc"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Helper" tag="CoreCampOK"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="Final" priority="50000"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
@@ -4626,6 +4649,7 @@ call S2SetName]]></eval>
     <tag group="Helper" tag="CoreCampOK"/>
     <tag group="Helper" tag="NoIncr"/>
     <tag group="OthAdjCat" tag="PFS"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="First" priority="1000"><![CDATA[
       ~ If we're not enabled, get out now
       doneif (field[pIsOn].value = 0)
@@ -4672,5 +4696,42 @@ call S2SetName]]></eval>
       perform field[pChosen].chosen.pushtags[SaveOver.?]]]></eval>
     <eval phase="PreLevel" priority="11000" index="2">~ Picks on Hero
       field[pUsePicks].value = 1</eval>
+    </thing>
+  <thing id="pS2RaceAbi" name="Race, Custom Ability" description="Use this adjustment to add a generic ability to your character. You will be able to set the abilities name and description text up to 100 characters. Use the dropdown selector to pick the ability type: Ex = Extraordinary; Sp = Spell-like; Su = Supernatural." compset="InPlay">
+    <fieldval field="pSource" value="Name"/>
+    <fieldval field="pDuration" value="Text"/>
+    <fieldval field="pCandExpr" value="component.SelectHelp &amp; Selection.AbilType"/>
+    <usesource source="srcS2Adjus"/>
+    <tag group="OthAdjCat" tag="Race"/>
+    <tag group="Adjustment" tag="S2Custom"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <bootstrap thing="pS2GenAbil"></bootstrap>
+    </thing>
+  <thing id="pS2GenAbil" name="Generic Ability" compset="GenericAb">
+    <usesource source="srcS2Adjus"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      ~ Note this component set will not be visable in the editor.
+    
+      ~ If we're not bootstrapped to something, get out now!
+      doneif (isroot = 0)
+      ~ If the root is not an adjustment, get out now!
+      doneif (root.tagis[component.BaseAdjust] = 0)
+
+      ~ Set the live name by pulling from the adjustments source
+      field[livename].text = root.field[pSource].text
+
+      ~ Set the custom description by pulling from the adjustments
+      ~ duration field.
+      field[CustDesc].text = root.field[pDuration].text
+
+      ~ If nothing chosen, get out now &
+      doneif (root.field[pChosen].ischosen = 0)
+
+      ~ Remove any current ability types
+      perform delete[AbilType.?]
+
+      ~ Pull our ability type tag from the one chosen
+      perform root.field[pChosen].chosen.pulltags[AbilType.?]]]></eval>
     </thing>
   </document>

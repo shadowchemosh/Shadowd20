@@ -873,10 +873,20 @@
     <tag group="abAction" tag="PUExpFocus"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="fPUWildTal" name="Wild Talent" description="Your mind wakes to a previously unrealized talent for psionics.{br}{br}{b}Benefit:{/b} Your latent power of psionics flares to life, conferring upon you the designation of a psionic character. As a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. You do not, however, gain the ability to manifest powers simply by virtue of having this feat." compset="Feat" summary="You are a psionic character and gain 2 power points." uniqueness="useronce">
+  <thing id="fPUWildTal" name="Wild Talent" description="Your mind wakes to a previously unrealized talent for psionics.\n\n{b}Benefit:{/b} Your latent power of psionics flares to life, conferring upon you the designation of a psionic character. As a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. You do not, however, gain the ability to manifest powers simply by virtue of having this feat.\n\n{b}Note:{/b} To get the power point information to print to a character sheet this feat will display on a printed character sheet a number/day value." compset="Feat" summary="You are a psionic character and gain 2 power points." uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Usage" tag="PUPowPoint" name="/Power Points"/>
+    <eval phase="Final" priority="50000" index="2"><![CDATA[
+      ~ If we're not in output mode, don't do anything
+      doneif (state.isoutput = 0)
+
+      ~ Without a manifester class HL will not print power point 
+      ~ information to the character sheet. So use this method
+      ~ to get some type of tracker on the sheet.
+      perform assign[User.Tracker]
+      field[trkMax].value += #resmax[resPowerPt]]]></eval>
     <eval phase="First" priority="2050"><![CDATA[
       ~ If we're disabled, do nothing
       doneif (tagis[Helper.FtDisable] <> 0)
@@ -2148,9 +2158,7 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
     <usesource source="pPsiUn"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <tag group="StandardDC" tag="aCHA"/>
-    <eval phase="Render" priority="99999"><![CDATA[
-      ~ Create nice wording that says "XXXXXXXs: 0 of 1"
-      field[cfgAdTxPw1].text = field[cfgTitlPw1].text & "s: " & field[cfgSpenPw1].value & " of " & field[cfgMaxPw1].value]]></eval>
+    <tag group="Helper" tag="Manifester"/>
     <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
       ~ If we have not selected anything then we are done
       doneif (field[cfgSpenPw1].value = 0)
@@ -2173,9 +2181,33 @@ validif (hero.tagcount[Hero.Manifester] >= 3)]]></validate>
 
       ~ add in the thing ids to not be shown
       field[cfgAllwPw1].text &= " & !(" & remove & ")"]]></eval>
+    <eval phase="Render" priority="99999"><![CDATA[
+      ~ Create nice wording that says "XXXXXXXs: 0 of 1"
+      field[cfgAdTxPw1].text = field[cfgTitlPw1].text & "s: " & field[cfgSpenPw1].value & " of " & field[cfgMaxPw1].value]]></eval>
+    <eval phase="PostAttr" priority="50000" index="3"><![CDATA[
+      ~ In addition we need the Manifester tag so that HL will
+      ~ Print Powers to a character sheet. This has be here or
+      ~ No dossier for powers option appears.
+      perform hero.assign[Hero.Manifester]
+
+      ~ If we're not in output mode, don't do anything
+      doneif (state.isoutput = 0)
+
+      ~ Now that we can activate powers we need to setup any class
+      ~ to be the class manifester. Only way to get the Psionic info
+      ~ to print to a character sheet
+      perform hero.findchild[BaseClHelp,"!Helper.Manifester"].setfocus
+      doneif (state.isfocus = 0)
+
+      ~ Class is a Manifester
+      perform focus.assign[Helper.Manifester]
+      ~ Caster level from Configurable
+      focus.field[cCasterLev].value += field[cfgCastLev].value
+      ~ Concentration bonus is Caster level + Attribute modifier
+      focus.field[cConcCheck].value += field[cfgSplAtt].value + field[cfgCastLev].value]]></eval>
+    <exprreq message="11+ Charisma required to manifest these powers."><![CDATA[#attrvalue[aCHA] >= 11]]></exprreq>
     <exprreq message="You have added too many powers."><![CDATA[altpick.field[cfgLeftPw1].value >= 0]]></exprreq>
     <exprreq message="You can add more powers still." iserror="no"><![CDATA[altpick.field[cfgLeftPw1].value <= 0]]></exprreq>
-    <exprreq message="11+ Charisma required to manifest these powers."><![CDATA[#attrvalue[aCHA] >= 11]]></exprreq>
     </thing>
   <thing id="cfgPUPsTal" name="Access Psionic Talent" compset="Configure" uniqueness="unique">
     <fieldval field="cfgAllwPw1" value="component.BasePower  &amp; sLevel.0"/>
