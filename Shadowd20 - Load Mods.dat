@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+<!-- 
+   Author: Tim Shadow
+  Created: December 1, 2016
+
+  This file allows for the silent loading of missing Sources or Things. Allowing us to deprecate outdated sources without causing any errors to be thrown to gamers when they open an .por file.
+-->
+
+  <loadmods>
+    <!-- Deprecate ALL Modern Sources as we don't need/use these in Shadow d20 -->
+    <silentsource source="pGRCMP23"/>
+    <silentsource source="GRCMP2tMP3"/>
+    <silentsource source="MPClassic"/>
+    <silentsource source="SHModPath"/>
+    <silentsource source="GRCMP2Fan"/>
+    <silentsource source="MPArcana"/>
+    <silentsource source="D20Arcana"/>
+    <silentsource source="MPArandeMd"/>
+    <silentsource source="MPAeSpelcf"/>
+    <silentsource source="GRCMP2MSF"/>
+    <silentsource source="GRCMP2ScF"/>
+    <silentsource source="MSRDFutur7"/>
+    <silentsource source="MSRDFutur8"/>
+    <silentsource source="GRCMP2MSR"/>
+    <silentsource source="GRCMP2MPL"/>
+    <silentsource source="MPIAPL4IAg"/>
+    <silentsource source="MPRGGAnac"/>
+    <silentsource source="GRCMP2RPO"/>
+    <silentsource source="MPRPGOBB"/>
+    <silentsource source="RPOBldBlde"/>
+    <silentsource source="pGRCMPOG"/>
+    <silentsource source="pGRCMP3p"/>
+    <silentsource source="MPScrEyeG"/>
+    <silentsource source="MPNMPModMg"/>
+
+    <!-- Deprecate Modern adjustments -->
+    <silentthing thing="pMPFamKick"/>
+    <silentthing thing="pMPClDmMdf"/>
+
+    <!-- Deprecate Modern mechanic -->
+    <silentbasis thing="mechMPFrAd"/>
+
+  </loadmods>
+
+</document>
