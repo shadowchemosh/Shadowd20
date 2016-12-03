@@ -6,6 +6,29 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.18 December 2, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Shadow d20 (ShadowChemosh) - Added a DM note to the "Heriloom Weapon" trait.</li>
+<li>Shadow d20 (ShadowChemosh) - Fixed Magus TWF with "Touch Attacks".</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in latest community Pack v1.5.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new Conferred Adjustment called "Magus: Spell Combat". When added will have a new In-Play option appear that lets you you set the penalty to attack and turn on/off Spell Combat. When on the correct Concentration bonus will be calculated, attack penalty applied if you set the counter, and will also correctly adjust the the Attack Values for a Weapon and the "Touch Attack" weapon when set as TWF on the Weapon tab.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - For concentration skills added the situational note for the the elven ART Arcane Focus. For concentration:magus skill added situational notes about Spell Combat.</li>
+<li>Warpriest Archetypes Unchained (ShadowChemosh) - Added a new "Sacred Fist Unchained" archetype for the Warpriest. This archetype uses the Unchained Monk Flurry of Blow rules instead of the normal chained monk FoB rules.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Implemented Request #72. Added new "Awaken (Vermin)" spell adjustment designed to allow the awakening of a vermin. This version of Awaken opens up the Int ability score and sets it to a value of 1. This is often requested because of the "Vermin Heart" feat. This is not allowed for PFS.</li>
+</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Created new 'Shadow d20' tab in HL to display all the current house rules in play for you character. In addition will have buttons/icons that will show the automatic level bonuses. iPad: This works on the ipad but does not look as nice.  That will get improved in future versions.</li>
+<li>(ShadowChemosh) - Use Load Mods file to totally remove/deprecate the "Modern" part of the community Pack out of Shadow d20.</li>
+</ul>
+
+
 <strong>v2.17 October 16, 2016</strong>
 
 <strong>Bug Fixes</strong>

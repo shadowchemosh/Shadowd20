@@ -15,7 +15,7 @@
   <!-- Shadow d20 Parent -->
   <source
     id="pShadowd20"
-    name="Shadow d20 Pathfinder (v2.17)"
+    name="Shadow d20 Pathfinder (v2.18)"
     selectable="no"
     parent="UserParent"
     sortorder="0"
