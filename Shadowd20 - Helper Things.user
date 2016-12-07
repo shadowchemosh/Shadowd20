@@ -144,6 +144,9 @@
     <usesource source="srcLvlBon"/>
     <tag group="Shadowd20" tag="HouseRule"/>
     <tag group="ProductId" tag="Shadowd20"/>
+    
+    <!-- Automatic Level Bonus simple thing -->
+    <bootstrap thing="S2AutoLvlB"></bootstrap>
     </thing>
 
   <!-- ======================================================================================= -->
