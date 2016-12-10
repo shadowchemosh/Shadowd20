@@ -517,6 +517,15 @@
     <eval phase="PreLevel" priority="11000" index="2"><![CDATA[
       ~ If we don't have Shadow d20 Two-Weapon Fighting get out now
       doneif (hero.tagis[Shadowd20.TwoWep] <> 1)
+ 
+      ~ Lower penalty down to 0 from -2
+      perform hero.assign[Hero.ImpBalance]
+      perform hero.assign[Hero.ImpBalance]   
+      
+      
+      ~ Lets not run the rest of this as the Hero.ImpBalance tag should take care of
+      ~ all the logic now.  no more foreach loops needed!
+      done
       ~remove the attack penalties (This allows for one-handed weapons in the off-hand)
       ~perform hero.assign[Hero.TwoWepSup]
 
@@ -748,13 +757,17 @@
 
       ~ Now set each weapon to display a total of 3 attacks
       foreach pick in hero from BaseWep
-        perform eachpick.assign[Helper.ExtraIter]
-        perform eachpick.assign[Helper.ExtraIter]
+        if (eachpick.tagexpr[fieldval:gIsEquip = 0 & fieldval:wIs2nd = 1] <> 0) then
+          ~ Do nothing for "off-hand" weapons
+        else
+          perform eachpick.assign[Helper.ExtraIter]
+          perform eachpick.assign[Helper.ExtraIter]
+          ~ Weapons like Daggers have a special tag to prevent additional
+          ~ attacks from displaying. With the unchained rules this does
+          ~ make sense. So display all three attacks.
+          perform eachpick.delete[Helper.SingleRAtt]
+        endif
         
-        ~ Weapons like Daggers have a special tag to prevent additional
-        ~ attacks from displaying. With the unchained rules this does
-        ~ make sense. So display all three attacks.
-        perform eachpick.delete[Helper.SingleRAtt]
       nexteach
       ]]></eval>
     </thing>
