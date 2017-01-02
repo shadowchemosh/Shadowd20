@@ -38,8 +38,8 @@
     <silentthing thing="pMPFamKick"/>
     <silentthing thing="pMPClDmMdf"/>
 
-    <!-- Deprecate Modern mechanic -->
-    <silentbasis thing="mechMPFrAd"/>
+    <!-- Deprecate Modern mechanic 
+    <silentbasis thing="mechMPFrAd"/> -->
 
   </loadmods>
 
