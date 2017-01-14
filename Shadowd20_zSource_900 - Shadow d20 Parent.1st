@@ -15,7 +15,7 @@
   <!-- Shadow d20 Parent -->
   <source
     id="pShadowd20"
-    name="Shadow d20 Pathfinder (v2.18)"
+    name="Shadow d20 Pathfinder (v2.19)"
     selectable="no"
     parent="UserParent"
     sortorder="0"
@@ -68,7 +68,7 @@
     parent="pShadowd20"
     sortorder="40"
     description="This is converted DnD 3.5 rules converted to pathfinder.">
-    </source> 
+    </source>
 
   <!-- Shadow d20 Depreciated Sources -->
   <source
@@ -79,5 +79,5 @@
     sortorder="50"
     description="These are no longer used but are left in for backwards compatibility.">
     </source>
-   
+
 </document>

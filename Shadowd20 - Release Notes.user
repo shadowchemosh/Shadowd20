@@ -6,6 +6,24 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.19 January 14, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Automatic Level Bonus - Fix automatic level bonus to correct apply to PCs again.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in latest community Pack v1.6</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Shadow d20 House Rules - Improved the script for lowering the TWF penalties to be WAY more efficient.</li>
+<li>Shadow d20 House Rules - Added additional logic to the "unchained action economy" to NOT have off-hand weapons display the additional UAE attacks.</li>
+</ul>
+
+
+
 <strong>v2.18 December 2, 2016</strong>
 
 <strong>Bug Fixes</strong>
@@ -457,7 +475,7 @@ version 1.67 - Released 12/26/2014
 -Fixed wayfinders to work with out needing Seeker of Secreats active.
 -Added "Deadeye Lore" spell adjustment.
 -Misc script fixes.
-    
+
 version 1.66 - Released 12/12/2014
 -Updated description on Elven Chain.
 -Druid now has access to Cure spells at the same levels as Cleric. You will need to actually add the spells manually. I didn't change the orginial spells. So to get Cure Moderate at level 2 you need to remove it at level 3 and add it at level 2.
@@ -631,7 +649,7 @@ version 1.48 - Released 11/9/2013
 -Fixed "Touch & Range Touch" weapons that broke in v8.0. I have reported the bug to LW.
 -Temp fix for "Eldritch Blast" that was broken in v8.0 it will display as a melee attack currently. I have reported the bug to LW.
 -Added "Mythic Tier Abilities" that lets you adjust the count of Mythic Ability Score Increases, Mythic Feats, Mythic Other Abilities, Mythic Path Abilities, and Mythic Spells.
--Added "Caster Level, Elemental Spells" 
+-Added "Caster Level, Elemental Spells"
 -Added "Spell DC, Specific Subschool" and "Caster Level, Subschool"
 -Added "- Custom Spell Weapon -"
 
