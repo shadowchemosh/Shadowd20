@@ -6,6 +6,22 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.20 January 27, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fix load issues with Pathfinder v13.9+</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in latest community Pack v1.7</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+
 <strong>v2.19 January 14, 2017</strong>
 
 <strong>Bug Fixes</strong>
