@@ -33,16 +33,16 @@
     <bootstrap thing="s20MythTxt"></bootstrap> <!-- Update Mythic Things with Shadow d20 house rule notes -->
     <bootstrap thing="s20UAETxt"></bootstrap>  <!-- Update Text for Unchained Action Economy -->
     <bootstrap thing="s20UnAcEc"></bootstrap>  <!-- Unchained Action Economy to force display three attacks -->
-    
+
     <!-- Removed this for now as its costing a HIGH amount of CPU and no one still takes
          any team work feats. -->
     <!-- <bootstrap thing="S20Teamwor"></bootstrap>  House rule note for Team Work feats  -->
 
     <!-- Spell Casting -->
     <bootstrap thing="s20CastTim"></bootstrap> <!-- 1 round spells are Full-Round spells -->
-    <bootstrap thing="s20SpelDmg"></bootstrap> <!-- Give Spells bonus damage --> 
-    <bootstrap thing="s20DblSpls"></bootstrap> <!-- Double 9 level arcane spells per day --> 
-    <bootstrap thing="s20DblSFDC"></bootstrap> <!-- Double DC bonus for Spell Focus and Greater Spell Focus --> 
+    <bootstrap thing="s20SpelDmg"></bootstrap> <!-- Give Spells bonus damage -->
+    <bootstrap thing="s20DblSpls"></bootstrap> <!-- Double 9 level arcane spells per day -->
+    <bootstrap thing="s20DblSFDC"></bootstrap> <!-- Double DC bonus for Spell Focus and Greater Spell Focus -->
 
     <!-- Rogue Class Changes -->
     <bootstrap thing="s20Rogue"></bootstrap>   <!-- Rogue class gets Skill Tricks. Unchained does NOT. -->
@@ -53,7 +53,7 @@
 
     <!-- Archetype Class Changes for the Unchained Rogue -->
     <bootstrap thing="s20RogueUn"></bootstrap>
-   
+
     <!-- Test Notes Only simple Things -->
     <bootstrap thing="S2CureSpls"></bootstrap>
 
@@ -144,7 +144,7 @@
     <usesource source="srcLvlBon"/>
     <tag group="Shadowd20" tag="HouseRule"/>
     <tag group="ProductId" tag="Shadowd20"/>
-    
+
     <!-- Automatic Level Bonus simple thing -->
     <bootstrap thing="S2AutoLvlB"></bootstrap>
     </thing>
@@ -152,10 +152,10 @@
   <!-- ======================================================================================= -->
   <!--              Automatic Level Bonus                                                      -->
   <!-- ======================================================================================= -->
-  <thing id="S2AutoLvlB" name="Shadow d20 Automatic Level Bonus" 
-    description="In a attempt to remove the need of some of the 'big six' magic items an automatic bonus to your saves and AC will be given. View the automatic level bonus section of this tab for details of when you get the bonuses." 
+  <thing id="S2AutoLvlB" name="Shadow d20 Automatic Level Bonus"
+    description="In a attempt to remove the need of some of the 'big six' magic items an automatic bonus to your saves and AC will be given. View the automatic level bonus section of this tab for details of when you get the bonuses."
     summary="Automatic level bonus to your characters saves and AC."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcLvlBon"/>
     <tag group="Shadowd20" tag="HouseRule"/>
@@ -166,7 +166,7 @@
       var svBon as number
       var naturalBon as number
       var deflBon as number
-      
+
       ~ Get total level so we can set the arrays
       level = #totallevelcount[]
 
@@ -174,17 +174,17 @@
       svBon = root.field[mechTrait].arrayvalue[level]
       naturalBon = root.field[mechFlaw].arrayvalue[level]
       deflBon = root.field[mechDrawb].arrayvalue[level]
-      
+
       ~ If we have a save bonus apply
       if (svBon <> 0) then
         #applybonus[svResist,hero.child[svAll],svBon]
       endif
-      
+
       ~ If we have a natural armor bonus apply
       if (naturalBon <> 0) then
         #enhancementbonus[hero.child[mNatural],naturalBon]
       endif
-        
+
       ~ If we have a deflection bonus apply
       if (deflBon <> 0) then
         #applybonus[tACDeflect,hero.child[ArmorClass],deflBon]
@@ -195,16 +195,16 @@
   <!-- ======================================================================================= -->
   <!-- Let players type in Unique ID's for items.                                              -->
   <!-- ======================================================================================= -->
-  <thing id="s20Potions" name="Potions, Scrolls, and Wands Require ID" 
-    description="To help track magic potions, scrolls and wands in our games we require that a player enter a unique id. A small text box will display next to these items on the 'Magic' tab." 
+  <thing id="s20Potions" name="Potions, Scrolls, and Wands Require ID"
+    description="To help track magic potions, scrolls and wands in our games we require that a player enter a unique id. A small text box will display next to these items on the 'Magic' tab."
     summary="Allow entering a ID for potions, scrolls and wands."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcPotID"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="First"><![CDATA[
       ~ If we are a NPC then don't require ID for magic items
-      doneif (hero.tagis[CharType.typNPC] = 1) 
+      doneif (hero.tagis[CharType.typNPC] = 1)
 
       ~ We are active so have us displayed on the Shadow d20 tab
       perform assign[Shadowd20.HouseRule]
@@ -214,16 +214,16 @@
       nexteach]]></eval>
     </thing>
 
-  <thing id="s20Wondrou" name="Magic Items Require ID" 
-    description="To help track magic items in our games we require that a player enter a unique id. A small text box will display next to all magic items on the 'Magic' tab." 
+  <thing id="s20Wondrou" name="Magic Items Require ID"
+    description="To help track magic items in our games we require that a player enter a unique id. A small text box will display next to all magic items on the 'Magic' tab."
     summary="Allow entering a unique ID for magic items."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Final"><![CDATA[
       ~ If we are a NPC then don't require ID for magic items
-      doneif (hero.tagis[CharType.typNPC] = 1) 
+      doneif (hero.tagis[CharType.typNPC] = 1)
 
       ~ We are active so have us displayed on the Shadow d20 tab
       perform assign[Shadowd20.HouseRule]
@@ -237,10 +237,10 @@
   <!-- ======================================================================================= -->
   <!-- Rogue Class Fixes                                                                       -->
   <!-- ======================================================================================= -->
-  <thing id="s20Rogue" name="Rogue Skill Tricks" 
-    description="To try and help with how bad a normal rogue is let them have special 'Skill Tricks' starting at level 1." 
+  <thing id="s20Rogue" name="Rogue Skill Tricks"
+    description="To try and help with how bad a normal rogue is let them have special 'Skill Tricks' starting at level 1."
     summary="Rogue's gain access to Skill Tricks now."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -263,10 +263,10 @@
       hero.child[cHelpRog].field[cSpec2ndSi].text = "Skill Trick"]]></eval>
     </thing>
 
-  <thing id="s20Rogue2" name="Rogue Talent Changes" 
-    description="To try and help with Rogue Talents being very poor all the one time a day rogue talents are being changed to once per encounter. This means rogue talents can be used more often.\n\nFinal say of a encounter definition is left in the hands of the DM. It takes 1 minute after the encounter to recover encounter based talents." 
+  <thing id="s20Rogue2" name="Rogue Talent Changes"
+    description="To try and help with Rogue Talents being very poor all the one time a day rogue talents are being changed to once per encounter. This means rogue talents can be used more often.\n\nFinal say of a encounter definition is left in the hands of the DM. It takes 1 minute after the encounter to recover encounter based talents."
     summary="1/day rogue talents are now 1/encounter."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="Shadowd20" tag="HouseRule"/>
@@ -276,7 +276,7 @@
       var sText   as string
       var sChange as string
       var searchexpr as string
-      
+
       searchexpr = "Usage.Day & abCategory.RogTal?"
 
       sChange = "{b}Shadow d20:{/b} Rogue talents usable 1/day are changed to 1/encounter. Final say of a encounter definition is left in the hands of the DM. It takes 1 minute after the encounter to recover this talent."
@@ -285,26 +285,26 @@
         ~ Build text string
         sText = eachthing.field[descript].text & "{br}{br}" & sChange
         ~ Set message
-        perform eachthing.amendthing[description,sText]  
+        perform eachthing.amendthing[description,sText]
       nexteach
 
       foreach pick in hero from BaseCustSp where searchexpr
         ~ Change usage tag to encounter
         perform eachpick.delete[Usage.?]
         perform eachpick.assign[Usage.S2Encount]
-      nexteach          
+      nexteach
       ]]></eval>
     </thing>
 
-  <thing id="s20RogueUn" 
-    name="Shadow d20 Rogue Unchained" 
-    description="Auto apply specific archetypes to the Unchained Rogue class." 
-    compset="Simple" 
+  <thing id="s20RogueUn"
+    name="Shadow d20 Rogue Unchained"
+    description="Auto apply specific archetypes to the Unchained Rogue class."
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="arS2URog01">
-      <containerreq phase="GlobalTest" priority="10050"><![CDATA[Shadowd20.arS2URog01]]></containerreq>    
+      <containerreq phase="GlobalTest" priority="10050"><![CDATA[Shadowd20.arS2URog01]]></containerreq>
     </bootstrap>
     <eval phase="GlobalTest" priority="10000"><![CDATA[
       ~ If unchained Rogue class found then apply archetype
@@ -312,7 +312,7 @@
 
       ~ Set archetype tag onto hero
       perform hero.assign[Shadowd20.arS2URog01]
-      
+
       ~ Let us display in the Shadow d20 tab
       perform assign[Shadowd20.HouseRule]
       ]]></eval>
@@ -322,8 +322,8 @@
   <!-- ======================================================================================= -->
   <!-- Some classes need more skill points                                                     -->
   <!-- ======================================================================================= -->
-  <thing id="s20SkillPo" name="Class Bonus Skill Points" 
-    description="Some classes in Pathfinder simply need more skill points. Currently the following classes are getting increased number of skill points.\n\n-{b}Clerics{/b} increased by 2 per level." 
+  <thing id="s20SkillPo" name="Class Bonus Skill Points"
+    description="Some classes in Pathfinder simply need more skill points. Currently the following classes are getting increased number of skill points.\n\n-{b}Clerics{/b} increased by 2 per level."
     summary="Increase some classes skill points per level."
     compset="Simple">
     <usesource source="pShadowd20"/>
@@ -341,9 +341,9 @@
   <!-- ============================================================================================= -->
   <!-- Two-Handed Weapons                                                                            -->
   <!-- ============================================================================================= -->
-  <thing id="S2TwoHand" 
-    name="Two-Handed Weapons" 
-    description="Low level damage output for two-handed weapons is too high. In our games 2HW weapons will This adjusts damage back down to 1x Str and you will not receive an additional +50% damage when using Power Attack. This changes at level 6+ to normal pathfinder rules." 
+  <thing id="S2TwoHand"
+    name="Two-Handed Weapons"
+    description="Low level damage output for two-handed weapons is too high. In our games 2HW weapons will This adjusts damage back down to 1x Str and you will not receive an additional +50% damage when using Power Attack. This changes at level 6+ to normal pathfinder rules."
     summary="2HW get 1x Str dmg and no bonus Power Attack dmg."
     compset="Simple"
     uniqueness="useronce">
@@ -417,10 +417,10 @@
   <!-- ======================================================================================= -->
   <!-- Action Points                                                                           -->
   <!-- ======================================================================================= -->
-  <thing id="s20ActPoin" name="Action Points" 
-    description="This sets the action points for NPCs to be zero." 
+  <thing id="s20ActPoin" name="Action Points"
+    description="This sets the action points for NPCs to be zero."
     summary="1/day rogue talents are now 1/encounter."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -441,10 +441,10 @@
     </thing>
 
 
-  <thing id="s20SpellCo" name="Magus Spell-Combat" 
-    description="Correctly have HL calculate the TWF values of a Magus with a weapon and &quot;Touch Attack&quot; weapon when they are equipped in a two-weapon fighting mode." 
+  <thing id="s20SpellCo" name="Magus Spell-Combat"
+    description="Correctly have HL calculate the TWF values of a Magus with a weapon and &quot;Touch Attack&quot; weapon when they are equipped in a two-weapon fighting mode."
     summary="Show correct TWF values when using a touch attack weapon."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -455,7 +455,10 @@
       doneif (hero.child[cMagSplCom].tagis[Helper.SpcReplace] <> 0)
       ~ Make sure we don't have two-weapon fighting already
       doneif (hero.tagis[Hero.TwoWep] = 1)
-
+      ~ If the "Magus: Spell Combat" adjustment is in use then
+      ~ we don't want to double the bonus so get out now!
+      doneif (hero.tagis[Ability.abS2SplCom] = 1)
+debug "RUN"
       ~ Display on Shadow d20 tab
       perform assign[Shadowd20.HouseRule]
 
@@ -471,7 +474,7 @@
 
       ~ If not duel wielding with a touch attack weapon then get out!
       doneif (Hands + Touch <> 2)
-      
+
       ~ Make us act like we have two-weapon fighting
       foreach pick in hero from BaseWep where "Hero.MainHand | Hero.OffHand"
          If (eachpick.tagis[Hero.MainHand] <> 0) Then
@@ -486,10 +489,10 @@
     </thing>
 
 
-  <thing id="s20TWF" name="Two-Weapon Fighting Feat" 
-    description="Two-weapon fighting feat now offsets the penalty down to zero instead of -2 but you lose this bonus if you take the Improved Two-Weapon fighting feat or you two-weapon fight a two-handed weapon.\n\nThis rule change tries to make TWF more attractive to players instead of just using a two-handed weapon." 
+  <thing id="s20TWF" name="Two-Weapon Fighting Feat"
+    description="Two-weapon fighting feat now offsets the penalty down to zero instead of -2 but you lose this bonus if you take the Improved Two-Weapon fighting feat or you two-weapon fight a two-handed weapon.\n\nThis rule change tries to make TWF more attractive to players instead of just using a two-handed weapon."
     summary="Show correct TWF values when using a touch attack weapon."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcTWF"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -511,18 +514,18 @@
       perform hero.assign[Shadowd20.TwoWep]
 
       ~ Display on Shadow d20 tab
-      perform assign[Shadowd20.HouseRule]      
+      perform assign[Shadowd20.HouseRule]
       ]]></eval>
 
     <eval phase="PreLevel" priority="11000" index="2"><![CDATA[
       ~ If we don't have Shadow d20 Two-Weapon Fighting get out now
       doneif (hero.tagis[Shadowd20.TwoWep] <> 1)
- 
+
       ~ Lower penalty down to 0 from -2
       perform hero.assign[Hero.ImpBalance]
-      perform hero.assign[Hero.ImpBalance]   
-      
-      
+      perform hero.assign[Hero.ImpBalance]
+
+
       ~ Lets not run the rest of this as the Hero.ImpBalance tag should take care of
       ~ all the logic now.  no more foreach loops needed!
       done
@@ -541,7 +544,7 @@
           If (eachpick.tagis[wClass.TwoHanded] <> 1) Then
              Hands += 1
           Endif
-        Endif 
+        Endif
       nexteach
 
       ~ Only give a bonus if we have a weapon in main and off hand
@@ -556,7 +559,7 @@
       ~ Loop through all double weapons
       foreach pick in hero from BaseWep where "Hero.MainHand & Hero.OffHand & wCategory.Double"
          ~ Only if in Double weapon mode should we give the bonus
-         if (eachpick.field[wIsDouble].value <> 0) Then     
+         if (eachpick.field[wIsDouble].value <> 0) Then
             eachpick.field[wAttMelee].value += Bonus
          Endif
       nexteach
@@ -567,10 +570,10 @@
   <!-- ======================================================================================= -->
   <!-- SPELL CHANGES                                                                           -->
   <!-- ======================================================================================= -->
-  <thing id="s20CastTim" name="Cast Times" 
-    description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before." 
+  <thing id="s20CastTim" name="Cast Times"
+    description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before."
     summary="1 round spells are now 1 Full-Round action instead."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcNo1Rnd"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -589,10 +592,10 @@
       ]]></eval>
     </thing>
 
-  <thing id="s20SpelDmg" name="Spell Bonus Damage" 
-    description="All hit point dealing spells and spell-like abilities now gain a damage bonus equal to your caster level (CL). This bonus only applies once to a spell, not once per missile or ray, and cannot be split between multiple missiles or rays. This bonus damage is not increased by Empower Spell or similar effects. This damage is of the same type as the spell." 
-    summary="Hit Point damaging Spells and Sp get your CL as a damage bonus." 
-    compset="Simple" 
+  <thing id="s20SpelDmg" name="Spell Bonus Damage"
+    description="All hit point dealing spells and spell-like abilities now gain a damage bonus equal to your caster level (CL). This bonus only applies once to a spell, not once per missile or ray, and cannot be split between multiple missiles or rays. This bonus damage is not increased by Empower Spell or similar effects. This damage is of the same type as the spell."
+    summary="Hit Point damaging Spells and Sp get your CL as a damage bonus."
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -627,7 +630,7 @@
           ~ loop through all Class Specials where we have the correct tags
           foreach pick in hero from BaseClSpec where sTag
              ~ Increase damage by the CL
-             eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell-like ability does hit point damage it gains a bonus equal to your caster level (" & signed(nCL) & ")."  
+             eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell-like ability does hit point damage it gains a bonus equal to your caster level (" & signed(nCL) & ")."
           nexteach
           ~ increase count
           iX += 1
@@ -635,28 +638,28 @@
       sName &= ")"
       ~ Update live name of the Special Ability
       hero.childfound[s2InfoSpDm].field[livename].text = hero.childfound[s2InfoSpDm].field[name].text & sName
-      
+
       ~ Find all touch attack weapons and show Extra Damage
       foreach pick in hero from BaseWep where "PackHelper.Touch"
          #extradamage[eachpick,sName,field[name].text]
       nexteach]]></eval>
     <eval phase="Final" priority="50000" index="2"><![CDATA[
       ~ Finished if not a Arcane or Divine caster
-      doneif (hero.tagis[Hero.Caster] <> 1)    
-      
+      doneif (hero.tagis[Hero.Caster] <> 1)
+
       ~ Give damage CL text on to all spells on character
       foreach pick in hero from BaseSpell
-        eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell does hit point damage it gains a bonus equal to your caster level (" & signed(eachpick.field[sCL].value) & ")."  
+        eachpick.field[DescAppend].text &= "{b}Shadow d20:{/b} If this spell does hit point damage it gains a bonus equal to your caster level (" & signed(eachpick.field[sCL].value) & ")."
       nexteach]]></eval>
     </thing>
 
   <!-- ==================================================================================== -->
   <!-- Double All Full arcane casters spells                                             -->
   <!-- ==================================================================================== -->
-  <thing id="s20DblSpls" name="Arcane Casters Spells" 
-    description="Arcane spell casters where falling too far behind other characters when it came to spells per day. This houserule doubles all the spells per day that a Wizard, Sorcerer or Arcanist can cast in our games." 
+  <thing id="s20DblSpls" name="Arcane Casters Spells"
+    description="Arcane spell casters where falling too far behind other characters when it came to spells per day. This houserule doubles all the spells per day that a Wizard, Sorcerer or Arcanist can cast in our games."
     summary="Spells per day have been doubled."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -666,7 +669,7 @@
       var spelllevel as number
       var level as number
 
-      SearchExpr = "thingid.cHelpWiz|thingid.cHelpSor|thingid.cHelpArc"     
+      SearchExpr = "thingid.cHelpWiz|thingid.cHelpSor|thingid.cHelpArc"
       perform hero.findchild[BaseClHelp,SearchExpr].setfocus
       ~ Only show us if we are a Wizard, Sorcerer, or Arcanist
       doneif (state.isfocus = 0)
@@ -689,12 +692,12 @@
       var SearchExpr as string
       var spelllevel as number
       var level as number
-      
-      SearchExpr = "thingid.cHelpWiz|thingid.cHelpSor|thingid.cHelpArc"     
+
+      SearchExpr = "thingid.cHelpWiz|thingid.cHelpSor|thingid.cHelpArc"
       perform hero.findchild[BaseClHelp,SearchExpr].setfocus
       ~ Only show us if we are a Wizard, Sorcerer, or Arcanist
       doneif (state.isfocus = 0)
-      
+
       ~ Display on Shadow d20 tab
       perform assign[Shadowd20.HouseRule]
 
@@ -711,10 +714,10 @@
   <!-- ==================================================================================== -->
   <!-- Double Spell Focus and Greater Spell Focus DC Bonus                                  -->
   <!-- ==================================================================================== -->
-  <thing id="s20DblSFDC" name="Spell Focus Feats" 
-    description="Double the DC bonus for Spell Focus and Greater Spell Focus feats. We feel that +1 and +2 bonus is way too low of a bonus for our games sense we tend to play with very low point by for ability scores." 
+  <thing id="s20DblSFDC" name="Spell Focus Feats"
+    description="Double the DC bonus for Spell Focus and Greater Spell Focus feats. We feel that +1 and +2 bonus is way too low of a bonus for our games sense we tend to play with very low point by for ability scores."
     summary="Double the DC bonus for Spell Focus and Greater Spell Focus feats."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcSpelDmg"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -733,7 +736,7 @@
         ~ If we have Greater Spell Focus then give an addtional one
         if (eachpick.tagis[Broadcast.SpellGrFoc] = 1) then
           eachpick.field[schDC].value += 1
-        endif          
+        endif
       nexteach
       ]]></eval>
     </thing>
@@ -741,10 +744,10 @@
   <!-- ==================================================================================== -->
   <!-- Unchained Action Economy to display just three attacks                               -->
   <!-- ==================================================================================== -->
-  <thing id="s20UnAcEc" name="Unchained Action Economy" 
-    description="Unchained Action Economy allows for three attacks at level if you use all three of your Acts. This helper simply forces HL to always show three attacks for all weapons starting from level 1. This makes things easier as you won't have to try and calculate the values during the game." 
+  <thing id="s20UnAcEc" name="Unchained Action Economy"
+    description="Unchained Action Economy allows for three attacks at level if you use all three of your Acts. This helper simply forces HL to always show three attacks for all weapons starting from level 1. This makes things easier as you won't have to try and calculate the values during the game."
     summary="All weapons display 3 attacks."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="srcUnAcEc"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -767,7 +770,7 @@
           ~ make sense. So display all three attacks.
           perform eachpick.delete[Helper.SingleRAtt]
         endif
-        
+
       nexteach
       ]]></eval>
     </thing>
@@ -775,14 +778,14 @@
   <!-- ==================================================================================== -->
   <!-- Shadow d20 misc text changes                                                         -->
   <!-- ==================================================================================== -->
-  <thing id="s20MiscTxt" name="Shadow d20 Misc Text Changes" 
-    description="This Thing sets the text desc on Things with house rules text." 
+  <thing id="s20MiscTxt" name="Shadow d20 Misc Text Changes"
+    description="This Thing sets the text desc on Things with house rules text."
     compset="Simple">
     <usesource source="s20PFCamp"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <eval phase="Render" priority="200"><![CDATA[
       ~ Add extra text to the Scimitar
-      #appenddesc[iReturning,"{b}Shadow d20:{/b} Returning item properity is changed to cause the weapon to return immediately to your hand after being thrown. This means you can throw the same weapon multiple times in a single round if your base attack bonus is high enough."]    
+      #appenddesc[iReturning,"{b}Shadow d20:{/b} Returning item properity is changed to cause the weapon to return immediately to your hand after being thrown. This means you can throw the same weapon multiple times in a single round if your base attack bonus is high enough."]
 
       ~ This has to be added this way as they are doing strange things
       ~ with this items Desc in the "totals" component.
@@ -812,7 +815,7 @@
 
       ~ Change feat text
       foreach thing in BaseFeat where "thingid.fElepStomp|thingid.fHeroicRec"
-        ~ Elephant Stomp 
+        ~ Elephant Stomp
         If (eachthing.tagcountstr["thingid.fElepStomp"] = 1) Then
           perform eachthing.amendthing[description,"{b}Prerequisites:{/b} Str 13, Power Attack, Improved Overrun, base attack bonus +1.\n\n{b}Benefit:{/b} When you overrun an opponent and your maneuver check exceeds your opponent&#146;s CMD by 5 or more you can make one attack with an unarmed strike or a natural weapon against that opponent as a swift action.\n\n{b}Normal:{/b} When your overrun maneuver check exceeds your opponent's CMD by 5 or more, you move through the target's space and she is knocked prone.{br}{br}{B}Shadow d20:{/b} Changed wording to try and make this feat usuable."]
         Endif
@@ -840,7 +843,7 @@
         sText = eachthing.field[descript].text & "{br}{br}{b}Shadow d20:{/b} Casting spells can be done with all types of shields. This requires no extra action and does not cause you to lose your shield bonus for the round."
         ~ Set message
         perform eachthing.amendthing[description,sText]
-      nexteach            
+      nexteach
       ]]></eval>
     </thing>
 
@@ -848,8 +851,8 @@
   <!-- ==================================================================================== -->
   <!-- Shadow d20 Unchained Action Economy text changes                                     -->
   <!-- ==================================================================================== -->
-  <thing id="s20UAETxt" name="Shadow d20 Unchained Action Economy Text Changes" 
-    description="This Thing sets the text desc on Things with house rules text." 
+  <thing id="s20UAETxt" name="Shadow d20 Unchained Action Economy Text Changes"
+    description="This Thing sets the text desc on Things with house rules text."
     compset="Simple">
     <usesource source="PURevActi"/>
     <tag group="ProductId" tag="Shadowd20"/>
@@ -872,7 +875,7 @@
       #appenddesc[xChannel,"{b}Shadow d20 UAE [Channel Energy (1 Act)]:{/b} 1 Action to use NOT 2 but you still can only use this ability once per round. Unless you take the feat Quick Channel which allows you to use Channel Energy twice per round."]
 
       ~ Warlock Eldritch Blast
-      #appenddesc[cWitS2ElBl,"{b}Shadow d20 UAE [Warlock Eldritch Blast (Variable)]:{/b} Standard Eldritch Blast is 1 act but by adding any Hex that alters the Eldritch Blast the action type is changed to a complex action and costs 2 acts."]  
+      #appenddesc[cWitS2ElBl,"{b}Shadow d20 UAE [Warlock Eldritch Blast (Variable)]:{/b} Standard Eldritch Blast is 1 act but by adding any Hex that alters the Eldritch Blast the action type is changed to a complex action and costs 2 acts."]
 
       ~ Pounce
       #appenddesc[raPounce,"{b}Shadow d20 UAE [Pounce (3 Acts)]:{/b} A creature with this special attack can move up to double its base movement speed by taking a -2 AC penalty and at the end of its movement it can make all its natural attacks vs a single target."]
@@ -895,10 +898,10 @@
       ]]></eval>
     </thing>
 
-  <thing id="s20NoXP" name="No XP" 
-    description="In our games we don't use XP anymore. Its much better to have characters advance when the 'story' says its a good time to level instead of when the players have killed enough monsters." 
+  <thing id="s20NoXP" name="No XP"
+    description="In our games we don't use XP anymore. Its much better to have characters advance when the 'story' says its a good time to level instead of when the players have killed enough monsters."
     summary="We don't track XP in our games."
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="Shadowd20" tag="HouseRule"/>
@@ -911,10 +914,10 @@
   <!-- ======================================================================================= -->
   <!-- Text Only Notes                                                                         -->
   <!-- ======================================================================================= -->
-  <thing id="S2CureSpls" name="Healing Magic" 
-    description="In our games we have always allowed maximized healing from all non-magic items. This means if the spell or channel energy comes from your class abilities it is restores max hit points outside of combat or in non-stress areas.\n\nThis allows the game to keep moving forward more often and making the players rest less often. We find this an improvement to the game." 
+  <thing id="S2CureSpls" name="Healing Magic"
+    description="In our games we have always allowed maximized healing from all non-magic items. This means if the spell or channel energy comes from your class abilities it is restores max hit points outside of combat or in non-stress areas.\n\nThis allows the game to keep moving forward more often and making the players rest less often. We find this an improvement to the game."
     summary="Non-magic item healing outside of combat is Maximized!"
-    compset="Simple" 
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="Shadowd20" tag="HouseRule"/>
@@ -927,10 +930,10 @@
   <!-- ======================================================================================= -->
   <!-- Fixes for teamwork feats                                                                -->
   <!-- ======================================================================================= -->
-  <thing id="S20Teamwor" 
-    name="Shadow d20 Teamwork Feats" 
-    description="Add extra house rules text to all teamwork feats. Most of the teamwork feats we are allowing them to be used within 30ft of each other." 
-    compset="Simple" 
+  <thing id="S20Teamwor"
+    name="Shadow d20 Teamwork Feats"
+    description="Add extra house rules text to all teamwork feats. Most of the teamwork feats we are allowing them to be used within 30ft of each other."
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
     <tag group="Shadowd20" tag="HouseRule"/>
@@ -948,29 +951,29 @@
         If (eachthing.tagsearch["thingid.fAmpRage|thingid.fDuckCover|thingid.fShakeIt"] <> 0) Then
           sText = eachthing.field[descript].text & "{br}{br}" & sTxt10
         ~.. otherwise assume we need the 30ft text
-        Else 
+        Else
           sText = eachthing.field[descript].text & "{br}{br}" & sTxt30
         Endif
         ~ Set message
-        perform eachthing.amendthing[description,sText]  
+        perform eachthing.amendthing[description,sText]
       nexteach]]></eval>
     </thing>
 
-  <thing id="s20Tracker" name="Shadow d20 Tracker Reset to Max" 
-    description="Set all trackers and action points to reset to Max instead of 0. This way a wand will be 50/50 instead of 50/50." 
-    compset="Simple" 
+  <thing id="s20Tracker" name="Shadow d20 Tracker Reset to Max"
+    description="Set all trackers and action points to reset to Max instead of 0. This way a wand will be 50/50 instead of 50/50."
+    compset="Simple"
     uniqueness="useronce">
     <usesource source="s20PFCamp"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[      
+    <eval phase="PreLevel" priority="10000"><![CDATA[
       foreach pick in hero from Tracker where "User.Tracker|thingid.hActionPts"
         perform eachpick.assign[Helper.ResetMax]
       nexteach]]></eval>
-    </thing>    
+    </thing>
 
   <!-- ==================================================================================== -->
   <!-- Abilities to print to a character sheet.                                             -->
   <!-- ==================================================================================== -->
-  <thing id="s2Info1Rou" name="Shadow d20 Cast Time" 
+  <thing id="s2Info1Rou" name="Shadow d20 Cast Time"
     description="All 1 round casting time spells have been adjusted down to 1 Full-Round action instead. In play 1 round spells are too big of a nerf to spellcasters. Please note that the casting time will only be changed AFTER you add the spell to your character not before."
     summary="1 round casting time spells are now 1 Full-Round action instead."
     compset="Ability">
@@ -984,8 +987,8 @@
       Endif]]></eval>
     </thing>
 
-  <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage" 
-    description="All hit point dealing spells and spell-like abilities now gain a damage bonus equal to your caster level (CL). This bonus only applies once to a spell, not once per missile or ray, and cannot be split between multiple missiles or rays. This bonus damage is not increased by Empower Spell or similar effects. This damage is of the same type as the spell." 
+  <thing id="s2InfoSpDm" name="Shadow d20 Spell Bonus Damage"
+    description="All hit point dealing spells and spell-like abilities now gain a damage bonus equal to your caster level (CL). This bonus only applies once to a spell, not once per missile or ray, and cannot be split between multiple missiles or rays. This bonus damage is not increased by Empower Spell or similar effects. This damage is of the same type as the spell."
     summary="Hit Point damaging Spells and Sp get your CL as a damage bonus."
     compset="Ability">
     <usesource source="srcSpelDmg"/>
@@ -999,9 +1002,9 @@
       perform assign[Helper.ShowSpec]</eval>
     </thing>
 
-  <thing id="s2InfoDbSp" 
-    name="Shadow d20 Double Spells" 
-    description="The number of spells per day for Arcanists, Sorcerers, and Wizards have been doubled. This allows these classes to keep up with the melee classes. Shadow d20 games combats run way longer than 3 rounds and easily have 4-6 encoutners per day. Spellcasters where running out of spells way too quickly." 
+  <thing id="s2InfoDbSp"
+    name="Shadow d20 Double Spells"
+    description="The number of spells per day for Arcanists, Sorcerers, and Wizards have been doubled. This allows these classes to keep up with the melee classes. Shadow d20 games combats run way longer than 3 rounds and easily have 4-6 encoutners per day. Spellcasters where running out of spells way too quickly."
     summary="Spells per day have been doubled."
     compset="Ability">
     <usesource source="s20PFCamp"/>
@@ -1018,9 +1021,9 @@
 
 
   <thing id="trkS2APs"
-    name=" Action Points" description="A beginning (1st-level) character starts the game with 5 action points. A character above 1st level starts the game with a number of action points equal to 5 + 1/2 his current character level. Every time a character advances, he gains a number of action points equal to 5 + 1/2 his new character level.\n\nWhen you spend 1 action point to improve a d20 roll, you add the result of a 1d6 to your d20 roll (including attack rolls, saves, checks, or any other roll of a d20) to help you meet or exceed the target number. You can declare the use of 1 action point to alter a d20 roll after the roll is made, but only before the GM reveals the result of that roll. You can’t use an action point to alter the result of a d20 roll when you are taking 10 or taking 20.\n\nDepending on character level, a character might be able to roll more than one d6 when he spends an action point. If so, apply the highest result and disregard the other rolls. A 15th-level character, for instance, gets to roll 3d6 and take the best result of the three. So, if he rolled a 1, 2, and 4, he would apply the 4 to his d20 roll. \n\n{B}1st-7th{/b} 1d6\n{B}8th-14th{/b} 2d6\n{B}15th-20th{/b} 3d6" 
-      compset="Tracker" 
-      replaces="hActionPts" 
+    name=" Action Points" description="A beginning (1st-level) character starts the game with 5 action points. A character above 1st level starts the game with a number of action points equal to 5 + 1/2 his current character level. Every time a character advances, he gains a number of action points equal to 5 + 1/2 his new character level.\n\nWhen you spend 1 action point to improve a d20 roll, you add the result of a 1d6 to your d20 roll (including attack rolls, saves, checks, or any other roll of a d20) to help you meet or exceed the target number. You can declare the use of 1 action point to alter a d20 roll after the roll is made, but only before the GM reveals the result of that roll. You can’t use an action point to alter the result of a d20 roll when you are taking 10 or taking 20.\n\nDepending on character level, a character might be able to roll more than one d6 when he spends an action point. If so, apply the highest result and disregard the other rolls. A 15th-level character, for instance, gets to roll 3d6 and take the best result of the three. So, if he rolled a 1, 2, and 4, he would apply the 4 to his d20 roll. \n\n{B}1st-7th{/b} 1d6\n{B}8th-14th{/b} 2d6\n{B}15th-20th{/b} 3d6"
+      compset="Tracker"
+      replaces="hActionPts"
       uniqueness="useronce">
     <fieldval field="trkMax" value="5"/>
     <usesource source="OptAction"/>
