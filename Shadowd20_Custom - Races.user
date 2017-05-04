@@ -251,27 +251,33 @@ July 29, 2012
     <fieldval field="trkMax" value="1"/>
     <fieldval field="usrCandid1" value="thingid.spDayligh3|thingid.spDarknes2|thingid.spProtEvi1|thingid.spProtfro1|thingid.spProtLaw1|thingid.spAid2|thingid.spCureMod2|thingid.spInflMod2"/>
     <fieldval field="shortname" value="Sp"/>
-    <tag group="AllowRCust" tag="rS2Planeto"/>
+    <usesource source="srcPlanTou"/>
     <tag group="Usage" tag="Day"/>
     <tag group="ChooseSrc1" tag="Thing"/>
     <tag group="AbilType" tag="SpellLike"/>
     <tag group="User" tag="Tracker"/>
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <tag group="AllowRCust" tag="rS2Planeto"/>
+    <tag group="User" tag="NoAutoName"/>
     <eval phase="PostLevel" priority="10500"><![CDATA[
       ~ Add additional daily use per 5 HD
       field[abValue].value = round(#totallevelcount[]/5,0,-1)
       field[trkMax].value += field[abValue].value
 
+      ~ Get the spell information tag
+      perform field[usrChosen1].chosen.pulltags[SpInfo.?]
+
       ~ Calc Caster Level
       field[abValue2].value += #totallevelcount[]
-      field[livename].text = field[thingname].text & " CL" & field[abValue2].value]]></eval>
+      field[livename].text = tagnames[SpInfo.?] & " CL" & field[abValue2].value]]></eval>
     </thing>
   <thing id="rcPtSpResi" name="Spell Resistance" description="You gain spell resistance equal to four plus your character level." compset="RaceCustom" uniqueness="useronce">
     <tag group="AllowRCust" tag="rS2Planeto"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="Helper" tag="SpecUp"/>
     <bootstrap thing="xSplRs"></bootstrap>
-    <eval phase="PostLevel" priority="10000">
-      ~ SR is 4 plus character level
+    <eval phase="PostLevel" priority="10000">~ SR is 4 plus character level
       field[abValue].value += 4 + #totallevelcount[]
       ~Apply SR
       #applyresist[xSplRs,field[abValue].value]</eval>
@@ -684,8 +690,7 @@ July 29, 2012
       ~ Do to the way the Material bootstrap changes the name we need to
       ~ add this line to make the name correct again.
       field[livename].text &= " " & field[thingname].text]]></eval>
-    <eval phase="PreLevel" priority="5000">
-      ~ Call Magic Armor Gizmo
+    <eval phase="PreLevel" priority="5000">~ Call Magic Armor Gizmo
       Call iMagArmor
       ~ Make us proficient with our own bodies
       perform assign[Helper.Proficient]</eval>
@@ -747,8 +752,7 @@ July 29, 2012
       ~ Do to the way the Material bootstrap changes the name we need to
       ~ add this line to make the name correct again.
       field[livename].text &= " Body"]]></eval>
-    <eval phase="PreLevel" priority="5000">
-      ~ Call Magic Armor Gizmo
+    <eval phase="PreLevel" priority="5000">~ Call Magic Armor Gizmo
       Call iMagArmor
       ~ Make us proficient in the use of our own body
       perform assign[Helper.Proficient]
@@ -805,8 +809,7 @@ July 29, 2012
       ~ Do to the way the Material bootstrap changes the name we need to
       ~ add this line to make the name correct again.
       field[livename].text &= " Body"]]></eval>
-    <eval phase="PreLevel" priority="5000">
-      Call iMagArmor
+    <eval phase="PreLevel" priority="5000">Call iMagArmor
       perform assign[Helper.Proficient]</eval>
     <child entity="gMagArmor">
       <tag group="Helper" tag="NoSelChild" name="NoSelChild"/>
@@ -847,8 +850,7 @@ July 29, 2012
     <tag group="Helper" tag="CustomItem" name="CustomItem" abbrev="CustomItem"/>
     <tag group="ProductId" tag="Shadowd20"/>
     <containerreq phase="GlobalTest" priority="0">TRUE</containerreq>
-    <eval phase="PreLevel" priority="5000">
-      ~ Call magic armor gizmo
+    <eval phase="PreLevel" priority="5000">~ Call magic armor gizmo
       Call iMagArmor
       ~ Make us profcient with our own body
       perform assign[Helper.Proficient]
@@ -1156,14 +1158,12 @@ July 29, 2012
   <thing id="raS2ChgMe" name="Shape Change(Medium)" description="If the form you take is that of a Medium humanoid, you gain a +2 size bonus to your Strength." compset="RaceSpec">
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <eval phase="PreAttr" priority="10000">
-      ~ If we are not activated get out now
+    <eval phase="PreAttr" priority="10000">~ If we are not activated get out now
       doneif (field[abilActive].value = 0)
 
       ~ Add a +2 shape change bonus to our Strength
       hero.child[aSTR].field[aStartMod].value += 2</eval>
-    <eval phase="PreLevel" priority="5000" index="2">
-      ~ If we are not activated get out now
+    <eval phase="PreLevel" priority="5000" index="2">~ If we are not activated get out now
       doneif (field[abilActive].value = 0)
 
       #applybonus[ModCirc,hero.child[skDisguise],10]</eval>
@@ -1171,30 +1171,24 @@ July 29, 2012
   <thing id="raS2ChgSm" name="Shape Change(Small)" description="If the form you take is that of a Small humanoid, you gain a +2 size bonus to your Dexterity." compset="RaceSpec">
     <tag group="User" tag="Activation"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <eval phase="PreAttr" priority="10000">
-      ~ If we are not activated get out now
+    <eval phase="PreAttr" priority="10000">~ If we are not activated get out now
       doneif (field[abilActive].value = 0)
 
       ~ Add a +2 shape change bonus
       hero.child[aDEX].field[aStartMod].value += 2</eval>
-    <eval phase="First" priority="20000" index="2"><![CDATA[
+    <eval phase="First" priority="20000" index="2">
       ~ If we are not activated get out now
       doneif (field[abilActive].value = 0)
 
       ~ Add to size - must come after race and template size set
       herofield[tSize].value -= 1
       ~ +10 circumstance bonus to disguise skill
-      #applybonus[ModCirc,hero.child[skDisguise],10]
-      ]]></eval>
+      #applybonus[ModCirc,hero.child[skDisguise],10]</eval>
     </thing>
   <thing id="raS2PtSp" name="Spell-like Abilities" description="A planetouched can use the spells {i}Detect Evil, Detect Magic, Light, or Stabilize{/i} a number of times per day equal to 1/2 your character level (Minimum 1/day).  The Caster Level for the spells is 1/2 your character level (Minimum CL of 1)." compset="RaceSpec" summary="Detect Evil, Detect Magic, Light, and Stabilize.">
     <tag group="AbilType" tag="SpellLike"/>
     <tag group="Helper" tag="ShowSpec"/>
-    <bootstrap thing="spDeteEvi1">
-      <autotag group="Helper" tag="SpellLike"/>
-      <autotag group="Usage" tag="Day"/>
-      <autotag group="Shadowd20" tag="PtSp"/>
-      </bootstrap>
+    <tag group="ProductId" tag="Shadowd20"/>
     <bootstrap thing="spDeteMag0">
       <autotag group="Helper" tag="SpellLike"/>
       <autotag group="Usage" tag="Day"/>
@@ -1206,6 +1200,11 @@ July 29, 2012
       <autotag group="Shadowd20" tag="PtSp"/>
       </bootstrap>
     <bootstrap thing="spStabili0">
+      <autotag group="Helper" tag="SpellLike"/>
+      <autotag group="Usage" tag="Day"/>
+      <autotag group="Shadowd20" tag="PtSp"/>
+      </bootstrap>
+    <bootstrap thing="spDeteEvi1">
       <autotag group="Helper" tag="SpellLike"/>
       <autotag group="Usage" tag="Day"/>
       <autotag group="Shadowd20" tag="PtSp"/>
@@ -1322,8 +1321,7 @@ July 29, 2012
   <thing id="rad20HB" name="Hulking Brute" description="Ulfen Minotaurs have such an impressive stature they they are treated as large creatures for purposes of Combat Maneuver Defense, but not for Combat Maneuver Bonus. You are also considered to be Large when determining whether a monster&apos;s special attacks based on size (such as grab or swallow whole) affect you. In addition a Ulfen Minotaur&apos;s carrying capacity is increased by one and a half times.  For example if a Ulfen Minotaur had an 18 Str their light load would be 150 lbs instead of 100 lbs." compset="RaceSpec" summary="You considered to be Large for purposes of CMD and when determining whether a monster&apos;s special attacks based on size (such as grab or swallow whole) affect you.">
     <tag group="Helper" tag="ShowSpec"/>
     <tag group="AbilType" tag="Extra"/>
-    <eval phase="PostAttr" priority="1500">
-      herofield[tEncumLgt].value *= 1.5
+    <eval phase="PostAttr" priority="1500">herofield[tEncumLgt].value *= 1.5
       herofield[tEncumMed].value *= 1.5
       herofield[tEncumHvy].value *= 1.5
       hero.child[Maneuver].field[tCMD].value += 1</eval>
@@ -1377,8 +1375,7 @@ July 29, 2012
     <usesource source="srcCatFolk"/>
     <tag group="AbilType" tag="Extra"/>
     <tag group="SpecSource" tag="cHelpRog"/>
-    <eval phase="PreLevel" priority="10000">
-      ~ +4 bonus to climb skill
+    <eval phase="PreLevel" priority="10000">~ +4 bonus to climb skill
       #skillbonus[skClimb] += 4</eval>
     <exprreq message="Mwangi Catfolk race required."><![CDATA[#hasrace[rS2CatFolk] <> 0]]></exprreq>
     </thing>
@@ -1628,8 +1625,7 @@ July 29, 2012
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cBarbarian" name="Barbarian" abbrev="Barbarian"/>
     <tag group="IsRace" tag="rS2Shifte"/>
-    <eval phase="PostAttr" priority="10000">
-      field[abValue].value += field[fcCount].value
+    <eval phase="PostAttr" priority="10000">field[abValue].value += field[fcCount].value
       #trkmax[cBbnRage] += field[abValue].value</eval>
     </thing>
   <thing id="fcRgrShif2" name="Shifter Ranger" description="Add a +1/2 bonus on wild empathy checks to influence animals and magical beasts." compset="FavClass" uniqueness="unique">
@@ -1637,8 +1633,7 @@ July 29, 2012
     <usesource source="s20PFCamp"/>
     <tag group="IsRace" tag="rS2Shifte"/>
     <tag group="FavClass" tag="cRanger" name="Ranger" abbrev="Ranger"/>
-    <eval phase="PostAttr" priority="10000">
-      field[abValue].value += round(field[fcCount].value/2,0,-1)
+    <eval phase="PostAttr" priority="10000">field[abValue].value += round(field[fcCount].value/2,0,-1)
       #value[cWildEmp] += field[abValue].value</eval>
     </thing>
   <thing id="fcFtrRunef" name="Runeforged Fighter" description="Add a +1 bonus on initiative checks." compset="FavClass" uniqueness="unique">
@@ -1646,8 +1641,7 @@ July 29, 2012
     <usesource source="s20PFCamp"/>
     <tag group="FavClass" tag="cFighter"/>
     <tag group="IsRace" tag="rS2Runefor"/>
-    <eval phase="PostAttr" priority="10000">
-      field[abValue].value += field[fcCount].value
+    <eval phase="PostAttr" priority="10000">field[abValue].value += field[fcCount].value
       hero.child[Initiative].field[Bonus].value += field[abValue].value</eval>
     </thing>
   <thing id="fcBbnSMino" name="Ulfen Minotaur Barbarian" description="Add 1 to the Ulfen Minotaur&apos;s total number of rage rounds per day." compset="FavClass" uniqueness="unique">
@@ -1655,8 +1649,7 @@ July 29, 2012
     <usesource source="s20PFCamp"/>
     <tag group="IsRace" tag="Rd20Mino" name="Ulfen Minotaur"/>
     <tag group="FavClass" tag="cBarbarian" name="Barbarian" abbrev="Barbarian"/>
-    <eval phase="PostAttr" priority="10000">
-      ~ Calc value
+    <eval phase="PostAttr" priority="10000">~ Calc value
       field[abValue].value += field[fcCount].value
       ~ add to barbarian rage rounds
       #trkmax[cBbnRage] += field[abValue].value</eval>
@@ -1784,8 +1777,7 @@ July 29, 2012
     <usesource source="srcPlanTou"/>
     <tag group="IsRace" tag="rS2Planeto"/>
     <tag group="FavClass" tag="cMagus" name="Magus" abbrev="Magus"/>
-    <eval phase="PostAttr" priority="9000">
-      field[abValue].value += round(field[fcCount].value/4,0,-1)     
+    <eval phase="PostAttr" priority="9000">field[abValue].value += round(field[fcCount].value/4,0,-1)     
       #trkmax[cMagArPool] += field[abValue].value</eval>
     </thing>
   <thing id="fcRogPlane" name="Planetouched Rogue" description="Add +1/2 to sneak attack damage dealt to creatures with the outsider type." compset="FavClass" uniqueness="unique">
@@ -3111,8 +3103,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3136,8 +3127,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_dex as number
+    <eval phase="First" priority="600">var X1_dex as number
       var X1_int as number
       var X1_wis as number
 
@@ -3158,8 +3148,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3183,8 +3172,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3208,8 +3196,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3233,8 +3220,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3258,8 +3244,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3283,8 +3268,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3308,8 +3292,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3333,8 +3316,7 @@ hero.child[Totals].field[tHP].value += field[abValue].value</eval>
     <tag group="AllowRCust" tag="rDragBorn"/>
     <tag group="Helper" tag="SpecUp"/>
     <tag group="Helper" tag="Ethnicity"/>
-    <eval phase="First" priority="600">
-      var X1_str as number
+    <eval phase="First" priority="600">var X1_str as number
       var X1_dex as number
       var X1_con as number
       var X1_int as number
@@ -3841,7 +3823,6 @@ hero.childfound[cAlcMutage].field[abDuration].value += field[abValue].value</eva
         hero.childfound[ssElec].field[schCastLev].value += 1
       elseif (focus.tagis[BloodEner.Fire] = 1) then
         hero.childfound[ssFire].field[schCastLev].value += 1
-      endif
-      ]]></eval>
+      endif]]></eval>
     </thing>
   </document>
