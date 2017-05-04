@@ -134,609 +134,6 @@
         field[abSumm].text = "The psychic warrior can choose to use the Trance and Maneuver from his second warrior's path, but may only benefit from one Trance at a time."
     endif]]></eval>
     </thing>
-  <thing id="cHelpPsi" name="Psion" compset="Class" uniqueness="unique">
-    <fieldval field="cSpecSing" value="Discipline"/>
-    <fieldval field="cAbbr" value="Psi"/>
-    <fieldval field="cHDSides" value="6"/>
-    <fieldval field="cSkills" value="2"/>
-    <fieldval field="shortname" value="Psion"/>
-    <fieldval field="cPsiSPowNm" value="Talents"/>
-    <fieldval field="cPsiSPowMa" value="3"/>
-    <fieldval field="srcPageNum" value="49"/>
-    <fieldval field="srcBookInf" value="Ultimate Psionics"/>
-    <fieldval field="cSCRNumDce" value="3"/>
-    <fieldval field="cSCRDceSiz" value="6"/>
-    <fieldval field="cSCRMult" value="10"/>
-    <arrayval field="cBonFtTot" index="14" value="4"/>
-    <arrayval field="cPsiPowTot" index="0" value="3"/>
-    <arrayval field="cPsiPowTot" index="1" value="5"/>
-    <arrayval field="cPsiPowTot" index="2" value="7"/>
-    <arrayval field="cPsiPowTot" index="3" value="9"/>
-    <arrayval field="cPsiPowTot" index="4" value="11"/>
-    <arrayval field="cPsiPowTot" index="5" value="13"/>
-    <arrayval field="cPsiPowTot" index="6" value="15"/>
-    <arrayval field="cPsiPowTot" index="7" value="17"/>
-    <arrayval field="cPsiPowTot" index="8" value="19"/>
-    <arrayval field="cPsiPowTot" index="9" value="21"/>
-    <arrayval field="cPsiPowTot" index="10" value="22"/>
-    <arrayval field="cPsiPowTot" index="11" value="24"/>
-    <arrayval field="cPsiPowTot" index="12" value="25"/>
-    <arrayval field="cPsiPowTot" index="13" value="27"/>
-    <arrayval field="cPsiPowTot" index="14" value="28"/>
-    <arrayval field="cPsiPowTot" index="15" value="30"/>
-    <arrayval field="cPsiPowTot" index="16" value="31"/>
-    <arrayval field="cPsiPowTot" index="17" value="33"/>
-    <arrayval field="cPsiPowTot" index="18" value="34"/>
-    <arrayval field="cPsiPowTot" index="19" value="36"/>
-    <arrayval field="cPsiLevTot" index="0" value="1"/>
-    <arrayval field="cPsiLevTot" index="1" value="1"/>
-    <arrayval field="cPsiLevTot" index="2" value="2"/>
-    <arrayval field="cPsiLevTot" index="3" value="2"/>
-    <arrayval field="cPsiLevTot" index="4" value="3"/>
-    <arrayval field="cPsiLevTot" index="5" value="3"/>
-    <arrayval field="cPsiLevTot" index="6" value="4"/>
-    <arrayval field="cPsiLevTot" index="7" value="4"/>
-    <arrayval field="cPsiLevTot" index="8" value="5"/>
-    <arrayval field="cPsiLevTot" index="9" value="5"/>
-    <arrayval field="cPsiLevTot" index="10" value="6"/>
-    <arrayval field="cPsiLevTot" index="11" value="6"/>
-    <arrayval field="cPsiLevTot" index="12" value="7"/>
-    <arrayval field="cPsiLevTot" index="13" value="7"/>
-    <arrayval field="cPsiLevTot" index="14" value="8"/>
-    <arrayval field="cPsiLevTot" index="15" value="8"/>
-    <arrayval field="cPsiLevTot" index="16" value="9"/>
-    <arrayval field="cPsiLevTot" index="17" value="9"/>
-    <arrayval field="cPsiLevTot" index="18" value="9"/>
-    <arrayval field="cPsiLevTot" index="19" value="9"/>
-    <arrayval field="cPsiPPTot" index="0" value="2"/>
-    <arrayval field="cPsiPPTot" index="1" value="6"/>
-    <arrayval field="cPsiPPTot" index="2" value="11"/>
-    <arrayval field="cPsiPPTot" index="3" value="17"/>
-    <arrayval field="cPsiPPTot" index="4" value="25"/>
-    <arrayval field="cPsiPPTot" index="5" value="35"/>
-    <arrayval field="cPsiPPTot" index="6" value="46"/>
-    <arrayval field="cPsiPPTot" index="7" value="58"/>
-    <arrayval field="cPsiPPTot" index="8" value="72"/>
-    <arrayval field="cPsiPPTot" index="9" value="88"/>
-    <arrayval field="cPsiPPTot" index="10" value="106"/>
-    <arrayval field="cPsiPPTot" index="11" value="126"/>
-    <arrayval field="cPsiPPTot" index="12" value="147"/>
-    <arrayval field="cPsiPPTot" index="13" value="170"/>
-    <arrayval field="cPsiPPTot" index="14" value="195"/>
-    <arrayval field="cPsiPPTot" index="15" value="221"/>
-    <arrayval field="cPsiPPTot" index="16" value="250"/>
-    <arrayval field="cPsiPPTot" index="17" value="280"/>
-    <arrayval field="cPsiPPTot" index="18" value="311"/>
-    <arrayval field="cPsiPPTot" index="19" value="343"/>
-    <arrayval field="cBonFtTot" index="19" value="5"/>
-    <arrayval field="cBonFtTot" index="0" value="1"/>
-    <arrayval field="cBonFtTot" index="4" value="2"/>
-    <arrayval field="cCustTot" index="0" value="1"/>
-    <arrayval field="cBonFtTot" index="9" value="3"/>
-    <usesource source="pPsiUn"/>
-    <tag group="WepProf" tag="wCrsLight" name="Crossbow, Light" abbrev="Crossbow, Light"/>
-    <tag group="fCategory" tag="ItemCrPsi"/>
-    <tag group="WepProf" tag="wDagger" name="Dagger" abbrev="Dagger"/>
-    <tag group="fCategory" tag="Psionic"/>
-    <tag group="ClassSkill" tag="skPUAhypno"/>
-    <tag group="WepProf" tag="wQtrstaff" name="Quarterstaff" abbrev="Quarterstaff"/>
-    <tag group="cAttack" tag="Poor" name="Slow" abbrev="Slow"/>
-    <tag group="ClassSkill" tag="skSpellcr" name="Spellcraft" abbrev="Spellcraft"/>
-    <tag group="ClassSkill" tag="Knowledge" name="All Knowledge Skills" abbrev="All Knowledge Skills"/>
-    <tag group="cFort" tag="Poor" name="Slow" abbrev="Slow"/>
-    <tag group="cRef" tag="Poor" name="Slow" abbrev="Slow"/>
-    <tag group="cWill" tag="Good" name="Fast" abbrev="Fast"/>
-    <tag group="AgeColumn" tag="3" name="Column 3 (Cleric, Druid, Monk, Wizard)" abbrev="Column 3 (Cleric, Druid, Monk, Wizard)"/>
-    <tag group="ClassSkill" tag="Craft" name="All Craft Skills" abbrev="All Craft Skills"/>
-    <tag group="WepProf" tag="wClub" name="Club" abbrev="Club"/>
-    <tag group="WepProf" tag="wShortspr"/>
-    <tag group="ClassSkill" tag="Profession" name="All Profession Skills" abbrev="All Profession Skills"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="WepProf" tag="wCrsHeavy" name="Crossbow, Heavy" abbrev="Crossbow, Heavy"/>
-    <tag group="Classes" tag="Psion" name="Psion" abbrev="Psion"/>
-    <tag group="fCategory" tag="Metapsion"/>
-    <bootstrap thing="fPUWepPsi"></bootstrap>
-    <bootstrap thing="cPsiDetPsi">
-      <autotag group="ClSpecWhen" tag="1"/>
-      </bootstrap>
-    <link linkage="psiattr" thing="aINT"/>
-    </thing>
-  <thing id="cPUPsion" name="Psion" description="The powers of the mind are varied and limitless, and the psion learns how to unlock them. Whether he is a shaper or a telepath, an egoist or a nomad, or even a generalist, the psion learns to manifest psionic powers that alter himself and the world around him. Due to the limited powers that any one psion knows, each psion is unique in his capabilities, as his latent abilities are drawn out and shaped into the psionic powers that define the psion.{br}{br}Each psion also gains unique abilities depending on his choice of disciplines: the egoist excels at altering his own physiology, while the nomad learns to manipulate the very fabric of space and time, and the generalist becomes a master of the overall principles of psionics, while sacrificing some of the unique abilities of the other disciplines.{br}{br}{b}Role:{/b} The psion can fulfill a variety of different roles depending upon the power choices he makes. Generalist psions have the greatest versatility of the different psions, while those of a particular discipline excel at the given focus of their chosen specialization. Regardless of their choice, all psions are masters of the powers of the mind and capable of helping their allies against any danger.{br}{br}{b}Alignment:{/b} Any." compset="ClassLevel" maxlimit="20">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassType" tag="Normal"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cHelpPsi"></bootstrap>
-    <link linkage="helper" thing="cHelpPsi"/>
-    </thing>
-  <thing id="cPsiSeer" name="Clairsentience (Seer)" description="A psion who chooses clairsentience is known as a seer. Seers can learn precognitive powers to aid their comrades in combat, as well as powers that permit them to gather information in many different ways.\n\n{i}Class Skills:{/i} Diplomacy (Cha) and Perception (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="ClassSkill" tag="skDiplo"/>
-    <tag group="ClassSkill" tag="skPercep"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiRecInf">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiSeeCon">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiPerFSi">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="12"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="16"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="18"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Seer Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiSeer"]]></eval>
-    </thing>
-  <thing id="cPsiDetPsi" name="Talents" description="Each psion gains three 0 level talents of their choice, as well as {i}detect psionics{/i}. These talents do not count against the psion&apos;s powers known.\n\nTalents are 0th-level psionic powers that are powered by psionic focus, rather than power points. These abilities give manifesters minor abilities that can be used at-will, but typically have very limited functionality or use. Talents are typically used as a way to train manifesters to avoid depleting the power point reserve.\n\nA manifester may manifest any talent that he knows without paying power points as long as he maintains psionic focus. However, if the talent has a duration longer than instantaneous, he can only have one such talent active at a time; manifesting another talent without paying power points in this manner causes the original talent to immediately expire.\n\nA manifester may also manifest a talent by paying one power point, regardless of whether psionic focus is held; these do not cause any other active talents to lapse and may be augmented if the power description indicates such.\n\nTalents can only be augmented if the manifester spends 1 power point on the manifestation in addition to any power points spent augmenting the power.\n\n{B}Note{/b} You do not need to select {i}detect psionics{/i}. When you selected &quot;Focused&quot; on the &quot;Psionics&quot; tab your talents including {i}detect psionics{/i} will display." compset="ClSpecial" summary="You may learn 3 &quot;talents&quot; (level 0 powers) as well as {i}detect psionics{/i}.">
-    <bootstrap thing="puDetPsi0">
-      <autotag group="SpellSort" tag="cHelpPsi"/>
-      <autotag group="SpellType" tag="cHelpPsi"/>
-      <autotag group="PackHelper" tag="FreePower"/>
-      </bootstrap>
-    </thing>
-  <thing id="cPsiRecInf" name="Recovered Information" description="At 2nd level, as long as you maintain psionic focus, when someone successfully saves against a Clairsentience power you&apos;ve manifested, you learn about a single psionic effect currently in effect (if any) on the target. Each subsequent successful save against a Clairsentience power you manifest transfers information about another psionic effect currently in effect (if any) on the target. If there are no psionic powers in effect on the target that you do not already know, then you learn information about a single psionic item the creature currently possesses, as if you had {i}identified{/i} the item. This effect does not give any information on artifacts. The number of psionic effects or items you learn about per save increases by one every four psion levels thereafter." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="Render" priority="1000"><![CDATA[      ~the number of psionic effects or items (level-2)/4
-      var bonus as number
-      bonus = (#levelcount[Psion] - 2)/4
-      bonus = round(bonus,0,-1)
-
-      field[abSumm].text = "You may learn about " & bonus & "psionic effects or items per save."]]></eval>
-    </thing>
-  <thing id="cPsiAltWav" name="Alter the Waves" description="At 8th level, each day when you meditate to regain your power points, you gain a +3 insight bonus that can be used on any one die roll. Every two psion levels thereafter, this ability may be used one additional time per day and the insight bonus is increased by 1." compset="ClSpecial">
-    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
-    <eval phase="Render" priority="1000" index="2"><![CDATA[
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
-
-field[abSumm].text = "+" & field[abValue].value & " insight bonus, " & field[trkMax].value & "/day."]]></eval>
-    <eval phase="PostLevel" priority="10000" index="3"><![CDATA[~Set the list name
-field[listname].text = field[thingname].text & " " & field[xIndex].value & "/day"
-
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
-
-field[trkMax].value += field[xCount].value
-field[abValue].value += 2 + field[xCount].value]]></eval>
-    </thing>
-  <thing id="cPsiSeeCon" name="Seeing the Connections" description="At 14th level, once per day, you can automatically identify all properties of a magic item, magic aura, or identify a spell or power in effect. In addition, if you are being scried upon, you can expend your daily use of this power as an immediate action to disrupt the scrying attempt and instead scry on the originator of the effect using the same effect as that which targeted you. You need not pay any power point cost for this ability, although the originator can make a save to block the attempt (same DC as the original scrying attempt). This ability does not work on artifacts." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
-    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
-    <tag group="abAction" tag="Immediate"/>
-    </thing>
-  <thing id="cPsiPerFSi" name="Perpetual Foresight" description="At 20th, your ability to foresee the different possibilities has suffused you. Anytime you roll a d20, you may expend your psionic focus as an immediate action to roll a second time. To choose the result of the second roll, you must pay the unmodified die roll in power points." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="abAction" tag="PUExpFocus"/>
-    <tag group="abAction" tag="Immediate"/>
-    </thing>
-  <thing id="cPsiShaper" name="Metacreativity (Shaper)" description="A psion specializing in metacreativity is known as a shaper. This discipline includes powers that draw ectoplasm from the Astral Plane, creating semisolid and solid items such as armor, weapons, or animated constructs to do battle at the shaper&apos;s command.\n\n{i}Class Skills:{/i} Bluff (Cha), Disguise (Cha), and Use Magic Device (Cha)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skBluff"/>
-    <tag group="ClassSkill" tag="skDisguise"/>
-    <bootstrap thing="cPsiEctPro">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiSumCal">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiMaeEct">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAstAll">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiEctPro">
-      <autotag group="ClSpecWhen" tag="12"/>
-      </bootstrap>
-    <bootstrap thing="cPsiEctPro">
-      <autotag group="ClSpecWhen" tag="16"/>
-      </bootstrap>
-    <bootstrap thing="cPsiEctPro">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Shaper Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiShaper"]]></eval>
-    </thing>
-  <thing id="cPsiKineti" name="Psychokinesis (Kineticist)" description="Psions who specialize in psychokinesis are known as kineticists. They are the masters of powers that manipulate and transform matter and energy. Kineticists can attack with devastating blasts of energy.   Unlike other psions, when a kineticist selects any power that specifies the character must select from cold, electricity, fire, or sonic damage, he gains the option to choose the type of damage at the time the power is manifested.\n\n{i}Class Skills:{/i} Disable Device (Dex) and Intimidate (Cha)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skDisable"/>
-    <tag group="ClassSkill" tag="skIntim"/>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiEngRec">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiEngImm">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="6"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="18"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="11"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="17"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Kinetic Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiKineti"]]></eval>
-    </thing>
-  <thing id="cPsiEgoist" name="Psychometabolism (Egoist)" description="A psion who specializes in psychometabolism is known as an egoist. This discipline consists of powers that alter the psion&apos;s psychobiology, or that of creatures near him. An egoist can both heal and transform himself into a fearsome fighter.\n\n{i}Class Skills:{/i} Acrobatics (Dex) and Heal (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skAcrobat"/>
-    <tag group="ClassSkill" tag="skHeal"/>
-    <bootstrap thing="cPsiShaEff">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiMetHea">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiResBod">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiInfFor">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Egoist Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiEgoist"]]></eval>
-    </thing>
-  <thing id="cPsiNomad" name="Psychoportation (Nomad)" description="A psion who relies on psychoportation powers is known as a nomad. Nomads can wield powers that propel or displace objects in space or time.\n\n{i}Class Skills:{/i} Climb (Str), Fly (Dex), Survival (Wis), and Swim (Str)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skClimb"/>
-    <tag group="ClassSkill" tag="skFly"/>
-    <tag group="ClassSkill" tag="skSurvival"/>
-    <tag group="ClassSkill" tag="skSwim"/>
-    <bootstrap thing="cPsiAccAct">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiRapMov">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiIncPos">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiNomSte">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Nomad Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiNomad"]]></eval>
-    </thing>
-  <thing id="cPsiTelepa" name="Telepathy (Telepath)" description="A psion who chooses the discipline of telepathy is known as a telepath. He is the master of powers that allow mental contact and control of other sentient creatures. A telepath can deceive or destroy the minds of his enemies with ease.\n\n{i}Class Skills:{/i} Bluff (Cha), Diplomacy (Cha), and Sense Motive (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skDiplo"/>
-    <tag group="ClassSkill" tag="skBluff"/>
-    <tag group="ClassSkill" tag="skSenseMot"/>
-    <bootstrap thing="cPsiTelpth">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiMenInt">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiLastRe">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiGrdTho">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Telepath Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiTelepa"]]></eval>
-    </thing>
-  <thing id="cPsiSumCal" name="Summoner&apos;s Call" description="At 2nd level, if you maintain focus when manifesting a power of the creation subdiscipline, the duration is increased by 1 round plus 1 round for every four psion levels. In addition, your astral constructs gain an additional menu option of the highest menu available when you manifest the power." compset="ClSpecial">
-    <tag group="AbilType" tag="Extra"/>
-    <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="Render" priority="1000"><![CDATA[      var v_focus as number
-      call PUPsiFocus
-      ~ If Not psionically focused get out now
-      doneif (v_focus <> 1)
-
-      ~the bonus rounds for the creation subdiscipline 1+level/4
-      var bonus as number
-      bonus = 1+(#levelcount[Psion]/4)
-      bonus = round(bonus,0,-1)
-
-      field[abSumm].text = "Manifestations from the creation subdiscipline last an additional " & bonus & "rounds."]]></eval>
-    </thing>
-  <thing id="cPsiEctPro" name="Extoplasmic Protection" description="At 8th level, you can gain an ectoplasmic coating over your form, granting you concealment for one round per psion level, usable once per day and an additional time per day every four psion levels thereafter." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="User" tag="Tracker"/>
-    <tag group="Usage" tag="Day"/>
-    <tag group="AbilType" tag="Super"/>
-    <eval phase="PostLevel" priority="10000"><![CDATA[
-      ~Set the list name
-      field[listname].text = field[thingname].text & " " & field[xIndex].value & "/day"
-
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ If we've been Disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      ~ Uses per day
-      field[trkMax].value += field[xCount].value
-      ~ Rounds per use
-      field[abValue].value += field[xTotalLev].value]]></eval>
-    <eval phase="Render" priority="1000" index="2"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ If we've been Disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      field[abSumm].text = "Gain concealment for " & field[abValue].value & "rounds, " & field[trkMax].value & "/day."]]></eval>
-    </thing>
-  <thing id="cPsiMaeEct" name="Maestro of Ectoplasm" description="At 14th level, once per day as a standard action, you can take raw ectoplasm and use it in a myriad of ways. You can choose to coat up to 50 square feet (in 10 foot squares) in an ectoplasmic slick, as the {i}ectoplasmic sheen{/i} power (DC 10 + half psion level + Intelligence modifier), or create a up to 7 levels in astral constructs, divided at your discretion (a 5thlevel construct and a 2nd-level construct, a single 7th level construct, seven 1st-level constructs, etc.), create a volume of matter as if manifesting {i}major ectoplasmic creation{/i}, or repair a damaged astral construct for up to 30 hit points plus 1 hit point per psion level." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="User" tag="Tracker"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="Usage" tag="Day"/>
-    <tag group="StandardDC" tag="aINT"/>
-    </thing>
-  <thing id="cPsiAstAll" name="Astral Ally" description="At 20th level, you can change the duration of an {i}astral construct{/i} power to permanent. You can have no more than one {i}astral construct{/i} power made permanent in this way at one time. If you designate another {i}astral construct{/i} power as permanent, the previous power immediately ends." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    </thing>
-  <thing id="cPsiBrePow" name="Breach Power Resistance" description="At 8th level, anytime you manifest a power, you may expend your psionic focus to add your Intelligence modifier on any check to overcome power resistance.   This bonus increases by 1 every two psion levels thereafter." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="abAction" tag="PUExpFocus"/>
-    <eval phase="Render" priority="1000"><![CDATA[      ~the bonus rounds for the creation subdiscipline 1+level/4
-      var bonus as number
-      bonus = #attrmod[aINT] + ((#levelcount[Psion]-8)/2)
-      bonus = round(bonus,0,-1)
-
-      field[abSumm].text = "You may expend your psionic focus to gain a +" & bonus & "to overcome power resistance."]]></eval>
-    </thing>
-  <thing id="cPsiDblMan" name="Double Manifest" description="At 14th level, once per day, you may manifest two powers with a single action, but the combined power point cost cannot exceed your manifester level and the two powers must be of different disciplines.   The two powers must have the same manifesting time and if they have a target, the targets for the powers may be different." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="User" tag="Tracker"/>
-    <tag group="AbilType" tag="Extra"/>
-    <tag group="Usage" tag="Day"/>
-    </thing>
-  <thing id="cPsiExMind" name="Expanded Mind" description=" At 20th level, each day when you meditate to regain power points, you may choose any one power from any class power list and add it to your powers known for the day.  This power does not count against your number of powers known." compset="ClSpecial">
-    <tag group="AbilType" tag="Extra"/>
-    </thing>
-  <thing id="cPsiGen" name="Generalist (None)" description="A psion who chooses to remain more general in his studies of psionics is known as a generalist.  While he does not gain the unique abilities each discipline grants to the specialized psions, he is able to broaden his powers and blend them in unique ways.\n\n{i}Class Skills:{/i} Use Magic Device (Cha) and any one skill chosen from the above discipline lists." compset="CustomSpec" uniqueness="useronce">
-    <fieldval field="usrCandid1" value="thingid.skAcrobat|thingid.skBluff|thingid.skClimb|thingid.skDiplo|thingid.skDisable|thingid.skDisguise|thingid.skFly|thingid.skHeal|thingid.skIntim|thingid.skPercep|thingid.skSenseMot|thingid.skSurvival|thingid.skSwim"/>
-    <usesource source="pPsiUn"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="ClassSkill" tag="skUseMagic"/>
-    <tag group="fShowWhat" tag="Skills"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <bootstrap thing="cPsiExMind">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiBonusF">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiBrePow">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiDblMan">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <eval phase="PreLevel" priority="5000">~ Make selected skill a class skill
-      perform field[usrChosen1].chosen.assign[Helper.ClassSkill]</eval>
-    <eval phase="First" index="2">~ Set 2nd bonus feat tags
-      perform linkage[table].assign[fCatSec.ItemCreate]
-      perform linkage[table].assign[fCatSec.Metapsion]
-      ~ Expanded Knowledge
-      perform linkage[table].assign[fIncSec.fPUExpKn]
-      ~ Extra Power Known
-      perform linkage[table].assign[fIncSec.fPUExtPwrK]
-      ~ Set the 2nd bonus feat levels
-      linkage[table].field[cSBonFtTot].arrayvalue[1]  = 1
-      linkage[table].field[cSBonFtTot].arrayvalue[6]  = 2
-      linkage[table].field[cSBonFtTot].arrayvalue[11] = 3
-      linkage[table].field[cSBonFtTot].arrayvalue[16] = 4</eval>
-    </thing>
-  <thing id="cPsiTelHur" name="Telekinetic Hurl" description="At 2nd level, as long as you maintain psionic focus, you gain the ability to telekinetically hurl objects of up to 5 lbs. as a ranged attack at an enemy within 30 ft. Such attacks deal 1d4 points of damage due to the force exerted. This damage increases by 1d4 points of damage for every four psion levels thereafter." compset="ClSpecial">
-    <fieldval field="abValue2" value="4"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="abAction" tag="PUManFocus"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
-      ~Set the list name
-      field[listname].text = field[thingname].text & " " & field[xIndex].value & "d" & field[abValue2].value
-
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      field[abValue].value += field[xCount].value
-      field[livename].text = field[thingname].text & " " & field[abValue].value & "d" & field[abValue2].value]]></eval>
-    <eval phase="Render" priority="1000"><![CDATA[
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      field[abSumm].text = "Hurl 5lb object for " & field[abValue].value & "d" & field[abValue2].value & " dmg when psi-focus."]]></eval>
-    </thing>
-  <thing id="cPsiKinAur" name="Kinetic Aura" description="At 8th level, you gain a +1 deflection bonus to AC. This bonus increases by +1 every three levels thereafter." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <eval phase="Render" priority="10000"><![CDATA[~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
-
-
-field[abSumm].text = "Gain a +" & field[abValue].value & " deflection bonus to AC."]]></eval>
-    <eval phase="PostLevel" priority="10000" index="2"><![CDATA[
-~Set the list name
-field[listname].text = field[thingname].text & " " & signed(field[xIndex].value)
-
-~ If we're not shown, just get out now
-doneif (tagis[Helper.ShowSpec] <> 1)
-~ if we've been disabled, get out now
-doneif (tagis[Helper.SpcDisable] <> 0)
-
-field[abValue].value += field[xCount].value
-field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
-
-hero.child[ArmorClass].field[tACDeflect].value = field[abValue].value]]></eval>
-    </thing>
-  <thing id="cPsiEngRec" name="Energetic Recharge" description="At 14th level, once per day, you can expend psionic focus as an immediate action when you would take damage from cold, electricity, fire, force, or sonic damage to convert the damage into power points, at a rate of 1 power point per 5 damage. You suffer none of the converted damage, but may not gain more than your manifester level in power points. For example, if a 14th level kineticist suffers 80 points of cold damage, he may expend his psionic focus to convert up to 70 points of that damage into 14 power points. He takes the remaining 10 points of cold damage as normal." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="User" tag="Tracker"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="Usage" tag="Day"/>
-    <tag group="abAction" tag="PUExpFocus"/>
-    </thing>
-  <thing id="cPsiEngImm" name="Energy Immunity" description="At 20th level, when you gain psionic focus, you gain immunity to either cold, electricity, fire, force, or sonic, at your choice. You may change this immunity by gaining psionic focus again, and need not maintain psionic focus to maintain the immunity." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    </thing>
-  <thing id="cPsiMetHea" name="Metabolic Healing" description="At 2nd level, as long as you maintain psionic focus, you gain fast healing 1 when you manifest any psychometabolism power on yourself.  This fast healing lasts for a number of rounds equal to the level of the power manifested.   The fast healing increases by 1 for every four psion levels thereafter." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="abAction" tag="PUManFocus"/>
-    <eval phase="Render" priority="1000"><![CDATA[      ~the bonus rounds for the creation subdiscipline 1+level/4
-      var bonus as number
-      bonus = 1 + ((#levelcount[Psion]-2)/4)
-      bonus = round(bonus,0,-1)
-
-      field[abSumm].text = "While psionically focused, gain fast healing/" & bonus & " when manifesting a psychometabolism power for a number of rounds equal to the power level."]]></eval>
-    </thing>
-  <thing id="cPsiShaEff" name="Shared Effect" description=" At 8th level, any time you manifest a psychometabolism power with a range of personal, you may pay an additional 4 power points to have it affect two additional creatures touched.   These additional power points count as an augment for the power and the manifestation is still limited by the normal manifester level cap. A power augmented in this fashion can affect an additional creature every four psion levels thereafter.   The {i}fission{\i} power may not be shared in this fashion." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <eval phase="Render" priority="1000"><![CDATA[      ~the bonus rounds for the creation subdiscipline 1+level/4
-      var bonus as number
-      bonus = 2 + ((#levelcount[Psion]-8)/4)
-      bonus = round(bonus,0,-1)
-
-      field[abSumm].text = "Share a psychometabolism power with a range of personal with " & bonus & " additional touched creatures for an addition 4 power points."]]></eval>
-    </thing>
-  <thing id="cPsiResBod" name="Resilient Body" description="At 14th level, once per day as an immediate action, you may negate a critical hit that would have hit you, and instead receive normal damage." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="Usage" tag="Day"/>
-    <tag group="User" tag="Tracker"/>
-    <tag group="abAction" tag="Immediate"/>
-    </thing>
-  <thing id="cPsiInfFor" name="Infused Form" description="At 20th level, you gain DR 5/- and are treated as always under the effect of {i}adapt body{/i}." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <eval phase="PostLevel" priority="10000">#applydr[xDamRd, 5]</eval>
-    </thing>
-  <thing id="cPsiNomSte" name="Nomad&apos;s Step" description="At 2nd level, as long as you maintain psionic focus, as a standard action you may teleport to a location up to 15 feet away.  You must have line of sight to the location and you can bring along possessions that amount to as much as a medium load.   The distance increases by 5 feet every psion level thereafter." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="abAction" tag="PUManFocus"/>
-    <tag group="abAction" tag="Standard"/>
-    <eval phase="Render" priority="1000"><![CDATA[      ~the bonus rounds for the creation subdiscipline 1+level/4
-      var bonus as number
-      bonus = 15 + ((#levelcount[Psion]-2) * 5)
-      bonus = round(bonus,0,-1)
-
-      field[abSumm].text = "As a standard action, you may teleport " & bonus & " feet while maintaining psionic focus."]]></eval>
-    </thing>
-  <thing id="cPsiIncPos" name="Inconstant Position" description="At 8th level,  once per day as an immediate action when someone attacks you, you can force them to  suffer a 50% miss chance.  This ability can be used an additional time per day every two psion levels thereafter." compset="ClSpecial">
-    <tag group="User" tag="Tracker" name="Tracker" abbrev="Tracker"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
-    <eval phase="PostAttr" priority="10000">~level modifier is (level-8)/2
-      var bonus as number
-      bonus = (#levelcount[Psion] - 8)/2
-      bonus = round(bonus,0,-1)
-
-      ~uses per day = 1 + (Level-8)/2
-      field[trkMax].value += 1 + bonus</eval>
-    <eval phase="Render" priority="1000" index="2"><![CDATA[
-      field[abSumm].text = "As an immediate action, cause a 50% miss chance " & field[trkMax].value & "/day."]]></eval>
-    </thing>
-  <thing id="cPsiAccAct" name="Accelerated Activity" description="At 14th level, once per day as a swift action, you may gain 1 extra round of actions usable in the same round." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="User" tag="Tracker"/>
-    <tag group="Usage" tag="Day"/>
-    <tag group="AbilType" tag="Super"/>
-    </thing>
-  <thing id="cPsiRapMov" name="Rapid Movement" description="At 20th level, you gain an additional move action each round, but it may only be used for either the move, stand up, or mount/dismount a steed move actions." compset="ClSpecial">
-    <tag group="AbilType" tag="Extra"/>
-    </thing>
-  <thing id="cPsiMenInt" name="Mental Intrusion" description="At 2nd level, as long as you maintain psionic focus, increase the save DC of any mind-affecting power you manifest by 1 for every 2 power points you spend augmenting the power, provided the augmentation does not already increase the power&apos;s save DC.   For the purpose of this ability, you may spend additional power points augmenting a mind-affecting power&apos;s save DC even on a power that normally does not have any augment options." compset="ClSpecial">
-    <tag group="AbilType" tag="Extra"/>
-    <tag group="abAction" tag="PUManFocus"/>
-    </thing>
-  <thing id="cPsiTelpth" name="Telepathy" description="At 8th level, you gain telepathy out to 400 ft. and can communicate with any creature, regardless of intelligence, so long as they have an Intelligence of 1 or higher.   The range of your telepathy increases by 10 ft. every psion level thereafter.\nAdditionally, as long as you maintain psionic focus, you can detect other creatures within 30 ft. using telepathy to communicate, although you cannot determine the content of the communication." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    <eval phase="Render" priority="1000"><![CDATA[      ~the bonus rounds for the creation subdiscipline 1+level/4
-      var bonus as number
-      bonus = 400 + ((#levelcount[Psion]-8) * 10)
-      bonus = round(bonus,0,-1)
-
-      field[abSumm].text = "You gain telepathy out to " & bonus & " feet. While maintaining psionic focus, detect others using telepathy within 30 feet."]]></eval>
-    </thing>
-  <thing id="cPsiLastRe" name="Last Respite" description=" At 14th level, once per day, if you are about to suffer damage that would result in your death, as an immediate action, you can shunt your mind into the body of a creature within 30 ft., effectively granting you the benefits of mind switch  (Will save negates DC 10 + half psion level + Intelligence modifier) and your original body is left stable, but its hit point total is left one point of damage away from death.   This ability lasts a number of rounds equal to your psion level.   \nYou must secure a permanent body for your mind, either by healing your original body, through the use of a power such as  true mind switch, or some other means to permanently inhabit a body, by the end of the effect&apos;s duration or die.  This is considered a mind-affecting effect. You can take this action even if you are unconscious.  This ability cannot be used against effects that outright kill or that deal ability damage, only against effects that deal hit point damage." compset="ClSpecial">
-    <fieldval field="trkMax" value="1"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="Usage" tag="Day"/>
-    <tag group="User" tag="Tracker"/>
-    <eval phase="Render" priority="10000"><![CDATA[var lrDC as number
-lrDC = 10 + #levelcount[Psion]/2 + #attrmod[aINT]
-
-field[abSumm].text = "Last Respite {i}Mind Switch{/i} save DC " & lrDC & " vs Will."]]></eval>
-    </thing>
-  <thing id="cPsiGrdTho" name="Guarded Thoughts" description="At 20th level, you gain increased protection from mind-affecting effects, granting you a +10 bonus on saves against mind-affecting effects." compset="ClSpecial">
-    <tag group="AbilType" tag="Super"/>
-    </thing>
   <thing id="cHelpSkn" name="Soulknife" compset="Class" uniqueness="unique">
     <fieldval field="cHDSides" value="10"/>
     <fieldval field="cAbbr" value="Skn"/>
@@ -2423,7 +1820,7 @@ field[livename].text = "Sequestration  (" & MyCount & ")"]]></eval>
   <thing id="cEffRechg" name="Efficient Recharge" description="Beginning at 4th level, a metamind learns how to tap into the psionic nature of his own psicrystal to more efficiently recharge the power points stored within his cognizance psicrystal. Once per day, he may recharge the cognizance psicrystal, but only pays half the power point cost (rounded up). He may use this ability an additional time per day at 8th level." compset="ClSpecial" summary="Recharge cognizance psicrystal for half the PP cost.">
     <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
     <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
-    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="AbilType" tag="Super"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       field[listname].text = "Efficient Recharge (" & field[xIndex].value & "/day)"
 
@@ -3865,7 +3262,6 @@ if (field[abilActive].value <> 0) then
         field[abSumm].text = "The psychic warrior can choose to use the Trance and Maneuver from his second warrior's path, but may only benefit from one Trance at a time."
     endif]]></eval>
     </thing>
-  <thing id="cPsiBonusF" name="Bonus Feat" description="At 2nd level and every five psion levels thereafter, you gain a bonus feat. You must choose a metapsionic feat, an item creation feat, Expanded Knowledge, or Extra Power Known. You must still meet all prerequisites for the bonus feat, including minimum manifester level requirements. These bonus feats are in addition to the feats that a character of any class gets from advancing levels. You are not limited to the categories of item creation feats, metapsionic feats, or Expanded Knowledge when choosing those feats." compset="ClSpecial"></thing>
   <thing id="cWPaAscPri" name="Ascetic&apos;s Path" description="You have studied with the mystics of the ancient temples, sat silent for a week embracing the solitude and isolation, so as to become more in tune with your body and mind, merging them into a single, dangerous, warrior.\n\n{b}Bonus Class Skill{/b}: Knowledge (religion)\n\n{b}Powers{/b}: {i}Defensive precognition, offensive precognition{/i}\n\n{b}Skills{/b}: Acrobatics, Autohypnosis, Knowledge (religion)\n\n{b}Note:{/b} You need to correctly set one of the Path&apos;s selected as your Primary path and the 2nd one as the Secondary path to have everthing calc correctly." compset="CustomSpec" summary="You are a follower of the Ascetic&apos;s Path" uniqueness="useronce">
     <comment><![CDATA[PathSkill - This tag group is used to setup the skills associated to the Path. These skills will only be allowed to be selection from the "PathSkill" class ability.
 
@@ -3890,13 +3286,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puPrecogO1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="First">~ Setup the Psychic Warrior Path
       Call PsyWarPath</eval>
@@ -4012,13 +3408,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puPreVenW1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaTraAss"></bootstrap>
     <bootstrap thing="cPWaManAss"></bootstrap>
@@ -4026,7 +3422,7 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="First">~ Setup the Psychic Warrior Path
       Call PsyWarPath</eval>
@@ -4120,7 +3516,7 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaTraBra"></bootstrap>
     <bootstrap thing="cPWaManBra"></bootstrap>
@@ -4128,7 +3524,7 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="First">~ Setup the Psychic Warrior Path
       Call PsyWarPath</eval>
@@ -4215,13 +3611,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puClawBea1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaTraFer"></bootstrap>
     <eval phase="First">~ Setup the Psychic Warrior Path
@@ -4317,13 +3713,13 @@ Call PsyWarTrMa</eval>
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puInerArm1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="First">~ Setup the Psychic Warrior Path
       Call PsyWarPath</eval>
@@ -4392,13 +3788,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puEmpMind1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="PreLevel">~ Setup the Psychic Warrior Path
       Call PsyWarPath</eval>
@@ -5115,13 +4511,13 @@ Call PsyWarTrMa</eval>
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puPVigor1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaTraSur"></bootstrap>
     <bootstrap thing="cPWaManSur"></bootstrap>
@@ -6048,6 +5444,21 @@ Call PsyWarTrMa</eval>
       <containerreq phase="First" priority="500"><![CDATA[count:Custom.CStyleFin >= 1]]></containerreq>
       <autotag group="ClSpecWhen" tag="3"/>
       </bootstrap>
+    <bootstrap thing="cPUEvArrow">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <bootstrap thing="cPUEvArrow">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPUEvArrow">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cPUEvArrow">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cPUEvArrow">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
     <link linkage="psiattr" thing="aWIS"/>
     <eval phase="PreLevel" priority="5000" index="4"><![CDATA[~ Fill in the Tag for a Buckler Here
 foreach pick in hero from BaseArmor where "ShldClass.Buckler"
@@ -6625,14 +6036,16 @@ if (hero.childlives[cfgPUAstSu] <> 0) then
     <tag group="AbilType" tag="Super"/>
     </thing>
   <thing id="cPUAltDef" name="Altered Defense" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Absorb:{/i} The cryptic gains DR 1/-.\n{i}Deflect:{/i} The cryptic gains a +1 dodge bonus to his AC.\n{i}Retaliate:{/i} The cryptic gains a +1 bonus on his attack rolls against any opponent that successfully hit him since his last turn.\n\nEvery four cryptic levels thereafter, this bonus increases by 1 (to 2 at 5th level, 3 at 9th level, 4 at 13th level, and 5 at 17th level)." compset="ClSpecial">
+    <fieldval field="abValue2" value="4"/>
     <tag group="AbilType" tag="Super"/>
     <tag group="User" tag="Tracker"/>
     <tag group="Usage" tag="Rounds"/>
     <tag group="ProductId" tag="HLCommunit"/>
     <eval phase="PostAttr" priority="10000"><![CDATA[
       ~NOTE:
-      ~ abValue is bonus
-      ~ trkMax is number of rounds
+      ~ abValue holds the Bonus based on level
+      ~ abValue2 is base 4 rounds per day
+      ~ trkMax is total number of rounds including Int modifier
 
       ~ Set the list name
       field[listname].text = field[thingname].text & " " & field[xIndex].value
@@ -6642,13 +6055,92 @@ if (hero.childlives[cfgPUAstSu] <> 0) then
       ~ if we've been disabled, get out now
       doneif (tagis[Helper.SpcDisable] <> 0)
 
+      ~ Set bonus here
       field[abValue].value += field[xCount].value
-      field[livename].text = field[thingname].text & " " & field[abValue].value
+
+      ~ Set the name to be Altered Defense #.
+      ~ In example "Altered Defense 1" or "Altered Defense 2" at level 5
+      field[livename].text = field[thingname].text & " " & field[xCount].value
 
       ~ The following should only happen once on the first copy
       doneif (tagis[Helper.FirstCopy] = 0)
 
-      field[trkMax].value += 4 + #attrmod[aINT]]]></eval>
+      field[trkMax].value += field[abValue2].value + #attrmod[aINT]]]></eval>
+    </thing>
+  <thing id="cPUAltDef1" name="Altered Defense, Absorb" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Absorb:{/i} The cryptic gains DR 1/-." compset="ClSpecial" summary="The cryptic gains DR 1/-.">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Activation"/>
+    <eval phase="PostAttr" priority="11000"><![CDATA[
+      ~NOTE:
+      ~ abValue is bonus
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += #value[cPUAltDef]
+      field[livename].text = field[thingname].text & " DR " & field[abValue].value & "/-"
+      field[abSumm].text = "The cryptic gains DR " & field[abValue].value & "/-"
+      field[actName].text = "DR " & field[abValue].value & "/-"
+
+      ~ If we're not active, just get out now!
+      doneif (field[abilActive].value = 0)
+
+      perform hero.assign[Cryptic.AltDefAct]
+      #applydr[xDamRd,field[abValue].value]]]></eval>
+    <exprreq message="Only a single Altered Defense can be active at a time."><![CDATA[hero.tagcount[Cryptic.AltDefAct] <= 1]]></exprreq>
+    </thing>
+  <thing id="cPUAltDef2" name="Altered Defense, Deflect" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Deflect:{/i} The cryptic gains a +1 dodge bonus to her AC." compset="ClSpecial" summary="The cryptic gains a +1 dodge bonus to her AC.">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Activation"/>
+    <eval phase="PostAttr" priority="11000"><![CDATA[
+      ~NOTE:
+      ~ abValue is bonus
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += #value[cPUAltDef]
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      field[abSumm].text = "The cryptic gains a " & signed(field[abValue].value) & " dodge bonus to her AC."
+      field[actName].text = signed(field[abValue].value) & " AC"
+
+      ~ If we're not active, just get out now!
+      doneif (field[abilActive].value = 0)
+
+      perform hero.assign[Cryptic.AltDefAct]
+      hero.child[ArmorClass].field[tACDodge].value += field[abValue].value]]></eval>
+    <exprreq message="Only a single Altered Defense can be active at a time."><![CDATA[hero.tagcount[Cryptic.AltDefAct] <= 1]]></exprreq>
+    </thing>
+  <thing id="cPUAltDef3" name="Altered Defense, Retaliate" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Retaliate:{/i} The cryptic gains a +1 bonus on her attack rolls against any opponent that successfully hit her since her last turn." compset="ClSpecial" summary="+1 bonus on your attack rolls against any opponent that hit you since your last turn.">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Activation"/>
+    <eval phase="PostAttr" priority="11000"><![CDATA[
+      ~NOTE:
+      ~ abValue is bonus
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += #value[cPUAltDef]
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+      field[abSumm].text = signed(field[abValue].value) & " bonus on your attack rolls against any opponent that hit you since your last turn."
+      field[actName].text = signed(field[abValue].value) & " to Hit"
+
+      ~ If we're not active, just get out now!
+      doneif (field[abilActive].value = 0)
+
+      perform hero.assign[Cryptic.AltDefAct]
+      hero.child[Attack].field[Bonus].value += field[abValue].value]]></eval>
+    <exprreq message="Only a single Altered Defense can be active at a time."><![CDATA[hero.tagcount[Cryptic.AltDefAct] <= 1]]></exprreq>
     </thing>
   <thing id="cPUDisPatt" name="Disrupt Pattern" description="All cryptics are able to disrupt the patterns they can perceive, although the potency of this disruption is based on the cryptic’s focus. When a cryptic gains psionic focus, she selects one creature type as her active type (she does not need to select a subtype). As a standard action, the cryptic can make a ranged touch attack with a range of 30 feet, firing a ray of black energy at the target. If the attack is successful, the cryptic deals 1d6 points of damage + additional damage equal to the cryptic’s Intelligence modifier. This attack deals half damage if the target’s type is not of the cryptic’s active type. Like some other rays, if the attack roll of this ability would indicate a critical hit, the damage is doubled. This ability can only be used once per round, even if an item or other effect would duplicate it." compset="ClSpecial" summary="As a standard action make a ranged touch attack with a range of 30 feet.">
     <fieldval field="abValue2" value="6"/>
@@ -7312,11 +6804,6 @@ if (hero.childlives[cfgPUAstSu] <> 0) then
     <usesource source="pPsiUn"/>
     <tag group="SpecSource" tag="cHelpPU1"/>
     <tag group="AbilType" tag="Extra"/>
-    </thing>
-  <thing id="cPUInsSteP" name="Steal Pattern" description="The cryptic can attempt to steal a pattern from a creature by making a touch attack. If the attack is successful, the cryptic can choose one psionic tattoo or one spell-like, psi-like, or supernatural ability the target has and makes a manifester level check against the target (DC 11 + the target’s manifester level or hit die, whichever is higher). If the cryptic succeeds on the manifester level check, the target loses the tattoo permanently or the ability for 1 minute and a daily use of the ability and the cryptic gains the tattoo or one use of the ability stolen. Powerful abilities like a creature with a spell-like ability of wish cannot be stolen in this fashion." compset="CustomSpec" uniqueness="unique">
-    <usesource source="pPsiUn"/>
-    <tag group="SpecSource" tag="cHelpPU1"/>
-    <tag group="AbilType" tag="Super"/>
     </thing>
   <thing id="cPUInsSteT" name="Steal Tattoo" description="A cryptic with this insight can attempt to steal the psionic tattoo of a creature within 30 ft. by making a ranged touch attack against that creature. If the attack is successful, the cryptic makes a manifester level check against a DC of 11 + manifester level of the psionic tattoo. If the check is successful, the psionic tattoo is immediately teleported onto the cryptic’s body. The cryptic must have space on her body for an additional psionic tattoo or this ability automatically fails." compset="CustomSpec" uniqueness="unique">
     <usesource source="pPsiUn"/>
@@ -8943,7 +8430,7 @@ else
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)]]></validate>
+        validif (levels >= 7)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -9124,6 +8611,14 @@ else
     <tag group="Helper" tag="Secondary"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
+    <prereq message="Aegis level 5+ required.">
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)]]></validate>
+      </prereq>
     </thing>
   <thing id="rcPUaIReta" name="Retaliate, Improved" description="As the Retaliate customization, except the triggering attack does not need to be successful.{br}{br}The aegis must have the Retaliate customization and be at least 16th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -9227,6 +8722,14 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
     <tag group="AllowRCust" tag="cfgPUAstSu"/>
     <exprreq message="Extra Arms, Lesser customization required."><![CDATA[#hasability[rcPUaEArL2] <> 0]]></exprreq>
     <exprreq message="Extra Arms customization required."><![CDATA[#hasability[rcPUaExtAr] <> 0]]></exprreq>
+    <prereq message="Aegis level 8+ required.">
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 8)]]></validate>
+      </prereq>
     </thing>
   <thing id="rcPUaFrigh" name="Frightful Presence" description="The aegis makes his astral suit unsettling to his foes, gaining the frightful presence ability. The aegis can activate this ability as part of an offensive action, such as a charge or attack. Opponents within 30 feet of the aegis must make a Will save or become shaken for 3d6 rounds. The DC of this save is equal to 10 + 1/2 the aegis&apos;s class level + the aegis&apos;s Charisma modifier. If the aegis has at least 4 more Hit Dice than an opponent, that opponent becomes frightened instead. Foes with more HD than the aegis are immune to this effect. The aegis must be at least 11th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -9259,7 +8762,7 @@ doneif (hero.tagcount[Custom.WearAstS] = 0)
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)]]></validate>
+        validif (levels >= 11)]]></validate>
       </prereq>
     <prereq message="">
       <validate><![CDATA[
@@ -9456,45 +8959,6 @@ foreach pick in hero from BaseWep where "!Helper.NatAttSpec & !wGroup.Natural"
   <thing id="cPULessStr" name="Lesser Strategies" description="Tacticians learn minor powers they can use at will to aid them in coordination and tactics. The tactician gains 3 talents from the tactician talent list." compset="ClSpecial">
     <usesource source="pPsiUn"/>
     <tag group="Helper" tag="SpecUp"/>
-    </thing>
-  <thing id="cPUVitColl" name="Collective" description="A vitalist learns to use psionic power to connect willing minds through an internal network that strengthens their psychic bonds. As a standard action, a vitalist can join any number of willing targets into his collective equal (up to his limit, see below) . The vitalist must have line of sight to each target, each target must have a Wisdom score of at least 1, and all targets must be within Medium range (100 ft. + 10 ft. per class level).{br}{br}The collective can contain up to his key ability modifier or half his vitalist level, whichever is higher. The vitalist is always considered a member of his own collective, and does not count against this limit.{br}{br}The vitalist can choose to remove a member as a free action on his turn, and any member can voluntarily leave the collective as a free action on their turn. Any member whose Wisdom drops to zero or who moves out of range of the collective (100 ft. + 10 ft. per class level) is automatically removed. If a member enters a null psionics field, the connection to the collective is suppressed until that member leaves the field. A member who leaves the collective for any reason immediately loses any and all benefits they may have gained from being a member. A vitalist is aware of the status of his collective and can, roughly, sense the presence of each member, although beyond telling if such a creature is still a member, this has no mechanical benefit until higher levels (see telepathy and health sense, below).{br}{br}A vitalist can manifest certain powers through his collective. If a vitalist power specifies one or more willing targets (or is harmless) and has a range greater than personal, he can manifest this power on a member of his collective regardless of the range of the actual power. All other non-range restrictions still apply. He may also manifest any power with the Network descriptor this way, regardless of their actual ranges or targets. If he is capable of manifesting powers or casting spells from a different class (as is the case for a multiclass vitalist), any compatible spell or power with a range greater than touch can also be used through the collective.{br}{br}If a member of the collective dies, the member is removed from the collective and the vitalist must make a Fortitude save (DC 15) or lose 1 power point for every Hit Die of the fallen member and be sickened for an equal number of rounds.{br}{br}At 15th level, a vitalist&apos;s collective range is limitless on the same plane as the vitalist.{br}{br}At 19th level, a vitalist&apos;s collective reaches even across to other planes and dimensions." compset="ClSpecial">
-    <comment>DEPRECATED: Use cPUCollect instead</comment>
-    <fieldval field="abValue2" value="10"/>
-    <fieldval field="abRange" value="100"/>
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="Custom" tag="HasCollect" name="Has the Collective Ability"/>
-    <eval phase="PostAttr" priority="1000" index="2"><![CDATA[      ~ Set max members from key ability mod
-      field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),#attrmod[aWIS])
-
-      field[abSumm].text = "You have a collective of up to " & field[abValue].value & " individuals"
-
-      if (field[xCount].value = 1) then
-        field[abRange].value += (field[abValue2].value * field[xTotalLev].value)
-        perform assign[abRange.Feet]
-        field[abSumm].text &= " within " & field[abRange].value & " feet"
-      elseif (field[xCount].value = 2) then
-        field[abRange].value = 0
-        perform delete[abRange.Plane]
-        field[abSumm].text &= " on the same plane"
-      endif]]></eval>
-    <eval phase="Final" priority="10000"><![CDATA[      field[livename].text = field[thingname].text & " (" & field[abValue].value & " members, "
-      if (field[xCount].value = 1) then
-        field[livename].text &= field[abRange].value & " " & tagnames[abRange.?] & ")"
-      elseif (field[xCount].value = 2) then
-        field[livename].text &= "Same Plane)"
-
-      elseif (field[xCount].value = 3) then
-        field[livename].text &= "Anywhere)"
-
-      endif
-      if (field[xIndex].value = 2) then
-        field[listname].text = "Collective Range (unlimited)"
-        field[abSumm].text = "Your collective's range is unlimited within the same plane"
-      elseif (field[xIndex].value = 3) then
-        field[listname].text = "Collective Range (planar)"
-        field[abSumm].text = "Your collective's range now extends across all planes"
-      endif]]></eval>
     </thing>
   <thing id="cPUCoorStr" name="Coordinated Strike" description="The tactician is able to direct his allies to coordinating their attacks upon a single target to devastating effect. As a swift action, the tactician can declare one target within his line of sight as the primary foe. All members of the tactician&apos;s collective, including the tactician himself gain a +1 insight bonus to attacks against the primary foe until the beginning of the tactician&apos;s next turn. At 5th level and every four levels thereafter, this bonus increases by 1.{br}{br}This ability may be used a number of times per day equal to 3 + the tacticians Intelligence modifier." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -9764,7 +9228,7 @@ field[livename].text = "Strategy (" & myTimes & "/day)"]]></eval>
     <bootstrap thing="puBiofeed1">
       <autotag group="BonusSplAt" tag="1"/>
       <autotag group="SpellType" tag="cHelpPU5"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="PostLevel" priority="10000">~ Forward the Guardian Method Psi-Class tag to the Knacks
 ~ class special so the gamer can select their bonus talent.
@@ -9777,7 +9241,7 @@ perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
     <bootstrap thing="puNatHeal1">
       <autotag group="BonusSplAt" tag="1"/>
       <autotag group="SpellType" tag="cHelpPU5"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPUMeTouch">
       <autotag group="ClSpecWhen" tag="2"/>
@@ -9820,49 +9284,11 @@ perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
     <bootstrap thing="puColla1">
       <autotag group="BonusSplAt" tag="1"/>
       <autotag group="SpellType" tag="cHelpPU5"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="PostLevel" priority="10000">~ Forward the Guardian Method Psi-Class tag to the Knacks
 ~ class special so the gamer can select their bonus talent.
 perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
-    </thing>
-  <thing id="cPUTacColl" name="Collective" description="A tactician learns to use psionic power to connect willing minds through an internal network that strengthens their psychic bonds. As a standard action, a tactician can join any number of willing targets into his collective equal (up to his limit, see below) . The tactician must have line of sight to each target, each target must have a Wisdom score of at least 1, and all targets must be within Medium range (100 ft. + 10 ft. per class level). The collective can contain up to his key ability modifier or half his tactician level, whichever is higher. The tactician is always considered a member of his own collective, and does not count against this limit.\n\nThe tactician can choose to remove a member as a free action on his turn, and any member can voluntarily leave the collective as a free action on their turn. Any member whose Wisdom drops to zero or who moves out of range of the collective is automatically removed. If a member enters a null psionics field, the connection to the collective is suppressed until that member leaves the field. A member who leaves the collective for any reason immediately loses any and all benefits they may have gained from being a member. A tactician is aware of the status of his collective and can, roughly, sense the presence of each member, although beyond telling if such a creature is still a member, this has no mechanical benefit until higher levels (see telepathy below).\n\nA tactician can manifest certain powers through his collective. If a tactician power specifies one or more willing targets (or is harmless) and has a range greater than personal, he can manifest this power on a member of his collective regardless of the range of the actual power.\n\nAll other non-range restrictions still apply. He may also manifest any power with the Network descriptor this way, regardless of their actual ranges or targets. If he is capable of manifesting powers or casting spells from a different class (as is the case for a multiclass tactician), any compatible spell or power with a range greater than touch can also be used through the collective.{br}{br}If a member of the collective dies, the member is removed from the collective and the tactician must make a Fortitude save (DC 15) or lose 1 power point for every Hit Die of the fallen member and be sickened for an equal number of rounds.{br}{br}At 15th level, a tactician&apos;s collective range is limitless on the same plane as the tactician.{br}{br}At 19th level, a tactician&apos;s collective reaches even across to other planes and dimensions." compset="ClSpecial">
-    <comment>DEPRECATED: Use cPUCollect instead</comment>
-    <fieldval field="abValue2" value="10"/>
-    <fieldval field="abRange" value="100"/>
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <eval phase="PostAttr" priority="1000" index="2"><![CDATA[      ~ Set max members from key ability mod
-      field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),#attrmod[aINT])
-
-      field[abSumm].text = "You have a collective of up to " & field[abValue].value & " individuals"
-
-      if (field[xCount].value = 1) then
-        field[abRange].value += (field[abValue2].value * field[xTotalLev].value)
-        perform assign[abRange.Feet]
-        field[abSumm].text &= " within " & field[abRange].value & " feet"
-      elseif (field[xCount].value = 2) then
-        field[abRange].value = 0
-        perform delete[abRange.Plane]
-        field[abSumm].text &= " on the same plane"
-      endif]]></eval>
-    <eval phase="Final" priority="10000"><![CDATA[      field[livename].text = field[thingname].text & " (" & field[abValue].value & " members, "
-      if (field[xCount].value = 1) then
-        field[livename].text &= field[abRange].value & " " & tagnames[abRange.?] & ")"
-      elseif (field[xCount].value = 2) then
-        field[livename].text &= "Same Plane)"
-
-      elseif (field[xCount].value = 3) then
-        field[livename].text &= "Anywhere)"
-
-      endif
-      if (field[xIndex].value = 2) then
-        field[listname].text = "Collective Range (unlimited)"
-        field[abSumm].text = "Your collective's range is unlimited within the same plane"
-      elseif (field[xIndex].value = 3) then
-        field[listname].text = "Collective Range (planar)"
-        field[abSumm].text = "Your collective's range now extends across all planes"
-      endif]]></eval>
     </thing>
   <thing id="cPUVitColH" name="Collective Healing" description="Whenever a willing member of the vitalist&apos;s collective could regain lost hit points or ability damage, the vitalist may choose to redirect any or all of that healing to one or more other willing members of the collective as a free action. This can transfer instantaneous healing (such as a {i}body adjustment{/i} power), healing from ongoing healing effects, such as fast healing, and even hit points gained from rest (in which case, a member of the collective would rest for a period of time as normal, and the amount of hit points {i}A vitalist joins his allies into a collective so he can share healing energy{/i} {b}Psionics Expanded{/b} 59 and ability damage healed would go to another).{br}{br}In any case, the original recipient of the healing effect chooses whether to allow the diverted healing, and does not gain the benefits of any healing he grants to another.{br}{br}The type of healing (positive energy, negative energy, construct repair, etc.) is unchanged from the original source for determining who or what can be healed.{br}{br}{i}Example: Darius the soulknife is a willing member of Jorus the vitalist&apos;s collective. He drinks a potion of cure light wounds that would normally heal him for 6 hit points, but Jorus decides to redirect 4 of those points to himself. Darius agrees and, as a result, Darius is healed for 2 hit points, and Jorus is healed for 4. If there were more members in Jorus&apos;s collective, Jorus could spread the healing from that potion out even more as long as the sum of hit points healed was no greater than 6.{br}{br}{/i}A vitalist may even heal wounds through collective healing if at full health. This may only be used with healing effects such as potions, powers, or other such effects. Healing from long term care or natural healing cannot be transferred in this way." compset="ClSpecial">
     <usesource source="pPsiUn"/>
@@ -9941,7 +9367,6 @@ perform hero.child[cPUVitKnac].pushtags[psiClass.?]</eval>
     </thing>
   <thing id="cPUHealthS" name="Health Sense" description="Beginning at 2nd level, a vitalist may take a swift action to gauge the relative health level of collective members, determining the amount of damage, in hit points, that an ally has taken. In addition, the vitalist may make a Heal check as a standard action, with a DC of 15, to determine if any of the members of his collective are afflicted by a disease or poison.{br}{br}Starting at 7th level, the vitalist can make a Heal check over his collective to stabilize a dying target or treat a wound from a caltrop, {i}spike growth{/i}, {i}spike stones{/i}, or similar.{br}{br}This ability improves at 12th level, and the vitalist may make a Heal check over his collective to treat a poisoned creature.{br}{br}At 17th level, the vitalist is able to treat diseases in the same fashion, making a Heal check over his collective.{br}{br}When treating a target over a collective, the DC of the Heal check is the same as if the vitalist was treating the target normally." compset="ClSpecial">
     <usesource source="pPsiUn"/>
-    <tag group="Custom" tag="HasCollect" name="Has the Collective Ability"/>
     <eval phase="Final" priority="10000"><![CDATA[if (field[xIndex].value = 1) then
   field[listname].text = "Health Sense (Identify)"
 elseif (field[xIndex].value = 2) then
@@ -9958,7 +9383,6 @@ elseif (field[xIndex].value = 4) then
     </thing>
   <thing id="cPUStealHT" name="Steal Health" description="At 3rd level, a vitalist has learned to siphon the health of a creature and use it for his own needs or the needs of his collective. As a touch attack, the vitalist may deal a number of hit points in damage to the target equal to his vitalist level + his Wisdom modifier and heal an equal amount of damage. The vitalist may share any healing from this effect over his collective, even if he himself would not be eligible for the healing.{br}{br}A vitalist may not heal more hit points than the touched creature had prior to using this ability.{br}{br}This ability may only be used on creatures with a Constitution score and may not be used against creatures in the vitalist&apos;s collective. A vitalist may use this ability on creatures with a total number of hit dice less than half his vitalist level, but he gains no healing from it.{br}{br}{i}For example, Jorus is a level 3 vitalist with a Wisdom of 16 and 15 hit points. Jorus has suffered 3 hit points of damage and uses Steal Health on a nearby 2 hit dice orc, dealing 6 hit points of damage (3 from his levels in vitalist, 3 from his Wisdom modifier). Although Jorus may only heal himself for 3 hit points, he may distribute the other 3 hit points over the collective to other members as needed. If Jorus was level 6, he would have dealt 9 points of damage, but would not have received any healing because the orc&apos;s total number of hit dice was too low.{br}{br}{/i}At 7th level, a vitalist is able to use steal health as a ranged touch attack with a range of 30 feet." compset="ClSpecial">
     <usesource source="pPsiUn"/>
-    <tag group="Custom" tag="HasCollect" name="Has the Collective Ability"/>
     <tag group="AbilType" tag="Super"/>
     <eval phase="Final" priority="10000"><![CDATA[if (field[xIndex].value = 1) then
   field[listname].text = "Steal Health (Touch)"
@@ -10030,7 +9454,6 @@ elseif (field[xIndex].value = 2) then
     </thing>
   <thing id="cPUStealLi" name="Steal Life" description="Beginning at 14th level, a vitalist can not only steal the health of a target, but steal their life itself. By making a successful melee touch attack and expending psionic focus, the vitalist can force the target to make a Fortitude save (DC 10 + half class level + Wisdom modifier) or die. A successful save negates this effect. Targets with more than 140 hit points are unaffected by this ability.{br}{br}If the target fails the save, the vitalist is able to channel the stolen life force through his collective, healing any number of the members of his collective for a combined total of 5 hit points per hit die the original target had.{br}{br}This ability may only be used on creatures with a Constitution score and may not be used against creatures in the vitalist&apos;s collective.{br}{br}{i}For example, Jorus is a level 14 vitalist and he uses steal life on a thought slayer, which has 11 hit dice.{br}{br}The thought slayer fails the Fortitude save, so Jorus can heal up to 55 hit points over his collective, divided among the members as he sees fit.{br}{br}{/i}A vitalist must wait 10 minutes after using this ability before he can attempt to use it again.{br}{br}This is considered a death effect." compset="ClSpecial">
     <usesource source="pPsiUn"/>
-    <tag group="Custom" tag="HasCollect" name="Has the Collective Ability"/>
     <tag group="AbilType" tag="Super"/>
     </thing>
   <thing id="cPUGuMaste" name="Master Guardian" description="A guardian of 20th level can, as a full-round action and by expending his psionic focus, give one member of the collective a psionic bubble of protection. This protective bubble grants DR 6/-, PR 27, resistance 20 against any attack that deals acid, cold, electricity, fire, or sonic damage, and a +6 deflection bonus to AC. This protective bubble lasts for one minute.{br}{br}The guardian can use this ability once every 10 minutes." compset="ClSpecial">
@@ -10074,13 +9497,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puPsyCa1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaManArc"></bootstrap>
     <bootstrap thing="cPWaTraArc"></bootstrap>
@@ -10381,13 +9804,13 @@ Call PsyWarTrMa</eval>
       <autotag group="Hide" tag="Power"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puForcScr1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="First">~ Setup the Psychic Warrior Path
 Call PsyWarPath</eval>
@@ -10413,13 +9836,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puPreTa1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaTraGla"></bootstrap>
     <bootstrap thing="cPWaManGla"></bootstrap>
@@ -10509,13 +9932,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puChamele1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaTraInf"></bootstrap>
     <bootstrap thing="cPWaManInf"></bootstrap>
@@ -10543,13 +9966,13 @@ ClsAllowPs - This tag group is used to setup the Powers that this Path grants. Y
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="puBurst1">
       <autotag group="Hide" tag="Power"/>
       <autotag group="PsyWarrior" tag="PathPower"/>
       <autotag group="SpellType" tag="cHelpPWa"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPWaTraInt"></bootstrap>
     <bootstrap thing="cPWaManInt"></bootstrap>
@@ -10960,12 +10383,9 @@ field[cfgMax1].value = hero.childfound[cPUAegHelp].field[abValue2].value</eval>
     </thing>
   <thing id="cPUIntim" name="Intimidate" description="Beginning at 2nd level, an aberrant gains a +1 bonus to Intimidate checks. At 6th level and every four levels thereafter, this bonus increases by 1. This ability replaces craftsman." compset="ClSpecial">
     <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
-    <tag group="SpecType" tag="DR" name="Damage Reduction" abbrev="Damage Reduction"/>
     <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev=" (Ex)"/>
     <tag group="ChooseSrc1" tag="Hero"/>
-    <bootstrap thing="xDamRd">
-      <autotag group="SpecSource" tag="cHelpBbn"/>
-      </bootstrap>
+    <tag group="SpecType" tag="Skill"/>
     <eval phase="PostLevel" priority="10000"><![CDATA[field[listname].text = "Intimidate (" & signed(field[xIndex].value) & ")"
 
 ~ If we're not shown, just get out now
@@ -11228,7 +10648,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaEArG2" name="Extra Arms, Greater" description="The extra arms on the aegis&apos;s astral suit function at nearly the same capacity as his normal arms. Each arm can now wield or use a light or one-handed weapon, shield, or any other item that he could normally use. Alternatively, the aegis can use one or both arms when wielding a two-handed weapon, possibly allowing him to wield a pair of two-handed weapons. The circumstance bonus on Climb checks and CMD against grapple attempts increases to +3 per extra arm that is not holding anything. The aegis must be 8th level and have the Extra Arms and Lesser Extra Arms customizations before selecting this customization." compset="RaceCustom" uniqueness="useronce">
@@ -11237,6 +10657,14 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
     <tag group="AllowRCust" tag="cfgPUTranB"/>
     <exprreq message="Extra Arms, Lesser customization required."><![CDATA[#hasability[rcPUaEArL2] <> 0]]></exprreq>
     <exprreq message="Extra Arms customization required."><![CDATA[#hasability[rcPUaExAr2] <> 0]]></exprreq>
+    <prereq message="Aegis level 8+ required.">
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 8)]]></validate>
+      </prereq>
     </thing>
   <thing id="rcPUaEArL2" name="Extra Arms, Lesser" description="The aegis&apos;s astral suit has an extra pair of arms with limited function. Each arm can hold, but not use, any one item that can normally be held in one hand. Items held in this way count toward the aegis&apos;s carrying capacity. The aegis can retrieve any item held by his extra arms as a swift action. The aegis does not gain any mechanical benefit from items held by these arms, such as a shield bonus to armor class." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -11268,7 +10696,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)]]></validate>
+        validif (levels >= 5)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaFort2" name="Fortification" description="The aegis gains 25% chance to negate critical hits or sneak attacks (so damage is rolled normally instead). This does not stack with armor with the same special ability. This ability can be selected again starting at 8th level and at 12th level, increasing the chance to negate critical hits or sneak attacks by an additional 25% for every additional time it is taken." compset="RaceCustom">
@@ -11328,7 +10756,7 @@ hero.child[xBurrow].field[abValue].value = maximum(hero.child[xBurrow].field[abV
         var levels as number
         classcheck = "Aegis"
         call PUPreReqs
-        validif (levels >= 6)]]></validate>
+        validif (levels >= 11)]]></validate>
       </prereq>
     </thing>
   <thing id="rcPUaHarS2" name="Hardened Strikes" description="The aegis is considered to be armed even when unarmed, does not provoke attacks of opportunity when making unarmed strikes, and his unarmed strikes deal lethal damage. In addition, the aegis&apos;s unarmed strikes can deal slashing or piercing damage, chosen at the time the customization is selected, instead of bludgeoning damage." compset="RaceCustom" uniqueness="useronce">
@@ -11617,6 +11045,14 @@ nexteach]]></eval>
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
+    <prereq message="Aegis level 5+ required.">
+      <validate><![CDATA[
+        var classcheck as string
+        var levels as number
+        classcheck = "Aegis"
+        call PUPreReqs
+        validif (levels >= 5)]]></validate>
+      </prereq>
     </thing>
   <thing id="rcPUaReac2" name="Reach" description="The aegis&apos;s reach increases by 5 feet. The aegis must be at least 7th level before selecting this customization." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
@@ -11794,7 +11230,7 @@ var efflevel as number
 efflevel = #levelcount[Aegis]
 hero.child[Totals].field[tBonusHP].value += efflevel</eval>
     </thing>
-  <thing id="rcPUaPoiso" name="Poison" description="The aberrant’s stinger attacks deal 1 point\nof Strength damage (Fortitude negates, DC 10 + 1/2 the\naberrant’s level + the aberrant’s Charisma modifier) on\na successful attack. The aberrant must have the stinger\ncustomization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
+  <thing id="rcPUaPoiso" name="Poison" description="The aberrant’s stinger attacks deal 1 point of Strength damage (Fortitude negates, DC 10 + 1/2 the aberrant’s level + the aberrant’s Charisma modifier) on a successful attack. The aberrant must have the stinger customization before selecting this customization." compset="RaceCustom" uniqueness="useronce">
     <usesource source="pPsiUn"/>
     <tag group="CustomCost" tag="2"/>
     <tag group="AllowRCust" tag="cfgPUTranB"/>
@@ -12248,15 +11684,17 @@ field[livename].text = "Astral Swarm (" & field[abValue].value & "/day)"]]></eva
     <tag group="SbNameApp" tag="AppValue" name="Append &quot;field[abValue].value&quot;" abbrev="Append &quot;field[abValue].value&quot;"/>
     <tag group="AbilType" tag="Extra"/>
     <eval phase="Render" priority="10000" index="2"><![CDATA[
-field[livename].text &= " " & signed(field[abValue].value)]]></eval>
+      field[livename].text &= " " & signed(field[abValue].value)]]></eval>
     <eval phase="PostLevel" priority="10000"><![CDATA[
-~our bonus is level /2, min 1
-field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),1)
+      ~our bonus is level /2, min 1
+      field[abValue].value += maximum(round(field[xTotalLev].value / 2,0,-1),1)
 
-~Only Apply bonus if focused and Wearing suit.
-doneif (hero.tagcount[Custom.WearAstS] + hero.tagcount[Hero.PsiFocus] <> 2)
+      var v_focus as number
+      call PUPsiFocus
+      ~Only Apply bonus if focused and Wearing suit.
+      doneif (hero.tagcount[Custom.WearAstS] + v_focus <> 2)
 
-#skillbonus[skStealth] += field[abValue].value]]></eval>
+      #skillbonus[skStealth] += field[abValue].value]]></eval>
     </thing>
   <thing id="cPUAegTrap" name="Trapfinding" description="A trailblazer of 5th level adds 1/2 his class level to Perception skill checks made to locate traps and to Disable Device skill checks (minimum +1). A trailblazer can use Disable Device to disarm magic traps.{br}{br}This ability replaces Master Craftsman." compset="ClSpecial" summary="Gain a bonus to find or disable traps, including magical ones.">
     <usesource source="pPsiUn"/>
@@ -12768,7 +12206,7 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
       </bootstrap>
     <bootstrap thing="puKnowDL1">
       <autotag group="SpellType" tag="cHelpPU1"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <bootstrap thing="cPUInsMadm">
       <autotag group="ClSpecWhen" tag="1"/>
@@ -12894,7 +12332,7 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
     <bootstrap thing="puForDoom6">
       <containerreq phase="First" priority="500"><![CDATA[count:Classes.Cryptic >= 16]]></containerreq>
       <autotag group="SpellType" tag="cHelpPU1"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <exprreq message="Lost Mind archetype required."><![CDATA[#hasarchetype[arPULstMnd] <> 0]]></exprreq>
     <prereq message="Cryptic level 16 or higher required.">
@@ -13354,7 +12792,7 @@ field[abSumm].text = "Gain total concealment (50% miss chance) for " & #attrmod[
     <bootstrap thing="puTelLash0">
       <autotag group="SpellSort" tag="cHelpPU2"/>
       <autotag group="SpellType" tag="cHelpPU2"/>
-      <autotag group="PackHelper" tag="FreePower"/>
+      <autotag group="Helper" tag="Free"/>
       </bootstrap>
     <eval phase="PostLevel" priority="10000"><![CDATA[
       ~ If we're not shown, just get out now!
@@ -13725,78 +13163,6 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
 
         validif (levels >= 12)]]></validate>
       </prereq>
-    </thing>
-  <thing id="cPUAltDef1" name="Altered Defense, Absorb" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Absorb:{/i} The cryptic gains DR 1/-." compset="ClSpecial" summary="The cryptic gains DR 1/-.">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="User" tag="Activation"/>
-    <eval phase="PostAttr" priority="11000"><![CDATA[
-      ~NOTE:
-      ~ abValue is bonus
-
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      field[abValue].value += #value[cPUAltDef]
-      field[livename].text = field[thingname].text & " DR " & field[abValue].value & "/-"
-      field[abSumm].text = "The cryptic gains DR " & field[abValue].value & "/-"
-
-      ~ If we're not active, just get out now!
-      doneif (field[abilActive].value = 0)
-
-      perform hero.assign[Cryptic.AltDefAct]
-      #applydr[xDamRd,field[abValue].value]]]></eval>
-    <exprreq message="Only a single Altered Defense can be active at a time."><![CDATA[hero.tagcount[Cryptic.AltDefAct] <= 1]]></exprreq>
-    </thing>
-  <thing id="cPUAltDef2" name="Altered Defense, Deflect" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Deflect:{/i} The cryptic gains a +1 dodge bonus to her AC." compset="ClSpecial" summary="The cryptic gains a +1 dodge bonus to her AC.">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="User" tag="Activation"/>
-    <eval phase="PostAttr" priority="11000"><![CDATA[
-      ~NOTE:
-      ~ abValue is bonus
-
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      field[abValue].value += #value[cPUAltDef]
-      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
-      field[abSumm].text = "The cryptic gains a " & signed(field[abValue].value) & " dodge bonus to her AC."
-
-      ~ If we're not active, just get out now!
-      doneif (field[abilActive].value = 0)
-
-      perform hero.assign[Cryptic.AltDefAct]
-      hero.child[ArmorClass].field[tACDodge].value += field[abValue].value]]></eval>
-    <exprreq message="Only a single Altered Defense can be active at a time."><![CDATA[hero.tagcount[Cryptic.AltDefAct] <= 1]]></exprreq>
-    </thing>
-  <thing id="cPUAltDef3" name="Altered Defense, Retaliate" description="A cryptic learns early on to modify the patterns around her to grant her protection as a swift action. The cryptic chooses from the options below and may only have one such effect active at any given time. The cryptic can use this ability for a number of rounds per day equal to 4 + her Intelligence modifier. The cryptic can maintain this ability as long as she wants as long as she has rounds available, or dismiss it at any time as a free action.\n\n{i}Retaliate:{/i} The cryptic gains a +1 bonus on her attack rolls against any opponent that successfully hit her since her last turn." compset="ClSpecial" summary="+1 bonus on your attack rolls against any opponent that hit you since your last turn.">
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="User" tag="Activation"/>
-    <eval phase="PostAttr" priority="11000"><![CDATA[
-      ~NOTE:
-      ~ abValue is bonus
-
-      ~ If we're not shown, just get out now
-      doneif (tagis[Helper.ShowSpec] <> 1)
-      ~ if we've been disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      field[abValue].value += #value[cPUAltDef]
-      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
-      field[abSumm].text = signed(field[abValue].value) & " bonus on your attack rolls against any opponent that hit you since your last turn."
-
-      ~ If we're not active, just get out now!
-      doneif (field[abilActive].value = 0)
-
-      perform hero.assign[Cryptic.AltDefAct]
-      hero.child[Attack].field[Bonus].value += field[abValue].value]]></eval>
-    <exprreq message="Only a single Altered Defense can be active at a time."><![CDATA[hero.tagcount[Cryptic.AltDefAct] <= 1]]></exprreq>
     </thing>
   <thing id="arPUGiftBl" name="Gifted Blade" description="There are some soulknives who learn to manifest powers, as well as to form mind blades. These gifted individuals wield both blade and mind with deadly efficiency" compset="ClassVary" uniqueness="unique">
     <fieldval field="srcPageNum" value="282"/>
@@ -14182,302 +13548,13 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <tag group="AbilType" tag="Super"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="cPUIConstr" name="Improved Constructs" description="At 8th level, you gain your choice of the Advanced Construct* or Boost Construct feat as a bonus feat. If you already have one of the feats, you gain the other instead. If you already possess both feats, you gain a bonus psionic feat of your choice. You must meet any applicable prerequisites to select the feat.\n\n{b}Note:{/b} Not Scripted yet." compset="ClSpecial">
-    <comment>Stub</comment>
-    <tag group="ProductId" tag="HLCommunit"/>
-    </thing>
-  <thing id="cPUMsConst" name="Maestro of Constructs" description="At 14th level, once per day as a standard action, you can choose to create up to half your psion level in astral constructs, divided at your discretion (For example, for a 14th level constructor, a 5th-level construct and a 2nd-level construct, a single 7th-level construct, seven 1st-level constructs, etc.), repair a damaged astral construct for up to 30 hit points plus 1 hit point per psion level, or summon two astral swarms (see Appendix) plus one astral swarm for each three levels beyond 14th, to a maximum of 4 at 20th level.\n\n{b}Note:{/b} Not Scripted yet." compset="ClSpecial">
-    <comment>stub</comment>
-    </thing>
-  <thing id="cPUConSha" name="Constructor (Shaper)" description="A psion specializing in metacreativity is known as a shaper. This discipline includes powers that draw ectoplasm from the Astral Plane, creating semisolid and solid items such as armor, weapons, or animated constructs to do battle at the shaper&apos;s command.\n\n{i}Class Skills:{/i} Bluff (Cha), Disguise (Cha), and Use Magic Device (Cha)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skDisguise"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skBluff"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiSumCal">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPUMsConst">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAstAll">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPUIConstr">
-      <autotag group="ClSpecWhen" tag="12"/>
-      </bootstrap>
-    <bootstrap thing="cPUIConstr">
-      <autotag group="ClSpecWhen" tag="16"/>
-      </bootstrap>
-    <bootstrap thing="cPUIConstr">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPUIConstr">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Shaper Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiShaper"]]></eval>
-    </thing>
-  <thing id="cPUErudite" name="Erudite (Generalist)" description="A psion who chooses to remain more general in his studies of psionics is known as a generalist.  While he does not gain the unique abilities each discipline grants to the specialized psions, he is able to broaden his powers and blend them in unique ways.\n\n{i}Class Skills:{/i} Use Magic Device (Cha) and any one skill chosen from the above discipline lists." compset="CustomSpec" uniqueness="useronce">
-    <fieldval field="usrCandid1" value="thingid.skAcrobat|thingid.skBluff|thingid.skClimb|thingid.skDiplo|thingid.skDisable|thingid.skDisguise|thingid.skFly|thingid.skHeal|thingid.skIntim|thingid.skPercep|thingid.skSenseMot|thingid.skSurvival|thingid.skSwim"/>
-    <usesource source="pPsiUn"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="fShowWhat" tag="Skills"/>
-    <tag group="ChooseSrc1" tag="Hero"/>
-    <tag group="ClassSkill" tag="skUseMagic"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPUDayPowr">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiBrePow">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiDblMan">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiExMind">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <eval phase="PreLevel" priority="5000"><![CDATA[
-      ~ If we've been Disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      ~ Make selected skill a class skill
-      perform field[usrChosen1].chosen.assign[Helper.ClassSkill]]]></eval>
-    <eval phase="First" index="2"><![CDATA[
-      ~ If we've been Disabled, get out now
-      doneif (tagis[Helper.SpcDisable] <> 0)
-
-      ~ Set 2nd bonus feat tags
-      perform linkage[table].assign[fCatSec.ItemCreate]
-      perform linkage[table].assign[fCatSec.Metapsion]
-      ~ Expanded Knowledge
-      perform linkage[table].assign[fIncSec.fPUExpKn]
-      ~ Extra Power Known
-      perform linkage[table].assign[fIncSec.fPUExtPwrK]
-      ~ Set the 2nd bonus feat levels
-      linkage[table].field[cSBonFtTot].arrayvalue[1]  = 1
-      linkage[table].field[cSBonFtTot].arrayvalue[6]  = 2
-      linkage[table].field[cSBonFtTot].arrayvalue[11] = 3
-      linkage[table].field[cSBonFtTot].arrayvalue[16] = 4]]></eval>
-    </thing>
-  <thing id="cPUInsSeer" name="Insight (Seer)" description="A psion who chooses clairsentience is known as a seer. Seers can learn precognitive powers to aid their comrades in combat, as well as powers that permit them to gather information in many different ways.\n\n{i}Class Skills:{/i} Diplomacy (Cha) and Perception (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skPercep"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skDiplo"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPUInsStep">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiSeeCon">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiPerFSi">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="12"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="16"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="18"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPUAltProb">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Seer Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiSeer"]]></eval>
-    </thing>
   <thing id="cPUInsStep" name="Insightful Steps" description="Starting at 2nd level, as long as you maintain focus, your insight allows you to know just where to step to keep your footing, allowing you to ignore difficult terrain. You may expend your psionic focus as an immediate action to grant this ability to an ally within 30 ft. for a number of rounds equal to your Intelligence modifier. Only one person, including you, can benefit from this ability at a time. At 6th level and every four psion levels thereafter, one additional creature may be affected by this ability at a time (2 at 6th, 3 at 10th, and so on)." compset="ClSpecial">
     <usesource source="pPsiUn"/>
     <tag group="abAction" tag="PUManFocus"/>
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
-  <thing id="cPUAltProb" name="Alter Probability" description="At 8th level, once per day as an immediate action, you may expend your psionic focus to give an enemy false insight, forcing one enemy within Medium range (100 ft. + 10 ft./level) to reroll a single dice roll. The target must take the worse of the\ntwo rolls. Every two psion levels thereafter, this ability may be used one additional time per day. A successful Will save negates this effect (DC 10 + 1/2 class level + Int modifier)." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="abAction" tag="Immediate"/>
-    <tag group="abAction" tag="PUExpFocus"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    </thing>
-  <thing id="cPUEvac" name="Evacuate" description="At 14th level, once per day, you can teleport anywhere within line of sight as an immediate action. You can bring along up to your Intelligence modifier in creatures touching you." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    </thing>
-  <thing id="cPUFarStri" name="Far Strider" description="At 20th level, you can use your nomad’s step ability as a free action. You cannot use this ability if you have already taken a 5 ft. step this round, and using this ability counts as using your 5 ft. step." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="AbilType" tag="Super"/>
-    </thing>
-  <thing id="cPUJaunNom" name="Jaunting (Nomad)" description="A psion who relies on psychoportation powers is known as a nomad. Nomads can wield powers that propel or displace objects in space or time.\n\n{i}Class Skills:{/i} Climb (Str), Fly (Dex), Survival (Wis), and Swim (Str)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skFly"/>
-    <tag group="ClassSkill" tag="skSurvival"/>
-    <tag group="ClassSkill" tag="skSwim"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skClimb"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPUFarStri">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiIncPos">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <bootstrap thing="cPsiNomSte">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPUEvac">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Nomad Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiNomad"]]></eval>
-    </thing>
-  <thing id="cPUImpWill" name="Impose Will" description="At 2nd level, as long as you maintain psionic focus you treat your psion level as 1 higher when manifesting Charm or Compulsion powers. In addition, you are treated as if affected by mind link with any creature currently charmed or dominated by you for the duration of the charm or domination effect." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    </thing>
-  <thing id="cPUEnthral" name="Enthrall" description="At 14th level, once per day, you can make one creature your thrall. A Will save (DC 10 + 1/2 psion level + key ability modifier) negates the effect.  The affected creature will follow any instruction you give, including harming itself, although obviously selfdestructive orders give the target an additional save each round it is under those orders. You may only have one thrall at any given time and the thrall gains a new save to negate the effect every 24 hours from the time it became your thrall. This is considered a mind-affecting, compulsion effect." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    </thing>
-  <thing id="cPUMindTel" name="Mindbender (Telepath)" description="A psion who chooses the discipline of telepathy is known as a telepath. He is the master of powers that allow mental contact and control of other sentient creatures. A telepath can deceive or destroy the minds of his enemies with ease.\n\n{i}Class Skills:{/i} Bluff (Cha), Diplomacy (Cha), and Sense Motive (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skDiplo"/>
-    <tag group="ClassSkill" tag="skSenseMot"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skBluff"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPUImpWill">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPUEnthral">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiGrdTho">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelpth">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Telepath Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiTelepa"]]></eval>
-    </thing>
-  <thing id="cPUEmpAlt" name="Empowered Alteration" description="Starting at 8th level, you can expend your psionic focus anytime you manifest a power of the psychometabolism discipline that has a range of Personal and a Target of you to have all numeric effects of the power increased by 50%. For example, when manifesting animal affinity, you could expend your psionic focus to gain a +6 enhancement bonus to Strength instead of +4. Powers modified in this fashion cannot also be altered by effects such as Empower Power." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="abAction" tag="PUExpFocus"/>
-    </thing>
-  <thing id="cPUInfBody" name="Infused Body" description="At 20th level, anytime you manifest one of the metamorphosis powers, you heal a number of hit points equal to the number of power points spent on the manifestation.\n\n  In addition, your body has become so adept at changing form that you become virtually indestructible. As long as some portion of your body still exists, you will return to life as if affected by resurrection one week after dying, although you gain three permanent negative levels instead of only one." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="AbilType" tag="Super"/>
-    </thing>
-  <thing id="cPUTranEgo" name="Transmogrifist (Egoist)" description="A psion who specializes in psychometabolism is known as an egoist. This discipline consists of powers that alter the psion&apos;s psychobiology, or that of creatures near him. An egoist can both heal and transform himself into a fearsome fighter.\n\n{i}Class Skills:{/i} Acrobatics (Dex) and Heal (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skHeal"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skAcrobat"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiMetHea">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiResBod">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPUInfBody">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPUEmpAlt">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Egoist Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiEgoist"]]></eval>
-    </thing>
-  <thing id="cPUTelBurs" name="Telekinetic Burst" description="At 14th level, once per day, you can expend your psionic focus as a standard action to hurl all creatures within 30 feet of you back to the edge of the burst effect, knocking them to the ground, prone. A successful Reflex save (DC 10 + half psion level + your Intelligence modifier) negates the knock back effect, but creatures within the effect are still knocked prone." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="abAction" tag="PUExpFocus"/>
-    <tag group="abAction" tag="Standard"/>
-    </thing>
-  <thing id="cPUPermTel" name="Permenant Telekinesis" description="At 20th level, as long as you maintain psionic focus, you can use telekinetic force or telekinetic maneuver at will, but you must still pay any power point cost to augment the manifestation." compset="ClSpecial">
-    <usesource source="pPsiUn"/>
-    <tag group="AbilType" tag="Super"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    </thing>
-  <thing id="cPUUnseHan" name="Unseen Hand (Kineticist)" description="Psions who specialize in psychokinesis are known as kineticists. They are the masters of powers that manipulate and transform matter and energy. Kineticists can attack with devastating blasts of energy. Unlike other psions, when a kineticist selects any power that specifies the character must select from cold, electricity, fire, or sonic damage, he gains the option to choose the type of damage at the time the power is manifested.\n\n{i}Class Skills:{/i} Disable Device (Dex) and Intimidate (Cha)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skIntim"/>
-    <tag group="ClassSkill" tag="skDisable"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="6"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="18"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="11"/>
-      </bootstrap>
-    <bootstrap thing="cPUTelBurs">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="17"/>
-      </bootstrap>
-    <bootstrap thing="cPUPermTel">
-      <autotag group="ClSpecWhen" tag="20"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Kinetic Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiKineti"]]></eval>
-    </thing>
   <thing id="cPUDiscTal" name="Discipline Talents" description="Discipline Talents (Ps): When you meditate to regain your power points for the day, choose two powers from the following list: call to mind, catfall, create sound, far hand, hammer, and telepathic lash. As long as you maintain psionic focus, you may manifest either of your chosen powers without paying a power point cost, but the power may not be augmented or affected by metapsionic feats. The competence bonus from call to mind is reduced to +2, the effect of catfall only treats your fall as 20 ft. shorter than it is, the duration of create sound is one round per two psion levels (minimum 1 round), and the damage of hammer is reduced to 1d4.\nThis ability replaces the talents normally gained by a psion." compset="ClSpecial">
     <tag group="AbilType" tag="PsiLike"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    </thing>
-  <thing id="cPUDayPowr" name="Daily Powers" description="At 2nd level, each day, you may choose one power from the Psion/Wilder list that is not on your list of powers known and manifest that power as if it was. You must have manifested the power from a power stone at some point prior to choosing it as a daily power and the power’s level may not exceed your maximum power level. You may decide which power to manifest at the time of manifesting. Once this choice has been made, it cannot be changed until you have meditated to regain\nyour daily power points after resting. At 7th level and every five psion levels thereafter, you may choose one additional power per day to treat as if a power known (2 at 7th level, 3 at 12th level, 4 at 17th level). These powers are in addition to your normal powers known.\n\nThis ability replaces the Bonus Feat normally gained by a generalist psion and the powers known gained at each level a daily power is gained, as displayed on Table: The Erudite." compset="ClSpecial">
     <tag group="ProductId" tag="HLCommunit"/>
     </thing>
   <thing id="arPUShaHnt" name="Shadow Hunter" description="Even the most intelligent of races can have fears of what might be lurking within the shadows, and a special breed of dread known as shadow hunters have learned how to use their connection to fears to manipulate darkness to aid them. Whether it is concealing them from sight or turning shadows into substance, shadow hunters are at home where others fear the unknown." compset="ClassVary" uniqueness="unique">
@@ -14564,8 +13641,26 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
     <comment>abValue = Max members</comment>
     <fieldval field="abValue2" value="10"/>
     <fieldval field="abRange" value="100"/>
-    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
-    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Final" priority="10000"><![CDATA[
+      field[livename].text = field[thingname].text & " (" & field[abValue].value & " members, "
+      if (field[xCount].value = 1) then
+        field[livename].text &= field[abRange].value & " " & tagnames[abRange.?] & ")"
+      elseif (field[xCount].value = 2) then
+        field[livename].text &= "Same Plane)"
+
+      elseif (field[xCount].value = 3) then
+        field[livename].text &= "Anywhere)"
+
+      endif
+      if (field[xIndex].value = 2) then
+        field[listname].text = "Collective Range (unlimited)"
+        field[abSumm].text = "Your collective's range is unlimited within the same plane"
+      elseif (field[xIndex].value = 3) then
+        field[listname].text = "Collective Range (planar)"
+        field[abSumm].text = "Your collective's range now extends across all planes"
+      endif]]></eval>
     <eval phase="PostAttr" priority="2000" index="2"><![CDATA[      ~ Stop now if we're not the first copy
       doneif (tagis[Helper.FirstCopy] = 0)
 
@@ -14610,24 +13705,6 @@ field[listname].text = "Enhanced Mind Bolt +" & field[xIndex].value]]></eval>
       endif
       if (tagvalue[ClSpecWhen.?] = 19) then
         perform tagreplace[ClSpecWhen.19,ClSpecWhen.16]
-      endif]]></eval>
-    <eval phase="Final" priority="10000"><![CDATA[
-      field[livename].text = field[thingname].text & " (" & field[abValue].value & " members, "
-      if (field[xCount].value = 1) then
-        field[livename].text &= field[abRange].value & " " & tagnames[abRange.?] & ")"
-      elseif (field[xCount].value = 2) then
-        field[livename].text &= "Same Plane)"
-
-      elseif (field[xCount].value = 3) then
-        field[livename].text &= "Anywhere)"
-
-      endif
-      if (field[xIndex].value = 2) then
-        field[listname].text = "Collective Range (unlimited)"
-        field[abSumm].text = "Your collective's range is unlimited within the same plane"
-      elseif (field[xIndex].value = 3) then
-        field[listname].text = "Collective Range (planar)"
-        field[abSumm].text = "Your collective's range now extends across all planes"
       endif]]></eval>
     </thing>
   <thing id="arPUNightC" name="Nightmare Constructor" description="Where most dreads use fear as something to manipulate in creatures, nightmare constructors turn fears into reality. These individuals form horrors created from the energy of nightmares and send them into battle. Enemies of nightmare constructors must truly face their deepest fears when confronted by the creatures created from terror.\n\n{b}Telepathic Lash:{/b} The nightmare constructor gains telepathic lash as a talent. This ability replaces talents.\n\n{b}Horror (Su):{/b} A nightmare constructor is able to form a creature created from distilled fears and nightmares. Creating a horror takes one minute of concentration to complete and the horror remains until dismissed by the nightmare constructor.\nThis horror functions as a summoner’s eidolon using the nightmare constructor’s class level as the summoner level, with the following exceptions. A horror is treated as a construct for the purposes of effects related to its type, such as favored enemy. Commanding a horror is the same as commanding an astral construct. A horror disperses if the nightmare constructor is rendered unconscious or dies.\nThe nightmare constructor can allow his horror to use his terrors, but such uses still count against his daily limit. At 3rd level, the nightmare constructor can also allow his horror to utilize his channel terrors ability.\nThis ability replaces devastating touch.\n\n{b}Reinvigorate Horror:{/b} The nightmare constructor is able to channel his own energy to restore the nightmarish form of his horror. As a standard action that provokes attacks of opportunity, the nightmare constructor can touch his horror and restore 5 hit points per power point spent. The nightmare constructor cannot spend more power points on this ability than his manifester level.\n\n{b}Devastating Touch:{/b} At 2nd level, the nightmare constructor’s horror gains the devastating touch ability of a dread, using the nightmare constructor’s class level to determine the total damage dealt. This also allows the nightmare constructor to select terrors that modify\ndevastating touch, but these terrors only apply to the horror’s use of devastating touch. This ability replaces the power known gained at 2nd level.\n\n{b}Fear Surge (Su):{/b} When the horror of a 3rd level or higher nightmare constructor is within 30 ft. of a creature that suffers from the shaken, frightened, or panicked condition, the nightmare constructor gains an additional evolution point to spend on the horror. This evolution point only lasts while there is a creature within 30 ft. of the horror with the shaken, frightened, or panicked condition. This ability replaces channel terror.\n\n{b}Improved Fear Surge:{/b} At 6th level, when the nightmare constructor gains an evolution point from fear surge, he instead gains two evolution points. This ability replaces the terror normally gained at 6th level.\n\n{b}Greater Fear Surge:{/b} A nightmare constructor of 9th level gains three evolution points when his fear surge is activated. This ability replaces the bonus feat normally gained at 9th level.\n\n{b}Horrific Infusion (Su):{/b} Starting at 11th level, the nightmare constructor can merge with his horror as a standard action. The nightmare constructor wears the horror like translucent and undulating armor. The horror mimics all of the nightmare constructor’s movements, and the nightmare constructor perceives through the horror’s senses and speaks through its voice, as the two are now one creature. The nightmare constructor directs all of the horror’s actions while merged. While merged with his horror, the nightmare constructor uses the horror’s Strength, Dexterity, and Constitution, but retains his own Intelligence, Wisdom, and Charisma. The nightmare constructor\ngains the horror’s hit points as temporary hit points. When these hit points reach 0, the horror is killed and sent back to its home plane. The nightmare constructor uses the horror’s base attack bonus, and gains the horror’s armor and natural armor bonuses and modifiers to ability scores. The nightmare constructor also gains access to the horror’s special abilities and the horror’s evolutions. The nightmare\nconstructor is still limited to the horror’s maximum number of natural attacks. The horror has no skills or feats of its own. The horror must be at least the same size as the nightmare constructor. The horror must have limbs for the nightmare constructor to cast spells with somatic components (should the nightmare constructor have spellcasting ability).\nWhile fused, the nightmare constructor loses the benefits of his armor. He counts both as his original type and as a construct for any effect related to type, whichever is worse for the nightmare constructor. Powers such as dismiss ectoplasm work on the horror,\nbut the nightmare constructor is unaffected. Neither the nightmare constructor nor his horror can be targeted separately, as they are fused into one creature. The nightmare constructor and horror cannot take separate actions. While fused with his horror, the nightmare\nconstructor can use all of his own abilities and gear, except for his armor. In all other cases, this ability functions as the normal horror ability. \nThis ability replaces shadow twin.\n\n{b}Empowered in Fear (Su):{/b} At 11th level, the nightmare constructor’s horror is treated as if under the effect of physical acceleration any time it is within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions.\nAt 15th level, the horror is also treated as if under the form of doom power when within 30 ft. of a creature suffering from either the shaken, frightened, or panicked conditions. This effect allows the horror to have more natural attacks than its normal eidolon form limit.\nThis ability replaces twin fear." compset="ClassVary" uniqueness="unique">
@@ -15600,7 +14677,7 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <arrayval field="cvBonFtMod" index="18" value="-1"/>
     <arrayval field="cvBonFtMod" index="19" value="-1"/>
     <usesource source="pPsiUn" parent="pDscar" name="DSP - Ultimate Psionics"/>
-    <tag group="ProductId" tag="HLCommunit" name="Hero Lab Community" abbrev="Hero Lab Community"/>
+    <tag group="ProductId" tag="HLCommunit"/>
     <tag group="AbReplace" tag="cSknEnhMB"/>
     <tag group="AbReplace" tag="cSknMindBl"/>
     <tag group="AbReplace" tag="cSknQuiDra"/>
@@ -15909,7 +14986,7 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <tag group="SpecType" tag="ArmorClass"/>
     <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
     <tag group="Helper" tag="ActivMenu" name="ActivMenu" abbrev="ActivMenu"/>
-    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="AbilType" tag="Super"/>
     <eval phase="First" priority="50" name="Add Mind Blade Tags"><![CDATA[
       ~ If we've been Disabled, get out now
       doneif (tagis[Helper.SpcDisable] <> 0)
@@ -15954,7 +15031,7 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
     <usesource source="pPsiUn"/>
     <tag group="SpecType" tag="ArmorClass"/>
     <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev=" (Su)"/>
+    <tag group="AbilType" tag="Super"/>
     <eval phase="Final" priority="10000"><![CDATA[
       ~ Set the list name
       field[listname].text = field[thingname].text & " " & signed(field[xIndex].value)
@@ -16103,170 +15180,127 @@ hero.child[cHelpSkn].field[cPsiExpr].text = "(" & hero.child[cHelpSkn].field[cPs
       hero.child[cSknPUThSk].field[abValue].value += 1</eval>
     <exprreq message="Thick Skin Blade Skill required"><![CDATA[#hasability[cSknPUThSk] <> 0]]></exprreq>
     </thing>
-  <thing id="arPUDlDisc" name="Dual Disciple" description="While most psions are content to focus their study on a single discipline and only dabble in the others, some strive to unlock the secrets of multiple disciplines. These secrets come with a price, for the dual disciple is less skilled in the disciplines he has not chosen as his focus.\n\n{b}Secondary Discipline{/b}: When the dual disciple chooses his discipline, he also selects his secondary discipline. The dual disciple&apos;s secondary discipline cannot be the Generalist discipline. The dual disciple can select his powers known from this secondary discipline power list as well as from his normal power lists. However, the dual discipline suffers a -1 penalty to his manifester level when manifesting a power of any discipline other than one of those he has chosen. The dual disciple gains his primary discipline abilities at 2nd, 8th, 14th, and 20th levels as normal. This ability replaces the class skills normally gained when selecting a discipline.\n\n{b}Secondary Discipline Ability{/b}: At 10th level, the dual disciple gains the 2nd level discipline ability of his secondary discipline. This replaces the bonus feat normally gained by a 10th level psion. \n\n{b}Secondary Discipline Ability{/b}: At 15th level, the dual disciple gains the 8th level discipline ability of his secondary discipline. This replaces the bonus feat normally gained by a 15th level psion." compset="ClassVary" uniqueness="unique">
-    <fieldval field="cvSpec2ndS" value="Secondary Discipline"/>
-    <fieldval field="srcBookInf" value="Psionics Unleashed"/>
-    <fieldval field="srcPageNum" value="274"/>
-    <arrayval field="cvBonFtMod" index="9" value="-1"/>
-    <arrayval field="cvBonFtMod" index="14" value="-1"/>
-    <arrayval field="cvCustSTot" index="0" value="1"/>
-    <usesource source="pPsiUn"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <tag group="AllowC2nd" tag="arPUDlDisc"/>
-    <tag group="ClVaryName" tag="AppParen"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <link linkage="varies" thing="cHelpPsi"/>
-    <eval phase="First" priority="500"><![CDATA[
-      ~ Set a focus pointer to the primary discipline &
-      perform hero.findchild[BaseCustSp,"SpecSource.cHelpPsi & !Helper.Secondary"].setfocus
-      doneif (state.isfocus = 0)
-
-      ~ Remove the primary disciplines class skills
-      perform focus.delete[ClassSkill.?]
-
-      ~ Set a note the ability to let the gamer know
-      focus.field[DescAppend].text &= "{b}Dual Disciple{/b} This archetype replaces the class skills normally gained when selecting a discipline."]]></eval>
-    </thing>
-  <thing id="cPUSeer2" name="Clairsentience (Seer) (Secondary)" description="A psion who chooses clairsentience is known as a seer. Seers can learn precognitive powers to aid their comrades in combat, as well as powers that permit them to gather information in many different ways.\n\n{i}Class Skills:{/i} Diplomacy (Cha) and Perception (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skPercep"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="ClassSkill" tag="skDiplo"/>
-    <tag group="SpecSource" tag="arPUDlDisc"/>
-    <tag group="Helper" tag="Secondary"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="17"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="19"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <bootstrap thing="cPsiRecInf">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <bootstrap thing="cPsiAltWav">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Seer Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiSeer"]]></eval>
-    </thing>
-  <thing id="cPUShaper2" name="Metacreativity (Shaper) (Secondary)" description="A psion specializing in metacreativity is known as a shaper. This discipline includes powers that draw ectoplasm from the Astral Plane, creating semisolid and solid items such as armor, weapons, or animated constructs to do battle at the shaper&apos;s command.\n\n{i}Class Skills:{/i} Bluff (Cha), Disguise (Cha), and Use Magic Device (Cha)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skDisguise"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="ClassSkill" tag="skBluff"/>
-    <tag group="SpecSource" tag="arPUDlDisc"/>
-    <tag group="Helper" tag="Secondary"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiEctPro">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <bootstrap thing="cPsiSumCal">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiEctPro">
-      <autotag group="ClSpecWhen" tag="19"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Shaper Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiShaper"]]></eval>
-    </thing>
-  <thing id="cPUKineti2" name="Psychokinesis (Kineticist) (Secondary)" description="Psions who specialize in psychokinesis are known as kineticists. They are the masters of powers that manipulate and transform matter and energy. Kineticists can attack with devastating blasts of energy.   Unlike other psions, when a kineticist selects any power that specifies the character must select from cold, electricity, fire, or sonic damage, he gains the option to choose the type of damage at the time the power is manifested.\n\n{i}Class Skills:{/i} Disable Device (Dex) and Intimidate (Cha)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skIntim"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="SpecSource" tag="cHelpPsi"/>
-    <tag group="ClassSkill" tag="skDisable"/>
-    <tag group="Helper" tag="Secondary"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="14"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="18"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="18"/>
-      </bootstrap>
-    <bootstrap thing="cPsiKinAur">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelHur">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Kinetic Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiKineti"]]></eval>
-    </thing>
-  <thing id="cPUEgoist2" name="Psychometabolism (Egoist) (Secondary)" description="A psion who specializes in psychometabolism is known as an egoist. This discipline consists of powers that alter the psion&apos;s psychobiology, or that of creatures near him. An egoist can both heal and transform himself into a fearsome fighter.\n\n{i}Class Skills:{/i} Acrobatics (Dex) and Heal (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skHeal"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="ClassSkill" tag="skAcrobat"/>
-    <tag group="Helper" tag="Secondary"/>
-    <tag group="SpecSource" tag="arPUDlDisc"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiMetHea">
-      <autotag group="ClSpecWhen" tag="10"/>
-      </bootstrap>
-    <bootstrap thing="cPsiShaEff">
-      <autotag group="ClSpecWhen" tag="15"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Egoist Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiEgoist"]]></eval>
-    </thing>
-  <thing id="cPUNomad2" name="Psychoportation (Nomad) (Secondary)" description="A psion who relies on psychoportation powers is known as a nomad. Nomads can wield powers that propel or displace objects in space or time.\n\n{i}Class Skills:{/i} Climb (Str), Fly (Dex), Survival (Wis), and Swim (Str)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skFly"/>
-    <tag group="ClassSkill" tag="skSurvival"/>
-    <tag group="ClassSkill" tag="skSwim"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="ClassSkill" tag="skClimb"/>
-    <tag group="SpecSource" tag="arPUDlDisc"/>
-    <tag group="Helper" tag="Secondary"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiNomSte">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiIncPos">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Nomad Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiNomad"]]></eval>
-    </thing>
-  <thing id="cPUTelepa2" name="Telepathy (Telepath) (Secondary)" description="A psion who chooses the discipline of telepathy is known as a telepath. He is the master of powers that allow mental contact and control of other sentient creatures. A telepath can deceive or destroy the minds of his enemies with ease.\n\n{i}Class Skills:{/i} Bluff (Cha), Diplomacy (Cha), and Sense Motive (Wis)." compset="CustomSpec" uniqueness="useronce">
-    <usesource source="pPsiUn"/>
-    <tag group="ClassSkill" tag="skDiplo"/>
-    <tag group="ClassSkill" tag="skSenseMot"/>
-    <tag group="Helper" tag="NoPathSoc"/>
-    <tag group="ClassSkill" tag="skBluff"/>
-    <tag group="SpecSource" tag="arPUDlDisc"/>
-    <tag group="Helper" tag="Secondary"/>
-    <tag group="ProductId" tag="HLCommunit"/>
-    <bootstrap thing="cPsiMenInt">
-      <autotag group="ClSpecWhen" tag="2"/>
-      </bootstrap>
-    <bootstrap thing="cPsiTelpth">
-      <autotag group="ClSpecWhen" tag="8"/>
-      </bootstrap>
-    <eval phase="Final" priority="1000"><![CDATA[
-      ~ Give access to Telepath Powers
-      linkage[table].field[cPsiExpr].text &= "|psiClass.cPsiTelepa"]]></eval>
-    </thing>
   <thing id="cPUIssuOrd" name="Issue Order" description="A commander of 4th level can, as a swift action, direct one member of his collective to take an action that requires either a standard or move action. On that member’s next turn, they must perform that command unless they make a successful Will saving throw at the same DC as that of the commander’s Unwilling Participant* DC. This ability replaces the strategy normally gained at 4th level, but functions like a strategy, including using the same pool of 3 + the tactican’s Charisma modifier limited uses per day." compset="ClSpecial" summary="As a swift action, direct 1 member your collective to take an action.">
     <tag group="AbilType" tag="Super"/>
     <tag group="ProductId" tag="HLCommunit"/>
+    </thing>
+  <thing id="arPUShrd" name="Shroud" description="The best hunter is one who is not seen before taking down her prey. The shroud is just such a hunter, using her psionic prowess to hide from view and track silently." compset="ClassVary" uniqueness="unique">
+    <tag group="ClVaryName" tag="AppParen"/>
+    <tag group="AbReplace" tag="cPUMrkWnd"/>
+    <tag group="AbReplace" tag="cPUDisenga"/>
+    <tag group="AbReplace" tag="cPUDefShot"/>
+    <tag group="AbReplace" tag="cPUEvArrow"/>
+    <bootstrap thing="cPUHidHunt">
+      <autotag group="ClSpecWhen" tag="6"/>
+      </bootstrap>
+    <bootstrap thing="cPUHidHunt">
+      <autotag group="ClSpecWhen" tag="10"/>
+      </bootstrap>
+    <bootstrap thing="cPUHidHunt">
+      <autotag group="ClSpecWhen" tag="14"/>
+      </bootstrap>
+    <bootstrap thing="cPUHidHunt">
+      <autotag group="ClSpecWhen" tag="18"/>
+      </bootstrap>
+    <bootstrap thing="cPUShHideP">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cPUShUnAss">
+      <autotag group="ClSpecWhen" tag="13"/>
+      </bootstrap>
+    <bootstrap thing="cPUUnseen">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cPUHidHunt">
+      <autotag group="ClSpecWhen" tag="2"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpPU3"/>
+    </thing>
+  <thing id="cPUUnseen" name="Unseen" description="A shroud can use her heightened awareness of her surroundings and psionic energy to read the environment and blend in so as to be undetectable. While maintaining psionic focus, she can spend a swift action to become invisible for a umber of rounds equal to her Wisdom modifier. The invisibility ends as soon as the shroud attacks a creature. She can use this ability a number of times per day equal to 3 + her class level. This ability replaces wind reader." compset="ClSpecial">
+    <fieldval field="abRange" value="Personal"/>
+    <fieldval field="actName" value="Unseen"/>
+    <usesource source="pDscar"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abDuration" tag="Round"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="abRange" tag="Personal"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="abAction" tag="Swift"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="SpInfo" tag="spInvisib2"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ChargeCalc" tag="AttrUses3"/>
+    <tag group="ChargeAttr" tag="aWIS"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ Duration is equal to the Wisdom modifier in rounds
+      ~ If Not psionically focused get out now
+      var v_focus as number
+      call PUPsiFocus
+      doneif (v_focus <> 1)
+      field[abDuration].value += #attrbonus[aWIS]]]></eval>
+    </thing>
+  <thing id="cPUHidHunt" name="Hidden Hunter" description="Starting at 2nd level, the shroud gains a bonus +1 bonus to Stealth skill checks. At 6th level and every 4 levels thereafter, this bonus increases by 1. This ability replaces evade arrows." compset="ClSpecial">
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      field[listname].text = field[thingname].text & " (" & signed(field[xIndex].value) & ")"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+
+      field[CustDesc].text = "+" & field[abValue].value & " bonus to Stealth checks."
+      hero.childfound[skStealth].field[Bonus].value += field[abValue].value]]></eval>
+    </thing>
+  <thing id="cPUShHideP" name="Hide in Plain Sight" description="At 7th level or higher, the shroud can use the Stealth skill even when being observed by expending her psionic focus when making her Stealth skill check.  This ability replaces disengage." compset="ClSpecial" summary="As long as you maintain psionic focus, you can use the Stealth skill to hide, even while being observed.">
+    <tag group="abAction" tag="PUManFocus"/>
+    </thing>
+  <thing id="cPUShUnAss" name="Unseen Assault" description="Starting at 13th level, when the shroud uses her unseen ability, the effect does not end when she attacks a creature. This ability replaces defensive shot." compset="ClSpecial">
+    <fieldval field="abRange" value="Personal"/>
+    <fieldval field="actName" value="Unseen"/>
+    <usesource source="pDscar"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="abDuration" tag="Round"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="abRange" tag="Personal"/>
+    <tag group="Helper" tag="UserAdjust"/>
+    <tag group="abAction" tag="Swift"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="Day"/>
+    <tag group="ChargeCalc" tag="AttrUses3"/>
+    <tag group="ChargeAttr" tag="aWIS"/>
+    <tag group="DescInfo" tag="cPUUnseen"/>
+    <tag group="SpInfo" tag="spInviGre4"/>
+    <eval phase="PostAttr" priority="10000"><![CDATA[
+      ~ Duration is equal to the Wisdom modifier in rounds
+      ~ If Not psionically focused get out now
+      var v_focus as number
+      call PUPsiFocus
+        doneif (v_focus <> 1)
+      field[abDuration].value += #attrbonus[aWIS]]]></eval>
+    </thing>
+  <thing id="cPUEvArrow" name="Evade Arrows" description="At 2nd level, a marksman’s familiarity with ranged attacks and her natural intuition alerts her to danger from mundane ranged attacks. She gains a +1 Dodge bonus to Armor Class against ranged attacks (but not ranged touch attacks). At 6th level and every four marksman levels thereafter, this Dodge bonus increases by 1." compset="ClSpecial">
+    <tag group="SpecType" tag="Skill"/>
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="SpecUp"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      field[listname].text = field[thingname].text & " (" & signed(field[xIndex].value) & ")"
+
+      ~ If we're not shown, just get out now
+      doneif (tagis[Helper.ShowSpec] <> 1)
+      ~ if we've been disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+
+      field[abValue].value += field[xCount].value
+      field[livename].text = field[thingname].text & " " & signed(field[abValue].value)
+
+      #situational[hero.childfound[ArmorClass],signed(field[abValue].value) & " Dodge bonus to Ranged Attacks.",field[thingname].text]]]></eval>
     </thing>
   </document>

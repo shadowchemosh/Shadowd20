@@ -523,7 +523,7 @@ Email: ShadowChemosh@yahoo.com</info_author>
          perform delete[Ability.raDarkVis]
       endif
 
-      ~ The racial special Darkvision could have been disabled by a 
+      ~ The racial special Darkvision could have been disabled by a
       ~ Racial Special. So remove the Disable tabs as the armor is giving
       ~ Darkvision regardless if its been replaced or not.
       perform hero.child[raDarkVis].delete[Helper.SpcDisable]
@@ -693,17 +693,17 @@ Email: ShadowChemosh@yahoo.com</info_author>
     <eval phase="PostLevel" priority="15000"><![CDATA[
 ~ If we're disabled, just get out now
 doneif (tagis[Helper.SpcDisable] <> 0)
-      
+
 ~ If we don't have any channelling, we're also done.
 doneif (hero.tagis[Hero.Channel] = 0)
-      
+
 ~ We passed, so give us a selector to choose among the xChannels
 field[usrCandid1].text = "component.Ability & thingid.xChannel"
 perform assign[ChooseSrc1.Hero]
-      
+
 ~ Stop if we haven't chosen anything
-doneif (field[usrChosen1].ischosen = 0) 
-      
+doneif (field[usrChosen1].ischosen = 0)
+
 field[usrChosen1].chosen.field[abValue].value += field[xTotalLev].value]]></eval>
     </thing>
   <thing id="cEsfWepExo" name="Weapon of the Exorcist" description="An exorcist of the Silver Flame chooses a weapon with which she dispenses the will of the church. The chosen weapon must be a weapon that the exorcist of the Silver Flame is proficient with, and must have been in her possession for the last 24 hours. While wielding this weapon, the exorcist has a +1 sacred bonus on damage rolls, and she treats it as a magic weapon for the purpose of overcoming damage reduction.\n\nAn exorcist of the Silver Flame may only have one weapon of the exorcist at a time." compset="ClSpecial">
@@ -716,8 +716,8 @@ doneif (tagis[Helper.ShowSpec] <> 1)
 ~if we've been replaced, get out now
 doneif (tagis[Helper.SpcReplace] <> 0)
 ~ Stop if we haven't chosen anything
-doneif (field[usrChosen1].ischosen = 0) 
-      
+doneif (field[usrChosen1].ischosen = 0)
+
 field[usrChosen1].chosen.field[wDamBonus].value += 1]]></eval>
     </thing>
   <thing id="cEsfWepSil" name="Weapon of Silver" description="Starting at 2nd level, an exorcist of the Silver Flame wielding her chosen weapon treats the weapon as silver as well as magic for the purpose of overcoming damage reduction." compset="ClSpecial">
@@ -759,7 +759,7 @@ if (hero.child[raDarkVis].tagis[Helper.SpcDisable] <> 0) then
    perform delete[Ability.raDarkVis]
 endif
 
-~ The racial special Darkvision could have been disabled by a 
+~ The racial special Darkvision could have been disabled by a
 ~ Racial Special. So remove the Disable tabs as the armor is giving
 ~ Darkvision regardless if its been replaced or not.
 perform hero.child[raDarkVis].delete[Helper.SpcDisable]
@@ -800,7 +800,7 @@ doneif (tagis[Helper.ShowSpec] <> 1)
 ~if we've been replaced, get out now
 doneif (tagis[Helper.SpcReplace] <> 0)
 ~ Stop if we haven't chosen anything
-doneif (hero.child[cEsfWepExo].field[usrChosen1].ischosen = 0) 
+doneif (hero.child[cEsfWepExo].field[usrChosen1].ischosen = 0)
 
 #extradamage[hero.child[cEsfWepExo].field[usrChosen1].chosen,"+1d6 Fire",field[name].text]]]></eval>
     </thing>
@@ -815,7 +815,7 @@ doneif (tagis[Helper.ShowSpec] <> 1)
 ~if we've been replaced, get out now
 doneif (tagis[Helper.SpcReplace] <> 0)
 ~ Stop if we haven't chosen anything
-doneif (hero.child[cEsfWepExo].field[usrChosen1].ischosen = 0) 
+doneif (hero.child[cEsfWepExo].field[usrChosen1].ischosen = 0)
 
 #extradamage[hero.child[cEsfWepExo].field[usrChosen1].chosen,"+1d6 Sacred",field[name].text]]]></eval>
     </thing>
@@ -934,7 +934,7 @@ field[abValue].value += field[xCount].value
 field[livename].text = field[thingname].text & " +" & field[abValue].value
 field[abSumm].text = "+" & field[abValue].value  & " dodge bonus to your AC."
 
-~ If we are medium, heavy encumbered or have a shield equipped 
+~ If we are medium, heavy encumbered or have a shield equipped
 ~ then don't give dodge bonus
 if (hero.tagis[Encumbered.Medium] + hero.tagis[Encumbered.Heavy] + hero.tagis[Hero.EquipShld] = 0) Then
    ~ Give dodge bonus to AC
@@ -2269,7 +2269,7 @@ hero.child[aCON].field[Bonus].value += field[abValue3].value]]></eval>
     <tag group="fInclude" tag="fS2WanMast"/>
     <tag group="fInclude" tag="fS2ExtArti"/>
     <tag group="CasterSrc" tag="Alchem"/>
-    <tag group="CasterType" tag="MemAll"/>
+    <tag group="CasterType" tag="SpontAll"/>
     <tag group="BonusFor" tag="S2Artifice"/>
     <tag group="ClassSkill" tag="Craft"/>
     <tag group="cFort" tag="Poor"/>
@@ -2467,7 +2467,7 @@ field[livename].text = field[thingname].text & " (" & field[trkMax].value  & ")"
 
 ~ If not in output mode, don't do anything
 doneif (state.isoutput <> 1)
-~ Hide tracker on output as its too large to show correctly on 
+~ Hide tracker on output as its too large to show correctly on
 ~ a printed sheet.
 perform assign[Hide.Tracker]]]></eval>
     </thing>
