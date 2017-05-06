@@ -6,6 +6,23 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.21 May 5, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Magus Spell Combat - Fix issue where the character was getting a bonus when using TWF spell combat with a Touch Attack weapon.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in latest community Pack v1.8</li>
+<li>Planetouched Race - Enhanced the logic for the Spell-like ability choice to correctly display on the Spells tab as a spell-like ability.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+
 <strong>v2.20 January 27, 2017</strong>
 
 <strong>Bug Fixes</strong>
