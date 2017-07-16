@@ -30,6 +30,10 @@
     <tag group="ImpArmChk3" tag="skS2AcroJu"/>
     <tag group="ImpArmChk3" tag="skClimb"/>
     <tag group="ArmorCheck" tag="4"/>
+    <eval phase="First" priority="200"><![CDATA[
+      ~ Remove the extra description info tag &
+      perform delete[DescInfo.mAgBreastp]
+      ]]></eval>
     </thing>
   <thing id="cRogS2CanO" name="Canny Observer" description="When a rogue with this talent makes a Perception check to hear the details of a conversation or to find concealed or secret objects (including doors and traps), she gains a +4 bonus." compset="CustomSpec" replaces="cRogCannyO" uniqueness="useronce">
     <usesource source="APG"/>
