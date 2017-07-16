@@ -46,6 +46,15 @@
     </source>
 
   <source
+    id="srcPA11"
+    name="Power Attack does -1H/+1D"
+    selectable="yes"
+    parent="pShadowd20"
+    sortorder="20"
+    description="Power Attack feat will no only provide a -1H/+1D instead of the normal -1H/+2D.">
+    </source>
+
+  <source
     id="srcSpelDmg"
     name="Spells get bonus dmg equal to your CL"
     selectable="yes"

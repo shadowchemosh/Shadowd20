@@ -21,6 +21,7 @@
     <bootstrap thing="S2TwoHand"></bootstrap>  <!-- Power Attack and 2H weapons don't get 1.5x Str until level 6 -->
     <bootstrap thing="s20SpellCo"></bootstrap> <!-- TWF for Magus and Touch Attack weapon -->
     <bootstrap thing="s20TWF"></bootstrap>     <!-- TWF no longer gives -2 to hit -->
+    <bootstrap thing="S2PwrAtk11"></bootstrap> <!-- Power Attack feat only provides a -1H/+1D bonus -->
 
     <!-- Make these items put in a Item ID Text -->
     <bootstrap thing="s20Potions"></bootstrap>
@@ -368,14 +369,8 @@
       ~ Set houserule text on Power Attack
       #appenddesc[fPowerAtt,"{b}Shadow d20:{/b} Two-handed weapons will NO longer get 1.5x Strength damage or get +50% bonus when using Power Attack until your character is level 6."]
 
-      ~ If we have power attack feat then process here
-      If (hero.childlives[fPowerAtt] <> 0) Then
-        ~ If Power Attack is turned on then we need to off-set +50%
-        ~ bonus PA applies.
-        If (hero.child[fPowerAtt].field[abilActive].value <> 0) Then
-            nPower = #value[fPowerAtt]
-        Endif
-      Endif
+      ~ Calculate half bonus increase from power attack feat
+      nPower = round(hero.child[Damage].field[tDamPower].value/2,0,-1)
 
       ~ Loop through only the melee weapons
       foreach pick in hero from BaseWep where "wCategory.Melee"
@@ -413,6 +408,34 @@
       nexteach
       ]]></eval>
     </thing>
+
+  <!-- ============================================================================================= -->
+  <!-- Power Atttack feat only does -1 to hit with a +1 to Damage.                                   -->
+  <!-- ============================================================================================= -->
+  <thing id="S2PwrAtk11"
+    name="Power Attack Feat"
+    description="Power Attack feat will no only provide a -1H/+1D instead of the normal -1H/+2D."
+    summary="Power Attack feat is -1H/+1D."
+    compset="Simple"
+    uniqueness="useronce">
+    <usesource source="srcPA11"/>
+    <tag group="ProductId" tag="Shadowd20"/>
+    <eval phase="PostLevel" priority="5500"><![CDATA[
+      ~ We are active so show on Shadow d20 tab
+      perform assign[Shadowd20.HouseRule]
+      ~ If no power attack feat then just get out now!
+      doneif (hero.childlives[fPowerAtt] = 0)
+
+      ~ Set houserule text on Power Attack
+      #appenddesc[fPowerAtt,"{b}Shadow d20:{/b} The penalty and damage progression has been changed to -1H/+1D instead of the normal -1H/+2D."]
+
+      ~ Adjust damage down to only +1 instead of +2
+      #value2[fPowerAtt] += -1 * #value[fPowerAtt]
+      ]]>
+      <after name="Calc fPowerAtt Bonuses"/>
+      </eval>
+    </thing>
+
 
   <!-- ======================================================================================= -->
   <!-- Action Points                                                                           -->
