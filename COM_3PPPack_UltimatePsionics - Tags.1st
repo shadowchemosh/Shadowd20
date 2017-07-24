@@ -10,6 +10,17 @@
     <value id="Race"        name="Psionic Race"/>
     <value id="PsiFocus"    name="Psionic Focus Always"/>
     <value id="FocusPick"   name="Psionic Focus Pick"/>
+    <value id="AstConMenu"  name="Astral Construct Menu"/>
+    <value id="PsiActEne"   name="Active Energy Type"/>
+  </group>
+
+  <!-- Active Energy Type -->
+  <group id="PsiActEne" name="Active Energy Type">
+    <value id="Selection"   name="Energy Selections"/>
+    <value id="Cold"        name="Cold"/>
+    <value id="Elec"        name="Electricity"/>
+    <value id="Fire"        name="Fire"/>
+    <value id="Sonic"       name="Sonic"/>
   </group>
 
 <!-- ============================================== -->
@@ -24,9 +35,29 @@
     <value id="TwoHanded"   name="mind blade (2H)"/>
     <value id="Arrow"       name="mind arrow"/>
     <value id="Dagger"      name="mind dagger"/>
+    <!-- Blade Skill Helper Tags -->
+    <value id="ArmorShldT"  name="Mind Tower Shield"/>
+    <!-- Soulbold Archetype -->
     <value id="BoltLong"    name="mind bolt (long)"/>
     <value id="BoltMed"     name="mind bolt (med)"/>
     <value id="BoltShort"   name="mind bolt (short)"/>
+    <value id="BoltDagger"  name="mind dagger"/>
+    <!-- Armored Blade Archetype -->
+    <value id="ArmorLight"  name="Mind Armor (Light)"/>
+    <value id="ArmorMed"    name="Mind Armor (Medium)"/>
+    <value id="ArmorHeavy"  name="Mind Armor (Heavy)"/>
+    <!-- Feral Heart Archetype -->
+    <value id="EmpStrikes"  name="Empowered Strikes"/>
+    <value id="FormClaws"   name="Claws x2"/>
+    <value id="FormBite"    name="Bite"/>
+    <!-- Shielded Blade Archetype -->
+    <value id="ArmorShldH"  name="Mind Shield"/>
+    <!-- Mind Blade Weapon Powers -->
+    <!-- NOTE: The little "w" means its an item power and its name will be appended to the mind blade -->
+    <value id="wAgile"      name="Agile"/>          <!-- Agile Weapon Power -->
+    <value id="Finesse"     name="Finesse"/>        <!-- Mind Blade is a finesse weapon -->
+    <value id="Bleed1d6"    name="1d6 Bleed"/>      <!-- On a crit deal 1d6 bleed damage -->
+    <value id="PsyStrike"   name="Psychic Strike"/> <!-- Psychic Strike Damage +1d8 -->
   </group>
 
   <!-- Soulknifes Blade Skills custom ability tags -->
@@ -41,6 +72,7 @@
 
   <!-- Psychic Warrior Class helper tags -->
   <group id="PsyWarrior" name="Psychic Warrior">
+    <value id="PathAdded"   name="Path Added to Hero"/>
     <value id="PathSkill"   name="Path Skill Bonus"/>
     <value id="PathPower"   name="Path Power"/>
     <value id="PathPrim"    name="Primary Path"/>
@@ -66,12 +98,6 @@
     <value id="Added"       name="Discipline Added to Hero"/>
     <value id="Primary"     name="Primary Discipline"/>
     <value id="Secondary"   name="Secondary Discipline"/>
-  </group>
-
-  <!-- Mythic Psionic Helper Tags -->
-  <group id="MythicPsi" name="Mythic Psionics">
-    <value id="PsiFocus"    name="Psionic Focus"/>
-    <value id="PsicrBon2x"  name="Psicrystal Bonus Doubled"/>
   </group>
 
   <!-- Class Selection removal tags

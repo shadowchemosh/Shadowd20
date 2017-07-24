@@ -235,20 +235,88 @@
     ]]>
   </procedure>
 
+
+  <!-- ****************************************************************** -->
+  <!-- Soulknife Mind Blade helper procedures                             -->
+  <!-- ****************************************************************** -->
   <procedure id="NameMindBl" context="pick"><![CDATA[
     ~ Name Mind Blade - As we are running custom after a Item Power is
     ~                   added to a the mind blade the name gets chopped.
     ~                   So we reset it here.
     ~ Should run at Render/99999999 and run on the "Weapon, Magic" pick
+    ~ NOTE: We are now being used on both Mind Blades and Mind Armor
+    ~       gear items.
 
-    ~ If we are masterwork we have to reset the name as it gets lost
-    If (tagis[EquipType.Masterwork] <> 0) Then
-       ~ Reset the live name as it gets destroyed
-       field[livename].text &= " " & tagnames[MindBlade.?]
+    ~ Armor
+    If (tagis[EquipType.Armor] = 1) Then
+
+      ~ Reset the live name as it gets destroyed
+      If (field[BonEnhance].value <> 0) Then
+        field[livename].text &= " " & tagnames[MindBlade.Armor?]
+      Endif
+
+    ~..Weapons
+    Else
+      ~ If we are masterwork we have to reset the name as it gets lost
+      If (tagis[EquipType.Masterwork] <> 0) Then
+
+        ~ If we have item powers add their names
+        If (hero.tagis[MindBlade.w?] = 1) Then
+          field[livename].text &= " " & hero.tagnames[MindBlade.w?," "]
+        Endif
+
+        field[livename].text &= " " & tagnames[MindBlade.?]
+
+      ~..Not masterwork so just add the weapon powers
+      Else
+        ~ If we have item powers add their names
+        If (hero.tagis[MindBlade.w?] = 1) Then
+          field[livename].text &= " " & hero.tagnames[MindBlade.w?," "] & " " & tagnames[MindBlade.?]
+        Endif
+      Endif
+
+      ~ Remove Tracker
+      perform delete[User.Tracker]
     Endif
+    ]]>
+  </procedure>
 
-    ~ Remove Tracker
-    perform delete[User.Tracker]
+  <procedure id="MndBlItPow" context="pick"><![CDATA[
+    ~ Mind Blade Item Powers
+    ~  This procedures runs on each magic mind blade. It checks the hero
+    ~  for specific tags and if found it mimics the specific power. This
+    ~  prevents the need of foreach loops running on archetype/blade skills.
+
+    ~ Armor
+    If (tagis[EquipType.Armor] = 1) Then
+
+      done
+
+    ~..Weapons
+    Else
+
+      ~ Agile weapon property
+      If (hero.tagis[MindBlade.wAgile] = 1) Then
+        perform assign[DamageOpt.aDEX]
+        perform assign[DescInfo.ipAgile]
+      Endif
+
+      ~ Finesse weapon property
+      If (hero.tagis[MindBlade.Finesse] = 1) Then
+        perform assign[Helper.Finesse]
+      Endif
+
+      ~ Rending Blades property
+      If (hero.tagis[MindBlade.Bleed1d6] = 1) Then
+        perform assign[DescInfo.cSknBSRend]
+        #extracrit[this,"+1d6 bleed","Rending Blades"]
+      Endif
+
+      ~ Psychic Strike damage
+      If (hero.tagis[MindBlade.PsyStrike] = 1) Then
+        #extradamage[this, hero.childfound[cSknPsyStr].field[abText5].text & " psy", "Psychic Strike"]
+      Endif
+    Endif
     ]]>
   </procedure>
 
@@ -277,6 +345,47 @@
     #applybonus[atrBonEnh,this,1]
     ]]>
   </procedure>
+
+  <procedure id="PsyStrDmg1" context="pick"><![CDATA[
+    ~ Psychic Strike Damage
+    ~ Build the dice damage for the soulknife's psychic strke.
+    ~ abValue  - Number of Dice
+    ~ abValue2 - Dice Size
+    ~ abValue3 - Plus Damage
+    var PsyStrDmg as string
+
+    ~ No plus damage
+    If (field[abValue3].value = 0) Then
+
+      PsyStrDmg = signed(field[abValue].value) & "d" & field[abValue2].value
+
+    ~.. Build with a Plus damage
+    Else
+      PsyStrDmg = signed(field[abValue].value) & "d" & field[abValue2].value & signed(field[abValue3].value)
+    Endif
+    ]]>
+  </procedure>
+
+  <!-- ****************************************************************** -->
+  <!-- Aegis Astral Suit helper procedures                                -->
+  <!-- ****************************************************************** -->
+  <procedure id="PUAstBonus" context="pick"><![CDATA[
+    ~ Astral Armor Bonuses
+    ~ - Use this procedure to apply special bonuses to Astral Armor instead
+    ~   of using Foreach loops.
+
+    ~ If we're not wearing the Astral Suit, get out now
+    doneif (hero.tagcount[Custom.WearAstS] = 0)
+
+    ~ Lower armor check penalty value. (Flexible Suit)
+    field[arArmorChk].value += hero.tagis[Ability.rcPUaFlexS]
+
+    ~ Increase AC bonus (Improved Armor)
+    field[Bonus].value += hero.tagcount[Ability.rcPUaImpAr]
+    ]]>
+  </procedure>
+
+
 
   <procedure id="PUPreReqs" scripttype="validate"><![CDATA[
     ~ IN: classcheck
@@ -308,9 +417,9 @@
       ~ Soul Archer
       levels += #levelcount[PUSoulArc]
 
-      ~ If we are a Blade Skill then we could have up to 4 extra levels from the
-      ~ Fighter's Blade feat.
-      if (focus.tagis[abCategory.PUBladeSk] = 1) then
+      ~ If we are a Blade Skill or Feral Heart Blade Skill then
+      ~ we could have up to 4 extra levels from the Fighter's Blade feat.
+      if (focus.tagis[abCategory.PUBladeSk] + focus.tagis[abCategory.PUFeHeBlSk] = 1) then
         levels += hero.tagcount[BladeSkill.ExtraLevel]
       endif
 
@@ -390,6 +499,14 @@
 
 
   <procedure id="PUSetAegCP" context="pick"><![CDATA[
+    ~ ********READ ME********
+    ~ ShadowChemosh 7/13/2017
+    ~ I re-wrote the Aegis class to use set of arrays on the cPUAegHelp helper Pick.
+    ~ That makes this procedure not needed anymore as the logic of levels can be
+    ~ very easily modified/adjusted. I am leaving this procedure here only for backwards
+    ~ compatibility but nothing in the Pack actually calls it anymore.
+    ~ ***********************
+
     ~ Adds four effective class levels worth of customization points
     ~ Aegis hard codes the customization points per level in a script that
     ~ runs at PostLevels 600, storing the bonus reconfigure points in
@@ -490,10 +607,10 @@
 
     ~ Set configurable points on Aegis Helper in abValue2 field by adding
     ~ the difference.
-    ~   field abValue contains the # of times tracker for the first copy
-    ~   field abValue2 contains the bonus reconfigure points
-    ~   field abValue3 contains the bonus uses
-    hero.childfound[cPUAegHelp].field[abValue2].value += (PUNewCP - PUCurrCP)
+    ~   field abValue - holds level
+    ~   field abValue2 - contains the bonus reconfigure points
+    ~   field abValue3 - contains the base points
+    #value2[cPUAegHelp] += (PUNewCP - PUCurrCP)
     ]]>
   </procedure>
 

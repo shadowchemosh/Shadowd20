@@ -2469,36 +2469,6 @@ if (isgearheld <> 0) then
     <tag group="Helper" tag="SourceEqp"/>
     <tag group="SpInfo" tag="spTruMeta8"/>
     </thing>
-  <thing id="shMTowShld" name="Mind Tower shield" description="This massive wooden shield is nearly as tall as its user. In most situations, it provides the indicated shield bonus to your AC. As a standard action, however, you can use a tower shield to grant you total cover until the beginning of your next turn. When using a tower shield in this way, you must choose one edge of your space. That edge is treated as a solid wall for attacks targeting you only. You gain total cover for attacks that pass through this edge and no cover for attacks that do not pass through this edge (see cover, {i}Core Rulebook{/i} 195). The shield does not, however, provide cover against targeted spells; a spellcaster can cast a spell on you by targeting the shield you are holding. You cannot bash with a tower shield, nor can you use your shield hand for anything else.\n\nWhen employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield&apos;s encumbrance." compset="Armor">
-    <fieldval field="gWeight" value="45"/>
-    <usesource source="pPsiUn"/>
-    <tag group="ArmorCheck" tag="10" name="10" abbrev="10"/>
-    <tag group="ArmorClass" tag="Tower" name="Tower Shield" abbrev="Tower"/>
-    <tag group="ArmorMaxDx" tag="2" name="2" abbrev="2"/>
-    <tag group="ShldClass" tag="Tower" name="Tower Shield" abbrev="Tower"/>
-    <tag group="ArmorAC" tag="4" name="4" abbrev="4"/>
-    <tag group="ArmorArcFl" tag="50" name="50" abbrev="50"/>
-    <tag group="Helper" tag="NoSelect"/>
-    <tag group="Helper" tag="Helper"/>
-    <tag group="Helper" tag="GearNoSize"/>
-    <tag group="Helper" tag="AlwaysMast"/>
-    <tag group="Helper" tag="Proficient"/>
-    <tag group="Helper" tag="AutoEquip"/>
-    <eval phase="PreLevel" priority="10000"><![CDATA[
-      ~ Work out if we're equipped, or, if we're the child of a magic item, if
-      ~ our parent is equipped
-      if (container.ishero <> 0) then
-        if (field[gIsEquip].value <> 0) then
-          perform hero.assign[Hero.TowAtkPen2]
-          endif
-      else
-        if (parent.field[gIsEquip].value <> 0) then
-          perform hero.assign[Hero.TowAtkPen2]
-          endif
-        endif]]>
-      <before name="Calc wTowerPen"/>
-      </eval>
-    </thing>
   <thing id="ioPUBraDis" name="Bracers of Disruption" description="These black silk bands increase the base damage of the wielder’s disrupt pattern ability by 2d6 points of damage. If the character does not have the Disrupt Pattern class feature, he gains no benefit.\n\n{b}Construction Requirements{/b} \nCraft Wondrous Item, disrupt pattern class feature, {b}Cost{/b} 10,000 gp" compset="Wondrous">
     <fieldval field="gCost" value="20000"/>
     <fieldval field="iCL" value="12"/>
@@ -2514,85 +2484,6 @@ if (isgearheld <> 0) then
       ~ Increase the number of dice of the disrupt pattern
       ~ ability by 2d6.
       #value[cPUDisPatt] += 2]]></eval>
-    </thing>
-  <thing id="mPUAstArCh" name="Astral Chainmail" description="Unlike a chain shirt, which covers only the chest, chainmail protects the wearer with a complete mesh of chain links that cover the torso and arms, and extends below the waist. Multiple interconnected pieces offer additional protection over vital areas. The suit includes gauntlets." compset="Armor">
-    <fieldval field="gWeight" value="40"/>
-    <usesource source="pPsiUn"/>
-    <tag group="ArmorCateg" tag="Gauntlets"/>
-    <tag group="ArmorCateg" tag="Slows"/>
-    <tag group="ArmorCheck" tag="5"/>
-    <tag group="ArmorClass" tag="Medium"/>
-    <tag group="ArmorMaxDx" tag="2"/>
-    <tag group="ArmorAC" tag="6"/>
-    <tag group="ArmorArcFl" tag="30"/>
-    <tag group="Helper" tag="AlwaysMast"/>
-    <tag group="Helper" tag="AutoEquip"/>
-    <tag group="Helper" tag="Helper"/>
-    <tag group="Custom" tag="AstArmor"/>
-    <tag group="Helper" tag="Proficient"/>
-    </thing>
-  <thing id="mPUAstArBr" name="Astral Breastplate" description="A breastplate protects a wearer&apos;s torso with a single piece of sculpted metal, similar to the core piece of a suit of full plate. Despite its sturdiness, its inflexibility and open back make it inferior to complete suits of metal armor, but still an improvement over most non-metal armors." compset="Armor">
-    <fieldval field="gWeight" value="30"/>
-    <usesource source="pPsiUn"/>
-    <tag group="ArmorCateg" tag="Slows"/>
-    <tag group="ArmorCheck" tag="4"/>
-    <tag group="ArmorClass" tag="Medium"/>
-    <tag group="ArmorMaxDx" tag="3"/>
-    <tag group="ArmorPiece" tag="PieceTorso"/>
-    <tag group="ArmorSet" tag="Fullplate"/>
-    <tag group="EquipType" tag="Metal"/>
-    <tag group="Helper" tag="MatCstSuit"/>
-    <tag group="Helper" tag="PieceUpMat"/>
-    <tag group="PieceArcFl" tag="35"/>
-    <tag group="ArmorAC" tag="6"/>
-    <tag group="Helper" tag="AutoEquip"/>
-    <tag group="Helper" tag="AlwaysMast"/>
-    <tag group="ArmorArcFl" tag="25"/>
-    <tag group="Helper" tag="Helper"/>
-    <tag group="Custom" tag="AstArmor"/>
-    <tag group="Helper" tag="Proficient"/>
-    <eval phase="PreLevel" priority="5000"><![CDATA[
-      doneif (hero.tagis[source.UCPieceArm] = 0)
-
-      ~ If we're using the piecemeal armor rules then we are 1 step heavier if
-      ~ we have equipped a piece of arm or leg armor.
-      if (hero.tagis[ArmorPiece.PieceArms] + hero.tagis[ArmorPiece.PieceLegs] <> 0) then
-        perform tagreplace[ArmorClass.Medium,ArmorClass.Heavy]
-        perform container.tagreplace[ArmorClass.Medium,ArmorClass.Heavy]
-      endif]]></eval>
-    </thing>
-  <thing id="mPUAstArFP" name="Astral Full plate" description="This metal suit comprises multiple pieces of interconnected and overlaying metal plates, incorporating the benefits of numerous types of lesser armor. A complete suit of full plate (or platemail, as it is often called) includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800 (2d4x100) gold pieces." compset="Armor">
-    <fieldval field="gWeight" value="50"/>
-    <usesource source="pPsiUn"/>
-    <tag group="ArmorCateg" tag="Gauntlets"/>
-    <tag group="ArmorCateg" tag="Slows"/>
-    <tag group="ArmorCheck" tag="6"/>
-    <tag group="ArmorClass" tag="Heavy"/>
-    <tag group="ArmorMaxDx" tag="1"/>
-    <tag group="EquipType" tag="Metal"/>
-    <tag group="ArmorAC" tag="9"/>
-    <tag group="Helper" tag="AutoEquip"/>
-    <tag group="Helper" tag="AlwaysMast"/>
-    <tag group="ArmorArcFl" tag="35"/>
-    <tag group="Custom" tag="AstArmor"/>
-    <tag group="Helper" tag="Helper"/>
-    <tag group="Helper" tag="Proficient"/>
-    </thing>
-  <thing id="mPUAstArHP" name="Astral Half-plate" description="Half-plate armor combines elements of full plate and chainmail, incorporating several sizable plates of sculpted metal with an underlying mesh of chain links. While this suit protects vital areas with several layers of armor, it is not sculpted to a single individual&apos;s frame, reducing its wearer&apos;s mobility even more than a suit of full plate. Half-plate armor includes gauntlets and a helm." compset="Armor">
-    <fieldval field="gWeight" value="50"/>
-    <usesource source="pPsiUn"/>
-    <tag group="ArmorCateg" tag="Gauntlets"/>
-    <tag group="ArmorCateg" tag="Slows"/>
-    <tag group="ArmorCheck" tag="7"/>
-    <tag group="ArmorClass" tag="Heavy"/>
-    <tag group="ArmorMaxDx" tag="0"/>
-    <tag group="EquipType" tag="Metal"/>
-    <tag group="ArmorAC" tag="8"/>
-    <tag group="Helper" tag="AlwaysMast"/>
-    <tag group="ArmorArcFl" tag="40"/>
-    <tag group="Custom" tag="AstArmor"/>
-    <tag group="Helper" tag="AutoEquip"/>
-    <tag group="Helper" tag="Proficient"/>
     </thing>
   <thing id="ioPUMapMd" name="Map of the Mind" description="This twisting map attunes to its wielder upon being picked up and alters its image to show a representation of the internal layout of the owner’s mind. The owner of the map can manifest psychic reformation on himself by altering the map with the desired choices to be made. After being used, the map cannot be used again for a week, even if it becomes attuned to another creature." compset="Wondrous">
     <fieldval field="gCost" value="16000"/>
