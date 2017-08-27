@@ -6,6 +6,24 @@
 
       This is a houserules file for a group of gamers in Romeoville, IL.  To see the changes vist our wiki at http://shadowd20.pbworks.com/PRPG</info_author>
     <info_history><![CDATA[
+<strong>v2.22 July 23, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Prevent double desc on Agile Breast Plate.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Merged in latest community Pack v1.10</li>
+<li>New configuration option to make Power Attack to do -1H/+1D instead of -1H/+2D.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>None</li>
+</ul>
+
+
+
 <strong>v2.21 May 5, 2017</strong>
 
 <strong>Bug Fixes</strong>
